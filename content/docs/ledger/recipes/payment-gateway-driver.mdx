@@ -46,25 +46,25 @@ This recipe is a developer-facing walkthrough for adding a custom payment gatewa
 └────────────────────────────────────────────────────────────────┘
 ```
 
-The contract you implement is `Fleetbase\Ledger\Contracts\GatewayDriverInterface`. Practically every driver extends `Fleetbase\Ledger\Gateways\AbstractGatewayDriver` instead, which provides config helpers, logging, and sensible defaults.
+The contract you implement is `LogisBase\Ledger\Contracts\GatewayDriverInterface`. Practically every driver extends `LogisBase\Ledger\Gateways\AbstractGatewayDriver` instead, which provides config helpers, logging, and sensible defaults.
 
 ## The Contract
 
 Every method on the interface, what it does, and when it's called:
 
-| Method | Purpose | Called by |
-| :--- | :--- | :--- |
-| `getName()` | Human-readable name (e.g. `"PayPal"`) | UI, logs |
-| `getCode()` | Machine-readable lowercase code (e.g. `"paypal"`). Must be unique | Driver resolution, webhook URL |
-| `getCapabilities()` | Array of capability strings (`purchase`, `refund`, `tokenization`, `webhooks`, `sandbox`, `setup_intent`, `recurring`) | UI, capability checks |
-| `getConfigSchema()` | Defines fields rendered in the **New Gateway** form | UI |
-| `initialize(array $config, bool $sandbox)` | Receives decrypted config from the saved `Gateway` row | Manager |
-| `purchase(PurchaseRequest $request)` | Charge a customer. Returns a `GatewayResponse` | Checkout / invoice payment flows |
-| `refund(RefundRequest $request)` | Refund a previously captured transaction | Refund flows |
-| `handleWebhook(Request $request)` | Verify signature, parse event, return a normalized `GatewayResponse` | `WebhookController` |
-| `createPaymentMethod(array $data)` | Optional — tokenize a payment method without charging | Saved-card / setup flows |
+| Method                                     | Purpose                                                                                                                | Called by                        |
+| :----------------------------------------- | :--------------------------------------------------------------------------------------------------------------------- | :------------------------------- |
+| `getName()`                                | Human-readable name (e.g. `"PayPal"`)                                                                                  | UI, logs                         |
+| `getCode()`                                | Machine-readable lowercase code (e.g. `"paypal"`). Must be unique                                                      | Driver resolution, webhook URL   |
+| `getCapabilities()`                        | Array of capability strings (`purchase`, `refund`, `tokenization`, `webhooks`, `sandbox`, `setup_intent`, `recurring`) | UI, capability checks            |
+| `getConfigSchema()`                        | Defines fields rendered in the **New Gateway** form                                                                    | UI                               |
+| `initialize(array $config, bool $sandbox)` | Receives decrypted config from the saved `Gateway` row                                                                 | Manager                          |
+| `purchase(PurchaseRequest $request)`       | Charge a customer. Returns a `GatewayResponse`                                                                         | Checkout / invoice payment flows |
+| `refund(RefundRequest $request)`           | Refund a previously captured transaction                                                                               | Refund flows                     |
+| `handleWebhook(Request $request)`          | Verify signature, parse event, return a normalized `GatewayResponse`                                                   | `WebhookController`              |
+| `createPaymentMethod(array $data)`         | Optional — tokenize a payment method without charging                                                                  | Saved-card / setup flows         |
 
-The DTOs are `Fleetbase\Ledger\DTO\PurchaseRequest`, `RefundRequest`, and `GatewayResponse`.
+The DTOs are `LogisBase\Ledger\DTO\PurchaseRequest`, `RefundRequest`, and `GatewayResponse`.
 
 ## Step 1 — Create the Driver Class
 
@@ -75,11 +75,11 @@ Create your driver inside your own extension package. Anywhere that's autoloaded
 
 namespace MyCompany\Ledger\Gateways;
 
-use Fleetbase\Ledger\DTO\GatewayResponse;
-use Fleetbase\Ledger\DTO\PurchaseRequest;
-use Fleetbase\Ledger\DTO\RefundRequest;
-use Fleetbase\Ledger\Exceptions\WebhookSignatureException;
-use Fleetbase\Ledger\Gateways\AbstractGatewayDriver;
+use LogisBase\Ledger\DTO\GatewayResponse;
+use LogisBase\Ledger\DTO\PurchaseRequest;
+use LogisBase\Ledger\DTO\RefundRequest;
+use LogisBase\Ledger\Exceptions\WebhookSignatureException;
+use LogisBase\Ledger\Gateways\AbstractGatewayDriver;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
@@ -411,7 +411,7 @@ Drivers register through Laravel's standard `Manager::extend()` API in any servi
 
 namespace MyCompany\Ledger;
 
-use Fleetbase\Ledger\PaymentGatewayManager;
+use LogisBase\Ledger\PaymentGatewayManager;
 use Illuminate\Support\ServiceProvider;
 use MyCompany\Ledger\Gateways\PaypalDriver;
 
@@ -474,44 +474,44 @@ Add `'sandbox'` to `getCapabilities()` so the UI shows the sandbox toggle on the
 
 ### `PurchaseRequest` Fields
 
-| Field | Type | Notes |
-| :--- | :--- | :--- |
-| `amount` | `int` | Minor currency units |
-| `currency` | `string` | ISO 4217 code |
-| `description` | `string` | Human-readable |
-| `paymentMethodToken` | `?string` | For tokenized / saved-method purchases |
-| `customerId` | `?string` | Gateway-side customer ID (e.g., Stripe `cus_xxx`) |
-| `customerEmail` | `?string` | Customer email for receipts |
-| `invoiceUuid` | `?string` | Originating Ledger invoice |
-| `orderUuid` | `?string` | Originating Fleet-Ops order |
-| `returnUrl` | `?string` | For off-site redirect flows |
-| `cancelUrl` | `?string` | For off-site redirect flows |
-| `metadata` | `array` | Arbitrary key/value forwarded to the gateway |
+| Field                | Type      | Notes                                             |
+| :------------------- | :-------- | :------------------------------------------------ |
+| `amount`             | `int`     | Minor currency units                              |
+| `currency`           | `string`  | ISO 4217 code                                     |
+| `description`        | `string`  | Human-readable                                    |
+| `paymentMethodToken` | `?string` | For tokenized / saved-method purchases            |
+| `customerId`         | `?string` | Gateway-side customer ID (e.g., Stripe `cus_xxx`) |
+| `customerEmail`      | `?string` | Customer email for receipts                       |
+| `invoiceUuid`        | `?string` | Originating Ledger invoice                        |
+| `orderUuid`          | `?string` | Originating Fleet-Ops order                       |
+| `returnUrl`          | `?string` | For off-site redirect flows                       |
+| `cancelUrl`          | `?string` | For off-site redirect flows                       |
+| `metadata`           | `array`   | Arbitrary key/value forwarded to the gateway      |
 
 ### `RefundRequest` Fields
 
-| Field | Type | Notes |
-| :--- | :--- | :--- |
-| `gatewayTransactionId` | `string` | The original capture/charge ID |
-| `amount` | `int` | Minor currency units |
-| `currency` | `string` | ISO 4217 code |
-| `reason` | `?string` | `'duplicate'`, `'fraudulent'`, `'requested_by_customer'`, etc. |
-| `invoiceUuid` | `?string` | Originating Ledger invoice |
-| `metadata` | `array` | Arbitrary key/value |
+| Field                  | Type      | Notes                                                          |
+| :--------------------- | :-------- | :------------------------------------------------------------- |
+| `gatewayTransactionId` | `string`  | The original capture/charge ID                                 |
+| `amount`               | `int`     | Minor currency units                                           |
+| `currency`             | `string`  | ISO 4217 code                                                  |
+| `reason`               | `?string` | `'duplicate'`, `'fraudulent'`, `'requested_by_customer'`, etc. |
+| `invoiceUuid`          | `?string` | Originating Ledger invoice                                     |
+| `metadata`             | `array`   | Arbitrary key/value                                            |
 
 ### `GatewayResponse` Anatomy
 
-| Field | Type | Notes |
-| :--- | :--- | :--- |
-| `successful` | `bool` | Did the operation succeed? |
-| `gatewayTransactionId` | `string` | Idempotency key — the gateway's reference ID |
-| `status` | `string` | One of `STATUS_PENDING`, `STATUS_SUCCEEDED`, `STATUS_FAILED`, `STATUS_REFUNDED`, `STATUS_CANCELLED` |
-| `eventType` | `string` | One of `EVENT_PAYMENT_SUCCEEDED`, `EVENT_PAYMENT_FAILED`, `EVENT_PAYMENT_PENDING`, `EVENT_REFUND_PROCESSED`, `EVENT_REFUND_FAILED`, `EVENT_SETUP_SUCCEEDED`, `EVENT_CHARGEBACK`, `EVENT_UNKNOWN` |
-| `message` | `?string` | Human-readable |
-| `errorCode` | `?string` | Gateway-specific code (debug aid) |
-| `amount`, `currency` | `?int`, `?string` | Echo when the gateway returns them |
-| `rawResponse` | `array` | Full gateway response (kept on `GatewayTransaction`) |
-| `data` | `array` | Normalized extras — `client_secret`, `approve_url`, `invoice_uuid`, etc. |
+| Field                  | Type              | Notes                                                                                                                                                                                            |
+| :--------------------- | :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `successful`           | `bool`            | Did the operation succeed?                                                                                                                                                                       |
+| `gatewayTransactionId` | `string`          | Idempotency key — the gateway's reference ID                                                                                                                                                     |
+| `status`               | `string`          | One of `STATUS_PENDING`, `STATUS_SUCCEEDED`, `STATUS_FAILED`, `STATUS_REFUNDED`, `STATUS_CANCELLED`                                                                                              |
+| `eventType`            | `string`          | One of `EVENT_PAYMENT_SUCCEEDED`, `EVENT_PAYMENT_FAILED`, `EVENT_PAYMENT_PENDING`, `EVENT_REFUND_PROCESSED`, `EVENT_REFUND_FAILED`, `EVENT_SETUP_SUCCEEDED`, `EVENT_CHARGEBACK`, `EVENT_UNKNOWN` |
+| `message`              | `?string`         | Human-readable                                                                                                                                                                                   |
+| `errorCode`            | `?string`         | Gateway-specific code (debug aid)                                                                                                                                                                |
+| `amount`, `currency`   | `?int`, `?string` | Echo when the gateway returns them                                                                                                                                                               |
+| `rawResponse`          | `array`           | Full gateway response (kept on `GatewayTransaction`)                                                                                                                                             |
+| `data`                 | `array`           | Normalized extras — `client_secret`, `approve_url`, `invoice_uuid`, etc.                                                                                                                         |
 
 Use the static helpers:
 
@@ -551,5 +551,5 @@ Before shipping a driver, confirm each of these in sandbox mode:
 
 ## Next Steps
 
-- Read the existing drivers — `Fleetbase\Ledger\Gateways\StripeDriver`, `QPayDriver`, and `CashDriver` are the canonical references
-- Use `Fleetbase\Ledger\PaymentGatewayManager` if you need to invoke gateways programmatically from outside Ledger
+- Read the existing drivers — `LogisBase\Ledger\Gateways\StripeDriver`, `QPayDriver`, and `CashDriver` are the canonical references
+- Use `LogisBase\Ledger\PaymentGatewayManager` if you need to invoke gateways programmatically from outside Ledger

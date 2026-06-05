@@ -1,21 +1,21 @@
 ---
 title: Modal Layouts
-description: Pre-built modal layouts in @fleetbase/ember-ui — confirm, alert, prompt, bulk-action, progress, process, loading, and option-prompt.
+description: Pre-built modal layouts in @logisbase/ember-ui — confirm, alert, prompt, bulk-action, progress, process, loading, and option-prompt.
 ---
 
 # Modal Layouts
 
-`@fleetbase/ember-ui` ships several pre-built modal layouts. You don't render these directly — you call them via the [`modals-manager`](/docs/ui/modals/modals-manager) service. Each is just a convenience wrapper around `modalsManager.show()` with a layout component preset.
+`@logisbase/ember-ui` ships several pre-built modal layouts. You don't render these directly — you call them via the [`modals-manager`](/docs/ui/modals/modals-manager) service. Each is just a convenience wrapper around `modalsManager.show()` with a layout component preset.
 
-| Layout | Service method | Component |
-| :--- | :--- | :--- |
-| Confirm | `confirm(options)` | `modal/layouts/confirm` |
-| Alert | `alert(options)` | `modal/layouts/alert` |
-| Prompt | `prompt(options)` | `modal/layouts/prompt` |
-| Bulk action | `bulk(options)` | `modal/layouts/bulk-action` |
-| Progress | `progress(options)` | `modal/layouts/progress` |
-| Process | `process(options)` | `modal/layouts/process` |
-| Loading | `loader(options)` / `displayLoader(options)` | `modal/layouts/loading` |
+| Layout        | Service method                                   | Component                     |
+| :------------ | :----------------------------------------------- | :---------------------------- |
+| Confirm       | `confirm(options)`                               | `modal/layouts/confirm`       |
+| Alert         | `alert(options)`                                 | `modal/layouts/alert`         |
+| Prompt        | `prompt(options)`                                | `modal/layouts/prompt`        |
+| Bulk action   | `bulk(options)`                                  | `modal/layouts/bulk-action`   |
+| Progress      | `progress(options)`                              | `modal/layouts/progress`      |
+| Process       | `process(options)`                               | `modal/layouts/process`       |
+| Loading       | `loader(options)` / `displayLoader(options)`     | `modal/layouts/loading`       |
 | Option prompt | `userSelectOption(title, options, modalOptions)` | `modal/layouts/option-prompt` |
 
 ## Confirm

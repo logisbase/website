@@ -1,6 +1,6 @@
 ---
 title: FullCalendar
-description: "<FullCalendar> is a full-featured calendar component wrapping FullCalendar.io. Day/week/month/timeline views with drag-and-drop event editing."
+description: '<FullCalendar> is a full-featured calendar component wrapping FullCalendar.io. Day/week/month/timeline views with drag-and-drop event editing.'
 ---
 
 # `<FullCalendar>`
@@ -14,7 +14,7 @@ For driver-style schedules with resource lanes, the higher-level [`<ScheduleCale
 ```handlebars
 <FullCalendar
   @events={{this.events}}
-  @initialView="dayGridMonth"
+  @initialView='dayGridMonth'
   @headerToolbar={{this.headerToolbar}}
   @editable={{true}}
   @onEventClick={{this.handleEventClick}}
@@ -25,33 +25,33 @@ For driver-style schedules with resource lanes, the higher-level [`<ScheduleCale
 
 ## Common Arguments
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
-| `@events` | array | Events to display |
-| `@resources` | array | Resources for resource-style views |
-| `@initialView` | string | `dayGridMonth`, `timeGridWeek`, `timeGridDay`, `resourceTimeline`, etc. |
-| `@headerToolbar` | object | Toolbar config — buttons, layout |
-| `@editable` | boolean | Enable drag-and-drop |
-| `@selectable` | boolean | Enable date-range selection |
-| `@height` | string | Calendar height |
-| `@plugins` | array | FullCalendar plugins to enable |
+| Argument         | Type    | Description                                                             |
+| :--------------- | :------ | :---------------------------------------------------------------------- |
+| `@events`        | array   | Events to display                                                       |
+| `@resources`     | array   | Resources for resource-style views                                      |
+| `@initialView`   | string  | `dayGridMonth`, `timeGridWeek`, `timeGridDay`, `resourceTimeline`, etc. |
+| `@headerToolbar` | object  | Toolbar config — buttons, layout                                        |
+| `@editable`      | boolean | Enable drag-and-drop                                                    |
+| `@selectable`    | boolean | Enable date-range selection                                             |
+| `@height`        | string  | Calendar height                                                         |
+| `@plugins`       | array   | FullCalendar plugins to enable                                          |
 
 ### Callbacks
 
-| Argument | Description |
-| :--- | :--- |
-| `@onEventClick` | Event clicked |
-| `@onEventDrop` | Event drag-dropped |
-| `@onEventResize` | Event resized |
-| `@onDateClick` | Empty date cell clicked |
-| `@onSelect` | Date range selected |
+| Argument         | Description             |
+| :--------------- | :---------------------- |
+| `@onEventClick`  | Event clicked           |
+| `@onEventDrop`   | Event drag-dropped      |
+| `@onEventResize` | Event resized           |
+| `@onDateClick`   | Empty date cell clicked |
+| `@onSelect`      | Date range selected     |
 
 The component forwards most FullCalendar.io options as `@`-args — see the [FullCalendar API reference](https://fullcalendar.io/docs) for the full list.
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/full-calendar.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/full-calendar.hbs) | Template |
-| [`addon/components/full-calendar.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/full-calendar.js) | Class — wraps [FullCalendar.io](https://fullcalendar.io) |
-| [`addon/components/full-calendar/`](https://github.com/fleetbase/ember-ui/tree/main/addon/components/full-calendar) | Subcomponents |
+| File                                                                                                                       | Description                                              |
+| :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
+| [`addon/components/full-calendar.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/full-calendar.hbs) | Template                                                 |
+| [`addon/components/full-calendar.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/full-calendar.js)   | Class — wraps [FullCalendar.io](https://fullcalendar.io) |
+| [`addon/components/full-calendar/`](https://github.com/logisbase/ember-ui/tree/main/addon/components/full-calendar)        | Subcomponents                                            |

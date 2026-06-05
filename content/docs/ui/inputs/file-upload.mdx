@@ -12,8 +12,17 @@ For a ready-made button trigger, use [`<UploadButton>`](#upload-button) (covered
 ## Basic Usage
 
 ```handlebars
-<FileUpload @name="avatar" @accept="image/*" @onFileAdded={{this.handleFile}} as |queue|>
-  <Button @icon="upload" @text="Upload avatar" {{on "click" queue.selectFile}} />
+<FileUpload
+  @name='avatar'
+  @accept='image/*'
+  @onFileAdded={{this.handleFile}}
+  as |queue|
+>
+  <Button
+    @icon='upload'
+    @text='Upload avatar'
+    {{on 'click' queue.selectFile}}
+  />
 </FileUpload>
 ```
 
@@ -28,40 +37,44 @@ The yielded `queue` is the `FileQueue` instance — useful for triggering select
 
 ## Arguments
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
-| `@name` | string | Queue name (used to disambiguate multiple queues) |
-| `@accept` | string | MIME type filter (e.g. `image/*`, `.pdf`) |
-| `@hidden` | boolean | Whether the underlying `<input type="file">` is hidden (default `true`) |
-| `@disabled` | boolean | Disable the input |
-| `@inputClass` | string | Extra classes on the input |
-| `@labelClass` | string | Extra classes on the wrapping `<label>` |
+| Argument      | Type    | Description                                                             |
+| :------------ | :------ | :---------------------------------------------------------------------- |
+| `@name`       | string  | Queue name (used to disambiguate multiple queues)                       |
+| `@accept`     | string  | MIME type filter (e.g. `image/*`, `.pdf`)                               |
+| `@hidden`     | boolean | Whether the underlying `<input type="file">` is hidden (default `true`) |
+| `@disabled`   | boolean | Disable the input                                                       |
+| `@inputClass` | string  | Extra classes on the input                                              |
+| `@labelClass` | string  | Extra classes on the wrapping `<label>`                                 |
 
 ### Callbacks
 
-| Argument | Signature | Description |
-| :--- | :--- | :--- |
-| `@onFileAdded` | `(file)` | Called when a file is added to the queue |
-| `@onFileRemoved` | `(file)` | Called when a file is removed |
-| `@onUploadStarted` | `(file)` | Called when an upload starts |
-| `@onUploadSucceeded` | `(file, response)` | Called on successful upload |
-| `@onUploadFailed` | `(file, error)` | Called on upload failure |
+| Argument             | Signature          | Description                              |
+| :------------------- | :----------------- | :--------------------------------------- |
+| `@onFileAdded`       | `(file)`           | Called when a file is added to the queue |
+| `@onFileRemoved`     | `(file)`           | Called when a file is removed            |
+| `@onUploadStarted`   | `(file)`           | Called when an upload starts             |
+| `@onUploadSucceeded` | `(file, response)` | Called on successful upload              |
+| `@onUploadFailed`    | `(file, error)`    | Called on upload failure                 |
 
 ## Yielded Block
 
 The yielded `queue` has these key properties (from `ember-file-upload`):
 
-| Property | Description |
-| :--- | :--- |
+| Property           | Description                                                 |
+| :----------------- | :---------------------------------------------------------- |
 | `queue.selectFile` | Modifier — attach to a clickable element to open the picker |
-| `queue.files` | Array of files in the queue |
+| `queue.files`      | Array of files in the queue                                 |
 
 ## `<UploadButton>`
 
 For a ready-made trigger button, use the sibling `<UploadButton>` component (template-only, at `addon/components/upload-button.hbs`):
 
 ```handlebars
-<UploadButton @name="avatar" @accept="image/*" @onFileAdded={{this.handleFile}} />
+<UploadButton
+  @name='avatar'
+  @accept='image/*'
+  @onFileAdded={{this.handleFile}}
+/>
 ```
 
 It renders a `<Button>` styled trigger that opens the file picker on click. Same `@`-args as `<FileUpload>`.
@@ -69,28 +82,39 @@ It renders a `<Button>` styled trigger that opens the file picker on click. Same
 ## Real-World Examples
 
 ```handlebars
-{{!-- Single file upload with status --}}
-<FileUpload @name="logo" @accept="image/*" @onFileAdded={{this.uploadLogo}} as |queue|>
-  <a tabindex="0" class="btn btn-default">
+{{! Single file upload with status }}
+<FileUpload
+  @name='logo'
+  @accept='image/*'
+  @onFileAdded={{this.uploadLogo}}
+  as |queue|
+>
+  <a tabindex='0' class='btn btn-default'>
     {{#if queue.files.length}}
-      <Spinner @size="xs" /> Uploading…
+      <Spinner @size='xs' />
+      Uploading…
     {{else}}
-      <FaIcon @icon="upload" class="mr-1" /> Upload logo
+      <FaIcon @icon='upload' class='mr-1' />
+      Upload logo
     {{/if}}
   </a>
 </FileUpload>
 
-{{!-- Inside a form group --}}
-<InputGroup @name="Profile photo">
-  <UploadButton @name="photo" @accept="image/*" @onFileAdded={{this.uploadPhoto}} />
+{{! Inside a form group }}
+<InputGroup @name='Profile photo'>
+  <UploadButton
+    @name='photo'
+    @accept='image/*'
+    @onFileAdded={{this.uploadPhoto}}
+  />
 </InputGroup>
 ```
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/file-upload.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/file-upload.hbs) | Template (template-only) |
-| [`addon/components/upload-button.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/upload-button.hbs) | Sibling — ready-made trigger button (template-only) |
+| File                                                                                                                       | Description                                         |
+| :------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- |
+| [`addon/components/file-upload.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/file-upload.hbs)     | Template (template-only)                            |
+| [`addon/components/upload-button.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/upload-button.hbs) | Sibling — ready-made trigger button (template-only) |
 
 Wraps [`ember-file-upload`](https://github.com/adopted-ember-addons/ember-file-upload).

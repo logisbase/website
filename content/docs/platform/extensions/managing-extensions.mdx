@@ -15,10 +15,10 @@ Click **Installed** in the Extensions sidebar to see every extension currently a
 
 Each card has two actions:
 
-| Action | Description |
-| :--- | :--- |
+| Action              | Description                                                                      |
+| :------------------ | :------------------------------------------------------------------------------- |
 | **About extension** | Opens a detail modal showing the extension's description, version, and publisher |
-| **Uninstall** | Begins the uninstall process for this extension |
+| **Uninstall**       | Begins the uninstall process for this extension                                  |
 
 ## Uninstalling an Extension
 
@@ -34,17 +34,21 @@ Uninstalling runs three steps tracked via a real-time progress bar:
 
 The console reloads automatically when the process completes.
 
-<Callout type="warn">Uninstalling an extension may permanently delete the data it managed — for example, uninstalling FleetOps removes driver and vehicle records. Back up any data you need before proceeding.</Callout>
+<Callout type="warn">
+  Uninstalling an extension may permanently delete the data it managed — for
+  example, uninstalling FleetOps removes driver and vehicle records. Back up any
+  data you need before proceeding.
+</Callout>
 
 ### Uninstalling via the CLI
 
 On a self-hosted instance you can also uninstall from the command line:
 
 ```bash
-flb uninstall fleetbase/fleetops
+flb uninstall logisbase/fleetops
 
 # Target a specific instance directory
-flb uninstall fleetbase/fleetops --path /opt/fleetbase
+flb uninstall logisbase/fleetops --path /opt/logisbase
 ```
 
 ## Developers Section
@@ -57,10 +61,10 @@ Lists the extensions you have published to the registry. Click **Create new exte
 
 Each extension's edit page has tabs for:
 
-| Tab | Description |
-| :--- | :--- |
-| **Details** | Name, description, icon, category, and visibility settings |
-| **Bundles** | Upload and manage release bundles for the extension |
+| Tab          | Description                                                      |
+| :----------- | :--------------------------------------------------------------- |
+| **Details**  | Name, description, icon, category, and visibility settings       |
+| **Bundles**  | Upload and manage release bundles for the extension              |
 | **Monetize** | Pricing configuration — free, one-time purchase, or subscription |
 
 ### Analytics
@@ -75,12 +79,12 @@ Stripe-powered payment onboarding and settings for extensions you sell through t
 
 Registry tokens used to authenticate CLI operations (`flb publish`, `flb bundle-upload`, etc.).
 
-| Column | Description |
-| :--- | :--- |
-| **Owner** | The user who created the credentials |
-| **Fleetbase Token** | Your Fleetbase account token (click to copy) |
-| **Registry Token** | The registry-specific token used for CLI auth (click to reveal and copy) |
-| **Expiry** | When the credentials expire |
+| Column              | Description                                                              |
+| :------------------ | :----------------------------------------------------------------------- |
+| **Owner**           | The user who created the credentials                                     |
+| **LogisBase Token** | Your LogisBase account token (click to copy)                             |
+| **Registry Token**  | The registry-specific token used for CLI auth (click to reveal and copy) |
+| **Expiry**          | When the credentials expire                                              |
 
 Click **Create new credentials** to generate a new token pair. Use the **⋯ → Delete** action to revoke credentials — any CLI session using them will lose registry access immediately.
 

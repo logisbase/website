@@ -1,6 +1,6 @@
 ---
 title: CommentThread
-description: "<CommentThread> renders a comment input + thread of existing comments for a resource. Persists via the `comment` Ember Data model."
+description: '<CommentThread> renders a comment input + thread of existing comments for a resource. Persists via the `comment` Ember Data model.'
 ---
 
 # `<CommentThread>`
@@ -22,26 +22,27 @@ Yield a block to render comments with custom markup. The yielded value is a curr
 ```handlebars
 <CommentThread @subject={{this.order}} as |Comment comment|>
   <Comment />
-  {{!-- or fully custom: --}}
+  {{! or fully custom: }}
   <div>
-    <strong>{{comment.author.name}}</strong>: {{comment.body}}
+    <strong>{{comment.author.name}}</strong>:
+    {{comment.body}}
   </div>
 </CommentThread>
 ```
 
 ## Arguments
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
+| Argument   | Type  | Description                                  |
+| :--------- | :---- | :------------------------------------------- |
 | `@subject` | model | The Ember Data record the comments belong to |
 
 The component auto-loads comments for `@subject` and posts new ones to the same scope.
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/comment-thread.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/comment-thread.hbs) | Template |
-| [`addon/components/comment-thread.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/comment-thread.js) | Class |
-| [`addon/components/comment-thread/comment.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/comment-thread/comment.hbs) | Subcomponent template |
-| [`addon/components/comment-thread/comment.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/comment-thread/comment.js) | Subcomponent class |
+| File                                                                                                                                         | Description           |
+| :------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- |
+| [`addon/components/comment-thread.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/comment-thread.hbs)                 | Template              |
+| [`addon/components/comment-thread.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/comment-thread.js)                   | Class                 |
+| [`addon/components/comment-thread/comment.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/comment-thread/comment.hbs) | Subcomponent template |
+| [`addon/components/comment-thread/comment.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/comment-thread/comment.js)   | Subcomponent class    |

@@ -54,7 +54,6 @@ function PostHogBootstrap({ optInRequired }: { optInRequired: boolean }) {
     const apiHost = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? '/ingest';
     if (!apiKey) {
       if (process.env.NODE_ENV === 'development') {
-         
         console.warn(
           '[PostHog] NEXT_PUBLIC_POSTHOG_KEY not set — analytics disabled',
         );
@@ -64,7 +63,7 @@ function PostHogBootstrap({ optInRequired }: { optInRequired: boolean }) {
 
     const isProdHost =
       typeof window !== 'undefined' &&
-      /\.fleetbase\.io$/.test(window.location.hostname);
+      /\.logisbase\.io$/.test(window.location.hostname);
 
     void initPostHog({
       apiKey,
@@ -162,8 +161,7 @@ function ClickTracker() {
           track('outbound_link_clicked', {
             href: url.href,
             host: url.hostname || url.protocol.replace(':', ''),
-            link_text:
-              linkEl.textContent?.trim().slice(0, 80) || undefined,
+            link_text: linkEl.textContent?.trim().slice(0, 80) || undefined,
             pathname: window.location.pathname,
             is_cta: !!ctaEl,
           });
@@ -181,14 +179,16 @@ function ClickTracker() {
         track('docs_code_copied', {
           pathname: window.location.pathname,
           language:
-            pre?.querySelector('code')?.className.match(/language-(\w+)/)?.[1] ??
-            undefined,
+            pre
+              ?.querySelector('code')
+              ?.className.match(/language-(\w+)/)?.[1] ?? undefined,
         });
       }
     }
 
     document.addEventListener('click', onClick, { capture: true });
-    return () => document.removeEventListener('click', onClick, { capture: true });
+    return () =>
+      document.removeEventListener('click', onClick, { capture: true });
   }, []);
 
   return null;

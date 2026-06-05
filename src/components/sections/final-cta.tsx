@@ -7,29 +7,31 @@ export default function FinalCTA() {
   return (
     <section className="section-padding">
       <div className="container">
-        <div className="relative overflow-hidden rounded-2xl border bg-card px-8 py-16 text-center md:px-16">
+        <div className="bg-card relative overflow-hidden rounded-2xl border px-8 py-16 text-center md:px-16">
           {/* Background decoration */}
           <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute -top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/5 blur-3xl" />
-            <div className="absolute -bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-chart-1/10 blur-3xl" />
+            <div className="bg-primary/5 absolute -top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full blur-3xl" />
+            <div className="bg-chart-1/10 absolute right-1/4 -bottom-1/4 h-64 w-64 rounded-full blur-3xl" />
           </div>
 
           <div className="mx-auto max-w-3xl">
-            <div className="mb-6 inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="text-muted-foreground mb-6 inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
               Get Started Today
             </div>
             <h2 className="mb-4 text-3xl font-bold tracking-tight text-balance md:text-4xl lg:text-5xl">
               Stop Paying Per Driver.{' '}
               <span className="text-gradient">Start Owning Your Stack.</span>
             </h2>
-            <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Join 8,000+ logistics operations running on Fleetbase. Open source, no per-seat fees, free to self-host. Start with a 7-day free trial.
+            <p className="text-muted-foreground mx-auto mb-10 max-w-xl text-lg leading-relaxed">
+              Join 8,000+ logistics operations running on LogisBase.
+              Source-available, no per-seat fees, free to self-host. Start with
+              a 7-day free trial.
             </p>
 
             <div className="flex flex-col justify-center gap-4 sm:flex-row sm:flex-wrap">
               <Button size="lg" className="gap-2" asChild>
                 <Link
-                  href="https://console.fleetbase.io/onboard"
+                  href="https://console.logisbase.com/onboard"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cta-id="start_free_trial"
@@ -63,8 +65,9 @@ export default function FinalCTA() {
               </Button>
             </div>
 
-            <p className="mt-6 text-xs text-muted-foreground">
-              Full platform access · Cancel anytime · Self-host under AGPL-3.0
+            <p className="text-muted-foreground mt-6 text-xs">
+              Full platform access · Cancel anytime · Self-host under
+              SOURCE-AVAILABLE
             </p>
           </div>
         </div>

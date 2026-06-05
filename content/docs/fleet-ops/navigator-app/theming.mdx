@@ -45,7 +45,7 @@ The bases are extended in this order — later layers win:
 
 The active theme is computed at runtime as `${userColorScheme}${capitalize(APP_THEME)}` — so `APP_THEME=indigo` plus the device in dark mode resolves to `darkIndigo`.
 
-The driver can flip light / dark from inside the app. The choice persists via the `useStorage` hook under the key `app_theme` (see [src/hooks/use-app-theme.ts](https://github.com/fleetbase/navigator-app/blob/main/src/hooks/use-app-theme.ts)).
+The driver can flip light / dark from inside the app. The choice persists via the `useStorage` hook under the key `app_theme` (see [src/hooks/use-app-theme.ts](https://github.com/logisbase/navigator-app/blob/main/src/hooks/use-app-theme.ts)).
 
 ## Quickly Recolor with `CUSTOM_COLORS`
 
@@ -62,7 +62,7 @@ CUSTOM_COLORS_LIGHT=background:#FFFFFF,surface:#F7F7F7
 CUSTOM_COLORS_DARK=background:#0A0A0A,surface:#171717
 ```
 
-Format: `tokenName:#hex` separated by commas. The parser lives at [src/utils/tamagui.js](https://github.com/fleetbase/navigator-app/blob/main/src/utils/tamagui.js) (`parseConfigObjectString`) — audit the exact accepted format there if you need edge cases.
+Format: `tokenName:#hex` separated by commas. The parser lives at [src/utils/tamagui.js](https://github.com/logisbase/navigator-app/blob/main/src/utils/tamagui.js) (`parseConfigObjectString`) — audit the exact accepted format there if you need edge cases.
 
 The merged result is wired into both `lightBase` and `darkBase`, so a custom token (e.g. `primary`) is available consistently across light and dark themes.
 
@@ -72,26 +72,30 @@ If env overrides aren't enough — for example you want a fully custom palette o
 
 <Steps>
   <Step>
-    Open `tamagui.config.ts` and add your brand palette to the `colors` object. Keep the same shape — keys `50` through `900` — if you want full `$brand-300`-style token access.
+    Open `tamagui.config.ts` and add your brand palette to the `colors` object.
+    Keep the same shape — keys `50` through `900` — if you want full
+    `$brand-300`-style token access.
   </Step>
   <Step>
-    Add `lightAcme` and `darkAcme` entries to the `themes` map, mirroring the existing `lightBlue` / `darkBlue` shape. Override `primary`, `primaryBorder`, and `primaryText` (and any other tokens you want to rebrand).
+    Add `lightAcme` and `darkAcme` entries to the `themes` map, mirroring the
+    existing `lightBlue` / `darkBlue` shape. Override `primary`,
+    `primaryBorder`, and `primaryText` (and any other tokens you want to
+    rebrand).
   </Step>
+  <Step>Set `APP_THEME=acme` in `.env`.</Step>
   <Step>
-    Set `APP_THEME=acme` in `.env`.
-  </Step>
-  <Step>
-    Restart Metro / Webpack and rebuild — the Tamagui Babel plugin reads the config at build time, so theme additions require a fresh bundle.
+    Restart Metro / Webpack and rebuild — the Tamagui Babel plugin reads the
+    config at build time, so theme additions require a fresh bundle.
   </Step>
 </Steps>
 
 ## Branding Assets
 
-| Asset | Source file | How to apply |
-| :--- | :--- | :--- |
-| **App icon** | `assets/app-icon.png` (1024×1024 PNG, no transparency, no rounded corners — the stores round it themselves) | Replace, then `yarn generate:app-icon` — fans out to `ios/NavigatorApp/Images.xcassets/AppIcon.appiconset` and `android/app/src/main/res/mipmap-*` |
-| **Splash screen** | `assets/splash-screen.png` | Replace, then `yarn generate:launch-screen` — runs `react-native-bootsplash` with `--background=#111827 --logo-width=100 --flavor=main` |
-| **Login background color** | — | Set `LOGIN_BG_COLOR=#111827` (or any hex) — read at runtime by the setup screens |
+| Asset                      | Source file                                                                                                 | How to apply                                                                                                                                       |
+| :------------------------- | :---------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **App icon**               | `assets/app-icon.png` (1024×1024 PNG, no transparency, no rounded corners — the stores round it themselves) | Replace, then `yarn generate:app-icon` — fans out to `ios/NavigatorApp/Images.xcassets/AppIcon.appiconset` and `android/app/src/main/res/mipmap-*` |
+| **Splash screen**          | `assets/splash-screen.png`                                                                                  | Replace, then `yarn generate:launch-screen` — runs `react-native-bootsplash` with `--background=#111827 --logo-width=100 --flavor=main`            |
+| **Login background color** | —                                                                                                           | Set `LOGIN_BG_COLOR=#111827` (or any hex) — read at runtime by the setup screens                                                                   |
 
 ### Generating App Icon and Splash
 
@@ -113,6 +117,7 @@ yarn generate:launch-screen
 - **Android**: `android/app/src/main/res/values/strings.xml` → `<string name="app_name">NavigatorApp</string>`.
 
 If you fully rebrand, also update:
+
 - `ios/NavigatorApp.xcodeproj` (Xcode project name)
 - `android/app/build.gradle` namespace and `applicationId` (typically also set via `APP_IDENTIFIER`)
 - `app.json` `name` and `displayName`

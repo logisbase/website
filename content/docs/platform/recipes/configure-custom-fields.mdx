@@ -8,7 +8,10 @@ description: Add structured custom data fields to drivers, vehicles, contacts, a
 Custom Fields let you attach additional structured data to platform resources — drivers, vehicles, contacts, and more — without writing an extension. Fields are defined in the console settings panel, rendered inline on resource detail views, and returned automatically in API responses.
 
 <Callout type="info">
-Custom fields for **orders** are configured through Order Configurations in FleetOps. This recipe uses **Driver** as the example resource — the same workflow applies to Vehicles, Contacts, and any other resource tab available in the Custom Fields Manager.
+  Custom fields for **orders** are configured through Order Configurations in
+  FleetOps. This recipe uses **Driver** as the example resource — the same
+  workflow applies to Vehicles, Contacts, and any other resource tab available
+  in the Custom Fields Manager.
 </Callout>
 
 ## What You'll Build
@@ -27,6 +30,7 @@ A custom field group called **Emergency Contact** on the Driver resource, with t
     ### Navigate to FleetOps Settings
 
     Click **FleetOps** in the top navigation bar, then open **Settings** in the sidebar.
+
   </Step>
   <Step>
     ### Open Custom Fields
@@ -34,11 +38,13 @@ A custom field group called **Emergency Contact** on the Driver resource, with t
     In the Settings sidebar, click **Custom Fields**. The Custom Fields Manager opens showing a tab for each resource type that supports custom fields.
 
     ![Custom Fields Manager — resource type tabs across the top with field groups below](/images/screenshots/fleet-ops/fleet-ops-custom-fields.webp)
+
   </Step>
   <Step>
     ### Select the Driver tab
 
     Click **Driver** in the resource tabs. This shows all custom field groups and fields currently configured for the Driver resource. On a fresh instance this will be empty.
+
   </Step>
 </Steps>
 
@@ -63,6 +69,7 @@ Fields must belong to a **group** — a named container that renders as a labell
     | `3` | Three equal columns |
 
     Set **Grid Size** to `2`. You can add more groups later — each group has its own independent grid size.
+
   </Step>
 </Steps>
 
@@ -74,38 +81,38 @@ Click **Create new custom field** inside the group. The field form opens.
 
 ### Field 1 — Contact Name
 
-| Setting | Value |
-| :--- | :--- |
-| **Field Label** | `Contact Name` |
-| **Field Type** | Input |
-| **Field is Required** | On |
-| **Field is Editable** | On |
-| **Column Span** | 1 |
+| Setting               | Value          |
+| :-------------------- | :------------- |
+| **Field Label**       | `Contact Name` |
+| **Field Type**        | Input          |
+| **Field is Required** | On             |
+| **Field is Editable** | On             |
+| **Column Span**       | 1              |
 
 Click **Save**.
 
 ### Field 2 — Contact Phone
 
-| Setting | Value |
-| :--- | :--- |
-| **Field Label** | `Contact Phone` |
-| **Field Type** | Phone Input |
-| **Field is Required** | On |
-| **Field is Editable** | On |
-| **Column Span** | 1 |
+| Setting               | Value           |
+| :-------------------- | :-------------- |
+| **Field Label**       | `Contact Phone` |
+| **Field Type**        | Phone Input     |
+| **Field is Required** | On              |
+| **Field is Editable** | On              |
+| **Column Span**       | 1               |
 
 Click **Save**.
 
 ### Field 3 — Relationship
 
-| Setting | Value |
-| :--- | :--- |
-| **Field Label** | `Relationship` |
-| **Field Type** | Select |
-| **Options** | `Spouse`, `Parent`, `Sibling`, `Friend`, `Other` |
-| **Field is Required** | Off |
-| **Field is Editable** | On |
-| **Column Span** | 2 |
+| Setting               | Value                                            |
+| :-------------------- | :----------------------------------------------- |
+| **Field Label**       | `Relationship`                                   |
+| **Field Type**        | Select                                           |
+| **Options**           | `Spouse`, `Parent`, `Sibling`, `Friend`, `Other` |
+| **Field is Required** | Off                                              |
+| **Field is Editable** | On                                               |
+| **Column Span**       | 2                                                |
 
 Click **Save**.
 
@@ -113,16 +120,16 @@ All three fields now appear inside the **Emergency Contact** group. You can drag
 
 ## Available Field Types
 
-| Type | Best for |
-| :--- | :--- |
-| **Input** | Short single-line text — names, codes, identifiers |
-| **Phone Input** | Phone numbers with international dial code selector |
-| **Money Input** | Currency amounts |
-| **Date Time Input** | Combined date and time picker |
-| **Date Picker** | Date only (no time) |
-| **Radio Button** | Single selection shown as inline radio buttons |
-| **Select** | Single selection shown as a dropdown |
-| **File Upload** | Document or image attachment |
+| Type                | Best for                                            |
+| :------------------ | :-------------------------------------------------- |
+| **Input**           | Short single-line text — names, codes, identifiers  |
+| **Phone Input**     | Phone numbers with international dial code selector |
+| **Money Input**     | Currency amounts                                    |
+| **Date Time Input** | Combined date and time picker                       |
+| **Date Picker**     | Date only (no time)                                 |
+| **Radio Button**    | Single selection shown as inline radio buttons      |
+| **Select**          | Single selection shown as a dropdown                |
+| **File Upload**     | Document or image attachment                        |
 
 ## Step 4 — Test the Fields on a Driver
 
@@ -135,17 +142,12 @@ Enter values and save. The custom field data is stored alongside the standard dr
 You can add as many field groups as needed on the same resource. For example, you might add a second group called **Licensing & Compliance** with fields for licence number, expiry date, and licence class:
 
 <Steps>
+  <Step>Click **New field group** again on the Driver tab.</Step>
+  <Step>Name it `Licensing & Compliance` and set **Grid Size** to `3`.</Step>
   <Step>
-    Click **New field group** again on the Driver tab.
-  </Step>
-  <Step>
-    Name it `Licensing & Compliance` and set **Grid Size** to `3`.
-  </Step>
-  <Step>
-    Add fields inside the new group — for example:
-    - **Licence Number** — Input, Column Span 1
-    - **Licence Class** — Select (options: A, B, C, D), Column Span 1
-    - **Licence Expiry** — Date Picker, Column Span 1
+    Add fields inside the new group — for example: - **Licence Number** — Input,
+    Column Span 1 - **Licence Class** — Select (options: A, B, C, D), Column
+    Span 1 - **Licence Expiry** — Date Picker, Column Span 1
   </Step>
 </Steps>
 
@@ -156,7 +158,7 @@ Both groups appear as separate sections on the Driver detail view.
 Custom field values are included automatically in API responses. They are **flattened directly onto the root resource object** — not nested under a `meta` key. Each field key is the snake_case version of the field label you defined.
 
 ```bash
-curl -X GET "https://api.fleetbase.io/v1/drivers/DRV-001" \
+curl -X GET "https://api.logisbase.com/v1/drivers/DRV-001" \
   -H "Authorization: Bearer flb_live_your_public_key_here" \
   -H "Content-Type: application/json"
 ```
@@ -194,10 +196,10 @@ Response:
 
 Two reserved keys are always appended alongside the flattened values:
 
-| Key | Type | Contents |
-| :--- | :--- | :--- |
-| `custom_fields` | `string[]` | The snake_case key name of every custom field defined on this resource — use this to know which top-level keys are custom rather than standard |
-| `custom_field_values` | `object[]` | The custom field key-value pairs as a structured array — useful for iterating without knowing field names in advance |
+| Key                   | Type       | Contents                                                                                                                                       |
+| :-------------------- | :--------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| `custom_fields`       | `string[]` | The snake_case key name of every custom field defined on this resource — use this to know which top-level keys are custom rather than standard |
+| `custom_field_values` | `object[]` | The custom field key-value pairs as a structured array — useful for iterating without knowing field names in advance                           |
 
 The field group structure (the visual groupings you created in the console) has no representation in the API response — groupings are purely a display concern.
 
@@ -206,7 +208,7 @@ The field group structure (the visual groupings you created in the console) has 
 Pass custom field values as top-level keys in the request body, using the same snake_case names they appear under in the response:
 
 ```bash
-curl -X POST "https://api.fleetbase.io/v1/drivers" \
+curl -X POST "https://api.logisbase.com/v1/drivers" \
   -H "Authorization: Bearer flb_live_your_public_key_here" \
   -H "Content-Type: application/json" \
   -d '{
@@ -226,7 +228,8 @@ The same applies to `PUT`/`PATCH` requests when updating an existing driver. Onl
 - **Delete** — click the trash icon to permanently remove a field and all its stored values across every record.
 
 <Callout type="warn">
-Deleting a custom field also permanently deletes all values stored for it across all driver records. This cannot be undone.
+  Deleting a custom field also permanently deletes all values stored for it
+  across all driver records. This cannot be undone.
 </Callout>
 
 ## Next Steps

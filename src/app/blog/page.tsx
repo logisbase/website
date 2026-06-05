@@ -7,25 +7,25 @@ import { Button } from '@/components/ui/button';
 import { getBlogPosts } from '@/lib/ghost';
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://fleetbase.io/blog' },
-  title: 'Blog | Fleetbase',
+  alternates: { canonical: 'https://logisbase.com/blog' },
+  title: 'Blog | LogisBase',
   description:
-    'Product updates, engineering deep-dives, logistics industry insights, and open-source news from the Fleetbase team. Stay up to date with the latest from the platform.',
+    'Product updates, engineering deep-dives, logistics industry insights, and source-available news from the LogisBase team. Stay up to date with the latest from the platform.',
   keywords: [
-    'fleetbase blog',
+    'logisbase blog',
     'logistics technology blog',
     'fleet management insights',
-    'open source logistics news',
+    'source-available logistics news',
   ],
   openGraph: {
-    title: 'Blog | Fleetbase',
+    title: 'Blog | LogisBase',
     description:
-      'Product updates, engineering deep-dives, and logistics industry insights from Fleetbase.',
+      'Product updates, engineering deep-dives, and logistics industry insights from LogisBase.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: `Blog | Fleetbase`,
-    description: `Product updates, engineering deep-dives, and logistics industry insights from Fleetbase.`,
+    title: `Blog | LogisBase`,
+    description: `Product updates, engineering deep-dives, and logistics industry insights from LogisBase.`,
   },
 };
 
@@ -48,16 +48,17 @@ export default async function BlogPage() {
     <div className="flex flex-col">
       <section className="section-padding container">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+          <div className="text-muted-foreground mb-4 inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
             Blog
           </div>
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-balance md:text-5xl lg:text-6xl">
-            Insights from the <span className="text-primary">Fleetbase team.</span>
+            Insights from the{' '}
+            <span className="text-primary">LogisBase team.</span>
           </h1>
-          <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Product updates, engineering deep-dives, logistics industry analysis, and
-            open-source news. Written by the people building and using Fleetbase every
-            day.
+          <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
+            Product updates, engineering deep-dives, logistics industry
+            analysis, and source-available news. Written by the people building
+            and using LogisBase every day.
           </p>
         </div>
       </section>
@@ -65,28 +66,29 @@ export default async function BlogPage() {
       {featuredPost && (
         <section className="py-12 md:py-16">
           <div className="container">
-            <div className="overflow-hidden rounded-3xl border bg-card">
+            <div className="bg-card overflow-hidden rounded-3xl border">
               <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="p-8 md:p-12">
                   <Link
                     href={`/blog/${featuredPost.slug}`}
-                    className="group block rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
+                    className="group focus-visible:ring-primary block rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-offset-4"
                   >
                     <div className="mb-3 flex flex-wrap items-center gap-3">
-                      <span className="rounded-full border bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                        {featuredPost.isFeatured ? 'Featured' : 'Latest'} article
+                      <span className="bg-primary/10 text-primary rounded-full border px-3 py-1 text-xs font-medium">
+                        {featuredPost.isFeatured ? 'Featured' : 'Latest'}{' '}
+                        article
                       </span>
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-muted-foreground text-sm">
                         {formatPublishedDate(featuredPost.publishedAt)}
                       </span>
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-muted-foreground text-sm">
                         {featuredPost.readingTime}
                       </span>
                     </div>
-                    <h2 className="mb-4 max-w-3xl text-3xl font-bold tracking-tight text-balance transition-colors group-hover:text-primary md:text-4xl">
+                    <h2 className="group-hover:text-primary mb-4 max-w-3xl text-3xl font-bold tracking-tight text-balance transition-colors md:text-4xl">
                       {featuredPost.title}
                     </h2>
-                    <p className="mb-6 max-w-3xl leading-relaxed text-muted-foreground">
+                    <p className="text-muted-foreground mb-6 max-w-3xl leading-relaxed">
                       {featuredPost.excerpt}
                     </p>
                     {featuredPost.tags.length > 0 && (
@@ -94,7 +96,7 @@ export default async function BlogPage() {
                         {featuredPost.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag.slug}
-                            className="rounded-full border bg-muted/40 px-2.5 py-1 text-xs text-muted-foreground"
+                            className="bg-muted/40 text-muted-foreground rounded-full border px-2.5 py-1 text-xs"
                           >
                             {tag.name}
                           </span>
@@ -112,7 +114,7 @@ export default async function BlogPage() {
                 {featuredPost.featureImage && (
                   <Link
                     href={`/blog/${featuredPost.slug}`}
-                    className="group block border-t outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 lg:border-t-0 lg:border-l"
+                    className="group focus-visible:ring-primary block border-t outline-none focus-visible:ring-2 focus-visible:ring-offset-4 lg:border-t-0 lg:border-l"
                   >
                     <Image
                       src={featuredPost.featureImage}
@@ -133,7 +135,9 @@ export default async function BlogPage() {
       <section className="border-t py-12 md:py-16">
         <div className="container">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold tracking-tight">Latest articles</h2>
+            <h2 className="text-2xl font-bold tracking-tight">
+              Latest articles
+            </h2>
           </div>
 
           {latestPosts.length > 0 ? (
@@ -142,10 +146,10 @@ export default async function BlogPage() {
                 <Link
                   key={post.id}
                   href={`/blog/${post.slug}`}
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl border bg-card transition-all hover:border-primary/50 hover:shadow-md"
+                  className="group bg-card hover:border-primary/50 flex h-full flex-col overflow-hidden rounded-2xl border transition-all hover:shadow-md"
                 >
                   {post.featureImage && (
-                    <div className="aspect-[16/9] overflow-hidden border-b bg-muted/30">
+                    <div className="bg-muted/30 aspect-[16/9] overflow-hidden border-b">
                       <Image
                         src={post.featureImage}
                         alt={post.featureImageAlt || post.title}
@@ -160,36 +164,38 @@ export default async function BlogPage() {
                   <div className="flex flex-1 flex-col p-6">
                     <div className="mb-3 flex flex-wrap items-center gap-2">
                       {post.tags[0] && (
-                        <span className="rounded-full border bg-muted/40 px-2.5 py-0.5 text-xs text-muted-foreground">
+                        <span className="bg-muted/40 text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs">
                           {post.tags[0].name}
                         </span>
                       )}
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-muted-foreground text-xs">
                         {post.readingTime}
                       </span>
                     </div>
-                    <h3 className="mb-3 flex-1 text-lg font-semibold leading-snug group-hover:text-primary">
+                    <h3 className="group-hover:text-primary mb-3 flex-1 text-lg leading-snug font-semibold">
                       {post.title}
                     </h3>
-                    <p className="mb-4 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                    <p className="text-muted-foreground mb-4 line-clamp-3 text-sm leading-relaxed">
                       {post.excerpt}
                     </p>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-muted-foreground text-xs">
                         {formatPublishedDate(post.publishedAt)}
                       </span>
-                      <ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                      <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
                 </Link>
               ))}
             </div>
           ) : (
-            <div className="rounded-2xl border bg-card p-8 text-center">
-              <h3 className="text-xl font-semibold tracking-tight">No blog posts yet</h3>
-              <p className="mt-3 text-muted-foreground">
-                Connect your Ghost instance and publish your first article to populate the
-                Fleetbase blog.
+            <div className="bg-card rounded-2xl border p-8 text-center">
+              <h3 className="text-xl font-semibold tracking-tight">
+                No blog posts yet
+              </h3>
+              <p className="text-muted-foreground mt-3">
+                Connect your Ghost instance and publish your first article to
+                populate the LogisBase blog.
               </p>
             </div>
           )}
@@ -198,21 +204,21 @@ export default async function BlogPage() {
 
       <section className="border-t py-16 md:py-20">
         <div className="container">
-          <div className="relative overflow-hidden rounded-2xl border bg-card px-8 py-14 text-center md:px-16">
+          <div className="bg-card relative overflow-hidden rounded-2xl border px-8 py-14 text-center md:px-16">
             <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-              <div className="absolute -top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/5 blur-3xl" />
+              <div className="bg-primary/5 absolute -top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full blur-3xl" />
             </div>
             <div className="mx-auto max-w-2xl">
               <h2 className="mb-4 text-3xl font-bold tracking-tight text-balance md:text-4xl">
                 Explore the platform behind the articles
               </h2>
-              <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
-                Dive into the product, docs, and open-source modules that power the
-                workflows we share on the Fleetbase blog.
+              <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
+                Dive into the product, docs, and source-available modules that
+                power the workflows we share on the LogisBase blog.
               </p>
               <Button asChild>
                 <Link href="/product">
-                  Explore Fleetbase <ArrowRight className="ml-2 size-4" />
+                  Explore LogisBase <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
             </div>

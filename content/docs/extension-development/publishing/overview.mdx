@@ -1,13 +1,13 @@
 ---
 title: Publishing to the Marketplace
-description: Authenticate with the Fleetbase registry and publish your extension using the CLI.
+description: Authenticate with the LogisBase registry and publish your extension using the CLI.
 ---
 
 # Publishing to the Marketplace
 
-Once you have finished building and testing your extension locally, you can publish it to the **Fleetbase Registry**.
+Once you have finished building and testing your extension locally, you can publish it to the **LogisBase Registry**.
 
-Publishing your extension makes it available in the Fleetbase Marketplace, allowing other users (or just other organizations within your own self-hosted instance) to discover and install it with a single click.
+Publishing your extension makes it available in the LogisBase Marketplace, allowing other users (or just other organizations within your own self-hosted instance) to discover and install it with a single click.
 
 ## Prerequisites
 
@@ -15,11 +15,11 @@ Before you can publish an extension, you must ensure that:
 
 1. Your extension has a valid `extension.json` manifest file.
 2. Your extension's source code is hosted in a public Git repository (e.g., GitHub, GitLab, Bitbucket). The Registry needs to be able to clone the repository to build the extension.
-3. You have an account on the Fleetbase Registry.
+3. You have an account on the LogisBase Registry.
 
 ## Authenticating with the CLI
 
-To publish an extension, you must first authenticate the Fleetbase CLI with the Registry.
+To publish an extension, you must first authenticate the LogisBase CLI with the Registry.
 
 1. Open your terminal.
 2. Run the `login` command:
@@ -54,7 +54,7 @@ When you publish an extension, the Registry does not upload your local files dir
 
 This ensures that the published extension is built in a clean, standardized environment and that the source code is always available for auditing.
 
-The build process typically takes a few minutes. You can check the status of your extension in the Fleetbase Console by navigating to **Extensions** > **My Published Extensions**.
+The build process typically takes a few minutes. You can check the status of your extension in the LogisBase Console by navigating to **Extensions** > **My Published Extensions**.
 
 ## Updating an Extension
 

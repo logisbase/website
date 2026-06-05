@@ -20,7 +20,7 @@ export const SUPPORTED_LANGUAGES = [
 
 export type LanguageId = (typeof SUPPORTED_LANGUAGES)[number]['id'];
 
-const STORAGE_KEY = 'fleetbase:api-docs:language';
+const STORAGE_KEY = 'logisbase:api-docs:language';
 
 interface LanguageContextValue {
   language: LanguageId;
@@ -103,7 +103,7 @@ export function LanguageTabs({ languages, className }: LanguageTabsProps) {
       role="tablist"
       aria-label="Code sample language"
       className={cn(
-        'flex items-center gap-1 border-b border-border/40 px-2 py-1',
+        'border-border/40 flex items-center gap-1 border-b px-2 py-1',
         className,
       )}
     >

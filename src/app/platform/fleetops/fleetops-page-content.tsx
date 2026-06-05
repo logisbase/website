@@ -35,7 +35,11 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 
 import { DarkCodePanel } from './components/dark-code-panel';
@@ -61,14 +65,34 @@ const telematicsLogos = [
 ];
 
 const useCases = [
-  { icon: Truck, title: 'Last-Mile Delivery', href: '/solutions/use-cases/last-mile-delivery' },
-  { icon: Package, title: 'Courier Services', href: '/solutions/courier-services' },
+  {
+    icon: Truck,
+    title: 'Last-Mile Delivery',
+    href: '/solutions/use-cases/last-mile-delivery',
+  },
+  {
+    icon: Package,
+    title: 'Courier Services',
+    href: '/solutions/courier-services',
+  },
   { icon: Clock, title: 'Food Delivery', href: '/solutions/food-delivery' },
-  { icon: Wrench, title: 'Fleet Management', href: '/solutions/use-cases/fleet-management' },
+  {
+    icon: Wrench,
+    title: 'Fleet Management',
+    href: '/solutions/use-cases/fleet-management',
+  },
   { icon: Route, title: 'Trucking & Freight', href: '/solutions/trucking' },
   { icon: MapPin, title: 'E-Commerce', href: '/solutions/ecommerce' },
-  { icon: FileText, title: 'Healthcare Logistics', href: '/solutions/healthcare' },
-  { icon: BarChart3, title: 'Route Optimization', href: '/solutions/use-cases/route-optimization' },
+  {
+    icon: FileText,
+    title: 'Healthcare Logistics',
+    href: '/solutions/healthcare',
+  },
+  {
+    icon: BarChart3,
+    title: 'Route Optimization',
+    href: '/solutions/use-cases/route-optimization',
+  },
 ];
 
 const faqs = [
@@ -82,7 +106,7 @@ const faqs = [
   },
   {
     q: 'Does Fleet-Ops include a mobile app for drivers?',
-    a: 'Yes. The Navigator app (iOS and Android) is an open-source mobile app built for Fleet-Ops. Drivers receive dispatched orders, navigate to stops, capture proof of delivery, and report vehicle faults from the app.',
+    a: 'Yes. The Navigator app (iOS and Android) is an source-available mobile app built for Fleet-Ops. Drivers receive dispatched orders, navigate to stops, capture proof of delivery, and report vehicle faults from the app.',
   },
   {
     q: 'How does Fleet-Ops pricing work?',
@@ -90,8 +114,8 @@ const faqs = [
     link: { label: 'See pricing tiers', href: '/pricing' },
   },
   {
-    q: 'Is Fleet-Ops open source?',
-    a: 'Yes. Fully open-source under AGPL-3.0 at github.com/fleetbase/fleetops. Self-host, inspect the code, contribute, or build extensions.',
+    q: 'Is Fleet-Ops source-available?',
+    a: 'Yes. Fully source-available under SOURCE-AVAILABLE at github.com/logisbase/fleetops. Self-host, inspect the code, contribute, or build extensions.',
   },
   {
     q: 'Can I integrate with my existing systems?',
@@ -128,8 +152,10 @@ function FeatureHeroCard({
       className={`fo-card relative grid grid-rows-[auto_1fr] gap-y-6 overflow-hidden border border-[var(--fo-border)] bg-gradient-to-br from-white to-[var(--fo-blue-soft)] p-6 lg:p-8 ${className ?? ''}`}
     >
       <div className="relative z-10 w-full space-y-2 sm:max-w-[80%]">
-        <p className="text-sm font-semibold tracking-[0.2px] text-[var(--fo-blue)]">{label}</p>
-        <p className="text-base font-[550] leading-[22px] tracking-[0.2px] text-[var(--fo-fg-strong)] lg:text-[20px] lg:leading-[27px] lg:tracking-[0.14px]">
+        <p className="text-sm font-semibold tracking-[0.2px] text-[var(--fo-blue)]">
+          {label}
+        </p>
+        <p className="text-base leading-[22px] font-[550] tracking-[0.2px] text-[var(--fo-fg-strong)] lg:text-[20px] lg:leading-[27px] lg:tracking-[0.14px]">
           {title}
         </p>
       </div>
@@ -175,11 +201,15 @@ function FeatureCard({
         <Icon className="size-5 text-[var(--fo-blue)]" />
       </div>
       <div className="space-y-1.5">
-        <p className="text-sm font-semibold tracking-[0.2px] text-[var(--fo-blue)]">{label}</p>
-        <h3 className="text-[20px] font-[600] leading-[26px] tracking-[-0.1px] text-[var(--fo-fg-strong)]">
+        <p className="text-sm font-semibold tracking-[0.2px] text-[var(--fo-blue)]">
+          {label}
+        </p>
+        <h3 className="text-[20px] leading-[26px] font-[600] tracking-[-0.1px] text-[var(--fo-fg-strong)]">
           {title}
         </h3>
-        <p className="text-sm leading-relaxed text-[var(--fo-fg-muted)]">{description}</p>
+        <p className="text-sm leading-relaxed text-[var(--fo-fg-muted)]">
+          {description}
+        </p>
       </div>
     </div>
   );
@@ -207,18 +237,43 @@ type CmpSection = {
   rows: readonly CmpRow[];
 };
 
-const COMPETITOR_NAMES = ['Fleet-Ops', 'Onfleet', 'Bringg', 'Spoke', 'Tookan', 'Detrack'] as const;
+const COMPETITOR_NAMES = [
+  'Fleet-Ops',
+  'Onfleet',
+  'Bringg',
+  'Spoke',
+  'Tookan',
+  'Detrack',
+] as const;
 
 const comparisonSections: readonly CmpSection[] = [
   {
     label: 'Core dispatch & tracking',
     rows: [
-      { feature: 'Live GPS tracking', values: [true, true, true, true, true, true] },
-      { feature: 'Customer tracking links', values: [true, true, true, true, true, true] },
-      { feature: 'Driver mobile app', values: [true, true, true, true, true, true] },
-      { feature: 'Multi-stop route optimization', values: [true, true, true, true, true, false] },
-      { feature: 'Proof of delivery', values: [true, true, true, true, true, true] },
-      { feature: 'REST API + Webhooks', values: [true, true, true, true, true, true] },
+      {
+        feature: 'Live GPS tracking',
+        values: [true, true, true, true, true, true],
+      },
+      {
+        feature: 'Customer tracking links',
+        values: [true, true, true, true, true, true],
+      },
+      {
+        feature: 'Driver mobile app',
+        values: [true, true, true, true, true, true],
+      },
+      {
+        feature: 'Multi-stop route optimization',
+        values: [true, true, true, true, true, false],
+      },
+      {
+        feature: 'Proof of delivery',
+        values: [true, true, true, true, true, true],
+      },
+      {
+        feature: 'REST API + Webhooks',
+        values: [true, true, true, true, true, true],
+      },
     ],
   },
   {
@@ -251,8 +306,8 @@ const comparisonSections: readonly CmpSection[] = [
     label: 'Platform & ownership',
     rows: [
       {
-        feature: 'Open source',
-        info: 'Fleet-Ops is licensed under AGPL-3.0.',
+        feature: 'Source-available',
+        info: 'Fleet-Ops is licensed under SOURCE-AVAILABLE.',
         values: [true, false, false, false, false, false],
       },
       {
@@ -266,7 +321,14 @@ const comparisonSections: readonly CmpSection[] = [
       {
         feature: 'Extensible',
         info: 'First-class extension SDK + marketplace, not just an API surface.',
-        values: [true, 'API only', 'Partial', 'API + integrations', 'API only', 'API only'],
+        values: [
+          true,
+          'API only',
+          'Partial',
+          'API + integrations',
+          'API only',
+          'API only',
+        ],
       },
     ],
   },
@@ -275,7 +337,14 @@ const comparisonSections: readonly CmpSection[] = [
     rows: [
       {
         feature: 'Pricing model',
-        values: ['Resource-unit', 'Per-driver', 'Per-driver', 'Per-driver', 'Per-driver', 'Per-vehicle'],
+        values: [
+          'Resource-unit',
+          'Per-driver',
+          'Per-driver',
+          'Per-driver',
+          'Per-driver',
+          'Per-vehicle',
+        ],
       },
     ],
   },
@@ -293,7 +362,9 @@ function CmpCell({ v }: { v: CmpVal }) {
     return <Minus className="mx-auto size-4 text-[var(--fo-fg-soft)]" />;
   }
   return (
-    <span className="text-[12px] font-[500] text-[var(--fo-fg-muted)]">{v}</span>
+    <span className="text-[12px] font-[500] text-[var(--fo-fg-muted)]">
+      {v}
+    </span>
   );
 }
 
@@ -318,7 +389,7 @@ function FeatureLabel({ feature, info }: { feature: string; info?: string }) {
          * Don't override bg/text here — TooltipContent renders inside a Radix
          * Portal at document.body, where the .fleet-ops-page CSS variables
          * aren't in scope. Use the component's default bg-primary, which is
-         * the global Fleetbase blue + white text.
+         * the global LogisBase blue + white text.
          */}
         <TooltipContent side="top" className="max-w-[240px]">
           {info}
@@ -333,17 +404,17 @@ function ComparisonSection() {
     <section className="relative py-24 lg:py-32">
       <div className="container">
         <div className="mb-12 max-w-3xl">
-          <span className="text-[12px] font-semibold uppercase tracking-[0.7px] text-[var(--fo-blue)]">
+          <span className="text-[12px] font-semibold tracking-[0.7px] text-[var(--fo-blue)] uppercase">
             Compare
           </span>
-          <h2 className="mt-4 text-[32px] font-[680] leading-[36px] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
+          <h2 className="mt-4 text-[32px] leading-[36px] font-[680] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
             How Fleet-Ops compares.
           </h2>
-          <p className="mt-6 text-[18px] font-[460] leading-[25px] tracking-[0.15px] text-[var(--fo-fg-muted)] lg:max-w-2xl lg:text-[22px] lg:leading-[29px] lg:tracking-[0.12px]">
-            Most last-mile and dispatch platforms run as proprietary SaaS with per-driver
-            pricing. Fleet-Ops takes a different approach — open-source, self-hostable, and
-            resource-unit priced. Here&apos;s how we line up on the features that actually
-            matter.
+          <p className="mt-6 text-[18px] leading-[25px] font-[460] tracking-[0.15px] text-[var(--fo-fg-muted)] lg:max-w-2xl lg:text-[22px] lg:leading-[29px] lg:tracking-[0.12px]">
+            Most last-mile and dispatch platforms run as proprietary SaaS with
+            per-driver pricing. Fleet-Ops takes a different approach —
+            source-available, self-hostable, and resource-unit priced.
+            Here&apos;s how we line up on the features that actually matter.
           </p>
         </div>
 
@@ -353,7 +424,7 @@ function ComparisonSection() {
               <tr className="border-b border-[var(--fo-border)]">
                 <th
                   scope="col"
-                  className="sticky left-0 z-10 bg-white px-5 py-5 text-[12px] font-semibold uppercase tracking-[0.7px] text-[var(--fo-fg-soft)]"
+                  className="sticky left-0 z-10 bg-white px-5 py-5 text-[12px] font-semibold tracking-[0.7px] text-[var(--fo-fg-soft)] uppercase"
                 >
                   Capability
                 </th>
@@ -380,7 +451,7 @@ function ComparisonSection() {
                     <th
                       scope="colgroup"
                       colSpan={1 + COMPETITOR_NAMES.length}
-                      className="sticky left-0 z-10 bg-[var(--fo-bg-2)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.8px] text-[var(--fo-fg-muted)]"
+                      className="sticky left-0 z-10 bg-[var(--fo-bg-2)] px-5 py-3 text-[11px] font-semibold tracking-[0.8px] text-[var(--fo-fg-muted)] uppercase"
                     >
                       {section.label}
                     </th>
@@ -415,9 +486,10 @@ function ComparisonSection() {
           </table>
         </div>
         <p className="mt-4 text-[12px] text-[var(--fo-fg-soft)]">
-          Comparison reflects publicly documented features at time of writing. Competitor
-          information sourced from each vendor&apos;s public documentation and pricing pages.
-          Trademarks belong to their respective owners.
+          Comparison reflects publicly documented features at time of writing.
+          Competitor information sourced from each vendor&apos;s public
+          documentation and pricing pages. Trademarks belong to their respective
+          owners.
         </p>
       </div>
     </section>
@@ -429,7 +501,6 @@ function ComparisonSection() {
 export default function FleetOpsPageContent() {
   return (
     <div className="fleet-ops-page flex flex-col">
-
       {/* ── Hero (brand blue) ─────────────────────────────────────────────── */}
       <section className="fo-hero relative w-full overflow-hidden">
         <div className="container grid grid-cols-4 items-center gap-x-4 gap-y-12 py-20 sm:grid-cols-12 sm:gap-x-6 lg:gap-y-16 lg:py-28 xl:py-32">
@@ -437,16 +508,17 @@ export default function FleetOpsPageContent() {
           <div className="col-span-full row-start-1 sm:col-span-8 sm:col-start-3 lg:col-span-6 lg:col-start-1">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
               <span className="fo-pulse-dot" />
-              <span className="uppercase tracking-[0.7px] text-[10px]">
-                Fleet-Ops · Flagship Open-Source TMS
+              <span className="text-[10px] tracking-[0.7px] uppercase">
+                Fleet-Ops · Flagship Source-Available TMS
               </span>
             </div>
-            <h1 className="mt-6 text-center text-[40px] font-[680] leading-[44px] tracking-[-0.6px] text-balance text-white lg:text-left lg:text-[60px] lg:leading-[64px] lg:tracking-[-1px] xl:text-[68px] xl:leading-[70px] xl:tracking-[-1.2px]">
+            <h1 className="mt-6 text-center text-[40px] leading-[44px] font-[680] tracking-[-0.6px] text-balance text-white lg:text-left lg:text-[60px] lg:leading-[64px] lg:tracking-[-1px] xl:text-[68px] xl:leading-[70px] xl:tracking-[-1.2px]">
               Fleet management, dispatch, and transport — one operations module.
             </h1>
-            <p className="mt-5 text-center text-[18px] font-[460] leading-[26px] tracking-[0.15px] text-white/85 lg:mt-7 lg:text-left lg:text-[21px] lg:leading-[30px] lg:tracking-[0.12px]">
-              Route planning. Live tracking. Vehicle allocation. Maintenance scheduling.
-              Dynamic workflows. All in one platform you can self-host, extend, and own.
+            <p className="mt-5 text-center text-[18px] leading-[26px] font-[460] tracking-[0.15px] text-white/85 lg:mt-7 lg:text-left lg:text-[21px] lg:leading-[30px] lg:tracking-[0.12px]">
+              Route planning. Live tracking. Vehicle allocation. Maintenance
+              scheduling. Dynamic workflows. All in one platform you can
+              self-host, extend, and own.
             </p>
             <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start lg:mt-10">
               <Button
@@ -474,7 +546,8 @@ export default function FleetOpsPageContent() {
               </Button>
             </div>
             <p className="mt-5 text-center text-[13px] font-[460] tracking-[0.25px] text-white/70 lg:text-left">
-              7-day free trial · No per-driver fees · Self-host under AGPL-3.0
+              7-day free trial · No per-driver fees · Self-host under
+              SOURCE-AVAILABLE
             </p>
           </div>
 
@@ -485,7 +558,7 @@ export default function FleetOpsPageContent() {
               hero screenshot that visually bleeds off the right side of the
               screen. */}
           <div className="col-span-full sm:col-span-12 lg:col-span-6 lg:col-start-7">
-            <div className="relative mx-auto w-full max-w-[760px] lg:mx-0 lg:max-w-none lg:w-[150%] xl:w-[170%]">
+            <div className="relative mx-auto w-full max-w-[760px] lg:mx-0 lg:w-[150%] lg:max-w-none xl:w-[170%]">
               <div className="overflow-hidden rounded-2xl border border-white/20 bg-white/5 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.55)] backdrop-blur-sm">
                 <div className="relative aspect-[16/10] w-full">
                   <Image
@@ -513,7 +586,7 @@ export default function FleetOpsPageContent() {
                 <span className="text-xl font-[680] tracking-tight text-[var(--fo-fg-strong)] md:text-2xl">
                   {s.value}
                 </span>
-                <span className="text-[11px] uppercase tracking-[0.6px] text-[var(--fo-fg-soft)]">
+                <span className="text-[11px] tracking-[0.6px] text-[var(--fo-fg-soft)] uppercase">
                   {s.label}
                 </span>
               </div>
@@ -526,16 +599,17 @@ export default function FleetOpsPageContent() {
       <section className="relative py-24 lg:py-32">
         <div className="container">
           <div className="mb-14 max-w-3xl">
-            <span className="inline-block text-[12px] font-semibold uppercase tracking-[0.7px] text-[var(--fo-blue)]">
+            <span className="inline-block text-[12px] font-semibold tracking-[0.7px] text-[var(--fo-blue)] uppercase">
               What is Fleet-Ops?
             </span>
-            <h2 className="mt-4 text-[32px] font-[680] leading-[36px] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
+            <h2 className="mt-4 text-[32px] leading-[36px] font-[680] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
               Five core modules. One open platform.
             </h2>
-            <p className="mt-6 text-[18px] font-[460] leading-[25px] tracking-[0.15px] text-[var(--fo-fg-muted)] lg:max-w-2xl lg:text-[22px] lg:leading-[29px] lg:tracking-[0.12px]">
-              Fleet-Ops is organized into five purpose-built modules — each covering a distinct
-              domain of fleet operations. Use them all from day one, or expand into new modules
-              as your operation grows. Click a module to explore.
+            <p className="mt-6 text-[18px] leading-[25px] font-[460] tracking-[0.15px] text-[var(--fo-fg-muted)] lg:max-w-2xl lg:text-[22px] lg:leading-[29px] lg:tracking-[0.12px]">
+              Fleet-Ops is organized into five purpose-built modules — each
+              covering a distinct domain of fleet operations. Use them all from
+              day one, or expand into new modules as your operation grows. Click
+              a module to explore.
             </p>
           </div>
           <LayerStack />
@@ -555,10 +629,10 @@ export default function FleetOpsPageContent() {
         />
         <div className="container">
           <div className="mb-16 max-w-3xl lg:mb-20">
-            <span className="inline-block text-[12px] font-semibold uppercase tracking-[0.7px] text-[var(--fo-blue)]">
+            <span className="inline-block text-[12px] font-semibold tracking-[0.7px] text-[var(--fo-blue)] uppercase">
               How it works
             </span>
-            <h2 className="mt-4 text-[32px] font-[680] leading-[36px] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
+            <h2 className="mt-4 text-[32px] leading-[36px] font-[680] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
               From the first order in to the last vehicle service log.
             </h2>
           </div>
@@ -570,7 +644,10 @@ export default function FleetOpsPageContent() {
               label="01 · Configure"
               title="Build any workflow — without writing code."
               description="Custom order types, drag-and-drop activity flows, business rules, and the exact data fields your operation needs. Adapt the software to your operation, not the other way around."
-              cta={{ label: 'More on configuration', href: '/docs/fleet-ops/operations/order-configurations/overview' }}
+              cta={{
+                label: 'More on configuration',
+                href: '/docs/fleet-ops/operations/order-configurations/overview',
+              }}
             >
               <div className="grid grid-cols-4 gap-4 sm:grid-cols-12 sm:gap-6">
                 <FeatureHeroCard
@@ -603,7 +680,10 @@ export default function FleetOpsPageContent() {
               label="02 · Plan & Dispatch"
               title="A live operations queue every dispatcher can run from."
               description="Kanban, table, or live-map views of every active order. Schedule deliveries ahead of time, plan capacity by zone or driver, and send dispatches to the Navigator app in seconds."
-              cta={{ label: 'More on operations', href: '/docs/fleet-ops/operations/overview' }}
+              cta={{
+                label: 'More on operations',
+                href: '/docs/fleet-ops/operations/overview',
+              }}
             >
               <div className="grid grid-cols-4 gap-4 sm:grid-cols-12 sm:gap-6">
                 <FeatureHeroCard
@@ -636,7 +716,10 @@ export default function FleetOpsPageContent() {
               label="03 · Track"
               title="Every driver, vehicle, and order — on one live map."
               description="Sub-minute GPS via the Navigator app. Geofence-triggered automatic status updates. Branded customer tracking links with live ETA. Telematics providers connected out of the box."
-              cta={{ label: 'More on tracking', href: '/docs/fleet-ops/connectivity/overview' }}
+              cta={{
+                label: 'More on tracking',
+                href: '/docs/fleet-ops/connectivity/overview',
+              }}
             >
               <div className="grid grid-cols-4 gap-4 sm:grid-cols-12 sm:gap-6">
                 <FeatureHeroCard
@@ -669,7 +752,10 @@ export default function FleetOpsPageContent() {
               label="04 · Maintenance"
               title="Keep every vehicle roadworthy."
               description="Work orders from open to resolved, preventive schedules by mileage or engine hours, parts inventory linked to jobs, and driver fault reporting from the Navigator app — all on the same fleet data as dispatch."
-              cta={{ label: 'More on maintenance', href: '/docs/fleet-ops/maintenance/overview' }}
+              cta={{
+                label: 'More on maintenance',
+                href: '/docs/fleet-ops/maintenance/overview',
+              }}
             >
               <div className="grid grid-cols-4 gap-4 sm:grid-cols-12 sm:gap-6">
                 <FeatureHeroCard
@@ -702,7 +788,10 @@ export default function FleetOpsPageContent() {
               label="05 · Optimize & Allocate"
               title="The Orchestrator Workbench."
               description="Phase-based optimization. Stack driver allocation, vehicle matching, and route optimization into a reviewable pipeline — or run it hands-free on every incoming order. This is what makes Fleet-Ops different from every other TMS."
-              cta={{ label: 'More on the orchestrator', href: '/docs/fleet-ops/operations/orchestrator/overview' }}
+              cta={{
+                label: 'More on the orchestrator',
+                href: '/docs/fleet-ops/operations/orchestrator/overview',
+              }}
             >
               <div className="grid grid-cols-4 gap-4 sm:grid-cols-12 sm:gap-6">
                 <FeatureHeroCard
@@ -736,7 +825,7 @@ export default function FleetOpsPageContent() {
       <section className="relative border-y border-[var(--fo-border)] bg-white py-16">
         <div className="container">
           <div className="text-center">
-            <span className="text-[12px] font-semibold uppercase tracking-[0.7px] text-[var(--fo-fg-soft)]">
+            <span className="text-[12px] font-semibold tracking-[0.7px] text-[var(--fo-fg-soft)] uppercase">
               Native integrations · out of the box
             </span>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
@@ -763,16 +852,17 @@ export default function FleetOpsPageContent() {
       <section className="relative py-24 lg:py-32">
         <div className="container">
           <div className="mb-14 max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold uppercase tracking-[0.7px] text-[var(--fo-blue)]">
+            <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold tracking-[0.7px] text-[var(--fo-blue)] uppercase">
               <Zap className="size-4" /> Automate
             </span>
-            <h2 className="mt-4 text-[32px] font-[680] leading-[36px] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
+            <h2 className="mt-4 text-[32px] leading-[36px] font-[680] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
               Build and automate with Fleet-Ops.
             </h2>
-            <p className="mt-6 text-[18px] font-[460] leading-[25px] tracking-[0.15px] text-[var(--fo-fg-muted)] lg:max-w-2xl lg:text-[22px] lg:leading-[29px] lg:tracking-[0.12px]">
-              Every order, driver, and event in Fleet-Ops is reachable via REST. Webhooks fire
-              on every state change. WebSocket channels stream live updates straight into your
-              own product. Wire Fleet-Ops into the stack you already run.
+            <p className="mt-6 text-[18px] leading-[25px] font-[460] tracking-[0.15px] text-[var(--fo-fg-muted)] lg:max-w-2xl lg:text-[22px] lg:leading-[29px] lg:tracking-[0.12px]">
+              Every order, driver, and event in Fleet-Ops is reachable via REST.
+              Webhooks fire on every state change. WebSocket channels stream
+              live updates straight into your own product. Wire Fleet-Ops into
+              the stack you already run.
             </p>
           </div>
 
@@ -780,12 +870,12 @@ export default function FleetOpsPageContent() {
             <DarkCodePanel
               label="Fleet-Ops API · Dispatch an order"
               language="javascript"
-              code={`import Fleetbase from '@fleetbase/sdk';
+              code={`import LogisBase from '@logisbase/sdk';
 
-const fleetbase = new Fleetbase('YOUR_API_KEY');
+const logisbase = new LogisBase('YOUR_API_KEY');
 
 // Create and auto-dispatch an order
-const order = await fleetbase.orders.create({
+const order = await logisbase.orders.create({
   payload: {
     pickup: '123 Warehouse Rd, Sydney',
     dropoff: '456 Customer St, Melbourne',
@@ -844,7 +934,7 @@ console.log(\`ETA: \${order.eta}\`);`}
               className="h-[48px] border-[var(--fo-border)] bg-white px-5 text-base font-[600] text-[var(--fo-fg-strong)] hover:bg-[var(--fo-surface-2)]"
             >
               <a
-                href="https://github.com/fleetbase/fleetops"
+                href="https://github.com/logisbase/fleetops"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -858,15 +948,14 @@ console.log(\`ETA: \${order.eta}\`);`}
       {/* ── Compare ───────────────────────────────────────────────────────── */}
       <ComparisonSection />
 
-
       {/* ── Industries ────────────────────────────────────────────────────── */}
       <section className="relative bg-[var(--fo-bg-2)] py-24 lg:py-32">
         <div className="container">
           <div className="mb-12 max-w-3xl">
-            <span className="text-[12px] font-semibold uppercase tracking-[0.7px] text-[var(--fo-blue)]">
+            <span className="text-[12px] font-semibold tracking-[0.7px] text-[var(--fo-blue)] uppercase">
               Industries
             </span>
-            <h2 className="mt-4 text-[32px] font-[680] leading-[36px] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
+            <h2 className="mt-4 text-[32px] leading-[36px] font-[680] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
               Built for every fleet operation.
             </h2>
           </div>
@@ -882,7 +971,9 @@ console.log(\`ETA: \${order.eta}\`);`}
                   <div className="flex size-9 items-center justify-center rounded-lg bg-[var(--fo-blue-tint)] transition-colors group-hover:bg-[var(--fo-blue)] group-hover:text-white">
                     <Icon className="size-4 text-[var(--fo-blue)] transition-colors group-hover:text-white" />
                   </div>
-                  <span className="text-sm font-[550] text-[var(--fo-fg-strong)]">{u.title}</span>
+                  <span className="text-sm font-[550] text-[var(--fo-fg-strong)]">
+                    {u.title}
+                  </span>
                   <ChevronRight className="ml-auto size-4 text-[var(--fo-fg-soft)] transition-transform group-hover:translate-x-0.5 group-hover:text-[var(--fo-blue)]" />
                 </Link>
               );
@@ -896,10 +987,10 @@ console.log(\`ETA: \${order.eta}\`);`}
         <div className="container">
           <div className="mx-auto max-w-3xl">
             <div className="mb-12">
-              <span className="text-[12px] font-semibold uppercase tracking-[0.7px] text-[var(--fo-blue)]">
+              <span className="text-[12px] font-semibold tracking-[0.7px] text-[var(--fo-blue)] uppercase">
                 FAQ
               </span>
-              <h2 className="mt-4 text-[32px] font-[680] leading-[36px] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
+              <h2 className="mt-4 text-[32px] leading-[36px] font-[680] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
                 Frequently asked questions
               </h2>
             </div>
@@ -943,12 +1034,12 @@ console.log(\`ETA: \${order.eta}\`);`}
               <span className="fo-pulse-dot" />
               Start today · 7-day free trial
             </div>
-            <h2 className="mt-6 text-[40px] font-[680] leading-[44px] tracking-[-0.6px] text-balance text-white lg:text-[60px] lg:leading-[64px] lg:tracking-[-1px] xl:text-[66px] xl:leading-[68px] xl:tracking-[-1.2px]">
+            <h2 className="mt-6 text-[40px] leading-[44px] font-[680] tracking-[-0.6px] text-balance text-white lg:text-[60px] lg:leading-[64px] lg:tracking-[-1px] xl:text-[66px] xl:leading-[68px] xl:tracking-[-1.2px]">
               Stop paying per driver. Start owning your stack.
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-[18px] font-[460] leading-[25px] tracking-[0.15px] text-white/85 lg:text-[22px] lg:leading-[29px] lg:tracking-[0.12px]">
-              Join 8,000+ logistics operations running on Fleetbase. Open source, no per-seat
-              fees, free to self-host.
+            <p className="mx-auto mt-6 max-w-2xl text-[18px] leading-[25px] font-[460] tracking-[0.15px] text-white/85 lg:text-[22px] lg:leading-[29px] lg:tracking-[0.12px]">
+              Join 8,000+ logistics operations running on LogisBase.
+              Source-available, no per-seat fees, free to self-host.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button
@@ -976,12 +1067,11 @@ console.log(\`ETA: \${order.eta}\`);`}
               </Button>
             </div>
             <p className="mt-8 text-xs text-white/70">
-              Free 7-day trial · Free to self-host under AGPL-3.0
+              Free 7-day trial · Free to self-host under SOURCE-AVAILABLE
             </p>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

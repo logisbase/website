@@ -1,6 +1,6 @@
 ---
 title: Generate Token
-description: "Generate or regenerate a long-lived registry authentication token using `flb generate-token` — ideal for CI/CD pipelines."
+description: 'Generate or regenerate a long-lived registry authentication token using `flb generate-token` — ideal for CI/CD pipelines.'
 ---
 
 # `flb generate-token`
@@ -14,16 +14,17 @@ flb generate-token
 You'll be prompted for your email and password. On success the registry returns a token — use [`flb set-auth`](/docs/cli/account/set-auth) to write it into `~/.npmrc`, or paste it directly into a CI secret.
 
 <Callout type="warn">
-Generating a new token **replaces any previously generated token** on your account. CI pipelines using the old token will break until you update them.
+  Generating a new token **replaces any previously generated token** on your
+  account. CI pipelines using the old token will break until you update them.
 </Callout>
 
 ## Options
 
-| Option | Description |
-| :--- | :--- |
-| `-e, --email <email>` | Email address |
-| `-p, --password <password>` | Password |
-| `-h, --host <host>` | API host (default: `https://api.fleetbase.io`) |
+| Option                      | Description                                     |
+| :-------------------------- | :---------------------------------------------- |
+| `-e, --email <email>`       | Email address                                   |
+| `-p, --password <password>` | Password                                        |
+| `-h, --host <host>`         | API host (default: `https://api.logisbase.com`) |
 
 ## Examples
 

@@ -1,6 +1,6 @@
 ---
 title: File format
-description: YAML structure, placeholder syntax, pluralization, and translation conventions for Fleetbase locale files.
+description: YAML structure, placeholder syntax, pluralization, and translation conventions for LogisBase locale files.
 sidebarTitle: File format
 ---
 
@@ -51,8 +51,11 @@ orders:
 ## The two non-negotiable rules
 
 <Callout type="warn">
-1. **Translate values, never keys.** Keys are how the application looks up the translation. Changing a key (`new` → `nouveau`) breaks the lookup and the UI falls back to the raw key.
-2. **Preserve placeholders exactly.** Anything in `{curly_braces}` is a runtime variable. Leave the name, the braces, and the position intact (you can move it around the sentence — see below).
+  1. **Translate values, never keys.** Keys are how the application looks up the
+  translation. Changing a key (`new` → `nouveau`) breaks the lookup and the UI
+  falls back to the raw key. 2. **Preserve placeholders exactly.** Anything in `
+  {curly_braces}` is a runtime variable. Leave the name, the braces, and the
+  position intact (you can move it around the sentence — see below).
 </Callout>
 
 ## Placeholders
@@ -98,18 +101,18 @@ assigned-driver-to-order: Conducteur {driver} affecté à la commande {order_id}
 
 ## What to translate
 
-| Type | Translate? | Example |
-| :--- | :--- | :--- |
-| **UI labels & buttons** | ✅ Yes | `Save`, `Cancel`, `Delete` |
-| **Headings & titles** | ✅ Yes | `New Order`, `Driver Settings` |
-| **Helper text & descriptions** | ✅ Yes | `Choose the vehicle assigned to this driver` |
-| **Error & success messages** | ✅ Yes | `Order created successfully` |
-| **Plain dates/times** | ✅ Yes | `Today`, `Yesterday`, `tomorrow` |
-| **Placeholder names** (`{count}`) | ❌ No | Leave `{count}`, `{driver}`, etc. as-is |
-| **Brand names** | ❌ No | `Fleetbase`, `FleetOps`, `Storefront`, `Navigator` |
-| **Technical terms with no local equivalent** | ❌ No (usually) | `API`, `webhook`, `OAuth`, `JWT` — see [Glossary](/docs/contributing/translations/glossary) |
-| **HTML tags inside strings** | ❌ Don't change structure | `<b>`, `<a>`, `<br>` — preserve as-is, translate the text inside |
-| **Markdown formatting** | ❌ Don't change structure | `**bold**`, `[link](...)` — preserve syntax, translate the visible text |
+| Type                                         | Translate?                | Example                                                                                     |
+| :------------------------------------------- | :------------------------ | :------------------------------------------------------------------------------------------ |
+| **UI labels & buttons**                      | ✅ Yes                    | `Save`, `Cancel`, `Delete`                                                                  |
+| **Headings & titles**                        | ✅ Yes                    | `New Order`, `Driver Settings`                                                              |
+| **Helper text & descriptions**               | ✅ Yes                    | `Choose the vehicle assigned to this driver`                                                |
+| **Error & success messages**                 | ✅ Yes                    | `Order created successfully`                                                                |
+| **Plain dates/times**                        | ✅ Yes                    | `Today`, `Yesterday`, `tomorrow`                                                            |
+| **Placeholder names** (`{count}`)            | ❌ No                     | Leave `{count}`, `{driver}`, etc. as-is                                                     |
+| **Brand names**                              | ❌ No                     | `LogisBase`, `FleetOps`, `Storefront`, `Navigator`                                          |
+| **Technical terms with no local equivalent** | ❌ No (usually)           | `API`, `webhook`, `OAuth`, `JWT` — see [Glossary](/docs/contributing/translations/glossary) |
+| **HTML tags inside strings**                 | ❌ Don't change structure | `<b>`, `<a>`, `<br>` — preserve as-is, translate the text inside                            |
+| **Markdown formatting**                      | ❌ Don't change structure | `**bold**`, `[link](...)` — preserve syntax, translate the visible text                     |
 
 ## Pluralization
 
@@ -139,7 +142,7 @@ If a language has more plural forms than English (Russian, Polish, Arabic), matc
 
 For right-to-left languages (Arabic, Hebrew, Persian, Urdu), the YAML file is the same — translate values normally. The Console handles directional rendering at runtime via CSS logical properties.
 
-Numerical and Latin-script content stays in its natural direction. Brand names like `Fleetbase` stay in Latin script.
+Numerical and Latin-script content stays in its natural direction. Brand names like `LogisBase` stay in Latin script.
 
 ## Quoting and escaping
 
@@ -185,7 +188,7 @@ title: ''
 title: Mon titre
 ```
 
-If you don't know how to translate a key yet, **leave it absent** rather than empty — Fleetbase falls back to the English version.
+If you don't know how to translate a key yet, **leave it absent** rather than empty — LogisBase falls back to the English version.
 
 ## Sanity checks before committing
 

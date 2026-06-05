@@ -1,11 +1,11 @@
 ---
 title: Search
-description: "Browse the Fleetbase Extension Registry from the command line with `flb search`."
+description: 'Browse the LogisBase Extension Registry from the command line with `flb search`.'
 ---
 
 # `flb search`
 
-Browse and filter the Fleetbase Extension Registry from your terminal. Use this to discover available extensions before installing one.
+Browse and filter the LogisBase Extension Registry from your terminal. Use this to discover available extensions before installing one.
 
 ```bash
 flb search                       # List everything
@@ -18,14 +18,14 @@ The query (positional argument) matches against extension name, slug, subtitle, 
 
 ## Options
 
-| Option | Description |
-| :--- | :--- |
-| `[query]` | Free-form search term — matches name, slug, subtitle, description, tags |
-| `-c, --category <category>` | Filter by category name or slug |
-| `-f, --free` | Show only free (no payment required) extensions |
-| `--json` | Output raw JSON (useful for scripting) |
-| `--simple` | One extension per line: `slug<TAB>name<TAB>vVERSION<TAB>price` |
-| `-h, --host <host>` | API host (default: `https://api.fleetbase.io`) |
+| Option                      | Description                                                             |
+| :-------------------------- | :---------------------------------------------------------------------- |
+| `[query]`                   | Free-form search term — matches name, slug, subtitle, description, tags |
+| `-c, --category <category>` | Filter by category name or slug                                         |
+| `-f, --free`                | Show only free (no payment required) extensions                         |
+| `--json`                    | Output raw JSON (useful for scripting)                                  |
+| `--simple`                  | One extension per line: `slug<TAB>name<TAB>vVERSION<TAB>price`          |
+| `-h, --host <host>`         | API host (default: `https://api.logisbase.com`)                         |
 
 ## Output Modes
 
@@ -36,20 +36,21 @@ flb search storefront
 ```
 
 ```
-🔍 Searching Fleetbase Extensions...
+🔍 Searching LogisBase Extensions...
 
 Found 1 extension:
 
 Storefront v1.2.0  Free  ↓ 142  [Commerce]
-  fleetbase/storefront  by Fleetbase
-  Headless commerce and marketplace platform for Fleetbase.
-  Install: flb install fleetbase/storefront  or flb install ext_xxx
+  logisbase/storefront  by LogisBase
+  Headless commerce and marketplace platform for LogisBase.
+  Install: flb install logisbase/storefront  or flb install ext_xxx
 ─────────────────────────────────────────────
-Use flb install fleetbase/<slug> or flb install <extension_id> to install an extension.
+Use flb install logisbase/<slug> or flb install <extension_id> to install an extension.
 Use flb search --json for machine-readable output.
 ```
 
 Each entry shows:
+
 - Name, version, price (in green if free, yellow if paid), install count, category
 - Slug and publisher
 - Subtitle (if present)
@@ -74,8 +75,8 @@ flb search --simple
 ```
 
 ```
-fleetbase/storefront	Storefront	v1.2.0	free
-fleetbase/pallet	Pallet	v0.9.4	$49.00
+logisbase/storefront	Storefront	v1.2.0	free
+logisbase/pallet	Pallet	v0.9.4	$49.00
 ```
 
 Useful for shell scripts that need to iterate over extension slugs.
@@ -111,6 +112,7 @@ flb search --host registry.mycompany.com
 Filters compose — `--query foo --category bar --free` returns extensions matching all three.
 
 The query match is case-insensitive across these fields:
+
 - `name`
 - `slug`
 - `subtitle`

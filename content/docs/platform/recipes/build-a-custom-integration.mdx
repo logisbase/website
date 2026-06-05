@@ -1,11 +1,11 @@
 ---
 title: Build a Custom Integration
-description: Use the Fleetbase REST API and webhooks to integrate an external system — push orders in, receive status events out, handle retries safely.
+description: Use the LogisBase REST API and webhooks to integrate an external system — push orders in, receive status events out, handle retries safely.
 ---
 
 # Build a Custom Integration
 
-This recipe shows a complete, production-ready integration pattern: an external system (ERP, WMS, or e-commerce platform) that creates orders in Fleetbase via the REST API, then receives real-time status updates back via webhooks.
+This recipe shows a complete, production-ready integration pattern: an external system (ERP, WMS, or e-commerce platform) that creates orders in LogisBase via the REST API, then receives real-time status updates back via webhooks.
 
 ## Integration Architecture
 
@@ -14,7 +14,7 @@ External System
       │
       │  POST /v1/orders (create order)
       ▼
-Fleetbase REST API ──── FleetOps (dispatch, routing)
+LogisBase REST API ──── FleetOps (dispatch, routing)
       │
       │  POST webhook (order status changes)
       ▼
@@ -25,7 +25,7 @@ The two channels work independently — push data in via API, receive events bac
 
 ## Prerequisites
 
-- A Fleetbase account with FleetOps installed
+- A LogisBase account with FleetOps installed
 - An **API public key** (live or test) from **Developers → API Keys**
 - A publicly reachable HTTPS endpoint for receiving webhooks
 
@@ -44,83 +44,85 @@ Generate keys at **Developers → API Keys**. See [API Keys](/docs/platform/deve
 
 ## Step 2 — Create Orders from Your External System
 
-When your ERP or WMS generates a delivery task, push it to Fleetbase as an order:
+When your ERP or WMS generates a delivery task, push it to LogisBase as an order:
 
 ```javascript
-const FLEETBASE_API = 'https://api.fleetbase.io';
+const FLEETBASE_API = 'https://api.logisbase.com';
 const API_KEY = 'flb_live_your_public_key_here';
 
-async function createFleetbaseOrder(externalOrder) {
-    const response = await fetch(`${FLEETBASE_API}/v1/orders`, {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${API_KEY}`,
-            'Content-Type': 'application/json',
+async function createLogisBaseOrder(externalOrder) {
+  const response = await fetch(`${FLEETBASE_API}/v1/orders`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      // Internal reference — use your external ID for deduplication
+      internal_id: externalOrder.id,
+
+      // Pickup location
+      payload: {
+        pickup: {
+          name: externalOrder.warehouse.name,
+          street1: externalOrder.warehouse.address,
+          city: externalOrder.warehouse.city,
+          country: externalOrder.warehouse.country,
         },
-        body: JSON.stringify({
-            // Internal reference — use your external ID for deduplication
-            internal_id: externalOrder.id,
+        dropoff: {
+          name: externalOrder.customer.name,
+          street1: externalOrder.customer.address,
+          city: externalOrder.customer.city,
+          country: externalOrder.customer.country,
+          phone: externalOrder.customer.phone,
+        },
+      },
 
-            // Pickup location
-            payload: {
-                pickup: {
-                    name: externalOrder.warehouse.name,
-                    street1: externalOrder.warehouse.address,
-                    city: externalOrder.warehouse.city,
-                    country: externalOrder.warehouse.country,
-                },
-                dropoff: {
-                    name: externalOrder.customer.name,
-                    street1: externalOrder.customer.address,
-                    city: externalOrder.customer.city,
-                    country: externalOrder.customer.country,
-                    phone: externalOrder.customer.phone,
-                },
-            },
+      // Custom fields for your business data
+      meta: {
+        external_order_id: externalOrder.id,
+        priority: externalOrder.priority,
+        notes: externalOrder.deliveryNotes,
+      },
+    }),
+  });
 
-            // Custom fields for your business data
-            meta: {
-                external_order_id: externalOrder.id,
-                priority: externalOrder.priority,
-                notes: externalOrder.deliveryNotes,
-            },
-        }),
-    });
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(`Failed to create order: ${JSON.stringify(error)}`);
+  }
 
-    if (!response.ok) {
-        const error = await response.json();
-        throw new Error(`Failed to create order: ${JSON.stringify(error)}`);
-    }
+  const { data: order } = await response.json();
+  console.log(
+    `Created LogisBase order: ${order.public_id} for external ID: ${externalOrder.id}`,
+  );
 
-    const { data: order } = await response.json();
-    console.log(`Created Fleetbase order: ${order.public_id} for external ID: ${externalOrder.id}`);
-
-    return order;
+  return order;
 }
 ```
 
 ## Step 3 — Store the Mapping
 
-Store the relationship between your external order ID and the Fleetbase order ID so you can correlate incoming webhook events later:
+Store the relationship between your external order ID and the LogisBase order ID so you can correlate incoming webhook events later:
 
 ```javascript
 // Example using a simple in-memory map (use a database in production)
 const orderMapping = new Map();
 
 async function syncOrder(externalOrder) {
-    const fleetbaseOrder = await createFleetbaseOrder(externalOrder);
+  const logisbaseOrder = await createLogisBaseOrder(externalOrder);
 
-    // Store both directions
-    orderMapping.set(externalOrder.id, fleetbaseOrder.id);
-    orderMapping.set(fleetbaseOrder.public_id, externalOrder.id);
+  // Store both directions
+  orderMapping.set(externalOrder.id, logisbaseOrder.id);
+  orderMapping.set(logisbaseOrder.public_id, externalOrder.id);
 
-    return fleetbaseOrder;
+  return logisbaseOrder;
 }
 ```
 
 ## Step 4 — Set Up the Webhook Receiver
 
-Register an HTTPS endpoint to receive status events back from Fleetbase:
+Register an HTTPS endpoint to receive status events back from LogisBase:
 
 ```javascript
 const express = require('express');
@@ -131,61 +133,63 @@ app.use(express.json());
 // Map of processed event IDs for deduplication
 const processedEvents = new Set();
 
-app.post('/webhooks/fleetbase', async (req, res) => {
-    const event = req.body;
+app.post('/webhooks/logisbase', async (req, res) => {
+  const event = req.body;
 
-    // Acknowledge immediately — don't make Fleetbase wait for your processing
-    res.sendStatus(200);
+  // Acknowledge immediately — don't make LogisBase wait for your processing
+  res.sendStatus(200);
 
-    // Deduplicate retries
-    if (processedEvents.has(event.id)) {
-        console.log(`Skipping duplicate event: ${event.id}`);
-        return;
-    }
-    processedEvents.add(event.id);
+  // Deduplicate retries
+  if (processedEvents.has(event.id)) {
+    console.log(`Skipping duplicate event: ${event.id}`);
+    return;
+  }
+  processedEvents.add(event.id);
 
-    await handleStatusUpdate(event);
+  await handleStatusUpdate(event);
 });
 
 async function handleStatusUpdate(event) {
-    const { event: eventType, data: order } = event;
+  const { event: eventType, data: order } = event;
 
-    // Look up your external order from the Fleetbase public_id
-    const externalOrderId = orderMapping.get(order.public_id);
-    if (!externalOrderId) {
-        console.log(`No mapping found for order ${order.public_id}`);
-        return;
-    }
+  // Look up your external order from the LogisBase public_id
+  const externalOrderId = orderMapping.get(order.public_id);
+  if (!externalOrderId) {
+    console.log(`No mapping found for order ${order.public_id}`);
+    return;
+  }
 
-    console.log(`Order ${order.public_id} (external: ${externalOrderId}) → ${eventType}`);
+  console.log(
+    `Order ${order.public_id} (external: ${externalOrderId}) → ${eventType}`,
+  );
 
-    switch (eventType) {
-        case 'order.dispatched':
-            await updateExternalSystem(externalOrderId, {
-                status: 'in_transit',
-                driver: order.driver_assigned?.name,
-            });
-            break;
+  switch (eventType) {
+    case 'order.dispatched':
+      await updateExternalSystem(externalOrderId, {
+        status: 'in_transit',
+        driver: order.driver_assigned?.name,
+      });
+      break;
 
-        case 'order.completed':
-            await updateExternalSystem(externalOrderId, {
-                status: 'delivered',
-                completed_at: order.completed_at,
-            });
-            break;
+    case 'order.completed':
+      await updateExternalSystem(externalOrderId, {
+        status: 'delivered',
+        completed_at: order.completed_at,
+      });
+      break;
 
-        case 'order.cancelled':
-            await updateExternalSystem(externalOrderId, {
-                status: 'cancelled',
-                reason: order.cancel_reason,
-            });
-            break;
-    }
+    case 'order.cancelled':
+      await updateExternalSystem(externalOrderId, {
+        status: 'cancelled',
+        reason: order.cancel_reason,
+      });
+      break;
+  }
 }
 
 async function updateExternalSystem(externalOrderId, update) {
-    // Your ERP/WMS update logic here
-    console.log(`Updating external order ${externalOrderId}:`, update);
+  // Your ERP/WMS update logic here
+  console.log(`Updating external order ${externalOrderId}:`, update);
 }
 
 app.listen(3000);
@@ -205,19 +209,20 @@ app.listen(3000);
 
     | Event | Meaning |
     | :--- | :--- |
-    | `order.created` | Order accepted into Fleetbase |
+    | `order.created` | Order accepted into LogisBase |
     | `order.dispatched` | Driver assigned and en route |
     | `order.completed` | Delivery confirmed |
     | `order.cancelled` | Order cancelled |
+
   </Step>
   <Step>
-    Click **Save**. Fleetbase will begin delivering to your endpoint immediately.
+    Click **Save**. LogisBase will begin delivering to your endpoint immediately.
   </Step>
 </Steps>
 
 ## Step 6 — Handle Idempotency for Retries
 
-If your receiver returns a non-2xx status or times out, Fleetbase will retry the delivery. Your handler must be safe to call multiple times with the same event.
+If your receiver returns a non-2xx status or times out, LogisBase will retry the delivery. Your handler must be safe to call multiple times with the same event.
 
 The deduplication approach above (checking `event.id`) handles this for in-memory state. For a production system, persist processed event IDs to a database:
 
@@ -227,27 +232,27 @@ const { Pool } = require('pg');
 const pool = new Pool();
 
 async function isEventProcessed(eventId) {
-    const result = await pool.query(
-        'SELECT 1 FROM processed_webhook_events WHERE event_id = $1',
-        [eventId]
-    );
-    return result.rowCount > 0;
+  const result = await pool.query(
+    'SELECT 1 FROM processed_webhook_events WHERE event_id = $1',
+    [eventId],
+  );
+  return result.rowCount > 0;
 }
 
 async function markEventProcessed(eventId) {
-    await pool.query(
-        'INSERT INTO processed_webhook_events (event_id, processed_at) VALUES ($1, NOW()) ON CONFLICT DO NOTHING',
-        [eventId]
-    );
+  await pool.query(
+    'INSERT INTO processed_webhook_events (event_id, processed_at) VALUES ($1, NOW()) ON CONFLICT DO NOTHING',
+    [eventId],
+  );
 }
 
-app.post('/webhooks/fleetbase', async (req, res) => {
-    const event = req.body;
-    res.sendStatus(200);
+app.post('/webhooks/logisbase', async (req, res) => {
+  const event = req.body;
+  res.sendStatus(200);
 
-    if (await isEventProcessed(event.id)) return;
-    await markEventProcessed(event.id);
-    await handleStatusUpdate(event);
+  if (await isEventProcessed(event.id)) return;
+  await markEventProcessed(event.id);
+  await handleStatusUpdate(event);
 });
 ```
 
@@ -256,33 +261,38 @@ app.post('/webhooks/fleetbase', async (req, res) => {
 In addition to webhooks, you can poll the API for the current state of any order:
 
 ```javascript
-async function getOrderStatus(fleetbasePublicId) {
-    const response = await fetch(`${FLEETBASE_API}/v1/orders/${fleetbasePublicId}`, {
-        headers: { 'Authorization': `Bearer ${API_KEY}` }
-    });
+async function getOrderStatus(logisbasePublicId) {
+  const response = await fetch(
+    `${FLEETBASE_API}/v1/orders/${logisbasePublicId}`,
+    {
+      headers: { Authorization: `Bearer ${API_KEY}` },
+    },
+  );
 
-    const { data: order } = await response.json();
-    return {
-        status: order.status,
-        driver: order.driver_assigned,
-        updated_at: order.updated_at,
-    };
+  const { data: order } = await response.json();
+  return {
+    status: order.status,
+    driver: order.driver_assigned,
+    updated_at: order.updated_at,
+  };
 }
 ```
 
 <Callout type="info">
-Prefer webhooks over polling for real-time updates. Polling introduces latency and unnecessary API load. Use polling only as a fallback for reconciliation (e.g., a nightly job to catch any missed events).
+  Prefer webhooks over polling for real-time updates. Polling introduces latency
+  and unnecessary API load. Use polling only as a fallback for reconciliation
+  (e.g., a nightly job to catch any missed events).
 </Callout>
 
 ## Test vs. Live Environments
 
 Build and test against the **test environment** first:
 
-| | Test | Live |
-| :--- | :--- | :--- |
-| **API key prefix** | `flb_test_...` | `flb_live_...` |
-| **Data isolation** | Completely separate | Production data |
-| **Webhooks** | Delivered to registered test endpoints | Delivered to live endpoints |
+|                    | Test                                   | Live                        |
+| :----------------- | :------------------------------------- | :-------------------------- |
+| **API key prefix** | `flb_test_...`                         | `flb_live_...`              |
+| **Data isolation** | Completely separate                    | Production data             |
+| **Webhooks**       | Delivered to registered test endpoints | Delivered to live endpoints |
 
 Switch between environments using the **Test mode** toggle in the console header. Keys, webhooks, and request logs are scoped to the active environment.
 

@@ -1,13 +1,13 @@
 ---
 title: Scaffolding Your Extension
-description: Use the Fleetbase CLI to scaffold a new extension with a working backend and frontend skeleton.
+description: Use the LogisBase CLI to scaffold a new extension with a working backend and frontend skeleton.
 ---
 
 # Scaffolding Your Extension
 
-The easiest way to start building a new Fleetbase extension is to use the **Fleetbase CLI**.
+The easiest way to start building a new LogisBase extension is to use the **LogisBase CLI**.
 
-The CLI provides a `scaffold` command that generates a complete, working extension skeleton, including both the [Backend](/docs/extending-fleetbase/backend-development) (Laravel package) and the [Frontend](/docs/extending-fleetbase/frontend-development) (Ember Engine), along with the necessary `extension.json` manifest.
+The CLI provides a `scaffold` command that generates a complete, working extension skeleton, including both the [Backend](/docs/extending-logisbase/backend-development) (Laravel package) and the [Frontend](/docs/extending-logisbase/frontend-development) (Ember Engine), along with the necessary `extension.json` manifest.
 
 ## Prerequisites
 
@@ -17,12 +17,12 @@ Before you begin, ensure you have the following installed on your local developm
 - **PHP** (v8.1 or higher)
 - **Composer**
 - **Git**
-- The **Fleetbase CLI**
+- The **LogisBase CLI**
 
 If you haven't installed the CLI yet, you can do so via npm:
 
 ```bash
-npm install -g @fleetbase/cli
+npm install -g @logisbase/cli
 ```
 
 ## Scaffolding the Extension
@@ -54,34 +54,34 @@ my-extension/
 └── README.md
 ```
 
-This is a fully functional, albeit empty, extension. It is ready to be linked to your local Fleetbase instance for development.
+This is a fully functional, albeit empty, extension. It is ready to be linked to your local LogisBase instance for development.
 
 ## Linking for Development
 
-To develop your extension, you need to link it to a running Fleetbase instance. This allows you to see your changes in real-time without having to publish and install the extension via the Registry.
+To develop your extension, you need to link it to a running LogisBase instance. This allows you to see your changes in real-time without having to publish and install the extension via the Registry.
 
-1. Ensure you have a local Fleetbase instance running (see [Quickstart (Self-Hosted)](/docs/getting-started/quickstart-self-hosted)).
+1. Ensure you have a local LogisBase instance running (see [Quickstart (Self-Hosted)](/docs/getting-started/quickstart-self-hosted)).
 2. Navigate into your newly scaffolded extension directory:
 
 ```bash
 cd my-extension
 ```
 
-3. Run the `link` command, providing the path to your local Fleetbase installation:
+3. Run the `link` command, providing the path to your local LogisBase installation:
 
 ```bash
-flb link /path/to/your/local/fleetbase
+flb link /path/to/your/local/logisbase
 ```
 
-The CLI will create symlinks between your extension directory and the `extensions/` directory within your local Fleetbase instance.
+The CLI will create symlinks between your extension directory and the `extensions/` directory within your local LogisBase instance.
 
 It will also automatically register the backend package with Laravel and mount the frontend engine within the Ember application.
 
 ## Starting the Development Server
 
-With the extension linked, you can now start the Fleetbase development servers.
+With the extension linked, you can now start the LogisBase development servers.
 
-1. Navigate to your local Fleetbase installation directory.
+1. Navigate to your local LogisBase installation directory.
 2. Start the backend server:
 
 ```bash
@@ -96,6 +96,6 @@ npm run start
 
 4. Open your browser and navigate to `http://localhost:4200`.
 
-You should now see your extension listed in the Fleetbase Console sidebar. Clicking on it will load the default route defined in your scaffolded frontend engine.
+You should now see your extension listed in the LogisBase Console sidebar. Clicking on it will load the default route defined in your scaffolded frontend engine.
 
-You are now ready to begin [Backend Development](/docs/extending-fleetbase/backend-development) and [Frontend Development](/docs/extending-fleetbase/frontend-development).
+You are now ready to begin [Backend Development](/docs/extending-logisbase/backend-development) and [Frontend Development](/docs/extending-logisbase/frontend-development).

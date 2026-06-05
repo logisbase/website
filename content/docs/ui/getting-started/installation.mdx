@@ -1,19 +1,19 @@
 ---
 title: Installation
-description: "@fleetbase/ember-ui is bundled into every Fleetbase extension by default — this page covers what's installed automatically and how to add it manually if needed."
+description: "@logisbase/ember-ui is bundled into every LogisBase extension by default — this page covers what's installed automatically and how to add it manually if needed."
 ---
 
 # Installation
 
-In nearly every case **you don't need to install `@fleetbase/ember-ui` manually**. Every extension scaffolded with [`flb scaffold`](/docs/cli/extension-development/scaffold) already includes the library as a dependency, alongside the engine wiring needed to load it.
+In nearly every case **you don't need to install `@logisbase/ember-ui` manually**. Every extension scaffolded with [`flb scaffold`](/docs/cli/extension-development/scaffold) already includes the library as a dependency, alongside the engine wiring needed to load it.
 
 ```jsonc
 // package.json (excerpt from a freshly scaffolded extension)
 {
   "dependencies": {
-    "@fleetbase/ember-ui": "^0.3.29",
+    "@logisbase/ember-ui": "^0.3.29",
     // …
-  }
+  },
 }
 ```
 
@@ -25,7 +25,7 @@ If you're working with an older extension that pre-dates the modern starter, add
 
 ```bash
 cd /path/to/your-extension
-pnpm add @fleetbase/ember-ui
+pnpm add @logisbase/ember-ui
 ```
 
 The Ember addon system auto-merges ember-ui's components, helpers, modifiers, and services into the host application — no manual import statement is needed for individual components.
@@ -35,7 +35,7 @@ The Ember addon system auto-merges ember-ui's components, helpers, modifiers, an
 Once ember-ui is a dependency, every component is available **angle-bracket** in any template:
 
 ```handlebars
-<Button @type="primary" @text="Save" @onClick={{this.save}} />
+<Button @type='primary' @text='Save' @onClick={{this.save}} />
 ```
 
 You don't need to `import` components in JavaScript — Ember resolves them from the addon automatically.
@@ -45,9 +45,12 @@ You don't need to `import` components in JavaScript — Ember resolves them from
 Helpers are likewise globally available in templates:
 
 ```handlebars
-{{format-currency 1500 "USD"}}    {{!-- $15.00 --}}
-{{format-bytes 1024}}              {{!-- 1 KB --}}
-{{is-uuid this.id}}                {{!-- true / false --}}
+{{format-currency 1500 'USD'}}
+{{! $15.00 }}
+{{format-bytes 1024}}
+{{! 1 KB }}
+{{is-uuid this.id}}
+{{! true / false }}
 ```
 
 ## Using a Service
@@ -77,11 +80,11 @@ export default class MyComponent extends Component {
 Modifiers attach to elements with `{{modifier-name args}}`:
 
 ```handlebars
-<div {{set-height "400px"}}>
+<div {{set-height '400px'}}>
   Container with a fixed height
 </div>
 
-<input {{imask "phone"}} type="text" />
+<input {{imask 'phone'}} type='text' />
 ```
 
 ## Verify Your Install
@@ -89,7 +92,7 @@ Modifiers attach to elements with `{{modifier-name args}}`:
 Once added, run `pnpm install` and start the console:
 
 ```bash
-cd /path/to/fleetbase/console
+cd /path/to/logisbase/console
 pnpm install
 pnpm start
 ```
@@ -107,7 +110,7 @@ If the component renders, your install is wired up correctly.
 When new ember-ui versions ship:
 
 ```bash
-pnpm update @fleetbase/ember-ui
+pnpm update @logisbase/ember-ui
 ```
 
 Check the release notes for breaking changes — the package is on `0.x` and APIs occasionally evolve.

@@ -14,7 +14,10 @@ import {
 import { readAgentArtifacts } from './artifacts.mjs';
 import { callClaudeJson, generateFeatureImageBrief } from './claude.mjs';
 import { contentAgentConfig } from './content-agent.config.mjs';
-import { normalizeFleetbaseArticle, validateFleetbaseArticle } from './content-rules.mjs';
+import {
+  normalizeLogisBaseArticle,
+  validateLogisBaseArticle,
+} from './content-rules.mjs';
 import { buildContextManifest, selectContextSources } from './context.mjs';
 import { assertNoDuplicateContent, findDuplicateContent } from './dedupe.mjs';
 import { generateArtifacts } from './generate-artifacts.mjs';
@@ -26,17 +29,29 @@ import {
   uploadGhostImage,
   updateGhostPost,
 } from './ghost-admin.mjs';
-import { normalizeArticleLinks, normalizeFleetbaseLinks } from './links.mjs';
+import { normalizeArticleLinks, normalizeLogisBaseLinks } from './links.mjs';
 import { generateFeatureImage } from './openai-image.mjs';
-import { buildAhrefsOrManualResearch, buildAiTopicResearch, buildManualResearch } from './research.mjs';
-import { ArticleDraftSchema, RevisedArticleSchema, parseJsonObject } from './schemas.mjs';
+import {
+  buildAhrefsOrManualResearch,
+  buildAiTopicResearch,
+  buildManualResearch,
+} from './research.mjs';
+import {
+  ArticleDraftSchema,
+  RevisedArticleSchema,
+  parseJsonObject,
+} from './schemas.mjs';
 
 async function testAhrefsUrl() {
-  const url = buildAhrefsKeywordUrl(contentAgentConfig, 'route optimization API', {
-    apiBaseUrl: 'https://example.test/v3',
-    country: 'us',
-    limit: 25,
-  });
+  const url = buildAhrefsKeywordUrl(
+    contentAgentConfig,
+    'route optimization API',
+    {
+      apiBaseUrl: 'https://example.test/v3',
+      country: 'us',
+      limit: 25,
+    },
+  );
 
   assert.equal(url.origin, 'https://example.test');
   assert.equal(url.pathname, '/v3/keywords-explorer/matching-terms');
@@ -51,14 +66,14 @@ async function testAhrefsUrl() {
 function testAhrefsNormalize() {
   const row = normalizeAhrefsKeyword(
     {
-      keyword: 'open source fleet management software',
+      keyword: 'source-available fleet management software',
       volume: '1200',
       difficulty: '18',
       traffic_potential: '2100',
       parent_topic: { keyword: 'fleet management software' },
       intents: 'commercial,informational',
     },
-    'open source fleet management',
+    'source-available fleet management',
   );
 
   assert.equal(row.volume, 1200);
@@ -67,20 +82,19 @@ function testAhrefsNormalize() {
 }
 
 function testAhrefsClusterBudget() {
-  assert.deepEqual(resolveAhrefsClusters(contentAgentConfig, {
-    contentFocus: 'fleetbase-api-tutorial',
-  }), [
-    'delivery tracking API',
-    'proof of delivery API',
-    'dispatch API',
-  ]);
-  assert.deepEqual(resolveAhrefsClusters(contentAgentConfig, {
-    contentFocus: 'logistics-software',
-    maxClusters: 2,
-  }), [
-    'last mile delivery software',
-    'delivery management software',
-  ]);
+  assert.deepEqual(
+    resolveAhrefsClusters(contentAgentConfig, {
+      contentFocus: 'logisbase-api-tutorial',
+    }),
+    ['delivery tracking API', 'proof of delivery API', 'dispatch API'],
+  );
+  assert.deepEqual(
+    resolveAhrefsClusters(contentAgentConfig, {
+      contentFocus: 'logistics-software',
+      maxClusters: 2,
+    }),
+    ['last mile delivery software', 'delivery management software'],
+  );
 }
 
 async function testAhrefsResearchFailsOnZeroRows() {
@@ -107,7 +121,7 @@ async function testAhrefsResearchArtifacts() {
     json: async () => ({
       keywords: [
         {
-          keyword: 'open source fleet management software',
+          keyword: 'source-available fleet management software',
           volume: 100,
           difficulty: 12,
           traffic_potential: 300,
@@ -134,8 +148,8 @@ async function testAhrefsResearchArtifacts() {
 
 function testManualResearchBypass() {
   const research = buildManualResearch({
-    topic: 'Build a delivery tracking workflow with Fleetbase',
-    keyword: 'fleetbase delivery tracking workflow',
+    topic: 'Build a delivery tracking workflow with LogisBase',
+    keyword: 'logisbase delivery tracking workflow',
   });
 
   assert.equal(research.bypassedAhrefs, true);
@@ -149,7 +163,8 @@ async function testAhrefsUnavailableFallback() {
     status: 403,
     text: async () =>
       JSON.stringify({
-        error: 'API units limit reached. Expected usage: 30, API units left: 0.',
+        error:
+          'API units limit reached. Expected usage: 30, API units left: 0.',
       }),
   });
 
@@ -163,7 +178,10 @@ async function testAhrefsUnavailableFallback() {
 
   assert.equal(research.ahrefsUnavailable, true);
   assert.equal(research.opportunities[0].source, 'curated-fallback');
-  assert.equal(research.summary.ahrefsError.includes('API units limit reached'), true);
+  assert.equal(
+    research.summary.ahrefsError.includes('API units limit reached'),
+    true,
+  );
 }
 
 async function testAhrefsDisabledUsesAiTopicResearch() {
@@ -188,7 +206,9 @@ async function testAhrefsDisabledUsesAiTopicResearch() {
   assert.equal(research.opportunities.length > 0, true);
   assert.equal(research.opportunities[0].source, 'ai-topic-idea');
   assert.equal(
-    research.opportunities.some((opportunity) => opportunity.keyword.includes('WordPress')),
+    research.opportunities.some((opportunity) =>
+      opportunity.keyword.includes('WordPress'),
+    ),
     true,
   );
 
@@ -216,19 +236,33 @@ function testGhostTokenAndPayload() {
       html: '<h2>Guide</h2><p>Useful draft.</p>',
       excerpt: 'A practical guide to route optimization APIs.',
       metaTitle: 'Route Optimization API Guide',
-      metaDescription: 'Learn how route optimization APIs help logistics teams.',
+      metaDescription:
+        'Learn how route optimization APIs help logistics teams.',
       publicTags: ['Route Optimization'],
       featureImage: 'https://ghost.example/content/images/feature.png',
-      featureImageAlt: 'Abstract logistics dashboard with route planning cards.',
+      featureImageAlt:
+        'Abstract logistics dashboard with route planning cards.',
     },
     contentAgentConfig,
   );
 
   assert.equal(payload.posts[0].status, 'draft');
-  assert.equal(payload.posts[0].feature_image, 'https://ghost.example/content/images/feature.png');
-  assert.equal(payload.posts[0].feature_image_alt, 'Abstract logistics dashboard with route planning cards.');
-  assert.equal(payload.posts[0].tags.some((tag) => tag.name === '#needs-review'), true);
-  assert.equal(payload.posts[0].tags.some((tag) => tag.name === 'Route Optimization'), true);
+  assert.equal(
+    payload.posts[0].feature_image,
+    'https://ghost.example/content/images/feature.png',
+  );
+  assert.equal(
+    payload.posts[0].feature_image_alt,
+    'Abstract logistics dashboard with route planning cards.',
+  );
+  assert.equal(
+    payload.posts[0].tags.some((tag) => tag.name === '#needs-review'),
+    true,
+  );
+  assert.equal(
+    payload.posts[0].tags.some((tag) => tag.name === 'Route Optimization'),
+    true,
+  );
 }
 
 async function testClaudeJsonParsing() {
@@ -242,10 +276,11 @@ async function testClaudeJsonParsing() {
             title: 'Route Optimization API Guide',
             slug: 'route-optimization-api-guide',
             excerpt:
-              'A practical guide to route optimization APIs for logistics operators evaluating Fleetbase.',
+              'A practical guide to route optimization APIs for logistics operators evaluating LogisBase.',
             html: `<h2>${'Guide'.repeat(130)}</h2><p>${'Useful content. '.repeat(80)}</p>`,
             metaTitle: 'Route Optimization API Guide',
-            metaDescription: 'Learn how route optimization APIs help logistics teams plan better deliveries.',
+            metaDescription:
+              'Learn how route optimization APIs help logistics teams plan better deliveries.',
             publicTags: ['Route Optimization'],
           }),
         },
@@ -277,10 +312,11 @@ async function testClaudeToolJsonParsing() {
             title: 'Route Optimization API Guide',
             slug: 'route-optimization-api-guide',
             excerpt:
-              'A practical guide to route optimization APIs for logistics operators evaluating Fleetbase.',
+              'A practical guide to route optimization APIs for logistics operators evaluating LogisBase.',
             html: `<h2>${'Guide'.repeat(130)}</h2><p>${'Useful content. '.repeat(80)}</p>`,
             metaTitle: 'Route Optimization API Guide',
-            metaDescription: 'Learn how route optimization APIs help logistics teams plan better deliveries.',
+            metaDescription:
+              'Learn how route optimization APIs help logistics teams plan better deliveries.',
             publicTags: ['Route Optimization'],
           },
         },
@@ -313,10 +349,11 @@ async function testClaudeMaxTokensResponseFails() {
             title: 'Route Optimization API Guide',
             slug: 'route-optimization-api-guide',
             excerpt:
-              'A practical guide to route optimization APIs for logistics operators evaluating Fleetbase.',
+              'A practical guide to route optimization APIs for logistics operators evaluating LogisBase.',
             html: `<h2>${'Guide'.repeat(130)}</h2><p>Truncated response`,
             metaTitle: 'Route Optimization API Guide',
-            metaDescription: 'Learn how route optimization APIs help logistics teams plan better deliveries.',
+            metaDescription:
+              'Learn how route optimization APIs help logistics teams plan better deliveries.',
             publicTags: ['Route Optimization'],
           },
         },
@@ -346,16 +383,16 @@ async function testRevisedArticleJsonParsing() {
         {
           type: 'text',
           text: JSON.stringify({
-            title: 'Updated Fleetbase API Tutorial',
-            slug: 'updated-fleetbase-api-tutorial',
+            title: 'Updated LogisBase API Tutorial',
+            slug: 'updated-logisbase-api-tutorial',
             excerpt:
-              'A revised Fleetbase API tutorial for logistics teams building order workflows.',
+              'A revised LogisBase API tutorial for logistics teams building order workflows.',
             htmlBase64: Buffer.from(
               `<h2>${'Updated'.repeat(130)}</h2><p>${'Useful revised content. '.repeat(80)}</p>`,
             ).toString('base64'),
-            metaTitle: 'Updated Fleetbase API Tutorial',
+            metaTitle: 'Updated LogisBase API Tutorial',
             metaDescription:
-              'Revise a Fleetbase API tutorial for logistics and supply chain operators.',
+              'Revise a LogisBase API tutorial for logistics and supply chain operators.',
             revisionSummary: ['Tightened intro', 'Added API workflow emphasis'],
           }),
         },
@@ -372,7 +409,7 @@ async function testRevisedArticleJsonParsing() {
     fetchImpl: fakeFetch,
   });
 
-  assert.equal(draft.slug, 'updated-fleetbase-api-tutorial');
+  assert.equal(draft.slug, 'updated-logisbase-api-tutorial');
   assert.equal(Boolean(draft.htmlBase64), true);
   assert.equal(draft.revisionSummary.length, 2);
 }
@@ -386,14 +423,17 @@ async function testRevisedArticleMetadataFallbackParsing() {
           type: 'tool_use',
           name: 'submit_json',
           input: {
-            title: 'Updated Fleetbase API Tutorial',
-            slug: 'updated-fleetbase-api-tutorial',
+            title: 'Updated LogisBase API Tutorial',
+            slug: 'updated-logisbase-api-tutorial',
             excerpt:
-              'A revised Fleetbase API tutorial for logistics teams building order workflows.',
+              'A revised LogisBase API tutorial for logistics teams building order workflows.',
             htmlBase64: Buffer.from(
               `<h2>${'Updated'.repeat(130)}</h2><p>${'Useful revised content. '.repeat(80)}</p>`,
             ).toString('base64'),
-            revisionSummary: ['Tightened intro', 'Kept metadata fallback compatible'],
+            revisionSummary: [
+              'Tightened intro',
+              'Kept metadata fallback compatible',
+            ],
           },
         },
       ],
@@ -425,8 +465,9 @@ async function testFeatureImageBriefGeneration() {
           text: JSON.stringify({
             prompt:
               'Landscape editorial image of a modern logistics software dashboard with route lines, dispatch cards, and warehouse workflow panels. No text or logos.',
-            altText: 'Modern logistics software dashboard with route and dispatch visuals.',
-            filename: 'fleetbase-logistics-dashboard.png',
+            altText:
+              'Modern logistics software dashboard with route and dispatch visuals.',
+            filename: 'logisbase-logistics-dashboard.png',
           }),
         },
       ],
@@ -435,22 +476,22 @@ async function testFeatureImageBriefGeneration() {
 
   const brief = await generateFeatureImageBrief({
     brief: {
-      title: 'Fleetbase API Tutorial',
-      targetKeyword: 'fleetbase api tutorial',
+      title: 'LogisBase API Tutorial',
+      targetKeyword: 'logisbase api tutorial',
     },
     draft: {
-      title: 'Fleetbase API Tutorial',
-      excerpt: 'Build logistics workflows with Fleetbase.',
-      metaTitle: 'Fleetbase API Tutorial',
-      metaDescription: 'Build logistics workflows with Fleetbase.',
+      title: 'LogisBase API Tutorial',
+      excerpt: 'Build logistics workflows with LogisBase.',
+      metaTitle: 'LogisBase API Tutorial',
+      metaDescription: 'Build logistics workflows with LogisBase.',
       publicTags: ['API'],
     },
     config: contentAgentConfig,
-    contentFocus: 'fleetbase-api-tutorial',
+    contentFocus: 'logisbase-api-tutorial',
     fetchImpl: fakeFetch,
   });
 
-  assert.equal(brief.filename, 'fleetbase-logistics-dashboard.png');
+  assert.equal(brief.filename, 'logisbase-logistics-dashboard.png');
 
   if (previousApiKey === undefined) {
     delete process.env.ANTHROPIC_API_KEY;
@@ -490,14 +531,17 @@ async function testOpenAiImageGeneration() {
 
 async function testGhostImageUpload() {
   const fakeFetch = async (url, options) => {
-    assert.equal(String(url), 'https://ghost.example/ghost/api/admin/images/upload/');
+    assert.equal(
+      String(url),
+      'https://ghost.example/ghost/api/admin/images/upload/',
+    );
     assert.equal(options.method, 'POST');
     assert.equal(options.body instanceof FormData, true);
 
     return {
       ok: true,
       json: async () => ({
-        images: [{ url: 'https://ghost.example/content/images/fleetbase.png' }],
+        images: [{ url: 'https://ghost.example/content/images/logisbase.png' }],
       }),
     };
   };
@@ -507,16 +551,17 @@ async function testGhostImageUpload() {
       bytes: Buffer.from('image-bytes'),
       mimeType: 'image/png',
     },
-    'fleetbase.png',
+    'logisbase.png',
     contentAgentConfig,
     {
       adminApiUrl: 'https://ghost.example',
-      adminApiKey: 'abc123:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef',
+      adminApiKey:
+        'abc123:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef',
       fetchImpl: fakeFetch,
     },
   );
 
-  assert.equal(image.url, 'https://ghost.example/content/images/fleetbase.png');
+  assert.equal(image.url, 'https://ghost.example/content/images/logisbase.png');
 }
 
 async function testGhostAdminReadAndUpdate() {
@@ -563,7 +608,8 @@ async function testGhostAdminReadAndUpdate() {
 
   const post = await getGhostPost('original-title', contentAgentConfig, {
     adminApiUrl: 'https://ghost.example',
-    adminApiKey: 'abc123:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef',
+    adminApiKey:
+      'abc123:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef',
     fetchImpl: fakeFetch,
   });
   const updated = await updateGhostPost(
@@ -579,7 +625,8 @@ async function testGhostAdminReadAndUpdate() {
     contentAgentConfig,
     {
       adminApiUrl: 'https://ghost.example',
-      adminApiKey: 'abc123:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef',
+      adminApiKey:
+        'abc123:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef',
       fetchImpl: fakeFetch,
     },
   );
@@ -599,8 +646,8 @@ async function testGhostAdminListPosts() {
         posts: [
           {
             id: 'post-id',
-            title: 'Existing Fleetbase API Tutorial',
-            slug: 'existing-fleetbase-api-tutorial',
+            title: 'Existing LogisBase API Tutorial',
+            slug: 'existing-logisbase-api-tutorial',
             status: 'draft',
           },
         ],
@@ -610,7 +657,8 @@ async function testGhostAdminListPosts() {
 
   const posts = await listGhostPosts(contentAgentConfig, {
     adminApiUrl: 'https://ghost.example',
-    adminApiKey: 'abc123:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef',
+    adminApiKey:
+      'abc123:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef',
     fetchImpl: fakeFetch,
   });
 
@@ -621,17 +669,17 @@ async function testGhostAdminListPosts() {
 function testDuplicateDetection() {
   const posts = [
     {
-      title: 'Building Delivery Tracking with Fleetbase',
-      slug: 'building-delivery-tracking-with-fleetbase',
+      title: 'Building Delivery Tracking with LogisBase',
+      slug: 'building-delivery-tracking-with-logisbase',
       status: 'draft',
-      custom_excerpt: 'A Fleetbase delivery tracking workflow guide.',
+      custom_excerpt: 'A LogisBase delivery tracking workflow guide.',
     },
   ];
   const duplicates = findDuplicateContent(
     {
-      title: 'Building Delivery Tracking with Fleetbase',
-      slug: 'building-delivery-tracking-with-fleetbase',
-      targetKeyword: 'Fleetbase delivery tracking workflow',
+      title: 'Building Delivery Tracking with LogisBase',
+      slug: 'building-delivery-tracking-with-logisbase',
+      targetKeyword: 'LogisBase delivery tracking workflow',
     },
     posts,
   );
@@ -641,9 +689,9 @@ function testDuplicateDetection() {
     () =>
       assertNoDuplicateContent(
         {
-          title: 'Building Delivery Tracking with Fleetbase',
-          slug: 'building-delivery-tracking-with-fleetbase',
-          targetKeyword: 'Fleetbase delivery tracking workflow',
+          title: 'Building Delivery Tracking with LogisBase',
+          slug: 'building-delivery-tracking-with-logisbase',
+          targetKeyword: 'LogisBase delivery tracking workflow',
         },
         posts,
       ),
@@ -652,40 +700,45 @@ function testDuplicateDetection() {
 }
 
 async function testAgentArtifactValidation() {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'fleetbase-content-agent-artifacts-'));
-  const longHtml = `<h2>${'Fleetbase '.repeat(70)}</h2><p>${'Useful logistics content. '.repeat(80)}</p>`;
+  const root = await fs.mkdtemp(
+    path.join(os.tmpdir(), 'logisbase-content-agent-artifacts-'),
+  );
+  const longHtml = `<h2>${'LogisBase '.repeat(70)}</h2><p>${'Useful logistics content. '.repeat(80)}</p>`;
 
   await fs.writeFile(
     path.join(root, 'topic.json'),
     JSON.stringify({
-      keyword: 'fleetbase delivery tracking workflow',
-      cluster: 'fleetbase api tutorial',
-      title: 'Build Delivery Tracking with Fleetbase',
+      keyword: 'logisbase delivery tracking workflow',
+      cluster: 'logisbase api tutorial',
+      title: 'Build Delivery Tracking with LogisBase',
       score: 88,
       searchIntent: 'Tutorial',
       businessFit: 10,
       opportunity: 8,
       competitorWeakness: 6,
       cannibalizationRisk: 'low',
-      rationale: 'Strong Fleetbase tutorial fit for delivery tracking workflows.',
-      suggestedInternalLinks: ['/docs/api/fleetbase/orders'],
+      rationale:
+        'Strong LogisBase tutorial fit for delivery tracking workflows.',
+      suggestedInternalLinks: ['/docs/api/logisbase/orders'],
     }),
   );
   await fs.writeFile(
     path.join(root, 'brief.json'),
     JSON.stringify({
-      title: 'Build Delivery Tracking with Fleetbase',
-      slug: 'build-delivery-tracking-with-fleetbase',
-      targetKeyword: 'fleetbase delivery tracking workflow',
+      title: 'Build Delivery Tracking with LogisBase',
+      slug: 'build-delivery-tracking-with-logisbase',
+      targetKeyword: 'logisbase delivery tracking workflow',
       secondaryKeywords: ['delivery tracking api'],
       audience: 'Developers building logistics apps',
       searchIntent: 'Tutorial',
-      thesis: 'Fleetbase provides source-backed logistics primitives for delivery tracking workflows.',
+      thesis:
+        'LogisBase provides source-backed logistics primitives for delivery tracking workflows.',
       outline: ['Intro', 'Create order', 'Track driver', 'Review proof'],
-      internalLinks: ['/docs/api/fleetbase/orders'],
-      cta: 'Explore Fleetbase docs to build the workflow.',
-      metaTitle: 'Build Delivery Tracking with Fleetbase',
-      metaDescription: 'Learn how to build delivery tracking workflows with Fleetbase.',
+      internalLinks: ['/docs/api/logisbase/orders'],
+      cta: 'Explore LogisBase docs to build the workflow.',
+      metaTitle: 'Build Delivery Tracking with LogisBase',
+      metaDescription:
+        'Learn how to build delivery tracking workflows with LogisBase.',
       publicTags: ['API'],
       sourceNotes: ['Verified with source files.'],
     }),
@@ -693,17 +746,19 @@ async function testAgentArtifactValidation() {
   await fs.writeFile(
     path.join(root, 'draft.json'),
     JSON.stringify({
-      title: 'Build Delivery Tracking with Fleetbase',
-      slug: 'build-delivery-tracking-with-fleetbase',
-      excerpt: 'Learn how to build a delivery tracking workflow with Fleetbase and verified API sources.',
+      title: 'Build Delivery Tracking with LogisBase',
+      slug: 'build-delivery-tracking-with-logisbase',
+      excerpt:
+        'Learn how to build a delivery tracking workflow with LogisBase and verified API sources.',
       html: longHtml,
-      metaTitle: 'Build Delivery Tracking with Fleetbase',
-      metaDescription: 'Learn how to build delivery tracking workflows with Fleetbase.',
+      metaTitle: 'Build Delivery Tracking with LogisBase',
+      metaDescription:
+        'Learn how to build delivery tracking workflows with LogisBase.',
       publicTags: ['API'],
-      targetKeyword: 'fleetbase delivery tracking workflow',
+      targetKeyword: 'logisbase delivery tracking workflow',
       ahrefsOpportunity: {
-        keyword: 'fleetbase delivery tracking workflow',
-        cluster: 'fleetbase api tutorial',
+        keyword: 'logisbase delivery tracking workflow',
+        cluster: 'logisbase api tutorial',
         volume: null,
         difficulty: null,
         trafficPotential: null,
@@ -713,10 +768,10 @@ async function testAgentArtifactValidation() {
       },
       sourceCitations: [
         {
-          repo: 'fleetbase/core-api',
+          repo: 'logisbase/core-api',
           path: 'source-truth/core-api/routes/api.php',
           title: 'Routes',
-          claim: 'Fleetbase exposes order API routes.',
+          claim: 'LogisBase exposes order API routes.',
           evidence: 'Route definition inspected.',
         },
       ],
@@ -726,10 +781,10 @@ async function testAgentArtifactValidation() {
     path.join(root, 'source-citations.json'),
     JSON.stringify([
       {
-        repo: 'fleetbase/core-api',
+        repo: 'logisbase/core-api',
         path: 'source-truth/core-api/routes/api.php',
         title: 'Routes',
-        claim: 'Fleetbase exposes order API routes.',
+        claim: 'LogisBase exposes order API routes.',
         evidence: 'Route definition inspected.',
       },
     ]),
@@ -746,25 +801,30 @@ async function testAgentArtifactValidation() {
   );
 
   const artifacts = await readAgentArtifacts(root);
-  assert.equal(artifacts.draft.targetKeyword, 'fleetbase delivery tracking workflow');
+  assert.equal(
+    artifacts.draft.targetKeyword,
+    'logisbase delivery tracking workflow',
+  );
   assert.equal(artifacts.sourceCitations.length, 1);
 }
 
 async function testStructuredArtifactGeneration() {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'fleetbase-content-agent-structured-'));
+  const root = await fs.mkdtemp(
+    path.join(os.tmpdir(), 'logisbase-content-agent-structured-'),
+  );
   const longHtml = [
-    '<h2>Connect Square Online orders to Fleetbase delivery operations</h2>',
-    `<p>${'A practical Fleetbase and Square Online integration can keep ecommerce order intake separate from delivery execution while giving dispatch teams a source-backed workflow for orders, tracking, and proof of delivery. '.repeat(4)}</p>`,
-    '<h2>Use Fleetbase as the logistics control layer</h2>',
-    `<p>${'Fleetbase source context supports delivery management, dispatch workflows, driver tracking, and proof-of-delivery content for human editors to refine before publishing. '.repeat(5)}</p>`,
+    '<h2>Connect Square Online orders to LogisBase delivery operations</h2>',
+    `<p>${'A practical LogisBase and Square Online integration can keep ecommerce order intake separate from delivery execution while giving dispatch teams a source-backed workflow for orders, tracking, and proof of delivery. '.repeat(4)}</p>`,
+    '<h2>Use LogisBase as the logistics control layer</h2>',
+    `<p>${'LogisBase source context supports delivery management, dispatch workflows, driver tracking, and proof-of-delivery content for human editors to refine before publishing. '.repeat(5)}</p>`,
   ].join('');
   const responses = [
     {
       topics: [
         {
-          keyword: 'integrate Fleetbase with WordPress',
+          keyword: 'integrate LogisBase with WordPress',
           cluster: 'integration',
-          title: 'Integrate Fleetbase with WordPress for Delivery Operations',
+          title: 'Integrate LogisBase with WordPress for Delivery Operations',
           score: 91,
           searchIntent: 'Tutorial',
           businessFit: 10,
@@ -772,17 +832,17 @@ async function testStructuredArtifactGeneration() {
           competitorWeakness: 6,
           cannibalizationRisk: 'low',
           rationale:
-            'A WordPress integration article is specific, practical, and aligned with Fleetbase delivery operations.',
-          suggestedInternalLinks: ['https://fleetbase.io/docs'],
+            'A WordPress integration article is specific, practical, and aligned with LogisBase delivery operations.',
+          suggestedInternalLinks: ['https://logisbase.com/docs'],
         },
       ],
     },
     {
       topics: [
         {
-          keyword: 'integrate Fleetbase with Square Online',
+          keyword: 'integrate LogisBase with Square Online',
           cluster: 'integration',
-          title: 'Integrate Fleetbase with Square Online for Local Delivery',
+          title: 'Integrate LogisBase with Square Online for Local Delivery',
           score: 92,
           searchIntent: 'Tutorial',
           businessFit: 9,
@@ -791,50 +851,57 @@ async function testStructuredArtifactGeneration() {
           cannibalizationRisk: 'low',
           rationale:
             'A Square Online integration topic expands beyond the static seed list while staying relevant to ecommerce delivery operations.',
-          suggestedInternalLinks: ['https://fleetbase.io/docs'],
+          suggestedInternalLinks: ['https://logisbase.com/docs'],
         },
       ],
     },
     {
-      title: 'Integrate Fleetbase with Square Online for Local Delivery',
-      slug: 'integrate-fleetbase-with-square-online-local-delivery',
-      targetKeyword: 'integrate Fleetbase with Square Online',
-      secondaryKeywords: ['Square Online delivery integration', 'local delivery logistics workflow'],
-      audience: 'Developers and operations teams connecting ecommerce sites to logistics workflows',
+      title: 'Integrate LogisBase with Square Online for Local Delivery',
+      slug: 'integrate-logisbase-with-square-online-local-delivery',
+      targetKeyword: 'integrate LogisBase with Square Online',
+      secondaryKeywords: [
+        'Square Online delivery integration',
+        'local delivery logistics workflow',
+      ],
+      audience:
+        'Developers and operations teams connecting ecommerce sites to logistics workflows',
       searchIntent: 'Tutorial',
       thesis:
-        'Fleetbase can act as the delivery operations layer behind Square Online order intake.',
+        'LogisBase can act as the delivery operations layer behind Square Online order intake.',
       outline: [
-        'Why connect Square Online to Fleetbase',
+        'Why connect Square Online to LogisBase',
         'Map ecommerce orders to delivery operations',
         'Use dispatch and tracking workflows',
         'Prepare proof-of-delivery handoff',
       ],
-      internalLinks: ['https://fleetbase.io/docs'],
-      cta: 'Review the Fleetbase docs and plan a source-verified integration workflow.',
-      metaTitle: 'Integrate Fleetbase With Square Online',
+      internalLinks: ['https://logisbase.com/docs'],
+      cta: 'Review the LogisBase docs and plan a source-verified integration workflow.',
+      metaTitle: 'Integrate LogisBase With Square Online',
       metaDescription:
-        'Learn how a Square Online store can hand local delivery operations to Fleetbase.',
+        'Learn how a Square Online store can hand local delivery operations to LogisBase.',
       publicTags: ['Integrations', 'Delivery Management'],
-      sourceNotes: ['Use provided Fleetbase source context for product claims.'],
+      sourceNotes: [
+        'Use provided LogisBase source context for product claims.',
+      ],
     },
     {
-      title: 'Integrate Fleetbase with Square Online for Local Delivery',
-      slug: 'integrate-fleetbase-with-square-online-local-delivery',
+      title: 'Integrate LogisBase with Square Online for Local Delivery',
+      slug: 'integrate-logisbase-with-square-online-local-delivery',
       excerpt:
-        'Learn how Square Online order intake can connect to Fleetbase delivery operations.',
+        'Learn how Square Online order intake can connect to LogisBase delivery operations.',
       html: longHtml,
-      metaTitle: 'Integrate Fleetbase With Square Online',
+      metaTitle: 'Integrate LogisBase With Square Online',
       metaDescription:
-        'Learn how a Square Online store can hand local delivery operations to Fleetbase.',
+        'Learn how a Square Online store can hand local delivery operations to LogisBase.',
       publicTags: ['Integrations', 'Delivery Management'],
       sourceCitations: [
         {
-          repo: 'fleetbase.io',
+          repo: 'logisbase.com',
           path: 'src/app/solutions/use-cases/last-mile-delivery/page.tsx',
           title: 'Last-mile delivery',
-          claim: 'Fleetbase supports last-mile delivery management workflows.',
-          evidence: 'The page describes last-mile delivery, dispatch, and proof-of-delivery workflows.',
+          claim: 'LogisBase supports last-mile delivery management workflows.',
+          evidence:
+            'The page describes last-mile delivery, dispatch, and proof-of-delivery workflows.',
         },
       ],
     },
@@ -843,7 +910,9 @@ async function testStructuredArtifactGeneration() {
       score: 90,
       blockingIssues: [],
       warnings: [],
-      recommendedFixes: ['Human editor should verify integration details before publishing.'],
+      recommendedFixes: [
+        'Human editor should verify integration details before publishing.',
+      ],
     },
   ];
   let callCount = 0;
@@ -865,7 +934,7 @@ async function testStructuredArtifactGeneration() {
     await fs.writeFile(
       path.join(root, 'research-input.json'),
       JSON.stringify({
-        siteUrl: 'https://fleetbase.io',
+        siteUrl: 'https://logisbase.com',
         contentFocus: 'logistics-software',
         topicMode: 'integration',
         integrationTarget: 'WordPress',
@@ -874,7 +943,7 @@ async function testStructuredArtifactGeneration() {
           ahrefsUnavailable: false,
           opportunities: [
             {
-              keyword: 'integrate Fleetbase with WordPress',
+              keyword: 'integrate LogisBase with WordPress',
               cluster: 'integration',
               volume: null,
               difficulty: null,
@@ -894,15 +963,15 @@ async function testStructuredArtifactGeneration() {
         existingGhostContent: [],
         sourceManifest: [
           {
-            repo: 'fleetbase.io',
+            repo: 'logisbase.com',
             category: 'website-page',
             path: 'src/app/solutions/use-cases/last-mile-delivery/page.tsx',
             title: 'Last-mile delivery',
             excerpt:
-              'Fleetbase provides software context for last-mile delivery management, dispatch workflows, driver tracking, and proof of delivery.',
+              'LogisBase provides software context for last-mile delivery management, dispatch workflows, driver tracking, and proof of delivery.',
           },
           {
-            repo: 'fleetbase/fleetops',
+            repo: 'logisbase/fleetops',
             category: 'fleetops',
             path: 'source-truth/fleetops/addon/routes/operations/orders/index.js',
             title: 'Fleet-Ops orders',
@@ -913,23 +982,47 @@ async function testStructuredArtifactGeneration() {
       }),
     );
 
-    await generateArtifacts({ outputDir: root, fetchImpl: fakeFetch, generateFeatureImage: false });
+    await generateArtifacts({
+      outputDir: root,
+      fetchImpl: fakeFetch,
+      generateFeatureImage: false,
+    });
 
     const artifacts = await readAgentArtifacts(root);
-    const topicCandidates = JSON.parse(await fs.readFile(path.join(root, 'topic-candidates.json'), 'utf8'));
+    const topicCandidates = JSON.parse(
+      await fs.readFile(path.join(root, 'topic-candidates.json'), 'utf8'),
+    );
     assert.equal(callCount, 5);
-    assert.equal(artifacts.topic.keyword, 'integrate Fleetbase with Square Online');
+    assert.equal(
+      artifacts.topic.keyword,
+      'integrate LogisBase with Square Online',
+    );
     assert.equal(typeof artifacts.topic.businessFit, 'number');
     assert.equal(artifacts.topic.cannibalizationRisk, 'low');
-    assert.equal(artifacts.draft.targetKeyword, 'integrate Fleetbase with Square Online');
+    assert.equal(
+      artifacts.draft.targetKeyword,
+      'integrate LogisBase with Square Online',
+    );
     assert.equal(artifacts.sourceCitations.length, 1);
-    assert.equal(topicCandidates.expandedTopics[0].keyword, 'integrate Fleetbase with WordPress');
-    assert.equal(topicCandidates.finalistTopics[0].keyword, 'integrate Fleetbase with Square Online');
+    assert.equal(
+      topicCandidates.expandedTopics[0].keyword,
+      'integrate LogisBase with WordPress',
+    );
+    assert.equal(
+      topicCandidates.finalistTopics[0].keyword,
+      'integrate LogisBase with Square Online',
+    );
     assert.equal(schemaRequests[2].schema.properties.metaTitle.maxLength, 80);
-    assert.equal(schemaRequests[2].schema.properties.metaDescription.maxLength, 180);
+    assert.equal(
+      schemaRequests[2].schema.properties.metaDescription.maxLength,
+      180,
+    );
     assert.equal(schemaRequests[3].schema.properties.excerpt.maxLength, 300);
     assert.equal(schemaRequests[3].schema.properties.metaTitle.maxLength, 80);
-    assert.equal(schemaRequests[3].schema.properties.sourceCitations.minItems, 1);
+    assert.equal(
+      schemaRequests[3].schema.properties.sourceCitations.minItems,
+      1,
+    );
   } finally {
     if (previousApiKey === undefined) {
       delete process.env.OPENAI_API_KEY;
@@ -940,15 +1033,17 @@ async function testStructuredArtifactGeneration() {
 }
 
 async function testFeatureImageBriefFallback() {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'fleetbase-content-agent-feature-image-'));
-  const longHtml = `<h2>Fleetbase delivery imagery</h2><p>${'Fleetbase delivery workflows need source-backed content artifacts and feature image prompts for editorial review. '.repeat(8)}</p>`;
+  const root = await fs.mkdtemp(
+    path.join(os.tmpdir(), 'logisbase-content-agent-feature-image-'),
+  );
+  const longHtml = `<h2>LogisBase delivery imagery</h2><p>${'LogisBase delivery workflows need source-backed content artifacts and feature image prompts for editorial review. '.repeat(8)}</p>`;
   const responses = [
     {
       topics: [
         {
-          keyword: 'Fleetbase delivery software feature image fallback',
+          keyword: 'LogisBase delivery software feature image fallback',
           cluster: 'logistics-software',
-          title: 'Fleetbase Delivery Software Feature Image Fallback',
+          title: 'LogisBase Delivery Software Feature Image Fallback',
           score: 87,
           searchIntent: 'Informational',
           businessFit: 9,
@@ -957,16 +1052,16 @@ async function testFeatureImageBriefFallback() {
           cannibalizationRisk: 'low',
           rationale:
             'A content-agent fallback test topic validates reliable feature image artifact generation.',
-          suggestedInternalLinks: ['https://fleetbase.io/docs'],
+          suggestedInternalLinks: ['https://logisbase.com/docs'],
         },
       ],
     },
     {
       topics: [
         {
-          keyword: 'Fleetbase delivery software feature image fallback',
+          keyword: 'LogisBase delivery software feature image fallback',
           cluster: 'logistics-software',
-          title: 'Fleetbase Delivery Software Feature Image Fallback',
+          title: 'LogisBase Delivery Software Feature Image Fallback',
           score: 87,
           searchIntent: 'Informational',
           businessFit: 9,
@@ -975,44 +1070,50 @@ async function testFeatureImageBriefFallback() {
           cannibalizationRisk: 'low',
           rationale:
             'A content-agent fallback test topic validates reliable feature image artifact generation.',
-          suggestedInternalLinks: ['https://fleetbase.io/docs'],
+          suggestedInternalLinks: ['https://logisbase.com/docs'],
         },
       ],
     },
     {
-      title: 'Fleetbase Delivery Software Feature Image Fallback',
-      slug: 'fleetbase-delivery-software-feature-image-fallback',
-      targetKeyword: 'Fleetbase delivery software feature image fallback',
-      secondaryKeywords: ['Fleetbase feature image'],
-      audience: 'Fleetbase editors',
+      title: 'LogisBase Delivery Software Feature Image Fallback',
+      slug: 'logisbase-delivery-software-feature-image-fallback',
+      targetKeyword: 'LogisBase delivery software feature image fallback',
+      secondaryKeywords: ['LogisBase feature image'],
+      audience: 'LogisBase editors',
       searchIntent: 'Informational',
       thesis:
         'Feature image generation should keep working even when the model returns invalid image metadata.',
-      outline: ['Context', 'Artifact generation', 'Fallback brief', 'Editorial review'],
-      internalLinks: ['https://fleetbase.io/docs'],
-      cta: 'Review Fleetbase content artifacts before publishing.',
-      metaTitle: 'Fleetbase Feature Image Fallback',
+      outline: [
+        'Context',
+        'Artifact generation',
+        'Fallback brief',
+        'Editorial review',
+      ],
+      internalLinks: ['https://logisbase.com/docs'],
+      cta: 'Review LogisBase content artifacts before publishing.',
+      metaTitle: 'LogisBase Feature Image Fallback',
       metaDescription:
-        'Validate reliable Fleetbase content-agent feature image brief generation.',
+        'Validate reliable LogisBase content-agent feature image brief generation.',
       publicTags: ['Delivery Management'],
       sourceNotes: ['Feature image fallback fixture.'],
     },
     {
-      title: 'Fleetbase Delivery Software Feature Image Fallback',
-      slug: 'fleetbase-delivery-software-feature-image-fallback',
+      title: 'LogisBase Delivery Software Feature Image Fallback',
+      slug: 'logisbase-delivery-software-feature-image-fallback',
       excerpt:
-        'Validate reliable Fleetbase content-agent feature image brief generation.',
+        'Validate reliable LogisBase content-agent feature image brief generation.',
       html: longHtml,
-      metaTitle: 'Fleetbase Feature Image Fallback',
+      metaTitle: 'LogisBase Feature Image Fallback',
       metaDescription:
-        'Validate reliable Fleetbase content-agent feature image brief generation.',
+        'Validate reliable LogisBase content-agent feature image brief generation.',
       publicTags: ['Delivery Management'],
       sourceCitations: [
         {
-          repo: 'fleetbase.io',
+          repo: 'logisbase.com',
           path: 'content/docs/index.mdx',
-          title: 'Fleetbase docs',
-          claim: 'Fleetbase documentation supports source-backed article generation.',
+          title: 'LogisBase docs',
+          claim:
+            'LogisBase documentation supports source-backed article generation.',
           evidence: 'Docs source context is passed into the generator.',
         },
       ],
@@ -1029,7 +1130,7 @@ async function testFeatureImageBriefFallback() {
         'Landscape editorial image of a modern logistics software dashboard with dispatch panels, delivery route maps, and workflow cards. No text or logos.',
       altText:
         'This alternative text is intentionally far longer than the one hundred and sixty character schema limit so the fallback path is used instead of silently skipping feature image generation.',
-      filename: 'fleetbase-invalid-feature-image-brief.png',
+      filename: 'logisbase-invalid-feature-image-brief.png',
     },
   ];
   let callCount = 0;
@@ -1050,7 +1151,7 @@ async function testFeatureImageBriefFallback() {
         ahrefs: {
           opportunities: [
             {
-              keyword: 'Fleetbase delivery software feature image fallback',
+              keyword: 'LogisBase delivery software feature image fallback',
               cluster: 'logistics-software',
               volume: null,
               difficulty: null,
@@ -1064,18 +1165,22 @@ async function testFeatureImageBriefFallback() {
         existingGhostContent: [],
         sourceManifest: [
           {
-            repo: 'fleetbase.io',
+            repo: 'logisbase.com',
             category: 'documentation',
             path: 'content/docs/index.mdx',
-            title: 'Fleetbase docs',
+            title: 'LogisBase docs',
             excerpt:
-              'Fleetbase documentation supports source-backed planning for logistics workflows.',
+              'LogisBase documentation supports source-backed planning for logistics workflows.',
           },
         ],
       }),
     );
 
-    await generateArtifacts({ outputDir: root, fetchImpl: fakeFetch, generateFeatureImage: true });
+    await generateArtifacts({
+      outputDir: root,
+      fetchImpl: fakeFetch,
+      generateFeatureImage: true,
+    });
 
     const artifacts = await readAgentArtifacts(root);
     assert.equal(callCount, 6);
@@ -1083,7 +1188,7 @@ async function testFeatureImageBriefFallback() {
     assert.equal(artifacts.featureImageBrief.altText.length <= 160, true);
     assert.equal(
       artifacts.featureImageBrief.filename,
-      'fleetbase-delivery-software-feature-image-fallback.png',
+      'logisbase-delivery-software-feature-image-fallback.png',
     );
   } finally {
     if (previousApiKey === undefined) {
@@ -1095,45 +1200,48 @@ async function testFeatureImageBriefFallback() {
 }
 
 async function testManualTopicWinsStructuredGeneration() {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'fleetbase-content-agent-manual-'));
+  const root = await fs.mkdtemp(
+    path.join(os.tmpdir(), 'logisbase-content-agent-manual-'),
+  );
   const previousApiKey = process.env.OPENAI_API_KEY;
   process.env.OPENAI_API_KEY = 'test-openai-key';
   let callCount = 0;
   const responses = [
     {
-      title: 'Build a Fleetbase WordPress Delivery Workflow',
-      slug: 'build-fleetbase-wordpress-delivery-workflow',
-      targetKeyword: 'build a Fleetbase WordPress delivery workflow',
-      secondaryKeywords: ['Fleetbase WordPress integration'],
+      title: 'Build a LogisBase WordPress Delivery Workflow',
+      slug: 'build-logisbase-wordpress-delivery-workflow',
+      targetKeyword: 'build a LogisBase WordPress delivery workflow',
+      secondaryKeywords: ['LogisBase WordPress integration'],
       audience: 'Developers connecting WordPress to delivery operations',
       searchIntent: 'Manual editorial request',
       thesis:
-        'A manual Fleetbase topic should drive the generated brief without another topic-selection pass.',
+        'A manual LogisBase topic should drive the generated brief without another topic-selection pass.',
       outline: ['Context', 'Workflow', 'Citations', 'Review'],
-      internalLinks: ['https://fleetbase.io/docs'],
-      cta: 'Use Fleetbase docs to verify the integration workflow.',
-      metaTitle: 'Fleetbase WordPress Delivery Workflow',
+      internalLinks: ['https://logisbase.com/docs'],
+      cta: 'Use LogisBase docs to verify the integration workflow.',
+      metaTitle: 'LogisBase WordPress Delivery Workflow',
       metaDescription:
-        'Plan a source-backed Fleetbase and WordPress delivery workflow for editorial review.',
+        'Plan a source-backed LogisBase and WordPress delivery workflow for editorial review.',
       publicTags: ['Integrations'],
       sourceNotes: ['Manual topic smoke test.'],
     },
     {
-      title: 'Build a Fleetbase WordPress Delivery Workflow',
-      slug: 'build-fleetbase-wordpress-delivery-workflow',
+      title: 'Build a LogisBase WordPress Delivery Workflow',
+      slug: 'build-logisbase-wordpress-delivery-workflow',
       excerpt:
-        'Plan a Fleetbase and WordPress delivery workflow with validated content-agent artifacts.',
+        'Plan a LogisBase and WordPress delivery workflow with validated content-agent artifacts.',
       html: `<h2>Manual topics stay fixed</h2><p>${'The manual topic path keeps editorial intent intact while still using structured generation for the brief, article, citations, and QA artifacts. '.repeat(7)}</p>`,
-      metaTitle: 'Fleetbase WordPress Delivery Workflow',
+      metaTitle: 'LogisBase WordPress Delivery Workflow',
       metaDescription:
-        'Plan a source-backed Fleetbase and WordPress delivery workflow for editorial review.',
+        'Plan a source-backed LogisBase and WordPress delivery workflow for editorial review.',
       publicTags: ['Integrations'],
       sourceCitations: [
         {
-          repo: 'fleetbase.io',
+          repo: 'logisbase.com',
           path: 'content/docs/index.mdx',
-          title: 'Fleetbase docs',
-          claim: 'Fleetbase documentation is the source for integration planning.',
+          title: 'LogisBase docs',
+          claim:
+            'LogisBase documentation is the source for integration planning.',
           evidence: 'Docs source context is passed into the generator.',
         },
       ],
@@ -1161,7 +1269,7 @@ async function testManualTopicWinsStructuredGeneration() {
         ahrefs: {
           opportunities: [
             {
-              keyword: 'build a Fleetbase WordPress delivery workflow',
+              keyword: 'build a LogisBase WordPress delivery workflow',
               cluster: 'manual',
               volume: null,
               difficulty: null,
@@ -1175,22 +1283,29 @@ async function testManualTopicWinsStructuredGeneration() {
         existingGhostContent: [],
         sourceManifest: [
           {
-            repo: 'fleetbase.io',
+            repo: 'logisbase.com',
             category: 'documentation',
             path: 'content/docs/index.mdx',
-            title: 'Fleetbase docs',
+            title: 'LogisBase docs',
             excerpt:
-              'Fleetbase documentation supports source-backed planning for logistics workflows.',
+              'LogisBase documentation supports source-backed planning for logistics workflows.',
           },
         ],
       }),
     );
 
-    await generateArtifacts({ outputDir: root, fetchImpl: fakeFetch, generateFeatureImage: false });
+    await generateArtifacts({
+      outputDir: root,
+      fetchImpl: fakeFetch,
+      generateFeatureImage: false,
+    });
 
     const artifacts = await readAgentArtifacts(root);
     assert.equal(callCount, 3);
-    assert.equal(artifacts.topic.keyword, 'build a Fleetbase WordPress delivery workflow');
+    assert.equal(
+      artifacts.topic.keyword,
+      'build a LogisBase WordPress delivery workflow',
+    );
     assert.equal(artifacts.topic.score, 100);
     assert.equal(artifacts.topic.businessFit, 10);
   } finally {
@@ -1209,42 +1324,55 @@ function testParseJsonObject() {
   });
 }
 
-function testFleetbaseLinkNormalization() {
+function testLogisBaseLinkNormalization() {
   assert.equal(
-    normalizeFleetbaseLinks('Read https://fleetbase.ghost.io/docs/api/fleetbase/orders now.'),
-    'Read https://fleetbase.io/docs/api/fleetbase/orders now.',
+    normalizeLogisBaseLinks(
+      'Read https://logisbase.ghost.io/docs/api/logisbase/orders now.',
+    ),
+    'Read https://logisbase.com/docs/api/logisbase/orders now.',
   );
   assert.equal(
-    normalizeFleetbaseLinks('<a href="https://www.fleetbase.io/docs">Docs</a>'),
-    '<a href="https://fleetbase.io/docs">Docs</a>',
+    normalizeLogisBaseLinks(
+      '<a href="https://www.logisbase.com/docs">Docs</a>',
+    ),
+    '<a href="https://logisbase.com/docs">Docs</a>',
   );
 
   const article = normalizeArticleLinks({
-    excerpt: 'See https://fleetbase.ghost.io/docs',
-    html: '<a href="https://fleetbase.ghost.io/docs/platform">Platform docs</a>',
-    metaDescription: 'Visit https://www.fleetbase.io/docs',
+    excerpt: 'See https://logisbase.ghost.io/docs',
+    html: '<a href="https://logisbase.ghost.io/docs/platform">Platform docs</a>',
+    metaDescription: 'Visit https://www.logisbase.com/docs',
   });
 
-  assert.equal(article.excerpt, 'See https://fleetbase.io/docs');
-  assert.equal(article.html, '<a href="https://fleetbase.io/docs/platform">Platform docs</a>');
-  assert.equal(article.metaDescription, 'Visit https://fleetbase.io/docs');
+  assert.equal(article.excerpt, 'See https://logisbase.com/docs');
+  assert.equal(
+    article.html,
+    '<a href="https://logisbase.com/docs/platform">Platform docs</a>',
+  );
+  assert.equal(article.metaDescription, 'Visit https://logisbase.com/docs');
 }
 
-function testFleetbaseContentRules() {
-  const normalized = normalizeFleetbaseArticle({
+function testLogisBaseContentRules() {
+  const normalized = normalizeLogisBaseArticle({
     title: 'FleetOps Order Configurations Guide',
-    excerpt: 'See https://fleetbase.ghost.io/docs for FleetOps help.',
-    html: '<p>FleetOps extension docs at https://fleetbase.ghost.io/docs/api.</p>',
+    excerpt: 'See https://logisbase.ghost.io/docs for FleetOps help.',
+    html: '<p>FleetOps extension docs at https://logisbase.ghost.io/docs/api.</p>',
     metaTitle: 'FleetOps Guide',
     metaDescription: 'FleetOps and Order Configurations.',
   });
 
   assert.equal(normalized.title, 'Fleet-Ops Order Config Guide');
-  assert.equal(normalized.excerpt, 'See https://fleetbase.io/docs for Fleet-Ops help.');
-  assert.equal(normalized.html, '<p>Fleet-Ops docs at https://fleetbase.io/docs/api.</p>');
+  assert.equal(
+    normalized.excerpt,
+    'See https://logisbase.com/docs for Fleet-Ops help.',
+  );
+  assert.equal(
+    normalized.html,
+    '<p>Fleet-Ops docs at https://logisbase.com/docs/api.</p>',
+  );
   assert.equal(normalized.metaDescription, 'Fleet-Ops and Order Config.');
 
-  const invalid = validateFleetbaseArticle({
+  const invalid = validateLogisBaseArticle({
     title: 'API-first ride hailing app',
     excerpt: 'Use order_config for quotes.',
     html: '<p>Create an adhoc order and then run orchestrator for manual dispatch.</p>',
@@ -1254,24 +1382,28 @@ function testFleetbaseContentRules() {
 
   assert.equal(invalid.blockingIssues.length, 0);
   assert.equal(
-    invalid.warnings.some((item) => item.includes('[outdated-api-first-positioning]')),
+    invalid.warnings.some((item) =>
+      item.includes('[outdated-api-first-positioning]'),
+    ),
     true,
   );
 
-  const bundledExtensionWarning = validateFleetbaseArticle({
+  const bundledExtensionWarning = validateLogisBaseArticle({
     title: 'Fleet-Ops delivery workflow',
     excerpt: 'Install the Fleet-Ops extension before managing deliveries.',
-    html: '<p>Enable Fleet-Ops in your Fleetbase account, then activate Pallet if you need inventory workflows.</p>',
+    html: '<p>Enable Fleet-Ops in your LogisBase account, then activate Pallet if you need inventory workflows.</p>',
     metaTitle: 'Fleet-Ops workflow',
     metaDescription: 'Fleet-Ops setup guide.',
   });
 
   assert.equal(
-    bundledExtensionWarning.warnings.some((item) => item.includes('[core-extension-enable-install]')),
+    bundledExtensionWarning.warnings.some((item) =>
+      item.includes('[core-extension-enable-install]'),
+    ),
     true,
   );
 
-  const missingExtensionWarning = validateFleetbaseArticle({
+  const missingExtensionWarning = validateLogisBaseArticle({
     title: 'Fleet-Ops delivery workflow',
     excerpt: 'Fleet-Ops must be enabled before you can dispatch orders.',
     html: '<p>Fleet-Ops needs to be installed before dispatchers can use the order board.</p>',
@@ -1280,32 +1412,37 @@ function testFleetbaseContentRules() {
   });
 
   assert.equal(
-    missingExtensionWarning.warnings.some((item) => item.includes('[core-extension-disabled-or-missing]')),
+    missingExtensionWarning.warnings.some((item) =>
+      item.includes('[core-extension-disabled-or-missing]'),
+    ),
     true,
   );
 
-  const warning = validateFleetbaseArticle({
-    title: 'Build proof of delivery in Fleetbase',
+  const warning = validateLogisBaseArticle({
+    title: 'Build proof of delivery in LogisBase',
     excerpt: 'A proof of delivery guide.',
     html: '<p>Capture delivery proof for an order.</p>',
     metaTitle: 'Proof of delivery',
     metaDescription: 'Proof of delivery guide.',
   });
 
-  assert.equal(warning.warnings.some((item) => item.includes('/v1/orders/:id/proofs')), true);
+  assert.equal(
+    warning.warnings.some((item) => item.includes('/v1/orders/:id/proofs')),
+    true,
+  );
 }
 
 function testSourceTruthRepoConfig() {
   const expectedRepos = [
-    'fleetbase/core-api',
-    'fleetbase/fleetops',
-    'fleetbase/ledger',
-    'fleetbase/storefront',
-    'fleetbase/dev-engine',
-    'fleetbase/iam-engine',
-    'fleetbase/ember-core',
-    'fleetbase/pallet',
-    'fleetbase/postman',
+    'logisbase/core-api',
+    'logisbase/fleetops',
+    'logisbase/ledger',
+    'logisbase/storefront',
+    'logisbase/dev-engine',
+    'logisbase/iam-engine',
+    'logisbase/ember-core',
+    'logisbase/pallet',
+    'logisbase/postman',
   ];
 
   assert.deepEqual(
@@ -1314,7 +1451,8 @@ function testSourceTruthRepoConfig() {
   );
   assert.equal(
     contentAgentConfig.sourceTruthRepos.every(
-      (repo) => repo.path.startsWith('source-truth/') || repo.path === 'vendor/postman',
+      (repo) =>
+        repo.path.startsWith('source-truth/') || repo.path === 'vendor/postman',
     ),
     true,
   );
@@ -1327,48 +1465,60 @@ async function writeFixtureFile(root, filePath, content) {
 }
 
 async function testContextManifestAndSelection() {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'fleetbase-content-agent-'));
+  const root = await fs.mkdtemp(
+    path.join(os.tmpdir(), 'logisbase-content-agent-'),
+  );
 
   await writeFixtureFile(
     root,
-    'content/docs/api/fleetbase/orders.mdx',
-    '# Orders API\nCreate and manage Fleetbase orders with pickup, dropoff, payload, tracking, and dispatch examples.',
+    'content/docs/api/logisbase/orders.mdx',
+    '# Orders API\nCreate and manage LogisBase orders with pickup, dropoff, payload, tracking, and dispatch examples.',
   );
   await writeFixtureFile(
     root,
     'src/app/developers/api/api-page-content.tsx',
-    'export default function ApiPageContent() { return <main>Fleetbase API tutorials for developers building logistics workflows.</main>; }',
+    'export default function ApiPageContent() { return <main>LogisBase API tutorials for developers building logistics workflows.</main>; }',
   );
   await writeFixtureFile(
     root,
     'src/app/page.tsx',
-    'export default function HomePage() { return <main>Fleetbase logistics software for fleet operations, dispatch, and supply chain workflows.</main>; }',
+    'export default function HomePage() { return <main>LogisBase logistics software for fleet operations, dispatch, and supply chain workflows.</main>; }',
   );
   await writeFixtureFile(
     root,
     'source-truth/core-api/src/Http/Controllers/Api/v1/OrderController.php',
-    '<?php class OrderController { public function create() { return "Create Fleetbase orders, payloads, and dispatch workflows through the API."; } }',
+    '<?php class OrderController { public function create() { return "Create LogisBase orders, payloads, and dispatch workflows through the API."; } }',
   );
 
   const manifest = await buildContextManifest(contentAgentConfig, { root });
   const selected = selectContextSources(manifest, contentAgentConfig, {
-    contentFocus: 'fleetbase-api-tutorial',
+    contentFocus: 'logisbase-api-tutorial',
     topic: {
-      title: 'Build an order tracking workflow with the Fleetbase API',
-      keyword: 'fleetbase api tutorial',
+      title: 'Build an order tracking workflow with the LogisBase API',
+      keyword: 'logisbase api tutorial',
     },
   });
 
   assert.equal(
-    manifest.some((item) => item.path === 'content/docs/api/fleetbase/orders.mdx'),
+    manifest.some(
+      (item) => item.path === 'content/docs/api/logisbase/orders.mdx',
+    ),
     true,
   );
   assert.equal(
-    manifest.some((item) => item.path === 'src/app/developers/api/api-page-content.tsx'),
+    manifest.some(
+      (item) => item.path === 'src/app/developers/api/api-page-content.tsx',
+    ),
     true,
   );
-  assert.equal(manifest.some((item) => item.path === 'src/app/page.tsx'), true);
-  assert.equal(selected.some((item) => item.path.includes('content/docs/api/')), true);
+  assert.equal(
+    manifest.some((item) => item.path === 'src/app/page.tsx'),
+    true,
+  );
+  assert.equal(
+    selected.some((item) => item.path.includes('content/docs/api/')),
+    true,
+  );
   assert.equal(
     selected.some(
       (item) =>
@@ -1404,8 +1554,8 @@ await testStructuredArtifactGeneration();
 await testFeatureImageBriefFallback();
 await testManualTopicWinsStructuredGeneration();
 testParseJsonObject();
-testFleetbaseLinkNormalization();
-testFleetbaseContentRules();
+testLogisBaseLinkNormalization();
+testLogisBaseContentRules();
 testSourceTruthRepoConfig();
 await testContextManifestAndSelection();
 

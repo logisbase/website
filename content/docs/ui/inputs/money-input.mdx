@@ -1,6 +1,6 @@
 ---
 title: MoneyInput
-description: "<MoneyInput> is a currency-aware money input — formats as the user types using AutoNumeric and shows the currency symbol on the left. Optional currency picker."
+description: '<MoneyInput> is a currency-aware money input — formats as the user types using AutoNumeric and shows the currency symbol on the left. Optional currency picker.'
 ---
 
 # `<MoneyInput>`
@@ -10,7 +10,7 @@ A currency-aware money input. Formats as the user types using `AutoNumeric` and 
 ## Basic Usage
 
 ```handlebars
-<MoneyInput @value={{this.invoice.total}} @currency="USD" />
+<MoneyInput @value={{this.invoice.total}} @currency='USD' />
 ```
 
 The currency symbol (`$`) is rendered to the left, and the input is auto-formatted (e.g. `1,234.56`).
@@ -28,20 +28,20 @@ The currency symbol (`$`) is rendered to the left, and the input is auto-formatt
 
 ## Arguments
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
-| `@value` | number \| string | Amount value |
-| `@currency` | string | ISO 4217 code (e.g. `USD`, `EUR`, `MNT`) |
-| `@canSelectCurrency` | boolean | Show the currency picker dropdown |
-| `@onCurrencyChange` | `(currency)` | Called when the user picks a different currency |
-| `@wrapperClass` | string | Extra classes on the outer wrapper |
+| Argument             | Type             | Description                                     |
+| :------------------- | :--------------- | :---------------------------------------------- |
+| `@value`             | number \| string | Amount value                                    |
+| `@currency`          | string           | ISO 4217 code (e.g. `USD`, `EUR`, `MNT`)        |
+| `@canSelectCurrency` | boolean          | Show the currency picker dropdown               |
+| `@onCurrencyChange`  | `(currency)`     | Called when the user picks a different currency |
+| `@wrapperClass`      | string           | Extra classes on the outer wrapper              |
 
 Any additional `...attributes` are forwarded to the underlying `<input>`.
 
 ## Inside an InputGroup
 
 ```handlebars
-<InputGroup @name="Price">
+<InputGroup @name='Price'>
   <MoneyInput @value={{this.product.price}} @currency={{this.store.currency}} />
 </InputGroup>
 ```
@@ -52,8 +52,8 @@ The displayed value is formatted with the currency's standard separator and deci
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/money-input.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/money-input.hbs) | Template |
-| [`addon/components/money-input.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/money-input.js) | Class |
-| [`addon/components/money-input/`](https://github.com/fleetbase/ember-ui/tree/main/addon/components/money-input) | `CurrencyHandle` and related subcomponents |
+| File                                                                                                                   | Description                                |
+| :--------------------------------------------------------------------------------------------------------------------- | :----------------------------------------- |
+| [`addon/components/money-input.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/money-input.hbs) | Template                                   |
+| [`addon/components/money-input.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/money-input.js)   | Class                                      |
+| [`addon/components/money-input/`](https://github.com/logisbase/ember-ui/tree/main/addon/components/money-input)        | `CurrencyHandle` and related subcomponents |

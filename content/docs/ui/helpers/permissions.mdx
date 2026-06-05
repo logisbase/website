@@ -14,8 +14,8 @@ For declarative gating on individual components, prefer the built-in `@permissio
 Returns true if the current user has the ability:
 
 ```handlebars
-{{#if (can-action "fleet-ops driver delete")}}
-  <Button @type="danger" @text="Delete driver" @onClick={{this.delete}} />
+{{#if (can-action 'fleet-ops driver delete')}}
+  <Button @type='danger' @text='Delete driver' @onClick={{this.delete}} />
 {{/if}}
 ```
 
@@ -24,8 +24,8 @@ Returns true if the current user has the ability:
 The negation:
 
 ```handlebars
-{{#if (cannot-action "fleet-ops driver delete")}}
-  <span class="text-gray-400">You don't have permission to delete drivers</span>
+{{#if (cannot-action 'fleet-ops driver delete')}}
+  <span class='text-gray-400'>You don't have permission to delete drivers</span>
 {{/if}}
 ```
 
@@ -35,7 +35,7 @@ Convenience for `delete-<model>` style abilities:
 
 ```handlebars
 {{#if (can-delete @driver)}}
-  <Button @type="danger" @icon="trash" @onClick={{fn this.delete @driver}} />
+  <Button @type='danger' @icon='trash' @onClick={{fn this.delete @driver}} />
 {{/if}}
 ```
 
@@ -49,9 +49,9 @@ Convenience for `update-<model>` (or whatever your write ability is):
 
 ```handlebars
 {{#if (can-write @driver)}}
-  <InputGroup @name="Name" @value={{@driver.name}} />
+  <InputGroup @name='Name' @value={{@driver.name}} />
 {{else}}
-  <InputGroup @name="Name" @value={{@driver.name}} @disabled={{true}} />
+  <InputGroup @name='Name' @value={{@driver.name}} @disabled={{true}} />
 {{/if}}
 ```
 
@@ -65,7 +65,7 @@ Returns the ability string used by `can-write` for a subject — useful for forw
 
 ```handlebars
 <Button
-  @text="Save"
+  @text='Save'
   @permission={{get-write-permission @driver}}
   @onClick={{this.save}}
 />
@@ -82,13 +82,13 @@ Specialized helper for chat-feature gating. True if the current user can remove 
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/helpers/can-action.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/can-action.js) | Helper |
-| [`addon/helpers/can-delete.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/can-delete.js) | Helper |
-| [`addon/helpers/can-write.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/can-write.js) | Helper |
-| [`addon/helpers/cannot-action.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/cannot-action.js) | Helper |
-| [`addon/helpers/cannot-delete.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/cannot-delete.js) | Helper |
-| [`addon/helpers/cannot-write.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/cannot-write.js) | Helper |
-| [`addon/helpers/get-write-permission.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/get-write-permission.js) | Helper |
-| [`addon/helpers/can-remove-chat-participant.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/can-remove-chat-participant.js) | Helper |
+| File                                                                                                                                           | Description |
+| :--------------------------------------------------------------------------------------------------------------------------------------------- | :---------- |
+| [`addon/helpers/can-action.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/can-action.js)                                   | Helper      |
+| [`addon/helpers/can-delete.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/can-delete.js)                                   | Helper      |
+| [`addon/helpers/can-write.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/can-write.js)                                     | Helper      |
+| [`addon/helpers/cannot-action.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/cannot-action.js)                             | Helper      |
+| [`addon/helpers/cannot-delete.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/cannot-delete.js)                             | Helper      |
+| [`addon/helpers/cannot-write.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/cannot-write.js)                               | Helper      |
+| [`addon/helpers/get-write-permission.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/get-write-permission.js)               | Helper      |
+| [`addon/helpers/can-remove-chat-participant.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/can-remove-chat-participant.js) | Helper      |

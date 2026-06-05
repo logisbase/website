@@ -6,209 +6,283 @@ import { SoftwareApplicationSchema } from '@/components/seo/json-ld';
 import { Breadcrumbs } from '@/components/ui/breadcrumbs';
 
 export const metadata: Metadata = {
- title: 'Fleetbase vs Tookan | Open-Source Tookan Alternative',
- description:
- 'Compare Fleetbase vs Tookan. Fleetbase is the open-source Tookan alternative with no agent-based pricing, self-hosting, full API access, and a complete logistics platform. See the full comparison.',
- keywords: [
- 'Tookan alternative',
- 'Fleetbase vs Tookan',
- 'open source Tookan alternative',
- 'delivery management software alternative to Tookan',
- 'Tookan competitor',
- 'cheaper than Tookan',
- 'Tookan self hosted alternative',
- ],
- openGraph: {
- title: 'Fleetbase vs Tookan | Open-Source Tookan Alternative',
- description:
- 'Compare Fleetbase vs Tookan. No agent-based pricing, self-hosting, full API access. The open-source alternative to Tookan.',
- images: [
- {
- url: '/og?title=Fleetbase%20vs%20Tookan&eyebrow=Compare&subtitle=The%20open-source%20alternative%20to%20Tookan%20%E2%80%94%20no%20agent-based%20pricing%2C%20self-hosted%20or%20cloud.',
- width: 1200,
- height: 630,
- alt: 'Fleetbase vs Tookan — open-source Tookan alternative',
- },
- ],
- },
- twitter: {
- card: 'summary_large_image',
- title: 'Fleetbase vs Tookan',
- description: 'The open-source Tookan alternative — no agent-based pricing, self-hosted or cloud.',
- images: [
- '/og?title=Fleetbase%20vs%20Tookan&eyebrow=Compare&subtitle=The%20open-source%20alternative%20to%20Tookan%20%E2%80%94%20no%20agent-based%20pricing%2C%20self-hosted%20or%20cloud.',
- ],
- },
- alternates: { canonical: 'https://fleetbase.io/compare/vs-tookan' },
+  title: 'LogisBase vs Tookan | Source-Available Tookan Alternative',
+  description:
+    'Compare LogisBase vs Tookan. LogisBase is the source-available Tookan alternative with no agent-based pricing, self-hosting, full API access, and a complete logistics platform. See the full comparison.',
+  keywords: [
+    'Tookan alternative',
+    'LogisBase vs Tookan',
+    'source-available Tookan alternative',
+    'delivery management software alternative to Tookan',
+    'Tookan competitor',
+    'cheaper than Tookan',
+    'Tookan self hosted alternative',
+  ],
+  openGraph: {
+    title: 'LogisBase vs Tookan | Source-Available Tookan Alternative',
+    description:
+      'Compare LogisBase vs Tookan. No agent-based pricing, self-hosting, full API access. The source-available alternative to Tookan.',
+    images: [
+      {
+        url: '/og?title=LogisBase%20vs%20Tookan&eyebrow=Compare&subtitle=The%20source-available%20alternative%20to%20Tookan%20%E2%80%94%20no%20agent-based%20pricing%2C%20self-hosted%20or%20cloud.',
+        width: 1200,
+        height: 630,
+        alt: 'LogisBase vs Tookan — source-available Tookan alternative',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LogisBase vs Tookan',
+    description:
+      'The source-available Tookan alternative — no agent-based pricing, self-hosted or cloud.',
+    images: [
+      '/og?title=LogisBase%20vs%20Tookan&eyebrow=Compare&subtitle=The%20source-available%20alternative%20to%20Tookan%20%E2%80%94%20no%20agent-based%20pricing%2C%20self-hosted%20or%20cloud.',
+    ],
+  },
+  alternates: { canonical: 'https://logisbase.com/compare/vs-tookan' },
 };
 
 type FeatureRow = {
- feature: string;
- fleetbase: string | boolean;
- tookan: string | boolean;
- note?: string;
+  feature: string;
+  logisbase: string | boolean;
+  tookan: string | boolean;
+  note?: string;
 };
 
 const COMPARISON: FeatureRow[] = [
- { feature: 'Open Source', fleetbase: true, tookan: false },
- { feature: 'Self-Hosted Deployment', fleetbase: true, tookan: false },
- { feature: 'Cloud Hosting', fleetbase: true, tookan: true },
- { feature: 'Free Tier', fleetbase: 'Free trial + open source', tookan: 'Free plan (200 tasks/mo)' },
- { feature: 'Pricing Model', fleetbase: 'Usage-based (from $50/mo)', tookan: 'Per-agent + per-task fees' },
- { feature: 'Per-Agent Fees', fleetbase: false, tookan: true, note: 'Tookan charges per agent/driver' },
- { feature: 'Real-Time GPS Tracking', fleetbase: true, tookan: true },
- { feature: 'Route Optimization', fleetbase: true, tookan: true },
- { feature: 'Automated Dispatch', fleetbase: true, tookan: true },
- { feature: 'Driver Mobile App', fleetbase: 'Free open-source (Navigator)', tookan: 'Proprietary' },
- { feature: 'Proof of Delivery (POD)', fleetbase: true, tookan: true },
- { feature: 'Customer Notifications', fleetbase: true, tookan: true },
- { feature: 'White-Label Branding', fleetbase: true, tookan: 'Paid add-on' },
- { feature: 'Full REST API', fleetbase: true, tookan: 'Limited' },
- { feature: 'Webhooks', fleetbase: true, tookan: true },
- { feature: 'Extensions / Marketplace', fleetbase: true, tookan: 'Limited integrations' },
- { feature: 'Multi-Tenant / Multi-Org', fleetbase: true, tookan: 'Enterprise only' },
- { feature: 'Warehouse Management (WMS)', fleetbase: 'Pallet WMS included', tookan: false },
- { feature: 'Storefront / Online Ordering', fleetbase: true, tookan: false },
- { feature: 'Accounting / Ledger', fleetbase: true, tookan: false },
- { feature: 'Custom Extensions / SDK', fleetbase: true, tookan: false },
- { feature: 'Data Ownership', fleetbase: 'Full — self-host or export', tookan: 'Vendor-controlled' },
- { feature: 'Community Support', fleetbase: 'Discord + GitHub', tookan: 'Email only' },
- { feature: 'Enterprise SLA Support', fleetbase: true, tookan: true },
+  { feature: 'Source-available', logisbase: true, tookan: false },
+  { feature: 'Self-Hosted Deployment', logisbase: true, tookan: false },
+  { feature: 'Cloud Hosting', logisbase: true, tookan: true },
+  {
+    feature: 'Free Tier',
+    logisbase: 'Free trial + source-available',
+    tookan: 'Free plan (200 tasks/mo)',
+  },
+  {
+    feature: 'Pricing Model',
+    logisbase: 'Usage-based (from $50/mo)',
+    tookan: 'Per-agent + per-task fees',
+  },
+  {
+    feature: 'Per-Agent Fees',
+    logisbase: false,
+    tookan: true,
+    note: 'Tookan charges per agent/driver',
+  },
+  { feature: 'Real-Time GPS Tracking', logisbase: true, tookan: true },
+  { feature: 'Route Optimization', logisbase: true, tookan: true },
+  { feature: 'Automated Dispatch', logisbase: true, tookan: true },
+  {
+    feature: 'Driver Mobile App',
+    logisbase: 'Free source-available (Navigator)',
+    tookan: 'Proprietary',
+  },
+  { feature: 'Proof of Delivery (POD)', logisbase: true, tookan: true },
+  { feature: 'Customer Notifications', logisbase: true, tookan: true },
+  { feature: 'White-Label Branding', logisbase: true, tookan: 'Paid add-on' },
+  { feature: 'Full REST API', logisbase: true, tookan: 'Limited' },
+  { feature: 'Webhooks', logisbase: true, tookan: true },
+  {
+    feature: 'Extensions / Marketplace',
+    logisbase: true,
+    tookan: 'Limited integrations',
+  },
+  {
+    feature: 'Multi-Tenant / Multi-Org',
+    logisbase: true,
+    tookan: 'Enterprise only',
+  },
+  {
+    feature: 'Warehouse Management (WMS)',
+    logisbase: 'Pallet WMS included',
+    tookan: false,
+  },
+  { feature: 'Storefront / Online Ordering', logisbase: true, tookan: false },
+  { feature: 'Accounting / Ledger', logisbase: true, tookan: false },
+  { feature: 'Custom Extensions / SDK', logisbase: true, tookan: false },
+  {
+    feature: 'Data Ownership',
+    logisbase: 'Full — self-host or export',
+    tookan: 'Vendor-controlled',
+  },
+  {
+    feature: 'Community Support',
+    logisbase: 'Discord + GitHub',
+    tookan: 'Email only',
+  },
+  { feature: 'Enterprise SLA Support', logisbase: true, tookan: true },
 ];
 
 function Cell({ value }: { value: string | boolean }) {
- if (value === true) return <CheckCircle2 className="h-5 w-5 text-green-500 mx-auto" />;
- if (value === false) return <XCircle className="h-5 w-5 text-red-400 mx-auto" />;
- return <span className="text-sm text-center block">{value}</span>;
+  if (value === true)
+    return <CheckCircle2 className="mx-auto h-5 w-5 text-green-500" />;
+  if (value === false)
+    return <XCircle className="mx-auto h-5 w-5 text-red-400" />;
+  return <span className="block text-center text-sm">{value}</span>;
 }
 
 export default function VsTookanPage() {
- return (
- <div className="min-h-screen">
- <SoftwareApplicationSchema
- name="Tookan"
- url="https://tookanapp.com"
- description="Delivery management and dispatch software with per-agent and per-task pricing — closed-source SaaS."
- />
+  return (
+    <div className="min-h-screen">
+      <SoftwareApplicationSchema
+        name="Tookan"
+        url="https://tookanapp.com"
+        description="Delivery management and dispatch software with per-agent and per-task pricing — closed-source SaaS."
+      />
 
- {/* Hero */}
- <section className="section-padding border-b bg-gradient-to-b from-muted/30 to-background">
- <div className="container max-w-5xl text-center space-y-6">
- <Breadcrumbs
- className="justify-center [&_ol]:justify-center"
- items={[
- { label: 'Compare', href: '/compare' },
- { label: 'Fleetbase vs Tookan', href: '/compare/vs-tookan' },
- ]}
- />
- <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
- Comparison
- </div>
- <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-balance">
- Fleetbase vs Tookan
- </h1>
- <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
- Tookan charges per agent and per task — costs that compound fast as your team grows. Fleetbase is the open-source alternative with predictable usage-based pricing, self-hosting, and a full logistics platform built in.
- </p>
- <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
- <Button size="lg" asChild>
- <Link href="https://console.fleetbase.io/onboard">
- Try Fleetbase Free <ArrowRight className="ml-2 h-4 w-4" />
- </Link>
- </Button>
- <Button size="lg" variant="outline" asChild>
- <Link href="/pricing">View Pricing</Link>
- </Button>
- </div>
- </div>
- </section>
+      {/* Hero */}
+      <section className="section-padding from-muted/30 to-background border-b bg-gradient-to-b">
+        <div className="container max-w-5xl space-y-6 text-center">
+          <Breadcrumbs
+            className="justify-center [&_ol]:justify-center"
+            items={[
+              { label: 'Compare', href: '/compare' },
+              { label: 'LogisBase vs Tookan', href: '/compare/vs-tookan' },
+            ]}
+          />
+          <div className="text-muted-foreground inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium">
+            Comparison
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight text-balance md:text-5xl lg:text-6xl">
+            LogisBase vs Tookan
+          </h1>
+          <p className="text-muted-foreground mx-auto max-w-3xl text-xl leading-relaxed">
+            Tookan charges per agent and per task — costs that compound fast as
+            your team grows. LogisBase is the source-available alternative with
+            predictable usage-based pricing, self-hosting, and a full logistics
+            platform built in.
+          </p>
+          <div className="flex flex-col justify-center gap-4 pt-2 sm:flex-row">
+            <Button size="lg" asChild>
+              <Link href="https://console.logisbase.com/onboard">
+                Try LogisBase Free <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/pricing">View Pricing</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
 
- {/* Key Differences */}
- <section className="py-16 md:py-20 border-b">
- <div className="container max-w-5xl">
- <h2 className="text-2xl font-bold mb-10 text-center">Why teams switch from Tookan to Fleetbase</h2>
- <div className="grid gap-6 md:grid-cols-3">
- {[
- {
- title: 'No per-agent pricing',
- description:
- "Tookan charges per agent — the more drivers you add, the more you pay. Fleetbase uses resource units: one flat pool that covers orders, drivers, vehicles, and API calls.",
- },
- {
- title: 'Open source & self-hostable',
- description:
- "Tookan is closed-source and cloud-only. Fleetbase is fully open source under AGPL. Deploy on your own servers, keep your data, and never worry about vendor lock-in.",
- },
- {
- title: 'A complete logistics OS',
- description:
- 'Tookan handles dispatch. Fleetbase includes dispatch, WMS (Pallet), storefront, accounting (Ledger), driver app (Navigator), and an extensions marketplace — one platform for everything.',
- },
- ].map((item) => (
- <div key={item.title} className="rounded-xl border bg-card p-6">
- <CheckCircle2 className="h-6 w-6 text-green-500 mb-3" />
- <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
- <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
- </div>
- ))}
- </div>
- </div>
- </section>
+      {/* Key Differences */}
+      <section className="border-b py-16 md:py-20">
+        <div className="container max-w-5xl">
+          <h2 className="mb-10 text-center text-2xl font-bold">
+            Why teams switch from Tookan to LogisBase
+          </h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: 'No per-agent pricing',
+                description:
+                  'Tookan charges per agent — the more drivers you add, the more you pay. LogisBase uses resource units: one flat pool that covers orders, drivers, vehicles, and API calls.',
+              },
+              {
+                title: 'Source-available & self-hostable',
+                description:
+                  'Tookan is closed-source and cloud-only. LogisBase is fully source-available under AGPL. Deploy on your own servers, keep your data, and never worry about vendor lock-in.',
+              },
+              {
+                title: 'A complete logistics OS',
+                description:
+                  'Tookan handles dispatch. LogisBase includes dispatch, WMS (Pallet), storefront, accounting (Ledger), driver app (Navigator), and an extensions marketplace — one platform for everything.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="bg-card rounded-xl border p-6">
+                <CheckCircle2 className="mb-3 h-6 w-6 text-green-500" />
+                <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
- {/* Feature Comparison Table */}
- <section className="py-16 md:py-20">
- <div className="container max-w-5xl">
- <h2 className="text-2xl font-bold mb-8 text-center">Full Feature Comparison</h2>
- <div className="overflow-x-auto rounded-xl border">
- <table className="w-full text-sm">
- <thead>
- <tr className="border-b bg-muted/40">
- <th className="text-left px-4 py-3 font-semibold w-1/2">Feature</th>
- <th className="text-center px-4 py-3 font-semibold text-primary w-1/4">Fleetbase</th>
- <th className="text-center px-4 py-3 font-semibold text-muted-foreground w-1/4">Tookan</th>
- </tr>
- </thead>
- <tbody>
- {COMPARISON.map((row, i) => (
- <tr key={row.feature} className={i % 2 === 0 ? 'bg-background' : 'bg-muted/20'}>
- <td className="px-4 py-3 font-medium">
- {row.feature}
- {row.note && (
- <span className="block text-xs text-muted-foreground mt-0.5">{row.note}</span>
- )}
- </td>
- <td className="px-4 py-3 text-center"><Cell value={row.fleetbase} /></td>
- <td className="px-4 py-3 text-center"><Cell value={row.tookan} /></td>
- </tr>
- ))}
- </tbody>
- </table>
- </div>
- </div>
- </section>
+      {/* Feature Comparison Table */}
+      <section className="py-16 md:py-20">
+        <div className="container max-w-5xl">
+          <h2 className="mb-8 text-center text-2xl font-bold">
+            Full Feature Comparison
+          </h2>
+          <div className="overflow-x-auto rounded-xl border">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-muted/40 border-b">
+                  <th className="w-1/2 px-4 py-3 text-left font-semibold">
+                    Feature
+                  </th>
+                  <th className="text-primary w-1/4 px-4 py-3 text-center font-semibold">
+                    LogisBase
+                  </th>
+                  <th className="text-muted-foreground w-1/4 px-4 py-3 text-center font-semibold">
+                    Tookan
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARISON.map((row, i) => (
+                  <tr
+                    key={row.feature}
+                    className={i % 2 === 0 ? 'bg-background' : 'bg-muted/20'}
+                  >
+                    <td className="px-4 py-3 font-medium">
+                      {row.feature}
+                      {row.note && (
+                        <span className="text-muted-foreground mt-0.5 block text-xs">
+                          {row.note}
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <Cell value={row.logisbase} />
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <Cell value={row.tookan} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
- {/* CTA */}
- <section className="py-16 md:py-20 border-t">
- <div className="container max-w-3xl text-center space-y-6">
- <h2 className="text-3xl font-bold tracking-tight">Ready to switch from Tookan?</h2>
- <p className="text-lg text-muted-foreground">
- Migrate your operations to Fleetbase in days. Our team provides free migration support for teams coming from Tookan.
- </p>
- <div className="flex flex-col sm:flex-row gap-4 justify-center">
- <Button size="lg" asChild>
- <Link href="https://console.fleetbase.io/onboard">
- Start Free Trial <ArrowRight className="ml-2 h-4 w-4" />
- </Link>
- </Button>
- <Button size="lg" variant="outline" asChild>
- <Link href="https://cal.com/shivthakker/enquiry" target="_blank" rel="noopener noreferrer">
- Talk to Sales
- </Link>
- </Button>
- </div>
- <p className="text-sm text-muted-foreground"> Free migration support · Cancel anytime</p>
- </div>
- </section>
- </div>
- );
+      {/* CTA */}
+      <section className="border-t py-16 md:py-20">
+        <div className="container max-w-3xl space-y-6 text-center">
+          <h2 className="text-3xl font-bold tracking-tight">
+            Ready to switch from Tookan?
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            Migrate your operations to LogisBase in days. Our team provides free
+            migration support for teams coming from Tookan.
+          </p>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <Button size="lg" asChild>
+              <Link href="https://console.logisbase.com/onboard">
+                Start Free Trial <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link
+                href="https://cal.com/shivthakker/enquiry"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Talk to Sales
+              </Link>
+            </Button>
+          </div>
+          <p className="text-muted-foreground text-sm">
+            {' '}
+            Free migration support · Cancel anytime
+          </p>
+        </div>
+      </section>
+    </div>
+  );
 }

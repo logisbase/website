@@ -1,6 +1,6 @@
 ---
 title: ReportBuilder
-description: "<ReportBuilder> is a visual query builder for constructing reports — pick tables, columns, filters, sorts, and group-bys, then preview live results."
+description: '<ReportBuilder> is a visual query builder for constructing reports — pick tables, columns, filters, sorts, and group-bys, then preview live results.'
 ---
 
 # `<ReportBuilder>`
@@ -11,8 +11,8 @@ description: "<ReportBuilder> is a visual query builder for constructing reports
 
 ```handlebars
 <ReportBuilder
-  @extension="fleet-ops"
-  @category="orders"
+  @extension='fleet-ops'
+  @category='orders'
   @report={{this.report}}
   @onQueryConfigChanged={{this.persistConfig}}
 />
@@ -27,19 +27,19 @@ The component:
 
 ## Arguments
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
-| `@extension` | string | Extension key — filters the available tables |
-| `@category` | string | Category within the extension — further filters tables |
-| `@report` | model | The Report record being edited (its `query_config` and result are mutated) |
-| `@onQueryConfigChanged` | `(queryConfig)` | Called whenever the query config changes |
+| Argument                | Type            | Description                                                                |
+| :---------------------- | :-------------- | :------------------------------------------------------------------------- |
+| `@extension`            | string          | Extension key — filters the available tables                               |
+| `@category`             | string          | Category within the extension — further filters tables                     |
+| `@report`               | model           | The Report record being edited (its `query_config` and result are mutated) |
+| `@onQueryConfigChanged` | `(queryConfig)` | Called whenever the query config changes                                   |
 
 ## Internal Behavior
 
-| Task | Description |
-| :--- | :--- |
-| `loadSchema` | `GET reports/tables` — fetches available tables and columns |
-| `execute` | `POST reports/execute-query` — runs the configured query and returns rows |
+| Task         | Description                                                               |
+| :----------- | :------------------------------------------------------------------------ |
+| `loadSchema` | `GET reports/tables` — fetches available tables and columns               |
+| `execute`    | `POST reports/execute-query` — runs the configured query and returns rows |
 
 ## Tabs
 
@@ -54,7 +54,7 @@ The component tracks `validationErrors` and `validationWarnings` — surfaced in
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/report-builder.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/report-builder.hbs) | Template |
-| [`addon/components/report-builder.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/report-builder.js) | Class |
+| File                                                                                                                         | Description |
+| :--------------------------------------------------------------------------------------------------------------------------- | :---------- |
+| [`addon/components/report-builder.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/report-builder.hbs) | Template    |
+| [`addon/components/report-builder.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/report-builder.js)   | Class       |

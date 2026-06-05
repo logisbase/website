@@ -38,14 +38,14 @@ import { Button } from '@/components/ui/button';
 import { CodeBlock } from '@/components/ui/code-block';
 
 const categories = [
-  { icon: Truck,          name: 'Fleet & Dispatch',      count: 12 },
-  { icon: Map,            name: 'Mapping & Routing',     count: 8 },
-  { icon: CreditCard,     name: 'Payments & Billing',    count: 9 },
-  { icon: Warehouse,      name: 'Inventory & WMS',       count: 6 },
-  { icon: Plug,           name: 'Integrations',          count: 15 },
-  { icon: BarChart3,      name: 'Analytics & Reports',   count: 7 },
-  { icon: MessageSquare,  name: 'Communication',         count: 5 },
-  { icon: Shield,         name: 'Security & Auth',       count: 4 },
+  { icon: Truck, name: 'Fleet & Dispatch', count: 12 },
+  { icon: Map, name: 'Mapping & Routing', count: 8 },
+  { icon: CreditCard, name: 'Payments & Billing', count: 9 },
+  { icon: Warehouse, name: 'Inventory & WMS', count: 6 },
+  { icon: Plug, name: 'Integrations', count: 15 },
+  { icon: BarChart3, name: 'Analytics & Reports', count: 7 },
+  { icon: MessageSquare, name: 'Communication', count: 5 },
+  { icon: Shield, name: 'Security & Auth', count: 4 },
 ];
 
 // First-party + community-built integrations available natively or through
@@ -53,63 +53,229 @@ const categories = [
 // under /public/images/integrations/.
 const INTEGRATIONS: { name: string; category: string; logo: string }[] = [
   // Maps & Location
-  { name: 'Google Maps',     category: 'Maps & Location',          logo: 'https://cdn.simpleicons.org/googlemaps/4285F4' },
-  { name: 'OpenStreetMap',   category: 'Maps & Location',          logo: 'https://cdn.simpleicons.org/openstreetmap/7EBC6F' },
+  {
+    name: 'Google Maps',
+    category: 'Maps & Location',
+    logo: 'https://cdn.simpleicons.org/googlemaps/4285F4',
+  },
+  {
+    name: 'OpenStreetMap',
+    category: 'Maps & Location',
+    logo: 'https://cdn.simpleicons.org/openstreetmap/7EBC6F',
+  },
   // Routing & Optimization
-  { name: 'OSRM',            category: 'Routing & Optimization',   logo: '/images/integrations/osrm.svg' },
-  { name: 'Valhalla',        category: 'Routing & Optimization',   logo: '/images/integrations/valhalla.svg' },
-  { name: 'VROOM',           category: 'Routing & Optimization',   logo: '/images/integrations/vroom.png' },
+  {
+    name: 'OSRM',
+    category: 'Routing & Optimization',
+    logo: '/images/integrations/osrm.svg',
+  },
+  {
+    name: 'Valhalla',
+    category: 'Routing & Optimization',
+    logo: '/images/integrations/valhalla.svg',
+  },
+  {
+    name: 'VROOM',
+    category: 'Routing & Optimization',
+    logo: '/images/integrations/vroom.png',
+  },
   // Telematics & Fleet Hardware
-  { name: 'Flespi',          category: 'Telematics & Fleet Hardware', logo: '/images/integrations/flespi.svg' },
-  { name: 'Samsara',         category: 'Telematics & Fleet Hardware', logo: '/images/integrations/samsara.svg' },
-  { name: 'Geotab',          category: 'Telematics & Fleet Hardware', logo: '/images/integrations/geotab.svg' },
+  {
+    name: 'Flespi',
+    category: 'Telematics & Fleet Hardware',
+    logo: '/images/integrations/flespi.svg',
+  },
+  {
+    name: 'Samsara',
+    category: 'Telematics & Fleet Hardware',
+    logo: '/images/integrations/samsara.svg',
+  },
+  {
+    name: 'Geotab',
+    category: 'Telematics & Fleet Hardware',
+    logo: '/images/integrations/geotab.svg',
+  },
   // Payments
-  { name: 'Stripe',          category: 'Payments',                 logo: 'https://cdn.simpleicons.org/stripe/635BFF' },
+  {
+    name: 'Stripe',
+    category: 'Payments',
+    logo: 'https://cdn.simpleicons.org/stripe/635BFF',
+  },
   // Communication
-  { name: 'Twilio',          category: 'Communication',            logo: 'https://cdn.simpleicons.org/twilio/F22F46' },
-  { name: 'SendGrid',        category: 'Communication',            logo: 'https://cdn.simpleicons.org/sendgrid/51A9E3' },
-  { name: 'Mailgun',         category: 'Communication',            logo: 'https://cdn.simpleicons.org/mailgun/F06B66' },
+  {
+    name: 'Twilio',
+    category: 'Communication',
+    logo: 'https://cdn.simpleicons.org/twilio/F22F46',
+  },
+  {
+    name: 'SendGrid',
+    category: 'Communication',
+    logo: 'https://cdn.simpleicons.org/sendgrid/51A9E3',
+  },
+  {
+    name: 'Mailgun',
+    category: 'Communication',
+    logo: 'https://cdn.simpleicons.org/mailgun/F06B66',
+  },
   // Cloud & Infrastructure
-  { name: 'AWS',             category: 'Cloud & Infrastructure',   logo: 'https://cdn.simpleicons.org/amazonaws/FF9900' },
-  { name: 'Google Cloud',    category: 'Cloud & Infrastructure',   logo: 'https://cdn.simpleicons.org/googlecloud/4285F4' },
-  { name: 'Microsoft Azure', category: 'Cloud & Infrastructure',   logo: 'https://cdn.simpleicons.org/microsoftazure/0078D4' },
-  { name: 'DigitalOcean',    category: 'Cloud & Infrastructure',   logo: 'https://cdn.simpleicons.org/digitalocean/0080FF' },
-  { name: 'Docker',          category: 'Cloud & Infrastructure',   logo: 'https://cdn.simpleicons.org/docker/2496ED' },
-  { name: 'Kubernetes',      category: 'Cloud & Infrastructure',   logo: 'https://cdn.simpleicons.org/kubernetes/326CE5' },
+  {
+    name: 'AWS',
+    category: 'Cloud & Infrastructure',
+    logo: 'https://cdn.simpleicons.org/amazonaws/FF9900',
+  },
+  {
+    name: 'Google Cloud',
+    category: 'Cloud & Infrastructure',
+    logo: 'https://cdn.simpleicons.org/googlecloud/4285F4',
+  },
+  {
+    name: 'Microsoft Azure',
+    category: 'Cloud & Infrastructure',
+    logo: 'https://cdn.simpleicons.org/microsoftazure/0078D4',
+  },
+  {
+    name: 'DigitalOcean',
+    category: 'Cloud & Infrastructure',
+    logo: 'https://cdn.simpleicons.org/digitalocean/0080FF',
+  },
+  {
+    name: 'Docker',
+    category: 'Cloud & Infrastructure',
+    logo: 'https://cdn.simpleicons.org/docker/2496ED',
+  },
+  {
+    name: 'Kubernetes',
+    category: 'Cloud & Infrastructure',
+    logo: 'https://cdn.simpleicons.org/kubernetes/326CE5',
+  },
   // Databases
-  { name: 'MySQL',           category: 'Databases',                logo: 'https://cdn.simpleicons.org/mysql/4479A1' },
-  { name: 'Redis',           category: 'Databases',                logo: 'https://cdn.simpleicons.org/redis/DC382D' },
+  {
+    name: 'MySQL',
+    category: 'Databases',
+    logo: 'https://cdn.simpleicons.org/mysql/4479A1',
+  },
+  {
+    name: 'Redis',
+    category: 'Databases',
+    logo: 'https://cdn.simpleicons.org/redis/DC382D',
+  },
   // Developer Tools
-  { name: 'GitHub',          category: 'Developer Tools',          logo: 'https://cdn.simpleicons.org/github/181717' },
-  { name: 'Postman',         category: 'Developer Tools',          logo: 'https://cdn.simpleicons.org/postman/FF6C37' },
+  {
+    name: 'GitHub',
+    category: 'Developer Tools',
+    logo: 'https://cdn.simpleicons.org/github/181717',
+  },
+  {
+    name: 'Postman',
+    category: 'Developer Tools',
+    logo: 'https://cdn.simpleicons.org/postman/FF6C37',
+  },
   // Monitoring
-  { name: 'Sentry',          category: 'Monitoring',               logo: 'https://cdn.simpleicons.org/sentry/362D59' },
+  {
+    name: 'Sentry',
+    category: 'Monitoring',
+    logo: 'https://cdn.simpleicons.org/sentry/362D59',
+  },
   // E-commerce
-  { name: 'Shopify',         category: 'E-commerce',               logo: 'https://cdn.simpleicons.org/shopify/96BF48' },
-  { name: 'WooCommerce',     category: 'E-commerce',               logo: 'https://cdn.simpleicons.org/woocommerce/96588A' },
+  {
+    name: 'Shopify',
+    category: 'E-commerce',
+    logo: 'https://cdn.simpleicons.org/shopify/96BF48',
+  },
+  {
+    name: 'WooCommerce',
+    category: 'E-commerce',
+    logo: 'https://cdn.simpleicons.org/woocommerce/96588A',
+  },
   // Mobile
-  { name: 'Android',         category: 'Mobile',                   logo: 'https://cdn.simpleicons.org/android/3DDC84' },
-  { name: 'React Native',    category: 'Mobile',                   logo: 'https://cdn.simpleicons.org/react/61DAFB' },
-  { name: 'Expo',            category: 'Mobile',                   logo: 'https://cdn.simpleicons.org/expo/000020' },
+  {
+    name: 'Android',
+    category: 'Mobile',
+    logo: 'https://cdn.simpleicons.org/android/3DDC84',
+  },
+  {
+    name: 'React Native',
+    category: 'Mobile',
+    logo: 'https://cdn.simpleicons.org/react/61DAFB',
+  },
+  {
+    name: 'Expo',
+    category: 'Mobile',
+    logo: 'https://cdn.simpleicons.org/expo/000020',
+  },
   // Backend & Framework
-  { name: 'Laravel',         category: 'Backend & Framework',      logo: 'https://cdn.simpleicons.org/laravel/FF2D20' },
-  { name: 'Node.js',         category: 'Backend & Framework',      logo: 'https://cdn.simpleicons.org/nodedotjs/339933' },
-  { name: 'Next.js',         category: 'Backend & Framework',      logo: 'https://cdn.simpleicons.org/nextdotjs/000000' },
-  { name: 'PHP',             category: 'Backend & Framework',      logo: 'https://cdn.simpleicons.org/php/777BB4' },
+  {
+    name: 'Laravel',
+    category: 'Backend & Framework',
+    logo: 'https://cdn.simpleicons.org/laravel/FF2D20',
+  },
+  {
+    name: 'Node.js',
+    category: 'Backend & Framework',
+    logo: 'https://cdn.simpleicons.org/nodedotjs/339933',
+  },
+  {
+    name: 'Next.js',
+    category: 'Backend & Framework',
+    logo: 'https://cdn.simpleicons.org/nextdotjs/000000',
+  },
+  {
+    name: 'PHP',
+    category: 'Backend & Framework',
+    logo: 'https://cdn.simpleicons.org/php/777BB4',
+  },
 ];
-const INTEGRATION_CATEGORIES = [...new Set(INTEGRATIONS.map((i) => i.category))];
+const INTEGRATION_CATEGORIES = [
+  ...new Set(INTEGRATIONS.map((i) => i.category)),
+];
 
 const featuredExtensions = [
-  { icon: Truck,         name: 'FleetOps',                 tag: 'Free',  desc: 'Core TMS and fleet management — orders, drivers, routes, and real-time tracking.', publisher: 'Fleetbase' },
-  { icon: ShoppingBag,   name: 'Storefront',               tag: 'Free',  desc: 'Headless e-commerce and on-demand ordering with native delivery integration.', publisher: 'Fleetbase' },
-  { icon: Package,       name: 'Pallet WMS',               tag: 'Free',  desc: 'Warehouse management with inventory tracking, pick lists, and fulfilment.', publisher: 'Fleetbase' },
-  { icon: BookOpen,      name: 'Ledger',                   tag: 'Free',  desc: 'Double-entry accounting engine for logistics finance, invoicing, and payouts.', publisher: 'Fleetbase' },
-  { icon: Map,           name: 'HERE Maps',                tag: 'Paid',  desc: 'Replace the default mapping layer with HERE Maps for enhanced routing.', publisher: 'Community' },
-  { icon: MessageSquare, name: 'WhatsApp Notifications',   tag: 'Paid',  desc: 'Send order status updates and driver alerts via WhatsApp Business API.', publisher: 'Community' },
+  {
+    icon: Truck,
+    name: 'FleetOps',
+    tag: 'Free',
+    desc: 'Core TMS and fleet management — orders, drivers, routes, and real-time tracking.',
+    publisher: 'LogisBase',
+  },
+  {
+    icon: ShoppingBag,
+    name: 'Storefront',
+    tag: 'Free',
+    desc: 'Headless e-commerce and on-demand ordering with native delivery integration.',
+    publisher: 'LogisBase',
+  },
+  {
+    icon: Package,
+    name: 'Pallet WMS',
+    tag: 'Free',
+    desc: 'Warehouse management with inventory tracking, pick lists, and fulfilment.',
+    publisher: 'LogisBase',
+  },
+  {
+    icon: BookOpen,
+    name: 'Ledger',
+    tag: 'Free',
+    desc: 'Double-entry accounting engine for logistics finance, invoicing, and payouts.',
+    publisher: 'LogisBase',
+  },
+  {
+    icon: Map,
+    name: 'HERE Maps',
+    tag: 'Paid',
+    desc: 'Replace the default mapping layer with HERE Maps for enhanced routing.',
+    publisher: 'Community',
+  },
+  {
+    icon: MessageSquare,
+    name: 'WhatsApp Notifications',
+    tag: 'Paid',
+    desc: 'Send order status updates and driver alerts via WhatsApp Business API.',
+    publisher: 'Community',
+  },
 ];
 
-const scaffoldCode = `# Install the Fleetbase CLI
-npm install -g @fleetbase/cli
+const scaffoldCode = `# Install the LogisBase CLI
+npm install -g @logisbase/cli
 
 # Register a developer account
 flb register
@@ -135,35 +301,45 @@ flb publish`;
 export default function ExtensionsMarketplacePageContent() {
   return (
     <div className="flex flex-col">
-
       {/* ── Hero ────────────────────────────────────────────────────── */}
       <section className="section-padding relative">
-        <div className="container relative">
-          <div className="flex flex-col items-center text-center gap-8 max-w-4xl mx-auto">
+        <div className="relative container">
+          <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
             <div className="flex items-center rounded-full border p-1 text-xs">
-              <span className="rounded-full bg-muted px-3 py-1">Platform</span>
+              <span className="bg-muted rounded-full px-3 py-1">Platform</span>
               <span className="px-3">Extensions Marketplace</span>
             </div>
 
             <h1 className="text-4xxl leading-none tracking-tight text-balance">
               Extend, Customize, and{' '}
-              <span className="text-gradient">Build on Fleetbase</span>
+              <span className="text-gradient">Build on LogisBase</span>
             </h1>
 
-            <p className="text-foreground/90 leading-snug md:text-lg dark:text-foreground/95 max-w-3xl">
-              The Extensions Marketplace is where the Fleetbase platform grows. Browse and install
-              extensions built by Fleetbase and the open-source community — or publish your own and
-              monetize it to reach thousands of logistics operators worldwide.
+            <p className="text-foreground/90 dark:text-foreground/95 max-w-3xl leading-snug md:text-lg">
+              The Extensions Marketplace is where the LogisBase platform grows.
+              Browse and install extensions built by LogisBase and the
+              source-available community — or publish your own and monetize it
+              to reach thousands of logistics operators worldwide.
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="https://console.fleetbase.io" target="_blank" rel="noopener noreferrer">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="https://console.logisbase.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button size="lg">Browse Extensions</Button>
               </Link>
               <Link href="/developers/extensions">
-                <Button size="lg" variant="outline">Publish an Extension</Button>
+                <Button size="lg" variant="outline">
+                  Publish an Extension
+                </Button>
               </Link>
-              <Link href="https://github.com/fleetbase/registry-bridge" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://github.com/logisbase/registry-bridge"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button size="lg" variant="ghost">
                   <FaGithub className="mr-2 h-4 w-4" />
                   Registry Source
@@ -171,10 +347,10 @@ export default function ExtensionsMarketplacePageContent() {
               </Link>
             </div>
 
-            <div className="relative w-full mt-4 aspect-video overflow-hidden rounded-xl border shadow-2xl">
+            <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-xl border shadow-2xl">
               <Image
                 src="/images/screenshots/extensions/extensions-browse.webp"
-                alt="Fleetbase Extensions Marketplace console view"
+                alt="LogisBase Extensions Marketplace console view"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 80vw"
@@ -186,20 +362,24 @@ export default function ExtensionsMarketplacePageContent() {
       </section>
 
       {/* ── Stat strip ──────────────────────────────────────────────── */}
-      <section className="border-y bg-muted/10">
+      <section className="bg-muted/10 border-y">
         <div
-          className="container rounded-xl overflow-hidden bg-border"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1 }}
+          className="bg-border container overflow-hidden rounded-xl"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: 1,
+          }}
         >
           {[
-            { value: '60+',   label: 'Extensions available' },
-            { value: '8',     label: 'Categories' },
-            { value: 'Free',  label: 'Core extensions' },
-            { value: 'Open',  label: 'Publisher platform' },
+            { value: '60+', label: 'Extensions available' },
+            { value: '8', label: 'Categories' },
+            { value: 'Free', label: 'Core extensions' },
+            { value: 'Open', label: 'Publisher platform' },
           ].map(({ value, label }) => (
             <div key={label} className="bg-background py-8 text-center">
-              <p className="text-3xl font-bold text-gradient">{value}</p>
-              <p className="mt-1 text-sm text-muted-foreground">{label}</p>
+              <p className="text-gradient text-3xl font-bold">{value}</p>
+              <p className="text-muted-foreground mt-1 text-sm">{label}</p>
             </div>
           ))}
         </div>
@@ -211,31 +391,48 @@ export default function ExtensionsMarketplacePageContent() {
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <div className="flex flex-col gap-6">
               <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs">
-                <Users className="mr-2 h-3 w-3 text-primary" />
+                <Users className="text-primary mr-2 h-3 w-3" />
                 For Operators
               </div>
-              <h2 className="text-4xl font-bold leading-tight tracking-tight">
+              <h2 className="text-4xl leading-tight font-bold tracking-tight">
                 Extend your platform in minutes, not months
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Installing an extension takes seconds. Browse the marketplace, click install, and
-                the new capability is immediately available in your Fleetbase console — no
-                restarts, no deployments, no engineering required.
+                Installing an extension takes seconds. Browse the marketplace,
+                click install, and the new capability is immediately available
+                in your LogisBase console — no restarts, no deployments, no
+                engineering required.
               </p>
               <ul className="space-y-5">
                 {[
-                  { icon: Search, title: 'Browse & discover', desc: 'Search by category, keyword, or publisher. Read descriptions, view screenshots, and check ratings before installing.' },
-                  { icon: Zap,    title: 'One-click install', desc: 'Free extensions install instantly. Paid extensions prompt a secure checkout, then activate immediately on confirmation.' },
-                  { icon: Box,    title: 'Manage & update', desc: 'View all installed extensions from one dashboard. Receive update notifications and uninstall with one click.' },
-                  { icon: Code2,  title: 'Self-managed install', desc: 'Running self-hosted? Every extension includes step-by-step instructions for your own infrastructure.' },
+                  {
+                    icon: Search,
+                    title: 'Browse & discover',
+                    desc: 'Search by category, keyword, or publisher. Read descriptions, view screenshots, and check ratings before installing.',
+                  },
+                  {
+                    icon: Zap,
+                    title: 'One-click install',
+                    desc: 'Free extensions install instantly. Paid extensions prompt a secure checkout, then activate immediately on confirmation.',
+                  },
+                  {
+                    icon: Box,
+                    title: 'Manage & update',
+                    desc: 'View all installed extensions from one dashboard. Receive update notifications and uninstall with one click.',
+                  },
+                  {
+                    icon: Code2,
+                    title: 'Self-managed install',
+                    desc: 'Running self-hosted? Every extension includes step-by-step instructions for your own infrastructure.',
+                  },
                 ].map(({ icon: Icon, title, desc }) => (
                   <li key={title} className="flex gap-4">
-                    <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                      <Icon className="h-4 w-4 text-primary" />
+                    <div className="bg-primary/10 mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+                      <Icon className="text-primary h-4 w-4" />
                     </div>
                     <div>
-                      <p className="font-semibold text-sm">{title}</p>
-                      <p className="text-sm text-muted-foreground">{desc}</p>
+                      <p className="text-sm font-semibold">{title}</p>
+                      <p className="text-muted-foreground text-sm">{desc}</p>
                     </div>
                   </li>
                 ))}
@@ -244,7 +441,7 @@ export default function ExtensionsMarketplacePageContent() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl border shadow-lg">
               <Image
                 src="/images/screenshots/extensions/extensions-console-install.webp"
-                alt="Fleetbase extensions marketplace install flow"
+                alt="LogisBase extensions marketplace install flow"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -258,44 +455,59 @@ export default function ExtensionsMarketplacePageContent() {
       <section className="section-padding bg-muted/20">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold tracking-tight">Featured extensions</h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground">
-              First-party modules from Fleetbase and top community extensions — install any of
-              them in one click from the console.
+            <h2 className="mb-4 text-4xl font-bold tracking-tight">
+              Featured extensions
+            </h2>
+            <p className="text-muted-foreground mx-auto max-w-2xl">
+              First-party modules from LogisBase and top community extensions —
+              install any of them in one click from the console.
             </p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {featuredExtensions.map(({ icon: Icon, name, tag, desc, publisher }) => (
-              <div key={name} className="flex flex-col gap-4 rounded-xl border bg-card p-6">
-                <div className="flex items-start justify-between">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                    <Icon className="h-5 w-5 text-primary" />
+            {featuredExtensions.map(
+              ({ icon: Icon, name, tag, desc, publisher }) => (
+                <div
+                  key={name}
+                  className="bg-card flex flex-col gap-4 rounded-xl border p-6"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-lg">
+                      <Icon className="text-primary h-5 w-5" />
+                    </div>
+                    <span
+                      className={`rounded-full border px-2 py-0.5 text-xs font-medium ${
+                        tag === 'Free'
+                          ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-400'
+                          : 'border-primary/20 bg-primary/5 text-primary'
+                      }`}
+                    >
+                      {tag}
+                    </span>
                   </div>
-                  <span
-                    className={`rounded-full border px-2 py-0.5 text-xs font-medium ${
-                      tag === 'Free'
-                        ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-400'
-                        : 'border-primary/20 bg-primary/5 text-primary'
-                    }`}
-                  >
-                    {tag}
-                  </span>
+                  <div>
+                    <p className="font-semibold">{name}</p>
+                    <p className="text-muted-foreground mt-1 text-sm">{desc}</p>
+                  </div>
+                  <div className="mt-auto flex items-center justify-between">
+                    <span className="text-muted-foreground text-xs">
+                      by {publisher}
+                    </span>
+                    <Button size="sm" variant="outline">
+                      View
+                    </Button>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-semibold">{name}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
-                </div>
-                <div className="mt-auto flex items-center justify-between">
-                  <span className="text-xs text-muted-foreground">by {publisher}</span>
-                  <Button size="sm" variant="outline">View</Button>
-                </div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
 
           <div className="mt-10 text-center">
-            <Link href="https://console.fleetbase.io" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://console.logisbase.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button size="lg" variant="outline">
                 Browse all extensions <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -308,25 +520,34 @@ export default function ExtensionsMarketplacePageContent() {
       <section className="section-padding">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold tracking-tight">Browse by category</h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground">
-              Find extensions that match your operational needs across every area of logistics.
+            <h2 className="mb-4 text-4xl font-bold tracking-tight">
+              Browse by category
+            </h2>
+            <p className="text-muted-foreground mx-auto max-w-2xl">
+              Find extensions that match your operational needs across every
+              area of logistics.
             </p>
           </div>
           <div
-            className="overflow-hidden rounded-xl border bg-border"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1 }}
+            className="bg-border overflow-hidden rounded-xl border"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: 1,
+            }}
           >
             {categories.map(({ icon: Icon, name, count }) => (
               <div
                 key={name}
-                className="flex cursor-pointer flex-col items-center gap-3 bg-card p-8 text-center transition-colors hover:bg-muted/50"
+                className="bg-card hover:bg-muted/50 flex cursor-pointer flex-col items-center gap-3 p-8 text-center transition-colors"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
-                  <Icon className="h-5 w-5 text-primary" />
+                <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-xl">
+                  <Icon className="text-primary h-5 w-5" />
                 </div>
                 <p className="text-sm font-semibold">{name}</p>
-                <p className="text-xs text-muted-foreground">{count} extensions</p>
+                <p className="text-muted-foreground text-xs">
+                  {count} extensions
+                </p>
               </div>
             ))}
           </div>
@@ -337,51 +558,61 @@ export default function ExtensionsMarketplacePageContent() {
       <section id="integrations" className="section-padding scroll-mt-20">
         <div className="container">
           <div className="mb-12 text-center">
-            <div className="mb-3 inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="text-muted-foreground mb-3 inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
               Integrations
             </div>
             <h2 className="mb-4 text-4xl font-bold tracking-tight">
               Plug into the tools you already use
             </h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground">
-              Fleetbase connects natively to {INTEGRATIONS.length}+ services across maps, payments,
-              communication, cloud, and developer tooling — through first-party extensions, the
-              REST API, and webhooks.
+            <p className="text-muted-foreground mx-auto max-w-2xl">
+              LogisBase connects natively to {INTEGRATIONS.length}+ services
+              across maps, payments, communication, cloud, and developer tooling
+              — through first-party extensions, the REST API, and webhooks.
             </p>
           </div>
           {INTEGRATION_CATEGORIES.map((category) => (
             <div key={category} className="mb-10">
-              <h3 className="mb-4 border-b pb-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <h3 className="text-muted-foreground mb-4 border-b pb-2 text-sm font-semibold tracking-wider uppercase">
                 {category}
               </h3>
               <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
-                {INTEGRATIONS.filter((i) => i.category === category).map((integration) => (
-                  <div
-                    key={integration.name}
-                    className="flex flex-col items-center gap-2 rounded-lg border bg-card p-3 transition-all hover:border-primary/40 hover:shadow-sm"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={integration.logo}
-                      alt={`${integration.name} logo`}
-                      className="h-8 w-8 object-contain"
-                      loading="lazy"
-                    />
-                    <span className="text-center text-xs leading-tight text-muted-foreground">
-                      {integration.name}
-                    </span>
-                  </div>
-                ))}
+                {INTEGRATIONS.filter((i) => i.category === category).map(
+                  (integration) => (
+                    <div
+                      key={integration.name}
+                      className="bg-card hover:border-primary/40 flex flex-col items-center gap-2 rounded-lg border p-3 transition-all hover:shadow-sm"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={integration.logo}
+                        alt={`${integration.name} logo`}
+                        className="h-8 w-8 object-contain"
+                        loading="lazy"
+                      />
+                      <span className="text-muted-foreground text-center text-xs leading-tight">
+                        {integration.name}
+                      </span>
+                    </div>
+                  ),
+                )}
               </div>
             </div>
           ))}
-          <p className="mt-8 text-center text-sm text-muted-foreground">
+          <p className="text-muted-foreground mt-8 text-center text-sm">
             Don&apos;t see what you need?{' '}
-            <Link href="/developers/extensions" className="text-primary underline underline-offset-4">
+            <Link
+              href="/developers/extensions"
+              className="text-primary underline underline-offset-4"
+            >
               Build your own integration
             </Link>{' '}
             or{' '}
-            <Link href="https://cal.com/shivthakker/enquiry" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">
+            <Link
+              href="https://cal.com/shivthakker/enquiry"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline underline-offset-4"
+            >
               talk to us
             </Link>
             .
@@ -393,47 +624,63 @@ export default function ExtensionsMarketplacePageContent() {
       <section className="section-padding bg-muted/20">
         <div className="container">
           <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border shadow-lg order-2 lg:order-1">
+            <div className="relative order-2 aspect-[4/3] overflow-hidden rounded-xl border shadow-lg lg:order-1">
               <Image
                 src="/images/screenshots/extensions/extensions-installed.webp"
-                alt="Fleetbase developer dashboard — installed and purchased extensions"
+                alt="LogisBase developer dashboard — installed and purchased extensions"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
-            <div className="flex flex-col gap-6 order-1 lg:order-2">
+            <div className="order-1 flex flex-col gap-6 lg:order-2">
               <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs">
-                <Code2 className="mr-2 h-3 w-3 text-primary" />
+                <Code2 className="text-primary mr-2 h-3 w-3" />
                 For Developers &amp; Publishers
               </div>
-              <h2 className="text-4xl font-bold leading-tight tracking-tight">
+              <h2 className="text-4xl leading-tight font-bold tracking-tight">
                 Build once. Sell to thousands of logistics operators.
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                The Fleetbase developer platform gives you everything you need to build, publish,
-                and monetize extensions — without managing your own distribution or payment
-                infrastructure.
+                The LogisBase developer platform gives you everything you need
+                to build, publish, and monetize extensions — without managing
+                your own distribution or payment infrastructure.
               </p>
               <ul className="space-y-5">
                 {[
-                  { icon: Code2,        title: 'Developer account & credentials', desc: 'Create a developer account, generate registry credentials, and authenticate your publishing pipeline in minutes.' },
-                  { icon: Upload,       title: 'Extension builder & bundles', desc: 'Create listings with descriptions and screenshots. Package multiple versions or configs as bundles.' },
-                  { icon: DollarSign,   title: 'Built-in monetization', desc: 'Connect Stripe and set your own pricing. The marketplace handles payment processing, licensing, and access control.' },
-                  { icon: BarChart3,    title: 'Analytics & revenue tracking', desc: 'Track installs, active users, revenue, and conversion rates from your developer dashboard in real time.' },
+                  {
+                    icon: Code2,
+                    title: 'Developer account & credentials',
+                    desc: 'Create a developer account, generate registry credentials, and authenticate your publishing pipeline in minutes.',
+                  },
+                  {
+                    icon: Upload,
+                    title: 'Extension builder & bundles',
+                    desc: 'Create listings with descriptions and screenshots. Package multiple versions or configs as bundles.',
+                  },
+                  {
+                    icon: DollarSign,
+                    title: 'Built-in monetization',
+                    desc: 'Connect Stripe and set your own pricing. The marketplace handles payment processing, licensing, and access control.',
+                  },
+                  {
+                    icon: BarChart3,
+                    title: 'Analytics & revenue tracking',
+                    desc: 'Track installs, active users, revenue, and conversion rates from your developer dashboard in real time.',
+                  },
                 ].map(({ icon: Icon, title, desc }) => (
                   <li key={title} className="flex gap-4">
-                    <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                      <Icon className="h-4 w-4 text-primary" />
+                    <div className="bg-primary/10 mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+                      <Icon className="text-primary h-4 w-4" />
                     </div>
                     <div>
-                      <p className="font-semibold text-sm">{title}</p>
-                      <p className="text-sm text-muted-foreground">{desc}</p>
+                      <p className="text-sm font-semibold">{title}</p>
+                      <p className="text-muted-foreground text-sm">{desc}</p>
                     </div>
                   </li>
                 ))}
               </ul>
-              <div className="flex gap-3 flex-wrap">
+              <div className="flex flex-wrap gap-3">
                 <Link href="/developers/extensions">
                   <Button>Start building</Button>
                 </Link>
@@ -443,7 +690,11 @@ export default function ExtensionsMarketplacePageContent() {
                     Read the docs
                   </Button>
                 </Link>
-                <Link href="https://cal.com/shivthakker/enquiry" target="_blank" rel="noopener noreferrer">
+                <Link
+                  href="https://cal.com/shivthakker/enquiry"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button variant="ghost">
                     Talk to us <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -461,40 +712,66 @@ export default function ExtensionsMarketplacePageContent() {
             <h2 className="mb-4 text-4xl font-bold tracking-tight">
               From idea to paying customers in four steps
             </h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground">
-              The publishing workflow is designed to get your extension listed and earning as
-              quickly as possible.
+            <p className="text-muted-foreground mx-auto max-w-2xl">
+              The publishing workflow is designed to get your extension listed
+              and earning as quickly as possible.
             </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-4 max-w-5xl mx-auto mb-16">
+          <div className="mx-auto mb-16 grid max-w-5xl gap-4 md:grid-cols-4">
             {[
-              { icon: Code2,       step: '1', label: 'Build', desc: 'Scaffold your extension with the CLI, add your frontend and backend logic, and test against a local Fleetbase instance.' },
-              { icon: Star,        step: '2', label: 'Review', desc: 'Submit for review. Our team checks quality, security, and compatibility. Most extensions are reviewed within 48 hours.' },
-              { icon: Upload,      step: '3', label: 'Publish', desc: 'Once approved, your extension goes live in the marketplace and is immediately discoverable by all Fleetbase operators.' },
-              { icon: DollarSign,  step: '4', label: 'Monetize', desc: 'Connect Stripe, set your price, and start earning. Fleetbase takes a small platform fee; the rest goes directly to you.' },
+              {
+                icon: Code2,
+                step: '1',
+                label: 'Build',
+                desc: 'Scaffold your extension with the CLI, add your frontend and backend logic, and test against a local LogisBase instance.',
+              },
+              {
+                icon: Star,
+                step: '2',
+                label: 'Review',
+                desc: 'Submit for review. Our team checks quality, security, and compatibility. Most extensions are reviewed within 48 hours.',
+              },
+              {
+                icon: Upload,
+                step: '3',
+                label: 'Publish',
+                desc: 'Once approved, your extension goes live in the marketplace and is immediately discoverable by all LogisBase operators.',
+              },
+              {
+                icon: DollarSign,
+                step: '4',
+                label: 'Monetize',
+                desc: 'Connect Stripe, set your price, and start earning. LogisBase takes a small platform fee; the rest goes directly to you.',
+              },
             ].map(({ icon: Icon, step, label, desc }, i) => (
-              <div key={label} className="relative flex flex-col gap-4 rounded-xl border bg-card p-6">
+              <div
+                key={label}
+                className="bg-card relative flex flex-col gap-4 rounded-xl border p-6"
+              >
                 {i < 3 && (
-                  <ArrowRight className="absolute -right-2.5 top-8 hidden h-5 w-5 text-muted-foreground md:block" />
+                  <ArrowRight className="text-muted-foreground absolute top-8 -right-2.5 hidden h-5 w-5 md:block" />
                 )}
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
+                <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full text-xs font-bold">
                   {step}
                 </div>
-                <Icon className="h-5 w-5 text-muted-foreground" />
+                <Icon className="text-muted-foreground h-5 w-5" />
                 <div>
                   <p className="font-semibold">{label}</p>
-                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                  <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
+                    {desc}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Stripe badge */}
-          <div className="mx-auto flex max-w-lg items-center justify-center gap-3 rounded-xl border bg-card px-6 py-4">
+          <div className="bg-card mx-auto flex max-w-lg items-center justify-center gap-3 rounded-xl border px-6 py-4">
             <FaStripe className="h-8 w-8 text-[#635bff]" />
-            <p className="text-sm text-muted-foreground">
-              Payouts powered by Stripe — direct deposits, no invoicing back-and-forth.
+            <p className="text-muted-foreground text-sm">
+              Payouts powered by Stripe — direct deposits, no invoicing
+              back-and-forth.
             </p>
           </div>
         </div>
@@ -505,54 +782,62 @@ export default function ExtensionsMarketplacePageContent() {
         <div className="container">
           <div className="mb-12 text-center">
             <div className="mb-4 inline-flex items-center rounded-full border px-3 py-1 text-xs">
-              <PuzzleIcon className="mr-2 h-3 w-3 text-primary" />
+              <PuzzleIcon className="text-primary mr-2 h-3 w-3" />
               Extension Architecture
             </div>
             <h2 className="mb-4 text-4xl font-bold tracking-tight">
               A full-stack extension framework
             </h2>
-            <p className="mx-auto max-w-3xl text-muted-foreground">
-              Fleetbase extensions are full-stack modules — an Ember.js frontend engine and a
-              Laravel backend package — giving complete control over both the console UI and
-              server-side logic.
+            <p className="text-muted-foreground mx-auto max-w-3xl">
+              LogisBase extensions are full-stack modules — an Ember.js frontend
+              engine and a Laravel backend package — giving complete control
+              over both the console UI and server-side logic.
             </p>
           </div>
 
           <div className="mb-8 grid gap-6 md:grid-cols-2">
-            <div className="rounded-xl border bg-card p-8">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                <Code2 className="h-5 w-5 text-primary" />
+            <div className="bg-card rounded-xl border p-8">
+              <div className="bg-primary/10 mb-4 flex h-10 w-10 items-center justify-center rounded-lg">
+                <Code2 className="text-primary h-5 w-5" />
               </div>
-              <h3 className="mb-2 text-lg font-semibold">Frontend: Ember.js Engine</h3>
-              <p className="mb-4 text-sm text-muted-foreground">
-                The frontend is an Ember.js engine that integrates seamlessly into the Fleetbase
-                console. Extensions can add new routes, components, dashboards, and widgets that
-                feel native to the platform.
+              <h3 className="mb-2 text-lg font-semibold">
+                Frontend: Ember.js Engine
+              </h3>
+              <p className="text-muted-foreground mb-4 text-sm">
+                The frontend is an Ember.js engine that integrates seamlessly
+                into the LogisBase console. Extensions can add new routes,
+                components, dashboards, and widgets that feel native to the
+                platform.
               </p>
               <ul className="space-y-2">
                 {[
                   'Custom routes and navigation',
                   'Reusable UI components',
                   'Dashboard widgets',
-                  'Full access to Fleetbase UI library',
+                  'Full access to LogisBase UI library',
                 ].map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-primary" />
+                  <li
+                    key={f}
+                    className="text-muted-foreground flex items-center gap-2 text-sm"
+                  >
+                    <CheckCircle2 className="text-primary h-3.5 w-3.5 shrink-0" />
                     {f}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="rounded-xl border bg-card p-8">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                <Box className="h-5 w-5 text-primary" />
+            <div className="bg-card rounded-xl border p-8">
+              <div className="bg-primary/10 mb-4 flex h-10 w-10 items-center justify-center rounded-lg">
+                <Box className="text-primary h-5 w-5" />
               </div>
-              <h3 className="mb-2 text-lg font-semibold">Backend: Laravel Package</h3>
-              <p className="mb-4 text-sm text-muted-foreground">
-                The backend is a Laravel package that integrates with the Fleetbase API layer.
-                Extensions can define new models, API endpoints, migrations, jobs, events, and
-                webhooks.
+              <h3 className="mb-2 text-lg font-semibold">
+                Backend: Laravel Package
+              </h3>
+              <p className="text-muted-foreground mb-4 text-sm">
+                The backend is a Laravel package that integrates with the
+                LogisBase API layer. Extensions can define new models, API
+                endpoints, migrations, jobs, events, and webhooks.
               </p>
               <ul className="space-y-2">
                 {[
@@ -561,8 +846,11 @@ export default function ExtensionsMarketplacePageContent() {
                   'Background jobs and queues',
                   'Custom events and webhooks',
                 ].map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-primary" />
+                  <li
+                    key={f}
+                    className="text-muted-foreground flex items-center gap-2 text-sm"
+                  >
+                    <CheckCircle2 className="text-primary h-3.5 w-3.5 shrink-0" />
                     {f}
                   </li>
                 ))}
@@ -573,12 +861,16 @@ export default function ExtensionsMarketplacePageContent() {
           <CodeBlock
             code={scaffoldCode}
             language="bash"
-            label="Fleetbase Extension Scaffold CLI"
+            label="LogisBase Extension Scaffold CLI"
           />
 
-          <p className="mt-4 text-center text-sm text-muted-foreground">
-            Get started building your extension in minutes with the official scaffold CLI.{' '}
-            <Link href="/developers/extensions" className="text-primary underline underline-offset-4">
+          <p className="text-muted-foreground mt-4 text-center text-sm">
+            Get started building your extension in minutes with the official
+            scaffold CLI.{' '}
+            <Link
+              href="/developers/extensions"
+              className="text-primary underline underline-offset-4"
+            >
               Read the docs
             </Link>
           </p>
@@ -595,20 +887,20 @@ export default function ExtensionsMarketplacePageContent() {
             <Accordion type="single" collapsible className="space-y-3">
               {[
                 {
-                  q: 'What is the Fleetbase Extensions Marketplace?',
-                  a: 'The Extensions Marketplace is the central hub for discovering, installing, and managing extensions that expand your Fleetbase platform. Extensions add new modules, integrations, workflows, or UI components. Both free and paid extensions are available, published by Fleetbase and the broader developer community.',
+                  q: 'What is the LogisBase Extensions Marketplace?',
+                  a: 'The Extensions Marketplace is the central hub for discovering, installing, and managing extensions that expand your LogisBase platform. Extensions add new modules, integrations, workflows, or UI components. Both free and paid extensions are available, published by LogisBase and the broader developer community.',
                 },
                 {
-                  q: 'Can I install extensions on a self-hosted Fleetbase instance?',
-                  a: 'Yes. Extensions can be installed on both Fleetbase Cloud and self-hosted instances. For self-hosted deployments, the marketplace provides self-managed install instructions so your team can deploy extensions directly to your infrastructure.',
+                  q: 'Can I install extensions on a self-hosted LogisBase instance?',
+                  a: 'Yes. Extensions can be installed on both LogisBase Cloud and self-hosted instances. For self-hosted deployments, the marketplace provides self-managed install instructions so your team can deploy extensions directly to your infrastructure.',
                 },
                 {
                   q: 'How do I publish my own extension?',
-                  a: 'Create a developer account, build your extension using the scaffold CLI and the Fleetbase extension framework, then submit it for review. Once approved it becomes available to all Fleetbase users. You can choose to offer it free or monetize it through the built-in payment system.',
+                  a: 'Create a developer account, build your extension using the scaffold CLI and the LogisBase extension framework, then submit it for review. Once approved it becomes available to all LogisBase users. You can choose to offer it free or monetize it through the built-in payment system.',
                 },
                 {
                   q: 'How does extension monetization work?',
-                  a: 'Connect your Stripe account during the developer onboarding flow, set your own price, and the marketplace handles payment processing, licensing, and access control automatically. Fleetbase takes a small platform fee; the remainder is deposited directly into your Stripe account.',
+                  a: 'Connect your Stripe account during the developer onboarding flow, set your own price, and the marketplace handles payment processing, licensing, and access control automatically. LogisBase takes a small platform fee; the remainder is deposited directly into your Stripe account.',
                 },
                 {
                   q: 'What are extension bundles?',
@@ -616,20 +908,22 @@ export default function ExtensionsMarketplacePageContent() {
                 },
                 {
                   q: 'Are extensions reviewed before being published?',
-                  a: 'Yes. All extensions go through a review process before being listed. This ensures quality, security, and compatibility with the Fleetbase platform. The review checks both the frontend Ember.js engine and the backend Laravel package. Most extensions are reviewed within 48 hours.',
+                  a: 'Yes. All extensions go through a review process before being listed. This ensures quality, security, and compatibility with the LogisBase platform. The review checks both the frontend Ember.js engine and the backend Laravel package. Most extensions are reviewed within 48 hours.',
                 },
                 {
                   q: 'Do I need to write both frontend and backend code?',
-                  a: 'Not necessarily. Some extensions are purely frontend (adding UI components or dashboards) and others are purely backend (adding API endpoints or integrations). You only need to build the parts relevant to what your extension does. The scaffold CLI sets up both layers by default but you can remove whichever you don\'t need.',
+                  a: "Not necessarily. Some extensions are purely frontend (adding UI components or dashboards) and others are purely backend (adding API endpoints or integrations). You only need to build the parts relevant to what your extension does. The scaffold CLI sets up both layers by default but you can remove whichever you don't need.",
                 },
               ].map(({ q, a }, i) => (
                 <AccordionItem
                   key={i}
                   value={`faq-${i}`}
-                  className="rounded-xl border bg-card px-6"
+                  className="bg-card rounded-xl border px-6"
                 >
-                  <AccordionTrigger className="text-left font-medium">{q}</AccordionTrigger>
-                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                  <AccordionTrigger className="text-left font-medium">
+                    {q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
                     {a}
                   </AccordionContent>
                 </AccordionItem>
@@ -642,26 +936,33 @@ export default function ExtensionsMarketplacePageContent() {
       {/* ── Final CTA ────────────────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
-          <div className="relative overflow-hidden rounded-2xl border bg-card px-8 py-16 text-center">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
+          <div className="bg-card relative overflow-hidden rounded-2xl border px-8 py-16 text-center">
+            <div className="from-primary/5 to-primary/10 absolute inset-0 bg-gradient-to-br via-transparent" />
             <div className="relative flex flex-col items-center gap-6">
               <h2 className="text-4xl font-bold tracking-tight text-balance">
-                Ready to extend your Fleetbase platform?
+                Ready to extend your LogisBase platform?
               </h2>
-              <p className="max-w-xl text-muted-foreground">
-                Browse extensions to find what fits your workflow, or start building your own and
-                reach thousands of logistics operators.
+              <p className="text-muted-foreground max-w-xl">
+                Browse extensions to find what fits your workflow, or start
+                building your own and reach thousands of logistics operators.
               </p>
-              <div className="flex flex-wrap gap-3 justify-center">
-                <Link href="https://console.fleetbase.io" target="_blank" rel="noopener noreferrer">
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link
+                  href="https://console.logisbase.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button size="lg">Browse marketplace</Button>
                 </Link>
                 <Link href="/developers/extensions">
-                  <Button size="lg" variant="outline">Start building</Button>
+                  <Button size="lg" variant="outline">
+                    Start building
+                  </Button>
                 </Link>
               </div>
-              <p className="text-xs text-muted-foreground">
-                Free to browse · Open publisher platform · Stripe-powered payouts
+              <p className="text-muted-foreground text-xs">
+                Free to browse · Open publisher platform · Stripe-powered
+                payouts
               </p>
             </div>
           </div>

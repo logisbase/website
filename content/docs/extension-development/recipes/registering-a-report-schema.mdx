@@ -20,7 +20,7 @@ The platform then generates SQL, applies user-selected filters/columns, paginate
 
 ## 1. Implement `ReportSchema`
 
-Create a class that implements `Fleetbase\Support\Reporting\Contracts\ReportSchema`:
+Create a class that implements `LogisBase\Support\Reporting\Contracts\ReportSchema`:
 
 ```php
 <?php
@@ -28,11 +28,11 @@ Create a class that implements `Fleetbase\Support\Reporting\Contracts\ReportSche
 
 namespace MyOrg\MyExtension\Support\Reporting;
 
-use Fleetbase\Support\Reporting\Contracts\ReportSchema;
-use Fleetbase\Support\Reporting\ReportSchemaRegistry;
-use Fleetbase\Support\Reporting\Schema\Column;
-use Fleetbase\Support\Reporting\Schema\Relationship;
-use Fleetbase\Support\Reporting\Schema\Table;
+use LogisBase\Support\Reporting\Contracts\ReportSchema;
+use LogisBase\Support\Reporting\ReportSchemaRegistry;
+use LogisBase\Support\Reporting\Schema\Column;
+use LogisBase\Support\Reporting\Schema\Relationship;
+use LogisBase\Support\Reporting\Schema\Table;
 
 class MyExtensionReportSchema implements ReportSchema
 {
@@ -89,23 +89,23 @@ class MyExtensionReportSchema implements ReportSchema
 
 ### Column Types
 
-| Type | Use for |
-| :--- | :--- |
-| `'string'` | Text fields, IDs, statuses |
-| `'integer'` / `'decimal'` | Numbers — gets sum/avg aggregation |
-| `'boolean'` | Yes/no — gets count aggregation |
-| `'datetime'` / `'date'` | Time fields — gets date filters and grouping |
-| `'currency'` | Monetary values — formatted with the org's currency |
-| `'json'` | Structured fields — flattens to dot-notation paths |
+| Type                      | Use for                                             |
+| :------------------------ | :-------------------------------------------------- |
+| `'string'`                | Text fields, IDs, statuses                          |
+| `'integer'` / `'decimal'` | Numbers — gets sum/avg aggregation                  |
+| `'boolean'`               | Yes/no — gets count aggregation                     |
+| `'datetime'` / `'date'`   | Time fields — gets date filters and grouping        |
+| `'currency'`              | Monetary values — formatted with the org's currency |
+| `'json'`                  | Structured fields — flattens to dot-notation paths  |
 
 ### Column Flags
 
-| Flag | Effect |
-| :--- | :--- |
-| `searchable()` | Text search hits this column |
-| `filterable()` | Surfaced in the filter UI |
-| `sortable()` | User can sort the report by this column |
-| `aggregatable()` | Available for COUNT/SUM/AVG/MIN/MAX |
+| Flag               | Effect                                       |
+| :----------------- | :------------------------------------------- |
+| `searchable()`     | Text search hits this column                 |
+| `filterable()`     | Surfaced in the filter UI                    |
+| `sortable()`       | User can sort the report by this column      |
+| `aggregatable()`   | Available for COUNT/SUM/AVG/MIN/MAX          |
 | `transformer($fn)` | Apply a callback to each value before output |
 
 ## 2. Register a `ReportSchemaServiceProvider`
@@ -118,7 +118,7 @@ Mirror the Fleet-Ops pattern: a tiny service provider that calls `ReportSchemaRe
 
 namespace MyOrg\MyExtension\Providers;
 
-use Fleetbase\Support\Reporting\ReportSchemaRegistry;
+use LogisBase\Support\Reporting\ReportSchemaRegistry;
 use Illuminate\Support\ServiceProvider;
 use MyOrg\MyExtension\Support\Reporting\MyExtensionReportSchema;
 
@@ -153,6 +153,6 @@ Restart the API and open the platform's report builder. Your table appears under
 
 ## Reference
 
-- [`fleetops/server/src/Support/Reporting/FleetOpsReportSchema.php`](https://github.com/fleetbase/fleetops/blob/main/server/src/Support/Reporting/FleetOpsReportSchema.php) — full reference implementation, including 7 tables with relationships and transformers
-- [`fleetops/server/src/Providers/ReportSchemaServiceProvider.php`](https://github.com/fleetbase/fleetops/blob/main/server/src/Providers/ReportSchemaServiceProvider.php) — minimal provider
-- [`core-api/src/Support/Reporting/`](https://github.com/fleetbase/core-api/tree/main/src/Support/Reporting) — `Table`, `Column`, `Relationship` classes and the registry itself
+- [`fleetops/server/src/Support/Reporting/FleetOpsReportSchema.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Support/Reporting/FleetOpsReportSchema.php) — full reference implementation, including 7 tables with relationships and transformers
+- [`fleetops/server/src/Providers/ReportSchemaServiceProvider.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Providers/ReportSchemaServiceProvider.php) — minimal provider
+- [`core-api/src/Support/Reporting/`](https://github.com/logisbase/core-api/tree/main/src/Support/Reporting) — `Table`, `Column`, `Relationship` classes and the registry itself

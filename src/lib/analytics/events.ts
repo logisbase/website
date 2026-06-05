@@ -1,7 +1,7 @@
 /**
  * Marketing-site event taxonomy.
  *
- * Conventions (matching console.fleetbase.io):
+ * Conventions (matching console.logisbase.com):
  * - snake_case event names in {noun}_{verb} form (e.g. cta_clicked, form_submitted)
  * - All property names are snake_case
  * - Every event automatically gets `app: 'marketing'` via posthog.register()
@@ -218,7 +218,7 @@ export interface GAConversion {
  * Map a typed PostHog event to a GA4 conversion, or null to skip.
  *
  * Conversion choices:
- *  - CTAs that send a visitor to console.fleetbase.io (start_free_trial,
+ *  - CTAs that send a visitor to console.logisbase.com (start_free_trial,
  *    signin, signup) → standalone events for Google Ads conversion config.
  *  - book_demo / contact_sales / partner_inquiry → generate_lead (recommended
  *    event Google Ads can target as a conversion).

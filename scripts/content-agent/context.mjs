@@ -98,7 +98,9 @@ async function walk(dir, root, options = {}, files = []) {
 }
 
 function toTitleishText(filePath, text) {
-  const heading = text.match(/^#\s+(.+)$/m)?.[1] || text.match(/title:\s*["']?(.+?)["']?$/m)?.[1];
+  const heading =
+    text.match(/^#\s+(.+)$/m)?.[1] ||
+    text.match(/title:\s*["']?(.+?)["']?$/m)?.[1];
   if (heading) return heading.trim();
 
   return filePath
@@ -126,28 +128,33 @@ function keywordSet(...values) {
 }
 
 function scoreManifestItem(item, queryWords, contentFocus) {
-  const haystack = `${item.path} ${item.title} ${item.excerpt} ${item.repo} ${item.category}`.toLowerCase();
+  const haystack =
+    `${item.path} ${item.title} ${item.excerpt} ${item.repo} ${item.category}`.toLowerCase();
   let score = 0;
 
   for (const word of queryWords) {
     if (haystack.includes(word)) score += 4;
   }
 
-  if (contentFocus === 'fleetbase-api-tutorial') {
+  if (contentFocus === 'logisbase-api-tutorial') {
     if (item.category === 'api-reference') score += 28;
     if (item.repo === 'core-api') score += 24;
-    if (item.path.includes('controllers') || item.path.includes('requests')) score += 12;
-    if (item.path.includes('developers') || item.path.includes('webhooks')) score += 10;
+    if (item.path.includes('controllers') || item.path.includes('requests'))
+      score += 12;
+    if (item.path.includes('developers') || item.path.includes('webhooks'))
+      score += 10;
   }
 
   if (contentFocus === 'supply-chain-software') {
     if (['pallet', 'ledger', 'storefront'].includes(item.repo)) score += 20;
-    if (item.path.includes('pallet') || item.path.includes('inventory')) score += 12;
+    if (item.path.includes('pallet') || item.path.includes('inventory'))
+      score += 12;
   }
 
   if (contentFocus === 'logistics-software') {
     if (['fleetops', 'core-api'].includes(item.repo)) score += 20;
-    if (item.path.includes('fleet-ops') || item.path.includes('orders')) score += 12;
+    if (item.path.includes('fleet-ops') || item.path.includes('orders'))
+      score += 12;
   }
 
   if (item.category === 'website-page') score += 8;
@@ -186,7 +193,7 @@ export async function buildContextManifest(config, options = {}) {
     const item = await readContextFile(
       root,
       file,
-      { repo: 'fleetbase.io', category: toSiteCategory(file) },
+      { repo: 'logisbase.com', category: toSiteCategory(file) },
       config,
     );
     if (item) manifest.push(item);
@@ -203,7 +210,10 @@ export async function buildContextManifest(config, options = {}) {
       const item = await readContextFile(
         repoRoot,
         file,
-        { repo: repoConfig.path.replace('source-truth/', ''), category: repoConfig.category },
+        {
+          repo: repoConfig.path.replace('source-truth/', ''),
+          category: repoConfig.category,
+        },
         config,
       );
       if (item) {
@@ -215,7 +225,9 @@ export async function buildContextManifest(config, options = {}) {
     }
   }
 
-  return manifest.sort((a, b) => a.repo.localeCompare(b.repo) || a.path.localeCompare(b.path));
+  return manifest.sort(
+    (a, b) => a.repo.localeCompare(b.repo) || a.path.localeCompare(b.path),
+  );
 }
 
 export function selectContextSources(manifest, config, options = {}) {
@@ -238,7 +250,8 @@ export function selectContextSources(manifest, config, options = {}) {
 }
 
 function summarizeContext(selectedContext, options = {}) {
-  const maxCharsPerSource = options.maxCharsPerSource || Number.POSITIVE_INFINITY;
+  const maxCharsPerSource =
+    options.maxCharsPerSource || Number.POSITIVE_INFINITY;
   const maxTotalChars = options.maxTotalChars || Number.POSITIVE_INFINITY;
   const chunks = [];
   let totalChars = 0;
@@ -257,8 +270,14 @@ function summarizeContext(selectedContext, options = {}) {
 }
 
 export async function fetchExistingGhostPosts(config, options = {}) {
-  const apiUrl = (options.apiUrl || process.env.GHOST_API_URL || '').trim().replace(/\/+$/, '');
-  const key = (options.contentApiKey || process.env.GHOST_CONTENT_API_KEY || '').trim();
+  const apiUrl = (options.apiUrl || process.env.GHOST_API_URL || '')
+    .trim()
+    .replace(/\/+$/, '');
+  const key = (
+    options.contentApiKey ||
+    process.env.GHOST_CONTENT_API_KEY ||
+    ''
+  ).trim();
 
   if (!apiUrl || !key) return [];
 
@@ -271,12 +290,15 @@ export async function fetchExistingGhostPosts(config, options = {}) {
   const response = await (options.fetchImpl || fetch)(url, {
     headers: {
       Accept: 'application/json',
-      'Accept-Version': process.env.GHOST_API_VERSION || config.ghost.apiVersion,
+      'Accept-Version':
+        process.env.GHOST_API_VERSION || config.ghost.apiVersion,
     },
   });
 
   if (!response.ok) {
-    console.warn(`[content-agent] Unable to fetch existing Ghost posts: ${response.status}`);
+    console.warn(
+      `[content-agent] Unable to fetch existing Ghost posts: ${response.status}`,
+    );
     return [];
   }
 
@@ -289,8 +311,9 @@ export async function fetchExistingGhostPosts(config, options = {}) {
   }));
 }
 
-export async function buildFleetbaseContext(config, options = {}) {
-  const manifest = options.manifest || (await buildContextManifest(config, options));
+export async function buildLogisBaseContext(config, options = {}) {
+  const manifest =
+    options.manifest || (await buildContextManifest(config, options));
   const selectedContext = selectContextSources(manifest, config, {
     ...options,
     contentStrategy: config.contentStrategy,
@@ -303,13 +326,15 @@ export async function buildFleetbaseContext(config, options = {}) {
     manifest,
     localContext: selectedContext,
     selectedContext,
-    sourceCitations: selectedContext.map(({ repo, category, path, title, score }) => ({
-      repo,
-      category,
-      path,
-      title,
-      score,
-    })),
+    sourceCitations: selectedContext.map(
+      ({ repo, category, path, title, score }) => ({
+        repo,
+        category,
+        path,
+        title,
+        score,
+      }),
+    ),
     existingBlogPosts,
   };
 }

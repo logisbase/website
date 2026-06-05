@@ -1,11 +1,11 @@
 ---
 title: Install
-description: "Install an extension into a running Fleetbase instance using `flb install`."
+description: 'Install an extension into a running LogisBase instance using `flb install`.'
 ---
 
 # `flb install`
 
-Install a Fleetbase extension into a running self-hosted Fleetbase instance. The CLI looks up the npm and Composer package names for the extension and runs both `pnpm install` (in `console/`) and `composer require` (in `api/`).
+Install a LogisBase extension into a running self-hosted LogisBase instance. The CLI looks up the npm and Composer package names for the extension and runs both `pnpm install` (in `console/`) and `composer require` (in `api/`).
 
 ```bash
 flb install <packageName>
@@ -13,37 +13,37 @@ flb install <packageName>
 
 The package name can be either:
 
-- A **slug** in the form `fleetbase/<slug>` (e.g. `fleetbase/storefront`)
+- A **slug** in the form `logisbase/<slug>` (e.g. `logisbase/storefront`)
 - An **extension ID** (e.g. `ext_a1b2c3d4`)
 
 Both forms come from [`flb search`](/docs/cli/extensions/search).
 
 ## Options
 
-| Option | Description |
-| :--- | :--- |
-| `[packageName]` | Slug or ID of the extension to install |
-| `-p, --path <path>` | Path to the Fleetbase instance (default: current directory) |
+| Option              | Description                                                 |
+| :------------------ | :---------------------------------------------------------- |
+| `[packageName]`     | Slug or ID of the extension to install                      |
+| `-p, --path <path>` | Path to the LogisBase instance (default: current directory) |
 
 ## Examples
 
-### From inside your Fleetbase directory
+### From inside your LogisBase directory
 
 ```bash
-cd /path/to/fleetbase
-flb install fleetbase/storefront
+cd /path/to/logisbase
+flb install logisbase/storefront
 ```
 
 ### From anywhere
 
 ```bash
-flb install fleetbase/storefront --path /path/to/fleetbase
+flb install logisbase/storefront --path /path/to/logisbase
 ```
 
 ### Using an extension ID
 
 ```bash
-flb install ext_a1b2c3d4 --path /path/to/fleetbase
+flb install ext_a1b2c3d4 --path /path/to/logisbase
 ```
 
 ## What Happens
@@ -85,11 +85,11 @@ For **paid** or **private** extensions, you need a registry token configured on 
 
 ## Path Resolution
 
-`--path` accepts a `~`-prefixed home directory shortcut (e.g. `--path ~/projects/fleetbase`). It's resolved to an absolute path before checking for `console/` and `api/`.
+`--path` accepts a `~`-prefixed home directory shortcut (e.g. `--path ~/projects/logisbase`). It's resolved to an absolute path before checking for `console/` and `api/`.
 
 ## Troubleshooting
 
-**`Invalid Fleetbase instance path: …`** — the `--path` (or current directory) doesn't contain both `console/` and `api/`. Pass the correct path.
+**`Invalid LogisBase instance path: …`** — the `--path` (or current directory) doesn't contain both `console/` and `api/`. Pass the correct path.
 
 **`Invalid package data received from registry`** — the registry returned malformed data for that package name. Verify the slug or ID via `flb search`.
 

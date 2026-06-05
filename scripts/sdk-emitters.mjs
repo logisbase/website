@@ -11,7 +11,7 @@
  *   - python (always raw `requests` — no Python SDK exists)
  */
 
-const HOST_PLACEHOLDER = 'https://api.fleetbase.io';
+const HOST_PLACEHOLDER = 'https://api.logisbase.com';
 const KEY_PLACEHOLDER = 'flb_live_…';
 
 /**
@@ -111,9 +111,9 @@ export function emitJs({
 
   if (isOrderAction && sdkMethod) {
     return [
-      `import Fleetbase from '${js.pkg}';`,
+      `import LogisBase from '${js.pkg}';`,
       ``,
-      `const ${js.client} = new Fleetbase('${KEY_PLACEHOLDER}');`,
+      `const ${js.client} = new LogisBase('${KEY_PLACEHOLDER}');`,
       ``,
       `const order = await ${js.client}.orders.findRecord(orderId);`,
       `await order.${sdkMethod}(${body ? formatJsArg(body) : ''});`,
@@ -123,17 +123,17 @@ export function emitJs({
   switch (endpointKind) {
     case 'create':
       return [
-        `import Fleetbase from '${js.pkg}';`,
+        `import LogisBase from '${js.pkg}';`,
         ``,
-        `const ${js.client} = new Fleetbase('${KEY_PLACEHOLDER}');`,
+        `const ${js.client} = new LogisBase('${KEY_PLACEHOLDER}');`,
         ``,
         `const record = await ${js.client}.${store}.create(${body ? formatJsArg(body) : '{}'});`,
       ].join('\n');
     case 'find':
       return [
-        `import Fleetbase from '${js.pkg}';`,
+        `import LogisBase from '${js.pkg}';`,
         ``,
-        `const ${js.client} = new Fleetbase('${KEY_PLACEHOLDER}');`,
+        `const ${js.client} = new LogisBase('${KEY_PLACEHOLDER}');`,
         ``,
         `const record = await ${js.client}.${store}.findRecord(id);`,
       ].join('\n');
@@ -142,26 +142,26 @@ export function emitJs({
       // list/search call) over the request body, which is empty for GET.
       const arg = formatJsObjectArg(queryParams ?? {});
       return [
-        `import Fleetbase from '${js.pkg}';`,
+        `import LogisBase from '${js.pkg}';`,
         ``,
-        `const ${js.client} = new Fleetbase('${KEY_PLACEHOLDER}');`,
+        `const ${js.client} = new LogisBase('${KEY_PLACEHOLDER}');`,
         ``,
         `const records = await ${js.client}.${store}.query(${arg});`,
       ].join('\n');
     }
     case 'update':
       return [
-        `import Fleetbase from '${js.pkg}';`,
+        `import LogisBase from '${js.pkg}';`,
         ``,
-        `const ${js.client} = new Fleetbase('${KEY_PLACEHOLDER}');`,
+        `const ${js.client} = new LogisBase('${KEY_PLACEHOLDER}');`,
         ``,
         `const record = await ${js.client}.${store}.update(id, ${body ? formatJsArg(body) : '{}'});`,
       ].join('\n');
     case 'delete':
       return [
-        `import Fleetbase from '${js.pkg}';`,
+        `import LogisBase from '${js.pkg}';`,
         ``,
-        `const ${js.client} = new Fleetbase('${KEY_PLACEHOLDER}');`,
+        `const ${js.client} = new LogisBase('${KEY_PLACEHOLDER}');`,
         ``,
         `await ${js.client}.${store}.delete(id);`,
       ].join('\n');
@@ -241,14 +241,14 @@ export function emitPhp({
     case 'create':
       return [
         `<?php`,
-        `$${php.client} = new \\Fleetbase\\Sdk\\Fleetbase('${KEY_PLACEHOLDER}');`,
+        `$${php.client} = new \\LogisBase\\Sdk\\LogisBase('${KEY_PLACEHOLDER}');`,
         ``,
         `$record = $${php.client}->${store}->create(${body ? formatPhpArg(body) : '[]'});`,
       ].join('\n');
     case 'find':
       return [
         `<?php`,
-        `$${php.client} = new \\Fleetbase\\Sdk\\Fleetbase('${KEY_PLACEHOLDER}');`,
+        `$${php.client} = new \\LogisBase\\Sdk\\LogisBase('${KEY_PLACEHOLDER}');`,
         ``,
         `$record = $${php.client}->${store}->findRecord($id);`,
       ].join('\n');
@@ -258,7 +258,7 @@ export function emitPhp({
       const arg = formatPhpAssocArg(queryParams ?? {});
       return [
         `<?php`,
-        `$${php.client} = new \\Fleetbase\\Sdk\\Fleetbase('${KEY_PLACEHOLDER}');`,
+        `$${php.client} = new \\LogisBase\\Sdk\\LogisBase('${KEY_PLACEHOLDER}');`,
         ``,
         `$records = $${php.client}->${store}->query(${arg});`,
       ].join('\n');
@@ -266,14 +266,14 @@ export function emitPhp({
     case 'update':
       return [
         `<?php`,
-        `$${php.client} = new \\Fleetbase\\Sdk\\Fleetbase('${KEY_PLACEHOLDER}');`,
+        `$${php.client} = new \\LogisBase\\Sdk\\LogisBase('${KEY_PLACEHOLDER}');`,
         ``,
         `$record = $${php.client}->${store}->update($id, ${body ? formatPhpArg(body) : '[]'});`,
       ].join('\n');
     case 'delete':
       return [
         `<?php`,
-        `$${php.client} = new \\Fleetbase\\Sdk\\Fleetbase('${KEY_PLACEHOLDER}');`,
+        `$${php.client} = new \\LogisBase\\Sdk\\LogisBase('${KEY_PLACEHOLDER}');`,
         ``,
         `$${php.client}->${store}->destroy($id);`,
       ].join('\n');
@@ -282,7 +282,7 @@ export function emitPhp({
         const sdkMethod = php.orderActions?.[endpointAction] ?? endpointAction;
         return [
           `<?php`,
-          `$${php.client} = new \\Fleetbase\\Sdk\\Fleetbase('${KEY_PLACEHOLDER}');`,
+          `$${php.client} = new \\LogisBase\\Sdk\\LogisBase('${KEY_PLACEHOLDER}');`,
           ``,
           `$order = $${php.client}->orders->findRecord($orderId);`,
           `$order->${sdkMethod}(${body ? formatPhpArg(body) : ''});`,
@@ -296,7 +296,9 @@ export function emitPhp({
 
 function emitPhpRaw({ method, fullUrl, body }) {
   const verb = method.toLowerCase();
-  const opts = [`'headers' => ['Authorization' => 'Bearer ${KEY_PLACEHOLDER}']`];
+  const opts = [
+    `'headers' => ['Authorization' => 'Bearer ${KEY_PLACEHOLDER}']`,
+  ];
   if (body) {
     opts.push(`'json' => ${formatPhpArg(body)}`);
   }
@@ -356,8 +358,7 @@ function phpArrayLiteral(value, indent) {
     return [
       `[`,
       ...keys.map(
-        (k) =>
-          `${innerPad}'${k}' => ${phpArrayLiteral(value[k], indent + 1)},`,
+        (k) => `${innerPad}'${k}' => ${phpArrayLiteral(value[k], indent + 1)},`,
       ),
       `${pad}]`,
     ].join('\n');
@@ -413,8 +414,7 @@ function pythonLiteral(value, indent) {
     return [
       `{`,
       ...keys.map(
-        (k) =>
-          `${innerPad}'${k}': ${pythonLiteral(value[k], indent + 1)},`,
+        (k) => `${innerPad}'${k}': ${pythonLiteral(value[k], indent + 1)},`,
       ),
       `${pad}}`,
     ].join('\n');

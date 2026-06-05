@@ -18,8 +18,8 @@ import {
   Store,
   Tag,
   Truck,
-  UtensilsCrossed,
   Users,
+  UtensilsCrossed,
   Wrench,
   XCircle,
   Zap,
@@ -44,17 +44,17 @@ const problems = [
   {
     title: 'Commissions that eat your margins',
     description:
-      'Listing on DoorDash, Uber Eats, or a marketplace means handing 15–30% of every order to a platform. On $50k/month GMV, that\'s $15,000 gone — every month, forever.',
+      "Listing on DoorDash, Uber Eats, or a marketplace means handing 15–30% of every order to a platform. On $50k/month GMV, that's $15,000 gone — every month, forever.",
   },
   {
     title: 'No control over your brand or customer experience',
     description:
-      'Your store is one listing in their marketplace. You can\'t set the design, control the flow, or differentiate from the restaurant next to you. The platform owns the experience.',
+      "Your store is one listing in their marketplace. You can't set the design, control the flow, or differentiate from the restaurant next to you. The platform owns the experience.",
   },
   {
     title: 'The platform owns your customers',
     description:
-      'Customer data stays with them. You can\'t run your own marketing, build loyalty programs, or contact your buyers directly. Every repeat order still goes through their platform — and their fees.',
+      "Customer data stays with them. You can't run your own marketing, build loyalty programs, or contact your buyers directly. Every repeat order still goes through their platform — and their fees.",
   },
 ];
 
@@ -150,7 +150,7 @@ const mobileFeatures = [
     icon: Tag,
     title: 'White-Label Branding',
     description:
-      'Replace logo, colors, and app name. Your brand throughout — not ours. Customers never see Fleetbase.',
+      'Replace logo, colors, and app name. Your brand throughout — not ours. Customers never see LogisBase.',
   },
   {
     icon: MapPin,
@@ -171,25 +171,29 @@ const integrationSteps = [
     icon: ShoppingBag,
     step: '1',
     title: 'Customer places order',
-    description: 'Customer checks out via your branded web or mobile storefront. Payment is captured.',
+    description:
+      'Customer checks out via your branded web or mobile storefront. Payment is captured.',
   },
   {
     icon: Zap,
     step: '2',
     title: 'Auto-dispatched to Fleet-Ops',
-    description: 'Storefront creates a Fleet-Ops order automatically — no webhook, no middleware, no manual step.',
+    description:
+      'Storefront creates a Fleet-Ops order automatically — no webhook, no middleware, no manual step.',
   },
   {
     icon: Truck,
     step: '3',
     title: 'Driver assigned & en route',
-    description: 'The Orchestrator assigns the best available driver. Navigation starts in the driver app.',
+    description:
+      'The Orchestrator assigns the best available driver. Navigation starts in the driver app.',
   },
   {
     icon: MapPin,
     step: '4',
     title: 'Customer tracks in real time',
-    description: 'A live tracking link is sent to the customer. They watch their order move on the map.',
+    description:
+      'A live tracking link is sent to the customer. They watch their order move on the map.',
   },
 ];
 
@@ -236,7 +240,7 @@ const comparison = [
     thirdParty: { value: 'Built-in', positive: null },
   },
   {
-    feature: 'Open source & self-hosted',
+    feature: 'Source-available & self-hosted',
     storefront: { value: 'Yes', positive: true },
     shopify: { value: 'No', positive: false },
     thirdParty: { value: 'No', positive: false },
@@ -252,7 +256,7 @@ const comparison = [
 const faqs = [
   {
     q: 'How is Storefront different from Shopify?',
-    a: 'Storefront is built specifically for hyperlocal, on-demand commerce with integrated logistics. Unlike Shopify, which is designed for shipping products, Storefront includes native delivery management via Fleet-Ops, production-ready mobile apps, and multi-vendor marketplace capabilities out of the box. Plus, it\'s open-source and self-hostable.',
+    a: "Storefront is built specifically for hyperlocal, on-demand commerce with integrated logistics. Unlike Shopify, which is designed for shipping products, Storefront includes native delivery management via Fleet-Ops, production-ready mobile apps, and multi-vendor marketplace capabilities out of the box. Plus, it's source-available and self-hostable.",
   },
   {
     q: 'Do I really pay zero commission fees?',
@@ -264,19 +268,19 @@ const faqs = [
   },
   {
     q: 'Are the mobile apps really included?',
-    a: 'Yes. Storefront includes production-ready iOS and Android apps built with React Native. You can customize the branding, colors, and logo, then submit to the App Store and Google Play. The app source code is open source under AGPL-3.0 — inspect it, fork it, extend it.',
+    a: 'Yes. Storefront includes production-ready iOS and Android apps built with React Native. You can customize the branding, colors, and logo, then submit to the App Store and Google Play. The app source code is source-available under SOURCE-AVAILABLE — inspect it, fork it, extend it.',
   },
   {
     q: 'Can I use my own drivers or do I have to use Fleet-Ops?',
-    a: 'You can use Fleet-Ops for delivery management (included with Storefront), integrate with third-party delivery services via API, or manage your own driver fleet. Fleet-Ops provides dispatch, route optimization, and tracking, but you\'re not locked in.',
+    a: "You can use Fleet-Ops for delivery management (included with Storefront), integrate with third-party delivery services via API, or manage your own driver fleet. Fleet-Ops provides dispatch, route optimization, and tracking, but you're not locked in.",
   },
   {
     q: 'What payment gateways are supported?',
     a: 'Storefront supports Stripe, PayPal, and QPay out of the box, with credit cards, debit cards, Apple Pay, Google Pay, and wallet top-ups. The payment system is extensible so you can integrate additional gateways for local market requirements.',
   },
   {
-    q: 'Is Storefront really open source?',
-    a: 'Yes. Storefront is fully open-source under AGPL-3.0. View the code on GitHub, self-host on your own infrastructure, and customise it to your exact needs. A commercial licence is available if you need to keep your changes proprietary.',
+    q: 'Is Storefront really source-available?',
+    a: 'Yes. Storefront is fully source-available under SOURCE-AVAILABLE. View the code on GitHub, self-host on your own infrastructure, and customise it to your exact needs. An Enterprise License is available if you need to keep your changes proprietary.',
   },
   {
     q: 'Can I migrate from DoorDash or Uber Eats?',
@@ -296,33 +300,46 @@ function BrowserFrame({
   className?: string;
 }) {
   return (
-    <div className={cn('overflow-hidden rounded-xl border shadow-lg', className)}>
-      <div className="flex items-center gap-2 border-b bg-muted/50 px-4 py-3">
+    <div
+      className={cn('overflow-hidden rounded-xl border shadow-lg', className)}
+    >
+      <div className="bg-muted/50 flex items-center gap-2 border-b px-4 py-3">
         <div className="flex gap-1.5">
           <div className="h-2.5 w-2.5 rounded-full bg-red-400/60" />
           <div className="h-2.5 w-2.5 rounded-full bg-yellow-400/60" />
           <div className="h-2.5 w-2.5 rounded-full bg-green-400/60" />
         </div>
-        <span className="ml-2 text-xs text-muted-foreground">{label}</span>
+        <span className="text-muted-foreground ml-2 text-xs">{label}</span>
       </div>
       {children}
     </div>
   );
 }
 
-function FeatureList({ items }: { items: { icon: React.ElementType; title: string; description: string }[] }) {
+function FeatureList({
+  items,
+}: {
+  items: { icon: React.ElementType; title: string; description: string }[];
+}) {
   return (
     <div className="divide-y">
       {items.map((feature) => {
         const Icon = feature.icon;
         return (
-          <div key={feature.title} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-            <div className="flex size-9 shrink-0 items-center justify-center rounded-md border bg-muted/30">
-              <Icon className="size-4 text-muted-foreground" />
+          <div
+            key={feature.title}
+            className="flex gap-4 py-5 first:pt-0 last:pb-0"
+          >
+            <div className="bg-muted/30 flex size-9 shrink-0 items-center justify-center rounded-md border">
+              <Icon className="text-muted-foreground size-4" />
             </div>
             <div className="space-y-0.5">
-              <h4 className="font-semibold text-accent-foreground">{feature.title}</h4>
-              <p className="text-sm leading-snug text-muted-foreground">{feature.description}</p>
+              <h4 className="text-accent-foreground font-semibold">
+                {feature.title}
+              </h4>
+              <p className="text-muted-foreground text-sm leading-snug">
+                {feature.description}
+              </p>
             </div>
           </div>
         );
@@ -336,7 +353,6 @@ function FeatureList({ items }: { items: { icon: React.ElementType; title: strin
 export default function StorefrontPageContent() {
   return (
     <div className="flex flex-col">
-
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="section-padding relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10">
@@ -346,18 +362,18 @@ export default function StorefrontPageContent() {
         </div>
         <div className="container space-y-12">
           <div className="mx-auto max-w-4xl space-y-8 text-center">
-            <div className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            <div className="text-muted-foreground inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+              <span className="bg-primary h-1.5 w-1.5 rounded-full" />
               Storefront · Headless Commerce & Marketplace
             </div>
             <h1 className="text-5xl leading-none tracking-tight text-balance md:text-6xl lg:text-7xl">
               Your Commerce.{' '}
               <span className="text-gradient">Zero Commission.</span>
             </h1>
-            <p className="mx-auto max-w-2xl text-lg leading-snug text-muted-foreground md:text-xl">
-              The open-source, logistics-first commerce platform for on-demand businesses. Launch
-              your branded storefront and mobile app — no platform fees, no vendor lock-in, and
-              delivery built in.
+            <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-snug md:text-xl">
+              The source-available, logistics-first commerce platform for
+              on-demand businesses. Launch your branded storefront and mobile
+              app — no platform fees, no vendor lock-in, and delivery built in.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
@@ -366,12 +382,20 @@ export default function StorefrontPageContent() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <a href="https://cal.com/shivthakker/enquiry" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://cal.com/shivthakker/enquiry"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Book a Demo
                 </a>
               </Button>
               <Button size="lg" variant="ghost" asChild>
-                <a href="https://github.com/fleetbase/storefront" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/logisbase/storefront"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Explore the Code
                 </a>
               </Button>
@@ -380,29 +404,48 @@ export default function StorefrontPageContent() {
 
           {/* Commission stat strip */}
           <div
-            className="overflow-hidden rounded-xl border bg-border"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px' }}
+            className="bg-border overflow-hidden rounded-xl border"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '1px',
+            }}
           >
-            <div className="flex flex-col items-center justify-center gap-1 bg-card px-6 py-8 text-center">
-              <span className="text-3xl font-bold tracking-tight text-primary md:text-4xl">0%</span>
-              <span className="text-xs text-muted-foreground">Commission fees on every order</span>
+            <div className="bg-card flex flex-col items-center justify-center gap-1 px-6 py-8 text-center">
+              <span className="text-primary text-3xl font-bold tracking-tight md:text-4xl">
+                0%
+              </span>
+              <span className="text-muted-foreground text-xs">
+                Commission fees on every order
+              </span>
             </div>
-            <div className="flex flex-col items-center justify-center gap-1 bg-card px-6 py-8 text-center">
-              <span className="text-3xl font-bold tracking-tight text-primary md:text-4xl">100%</span>
-              <span className="text-xs text-muted-foreground">Customer data stays yours</span>
+            <div className="bg-card flex flex-col items-center justify-center gap-1 px-6 py-8 text-center">
+              <span className="text-primary text-3xl font-bold tracking-tight md:text-4xl">
+                100%
+              </span>
+              <span className="text-muted-foreground text-xs">
+                Customer data stays yours
+              </span>
             </div>
-            <div className="flex flex-col items-center justify-center gap-1 bg-card px-6 py-8 text-center">
-              <span className="text-3xl font-bold tracking-tight text-primary md:text-4xl">8,000+</span>
-              <span className="text-xs text-muted-foreground">Active Fleetbase operations</span>
+            <div className="bg-card flex flex-col items-center justify-center gap-1 px-6 py-8 text-center">
+              <span className="text-primary text-3xl font-bold tracking-tight md:text-4xl">
+                8,000+
+              </span>
+              <span className="text-muted-foreground text-xs">
+                Active LogisBase operations
+              </span>
             </div>
           </div>
 
           {/* Hero screenshot */}
-          <BrowserFrame label="Storefront — Commerce Dashboard" className="shadow-2xl">
+          <BrowserFrame
+            label="Storefront — Commerce Dashboard"
+            className="shadow-2xl"
+          >
             <div className="relative aspect-[16/7] w-full">
               <Image
                 src="/images/screenshots/storefront/storefront-dashboard.webp"
-                alt="Fleetbase Storefront console dashboard showing live orders, store activity, product catalog, and delivery metrics"
+                alt="LogisBase Storefront console dashboard showing live orders, store activity, product catalog, and delivery metrics"
                 fill
                 className="object-cover object-top"
                 priority
@@ -418,32 +461,42 @@ export default function StorefrontPageContent() {
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
             <div className="flex flex-col justify-center gap-5 lg:col-span-2">
-              <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+              <div className="text-muted-foreground inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs font-medium">
                 The Problem
               </div>
               <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl">
                 Stop Funding the Platform That's Eating Your Margins
               </h2>
-              <p className="leading-relaxed text-muted-foreground">
-                Third-party delivery and marketplace platforms take a percentage of every single
-                order — permanently. They own the customer relationship, control the experience, and
-                keep the data. You do the work; they collect the rent.
+              <p className="text-muted-foreground leading-relaxed">
+                Third-party delivery and marketplace platforms take a percentage
+                of every single order — permanently. They own the customer
+                relationship, control the experience, and keep the data. You do
+                the work; they collect the rent.
               </p>
-              <div className="rounded-xl border bg-muted/20 p-5">
-                <p className="text-xs text-muted-foreground">At 30% commission on</p>
-                <p className="text-4xl font-bold tracking-tight text-primary">$15,000</p>
-                <p className="text-sm text-muted-foreground">lost every month on $50k GMV — going to their platform, not yours</p>
+              <div className="bg-muted/20 rounded-xl border p-5">
+                <p className="text-muted-foreground text-xs">
+                  At 30% commission on
+                </p>
+                <p className="text-primary text-4xl font-bold tracking-tight">
+                  $15,000
+                </p>
+                <p className="text-muted-foreground text-sm">
+                  lost every month on $50k GMV — going to their platform, not
+                  yours
+                </p>
               </div>
             </div>
             <div className="divide-y lg:col-span-3">
               {problems.map((problem, i) => (
                 <div key={i} className="flex gap-5 py-6 first:pt-0 last:pb-0">
-                  <div className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-md bg-destructive/10">
-                    <XCircle className="size-4 text-destructive" />
+                  <div className="bg-destructive/10 mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-md">
+                    <XCircle className="text-destructive size-4" />
                   </div>
                   <div className="space-y-1">
-                    <h3 className="font-semibold text-accent-foreground">{problem.title}</h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <h3 className="text-accent-foreground font-semibold">
+                      {problem.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                       {problem.description}
                     </p>
                   </div>
@@ -463,12 +516,12 @@ export default function StorefrontPageContent() {
               Products & Catalog
             </div>
             <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
-              Your Catalog,{' '}
-              <span className="text-gradient">Your Rules</span>
+              Your Catalog, <span className="text-gradient">Your Rules</span>
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-              Build exactly the product structure your business needs — unlimited variants, addons,
-              time-based availability, and location-specific menus. No template constraints.
+            <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+              Build exactly the product structure your business needs —
+              unlimited variants, addons, time-based availability, and
+              location-specific menus. No template constraints.
             </p>
           </div>
 
@@ -519,9 +572,9 @@ export default function StorefrontPageContent() {
               Drive Repeat Orders with{' '}
               <span className="text-gradient">Built-In Promotions</span>
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-              Discounts, bundles, flash sales, and segment-targeted offers — all managed from one
-              place, no third-party marketing tool required.
+            <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+              Discounts, bundles, flash sales, and segment-targeted offers — all
+              managed from one place, no third-party marketing tool required.
             </p>
           </div>
 
@@ -561,10 +614,11 @@ export default function StorefrontPageContent() {
               Build Your Own{' '}
               <span className="text-gradient">Delivery Marketplace</span>
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-              Create a multi-vendor network, onboard stores, set commission rates, and give
-              customers a unified browsing experience across all your vendors. The infrastructure
-              to compete with the platforms — owned entirely by you.
+            <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+              Create a multi-vendor network, onboard stores, set commission
+              rates, and give customers a unified browsing experience across all
+              your vendors. The infrastructure to compete with the platforms —
+              owned entirely by you.
             </p>
           </div>
 
@@ -613,34 +667,48 @@ export default function StorefrontPageContent() {
             </div>
             <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
               From Checkout to Doorstep —{' '}
-              <span className="text-gradient">Without a Single Integration</span>
+              <span className="text-gradient">
+                Without a Single Integration
+              </span>
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-              Storefront and Fleet-Ops share the same platform. When a customer checks out, the
-              delivery order is created, assigned, and tracked automatically — no webhook to
-              maintain, no third-party middleware, no manual handoff.
+            <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+              Storefront and Fleet-Ops share the same platform. When a customer
+              checks out, the delivery order is created, assigned, and tracked
+              automatically — no webhook to maintain, no third-party middleware,
+              no manual handoff.
             </p>
           </div>
 
           {/* Step flow */}
           <div
-            className="overflow-hidden rounded-xl border bg-border"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px' }}
+            className="bg-border overflow-hidden rounded-xl border"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '1px',
+            }}
           >
             {integrationSteps.map((step) => {
               const Icon = step.icon;
               return (
-                <div key={step.step} className="flex flex-col gap-3 bg-card p-6">
+                <div
+                  key={step.step}
+                  className="bg-card flex flex-col gap-3 p-6"
+                >
                   <div className="flex items-center gap-3">
-                    <div className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
+                    <div className="bg-primary/10 text-primary flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold">
                       {step.step}
                     </div>
-                    <div className="flex size-8 items-center justify-center rounded-md bg-muted/40">
-                      <Icon className="size-4 text-muted-foreground" />
+                    <div className="bg-muted/40 flex size-8 items-center justify-center rounded-md">
+                      <Icon className="text-muted-foreground size-4" />
                     </div>
                   </div>
-                  <h4 className="font-semibold text-accent-foreground">{step.title}</h4>
-                  <p className="text-xs leading-snug text-muted-foreground">{step.description}</p>
+                  <h4 className="text-accent-foreground font-semibold">
+                    {step.title}
+                  </h4>
+                  <p className="text-muted-foreground text-xs leading-snug">
+                    {step.description}
+                  </p>
                 </div>
               );
             })}
@@ -674,26 +742,37 @@ export default function StorefrontPageContent() {
                 </div>
                 <h2 className="text-4xxl leading-tight tracking-tight text-balance md:text-5xl">
                   A Branded App.{' '}
-                  <span className="text-gradient">Open Source. AGPL-3.0.</span>
+                  <span className="text-gradient">
+                    Source-available. SOURCE-AVAILABLE.
+                  </span>
                 </h2>
-                <p className="leading-relaxed text-muted-foreground">
-                  The Storefront App is a production-ready, white-label iOS and Android app for your
-                  customers. Replace your logo and brand colors, submit to the App Store and Google
-                  Play — no coding required for standard white-labelling. The full source is
-                  open-source under AGPL-3.0 if you want to go further.
+                <p className="text-muted-foreground leading-relaxed">
+                  The Storefront App is a production-ready, white-label iOS and
+                  Android app for your customers. Replace your logo and brand
+                  colors, submit to the App Store and Google Play — no coding
+                  required for standard white-labelling. The full source is
+                  source-available under SOURCE-AVAILABLE if you want to go
+                  further.
                 </p>
               </div>
               <div className="divide-y">
                 {mobileFeatures.map((feature) => {
                   const Icon = feature.icon;
                   return (
-                    <div key={feature.title} className="flex gap-4 py-4 first:pt-0 last:pb-0">
-                      <div className="flex size-8 shrink-0 items-center justify-center rounded-md border bg-muted/30">
-                        <Icon className="size-4 text-muted-foreground" />
+                    <div
+                      key={feature.title}
+                      className="flex gap-4 py-4 first:pt-0 last:pb-0"
+                    >
+                      <div className="bg-muted/30 flex size-8 shrink-0 items-center justify-center rounded-md border">
+                        <Icon className="text-muted-foreground size-4" />
                       </div>
                       <div className="space-y-0.5">
-                        <h4 className="text-sm font-semibold text-accent-foreground">{feature.title}</h4>
-                        <p className="text-xs leading-snug text-muted-foreground">{feature.description}</p>
+                        <h4 className="text-accent-foreground text-sm font-semibold">
+                          {feature.title}
+                        </h4>
+                        <p className="text-muted-foreground text-xs leading-snug">
+                          {feature.description}
+                        </p>
                       </div>
                     </div>
                   );
@@ -701,7 +780,11 @@ export default function StorefrontPageContent() {
               </div>
               <div className="flex gap-3">
                 <Button asChild>
-                  <a href="https://github.com/fleetbase/storefront-app" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://github.com/logisbase/storefront-app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     View App Source
                   </a>
                 </Button>
@@ -733,52 +816,79 @@ export default function StorefrontPageContent() {
       <section className="section-padding">
         <div className="container space-y-10">
           <div className="mx-auto max-w-3xl space-y-4 text-center">
-            <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
               How We Compare
             </div>
             <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl">
               The Clear Choice for On-Demand Commerce
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground">
-              See how Storefront stacks up against traditional e-commerce platforms and third-party
-              delivery apps.
+            <p className="text-muted-foreground text-lg leading-snug">
+              See how Storefront stacks up against traditional e-commerce
+              platforms and third-party delivery apps.
             </p>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full overflow-hidden rounded-xl border bg-card">
+            <table className="bg-card w-full overflow-hidden rounded-xl border">
               <thead>
                 <tr className="border-b">
-                  <th className="p-4 text-left text-sm font-semibold text-muted-foreground">Feature</th>
-                  <th className="bg-primary/5 p-4 text-center text-sm font-semibold">Storefront</th>
-                  <th className="p-4 text-center text-sm font-semibold text-muted-foreground">Shopify</th>
-                  <th className="p-4 text-center text-sm font-semibold text-muted-foreground">DoorDash / Uber Eats</th>
+                  <th className="text-muted-foreground p-4 text-left text-sm font-semibold">
+                    Feature
+                  </th>
+                  <th className="bg-primary/5 p-4 text-center text-sm font-semibold">
+                    Storefront
+                  </th>
+                  <th className="text-muted-foreground p-4 text-center text-sm font-semibold">
+                    Shopify
+                  </th>
+                  <th className="text-muted-foreground p-4 text-center text-sm font-semibold">
+                    DoorDash / Uber Eats
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {comparison.map((row, i) => (
-                  <tr key={row.feature} className={cn('border-b last:border-0', i % 2 === 1 && 'bg-muted/10')}>
-                    <td className="p-4 text-sm font-medium text-accent-foreground">{row.feature}</td>
-                    <td className={cn(
-                      'p-4 text-center text-sm font-semibold',
-                      'bg-primary/5',
-                      row.storefront.positive === true && 'text-emerald-600 dark:text-emerald-400',
-                      row.storefront.positive === false && 'text-destructive',
-                    )}>
+                  <tr
+                    key={row.feature}
+                    className={cn(
+                      'border-b last:border-0',
+                      i % 2 === 1 && 'bg-muted/10',
+                    )}
+                  >
+                    <td className="text-accent-foreground p-4 text-sm font-medium">
+                      {row.feature}
+                    </td>
+                    <td
+                      className={cn(
+                        'p-4 text-center text-sm font-semibold',
+                        'bg-primary/5',
+                        row.storefront.positive === true &&
+                          'text-emerald-600 dark:text-emerald-400',
+                        row.storefront.positive === false && 'text-destructive',
+                      )}
+                    >
                       {row.storefront.value}
                     </td>
-                    <td className={cn(
-                      'p-4 text-center text-sm',
-                      row.shopify.positive === true && 'text-emerald-600 dark:text-emerald-400',
-                      row.shopify.positive === false && 'text-muted-foreground',
-                    )}>
+                    <td
+                      className={cn(
+                        'p-4 text-center text-sm',
+                        row.shopify.positive === true &&
+                          'text-emerald-600 dark:text-emerald-400',
+                        row.shopify.positive === false &&
+                          'text-muted-foreground',
+                      )}
+                    >
                       {row.shopify.value}
                     </td>
-                    <td className={cn(
-                      'p-4 text-center text-sm',
-                      row.thirdParty.positive === true && 'text-emerald-600 dark:text-emerald-400',
-                      row.thirdParty.positive === false && 'text-muted-foreground',
-                    )}>
+                    <td
+                      className={cn(
+                        'p-4 text-center text-sm',
+                        row.thirdParty.positive === true &&
+                          'text-emerald-600 dark:text-emerald-400',
+                        row.thirdParty.positive === false &&
+                          'text-muted-foreground',
+                      )}
+                    >
                       {row.thirdParty.value}
                     </td>
                   </tr>
@@ -793,29 +903,38 @@ export default function StorefrontPageContent() {
       <section className="section-padding">
         <div className="container space-y-10">
           <div className="mx-auto max-w-3xl space-y-4 text-center">
-            <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
               Industry Use Cases
             </div>
             <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl">
               Built for Every On-Demand Business
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground">
-              From a single restaurant to a multi-city marketplace — Storefront powers hyperlocal
-              commerce across every industry.
+            <p className="text-muted-foreground text-lg leading-snug">
+              From a single restaurant to a multi-city marketplace — Storefront
+              powers hyperlocal commerce across every industry.
             </p>
           </div>
           <div
-            className="overflow-hidden rounded-xl border bg-border"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px' }}
+            className="bg-border overflow-hidden rounded-xl border"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '1px',
+            }}
           >
             {useCases.map((uc) => {
               const Icon = uc.icon;
               return (
-                <div key={uc.label} className="flex flex-col items-center gap-3 bg-card p-6 text-center">
-                  <div className="flex size-9 items-center justify-center rounded-md bg-primary/10">
-                    <Icon className="size-5 text-primary" />
+                <div
+                  key={uc.label}
+                  className="bg-card flex flex-col items-center gap-3 p-6 text-center"
+                >
+                  <div className="bg-primary/10 flex size-9 items-center justify-center rounded-md">
+                    <Icon className="text-primary size-5" />
                   </div>
-                  <span className="text-sm font-semibold text-accent-foreground">{uc.label}</span>
+                  <span className="text-accent-foreground text-sm font-semibold">
+                    {uc.label}
+                  </span>
                 </div>
               );
             })}
@@ -829,19 +948,20 @@ export default function StorefrontPageContent() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div className="flex flex-col gap-6">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                <div className="text-muted-foreground inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+                  <span className="bg-primary h-1.5 w-1.5 rounded-full" />
                   Headless Commerce API
                 </div>
                 <h2 className="text-4xxl leading-tight tracking-tight text-balance md:text-5xl">
                   Build Any Commerce Experience{' '}
                   <span className="text-gradient">On Top of Storefront</span>
                 </h2>
-                <p className="leading-relaxed text-muted-foreground">
-                  Go fully headless. Use the Storefront REST API to build a completely custom
-                  frontend, integrate with an existing website, or connect to any third-party
-                  system. The mobile apps and web console are just two of many possible frontends
-                  for your Storefront backend.
+                <p className="text-muted-foreground leading-relaxed">
+                  Go fully headless. Use the Storefront REST API to build a
+                  completely custom frontend, integrate with an existing
+                  website, or connect to any third-party system. The mobile apps
+                  and web console are just two of many possible frontends for
+                  your Storefront backend.
                 </p>
               </div>
               <div className="divide-y">
@@ -850,10 +970,13 @@ export default function StorefrontPageContent() {
                   'Webhooks for order events, payment status, and delivery updates',
                   'JavaScript SDK for rapid frontend integration',
                   'Sandbox environment for safe integration testing',
-                  'Open source — self-host, fork, and extend freely',
+                  'Source-available — self-host, fork, and extend freely',
                 ].map((point) => (
-                  <div key={point} className="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
-                    <CheckCircle2 className="size-4 shrink-0 text-primary" />
+                  <div
+                    key={point}
+                    className="flex items-center gap-3 py-3 first:pt-0 last:pb-0"
+                  >
+                    <CheckCircle2 className="text-primary size-4 shrink-0" />
                     <span className="text-sm">{point}</span>
                   </div>
                 ))}
@@ -863,7 +986,11 @@ export default function StorefrontPageContent() {
                   <Link href="/docs/storefront">View API Docs</Link>
                 </Button>
                 <Button variant="outline" asChild>
-                  <a href="https://github.com/fleetbase/storefront" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://github.com/logisbase/storefront"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     GitHub
                   </a>
                 </Button>
@@ -910,7 +1037,7 @@ export default function StorefrontPageContent() {
         <div className="container">
           <div className="mx-auto max-w-3xl">
             <div className="mb-12 space-y-4 text-center">
-              <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+              <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
                 FAQ
               </div>
               <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl">
@@ -925,12 +1052,12 @@ export default function StorefrontPageContent() {
                 <AccordionItem
                   key={i}
                   value={`faq-${i}`}
-                  className="rounded-lg border bg-card px-6"
+                  className="bg-card rounded-lg border px-6"
                 >
                   <AccordionTrigger className="py-5 text-left font-semibold hover:no-underline">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="pb-5 leading-relaxed text-muted-foreground">
+                  <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -943,22 +1070,23 @@ export default function StorefrontPageContent() {
       {/* ── Final CTA ─────────────────────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
-          <div className="relative overflow-hidden rounded-2xl border bg-card px-8 py-16 text-center md:px-16">
+          <div className="bg-card relative overflow-hidden rounded-2xl border px-8 py-16 text-center md:px-16">
             <div className="pointer-events-none absolute inset-0 -z-10">
               <div className="absolute -top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-violet-500/[0.12] blur-3xl" />
-              <div className="absolute -bottom-1/2 right-1/4 h-72 w-72 rounded-full bg-blue-500/[0.08] blur-3xl" />
+              <div className="absolute right-1/4 -bottom-1/2 h-72 w-72 rounded-full bg-blue-500/[0.08] blur-3xl" />
             </div>
             <div className="mx-auto max-w-3xl space-y-6">
-              <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+              <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
                 Start Today
               </div>
               <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
                 Own Your Commerce.{' '}
                 <span className="text-gradient">Keep Every Penny.</span>
               </h2>
-              <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Launch your branded storefront and mobile app. Build your own marketplace. Keep 100%
-                of every order — no commissions, no vendor lock-in, no compromise.
+              <p className="text-muted-foreground mx-auto max-w-xl text-lg leading-relaxed">
+                Launch your branded storefront and mobile app. Build your own
+                marketplace. Keep 100% of every order — no commissions, no
+                vendor lock-in, no compromise.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
@@ -967,19 +1095,22 @@ export default function StorefrontPageContent() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <a href="https://cal.com/shivthakker/enquiry" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://cal.com/shivthakker/enquiry"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Book a Demo
                   </a>
                 </Button>
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-muted-foreground text-xs">
                 Free 7-day trial · Free to self-host under AGPL
               </p>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

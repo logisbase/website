@@ -1,11 +1,11 @@
 ---
 title: Organizations
-description: Understand the two distinct organization views in Fleetbase — the system-wide admin list and your personal organization membership panel.
+description: Understand the two distinct organization views in LogisBase — the system-wide admin list and your personal organization membership panel.
 ---
 
 # Organizations
 
-Fleetbase is multi-tenant by design. A single instance can host multiple fully isolated organizations, each with their own users, data, API keys, extensions, and settings. No data crosses organization boundaries unless explicitly shared through the API.
+LogisBase is multi-tenant by design. A single instance can host multiple fully isolated organizations, each with their own users, data, API keys, extensions, and settings. No data crosses organization boundaries unless explicitly shared through the API.
 
 There are two distinct places in the console where organizations appear — one for system-level administrators, and one for every user managing their own membership.
 
@@ -13,7 +13,10 @@ There are two distinct places in the console where organizations appear — one 
 
 ## Admin View — All Organizations
 
-<Callout type="warn">This section is only accessible to **instance administrators** (system-level admins).</Callout>
+<Callout type="warn">
+  This section is only accessible to **instance administrators** (system-level
+  admins).
+</Callout>
 
 Navigate to **Admin → Organizations** to see every organization registered on the instance. This is the global management panel, not a personal membership view.
 
@@ -23,14 +26,14 @@ The list displays each organization's name, owner, country, and creation date. C
 
 ### How Organizations Are Created
 
-When any user creates an account on Fleetbase, an organization is automatically created for them. Every resource in the system — orders, drivers, vehicles, contacts, webhooks — belongs to exactly one organization.
+When any user creates an account on LogisBase, an organization is automatically created for them. Every resource in the system — orders, drivers, vehicles, contacts, webhooks — belongs to exactly one organization.
 
 ### Multi-Tenant Use Cases
 
 The multi-organization architecture is commonly used for:
 
-- **Internal departments** — Separate organizations for different regional teams or business units sharing one Fleetbase instance
-- **White-label platforms** — SaaS providers who use Fleetbase to power their own product offer each customer a separate organization
+- **Internal departments** — Separate organizations for different regional teams or business units sharing one LogisBase instance
+- **White-label platforms** — SaaS providers who use LogisBase to power their own product offer each customer a separate organization
 - **Client isolation** — Agencies or logistics operators who manage fleets on behalf of multiple clients keep each client's data fully isolated
 
 ---
@@ -63,7 +66,10 @@ Users without ownership or the required permissions will see the organization li
 
 Click **Leave** next to any organization you are a member of but do not own. Leaving removes you from the organization immediately — you will no longer have access to its data or console.
 
-<Callout type="warn">You cannot leave an organization you own. Transfer ownership or delete the organization instead.</Callout>
+<Callout type="warn">
+  You cannot leave an organization you own. Transfer ownership or delete the
+  organization instead.
+</Callout>
 
 ### Deleting an Organization
 
@@ -75,6 +81,6 @@ Users who are not the owner will not see a delete option for that organization.
 
 ## Cross-Organization Invites
 
-When a user is invited to a second organization by email and that email already has a Fleetbase account, a cross-organization invite is issued. The user accepts the invite and gains access to the new organization while keeping their existing account. Their credentials, 2FA settings, and profile remain unchanged — only the active organization context changes.
+When a user is invited to a second organization by email and that email already has a LogisBase account, a cross-organization invite is issued. The user accepts the invite and gains access to the new organization while keeping their existing account. Their credentials, 2FA settings, and profile remain unchanged — only the active organization context changes.
 
 See [Users](/docs/platform/identity-and-access/users) for details on the invite flow.

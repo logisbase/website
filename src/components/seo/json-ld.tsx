@@ -7,24 +7,24 @@ export function OrganizationSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Fleetbase',
-    url: 'https://fleetbase.io',
-    logo: 'https://fleetbase.io/images/filled-icon.png',
+    name: 'LogisBase',
+    url: 'https://logisbase.com',
+    logo: 'https://logisbase.com/images/filled-icon.png',
     sameAs: [
-      'https://github.com/fleetbase/fleetbase',
-      'https://twitter.com/fleetbase_io',
-      'https://www.linkedin.com/company/fleetbase',
+      'https://github.com/logisbase/logisbase',
+      'https://twitter.com/logisbase',
+      'https://www.linkedin.com/company/logisbase',
       'https://discord.com/invite/HnTqQ6zAVn',
     ],
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        email: 'hello@fleetbase.io',
+        email: 'hello@logisbase.com',
         contactType: 'sales',
       },
       {
         '@type': 'ContactPoint',
-        email: 'support@fleetbase.io',
+        email: 'support@logisbase.com',
         contactType: 'customer support',
       },
     ],
@@ -51,15 +51,16 @@ export function WebSiteSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Fleetbase',
-    alternateName: 'Fleetbase — Open-Source Logistics & Supply Chain Platform',
-    url: 'https://fleetbase.io',
+    name: 'LogisBase',
+    alternateName:
+      'LogisBase — Source-Available Logistics & Supply Chain Platform',
+    url: 'https://logisbase.com',
     inLanguage: 'en',
     publisher: {
       '@type': 'Organization',
-      name: 'Fleetbase',
-      url: 'https://fleetbase.io',
-      logo: 'https://fleetbase.io/images/filled-icon.png',
+      name: 'LogisBase',
+      url: 'https://logisbase.com',
+      logo: 'https://logisbase.com/images/filled-icon.png',
     },
   };
   return (
@@ -71,9 +72,9 @@ export function WebSiteSchema() {
 }
 
 export function SoftwareApplicationSchema({
-  name = 'Fleetbase',
-  url = 'https://fleetbase.io',
-  description = 'Open-source fleet management and TMS software. Dispatch, track, and optimize your fleet in real time. Self-hosted or cloud, no per-seat pricing.',
+  name = 'LogisBase',
+  url = 'https://logisbase.com',
+  description = 'Source-available fleet management and TMS software. Dispatch, track, and optimize your fleet in real time. Self-hosted or cloud, no per-seat pricing.',
   applicationCategory = 'BusinessApplication',
   operatingSystem = 'Web, Android, iOS',
   price = '25',
@@ -106,8 +107,8 @@ export function SoftwareApplicationSchema({
     },
     author: {
       '@type': 'Organization',
-      name: 'Fleetbase',
-      url: 'https://fleetbase.io',
+      name: 'LogisBase',
+      url: 'https://logisbase.com',
     },
   };
   return (
@@ -118,7 +119,11 @@ export function SoftwareApplicationSchema({
   );
 }
 
-export function FAQSchema({ faqs }: { faqs: { question: string; answer: string }[] }) {
+export function FAQSchema({
+  faqs,
+}: {
+  faqs: { question: string; answer: string }[];
+}) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -139,7 +144,11 @@ export function FAQSchema({ faqs }: { faqs: { question: string; answer: string }
   );
 }
 
-export function BreadcrumbSchema({ items }: { items: { name: string; url: string }[] }) {
+export function BreadcrumbSchema({
+  items,
+}: {
+  items: { name: string; url: string }[];
+}) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -177,7 +186,7 @@ export function ProductSchema({
     url,
     brand: {
       '@type': 'Brand',
-      name: 'Fleetbase',
+      name: 'LogisBase',
     },
   };
   if (price) {
@@ -233,11 +242,11 @@ export function BlogPostingSchema({
     })),
     publisher: {
       '@type': 'Organization',
-      name: 'Fleetbase',
-      url: 'https://fleetbase.io',
+      name: 'LogisBase',
+      url: 'https://logisbase.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://fleetbase.io/images/filled-icon.png',
+        url: 'https://logisbase.com/images/filled-icon.png',
       },
     },
   };

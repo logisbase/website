@@ -1,6 +1,6 @@
 ---
 title: Unpublish
-description: "Remove a published extension from the Fleetbase Extension Registry using `flb unpublish`."
+description: 'Remove a published extension from the LogisBase Extension Registry using `flb unpublish`.'
 ---
 
 # `flb unpublish`
@@ -14,10 +14,10 @@ flb unpublish @yourcompany/yourext-engine@1.2.3    # Unpublish a single version
 
 ## Options
 
-| Option | Description |
-| :--- | :--- |
-| `[packageName]` | Package name to unpublish (with optional `@version` suffix) |
-| `-r, --registry <url>` | Registry URL (default: `https://registry.fleetbase.io`) |
+| Option                 | Description                                                 |
+| :--------------------- | :---------------------------------------------------------- |
+| `[packageName]`        | Package name to unpublish (with optional `@version` suffix) |
+| `-r, --registry <url>` | Registry URL (default: `https://registry.logisbase.com`)    |
 
 ## Authentication
 
@@ -48,9 +48,10 @@ flb unpublish @acme/vehicle-inspections-engine@1.2.0 --registry https://registry
 ```
 
 <Callout type="warn">
-Unpublishing affects every Fleetbase instance that has this extension installed. Future `flb install` calls will fail, and `pnpm install` / `composer require` reruns on existing instances will fail to fetch the package.
+Unpublishing affects every LogisBase instance that has this extension installed. Future `flb install` calls will fail, and `pnpm install` / `composer require` reruns on existing instances will fail to fetch the package.
 
 Most public registries (including npm itself) impose a 72-hour window after publish during which unpublishing is allowed, after which it is restricted to prevent ecosystem damage. Verify the registry's policy before relying on unpublish.
+
 </Callout>
 
 ## When to Use This

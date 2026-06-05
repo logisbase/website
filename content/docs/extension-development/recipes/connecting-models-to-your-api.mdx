@@ -27,18 +27,18 @@ You write the adapter once; every store call against your models routes correctl
 
 ## 1. Create a Base Adapter for Your Extension
 
-Extend `@fleetbase/ember-core/adapters/application` and override `namespace`:
+Extend `@logisbase/ember-core/adapters/application` and override `namespace`:
 
 ```js
 // addon/adapters/my-extension.js
-import ApplicationAdapter from '@fleetbase/ember-core/adapters/application';
+import ApplicationAdapter from '@logisbase/ember-core/adapters/application';
 
 export default class MyExtensionAdapter extends ApplicationAdapter {
-    namespace = 'my-extension/int/v1';
+  namespace = 'my-extension/int/v1';
 }
 ```
 
-The base `ApplicationAdapter` already handles auth headers (bearer token), the active organization header, the `X-Fleetbase-Sandbox` header, and JSON content negotiation. You're only changing where the requests go.
+The base `ApplicationAdapter` already handles auth headers (bearer token), the active organization header, the `X-LogisBase-Sandbox` header, and JSON content negotiation. You're only changing where the requests go.
 
 For the public API namespace (consumed by external integrations), use `my-extension/v1`. For internal console-only endpoints, the platform convention is `my-extension/int/v1`.
 
@@ -72,23 +72,23 @@ Models stay vanilla Ember Data — no adapter awareness needed:
 import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class WidgetModel extends Model {
-    /** @ids */
-    @attr('string') company_uuid;
-    @attr('string') created_by_uuid;
+  /** @ids */
+  @attr('string') company_uuid;
+  @attr('string') created_by_uuid;
 
-    /** @relationships */
-    @belongsTo('user', { async: false }) createdBy;
+  /** @relationships */
+  @belongsTo('user', { async: false }) createdBy;
 
-    /** @attributes */
-    @attr('string') public_id;
-    @attr('string') name;
-    @attr('string') description;
-    @attr('string') status;
-    @attr('raw') meta;
+  /** @attributes */
+  @attr('string') public_id;
+  @attr('string') name;
+  @attr('string') description;
+  @attr('string') status;
+  @attr('raw') meta;
 
-    /** @dates */
-    @attr('date') created_at;
-    @attr('date') updated_at;
+  /** @dates */
+  @attr('date') created_at;
+  @attr('date') updated_at;
 }
 ```
 
@@ -96,16 +96,18 @@ If your API embeds related records inline (the platform's REST convention), use 
 
 ```js
 // addon/serializers/widget.js
-import ApplicationSerializer from '@fleetbase/ember-core/serializers/application';
+import ApplicationSerializer from '@logisbase/ember-core/serializers/application';
 import { EmbeddedRecordsMixin } from '@ember-data/serializer/rest';
 
-export default class WidgetSerializer extends ApplicationSerializer.extend(EmbeddedRecordsMixin) {
-    get attrs() {
-        return {
-            template: { embedded: 'always' },
-            categories: { embedded: 'always' },
-        };
-    }
+export default class WidgetSerializer extends ApplicationSerializer.extend(
+  EmbeddedRecordsMixin,
+) {
+  get attrs() {
+    return {
+      template: { embedded: 'always' },
+      categories: { embedded: 'always' },
+    };
+  }
 }
 ```
 
@@ -113,7 +115,7 @@ Mirror serializers per model if needed, or share one across many with re-exports
 
 ## 4. Backend Resource Shape
 
-For the adapter to deserialize correctly, your backend resources need to match Ember Data's expected envelope. The platform's `FleetbaseController` + `JsonResource` pattern handles this for you — see [Routes & Controllers](/docs/extension-development/backend/routes-and-controllers#controllers). The `index` action returns:
+For the adapter to deserialize correctly, your backend resources need to match Ember Data's expected envelope. The platform's `LogisBaseController` + `JsonResource` pattern handles this for you — see [Routes & Controllers](/docs/extension-development/backend/routes-and-controllers#controllers). The `index` action returns:
 
 ```json
 {
@@ -142,11 +144,11 @@ With adapters in place, the standard Ember Data API just works:
 import { inject as service } from '@ember/service';
 
 export default class WidgetsRoute extends Route {
-    @service store;
+  @service store;
 
-    model() {
-        return this.store.query('widget', { status: 'active' });
-    }
+  model() {
+    return this.store.query('widget', { status: 'active' });
+  }
 }
 ```
 
@@ -173,11 +175,11 @@ async list() {
 
 ## When to Use the Store vs. `fetch`
 
-| Use the store | Use `fetch` |
-| :--- | :--- |
-| CRUD on your own resources | One-off action endpoints (`/widgets/{id}/duplicate`) |
-| Records you'll display in tables, forms, detail panels | Aggregates, dashboards, exports |
-| Anything you want to track for dirty-state, optimistic updates, or relationship caching | Anything that doesn't fit the REST resource pattern |
+| Use the store                                                                           | Use `fetch`                                          |
+| :-------------------------------------------------------------------------------------- | :--------------------------------------------------- |
+| CRUD on your own resources                                                              | One-off action endpoints (`/widgets/{id}/duplicate`) |
+| Records you'll display in tables, forms, detail panels                                  | Aggregates, dashboards, exports                      |
+| Anything you want to track for dirty-state, optimistic updates, or relationship caching | Anything that doesn't fit the REST resource pattern  |
 
 For an action endpoint that returns the full record, you can hybrid: use `fetch` for the call, then `store.pushPayload(...)` to merge the result into the store.
 
@@ -200,9 +202,13 @@ async duplicate(widget) {
 ## Reference
 
 - [Calling Your Extension's API](/docs/extension-development/recipes/calling-your-extension-api) — the `fetch` companion to this recipe
-- [`addon/adapters/application.js`](https://github.com/fleetbase/ember-core/blob/main/addon/adapters/application.js) — base adapter source
-- [`addon/serializers/application.js`](https://github.com/fleetbase/ember-core/blob/main/addon/serializers/application.js) — base serializer source
-- [`packages/storefront/addon/adapters/storefront.js`](https://github.com/fleetbase/storefront/blob/main/addon/adapters/storefront.js) — reference per-extension adapter
-- [`packages/storefront/addon/adapters/`](https://github.com/fleetbase/storefront/tree/main/addon/adapters) — re-export pattern across many models
-- <EmberDataApi path="modules/@ember-data%2Fadapter">Ember Data Adapter</EmberDataApi> — upstream API docs
-- <EmberDataApi path="classes/RESTAdapter">RESTAdapter</EmberDataApi> — what `ApplicationAdapter` extends
+- [`addon/adapters/application.js`](https://github.com/logisbase/ember-core/blob/main/addon/adapters/application.js) — base adapter source
+- [`addon/serializers/application.js`](https://github.com/logisbase/ember-core/blob/main/addon/serializers/application.js) — base serializer source
+- [`packages/storefront/addon/adapters/storefront.js`](https://github.com/logisbase/storefront/blob/main/addon/adapters/storefront.js) — reference per-extension adapter
+- [`packages/storefront/addon/adapters/`](https://github.com/logisbase/storefront/tree/main/addon/adapters) — re-export pattern across many models
+- <EmberDataApi path="modules/@ember-data%2Fadapter">
+    Ember Data Adapter
+  </EmberDataApi>
+  — upstream API docs
+- <EmberDataApi path="classes/RESTAdapter">RESTAdapter</EmberDataApi> — what
+  `ApplicationAdapter` extends

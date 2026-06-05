@@ -1,11 +1,11 @@
 ---
 title: Browsing & Installing
-description: Browse the Fleetbase extension registry and install extensions via the console or the CLI.
+description: Browse the LogisBase extension registry and install extensions via the console or the CLI.
 ---
 
 # Browsing & Installing Extensions
 
-Extensions are discovered and installed from the **Extensions** section in the top navigation bar of the Fleetbase Console, or using the `flb` CLI on a self-hosted instance.
+Extensions are discovered and installed from the **Extensions** section in the top navigation bar of the LogisBase Console, or using the `flb` CLI on a self-hosted instance.
 
 ## Browsing the Registry
 
@@ -16,6 +16,7 @@ Click **Extensions** in the top navbar to open the Extensions section. The defau
 ![Extensions Explore view — extension card grid with search bar and category sidebar](/images/screenshots/extensions/extensions-browse.webp)
 
 The sidebar shows:
+
 - **Explore All** — the full registry catalogue
 - **Categories** — browse by type (e.g. Fleet Management, Commerce, Finance)
 
@@ -57,21 +58,21 @@ Once installation completes the extension's features and navigation appear immed
 
 ### Via the CLI (Self-Hosted)
 
-On a self-hosted instance, use the Fleetbase CLI to install extensions. The extension identifier uses the format `publisher/extension-name` — no `@` prefix.
+On a self-hosted instance, use the LogisBase CLI to install extensions. The extension identifier uses the format `publisher/extension-name` — no `@` prefix.
 
 ```bash
 # Install an extension by name
-flb install fleetbase/fleetops
+flb install logisbase/fleetops
 
-# Install to a specific Fleetbase instance directory
-flb install fleetbase/fleetops --path /opt/fleetbase
+# Install to a specific LogisBase instance directory
+flb install logisbase/fleetops --path /opt/logisbase
 ```
 
 The CLI downloads the extension, runs any required database migrations, and rebuilds the frontend console to wire in the new UI components.
 
 ## Authenticating the CLI
 
-Before you can install extensions from the CLI you must authenticate with the Fleetbase Registry.
+Before you can install extensions from the CLI you must authenticate with the LogisBase Registry.
 
 <Steps>
   <Step>
@@ -80,6 +81,7 @@ Before you can install extensions from the CLI you must authenticate with the Fl
     ```bash
     flb register
     ```
+
   </Step>
   <Step>
     ### Verify your email
@@ -87,6 +89,7 @@ Before you can install extensions from the CLI you must authenticate with the Fl
     ```bash
     flb verify -e your@email.com -c verification-code
     ```
+
   </Step>
   <Step>
     ### Generate a registry token
@@ -94,6 +97,7 @@ Before you can install extensions from the CLI you must authenticate with the Fl
     ```bash
     flb generate-token -e your@email.com
     ```
+
   </Step>
   <Step>
     ### Set your auth token
@@ -101,6 +105,7 @@ Before you can install extensions from the CLI you must authenticate with the Fl
     ```bash
     flb set-auth your-registry-token-here
     ```
+
   </Step>
 </Steps>
 

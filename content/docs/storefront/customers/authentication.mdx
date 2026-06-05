@@ -26,6 +26,7 @@ Traditional credentials login. The login endpoint accepts an `identity` field th
 ### Social Sign-In
 
 Storefront supports:
+
 - **Apple Sign-In** — required by Apple for iOS apps that offer other social logins
 - **Google Sign-In**
 - **Facebook Sign-In**
@@ -65,7 +66,8 @@ Authorization: Bearer store_your_store_key
 ```
 
 <Callout type="info">
-Phone numbers must include the international prefix (e.g. `+1`, `+44`). The API normalizes the value and prepends `+` automatically if missing.
+  Phone numbers must include the international prefix (e.g. `+1`, `+44`). The
+  API normalizes the value and prepends `+` automatically if missing.
 </Callout>
 
 ## Login
@@ -223,5 +225,8 @@ POST /storefront/v1/customers/stripe-setup-intent
 Tokens issued via these endpoints are Laravel Sanctum personal access tokens. Handle `401 Unauthorized` by re-authenticating. Tokens can be revoked server-side by an admin.
 
 <Callout type="info">
-If you are using the open-source [Storefront App](/docs/storefront/app/overview), authentication is already fully implemented with SMS code, email/password, Apple, Google, and Facebook — no additional setup needed beyond enabling the social providers via env vars.
+  If you are using the source-available [Storefront
+  App](/docs/storefront/app/overview), authentication is already fully
+  implemented with SMS code, email/password, Apple, Google, and Facebook — no
+  additional setup needed beyond enabling the social providers via env vars.
 </Callout>

@@ -1,11 +1,11 @@
 ---
 title: Running Locally
-description: Run the full Fleetbase stack on your local machine using Docker Compose — for evaluation, testing, and local use.
+description: Run the full LogisBase stack on your local machine using Docker Compose — for evaluation, testing, and local use.
 ---
 
 # Running Locally
 
-Fleetbase ships with a `docker-compose.yml` that boots the entire stack — API, console, database, Redis, SocketCluster, queue workers, and scheduler — with a single command. This is the recommended setup for local development and testing.
+LogisBase ships with a `docker-compose.yml` that boots the entire stack — API, console, database, Redis, SocketCluster, queue workers, and scheduler — with a single command. This is the recommended setup for local development and testing.
 
 ## Prerequisites
 
@@ -20,26 +20,27 @@ Before you begin, make sure you have the following installed:
 
 <Tabs items={['CLI (Recommended)', 'Docker Compose', 'Shell Script']}>
   <Tab value="CLI (Recommended)">
-    The Fleetbase CLI is the fastest path. It handles cloning, configuration, and startup — including running the deploy script — interactively.
+    The LogisBase CLI is the fastest path. It handles cloning, configuration, and startup — including running the deploy script — interactively.
 
     ```bash
-    npm install -g @fleetbase/cli
-    flb install-fleetbase
+    npm install -g @logisbase/cli
+    flb install-logisbase
     ```
 
     The CLI will prompt you for:
     - **Host** — use `localhost` for local-only access
     - **Environment** — choose `development`
-    - **Install directory** — defaults to a new `fleetbase/` folder
+    - **Install directory** — defaults to a new `logisbase/` folder
 
     Setup takes 3–5 minutes. When complete, the CLI prints the URLs for the console and API.
+
   </Tab>
   <Tab value="Docker Compose">
     Clone the repository, start the stack, and run the deploy script:
 
     ```bash
-    git clone https://github.com/fleetbase/fleetbase.git
-    cd fleetbase
+    git clone https://github.com/logisbase/logisbase.git
+    cd logisbase
     docker compose up -d
     ```
 
@@ -48,15 +49,17 @@ Before you begin, make sure you have the following installed:
     ```bash
     docker compose exec application bash -c "./deploy.sh"
     ```
+
   </Tab>
   <Tab value="Shell Script">
     The repository includes a setup wizard that handles configuration, starts the stack, and runs the deploy script automatically:
 
     ```bash
-    git clone https://github.com/fleetbase/fleetbase.git
-    cd fleetbase
+    git clone https://github.com/logisbase/logisbase.git
+    cd logisbase
     ./scripts/docker-install.sh
     ```
+
   </Tab>
 </Tabs>
 
@@ -64,13 +67,13 @@ Before you begin, make sure you have the following installed:
 
 Once running, the stack exposes the following services:
 
-| Service | URL | Description |
-| :--- | :--- | :--- |
-| **Console** | http://localhost:4200 | Ember.js admin interface |
-| **API** | http://localhost:8000 | Laravel REST API |
-| **MySQL** | localhost:3306 | Primary database |
-| **Redis** | localhost:6379 | Cache and job queue |
-| **SocketCluster** | ws://localhost:38000 | Real-time WebSocket server |
+| Service           | URL                   | Description                |
+| :---------------- | :-------------------- | :------------------------- |
+| **Console**       | http://localhost:4200 | Ember.js admin interface   |
+| **API**           | http://localhost:8000 | Laravel REST API           |
+| **MySQL**         | localhost:3306        | Primary database           |
+| **Redis**         | localhost:6379        | Cache and job queue        |
+| **SocketCluster** | ws://localhost:38000  | Real-time WebSocket server |
 
 The `httpd` container acts as a reverse proxy in front of the API and console containers. The `scheduler` and `queue` containers handle cron jobs and background job processing respectively.
 
@@ -111,7 +114,10 @@ docker compose exec application bash -c "./deploy.sh"
 
 Then open [http://localhost:4200](http://localhost:4200) in your browser. You'll be prompted to create your first admin account and organisation.
 
-<Callout type="info">If the console shows a blank page or connection error on first launch, wait 30–60 seconds for the API container to finish initialising, then refresh.</Callout>
+<Callout type="info">
+  If the console shows a blank page or connection error on first launch, wait
+  30–60 seconds for the API container to finish initialising, then refresh.
+</Callout>
 
 ## Environment Configuration
 
@@ -128,12 +134,12 @@ All environment configuration is managed through `docker-compose.override.yml` f
       application:
         environment:
           APP_KEY: "base64:your-generated-key"   # openssl rand -base64 32
-          APP_NAME: "Fleetbase"
+          APP_NAME: "LogisBase"
           APP_URL: "http://localhost:8000"
           CONSOLE_HOST: "http://localhost:4200"
           ENVIRONMENT: "development"
           APP_DEBUG: "true"
-          DATABASE_URL: "mysql://fleetbase:password@database/fleetbase"
+          DATABASE_URL: "mysql://logisbase:password@database/logisbase"
           SESSION_DOMAIN: "localhost"
           FRONTEND_HOSTS: ""                      # additional CORS origins if needed
     ```
@@ -148,7 +154,7 @@ All environment configuration is managed through `docker-compose.override.yml` f
           MAIL_USERNAME: "your-username"
           MAIL_PASSWORD: "your-password"
           MAIL_FROM_ADDRESS: "hello@example.com"
-          MAIL_FROM_NAME: "Fleetbase"
+          MAIL_FROM_NAME: "LogisBase"
 
           # Mailgun
           MAIL_MAILER: "mailgun"
@@ -215,11 +221,12 @@ All environment configuration is managed through `docker-compose.override.yml` f
     ```bash
     docker compose up -d
     ```
+
   </Tab>
   <Tab value="Frontend">
-    The console is configured via two files in the `console/` directory. These are written by the install wizard and read at build time (`.env.*`) and runtime (`fleetbase.config.json`).
+    The console is configured via two files in the `console/` directory. These are written by the install wizard and read at build time (`.env.*`) and runtime (`logisbase.config.json`).
 
-    **`console/fleetbase.config.json`** — runtime config loaded by the Ember app:
+    **`console/logisbase.config.json`** — runtime config loaded by the Ember app:
 
     ```json
     {
@@ -230,7 +237,7 @@ All environment configuration is managed through `docker-compose.override.yml` f
     }
     ```
 
-    > `fleetbase.config.json` is disabled in production environments by default. To enable it in production, set `DISABLE_RUNTIME_CONFIG=false` in the console container's environment.
+    > `logisbase.config.json` is disabled in production environments by default. To enable it in production, set `DISABLE_RUNTIME_CONFIG=false` in the console container's environment.
 
     **`console/environments/.env.development`** — used during local development builds:
 
@@ -262,6 +269,7 @@ All environment configuration is managed through `docker-compose.override.yml` f
     ```bash
     docker compose restart console
     ```
+
   </Tab>
 </Tabs>
 
@@ -277,7 +285,10 @@ docker compose exec application bash -c "./deploy.sh"
 docker compose up -d
 ```
 
-<Callout type="info">Always run `./deploy.sh` after pulling a new release. It handles migrations, cache clearing, and any other deployment steps the release requires.</Callout>
+<Callout type="info">
+  Always run `./deploy.sh` after pulling a new release. It handles migrations,
+  cache clearing, and any other deployment steps the release requires.
+</Callout>
 
 ## Useful Commands
 
@@ -312,7 +323,7 @@ docker compose pull && docker compose up -d && docker compose exec application b
 
 ## What's Next
 
-Now that you have Fleetbase running locally:
+Now that you have LogisBase running locally:
 
 - **[System Setup](/docs/platform/system-setup/services)** — Configure mail, storage, and other services
 - **[Extension Development](/docs/extension-development/getting-started/quickstart)** — Scaffold and run a custom extension against your local instance

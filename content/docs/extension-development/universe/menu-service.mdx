@@ -9,13 +9,13 @@ The `menu` service is how your extension contributes navigation entries to the c
 
 ```js
 // addon/extension.js
-import { MenuItem, ExtensionComponent } from '@fleetbase/ember-core/contracts';
+import { MenuItem, ExtensionComponent } from '@logisbase/ember-core/contracts';
 
 export default {
-    setupExtension(app, universe) {
-        const menuService = universe.getService('menu');
-        // … registrations
-    },
+  setupExtension(app, universe) {
+    const menuService = universe.getService('menu');
+    // … registrations
+  },
 };
 ```
 
@@ -23,15 +23,15 @@ export default {
 
 The service maintains a small set of well-known registries, addressed by **colon-separated** names:
 
-| Registry | Holds | Registrar |
-| :--- | :--- | :--- |
-| `header` | Header navigation bar items (top of console) | `registerHeaderMenuItem` |
-| `console:account` | Organization & user dropdowns (slugs prefixed `organization:` or `user:`) | `registerOrganizationMenuItem`, `registerUserMenuItem` |
-| `console:admin` | Admin section — items (`menu-item`) and panels (`menu-panel`) | `registerAdminMenuItem`, `registerAdminMenuPanel` |
-| `console:settings` | Settings page items | `registerSettingsMenuItem` |
-| `auth:login` | Login screen extras (extra buttons, public unauth pages) | `registerMenuItem('auth:login', …)` |
-| `engine:<name>` | Per-engine settings drawer (`engine:fleet-ops`, etc.) | `registerMenuItem('engine:<name>', …)` |
-| Custom (`my-ext:tabs`, etc.) | Anything you define via `registry.createRegistries(...)` | `registerMenuItem('my-ext:tabs', …)` |
+| Registry                     | Holds                                                                     | Registrar                                              |
+| :--------------------------- | :------------------------------------------------------------------------ | :----------------------------------------------------- |
+| `header`                     | Header navigation bar items (top of console)                              | `registerHeaderMenuItem`                               |
+| `console:account`            | Organization & user dropdowns (slugs prefixed `organization:` or `user:`) | `registerOrganizationMenuItem`, `registerUserMenuItem` |
+| `console:admin`              | Admin section — items (`menu-item`) and panels (`menu-panel`)             | `registerAdminMenuItem`, `registerAdminMenuPanel`      |
+| `console:settings`           | Settings page items                                                       | `registerSettingsMenuItem`                             |
+| `auth:login`                 | Login screen extras (extra buttons, public unauth pages)                  | `registerMenuItem('auth:login', …)`                    |
+| `engine:<name>`              | Per-engine settings drawer (`engine:fleet-ops`, etc.)                     | `registerMenuItem('engine:<name>', …)`                 |
+| Custom (`my-ext:tabs`, etc.) | Anything you define via `registry.createRegistries(...)`                  | `registerMenuItem('my-ext:tabs', …)`                   |
 
 ## `registerHeaderMenuItem(itemOrTitle, route?, options?)`
 
@@ -39,14 +39,26 @@ The most-used registrar — adds an entry to the top header of the console.
 
 ```js
 menuService.registerHeaderMenuItem('Storefront', 'console.storefront', {
-    icon: 'store',
-    priority: 1,
-    description: 'Online store management.',
-    shortcuts: [
-        { title: 'Products', icon: 'box-open',     route: 'console.storefront.products' },
-        { title: 'Orders',   icon: 'bag-shopping', route: 'console.storefront.orders' },
-        { title: 'Customers', icon: 'users',       route: 'console.storefront.customers' },
-    ],
+  icon: 'store',
+  priority: 1,
+  description: 'Online store management.',
+  shortcuts: [
+    {
+      title: 'Products',
+      icon: 'box-open',
+      route: 'console.storefront.products',
+    },
+    {
+      title: 'Orders',
+      icon: 'bag-shopping',
+      route: 'console.storefront.orders',
+    },
+    {
+      title: 'Customers',
+      icon: 'users',
+      route: 'console.storefront.customers',
+    },
+  ],
 });
 ```
 
@@ -55,15 +67,15 @@ The `shortcuts` array isn't decorative — each shortcut is **automatically regi
 You can also pass a `MenuItem`:
 
 ```js
-import { MenuItem } from '@fleetbase/ember-core/contracts';
+import { MenuItem } from '@logisbase/ember-core/contracts';
 
 menuService.registerHeaderMenuItem(
-    new MenuItem({
-        title: 'Storefront',
-        route: 'console.storefront',
-        icon: 'store',
-        priority: 1,
-    })
+  new MenuItem({
+    title: 'Storefront',
+    route: 'console.storefront',
+    icon: 'store',
+    priority: 1,
+  }),
 );
 ```
 
@@ -73,12 +85,12 @@ Adds an entry to the Settings page.
 
 ```js
 menuService.registerSettingsMenuItem(
-    new MenuItem({
-        title: 'My Extension',
-        slug: 'my-extension',
-        icon: 'gear',
-        component: new ExtensionComponent('@my-org/my-engine', 'settings-panel'),
-    })
+  new MenuItem({
+    title: 'My Extension',
+    slug: 'my-extension',
+    icon: 'gear',
+    component: new ExtensionComponent('@my-org/my-engine', 'settings-panel'),
+  }),
 );
 ```
 
@@ -90,20 +102,26 @@ The admin section supports both flat items and grouped panels.
 
 ```js
 menuService.registerAdminMenuPanel(
-    'Fleet-Ops Config',
-    [
-        new MenuItem({
-            title: 'Routing',
-            icon: 'route',
-            component: new ExtensionComponent('@fleetbase/fleetops-engine', 'admin/routing-settings'),
-        }),
-        new MenuItem({
-            title: 'Map',
-            icon: 'map',
-            component: new ExtensionComponent('@fleetbase/fleetops-engine', 'admin/map-settings'),
-        }),
-    ],
-    { slug: 'fleet-ops' }
+  'Fleet-Ops Config',
+  [
+    new MenuItem({
+      title: 'Routing',
+      icon: 'route',
+      component: new ExtensionComponent(
+        '@logisbase/fleetops-engine',
+        'admin/routing-settings',
+      ),
+    }),
+    new MenuItem({
+      title: 'Map',
+      icon: 'map',
+      component: new ExtensionComponent(
+        '@logisbase/fleetops-engine',
+        'admin/map-settings',
+      ),
+    }),
+  ],
+  { slug: 'fleet-ops' },
 );
 ```
 
@@ -115,17 +133,20 @@ Items in the organization dropdown (top-right). Slug is auto-prefixed with `orga
 
 ```js
 menuService.registerOrganizationMenuItem(
-    new MenuItem({
-        title: 'Ledger Preferences',
-        icon: 'calculator',
-        slug: 'ledger-preferences',
-        view: 'index',
-        component: new ExtensionComponent('@fleetbase/ledger-engine', 'ledger-org-settings'),
-        onClick: (menuItem) => {
-            const router = app.lookup('service:router');
-            router?.transitionTo('console.settings.virtual', menuItem.slug);
-        },
-    })
+  new MenuItem({
+    title: 'Ledger Preferences',
+    icon: 'calculator',
+    slug: 'ledger-preferences',
+    view: 'index',
+    component: new ExtensionComponent(
+      '@logisbase/ledger-engine',
+      'ledger-org-settings',
+    ),
+    onClick: (menuItem) => {
+      const router = app.lookup('service:router');
+      router?.transitionTo('console.settings.virtual', menuItem.slug);
+    },
+  }),
 );
 ```
 
@@ -137,11 +158,11 @@ Items in the user dropdown. Slug is auto-prefixed with `user:`.
 
 ```js
 menuService.registerUserMenuItem(
-    new MenuItem({
-        title: 'Help & Tours',
-        icon: 'question-circle',
-        onClick: () => app.lookup('service:tour')?.showTourLauncher(),
-    })
+  new MenuItem({
+    title: 'Help & Tours',
+    icon: 'question-circle',
+    onClick: () => app.lookup('service:tour')?.showTourLauncher(),
+  }),
 );
 ```
 
@@ -154,48 +175,52 @@ The generic registrar for **custom** registries — your own (`my-ext:sidebar`) 
 ```js
 // A button on the login screen — links to your engine's own login route
 menuService.registerMenuItem(
-    'auth:login',
-    new MenuItem({
-        title: 'Partner Login',
-        route: 'partner-portal.login',
-        icon: 'person',
-        type: 'link',
-        wrapperClass: 'btn-block py-1 border dark:border-gray-700 border-gray-200 hover:opacity-50',
-    })
+  'auth:login',
+  new MenuItem({
+    title: 'Partner Login',
+    route: 'partner-portal.login',
+    icon: 'person',
+    type: 'link',
+    wrapperClass:
+      'btn-block py-1 border dark:border-gray-700 border-gray-200 hover:opacity-50',
+  }),
 );
 
 // A tab on the Fleet-Ops order details panel
 menuService.registerMenuItem(
-    'fleet-ops:component:order:details',
-    new MenuItem({
-        title: 'Invoice',
-        route: 'operations.orders.index.details.virtual',
-        component: new ExtensionComponent('@fleetbase/ledger-engine', 'order-invoice'),
-        icon: 'file-invoice-dollar',
-        slug: 'invoice',
-    })
+  'fleet-ops:component:order:details',
+  new MenuItem({
+    title: 'Invoice',
+    route: 'operations.orders.index.details.virtual',
+    component: new ExtensionComponent(
+      '@logisbase/ledger-engine',
+      'order-invoice',
+    ),
+    icon: 'file-invoice-dollar',
+    slug: 'invoice',
+  }),
 );
 ```
 
-Real example: [`packages/ledger/addon/extension.js:92`](https://github.com/fleetbase/ledger/blob/main/addon/extension.js#L92) — registers an "Invoice" tab on the Fleet-Ops order details panel.
+Real example: [`packages/ledger/addon/extension.js:92`](https://github.com/logisbase/ledger/blob/main/addon/extension.js#L92) — registers an "Invoice" tab on the Fleet-Ops order details panel.
 
 For component-injecting registries (where the host renders contributed UI rather than navigating to a route), use [`registry.registerRenderableComponent(...)`](/docs/extension-development/universe/registry-service) instead — it's the right tool for component contributions.
 
 ## Reading Items Back
 
-| Method | Returns |
-| :--- | :--- |
-| `getHeaderMenuItems()` | Array of header items |
-| `getOrganizationMenuItems()` | Items prefixed `organization:` |
-| `getUserMenuItems()` | Items prefixed `user:` |
-| `getAdminMenuItems()` | Admin items (excluding panel children) |
-| `getAdminMenuPanels()` (alias `getAdminPanels`) | Admin panels |
-| `getSettingsMenuItems()` | Settings page items |
-| `getSettingsMenuPanels()` | Settings panels |
-| `getMenuItems(registryName)` | Items in any registry |
-| `getMenuPanels(registryName)` | Panels in any registry |
-| `getMenuItemsFromPanel(panelSlug)` | Items inside a specific panel |
-| `lookupMenuItem(registryName, slug, view?, section?)` (alias `getMenuItem`) | A specific item |
+| Method                                                                      | Returns                                |
+| :-------------------------------------------------------------------------- | :------------------------------------- |
+| `getHeaderMenuItems()`                                                      | Array of header items                  |
+| `getOrganizationMenuItems()`                                                | Items prefixed `organization:`         |
+| `getUserMenuItems()`                                                        | Items prefixed `user:`                 |
+| `getAdminMenuItems()`                                                       | Admin items (excluding panel children) |
+| `getAdminMenuPanels()` (alias `getAdminPanels`)                             | Admin panels                           |
+| `getSettingsMenuItems()`                                                    | Settings page items                    |
+| `getSettingsMenuPanels()`                                                   | Settings panels                        |
+| `getMenuItems(registryName)`                                                | Items in any registry                  |
+| `getMenuPanels(registryName)`                                               | Panels in any registry                 |
+| `getMenuItemsFromPanel(panelSlug)`                                          | Items inside a specific panel          |
+| `lookupMenuItem(registryName, slug, view?, section?)` (alias `getMenuItem`) | A specific item                        |
 
 ## Permission Gating
 
@@ -203,21 +228,21 @@ Pass `permission` on a `MenuItem` and the menu UI will hide or disable the item 
 
 ```js
 new MenuItem({
-    title: 'Delete Driver',
-    icon: 'trash',
-    permission: 'fleet-ops driver delete',
-    onClick: deleteDriver,
+  title: 'Delete Driver',
+  icon: 'trash',
+  permission: 'fleet-ops driver delete',
+  onClick: deleteDriver,
 });
 ```
 
 ## Real-World References
 
-| Extension | Pattern shown | Source |
-| :--- | :--- | :--- |
-| Fleet-Ops | Header item with shortcuts + admin panel | [fleetops/addon/extension.js](https://github.com/fleetbase/fleetops/blob/main/addon/extension.js) |
-| Storefront | Header item with shortcuts + component contributions | [storefront/addon/extension.js](https://github.com/fleetbase/storefront/blob/main/addon/extension.js) |
-| Pallet | Header item, component contributions | [pallet/addon/extension.js](https://github.com/fleetbase/pallet/blob/main/addon/extension.js) |
-| Ledger | Header item, custom dashboard, Fleet-Ops order tab | [ledger/addon/extension.js](https://github.com/fleetbase/ledger/blob/main/addon/extension.js) |
+| Extension  | Pattern shown                                        | Source                                                                                                |
+| :--------- | :--------------------------------------------------- | :---------------------------------------------------------------------------------------------------- |
+| Fleet-Ops  | Header item with shortcuts + admin panel             | [fleetops/addon/extension.js](https://github.com/logisbase/fleetops/blob/main/addon/extension.js)     |
+| Storefront | Header item with shortcuts + component contributions | [storefront/addon/extension.js](https://github.com/logisbase/storefront/blob/main/addon/extension.js) |
+| Pallet     | Header item, component contributions                 | [pallet/addon/extension.js](https://github.com/logisbase/pallet/blob/main/addon/extension.js)         |
+| Ledger     | Header item, custom dashboard, Fleet-Ops order tab   | [ledger/addon/extension.js](https://github.com/logisbase/ledger/blob/main/addon/extension.js)         |
 
 ## See Also
 
@@ -227,8 +252,8 @@ new MenuItem({
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/services/universe/menu-service.js`](https://github.com/fleetbase/ember-core/blob/main/addon/services/universe/menu-service.js) | The MenuService implementation |
-| [`addon/contracts/menu-item.js`](https://github.com/fleetbase/ember-core/blob/main/addon/contracts/menu-item.js) | `MenuItem` |
-| [`addon/contracts/menu-panel.js`](https://github.com/fleetbase/ember-core/blob/main/addon/contracts/menu-panel.js) | `MenuPanel` |
+| File                                                                                                                                   | Description                    |
+| :------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------- |
+| [`addon/services/universe/menu-service.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/universe/menu-service.js) | The MenuService implementation |
+| [`addon/contracts/menu-item.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/menu-item.js)                       | `MenuItem`                     |
+| [`addon/contracts/menu-panel.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/menu-panel.js)                     | `MenuPanel`                    |

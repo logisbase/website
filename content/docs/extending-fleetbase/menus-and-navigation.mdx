@@ -5,7 +5,7 @@ description: Register your extension's menu items in the sidebar, header, settin
 
 # Menus & Navigation
 
-To make your extension accessible to users, you need to register its navigation links within the Fleetbase Console.
+To make your extension accessible to users, you need to register its navigation links within the LogisBase Console.
 
 This is done using the **Universe Service** in your frontend Ember Engine. The Universe Service acts as a central registry for all UI elements, allowing you to inject links into various menus across the platform.
 
@@ -24,18 +24,18 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
 export default class ApplicationRoute extends Route {
-    @service universe;
+  @service universe;
 
-    init() {
-        super.init(...arguments);
+  init() {
+    super.init(...arguments);
 
-        this.universe.registerMenuItem('console.sidebar', {
-            title: 'My Extension',
-            icon: 'box',
-            route: 'console.my-extension',
-            priority: 10, // Optional: Determines the order in the menu
-        });
-    }
+    this.universe.registerMenuItem('console.sidebar', {
+      title: 'My Extension',
+      icon: 'box',
+      route: 'console.my-extension',
+      priority: 10, // Optional: Determines the order in the menu
+    });
+  }
 }
 ```
 
@@ -45,9 +45,9 @@ If your extension has configuration options, you should add a link to the Settin
 
 ```javascript
 this.universe.registerMenuItem('console.settings', {
-    title: 'My Extension Settings',
-    icon: 'cog',
-    route: 'console.settings.my-extension',
+  title: 'My Extension Settings',
+  icon: 'cog',
+  route: 'console.settings.my-extension',
 });
 ```
 
@@ -57,9 +57,9 @@ If your extension includes administrative tools (e.g., managing users or global 
 
 ```javascript
 this.universe.registerMenuItem('console.admin', {
-    title: 'My Extension Admin',
-    icon: 'shield-alt',
-    route: 'console.admin.my-extension',
+  title: 'My Extension Admin',
+  icon: 'shield-alt',
+  route: 'console.admin.my-extension',
 });
 ```
 
@@ -83,11 +83,11 @@ You can do this by setting the `_virtual` property to `true` on the menu item co
 
 ```javascript
 this.universe.registerMenuItem('fleetops.operations', {
-    title: 'My Custom Operation',
-    icon: 'truck',
-    route: 'console.fleetops.operations.custom',
-    _virtual: true,
+  title: 'My Custom Operation',
+  icon: 'truck',
+  route: 'console.fleetops.operations.custom',
+  _virtual: true,
 });
 ```
 
-*See [Virtual Routes](/docs/extending-fleetbase/virtual-routes) for more details on how virtual routing works.*
+_See [Virtual Routes](/docs/extending-logisbase/virtual-routes) for more details on how virtual routing works._

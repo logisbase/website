@@ -9,4 +9,4 @@ Disallow: /api/
 Disallow: /_next/
 
 # Sitemap
-Sitemap: https://fleetbase.io/sitemap.xml
+Sitemap: https://logisbase.com/sitemap.xml

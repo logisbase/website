@@ -1,11 +1,11 @@
 ---
 title: Development Setup
-description: Set up a Fleetbase development environment — mount live source, link packages, and work on extensions with hot reload.
+description: Set up a LogisBase development environment — mount live source, link packages, and work on extensions with hot reload.
 ---
 
 # Development Setup
 
-This guide is for contributors and extension developers who need to work directly on Fleetbase source code or link a local package into a running instance. If you just want to run Fleetbase locally without modifying its internals, see [Running Locally](/docs/platform/quickstart/running-locally) instead.
+This guide is for contributors and extension developers who need to work directly on LogisBase source code or link a local package into a running instance. If you just want to run LogisBase locally without modifying its internals, see [Running Locally](/docs/platform/quickstart/running-locally) instead.
 
 ## Prerequisites
 
@@ -16,24 +16,24 @@ This guide is for contributors and extension developers who need to work directl
 
 ## Clone with Submodules
 
-The Fleetbase repository uses Git submodules for its packages. Development setup requires pulling all submodules so the `packages/` directory contains live source:
+The LogisBase repository uses Git submodules for its packages. Development setup requires pulling all submodules so the `packages/` directory contains live source:
 
 ```bash
-git clone https://github.com/fleetbase/fleetbase.git
-cd fleetbase
+git clone https://github.com/logisbase/logisbase.git
+cd logisbase
 git submodule update --init --recursive
 ```
 
 This populates `packages/` with the source for all first-party extensions (FleetOps, Storefront, Pallet, Ledger, and others). Each package contains two directories:
 
-| Directory | Contents |
-| :--- | :--- |
-| `addon/` | Ember.js frontend addon code |
+| Directory | Contents                                                               |
+| :-------- | :--------------------------------------------------------------------- |
+| `addon/`  | Ember.js frontend addon code                                           |
 | `server/` | Laravel backend package (service provider, models, routes, migrations) |
 
 ## Package Linking
 
-Fleetbase includes a development linker in the repository so you do not have to hand-edit `console/package.json`, `api/composer.json`, and `console/pnpm-workspace.yaml` every time you switch extension work. Use it when you want a local package under `packages/` to replace the published registry package.
+LogisBase includes a development linker in the repository so you do not have to hand-edit `console/package.json`, `api/composer.json`, and `console/pnpm-workspace.yaml` every time you switch extension work. Use it when you want a local package under `packages/` to replace the published registry package.
 
 The linker manages both sides of an extension:
 
@@ -42,7 +42,7 @@ The linker manages both sides of an extension:
 - shared frontend packages such as `ember-core`, `ember-ui`, and `fleetops-data`
 - backend-only shared packages such as `core-api`
 
-Install it once from the Fleetbase repository root:
+Install it once from the LogisBase repository root:
 
 ```bash
 npm link
@@ -75,7 +75,7 @@ This updates the local manifests and prints the install commands it would run:
 
 ```bash
 cd console && pnpm install
-cd api && composer update fleetbase/fleetops-api --with-dependencies
+cd api && composer update logisbase/fleetops-api --with-dependencies
 ```
 
 Use `--install` if you want the linker to run those commands immediately:
@@ -96,7 +96,7 @@ flb-package-linker install fleetops pallet
 The install command combines backend Composer packages into one update:
 
 ```bash
-cd api && composer update fleetbase/fleetops-api fleetbase/pallet-api --with-dependencies
+cd api && composer update logisbase/fleetops-api logisbase/pallet-api --with-dependencies
 ```
 
 ### Link Shared Packages
@@ -126,7 +126,7 @@ flb-package-linker status
 flb-package-linker doctor
 ```
 
-`doctor` verifies the installed symlinks and reports duplicate Fleetbase package versions in the pnpm lockfile.
+`doctor` verifies the installed symlinks and reports duplicate LogisBase package versions in the pnpm lockfile.
 
 If you only want to undo specific links, disable them by name:
 
@@ -144,12 +144,15 @@ flb-package-linker reset
 flb-package-linker install
 ```
 
-The dry run previews the manifest changes first. The real reset restores linked extensions and shared packages back to their saved registry ranges, removes Composer path repositories, removes local pnpm workspace entries and overrides, and deletes `.fleetbase-dev-links.json` once it is empty.
+The dry run previews the manifest changes first. The real reset restores linked extensions and shared packages back to their saved registry ranges, removes Composer path repositories, removes local pnpm workspace entries and overrides, and deletes `.logisbase-dev-links.json` once it is empty.
 
-The linker stores original dependency ranges in `.fleetbase-dev-links.json` so the changes are reversible. That file is for local development state and should stay out of commits.
+The linker stores original dependency ranges in `.logisbase-dev-links.json` so the changes are reversible. That file is for local development state and should stay out of commits.
 
 <Callout type="info">
-The commands above expect the current monorepo layout where `console/`, `api/`, and `packages/` sit beside each other. Run `flb-package-linker list` to see which packages are recognized as extensions and which shared development dependencies can be linked.
+  The commands above expect the current monorepo layout where `console/`,
+  `api/`, and `packages/` sit beside each other. Run `flb-package-linker list`
+  to see which packages are recognized as extensions and which shared
+  development dependencies can be linked.
 </Callout>
 
 ## Backend Development
@@ -162,11 +165,11 @@ To work on the API or packages with live source, add volume mounts in `docker-co
 services:
   application:
     environment:
-      ENVIRONMENT: "development"
-      APP_DEBUG: "true"
+      ENVIRONMENT: 'development'
+      APP_DEBUG: 'true'
     volumes:
-      - ./api:/fleetbase/api
-      - ./packages:/fleetbase/packages
+      - ./api:/logisbase/api
+      - ./packages:/logisbase/packages
 ```
 
 After updating the override file, restart the stack:
@@ -182,9 +185,21 @@ The package linker is the recommended workflow, but the underlying Composer setu
 ```json
 {
   "repositories": [
-    { "type": "path", "url": "../packages/fleetops", "options": { "symlink": true } },
-    { "type": "path", "url": "../packages/pallet", "options": { "symlink": true } },
-    { "type": "path", "url": "../packages/core-api", "options": { "symlink": true } }
+    {
+      "type": "path",
+      "url": "../packages/fleetops",
+      "options": { "symlink": true }
+    },
+    {
+      "type": "path",
+      "url": "../packages/pallet",
+      "options": { "symlink": true }
+    },
+    {
+      "type": "path",
+      "url": "../packages/core-api",
+      "options": { "symlink": true }
+    }
   ]
 }
 ```
@@ -203,7 +218,7 @@ docker compose exec application bash -c "./deploy.sh"
 
 ### Octane and PHP Changes
 
-Fleetbase runs Laravel Octane, which keeps the application in memory for performance. **PHP file changes are not picked up automatically.** After editing any PHP file, reload the Octane worker:
+LogisBase runs Laravel Octane, which keeps the application in memory for performance. **PHP file changes are not picked up automatically.** After editing any PHP file, reload the Octane worker:
 
 ```bash
 docker compose exec application php artisan octane:reload
@@ -235,7 +250,7 @@ services:
       - ./console:/console
       - /console/node_modules
     ports:
-      - "4200:4200"
+      - '4200:4200'
 ```
 
 Then rebuild and start the console container:
@@ -272,13 +287,13 @@ The package linker is the recommended workflow for frontend packages too. If you
 ```json
 {
   "dependencies": {
-    "@fleetbase/fleetops-engine": "link:../packages/fleetops",
-    "@fleetbase/pallet-engine": "link:../packages/pallet"
+    "@logisbase/fleetops-engine": "link:../packages/fleetops",
+    "@logisbase/pallet-engine": "link:../packages/pallet"
   }
 }
 ```
 
-When working on shared packages such as `@fleetbase/ember-ui`, `@fleetbase/ember-core`, or `@fleetbase/fleetops-data`, prefer `flb-package-linker enable-shared` instead of manual `link:` entries. The linker configures pnpm workspace overrides and deep workspace linking so extension dependencies also resolve to the local package.
+When working on shared packages such as `@logisbase/ember-ui`, `@logisbase/ember-core`, or `@logisbase/fleetops-data`, prefer `flb-package-linker enable-shared` instead of manual `link:` entries. The linker configures pnpm workspace overrides and deep workspace linking so extension dependencies also resolve to the local package.
 
 Then install dependencies in the console to resolve the links. Inside the console container (Path A):
 
@@ -317,10 +332,10 @@ The Ember dev server (either Docker or local) watches linked addons and live-rel
 
 ## Building a New Extension
 
-To scaffold a new extension from scratch, use the Fleetbase CLI:
+To scaffold a new extension from scratch, use the LogisBase CLI:
 
 ```bash
-npm install -g @fleetbase/cli
+npm install -g @logisbase/cli
 flb scaffold
 ```
 
@@ -336,6 +351,6 @@ See the [flb scaffold command reference](/docs/cli/extension-development/scaffol
 
 ## Licensing
 
-Fleetbase is licensed under the **GNU Affero General Public License v3 (AGPL-3.0)**. If you modify Fleetbase or build extensions that run as part of a networked service, the AGPL requires that you make your modified source code publicly accessible to users of that service.
+LogisBase is licensed under the **GNU Affero General Public License v3 (SOURCE-AVAILABLE)**. If you modify LogisBase or build extensions that run as part of a networked service, the AGPL requires that you make your modified source code publicly accessible to users of that service.
 
 If you intend to keep your modifications or extensions private — for example, as part of a commercial product or internal platform — you will need a **commercial license**. [Book a call](https://cal.com/shivthakker/enquiry) to discuss licensing options, or visit the [Licensing page](/licensing) for further information.

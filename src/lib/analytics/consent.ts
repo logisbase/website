@@ -11,7 +11,7 @@
  *      privacy page link.
  *
  * Consent decisions persist in a first-party cookie (`fb_consent`) on the
- * `.fleetbase.io` apex so the choice carries across subdomains.
+ * `.logisbase.com` apex so the choice carries across subdomains.
  */
 
 export const CONSENT_COOKIE = 'fb_consent';
@@ -25,13 +25,40 @@ export type ConsentStatus = 'granted' | 'declined' | 'unknown';
  */
 const OPT_IN_COUNTRIES = new Set([
   // EU member states
-  'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR',
-  'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL',
-  'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE',
+  'AT',
+  'BE',
+  'BG',
+  'HR',
+  'CY',
+  'CZ',
+  'DK',
+  'EE',
+  'FI',
+  'FR',
+  'DE',
+  'GR',
+  'HU',
+  'IE',
+  'IT',
+  'LV',
+  'LT',
+  'LU',
+  'MT',
+  'NL',
+  'PL',
+  'PT',
+  'RO',
+  'SK',
+  'SI',
+  'ES',
+  'SE',
   // EEA non-EU
-  'IS', 'LI', 'NO',
+  'IS',
+  'LI',
+  'NO',
   // UK + Switzerland (UK GDPR / FADP)
-  'GB', 'CH',
+  'GB',
+  'CH',
 ]);
 
 export interface ConsentContext {
@@ -60,12 +87,12 @@ export function readConsentCookie(): ConsentStatus {
 export function writeConsentCookie(status: 'granted' | 'declined'): void {
   if (typeof document === 'undefined') return;
   const maxAge = CONSENT_COOKIE_DAYS * 24 * 60 * 60;
-  // Apex-domain cookie so the decision carries to console.fleetbase.io.
+  // Apex-domain cookie so the decision carries to console.logisbase.com.
   // In dev/local, host is "localhost" — let the browser default the domain.
   const isProd =
     typeof window !== 'undefined' &&
-    /\.fleetbase\.io$/.test(window.location.hostname);
-  const domainPart = isProd ? '; domain=.fleetbase.io' : '';
+    /\.logisbase\.io$/.test(window.location.hostname);
+  const domainPart = isProd ? '; domain=.logisbase.com' : '';
   document.cookie =
     `${CONSENT_COOKIE}=${encodeURIComponent(status)}` +
     `; path=/${domainPart}; max-age=${maxAge}; SameSite=Lax`;
@@ -76,7 +103,9 @@ export function writeConsentCookie(status: 'granted' | 'declined'): void {
  *
  * Vercel sets `x-vercel-ip-country`; on other hosts callers may pass null.
  */
-export function readConsentContextFromHeaders(headers: Headers): ConsentContext {
+export function readConsentContextFromHeaders(
+  headers: Headers,
+): ConsentContext {
   return {
     country: headers.get('x-vercel-ip-country'),
     gpc: headers.get('sec-gpc') === '1',

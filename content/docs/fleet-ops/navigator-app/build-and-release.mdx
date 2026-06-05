@@ -11,26 +11,44 @@ This page walks through the end-to-end publishing flow for a forked Navigator ap
 You should have already finished [Configuration](/docs/fleet-ops/navigator-app/configuration) — env vars and a working debug build on simulator — and [Theming & Branding](/docs/fleet-ops/navigator-app/theming) for your icon, splash, and colors.
 
 <Callout type="info">
-**Expect iOS to go live faster.** Apple review is typically 24–48 hours. Google requires a **closed testing track with at least 12 active testers for at least 14 days** before you can promote to production — this is a hard policy and there is no shortcut.
+  **Expect iOS to go live faster.** Apple review is typically 24–48 hours.
+  Google requires a **closed testing track with at least 12 active testers for
+  at least 14 days** before you can promote to production — this is a hard
+  policy and there is no shortcut.
 </Callout>
 
 ## Prerequisites Checklist
 
 <Steps>
   <Step>
-    **Apple Developer Account** — [$99/year](https://developer.apple.com/programs/enroll/). For organizations, expect 1–3 weeks for D-U-N-S verification before enrollment completes.
+    **Apple Developer Account** —
+    [$99/year](https://developer.apple.com/programs/enroll/). For organizations,
+    expect 1–3 weeks for D-U-N-S verification before enrollment completes.
   </Step>
   <Step>
-    **Google Play Developer Account** — [$25 one-time fee](https://play.google.com/console/signup). Identity verification is required and usually completes within a few business days.
+    **Google Play Developer Account** — [$25 one-time
+    fee](https://play.google.com/console/signup). Identity verification is
+    required and usually completes within a few business days.
   </Step>
   <Step>
-    **App namespace decided.** Convention is reverse-domain + app name, e.g. `io.fleetbase.navigator`, `com.acme.driver`. Once published, the namespace is permanent — you cannot change it later. Set it as `APP_IDENTIFIER` in your `.env` and verify it's reflected in `android/app/build.gradle` (`applicationId`) and the iOS `Bundle Identifier`.
+    **App namespace decided.** Convention is reverse-domain + app name, e.g.
+    `io.logisbase.navigator`, `com.acme.driver`. Once published, the namespace
+    is permanent — you cannot change it later. Set it as `APP_IDENTIFIER` in
+    your `.env` and verify it's reflected in `android/app/build.gradle`
+    (`applicationId`) and the iOS `Bundle Identifier`.
   </Step>
   <Step>
-    **Publish name decided.** Set as `APP_NAME`. It appears under the icon on home screens, in app store search, and in the app title bar. Keep it under 30 characters for App Store / 50 characters for Google Play.
+    **Publish name decided.** Set as `APP_NAME`. It appears under the icon on
+    home screens, in app store search, and in the app title bar. Keep it under
+    30 characters for App Store / 50 characters for Google Play.
   </Step>
   <Step>
-    **Background geolocation license purchased for both platforms.** [Buy at docs.transistorsoft.com/purchase](https://docs.transistorsoft.com/purchase/?platform=react-native) and follow [the setup guide](https://docs.transistorsoft.com/react-native/setup/) to inject the keys into `AndroidManifest.xml` and `Info.plist`. Release builds will fail on launch without this.
+    **Background geolocation license purchased for both platforms.** [Buy at
+    docs.transistorsoft.com/purchase](https://docs.transistorsoft.com/purchase/?platform=react-native)
+    and follow [the setup
+    guide](https://docs.transistorsoft.com/react-native/setup/) to inject the
+    keys into `AndroidManifest.xml` and `Info.plist`. Release builds will fail
+    on launch without this.
   </Step>
 </Steps>
 
@@ -49,7 +67,7 @@ You should have already finished [Configuration](/docs/fleet-ops/navigator-app/c
    - **User Access**: who on your team can see the app.
 4. In **App Information**, set the category and content rights.
 5. In **Pricing and Availability**, set the price (free is fine) and the country list.
-6. Prepare **App Privacy** answers — Navigator collects location continuously while in use *and* in the background, plus identifiers used for auth. Disclose accordingly.
+6. Prepare **App Privacy** answers — Navigator collects location continuously while in use _and_ in the background, plus identifiers used for auth. Disclose accordingly.
 
 ### Google — Play Console
 
@@ -76,7 +94,10 @@ You should have already finished [Configuration](/docs/fleet-ops/navigator-app/c
    - **Main store listing → Privacy policy URL** — required.
 
 <Callout type="warn">
-Google asks compliance questions up front about your *company*, not just the app — data controller, EU representative, contact email, physical address. Have these ready before you start. Misrepresenting any of this is grounds for permanent account termination.
+  Google asks compliance questions up front about your *company*, not just the
+  app — data controller, EU representative, contact email, physical address.
+  Have these ready before you start. Misrepresenting any of this is grounds for
+  permanent account termination.
 </Callout>
 
 ## iOS — Build and Submit
@@ -92,18 +113,18 @@ In Xcode, open `ios/NavigatorApp.xcworkspace` and set:
 
 Navigator ships with Fastlane lanes that use [match](https://docs.fastlane.tools/actions/match/) with S3 storage for provisioning profiles, so multiple machines and CI can sign without manually shuffling certificates.
 
-Required environment variables (see [ios/fastlane/Fastfile](https://github.com/fleetbase/navigator-app/blob/main/ios/fastlane/Fastfile)):
+Required environment variables (see [ios/fastlane/Fastfile](https://github.com/logisbase/navigator-app/blob/main/ios/fastlane/Fastfile)):
 
-| Variable | Purpose |
-| :--- | :--- |
-| `APP_IDENTIFIER` | Bundle ID (single or comma-separated for multi-target). |
-| `APPSTORE_API_KEY_ID` | App Store Connect API Key ID. |
-| `APPSTORE_API_ISSUER_ID` | App Store Connect API Issuer ID. |
-| `DEVELOPMENT_TEAM_ID` | Apple Developer Team ID. |
-| `MATCH_S3_BUCKET` | S3 bucket holding the match repo (default `flb-navigator-app-profiles`). |
-| `MATCH_S3_REGION` | AWS region of the bucket (default `ap-southeast-1`). |
-| `MATCH_S3_OBJECT_PREFIX` | Prefix inside the bucket (defaults to `$PROFILE/certs`). |
-| `MATCH_READONLY` | `true` on CI to prevent accidental regeneration. |
+| Variable                 | Purpose                                                                  |
+| :----------------------- | :----------------------------------------------------------------------- |
+| `APP_IDENTIFIER`         | Bundle ID (single or comma-separated for multi-target).                  |
+| `APPSTORE_API_KEY_ID`    | App Store Connect API Key ID.                                            |
+| `APPSTORE_API_ISSUER_ID` | App Store Connect API Issuer ID.                                         |
+| `DEVELOPMENT_TEAM_ID`    | Apple Developer Team ID.                                                 |
+| `MATCH_S3_BUCKET`        | S3 bucket holding the match repo (default `flb-navigator-app-profiles`). |
+| `MATCH_S3_REGION`        | AWS region of the bucket (default `ap-southeast-1`).                     |
+| `MATCH_S3_OBJECT_PREFIX` | Prefix inside the bucket (defaults to `$PROFILE/certs`).                 |
+| `MATCH_READONLY`         | `true` on CI to prevent accidental regeneration.                         |
 
 The `.p8` key file from App Store Connect must live at `~/.appstoreconnect/private_keys/AuthKey_<APPSTORE_API_KEY_ID>.p8`.
 
@@ -168,7 +189,7 @@ keytool -genkeypair -v \
 
 Store the resulting `.keystore` file somewhere safe (1Password, a sealed secret, an S3 bucket with KMS). **If you lose it, you cannot publish updates** without going through Google's Play App Signing key reset, which is a multi-week process.
 
-Then export the signing envs the release build expects (already read in [android/app/build.gradle](https://github.com/fleetbase/navigator-app/blob/main/android/app/build.gradle)):
+Then export the signing envs the release build expects (already read in [android/app/build.gradle](https://github.com/logisbase/navigator-app/blob/main/android/app/build.gradle)):
 
 ```bash
 export ANDROID_NAVIGATOR_APP_UPLOAD_STORE_FILE=/secure/path/navigator-upload.keystore
@@ -179,7 +200,7 @@ export ANDROID_NAVIGATOR_APP_UPLOAD_KEY_PASSWORD=...
 
 ### Available Lanes
 
-The Fastlane lanes ([android/fastlane/Fastfile](https://github.com/fleetbase/navigator-app/blob/main/android/fastlane/Fastfile)) all run `gradle clean bundleRelease` and upload an `.aab` to the named track:
+The Fastlane lanes ([android/fastlane/Fastfile](https://github.com/logisbase/navigator-app/blob/main/android/fastlane/Fastfile)) all run `gradle clean bundleRelease` and upload an `.aab` to the named track:
 
 ```bash
 cd android
@@ -195,7 +216,11 @@ You need a Play Console service account JSON key referenced by Fastlane's `json_
 ### The Google 12-Tester Rule
 
 <Callout type="warn">
-Since November 2023, any new Google Play personal developer account must run their app in **closed testing with at least 12 testers opted-in continuously for at least 14 days** before they can apply for production access. The 14-day clock only counts days where you have ≥ 12 active testers, and Google reviews the application manually before granting promotion.
+  Since November 2023, any new Google Play personal developer account must run
+  their app in **closed testing with at least 12 testers opted-in continuously
+  for at least 14 days** before they can apply for production access. The 14-day
+  clock only counts days where you have ≥ 12 active testers, and Google reviews
+  the application manually before granting promotion.
 </Callout>
 
 Workflow:
@@ -214,10 +239,10 @@ Once promoted to Production, Google reviews the release. Initial reviews can tak
 
 ## Version Bumping Convention
 
-| Platform | Public version | Internal build number |
-| :--- | :--- | :--- |
-| **iOS** | `MARKETING_VERSION` in Xcode (or `agvtool new-marketing-version`) | `CURRENT_PROJECT_VERSION` in Xcode (or `agvtool next-version -all`) |
-| **Android** | `ANDROID_VERSION_NAME` env var | `ANDROID_VERSION_CODE` env var |
+| Platform    | Public version                                                    | Internal build number                                               |
+| :---------- | :---------------------------------------------------------------- | :------------------------------------------------------------------ |
+| **iOS**     | `MARKETING_VERSION` in Xcode (or `agvtool new-marketing-version`) | `CURRENT_PROJECT_VERSION` in Xcode (or `agvtool next-version -all`) |
+| **Android** | `ANDROID_VERSION_NAME` env var                                    | `ANDROID_VERSION_CODE` env var                                      |
 
 Keep public versions in sync across platforms. Build numbers are independent — Apple wants monotonic per marketing version, Google wants monotonic across all uploads.
 
@@ -233,14 +258,14 @@ A typical GitHub Actions matrix would have one job for iOS (running on `macos-la
 
 ## Troubleshooting
 
-| Symptom | Likely cause |
-| :--- | :--- |
-| App crashes on launch with `licenseKey` in the stack | Transistor Soft background-geolocation license missing or wrong. Re-verify the value injected into `AndroidManifest.xml` / `Info.plist`. |
+| Symptom                                                      | Likely cause                                                                                                                                                            |
+| :----------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| App crashes on launch with `licenseKey` in the stack         | Transistor Soft background-geolocation license missing or wrong. Re-verify the value injected into `AndroidManifest.xml` / `Info.plist`.                                |
 | iOS reviewer rejects for "background location not justified" | Strengthen your usage-description strings in `Info.plist` (`NSLocationAlwaysAndWhenInUseUsageDescription`, etc.) and explain the dispatch use case in App Review notes. |
-| iOS reviewer rejects for missing privacy manifest | Add `PrivacyInfo.xcprivacy` declaring required-reason API usage for tracking, file system access, and user defaults. |
-| Android build fails on `bundleRelease` with signing errors | Re-check all four `ANDROID_NAVIGATOR_APP_UPLOAD_*` envs are exported in the same shell as the gradle invocation. |
-| Match keeps trying to regenerate certs | Unset `MATCH_FORCE` and re-run with `MATCH_READONLY=true`. The S3 bucket is the source of truth. |
-| Google rejects with "policy violation: background location" | Provide a video walkthrough demonstrating the location-required driver workflow and link the privacy policy in the rejection appeal. |
+| iOS reviewer rejects for missing privacy manifest            | Add `PrivacyInfo.xcprivacy` declaring required-reason API usage for tracking, file system access, and user defaults.                                                    |
+| Android build fails on `bundleRelease` with signing errors   | Re-check all four `ANDROID_NAVIGATOR_APP_UPLOAD_*` envs are exported in the same shell as the gradle invocation.                                                        |
+| Match keeps trying to regenerate certs                       | Unset `MATCH_FORCE` and re-run with `MATCH_READONLY=true`. The S3 bucket is the source of truth.                                                                        |
+| Google rejects with "policy violation: background location"  | Provide a video walkthrough demonstrating the location-required driver workflow and link the privacy policy in the rejection appeal.                                    |
 
 ## Post-Launch
 

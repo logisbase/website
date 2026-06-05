@@ -52,7 +52,7 @@ class WidgetObserver
 
 Standard Eloquent events: `retrieved`, `creating`, `created`, `updating`, `updated`, `saving`, `saved`, `deleting`, `deleted`, `restoring`, `restored`, `forceDeleted`. Each method receives the model instance.
 
-Real example: [`storefront/server/src/Observers/OrderObserver.php`](https://github.com/fleetbase/storefront/blob/main/server/src/Observers/OrderObserver.php).
+Real example: [`storefront/server/src/Observers/OrderObserver.php`](https://github.com/logisbase/storefront/blob/main/server/src/Observers/OrderObserver.php).
 
 ### Registering Observers
 
@@ -64,7 +64,7 @@ public $observers = [
     \MyOrg\MyExtension\Models\Widget::class       => \MyOrg\MyExtension\Observers\WidgetObserver::class,
 
     // You can also observe core models — fires on the same model used by other extensions
-    \Fleetbase\Models\User::class                 => \MyOrg\MyExtension\Observers\UserObserver::class,
+    \LogisBase\Models\User::class                 => \MyOrg\MyExtension\Observers\UserObserver::class,
 ];
 
 public function boot()
@@ -74,15 +74,15 @@ public function boot()
 }
 ```
 
-The implementation in [`CoreServiceProvider::registerObservers()`](https://github.com/fleetbase/core-api/blob/main/src/Providers/CoreServiceProvider.php#L321) skips entries whose model class doesn't exist, so it's safe to declare observers for optional dependencies.
+The implementation in [`CoreServiceProvider::registerObservers()`](https://github.com/logisbase/core-api/blob/main/src/Providers/CoreServiceProvider.php#L321) skips entries whose model class doesn't exist, so it's safe to declare observers for optional dependencies.
 
 ### Observing Core Models
 
-You can observe `Fleetbase\Models\User`, `Company`, `Order`, etc. — multiple extensions stack their observers on the same model and all fire. Be defensive: don't assume you're the only listener, and don't throw from non-creating events unless you genuinely want to abort the save.
+You can observe `LogisBase\Models\User`, `Company`, `Order`, etc. — multiple extensions stack their observers on the same model and all fire. Be defensive: don't assume you're the only listener, and don't throw from non-creating events unless you genuinely want to abort the save.
 
 ## Expansions
 
-Expansions add methods to a class **you don't own** — Laravel facades (`Route`, `Str`, `Arr`, `Builder`, `Carbon`, `Request`, `Response`), or any model that supports `Macroable`. The `Route::fleetbaseRoutes()` macro you saw in [Routes & Controllers](/docs/extension-development/backend/routes-and-controllers) is itself an expansion shipped by `core-api`.
+Expansions add methods to a class **you don't own** — Laravel facades (`Route`, `Str`, `Arr`, `Builder`, `Carbon`, `Request`, `Response`), or any model that supports `Macroable`. The `Route::logisbaseRoutes()` macro you saw in [Routes & Controllers](/docs/extension-development/backend/routes-and-controllers) is itself an expansion shipped by `core-api`.
 
 ### Defining an Expansion
 
@@ -91,7 +91,7 @@ Expansions add methods to a class **you don't own** — Laravel facades (`Route`
 
 namespace MyOrg\MyExtension\Expansions;
 
-use Fleetbase\Build\Expansion;
+use LogisBase\Build\Expansion;
 
 class StrExpansion implements Expansion
 {
@@ -127,19 +127,19 @@ To attach behaviour to a core model, target the model class. Each expansion meth
 namespace MyOrg\MyExtension\Expansions;
 
 use MyOrg\MyExtension\Models\Widget;
-use Fleetbase\Build\Expansion;
+use LogisBase\Build\Expansion;
 
 class UserExpansion implements Expansion
 {
     public static function target()
     {
-        return \Fleetbase\Models\User::class;
+        return \LogisBase\Models\User::class;
     }
 
     public static function widgets()
     {
         return function () {
-            /** @var \Fleetbase\Models\User $this */
+            /** @var \LogisBase\Models\User $this */
             return $this->hasMany(Widget::class, 'created_by_uuid', 'uuid');
         };
     }
@@ -148,7 +148,7 @@ class UserExpansion implements Expansion
 
 After this expansion loads, any `User` instance has `$user->widgets` as a real Eloquent relationship — usable in queries, eager loads, and `with()`.
 
-Real example: [`fleetops/server/src/Expansions/UserExpansion.php`](https://github.com/fleetbase/fleetops/blob/main/server/src/Expansions/UserExpansion.php) — adds `driver()`, `customer()`, `contact()`, and other relationships to the core `User` model.
+Real example: [`fleetops/server/src/Expansions/UserExpansion.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Expansions/UserExpansion.php) — adds `driver()`, `customer()`, `contact()`, and other relationships to the core `User` model.
 
 ### Auto-loading Expansions
 
@@ -163,17 +163,17 @@ public function boot()
 }
 ```
 
-The provider scans the directory, resolves each class through your namespace's `Expansions\\`, `Macros\\`, or `Mixins\\` folders, and calls `Target::expand($expansion)` (falling back to `Target::mixin($expansion)` if the target is a model). Source: [`CoreServiceProvider::registerExpansionsFrom()`](https://github.com/fleetbase/core-api/blob/main/src/Providers/CoreServiceProvider.php#L224).
+The provider scans the directory, resolves each class through your namespace's `Expansions\\`, `Macros\\`, or `Mixins\\` folders, and calls `Target::expand($expansion)` (falling back to `Target::mixin($expansion)` if the target is a model). Source: [`CoreServiceProvider::registerExpansionsFrom()`](https://github.com/logisbase/core-api/blob/main/src/Providers/CoreServiceProvider.php#L224).
 
 ## Observers vs. Hooks vs. Webhooks
 
 These three reaction mechanisms work at different layers:
 
-| Mechanism | Runs in | Use for |
-| :--- | :--- | :--- |
-| **Backend observer** | PHP — same request as the model save | Server-side invariants, side effects on save (notifications, jobs, syncing) |
-| **Frontend hook** | Browser — Ember runtime | UI reactions during route transitions, login, etc. See [Hook Service](/docs/extension-development/universe/hook-service) |
-| **Webhook** | External — HTTP POST after the request commits | Third-party services reacting to platform events. Configured via the [Developer Console](/docs/platform/developer-console/webhooks) |
+| Mechanism            | Runs in                                        | Use for                                                                                                                             |
+| :------------------- | :--------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| **Backend observer** | PHP — same request as the model save           | Server-side invariants, side effects on save (notifications, jobs, syncing)                                                         |
+| **Frontend hook**    | Browser — Ember runtime                        | UI reactions during route transitions, login, etc. See [Hook Service](/docs/extension-development/universe/hook-service)            |
+| **Webhook**          | External — HTTP POST after the request commits | Third-party services reacting to platform events. Configured via the [Developer Console](/docs/platform/developer-console/webhooks) |
 
 Pick the layer that matches the side effect's owner.
 
@@ -183,14 +183,14 @@ Pick the layer that matches the side effect's owner.
 - Need to add a method to a Laravel facade or a core model? **Expansion.**
 - Need a third party (or your own backend job) to react asynchronously? **Webhook + Listener** — define a Laravel `EventServiceProvider` (sibling to your main provider) and register listeners there.
 
-For event service providers, mirror the [`fleetops/server/src/Providers/EventServiceProvider.php`](https://github.com/fleetbase/fleetops/blob/main/server/src/Providers/EventServiceProvider.php) pattern.
+For event service providers, mirror the [`fleetops/server/src/Providers/EventServiceProvider.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Providers/EventServiceProvider.php) pattern.
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`src/Build/Expansion.php`](https://github.com/fleetbase/core-api/blob/main/src/Build/Expansion.php) | The `Expansion` interface |
-| [`src/Providers/CoreServiceProvider.php`](https://github.com/fleetbase/core-api/blob/main/src/Providers/CoreServiceProvider.php) | `$observers`, `registerObservers()`, `registerExpansionsFrom()` |
-| [`src/Expansions/Route.php`](https://github.com/fleetbase/core-api/blob/main/src/Expansions/Route.php) | Reference expansion — adds `fleetbaseRoutes()` to `Route` |
-| [`storefront/server/src/Observers/OrderObserver.php`](https://github.com/fleetbase/storefront/blob/main/server/src/Observers/OrderObserver.php) | Reference observer |
-| [`fleetops/server/src/Expansions/UserExpansion.php`](https://github.com/fleetbase/fleetops/blob/main/server/src/Expansions/UserExpansion.php) | Reference model expansion |
+| File                                                                                                                                            | Description                                                     |
+| :---------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------- |
+| [`src/Build/Expansion.php`](https://github.com/logisbase/core-api/blob/main/src/Build/Expansion.php)                                            | The `Expansion` interface                                       |
+| [`src/Providers/CoreServiceProvider.php`](https://github.com/logisbase/core-api/blob/main/src/Providers/CoreServiceProvider.php)                | `$observers`, `registerObservers()`, `registerExpansionsFrom()` |
+| [`src/Expansions/Route.php`](https://github.com/logisbase/core-api/blob/main/src/Expansions/Route.php)                                          | Reference expansion — adds `logisbaseRoutes()` to `Route`       |
+| [`storefront/server/src/Observers/OrderObserver.php`](https://github.com/logisbase/storefront/blob/main/server/src/Observers/OrderObserver.php) | Reference observer                                              |
+| [`fleetops/server/src/Expansions/UserExpansion.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Expansions/UserExpansion.php)   | Reference model expansion                                       |

@@ -1,11 +1,11 @@
 ---
 title: Quickstart
-description: Use the Fleetbase CLI to scaffold a new extension with a working backend and frontend skeleton.
+description: Use the LogisBase CLI to scaffold a new extension with a working backend and frontend skeleton.
 ---
 
 # Quickstart
 
-The easiest way to start building a new Fleetbase extension is to use the **Fleetbase CLI**.
+The easiest way to start building a new LogisBase extension is to use the **LogisBase CLI**.
 
 The CLI provides a `scaffold` command that generates a complete, working extension skeleton, including both the [Backend](/docs/extension-development/backend/service-provider) (Laravel package) and the [Frontend](/docs/extension-development/frontend/routing) (Ember Engine), along with the necessary `extension.json` manifest.
 
@@ -17,20 +17,20 @@ Before you begin, ensure you have the following installed on your local developm
 - **PHP** (v8.2 or higher)
 - **Composer**
 - **Git**
-- The **Fleetbase CLI**
+- The **LogisBase CLI**
 
 If you haven't installed the CLI yet, you can do so via npm:
 
 ```bash
-npm install -g @fleetbase/cli
+npm install -g @logisbase/cli
 ```
 
 ## Scaffolding the Extension
 
-Scaffold **inside** your Fleetbase clone's `packages/` directory. The platform's Docker `application` container already mounts `./packages` (per [Platform → Development Setup](/docs/platform/quickstart/development-setup)), so any extension placed there is visible to both the API container and the Ember dev server without extra mount config.
+Scaffold **inside** your LogisBase clone's `packages/` directory. The platform's Docker `application` container already mounts `./packages` (per [Platform → Development Setup](/docs/platform/quickstart/development-setup)), so any extension placed there is visible to both the API container and the Ember dev server without extra mount config.
 
 ```bash
-cd /path/to/fleetbase/packages
+cd /path/to/logisbase/packages
 flb scaffold my-extension
 ```
 
@@ -46,7 +46,7 @@ It then generates the directory structure.
 ## The Generated Structure
 
 ```text
-fleetbase/
+logisbase/
 ├── api/
 ├── console/
 └── packages/
@@ -67,7 +67,7 @@ The platform-side mechanics — Docker volume mounts, the two paths for the Embe
 
 ### Link the Backend Package
 
-In `fleetbase/api/composer.json`, add a `path` repository entry pointing at your extension's `server/` directory and require the package:
+In `logisbase/api/composer.json`, add a `path` repository entry pointing at your extension's `server/` directory and require the package:
 
 ```json
 {
@@ -96,9 +96,10 @@ docker compose exec application bash -c "./deploy.sh"
 cd packages/my-extension
 pnpm install
 ```
+
 </Callout>
 
-Then in `fleetbase/console/package.json`, add a `link:` dependency pointing at your extension root (the addon is at the package root, not inside `addon/`):
+Then in `logisbase/console/package.json`, add a `link:` dependency pointing at your extension root (the addon is at the package root, not inside `addon/`):
 
 ```json
 {
@@ -111,7 +112,7 @@ Then in `fleetbase/console/package.json`, add a `link:` dependency pointing at y
 Install in the console:
 
 ```bash
-cd fleetbase/console
+cd logisbase/console
 pnpm install
 ```
 

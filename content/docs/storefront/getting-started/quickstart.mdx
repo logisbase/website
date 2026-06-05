@@ -5,22 +5,17 @@ description: Get your Storefront up and running — create a store, add a locati
 
 # Quickstart
 
-This guide walks you through setting up a Storefront store, adding a location and products, configuring a payment gateway, and grabbing your API key — all from the Fleetbase Console.
+This guide walks you through setting up a Storefront store, adding a location and products, configuring a payment gateway, and grabbing your API key — all from the LogisBase Console.
 
 ## Step 1 — Create a Store
 
 <Steps>
+  <Step>Navigate to **Storefront** in the LogisBase Console sidebar.</Step>
+  <Step>Click **New Store**.</Step>
+  <Step>Enter a **Name**, **Description**, and select your **Currency**.</Step>
   <Step>
-    Navigate to **Storefront** in the Fleetbase Console sidebar.
-  </Step>
-  <Step>
-    Click **New Store**.
-  </Step>
-  <Step>
-    Enter a **Name**, **Description**, and select your **Currency**.
-  </Step>
-  <Step>
-    Click **Save**. Your store is created and assigned a unique `store_*` API key automatically.
+    Click **Save**. Your store is created and assigned a unique `store_*` API
+    key automatically.
   </Step>
 </Steps>
 
@@ -35,67 +30,48 @@ If you manage multiple stores, switch between them via the **store selector** at
 A store location provides the pickup address when Fleet-Ops creates delivery orders.
 
 <Steps>
+  <Step>Navigate to **Storefront → Settings → Locations**.</Step>
+  <Step>Click **New Location**.</Step>
   <Step>
-    Navigate to **Storefront → Settings → Locations**.
+    Enter a **Name** (e.g., "Main Branch") and a **Street Address**. LogisBase
+    geocodes the address and pins it on the map.
   </Step>
+  <Step>Click **Save**.</Step>
   <Step>
-    Click **New Location**.
-  </Step>
-  <Step>
-    Enter a **Name** (e.g., "Main Branch") and a **Street Address**. Fleetbase geocodes the address and pins it on the map.
-  </Step>
-  <Step>
-    Click **Save**.
-  </Step>
-  <Step>
-    Use the **Schedule Manager** on the location to set operating hours — the days and time windows when orders can be placed.
+    Use the **Schedule Manager** on the location to set operating hours — the
+    days and time windows when orders can be placed.
   </Step>
 </Steps>
 
 ## Step 3 — Create a Category and Product
 
 <Steps>
+  <Step>Navigate to **Storefront → Products**.</Step>
   <Step>
-    Navigate to **Storefront → Products**.
+    In the category sidebar, click **New Category**, enter a name (e.g.,
+    "Burgers"), and save.
   </Step>
+  <Step>Open the category and click **New Product**.</Step>
+  <Step>Enter the **Name**, **Description**, and **Price**.</Step>
+  <Step>Upload a **Primary Image**.</Step>
   <Step>
-    In the category sidebar, click **New Category**, enter a name (e.g., "Burgers"), and save.
+    Set **Status** to **Published** so the product is visible to customers (the
+    alternative is **Draft**, which hides it).
   </Step>
-  <Step>
-    Open the category and click **New Product**.
-  </Step>
-  <Step>
-    Enter the **Name**, **Description**, and **Price**.
-  </Step>
-  <Step>
-    Upload a **Primary Image**.
-  </Step>
-  <Step>
-    Set **Status** to **Published** so the product is visible to customers (the alternative is **Draft**, which hides it).
-  </Step>
-  <Step>
-    Click **Save**.
-  </Step>
+  <Step>Click **Save**.</Step>
 </Steps>
 
 ## Step 4 — Configure a Payment Gateway
 
 <Steps>
+  <Step>Navigate to **Storefront → Settings → Gateways**.</Step>
+  <Step>Click **New Gateway** and select **Stripe**.</Step>
   <Step>
-    Navigate to **Storefront → Settings → Gateways**.
+    Enter your Stripe **Publishable Key** and **Secret Key**. Use test keys
+    while building.
   </Step>
-  <Step>
-    Click **New Gateway** and select **Stripe**.
-  </Step>
-  <Step>
-    Enter your Stripe **Publishable Key** and **Secret Key**. Use test keys while building.
-  </Step>
-  <Step>
-    Enable **Sandbox** for testing.
-  </Step>
-  <Step>
-    Click **Save**.
-  </Step>
+  <Step>Enable **Sandbox** for testing.</Step>
+  <Step>Click **Save**.</Step>
 </Steps>
 
 For testing without a real gateway, you can enable **Cash on Delivery** instead — toggle `Enable cash on delivery` in your store's general settings (it isn't a gateway picker option).
@@ -105,11 +81,10 @@ For testing without a real gateway, you can enable **Cash on Delivery** instead 
 Your custom frontend app (mobile or web) authenticates to the Storefront API using the store's public key.
 
 <Steps>
+  <Step>Navigate to **Storefront → Settings → API**.</Step>
   <Step>
-    Navigate to **Storefront → Settings → API**.
-  </Step>
-  <Step>
-    Copy the key (prefixed with `store_`). Pass it as a bearer token: `Authorization: Bearer store_...` on every API request.
+    Copy the key (prefixed with `store_`). Pass it as a bearer token:
+    `Authorization: Bearer store_...` on every API request.
   </Step>
 </Steps>
 

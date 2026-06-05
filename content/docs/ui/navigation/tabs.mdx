@@ -1,11 +1,11 @@
 ---
 title: Tabs
-description: "<Tabs> is the lightweight tab container that yields a curried <Tab> subcomponent. Each <Tab> takes a @title and renders its body via Ember Wormhole into the shared content area."
+description: '<Tabs> is the lightweight tab container that yields a curried <Tab> subcomponent. Each <Tab> takes a @title and renders its body via Ember Wormhole into the shared content area.'
 ---
 
 # `<Tabs>`
 
-`<Tabs>` is the lightweight tab container in `@fleetbase/ember-ui`. It yields a curried `<Tab>` subcomponent — each Tab has a `@title` and yields its body content into the shared tab-content area.
+`<Tabs>` is the lightweight tab container in `@logisbase/ember-ui`. It yields a curried `<Tab>` subcomponent — each Tab has a `@title` and yields its body content into the shared tab-content area.
 
 For a richer, route-aware tab strip with icons, badges, closable tabs, and an Add-tab button, use [`<TabNavigation>`](/docs/ui/navigation/tab-navigation).
 
@@ -13,13 +13,13 @@ For a richer, route-aware tab strip with icons, badges, closable tabs, and an Ad
 
 ```handlebars
 <Tabs as |Tab|>
-  <Tab @title="Profile">
+  <Tab @title='Profile'>
     <p>Profile content</p>
   </Tab>
-  <Tab @title="Security">
+  <Tab @title='Security'>
     <p>Security content</p>
   </Tab>
-  <Tab @title="Notifications">
+  <Tab @title='Notifications'>
     <p>Notifications content</p>
   </Tab>
 </Tabs>
@@ -31,21 +31,21 @@ The first Tab is automatically activated. Click any tab to switch.
 
 ### `<Tabs>` Container
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
-| `@onClick` | `(tabName)` | Called when the user clicks a tab |
-| `@onTabClick` | `(tabName)` | Alias of `@onClick` |
-| `@onTabCreated` | `(tabName)` | Called when each Tab is registered (once per tab on first render) |
-| `@tagContentClass` | string | Extra classes on the shared content container |
+| Argument           | Type        | Description                                                       |
+| :----------------- | :---------- | :---------------------------------------------------------------- |
+| `@onClick`         | `(tabName)` | Called when the user clicks a tab                                 |
+| `@onTabClick`      | `(tabName)` | Alias of `@onClick`                                               |
+| `@onTabCreated`    | `(tabName)` | Called when each Tab is registered (once per tab on first render) |
+| `@tagContentClass` | string      | Extra classes on the shared content container                     |
 
 ### `<Tab>` Yielded Subcomponent
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
-| `@title` | string | The tab label (also used as the internal tab name — dasherized) |
-| `@tabClass` | string | Extra classes on the tab `<a>` |
-| `@tabListItemClass` | string | Extra classes on the tab `<li>` |
-| `@tagPaneClass` | string | Extra classes on the tab pane |
+| Argument            | Type   | Description                                                     |
+| :------------------ | :----- | :-------------------------------------------------------------- |
+| `@title`            | string | The tab label (also used as the internal tab name — dasherized) |
+| `@tabClass`         | string | Extra classes on the tab `<a>`                                  |
+| `@tabListItemClass` | string | Extra classes on the tab `<li>`                                 |
+| `@tagPaneClass`     | string | Extra classes on the tab pane                                   |
 
 Any additional `...attributes` on a `<Tab>` are forwarded to the tab pane element.
 
@@ -58,35 +58,35 @@ The active tab is tracked on the parent. Clicking a tab updates the active state
 ## Real-World Examples
 
 ```handlebars
-{{!-- Settings panel with three tabs --}}
+{{! Settings panel with three tabs }}
 <Tabs as |Tab|>
-  <Tab @title="General">
-    <InputGroup @name="Display name" @value={{this.user.display_name}} />
-    <InputGroup @name="Email" @value={{this.user.email}} />
+  <Tab @title='General'>
+    <InputGroup @name='Display name' @value={{this.user.display_name}} />
+    <InputGroup @name='Email' @value={{this.user.email}} />
   </Tab>
-  <Tab @title="Security">
-    <InputGroup @name="Current password" @type="password" />
-    <InputGroup @name="New password" @type="password" />
+  <Tab @title='Security'>
+    <InputGroup @name='Current password' @type='password' />
+    <InputGroup @name='New password' @type='password' />
   </Tab>
-  <Tab @title="API">
+  <Tab @title='API'>
     <ClickToReveal @value={{this.user.api_token}} @clickToCopy={{true}} />
   </Tab>
 </Tabs>
 
-{{!-- With a callback when the user switches tabs --}}
+{{! With a callback when the user switches tabs }}
 <Tabs @onTabClick={{this.recordTabSwitch}} as |Tab|>
-  <Tab @title="Overview"><OverviewPanel /></Tab>
-  <Tab @title="Activity"><ActivityLog @subjectId={{this.id}} /></Tab>
+  <Tab @title='Overview'><OverviewPanel /></Tab>
+  <Tab @title='Activity'><ActivityLog @subjectId={{this.id}} /></Tab>
 </Tabs>
 ```
 
 ## When to Use What
 
-| Need | Use |
-| :--- | :--- |
-| Simple, inline tabs in a panel | `<Tabs>` |
-| Route-driven tabs (`LinkTo`) | [`<TabNavigation>`](/docs/ui/navigation/tab-navigation) with `route` on each tab |
-| Tabs with icons / badges / closable / Add button | [`<TabNavigation>`](/docs/ui/navigation/tab-navigation) |
+| Need                                             | Use                                                                              |
+| :----------------------------------------------- | :------------------------------------------------------------------------------- |
+| Simple, inline tabs in a panel                   | `<Tabs>`                                                                         |
+| Route-driven tabs (`LinkTo`)                     | [`<TabNavigation>`](/docs/ui/navigation/tab-navigation) with `route` on each tab |
+| Tabs with icons / badges / closable / Add button | [`<TabNavigation>`](/docs/ui/navigation/tab-navigation)                          |
 
 ## See Also
 
@@ -94,9 +94,9 @@ The active tab is tracked on the parent. Clicking a tab updates the active state
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/tabs.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/tabs.hbs) | Container template |
-| [`addon/components/tabs.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/tabs.js) | Container class |
-| [`addon/components/tabs/tab.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/tabs/tab.hbs) | Tab subcomponent template |
-| [`addon/components/tabs/tab.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/tabs/tab.js) | Tab subcomponent class |
+| File                                                                                                             | Description               |
+| :--------------------------------------------------------------------------------------------------------------- | :------------------------ |
+| [`addon/components/tabs.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/tabs.hbs)         | Container template        |
+| [`addon/components/tabs.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/tabs.js)           | Container class           |
+| [`addon/components/tabs/tab.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/tabs/tab.hbs) | Tab subcomponent template |
+| [`addon/components/tabs/tab.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/tabs/tab.js)   | Tab subcomponent class    |

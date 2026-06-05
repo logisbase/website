@@ -5,31 +5,31 @@ import { SoftwareApplicationSchema } from '@/components/seo/json-ld';
 import PalletPageContent from './pallet-page-content';
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://fleetbase.io/platform/pallet' },
-  title: 'Pallet — Open-Source Warehouse Management System | Fleetbase',
+  alternates: { canonical: 'https://logisbase.com/platform/pallet' },
+  title: 'Pallet — Source-Available Warehouse Management System | LogisBase',
   description:
-    'Pallet by Fleetbase is an open-source WMS for inventory management, pick lists, cycle counts, and fulfilment — natively connected to Fleet-Ops dispatch and Storefront orders.',
+    'Pallet by LogisBase is an source-available WMS for inventory management, pick lists, cycle counts, and fulfilment — natively connected to Fleet-Ops dispatch and Storefront orders.',
   keywords: [
-    'open source warehouse management system',
+    'source-available warehouse management system',
     'WMS software',
     'inventory management',
     'pick list software',
     'cycle counting',
     'stock transfers',
     'warehouse fulfilment',
-    'Fleetbase Pallet',
+    'LogisBase Pallet',
   ],
   openGraph: {
-    title: 'Pallet — Open-Source Warehouse Management System | Fleetbase',
+    title: 'Pallet — Source-Available Warehouse Management System | LogisBase',
     description:
-      'Pallet by Fleetbase is an open-source WMS for inventory management, pick lists, cycle counts, and fulfilment — natively connected to Fleet-Ops and Storefront.',
+      'Pallet by LogisBase is an source-available WMS for inventory management, pick lists, cycle counts, and fulfilment — natively connected to Fleet-Ops and Storefront.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pallet — Open-Source Warehouse Management System | Fleetbase',
+    title: 'Pallet — Source-Available Warehouse Management System | LogisBase',
     description:
-      'Open-source WMS with pick lists, cycle counts, stock transfers, and native Fleet-Ops integration.',
+      'Source-available WMS with pick lists, cycle counts, stock transfers, and native Fleet-Ops integration.',
   },
 };
 
@@ -37,9 +37,9 @@ export default function PalletPage() {
   return (
     <>
       <SoftwareApplicationSchema
-        name="Fleetbase Pallet"
-        url="https://fleetbase.io/platform/pallet"
-        description="Open-source warehouse management system for inventory tracking, pick lists, cycle counts, and fulfilment — natively connected to Fleet-Ops dispatch and Storefront orders."
+        name="LogisBase Pallet"
+        url="https://logisbase.com/platform/pallet"
+        description="Source-available warehouse management system for inventory tracking, pick lists, cycle counts, and fulfilment — natively connected to Fleet-Ops dispatch and Storefront orders."
       />
       <PalletPageContent />
     </>

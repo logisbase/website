@@ -3,7 +3,7 @@
   "pages": [
     "---Getting Started---",
     "getting-started/overview",
-    "getting-started/why-fleetbase",
+    "getting-started/why-logisbase",
     "getting-started/architecture",
     "---Quickstart---",
     "quickstart/cloud-quickstart",

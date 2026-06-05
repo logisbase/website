@@ -1,11 +1,11 @@
 ---
 title: Login
-description: "Authenticate with the Fleetbase registry using `flb login` — under the hood this writes credentials into your `.npmrc`."
+description: 'Authenticate with the LogisBase registry using `flb login` — under the hood this writes credentials into your `.npmrc`.'
 ---
 
 # `flb login`
 
-Log in to the Fleetbase Extension Registry using your username, password, and email. Under the hood the CLI delegates to `npm-cli-login`, which writes a registry auth entry into your `~/.npmrc`.
+Log in to the LogisBase Extension Registry using your username, password, and email. Under the hood the CLI delegates to `npm-cli-login`, which writes a registry auth entry into your `~/.npmrc`.
 
 ```bash
 flb login -u <username> -p <password> -e <email>
@@ -15,15 +15,15 @@ All three of `--username`, `--password`, and `--email` are required.
 
 ## Options
 
-| Option | Required | Description |
-| :--- | :---: | :--- |
-| `-u, --username <username>` | yes | Registry username |
-| `-p, --password <password>` | yes | Registry password |
-| `-e, --email <email>` | yes | Registered email address |
-| `-r, --registry <registry>` | no | Registry URL (default: `https://registry.fleetbase.io`) |
-| `--scope <scope>` | no | Limit credentials to a scope (e.g. `@mycompany`) |
-| `--quotes <quotes>` | no | `npm-cli-login` quotes option |
-| `--config-path <configPath>` | no | Path to a custom `.npmrc` |
+| Option                       | Required | Description                                              |
+| :--------------------------- | :------: | :------------------------------------------------------- |
+| `-u, --username <username>`  |   yes    | Registry username                                        |
+| `-p, --password <password>`  |   yes    | Registry password                                        |
+| `-e, --email <email>`        |   yes    | Registered email address                                 |
+| `-r, --registry <registry>`  |    no    | Registry URL (default: `https://registry.logisbase.com`) |
+| `--scope <scope>`            |    no    | Limit credentials to a scope (e.g. `@mycompany`)         |
+| `--quotes <quotes>`          |    no    | `npm-cli-login` quotes option                            |
+| `--config-path <configPath>` |    no    | Path to a custom `.npmrc`                                |
 
 ## Examples
 

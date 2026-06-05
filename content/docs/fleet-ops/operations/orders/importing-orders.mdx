@@ -25,29 +25,32 @@ For ongoing automated integration, prefer the [REST API](/docs/fleet-ops/operati
     Navigate to **Fleet-Ops → Operations → Orchestrator** (or the orders list).
   </Step>
   <Step>
-    Click **Import Orders**. The import modal opens with a file-drop area and a queue list.
+    Click **Import Orders**. The import modal opens with a file-drop area and a
+    queue list.
   </Step>
   <Step>
-    Drop or pick one or more files. Accepted formats: `.xlsx`, `.xls`, and `.csv`.
+    Drop or pick one or more files. Accepted formats: `.xlsx`, `.xls`, and
+    `.csv`.
   </Step>
   <Step>
-    Click **Start Upload**. Files are uploaded, parsed, and processed into orders, waypoints, entities, customers, and drivers as appropriate.
+    Click **Start Upload**. Files are uploaded, parsed, and processed into
+    orders, waypoints, entities, customers, and drivers as appropriate.
   </Step>
 </Steps>
 
 ## The Spreadsheet Template
 
-Download the canonical template from the import modal — `Fleetbase_Order_Import_Template.xlsx` — and fill in the **Import** sheet starting at row 2 (row 1 is the header).
+Download the canonical template from the import modal — `LogisBase_Order_Import_Template.xlsx` — and fill in the **Import** sheet starting at row 2 (row 1 is the header).
 
 ### Required columns
 
 Three columns are required on every row:
 
-| Required column | Purpose |
-| :--- | :--- |
-| `Order Ref *` | A reference shared across all rows that belong to the same order. The first row carrying a given Order Ref defines the order; subsequent rows with the same Order Ref **append waypoints and entities** to that order. |
-| `Pickup Name *` | The label or business name of the pickup location |
-| `Dropoff Name *` | The label or business name of the dropoff location |
+| Required column  | Purpose                                                                                                                                                                                                                |
+| :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Order Ref *`    | A reference shared across all rows that belong to the same order. The first row carrying a given Order Ref defines the order; subsequent rows with the same Order Ref **append waypoints and entities** to that order. |
+| `Pickup Name *`  | The label or business name of the pickup location                                                                                                                                                                      |
+| `Dropoff Name *` | The label or business name of the dropoff location                                                                                                                                                                     |
 
 Required fields are marked with an asterisk (`*`) in the template's header row.
 
@@ -55,21 +58,23 @@ Required fields are marked with an asterisk (`*`) in the template's header row.
 
 The template includes 44 columns covering everything an order can carry:
 
-| Group | Columns |
-| :--- | :--- |
-| **Order metadata** | `Order Type`, `Scheduled At`, `Notes` |
-| **Pickup location** | `Pickup Name *`, `Pickup Street`, `Pickup City`, `Pickup State`, `Pickup Postcode`, `Pickup Country`, `Pickup Lat`, `Pickup Lng` |
-| **Dropoff location** | `Dropoff Name *`, `Dropoff Street`, `Dropoff City`, `Dropoff State`, `Dropoff Postcode`, `Dropoff Country`, `Dropoff Lat`, `Dropoff Lng` |
-| **Payload summary** | `Payload Type`, `Payload Weight (kg)`, `Payload Volume (m³)` |
-| **Customer** | `Customer Name`, `Customer Email`, `Customer Phone`, `Customer Type` |
-| **Facilitator** | `Facilitator Name`, `Facilitator Email`, `Facilitator Type` |
-| **Driver & vehicle** | `Vehicle Plate`, `Driver Name`, `Driver Email`, `Driver Phone` |
+| Group                   | Columns                                                                                                                                                                                             |
+| :---------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Order metadata**      | `Order Type`, `Scheduled At`, `Notes`                                                                                                                                                               |
+| **Pickup location**     | `Pickup Name *`, `Pickup Street`, `Pickup City`, `Pickup State`, `Pickup Postcode`, `Pickup Country`, `Pickup Lat`, `Pickup Lng`                                                                    |
+| **Dropoff location**    | `Dropoff Name *`, `Dropoff Street`, `Dropoff City`, `Dropoff State`, `Dropoff Postcode`, `Dropoff Country`, `Dropoff Lat`, `Dropoff Lng`                                                            |
+| **Payload summary**     | `Payload Type`, `Payload Weight (kg)`, `Payload Volume (m³)`                                                                                                                                        |
+| **Customer**            | `Customer Name`, `Customer Email`, `Customer Phone`, `Customer Type`                                                                                                                                |
+| **Facilitator**         | `Facilitator Name`, `Facilitator Email`, `Facilitator Type`                                                                                                                                         |
+| **Driver & vehicle**    | `Vehicle Plate`, `Driver Name`, `Driver Email`, `Driver Phone`                                                                                                                                      |
 | **Entity (item-level)** | `Entity Name`, `Entity Type`, `Entity SKU`, `Entity Description`, `Entity Weight (kg)`, `Entity Length (cm)`, `Entity Width (cm)`, `Entity Height (cm)`, `Entity Declared Value`, `Entity Currency` |
 
 Hover over any header cell in the **Import** sheet to see a tooltip describing the field.
 
 <Callout type="info">
-Columns can appear in any order — the import wizard maps headers to Fleet-Ops fields automatically. Extra columns the wizard doesn't recognise are ignored, so you can keep your own spreadsheet conventions intact.
+  Columns can appear in any order — the import wizard maps headers to Fleet-Ops
+  fields automatically. Extra columns the wizard doesn't recognise are ignored,
+  so you can keep your own spreadsheet conventions intact.
 </Callout>
 
 ## Row Grouping — One Order Across Many Rows
@@ -88,11 +93,11 @@ The same Order Ref `ORD-001` appears on two rows. Row 1 sets up the order with a
 ```
 Order Ref | Pickup Name   | Dropoff Name | Entity Name    | Entity SKU
 ─────────────────────────────────────────────────────────────────────
-ORD-001   | Fleetbase HQ  | Customer A   | Laptop Box     | SKU-001
-ORD-001   | Fleetbase HQ  | Customer A   | Phone Charger  | SKU-002
+ORD-001   | LogisBase HQ  | Customer A   | Laptop Box     | SKU-001
+ORD-001   | LogisBase HQ  | Customer A   | Phone Charger  | SKU-002
 ```
 
-Result: one order from Fleetbase HQ → Customer A with two entities attached.
+Result: one order from LogisBase HQ → Customer A with two entities attached.
 
 ### Example — multi-waypoint order
 
@@ -101,9 +106,9 @@ The same Order Ref appears across rows with **different dropoff locations**, whi
 ```
 Order Ref | Pickup Name   | Dropoff Name        | Entity Name
 ────────────────────────────────────────────────────────────────
-ORD-007   | Fleetbase HQ  | Customer A — North  | Package 1
-ORD-007   | Fleetbase HQ  | Customer B — East   | Package 2
-ORD-007   | Fleetbase HQ  | Customer C — South  | Package 3
+ORD-007   | LogisBase HQ  | Customer A — North  | Package 1
+ORD-007   | LogisBase HQ  | Customer B — East   | Package 2
+ORD-007   | LogisBase HQ  | Customer C — South  | Package 3
 ```
 
 Result: one multi-waypoint order with three stops and three entities — each entity routed to its own waypoint.

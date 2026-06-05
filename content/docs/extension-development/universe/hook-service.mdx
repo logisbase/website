@@ -13,13 +13,13 @@ Hooks live in a singleton registry on the root application, so a hook registered
 
 ```js
 // addon/extension.js
-import { Hook } from '@fleetbase/ember-core/contracts';
+import { Hook } from '@logisbase/ember-core/contracts';
 
 export default {
-    setupExtension(app, universe) {
-        const hookService = universe.getService('hook');
-        // …
-    },
+  setupExtension(app, universe) {
+    const hookService = universe.getService('hook');
+    // …
+  },
 };
 ```
 
@@ -28,15 +28,19 @@ export default {
 ```js
 // Form 1: Hook contract (preferred — explicit and chainable)
 hookService.registerHook(
-    new Hook('console:before-model', (session, router) => {
-        // Run extension-specific bootstrap before any console route resolves
-    })
+  new Hook('console:before-model', (session, router) => {
+    // Run extension-specific bootstrap before any console route resolves
+  }),
 );
 
 // Form 2: name + handler + options
-hookService.registerHook('console:after-model', (session, router) => {
+hookService.registerHook(
+  'console:after-model',
+  (session, router) => {
     // …
-}, { priority: 10, once: false });
+  },
+  { priority: 10, once: false },
+);
 ```
 
 `registerHook` accepts:
@@ -48,19 +52,21 @@ hookService.registerHook('console:after-model', (session, router) => {
 
 Pass these via `new Hook({ … })` or as the third argument to `registerHook`:
 
-| Option | Default | Description |
-| :--- | :--- | :--- |
-| `priority` | `0` | Lower numbers run first |
-| `runOnce` (alias `once`) | `false` | Hook removes itself after firing |
-| `id` | auto-guid | Stable identifier — pass to `removeHook(name, id)` |
-| `enabled` | `true` | Hook is skipped when `false` |
+| Option                   | Default   | Description                                        |
+| :----------------------- | :-------- | :------------------------------------------------- |
+| `priority`               | `0`       | Lower numbers run first                            |
+| `runOnce` (alias `once`) | `false`   | Hook removes itself after firing                   |
+| `id`                     | auto-guid | Stable identifier — pass to `removeHook(name, id)` |
+| `enabled`                | `true`    | Hook is skipped when `false`                       |
 
 ```js
 new Hook('application:before-model')
-    .execute((session, router) => { /* … */ })
-    .withPriority(20)
-    .once()
-    .withId('my-extension:bootstrap');
+  .execute((session, router) => {
+    /* … */
+  })
+  .withPriority(20)
+  .once()
+  .withId('my-extension:bootstrap');
 ```
 
 ## Executing Hooks
@@ -69,7 +75,11 @@ Most extension authors won't call `execute` themselves — the platform fires th
 
 ```js
 // Async — awaits all handlers in priority order
-const results = await hookService.execute('my-extension:order-imported', order, source);
+const results = await hookService.execute(
+  'my-extension:order-imported',
+  order,
+  source,
+);
 
 // Sync — for code that can't be async
 hookService.executeSync('my-extension:before-render', context);
@@ -99,18 +109,18 @@ hookService.removeHook('console:after-model', 'my-bootstrap');
 
 ```js
 hookService.getHooks('console:before-model'); // → array
-hookService.hasHook('console:before-model');  // → boolean
+hookService.hasHook('console:before-model'); // → boolean
 ```
 
 ## Built-in Events
 
 These are the events the platform fires today. Naming convention: `<engine>:<lifecycle>`. The `session`, `router`, and `transition` arguments mirror Ember's route hooks.
 
-| Event | Args | Fired by |
-| :--- | :--- | :--- |
+| Event                      | Args                            | Fired by                                                               |
+| :------------------------- | :------------------------------ | :--------------------------------------------------------------------- |
 | `application:before-model` | `(session, router, transition)` | `console` ApplicationRoute — earliest hook, runs before any auth check |
-| `console:before-model` | `(session, router, transition)` | `console.*` ApplicationRoute |
-| `console:after-model` | `(session, router)` | `console.*` ApplicationRoute |
+| `console:before-model`     | `(session, router, transition)` | `console.*` ApplicationRoute                                           |
+| `console:after-model`      | `(session, router)`             | `console.*` ApplicationRoute                                           |
 
 Engines may emit their own scoped events — search for `hookService.execute(` in the host application source to see what's currently fired.
 
@@ -119,9 +129,9 @@ Engines may emit their own scoped events — search for `hookService.execute(` i
 Use a colon-delimited namespace prefix so your events don't collide with another extension or core:
 
 ```js
-'my-extension:order:imported'
-'my-extension:invoice:rendering'
-'@my-org/my-extension:before-export'
+'my-extension:order:imported';
+'my-extension:invoice:rendering';
+'@my-org/my-extension:before-export';
 ```
 
 ## Façade Methods
@@ -130,8 +140,8 @@ Use a colon-delimited namespace prefix so your events don't collide with another
 
 ```js
 universe.registerHook(hookOrName, handler, options);
-universe.executeHook(hookName, ...args);   // async
-universe.hooks;                            // raw registry
+universe.executeHook(hookName, ...args); // async
+universe.hooks; // raw registry
 ```
 
 The façade is fine for one-off calls; resolve `getService('hook')` directly when you need the full surface (`removeAllHooks`, `executeSync`, `enableHook`, `disableHook`).
@@ -142,8 +152,8 @@ The hook service is **frontend-only** — it fires inside the browser when conso
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/services/universe/hook-service.js`](https://github.com/fleetbase/ember-core/blob/main/addon/services/universe/hook-service.js) | `HookService` |
-| [`addon/contracts/hook.js`](https://github.com/fleetbase/ember-core/blob/main/addon/contracts/hook.js) | `Hook` contract |
-| [`addon/contracts/hook-registry.js`](https://github.com/fleetbase/ember-core/blob/main/addon/contracts/hook-registry.js) | Internal singleton storage |
+| File                                                                                                                                   | Description                |
+| :------------------------------------------------------------------------------------------------------------------------------------- | :------------------------- |
+| [`addon/services/universe/hook-service.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/universe/hook-service.js) | `HookService`              |
+| [`addon/contracts/hook.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/hook.js)                                 | `Hook` contract            |
+| [`addon/contracts/hook-registry.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/hook-registry.js)               | Internal singleton storage |

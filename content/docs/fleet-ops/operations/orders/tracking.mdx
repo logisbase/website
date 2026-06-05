@@ -17,6 +17,7 @@ The live map (**Fleet-Ops → Live Map** or the map visible from the dashboard) 
 - **Waypoint markers** — intermediate stop markers for multi-drop orders
 
 Click a driver marker to see:
+
 - Driver name, photo, and status
 - Current speed and heading
 - Active order assignment
@@ -28,16 +29,17 @@ Click a driver marker to see:
 
 From the order detail panel, the tracking section shows:
 
-| Field | Description |
-| :--- | :--- |
-| **Driver Location** | Real-time map with driver position |
-| **ETA** | Estimated time of arrival at the next stop |
-| **Distance Remaining** | Distance from driver to dropoff |
-| **Status** | Current order status |
-| **Activity Timeline** | All status transitions with timestamps and locations |
+| Field                  | Description                                          |
+| :--------------------- | :--------------------------------------------------- |
+| **Driver Location**    | Real-time map with driver position                   |
+| **ETA**                | Estimated time of arrival at the next stop           |
+| **Distance Remaining** | Distance from driver to dropoff                      |
+| **Status**             | Current order status                                 |
+| **Activity Timeline**  | All status transitions with timestamps and locations |
 
 The activity timeline records every event with:
-- The event — both system-status transitions (`dispatched`, `started`, `completed`, `canceled`) and any activities defined in the order's [activity flow](/docs/fleet-ops/operations/order-configurations/activity-flows) (e.g. *picked up*, *in transit*, *arrived at dropoff*)
+
+- The event — both system-status transitions (`dispatched`, `started`, `completed`, `canceled`) and any activities defined in the order's [activity flow](/docs/fleet-ops/operations/order-configurations/activity-flows) (e.g. _picked up_, _in transit_, _arrived at dropoff_)
 - The timestamp
 - The driver's GPS coordinates at the time of the event
 - Any attached proof (photo, signature)
@@ -47,6 +49,7 @@ The activity timeline records every event with:
 Every order has a **Tracking Number** (e.g. `FO-XXXXXXXX`) that customers can use on a public tracking page to view the order's current status without logging in.
 
 The tracking page shows:
+
 - Current status and recent activity
 - Estimated delivery time
 - Map with current driver position (when active)
@@ -55,11 +58,12 @@ The tracking page shows:
 The public tracking URL is `/~/track-order?order={tracking_number}`. Customers can also visit `/~/track-order` with no query parameter and enter a tracking number into the form.
 
 <Callout type="info">
-On Fleetbase Cloud the full URLs are:
-- Direct deep link: `https://console.fleetbase.io/~/track-order?order={tracking_number}`
-- Manual entry: `https://console.fleetbase.io/~/track-order`
+On LogisBase Cloud the full URLs are:
+- Direct deep link: `https://console.logisbase.com/~/track-order?order={tracking_number}`
+- Manual entry: `https://console.logisbase.com/~/track-order`
 
-For self-hosted instances, replace `console.fleetbase.io` with your console hostname.
+For self-hosted instances, replace `console.logisbase.com` with your console hostname.
+
 </Callout>
 
 ## Entity-Level Tracking
@@ -74,14 +78,14 @@ For custom applications, driver location and order status updates are available 
 
 Subscribe to `company.{company_id}` to receive:
 
-| Event | Payload |
-| :--- | :--- |
-| `driver.location_changed` | Current driver coordinates, speed, heading |
-| `order.dispatched` | Order dispatched to driver |
-| `order.started` | Driver began the order |
-| `order.completed` | Order's completion activity fired |
-| `order.canceled` | Order canceled |
-| `order.activity_changed` | Any custom activity from the order's activity flow fired |
+| Event                     | Payload                                                  |
+| :------------------------ | :------------------------------------------------------- |
+| `driver.location_changed` | Current driver coordinates, speed, heading               |
+| `order.dispatched`        | Order dispatched to driver                               |
+| `order.started`           | Driver began the order                                   |
+| `order.completed`         | Order's completion activity fired                        |
+| `order.canceled`          | Order canceled                                           |
+| `order.activity_changed`  | Any custom activity from the order's activity flow fired |
 
 See [Socket Events](/docs/platform/developer-console/socket-events) for subscription details and payload schemas.
 

@@ -1,6 +1,6 @@
 ---
 title: Requirements
-description: What you need installed before using the Fleetbase CLI — Node, plus Docker and Git for installing Fleetbase itself.
+description: What you need installed before using the LogisBase CLI — Node, plus Docker and Git for installing LogisBase itself.
 ---
 
 # Requirements
@@ -9,18 +9,18 @@ The CLI itself runs on Node. Some commands additionally need Docker, Git, pnpm, 
 
 ## CLI Itself
 
-| Tool | Notes |
-| :--- | :--- |
-| **Node.js** ≥ 18 | The CLI is published as `@fleetbase/cli` on npm |
-| **npm** (or pnpm / yarn) | Used to install the CLI globally |
+| Tool                     | Notes                                           |
+| :----------------------- | :---------------------------------------------- |
+| **Node.js** ≥ 18         | The CLI is published as `@logisbase/cli` on npm |
+| **npm** (or pnpm / yarn) | Used to install the CLI globally                |
 
-## To Install Fleetbase (`flb install-fleetbase`)
+## To Install LogisBase (`flb install-logisbase`)
 
-| Tool | Notes |
-| :--- | :--- |
-| **Docker** | Required — the wizard runs `docker compose up -d` |
-| **Docker Compose v2** | The wizard checks for the `docker compose` plugin (not the legacy `docker-compose` binary) |
-| **Git** | Used to clone `github.com/fleetbase/fleetbase.git` if the target directory isn't already a checkout |
+| Tool                  | Notes                                                                                               |
+| :-------------------- | :-------------------------------------------------------------------------------------------------- |
+| **Docker**            | Required — the wizard runs `docker compose up -d`                                                   |
+| **Docker Compose v2** | The wizard checks for the `docker compose` plugin (not the legacy `docker-compose` binary)          |
+| **Git**               | Used to clone `github.com/logisbase/logisbase.git` if the target directory isn't already a checkout |
 
 The installer also pre-flight checks these ports for availability:
 
@@ -33,20 +33,20 @@ Conflicts on any of these print a warning but don't abort — the installer cont
 
 ## To Manage Extensions on a Running Instance (`flb install`, `flb uninstall`)
 
-The CLI installs extensions by running `pnpm install` (in the `console/` directory) and `composer require` (in the `api/` directory) of your Fleetbase checkout. You'll need:
+The CLI installs extensions by running `pnpm install` (in the `console/` directory) and `composer require` (in the `api/` directory) of your LogisBase checkout. You'll need:
 
-| Tool | Notes |
-| :--- | :--- |
-| **pnpm** | Required — Fleetbase uses pnpm in the console workspace |
+| Tool               | Notes                                                    |
+| :----------------- | :------------------------------------------------------- |
+| **pnpm**           | Required — LogisBase uses pnpm in the console workspace  |
 | **PHP / Composer** | Required — used to install the API-side composer package |
 
-`flb install` and `flb uninstall` need the path to your Fleetbase instance — the directory that contains the `console/` and `api/` folders. Pass it via `--path /path/to/fleetbase`, or run the command from inside that directory.
+`flb install` and `flb uninstall` need the path to your LogisBase instance — the directory that contains the `console/` and `api/` folders. Pass it via `--path /path/to/logisbase`, or run the command from inside that directory.
 
 ## To Publish Extensions (`flb publish`, `flb bundle-upload`)
 
-| Tool | Notes |
-| :--- | :--- |
-| **npm** | Used under the hood for the publish flow (`npm publish`) |
+| Tool                   | Notes                                                                                              |
+| :--------------------- | :------------------------------------------------------------------------------------------------- |
+| **npm**                | Used under the hood for the publish flow (`npm publish`)                                           |
 | **A registry account** | [Register](/docs/cli/account/register) and [verify](/docs/cli/account/verify) to get an auth token |
 
 ## Operating Systems

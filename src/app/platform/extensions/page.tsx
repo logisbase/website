@@ -5,30 +5,30 @@ import { SoftwareApplicationSchema } from '@/components/seo/json-ld';
 import ExtensionsMarketplacePageContent from './extensions-page-content';
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://fleetbase.io/platform/extensions' },
-  title: 'Extensions Marketplace — Build, Install & Monetize | Fleetbase',
+  alternates: { canonical: 'https://logisbase.com/platform/extensions' },
+  title: 'Extensions Marketplace — Build, Install & Monetize | LogisBase',
   description:
-    'Browse and install extensions from Fleetbase and the open-source community, or publish your own and monetize it to reach thousands of logistics operators worldwide.',
+    'Browse and install extensions from LogisBase and the source-available community, or publish your own and monetize it to reach thousands of logistics operators worldwide.',
   keywords: [
-    'Fleetbase extensions',
+    'LogisBase extensions',
     'logistics platform extensions',
     'fleet management plugins',
     'extensions marketplace',
-    'Fleetbase developer platform',
-    'build Fleetbase extension',
+    'LogisBase developer platform',
+    'build LogisBase extension',
     'logistics integrations',
   ],
   openGraph: {
-    title: 'Extensions Marketplace — Build, Install & Monetize | Fleetbase',
+    title: 'Extensions Marketplace — Build, Install & Monetize | LogisBase',
     description:
-      'Install first-party and community extensions into Fleetbase in one click, or publish your own and earn from thousands of logistics operators.',
+      'Install first-party and community extensions into LogisBase in one click, or publish your own and earn from thousands of logistics operators.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Extensions Marketplace | Fleetbase',
+    title: 'Extensions Marketplace | LogisBase',
     description:
-      'Browse, install, and monetize Fleetbase extensions. Open publisher platform with built-in Stripe payouts.',
+      'Browse, install, and monetize LogisBase extensions. Open publisher platform with built-in Stripe payouts.',
   },
 };
 
@@ -36,9 +36,9 @@ export default function ExtensionsMarketplacePage() {
   return (
     <>
       <SoftwareApplicationSchema
-        name="Fleetbase Extensions Marketplace"
-        url="https://fleetbase.io/platform/extensions"
-        description="Browse and install Fleetbase extensions in one click, or publish your own and earn from thousands of logistics operators."
+        name="LogisBase Extensions Marketplace"
+        url="https://logisbase.com/platform/extensions"
+        description="Browse and install LogisBase extensions in one click, or publish your own and earn from thousands of logistics operators."
       />
       <ExtensionsMarketplacePageContent />
     </>

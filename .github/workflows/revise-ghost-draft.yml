@@ -26,7 +26,7 @@ on:
         default: false
         type: boolean
       rule_repair_attempts:
-        description: Number of Claude repair attempts when Fleetbase content rules block a revision
+        description: Number of Claude repair attempts when LogisBase content rules block a revision
         required: true
         default: '2'
         type: choice
@@ -36,7 +36,7 @@ on:
           - '2'
           - '3'
       bypass_content_rules:
-        description: Apply the revision after one Claude pass even if Fleetbase content rules warn
+        description: Apply the revision after one Claude pass even if LogisBase content rules warn
         required: true
         default: true
         type: boolean

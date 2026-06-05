@@ -1,11 +1,11 @@
 ---
 title: Overview
-description: How modals work in @fleetbase/ember-ui — the modals-manager service, the built-in layouts, and how to build custom modal components.
+description: How modals work in @logisbase/ember-ui — the modals-manager service, the built-in layouts, and how to build custom modal components.
 ---
 
 # Modals
 
-Modals in `@fleetbase/ember-ui` are driven by a single service — `modals-manager` — that mounts a component into a portal, manages a stack of nested modals, and exposes a Promise-based API.
+Modals in `@logisbase/ember-ui` are driven by a single service — `modals-manager` — that mounts a component into a portal, manages a stack of nested modals, and exposes a Promise-based API.
 
 ## How They Work
 
@@ -38,7 +38,12 @@ this.modalsManager.confirm({
 
 ```js
 this.modalsManager.alert({ title: 'Saved', body: 'Your changes are saved.' });
-this.modalsManager.prompt({ title: 'Rename', confirm: async (m) => { /* … */ } });
+this.modalsManager.prompt({
+  title: 'Rename',
+  confirm: async (m) => {
+    /* … */
+  },
+});
 this.modalsManager.loader({ title: 'Loading…' });
 ```
 
@@ -56,23 +61,41 @@ The component at `addon/components/modals/edit-driver` renders inside the modal 
 
 ## Pages in This Section
 
-<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 not-prose">
+<div className="not-prose mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
   <Card>
     <CardHeader>
-      <CardTitle className="text-sm font-semibold">modals-manager Service</CardTitle>
-      <CardDescription className="text-xs">The full service API — show, confirm, alert, prompt, bulk, progress, process, loader, and stack control.</CardDescription>
+      <CardTitle className="text-sm font-semibold">
+        modals-manager Service
+      </CardTitle>
+      <CardDescription className="text-xs">
+        The full service API — show, confirm, alert, prompt, bulk, progress,
+        process, loader, and stack control.
+      </CardDescription>
     </CardHeader>
     <CardContent>
-      <a href="/docs/ui/modals/modals-manager" className="text-sm text-primary hover:underline">modals-manager →</a>
+      <a
+        href="/docs/ui/modals/modals-manager"
+        className="text-primary text-sm hover:underline"
+      >
+        modals-manager →
+      </a>
     </CardContent>
   </Card>
   <Card>
     <CardHeader>
       <CardTitle className="text-sm font-semibold">Modal Layouts</CardTitle>
-      <CardDescription className="text-xs">The built-in layouts — what each looks like and which option fields they consume.</CardDescription>
+      <CardDescription className="text-xs">
+        The built-in layouts — what each looks like and which option fields they
+        consume.
+      </CardDescription>
     </CardHeader>
     <CardContent>
-      <a href="/docs/ui/modals/modal-layouts" className="text-sm text-primary hover:underline">Layouts →</a>
+      <a
+        href="/docs/ui/modals/modal-layouts"
+        className="text-primary text-sm hover:underline"
+      >
+        Layouts →
+      </a>
     </CardContent>
   </Card>
 </div>
@@ -81,26 +104,26 @@ The component at `addon/components/modals/edit-driver` renders inside the modal 
 
 Place your component under `addon/components/modals/<name>.{hbs,js}`. The component receives:
 
-| Argument | Provided by | Purpose |
-| :--- | :--- | :--- |
-| `@modalIsOpened` | manager | Boolean visibility flag |
-| `@options` | `show()` caller | Everything you passed in `options` |
-| `@onConfirm` | manager | Click handler for the confirm button |
-| `@onDecline` | manager | Click handler for the decline button |
+| Argument         | Provided by     | Purpose                              |
+| :--------------- | :-------------- | :----------------------------------- |
+| `@modalIsOpened` | manager         | Boolean visibility flag              |
+| `@options`       | `show()` caller | Everything you passed in `options`   |
+| `@onConfirm`     | manager         | Click handler for the confirm button |
+| `@onDecline`     | manager         | Click handler for the decline button |
 
 Use `<Modal::Default>` (or `<Modal::Wide>`, `<Modal::Sidebar>`, etc.) as the root template:
 
 ```handlebars
-{{!-- addon/components/modals/edit-driver.hbs --}}
+{{! addon/components/modals/edit-driver.hbs }}
 <Modal::Default
   @modalIsOpened={{@modalIsOpened}}
   @options={{@options}}
   @confirm={{@onConfirm}}
   @decline={{@onDecline}}
 >
-  <div class="modal-body-container">
-    <InputGroup @name="Name" @value={{@options.driver.name}} />
-    <InputGroup @name="Phone">
+  <div class='modal-body-container'>
+    <InputGroup @name='Name' @value={{@options.driver.name}} />
+    <InputGroup @name='Phone'>
       <PhoneInput @value={{@options.driver.phone}} />
     </InputGroup>
   </div>

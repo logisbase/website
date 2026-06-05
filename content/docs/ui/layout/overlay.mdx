@@ -1,11 +1,11 @@
 ---
 title: Overlay
-description: "<Overlay> is a sliding panel that docks to the left/right/top/bottom of the screen. Used for slide-out detail views, side panels, and drawer-like UIs."
+description: '<Overlay> is a sliding panel that docks to the left/right/top/bottom of the screen. Used for slide-out detail views, side panels, and drawer-like UIs.'
 ---
 
 # `<Overlay>`
 
-`<Overlay>` is a sliding panel that docks to one edge of the screen. It supports minimize / maximize / resize gestures and is the basis for most slide-out detail views in the Fleetbase Console.
+`<Overlay>` is a sliding panel that docks to one edge of the screen. It supports minimize / maximize / resize gestures and is the basis for most slide-out detail views in the LogisBase Console.
 
 For modal dialogs (centered, dimmed background) use the [modals](/docs/ui/modals/overview) system instead.
 
@@ -13,12 +13,12 @@ For modal dialogs (centered, dimmed background) use the [modals](/docs/ui/modals
 
 ```handlebars
 <Overlay
-  @position="right"
+  @position='right'
   @isOpen={{this.detailOpen}}
   @onClose={{fn (mut this.detailOpen) false}}
   @isResizable={{true}}
 >
-  {{!-- Body content --}}
+  {{! Body content }}
   <h2>Driver Details</h2>
   <p>{{this.driver.name}}</p>
 </Overlay>
@@ -28,34 +28,34 @@ For modal dialogs (centered, dimmed background) use the [modals](/docs/ui/modals
 
 ### Position & Sizing
 
-| Argument | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `@position` | string | `right` | `left`, `right`, `top`, `bottom` |
-| `@isOpen` | boolean | `true` | Initial open state |
-| `@isResizable` | boolean | `false` | Allow the user to drag-resize |
-| `@isMinimizable` | boolean | `false` | Show the minimize button |
-| `@isMaximizable` | boolean | `false` | Show the maximize button |
-| `@disableResize` | boolean | `false` | Disable resize even if `@isResizable` |
-| `@minResizeWidth` | number | `560` | Minimum resize width in px |
-| `@maxResizeWidth` | number | `900` | Maximum resize width in px |
+| Argument          | Type    | Default | Description                           |
+| :---------------- | :------ | :------ | :------------------------------------ |
+| `@position`       | string  | `right` | `left`, `right`, `top`, `bottom`      |
+| `@isOpen`         | boolean | `true`  | Initial open state                    |
+| `@isResizable`    | boolean | `false` | Allow the user to drag-resize         |
+| `@isMinimizable`  | boolean | `false` | Show the minimize button              |
+| `@isMaximizable`  | boolean | `false` | Show the maximize button              |
+| `@disableResize`  | boolean | `false` | Disable resize even if `@isResizable` |
+| `@minResizeWidth` | number  | `560`   | Minimum resize width in px            |
+| `@maxResizeWidth` | number  | `900`   | Maximum resize width in px            |
 
 ### Callbacks
 
-| Argument | Signature | Description |
-| :--- | :--- | :--- |
-| `@onLoad` | `(api)` | Called once when the overlay mounts. `api` exposes `{ toggle, open, close, minimize, maximize }` |
-| `@onOpen` / `@onClose` | `(api)` | Called when state changes |
-| `@onToggle` | `(api)` | Called on toggle |
-| `@onResize` / `@onResizeStart` / `@onResizeEnd` | `({ event, overlayPanelNode })` | Resize lifecycle |
-| `@onMinimize` / `@onMaximize` | `()` | Buttons emit these in addition to mutating internal state |
+| Argument                                        | Signature                       | Description                                                                                      |
+| :---------------------------------------------- | :------------------------------ | :----------------------------------------------------------------------------------------------- |
+| `@onLoad`                                       | `(api)`                         | Called once when the overlay mounts. `api` exposes `{ toggle, open, close, minimize, maximize }` |
+| `@onOpen` / `@onClose`                          | `(api)`                         | Called when state changes                                                                        |
+| `@onToggle`                                     | `(api)`                         | Called on toggle                                                                                 |
+| `@onResize` / `@onResizeStart` / `@onResizeEnd` | `({ event, overlayPanelNode })` | Resize lifecycle                                                                                 |
+| `@onMinimize` / `@onMaximize`                   | `()`                            | Buttons emit these in addition to mutating internal state                                        |
 
 ## Imperative Control
 
 Capture the API via `@onLoad`:
 
 ```handlebars
-<Overlay @position="right" @onLoad={{this.captureApi}}>
-  {{!-- ... --}}
+<Overlay @position='right' @onLoad={{this.captureApi}}>
+  {{! ... }}
 </Overlay>
 ```
 
@@ -75,16 +75,16 @@ The API object: `{ toggle, open, close, minimize, maximize, isOpen, isMinimized,
 ## Real-World Examples
 
 ```handlebars
-{{!-- Right-docked detail overlay --}}
+{{! Right-docked detail overlay }}
 <Overlay
-  @position="right"
+  @position='right'
   @isOpen={{this.detailOpen}}
   @isResizable={{true}}
   @isMinimizable={{true}}
   @onClose={{fn (mut this.detailOpen) false}}
 >
   <h2>{{this.selectedOrder.public_id}}</h2>
-  {{!-- ... --}}
+  {{! ... }}
 </Overlay>
 ```
 
@@ -96,8 +96,8 @@ The API object: `{ toggle, open, close, minimize, maximize, isOpen, isMinimized,
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/overlay.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/overlay.hbs) | Template |
-| [`addon/components/overlay.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/overlay.js) | Class |
-| [`addon/components/overlay/`](https://github.com/fleetbase/ember-ui/tree/main/addon/components/overlay) | Subcomponents (header, body, footer regions) |
+| File                                                                                                           | Description                                  |
+| :------------------------------------------------------------------------------------------------------------- | :------------------------------------------- |
+| [`addon/components/overlay.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/overlay.hbs) | Template                                     |
+| [`addon/components/overlay.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/overlay.js)   | Class                                        |
+| [`addon/components/overlay/`](https://github.com/logisbase/ember-ui/tree/main/addon/components/overlay)        | Subcomponents (header, body, footer regions) |

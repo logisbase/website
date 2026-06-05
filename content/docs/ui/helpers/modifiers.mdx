@@ -1,6 +1,6 @@
 ---
 title: Modifiers
-description: Element modifiers from @fleetbase/ember-ui — set-height, set-width, imask, background-url, fallback-img-src, and more.
+description: Element modifiers from @logisbase/ember-ui — set-height, set-width, imask, background-url, fallback-img-src, and more.
 ---
 
 # Modifiers
@@ -8,7 +8,7 @@ description: Element modifiers from @fleetbase/ember-ui — set-height, set-widt
 Modifiers attach behavior to an element. They look like helpers but apply to the element rather than producing a value:
 
 ```handlebars
-<div {{set-height "400px"}}>fixed-height container</div>
+<div {{set-height '400px'}}>fixed-height container</div>
 ```
 
 The modifier runs on render and re-runs when its arguments change.
@@ -20,8 +20,8 @@ The modifier runs on render and re-runs when its arguments change.
 Sets `style.height`:
 
 ```handlebars
-<div {{set-height "400px"}}>...</div>
-<div {{set-height (concat this.computedHeight "px")}}>...</div>
+<div {{set-height '400px'}}>...</div>
+<div {{set-height (concat this.computedHeight 'px')}}>...</div>
 ```
 
 ### `{{set-width value}}`
@@ -67,7 +67,7 @@ Sets `style.transform = translateX(...)`.
 Sets `style.backgroundImage = url(...)`:
 
 ```handlebars
-<div class="hero" {{background-url @company.banner_url}}>...</div>
+<div class='hero' {{background-url @company.banner_url}}>...</div>
 ```
 
 ### `{{fallback-img-src fallback}}`
@@ -75,7 +75,7 @@ Sets `style.backgroundImage = url(...)`:
 Sets `src` to the fallback if the original image fails to load:
 
 ```handlebars
-<img src={{@user.avatar_url}} {{fallback-img-src "/assets/placeholder.png"}} />
+<img src={{@user.avatar_url}} {{fallback-img-src '/assets/placeholder.png'}} />
 ```
 
 ## Input Modifiers
@@ -85,33 +85,33 @@ Sets `src` to the fallback if the original image fails to load:
 Applies an [iMask](https://imask.js.org) input mask. The mask can be a preset name or a configuration object:
 
 ```handlebars
-<input type="text" {{imask "phone"}} />
-<input type="text" {{imask (hash mask="00/00/0000")}} />
+<input type='text' {{imask 'phone'}} />
+<input type='text' {{imask (hash mask='00/00/0000')}} />
 ```
 
 Common presets:
 
-| Preset | Pattern |
-| :--- | :--- |
-| `phone` | International phone format |
+| Preset     | Pattern                        |
+| :--------- | :----------------------------- |
+| `phone`    | International phone format     |
 | `currency` | Currency input with separators |
-| `date` | Date input |
-| `card` | Credit card number with spaces |
+| `date`     | Date input                     |
+| `card`     | Credit card number with spaces |
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/modifiers/set-height.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/set-height.js) | Modifier |
-| [`addon/modifiers/set-width.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/set-width.js) | Modifier |
-| [`addon/modifiers/set-max-height.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/set-max-height.js) | Modifier |
-| [`addon/modifiers/set-max-width.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/set-max-width.js) | Modifier |
-| [`addon/modifiers/set-z-index.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/set-z-index.js) | Modifier |
-| [`addon/modifiers/set-container-dimensions.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/set-container-dimensions.js) | Modifier |
-| [`addon/modifiers/constrain-view-section-width.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/constrain-view-section-width.js) | Modifier |
-| [`addon/modifiers/increase-height-by.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/increase-height-by.js) | Modifier |
-| [`addon/modifiers/vertical-offset-by.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/vertical-offset-by.js) | Modifier |
-| [`addon/modifiers/translate-x.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/translate-x.js) | Modifier |
-| [`addon/modifiers/background-url.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/background-url.js) | Modifier |
-| [`addon/modifiers/fallback-img-src.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/fallback-img-src.js) | Modifier |
-| [`addon/modifiers/imask.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/modifiers/imask.js) | Modifier |
+| File                                                                                                                                                 | Description |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------- | :---------- |
+| [`addon/modifiers/set-height.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/set-height.js)                                     | Modifier    |
+| [`addon/modifiers/set-width.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/set-width.js)                                       | Modifier    |
+| [`addon/modifiers/set-max-height.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/set-max-height.js)                             | Modifier    |
+| [`addon/modifiers/set-max-width.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/set-max-width.js)                               | Modifier    |
+| [`addon/modifiers/set-z-index.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/set-z-index.js)                                   | Modifier    |
+| [`addon/modifiers/set-container-dimensions.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/set-container-dimensions.js)         | Modifier    |
+| [`addon/modifiers/constrain-view-section-width.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/constrain-view-section-width.js) | Modifier    |
+| [`addon/modifiers/increase-height-by.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/increase-height-by.js)                     | Modifier    |
+| [`addon/modifiers/vertical-offset-by.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/vertical-offset-by.js)                     | Modifier    |
+| [`addon/modifiers/translate-x.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/translate-x.js)                                   | Modifier    |
+| [`addon/modifiers/background-url.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/background-url.js)                             | Modifier    |
+| [`addon/modifiers/fallback-img-src.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/fallback-img-src.js)                         | Modifier    |
+| [`addon/modifiers/imask.js`](https://github.com/logisbase/ember-ui/blob/main/addon/modifiers/imask.js)                                               | Modifier    |

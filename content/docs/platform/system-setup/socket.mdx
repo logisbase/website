@@ -5,7 +5,7 @@ description: Monitor the SocketCluster connection that powers real-time driver t
 
 # Socket
 
-Fleetbase uses [SocketCluster](https://socketcluster.io/) for real-time bidirectional communication — live driver location updates on the map, order status changes pushed to the console without polling, and real-time events delivered to the Navigator app. Navigate to **Admin → System Settings → Socket** to monitor the connection.
+LogisBase uses [SocketCluster](https://socketcluster.io/) for real-time bidirectional communication — live driver location updates on the map, order status changes pushed to the console without polling, and real-time events delivered to the Navigator app. Navigate to **Admin → System Settings → Socket** to monitor the connection.
 
 ## Connection Monitor
 
@@ -28,12 +28,12 @@ The `origins` value is a comma-separated list of allowed WebSocket origins. In p
 
 The API container connects to SocketCluster using these variables (set under the `application` service):
 
-| Variable | Default | Description |
-| :--- | :--- | :--- |
-| `SOCKETCLUSTER_HOST` | `socket` | Hostname of the SocketCluster container |
-| `SOCKETCLUSTER_PORT` | `38000` | Port SocketCluster listens on |
-| `SOCKETCLUSTER_SECURE` | `false` | Set to `true` when connecting over WSS |
-| `SOCKETCLUSTER_PATH` | `/socketcluster/` | WebSocket path prefix |
+| Variable               | Default           | Description                             |
+| :--------------------- | :---------------- | :-------------------------------------- |
+| `SOCKETCLUSTER_HOST`   | `socket`          | Hostname of the SocketCluster container |
+| `SOCKETCLUSTER_PORT`   | `38000`           | Port SocketCluster listens on           |
+| `SOCKETCLUSTER_SECURE` | `false`           | Set to `true` when connecting over WSS  |
+| `SOCKETCLUSTER_PATH`   | `/socketcluster/` | WebSocket path prefix                   |
 
 ## Testing
 

@@ -1,15 +1,15 @@
 ---
-title: Install Fleetbase
-description: "Install a self-hosted Fleetbase instance on your own infrastructure using `flb install-fleetbase` — an interactive Docker-based wizard."
+title: Install LogisBase
+description: 'Install a self-hosted LogisBase instance on your own infrastructure using `flb install-logisbase` — an interactive Docker-based wizard.'
 ---
 
-# Install Fleetbase
+# Install LogisBase
 
 ```bash
-flb install-fleetbase
+flb install-logisbase
 ```
 
-The `install-fleetbase` command is an interactive wizard that clones the Fleetbase repository, builds a `docker-compose.override.yml` tailored to your environment, generates secure credentials, starts the containers, and runs the deploy script — all in one go.
+The `install-logisbase` command is an interactive wizard that clones the LogisBase repository, builds a `docker-compose.override.yml` tailored to your environment, generates secure credentials, starts the containers, and runs the deploy script — all in one go.
 
 ## Prerequisites
 
@@ -23,12 +23,12 @@ It also checks ports `8000`, `4200`, `3306`, and `38000` and prints warnings if 
 
 ## Options
 
-| Option | Default | Description |
-| :--- | :--- | :--- |
-| `--host <host>` | `localhost` | Host or IP address to bind to |
-| `--environment <env>` | `development` | `development` or `production` |
-| `--directory <path>` | current directory | Where to install Fleetbase |
-| `--non-interactive` | off | Skip optional prompts and use safe defaults — useful for CI/CD |
+| Option                | Default           | Description                                                    |
+| :-------------------- | :---------------- | :------------------------------------------------------------- |
+| `--host <host>`       | `localhost`       | Host or IP address to bind to                                  |
+| `--environment <env>` | `development`     | `development` or `production`                                  |
+| `--directory <path>`  | current directory | Where to install LogisBase                                     |
+| `--non-interactive`   | off               | Skip optional prompts and use safe defaults — useful for CI/CD |
 
 Anything you don't pass on the command line is asked for interactively.
 
@@ -44,7 +44,7 @@ The wizard runs through these phases:
     **Core parameters** — host, environment, install directory, application name.
   </Step>
   <Step>
-    **Clone the repository** — runs `git clone https://github.com/fleetbase/fleetbase.git` if `docker-compose.yml` is not already present in the target directory.
+    **Clone the repository** — runs `git clone https://github.com/logisbase/logisbase.git` if `docker-compose.yml` is not already present in the target directory.
   </Step>
   <Step>
     **Database** — choose between bundled MySQL (recommended for development) or an external MySQL server (e.g. AWS RDS). For external, you provide host/port/database/username/password. For bundled, the wizard auto-generates secure root and user passwords.
@@ -68,7 +68,7 @@ The wizard runs through these phases:
     **Write `docker-compose.override.yml`** — all your answers are baked into this file. If one already exists, it's backed up to `docker-compose.override.yml.bak.<timestamp>`.
   </Step>
   <Step>
-    **Write console config** — `console/fleetbase.config.json`, `console/environments/.env.development`, and `console/environments/.env.production` are generated against your host.
+    **Write console config** — `console/logisbase.config.json`, `console/environments/.env.development`, and `console/environments/.env.production` are generated against your host.
   </Step>
   <Step>
     **Start containers** — `docker compose up -d`, then waits for the database to be ready (up to 60s).
@@ -88,7 +88,7 @@ When it's done, you'll see the API and Console URLs printed in a summary box.
 ### Interactive (development)
 
 ```bash
-flb install-fleetbase
+flb install-logisbase
 ```
 
 Follow the prompts. Defaults work for a local dev install on `localhost`.
@@ -96,10 +96,10 @@ Follow the prompts. Defaults work for a local dev install on `localhost`.
 ### Production with a specific host
 
 ```bash
-flb install-fleetbase \
-  --host fleetbase.mycompany.com \
+flb install-logisbase \
+  --host logisbase.mycompany.com \
   --environment production \
-  --directory /opt/fleetbase
+  --directory /opt/logisbase
 ```
 
 You'll still be prompted for database choice, mail, storage, and optional third-party APIs.
@@ -107,10 +107,10 @@ You'll still be prompted for database choice, mail, storage, and optional third-
 ### CI / unattended
 
 ```bash
-flb install-fleetbase \
-  --host fleetbase.example.com \
+flb install-logisbase \
+  --host logisbase.example.com \
   --environment development \
-  --directory ./fleetbase \
+  --directory ./logisbase \
   --non-interactive
 ```
 
@@ -126,12 +126,12 @@ In `--non-interactive` mode, optional steps default to:
 
 After the wizard runs you'll have these files (paths relative to your install directory):
 
-| Path | Purpose |
-| :--- | :--- |
-| `docker-compose.override.yml` | Your environment overrides — APP_KEY, mail, storage, third-party API keys, database creds, SocketCluster origins |
-| `console/fleetbase.config.json` | Console runtime config (API_HOST, SocketCluster) |
-| `console/environments/.env.development` | Console dev env file |
-| `console/environments/.env.production` | Console production env file |
+| Path                                    | Purpose                                                                                                          |
+| :-------------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
+| `docker-compose.override.yml`           | Your environment overrides — APP_KEY, mail, storage, third-party API keys, database creds, SocketCluster origins |
+| `console/logisbase.config.json`         | Console runtime config (API_HOST, SocketCluster)                                                                 |
+| `console/environments/.env.development` | Console dev env file                                                                                             |
+| `console/environments/.env.production`  | Console production env file                                                                                      |
 
 To make changes after install, edit `docker-compose.override.yml` and rerun:
 
@@ -143,11 +143,11 @@ docker compose up -d
 
 By default after a successful install:
 
-| Service | URL |
-| :--- | :--- |
-| **API** | `http://<host>:8000` (or `https://` in production) |
-| **Console** | `http://<host>:4200` (or `https://` in production) |
-| **SocketCluster** | port `38000` |
+| Service           | URL                                                |
+| :---------------- | :------------------------------------------------- |
+| **API**           | `http://<host>:8000` (or `https://` in production) |
+| **Console**       | `http://<host>:4200` (or `https://` in production) |
+| **SocketCluster** | port `38000`                                       |
 
 Open the Console URL in your browser and complete the onboarding wizard to create your initial organization and administrator account.
 

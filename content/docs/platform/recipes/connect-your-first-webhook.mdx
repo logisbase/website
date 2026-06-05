@@ -1,24 +1,25 @@
 ---
 title: Connect Your First Webhook
-description: Set up a webhook endpoint to receive real-time event callbacks from Fleetbase — order created, driver assigned, status updated, and more.
+description: Set up a webhook endpoint to receive real-time event callbacks from LogisBase — order created, driver assigned, status updated, and more.
 ---
 
 # Connect Your First Webhook
 
-Webhooks let Fleetbase push events to your backend the moment something happens — an order is dispatched, a driver's status changes, a contact is created. This recipe walks through building a receiver, registering it in the Developer Console, and verifying end-to-end delivery.
+Webhooks let LogisBase push events to your backend the moment something happens — an order is dispatched, a driver's status changes, a contact is created. This recipe walks through building a receiver, registering it in the Developer Console, and verifying end-to-end delivery.
 
 ## What You'll Build
 
-A simple HTTPS endpoint that receives Fleetbase webhook POST requests, logs the payload, and responds with `200 OK`. Then you'll register it in the Developer Console and watch events flow in.
+A simple HTTPS endpoint that receives LogisBase webhook POST requests, logs the payload, and responds with `200 OK`. Then you'll register it in the Developer Console and watch events flow in.
 
 ## Prerequisites
 
-- A Fleetbase account (self-hosted or [Fleetbase Cloud](https://console.fleetbase.io/onboard))
+- A LogisBase account (self-hosted or [LogisBase Cloud](https://console.logisbase.com/onboard))
 - A publicly reachable HTTPS endpoint — or [ngrok](https://ngrok.com/) for local development
 
 ## Step 1 — Create the Receiver Endpoint
 
 Your endpoint must:
+
 - Accept `POST` requests
 - Return a `2xx` status code within a few seconds
 - Handle the request body as JSON
@@ -35,35 +36,36 @@ const app = express();
 
 app.use(express.json());
 
-app.post('/webhooks/fleetbase', (req, res) => {
-    const event = req.body;
+app.post('/webhooks/logisbase', (req, res) => {
+  const event = req.body;
 
-    console.log(`Received event: ${event.event}`);
-    console.log('Payload:', JSON.stringify(event.data, null, 2));
+  console.log(`Received event: ${event.event}`);
+  console.log('Payload:', JSON.stringify(event.data, null, 2));
 
-    // Always respond quickly with 2xx
-    res.sendStatus(200);
+  // Always respond quickly with 2xx
+  res.sendStatus(200);
 
-    // Do any slow processing after responding
-    handleEvent(event).catch(console.error);
+  // Do any slow processing after responding
+  handleEvent(event).catch(console.error);
 });
 
 async function handleEvent(event) {
-    switch (event.event) {
-        case 'order.dispatched':
-            // e.g. update your own database
-            console.log(`Order ${event.data.public_id} dispatched`);
-            break;
-        case 'order.completed':
-            console.log(`Order ${event.data.public_id} completed`);
-            break;
-        default:
-            console.log(`Unhandled event type: ${event.event}`);
-    }
+  switch (event.event) {
+    case 'order.dispatched':
+      // e.g. update your own database
+      console.log(`Order ${event.data.public_id} dispatched`);
+      break;
+    case 'order.completed':
+      console.log(`Order ${event.data.public_id} completed`);
+      break;
+    default:
+      console.log(`Unhandled event type: ${event.event}`);
+  }
 }
 
 app.listen(3000, () => console.log('Webhook receiver running on port 3000'));
 ```
+
 </Tab>
 <Tab value="Python (Flask)">
 ```bash
@@ -76,7 +78,7 @@ import threading
 
 app = Flask(__name__)
 
-@app.route('/webhooks/fleetbase', methods=['POST'])
+@app.route('/webhooks/logisbase', methods=['POST'])
 def handle_webhook():
     event = request.get_json()
 
@@ -100,6 +102,7 @@ def process_event(event):
 if __name__ == '__main__':
     app.run(port=3000)
 ```
+
 </Tab>
 <Tab value="PHP">
 ```php
@@ -107,7 +110,7 @@ if __name__ == '__main__':
 // webhook.php
 
 $payload = file_get_contents('php://input');
-$event   = json_decode($payload, true);
+$event = json_decode($payload, true);
 
 // Log the event
 error_log('Received event: ' . $event['event']);
@@ -119,15 +122,16 @@ flush();
 
 // Process after responding
 switch ($event['event']) {
-    case 'order.dispatched':
-        // Update your system...
-        error_log('Order ' . $event['data']['public_id'] . ' dispatched');
-        break;
-    case 'order.completed':
-        error_log('Order ' . $event['data']['public_id'] . ' completed');
-        break;
+case 'order.dispatched':
+// Update your system...
+error_log('Order ' . $event['data']['public_id'] . ' dispatched');
+break;
+case 'order.completed':
+error_log('Order ' . $event['data']['public_id'] . ' completed');
+break;
 }
-```
+
+````
 </Tab>
 </Tabs>
 
@@ -137,16 +141,17 @@ For local development, use [ngrok](https://ngrok.com/) to create a temporary pub
 
 ```bash
 ngrok http 3000
-```
+````
 
 ngrok will output a URL like `https://a1b2c3d4.ngrok.io`. Your webhook endpoint URL will be:
 
 ```
-https://a1b2c3d4.ngrok.io/webhooks/fleetbase
+https://a1b2c3d4.ngrok.io/webhooks/logisbase
 ```
 
 <Callout type="info">
-In production, deploy behind a real domain with a valid TLS certificate. Fleetbase only delivers to HTTPS endpoints.
+  In production, deploy behind a real domain with a valid TLS certificate.
+  LogisBase only delivers to HTTPS endpoints.
 </Callout>
 
 ## Step 3 — Register the Webhook in the Developer Console
@@ -155,17 +160,19 @@ In production, deploy behind a real domain with a valid TLS certificate. Fleetba
   <Step>
     ### Open Webhooks
 
-    Navigate to **Developers → Webhooks** in the Fleetbase Console sidebar. Click **New**.
+    Navigate to **Developers → Webhooks** in the LogisBase Console sidebar. Click **New**.
+
   </Step>
   <Step>
     ### Fill in the form
 
     | Field | Value |
     | :--- | :--- |
-    | **Endpoint URL** | Your public HTTPS URL (e.g. `https://a1b2c3d4.ngrok.io/webhooks/fleetbase`) |
+    | **Endpoint URL** | Your public HTTPS URL (e.g. `https://a1b2c3d4.ngrok.io/webhooks/logisbase`) |
     | **Description** | Optional — e.g. `Order status receiver` |
     | **API Credential** | Leave blank to receive events from all keys, or select a specific key |
     | **API Version** | Select the version your integration is built against |
+
   </Step>
   <Step>
     ### Select events
@@ -182,6 +189,7 @@ In production, deploy behind a real domain with a valid TLS certificate. Fleetba
     | `driver.created` | A new driver account is created |
 
     Click individual events or **All events** to subscribe to everything. Click **Save**.
+
   </Step>
 </Steps>
 
@@ -196,7 +204,7 @@ Watch your receiver logs. You should see the event payload printed within a seco
 
 ## Webhook Payload Format
 
-Every Fleetbase webhook POST contains a JSON body:
+Every LogisBase webhook POST contains a JSON body:
 
 ```json
 {
@@ -223,12 +231,13 @@ In the Developer Console, click on your webhook URL to open its detail page. The
 
 ![Webhook detail view — Attempts log showing delivery history](/images/screenshots/developers/developers-webhook-details-attempts.webp)
 
-If a delivery failed (`4xx` or `5xx` response, or no response), the attempt log tells you exactly what Fleetbase received back.
+If a delivery failed (`4xx` or `5xx` response, or no response), the attempt log tells you exactly what LogisBase received back.
 
 ## Handling Retries
 
 <Callout type="warn">
-Fleetbase retries failed deliveries. Make your endpoint **idempotent** — processing the same event twice should not cause duplicate side effects.
+  LogisBase retries failed deliveries. Make your endpoint **idempotent** —
+  processing the same event twice should not cause duplicate side effects.
 </Callout>
 
 Use the `id` field (`evt_01HXYZ123ABC`) as a deduplication key. Before processing, check if you've already handled that event ID:
@@ -236,17 +245,17 @@ Use the `id` field (`evt_01HXYZ123ABC`) as a deduplication key. Before processin
 ```javascript
 const processedEvents = new Set(); // Use a database in production
 
-app.post('/webhooks/fleetbase', (req, res) => {
-    const event = req.body;
+app.post('/webhooks/logisbase', (req, res) => {
+  const event = req.body;
 
-    // Deduplicate
-    if (processedEvents.has(event.id)) {
-        return res.sendStatus(200); // Acknowledge but skip
-    }
-    processedEvents.add(event.id);
+  // Deduplicate
+  if (processedEvents.has(event.id)) {
+    return res.sendStatus(200); // Acknowledge but skip
+  }
+  processedEvents.add(event.id);
 
-    res.sendStatus(200);
-    handleEvent(event).catch(console.error);
+  res.sendStatus(200);
+  handleEvent(event).catch(console.error);
 });
 ```
 

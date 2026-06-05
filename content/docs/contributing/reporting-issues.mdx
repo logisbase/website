@@ -1,6 +1,6 @@
 ---
 title: Reporting issues
-description: How to file effective bug reports and feature requests for Fleetbase — what to include, where to file, and what happens next.
+description: How to file effective bug reports and feature requests for LogisBase — what to include, where to file, and what happens next.
 sidebarTitle: Reporting issues
 ---
 
@@ -15,27 +15,27 @@ A good bug report makes the difference between a fix in days and a fix in months
 Check first:
 
 - [ ] **Is it actually a bug?** Some behaviour is intentional. Skim the relevant docs section.
-- [ ] **Is it already reported?** Search [GitHub issues](https://github.com/fleetbase/fleetbase/issues) for similar problems. Add a 👍 reaction or a comment with new info to existing issues rather than creating duplicates.
+- [ ] **Is it already reported?** Search [GitHub issues](https://github.com/logisbase/logisbase/issues) for similar problems. Add a 👍 reaction or a comment with new info to existing issues rather than creating duplicates.
 - [ ] **Does it reproduce on a recent version?** Bugs in old versions may already be fixed.
-- [ ] **Is it deployment-specific?** Self-hosted issues vs. Fleetbase Cloud have different repros.
+- [ ] **Is it deployment-specific?** Self-hosted issues vs. LogisBase Cloud have different repros.
 
 ### Where to file
 
 Different bugs go to different repos. Pick the one that owns the affected component:
 
-| Repository | What it covers | File issue |
-| :--- | :--- | :--- |
-| [`fleetbase/fleetbase`](https://github.com/fleetbase/fleetbase) | Core platform — API, Console, IAM, Developer Console | [Open issue →](https://github.com/fleetbase/fleetbase/issues/new) |
-| [`fleetbase/fleetops`](https://github.com/fleetbase/fleetops) | FleetOps — orders, drivers, fleets, dispatch, live map | [Open issue →](https://github.com/fleetbase/fleetops/issues/new) |
-| [`fleetbase/storefront`](https://github.com/fleetbase/storefront) | Storefront — products, catalogs, customers, orders | [Open issue →](https://github.com/fleetbase/storefront/issues/new) |
-| [`fleetbase/pallet`](https://github.com/fleetbase/pallet) | Pallet — warehouse and inventory | [Open issue →](https://github.com/fleetbase/pallet/issues/new) |
-| [`fleetbase/ledger`](https://github.com/fleetbase/ledger) | Ledger — invoices, payments, accounting | [Open issue →](https://github.com/fleetbase/ledger/issues/new) |
-| [`fleetbase/navigator-app`](https://github.com/fleetbase/navigator-app) | Navigator driver mobile app | [Open issue →](https://github.com/fleetbase/navigator-app/issues/new) |
-| [`fleetbase/storefront-app`](https://github.com/fleetbase/storefront-app) | Storefront customer mobile app | [Open issue →](https://github.com/fleetbase/storefront-app/issues/new) |
-| [`fleetbase/fleetbase-cli`](https://github.com/fleetbase/fleetbase-cli) | CLI tool | [Open issue →](https://github.com/fleetbase/fleetbase-cli/issues/new) |
-| [`fleetbase/fleetbase.io`](https://github.com/fleetbase/fleetbase.io) | This documentation site | [Open issue →](https://github.com/fleetbase/fleetbase.io/issues/new) |
+| Repository                                                                | What it covers                                         | File issue                                                             |
+| :------------------------------------------------------------------------ | :----------------------------------------------------- | :--------------------------------------------------------------------- |
+| [`logisbase/logisbase`](https://github.com/logisbase/logisbase)           | Core platform — API, Console, IAM, Developer Console   | [Open issue →](https://github.com/logisbase/logisbase/issues/new)      |
+| [`logisbase/fleetops`](https://github.com/logisbase/fleetops)             | FleetOps — orders, drivers, fleets, dispatch, live map | [Open issue →](https://github.com/logisbase/fleetops/issues/new)       |
+| [`logisbase/storefront`](https://github.com/logisbase/storefront)         | Storefront — products, catalogs, customers, orders     | [Open issue →](https://github.com/logisbase/storefront/issues/new)     |
+| [`logisbase/pallet`](https://github.com/logisbase/pallet)                 | Pallet — warehouse and inventory                       | [Open issue →](https://github.com/logisbase/pallet/issues/new)         |
+| [`logisbase/ledger`](https://github.com/logisbase/ledger)                 | Ledger — invoices, payments, accounting                | [Open issue →](https://github.com/logisbase/ledger/issues/new)         |
+| [`logisbase/navigator-app`](https://github.com/logisbase/navigator-app)   | Navigator driver mobile app                            | [Open issue →](https://github.com/logisbase/navigator-app/issues/new)  |
+| [`logisbase/storefront-app`](https://github.com/logisbase/storefront-app) | Storefront customer mobile app                         | [Open issue →](https://github.com/logisbase/storefront-app/issues/new) |
+| [`logisbase/logisbase-cli`](https://github.com/logisbase/logisbase-cli)   | CLI tool                                               | [Open issue →](https://github.com/logisbase/logisbase-cli/issues/new)  |
+| [`logisbase/logisbase.io`](https://github.com/logisbase/logisbase.io)     | This documentation site                                | [Open issue →](https://github.com/logisbase/logisbase.io/issues/new)   |
 
-If you're not sure, file against `fleetbase/fleetbase` — maintainers will move it to the right repo.
+If you're not sure, file against `logisbase/logisbase` — maintainers will move it to the right repo.
 
 ### What to include
 
@@ -43,34 +43,42 @@ Copy this template into your issue:
 
 ```markdown
 ## Summary
+
 One sentence describing what's wrong.
 
 ## Expected behaviour
+
 What you expected to happen.
 
 ## Actual behaviour
+
 What actually happened.
 
 ## Steps to reproduce
+
 1. Step one
 2. Step two
 3. Step three
 4. Bug appears
 
 ## Environment
-- Fleetbase version: (e.g. 1.4.2 — find via "About" in the Console)
-- Deployment: (Docker, Fleetbase Cloud, local dev)
+
+- LogisBase version: (e.g. 1.4.2 — find via "About" in the Console)
+- Deployment: (Docker, LogisBase Cloud, local dev)
 - Operating system: (e.g. macOS 14, Ubuntu 22.04)
 - Browser (if relevant): (Chrome 121, Safari 17, etc.)
 - Console URL pattern: (e.g. /fleet-ops/orders/order_xxx)
 
 ## Logs / errors
-```paste relevant output here```
+
+`paste relevant output here`
 
 ## Screenshots / video
+
 (Attach if useful)
 
 ## Additional context
+
 Anything else that might help — recent config changes, related extensions, scale of data, etc.
 ```
 
@@ -91,24 +99,29 @@ Anything else that might help — recent config changes, related extensions, sca
 
 ## Feature requests
 
-Feature requests go through [GitHub Discussions](https://github.com/fleetbase/fleetbase/discussions), not Issues. Issues are for confirmed work; Discussions are for "should we?".
+Feature requests go through [GitHub Discussions](https://github.com/logisbase/logisbase/discussions), not Issues. Issues are for confirmed work; Discussions are for "should we?".
 
 ### Template
 
 ```markdown
 ## Problem
+
 What operational problem are you trying to solve? Be specific — describe the workflow, not the desired feature.
 
 ## Proposed solution
-What you'd like Fleetbase to do.
+
+What you'd like LogisBase to do.
 
 ## Alternatives considered
+
 Other ways you've tried to solve this — workarounds, extensions, external tools.
 
 ## Who else needs this
+
 If you've talked to other operators or seen similar requests, link them.
 
 ## Willing to contribute?
+
 [ ] Yes, I'd like to build this myself with maintainer guidance
 [ ] No, just submitting the request
 ```
@@ -126,14 +139,14 @@ Requests that get **maintainer + community support** typically become issues wit
 
 ## Security issues
 
-**Do not file security issues publicly.** Instead, email **security@fleetbase.io** with:
+**Do not file security issues publicly.** Instead, email **security@logisbase.com** with:
 
 - Description of the vulnerability
 - Steps to reproduce
 - Affected versions (if known)
 - Your name/handle for the security advisory credit (optional)
 
-The team responds within 48 hours and follows a coordinated disclosure process. See [`SECURITY.md`](https://github.com/fleetbase/fleetbase/blob/main/SECURITY.md) for full details.
+The team responds within 48 hours and follows a coordinated disclosure process. See [`SECURITY.md`](https://github.com/logisbase/logisbase/blob/main/SECURITY.md) for full details.
 
 ## After you file
 

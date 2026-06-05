@@ -1,82 +1,103 @@
 import { normalizeArticleLinks } from './links.mjs';
 
 const TERM_REWRITES = [
-    [/\bFleetOps\b/g, 'Fleet-Ops'],
-    [/\bFleet-Ops extension\b/gi, 'Fleet-Ops'],
-    [/\bOrder Configurations\b/g, 'Order Config'],
-    [/\bhttps:\/\/www\.fleetbase\.io\/docs\b/gi, 'https://fleetbase.io/docs'],
+  [/\bFleetOps\b/g, 'Fleet-Ops'],
+  [/\bFleet-Ops extension\b/gi, 'Fleet-Ops'],
+  [/\bOrder Configurations\b/g, 'Order Config'],
+  [/\bhttps:\/\/www\.logisbase\.io\/docs\b/gi, 'https://logisbase.com/docs'],
 ];
 
 const REVIEW_RULES = [
-    {
-        id: 'outdated-api-first-positioning',
-        pattern: /\bAPI[- ]first\b/i,
-        message: 'Remove outdated "API-first" Fleetbase positioning.',
-    },
-    {
-        id: 'ghost-docs-url',
-        pattern: /fleetbase\.ghost\.io\/docs/i,
-        message: 'Use https://fleetbase.io/docs, never fleetbase.ghost.io/docs.',
-    },
-    {
-        id: 'core-extension-enable-install',
-        pattern: /\b(?:install|enable|activate|add|turn on|set up)\s+(?:the\s+)?(?:Fleet[- ]?Ops|Fleet-Ops|Pallet|Storefront|Ledger)(?:\s+(?:extension|module|plugin|app))?\b/i,
-        message: 'Do not tell readers to install, enable, activate, add, turn on, or set up bundled Fleetbase core extensions. Fleet-Ops and other core extensions are already installed and active by default in Fleetbase Cloud and standard self-hosted Fleetbase.',
-    },
-    {
-        id: 'core-extension-disabled-or-missing',
-        pattern: /\b(?:Fleet[- ]?Ops|Fleet-Ops|Pallet|Storefront|Ledger)\b[^.]{0,80}\b(?:disabled|not enabled|not installed|must be enabled|must be installed|needs to be enabled|needs to be installed)\b/i,
-        message: 'Do not imply bundled Fleetbase core extensions are disabled, missing, or require activation before use.',
-    },
+  {
+    id: 'outdated-api-first-positioning',
+    pattern: /\bAPI[- ]first\b/i,
+    message: 'Remove outdated "API-first" LogisBase positioning.',
+  },
+  {
+    id: 'ghost-docs-url',
+    pattern: /logisbase\.ghost\.io\/docs/i,
+    message: 'Use https://logisbase.com/docs, never logisbase.ghost.io/docs.',
+  },
+  {
+    id: 'core-extension-enable-install',
+    pattern:
+      /\b(?:install|enable|activate|add|turn on|set up)\s+(?:the\s+)?(?:Fleet[- ]?Ops|Fleet-Ops|Pallet|Storefront|Ledger)(?:\s+(?:extension|module|plugin|app))?\b/i,
+    message:
+      'Do not tell readers to install, enable, activate, add, turn on, or set up bundled LogisBase core extensions. Fleet-Ops and other core extensions are already installed and active by default in LogisBase Cloud and standard self-hosted LogisBase.',
+  },
+  {
+    id: 'core-extension-disabled-or-missing',
+    pattern:
+      /\b(?:Fleet[- ]?Ops|Fleet-Ops|Pallet|Storefront|Ledger)\b[^.]{0,80}\b(?:disabled|not enabled|not installed|must be enabled|must be installed|needs to be enabled|needs to be installed)\b/i,
+    message:
+      'Do not imply bundled LogisBase core extensions are disabled, missing, or require activation before use.',
+  },
 ];
 
 const WARNING_RULES = [
-    {
-        id: 'missing-adhoc-param',
-        appliesTo: /uber|ride[- ]hailing|on[- ]demand|ad hoc|adhoc/i,
-        pattern: /\badhoc\b/i,
-        message: 'Uber-like or ad hoc order tutorials should mention adhoc: true.',
-    },
-    {
-        id: 'missing-proof-endpoint',
-        appliesTo: /proof of delivery|pod|delivery proof/i,
-        pattern: /\/v1\/orders\/:id\/proofs/i,
-        message: 'Proof-of-delivery tutorials should reference /v1/orders/:id/proofs.',
-    },
-    {
-        id: 'missing-socketcluster-location',
-        appliesTo: /real[- ]time location|driver location|tracking/i,
-        pattern: /socketcluster|driver(?:'s)? channel/i,
-        message: 'Driver realtime location guidance should mention Fleetbase SocketCluster and the accepted driver channel.',
-    },
+  {
+    id: 'missing-adhoc-param',
+    appliesTo: /uber|ride[- ]hailing|on[- ]demand|ad hoc|adhoc/i,
+    pattern: /\badhoc\b/i,
+    message: 'Uber-like or ad hoc order tutorials should mention adhoc: true.',
+  },
+  {
+    id: 'missing-proof-endpoint',
+    appliesTo: /proof of delivery|pod|delivery proof/i,
+    pattern: /\/v1\/orders\/:id\/proofs/i,
+    message:
+      'Proof-of-delivery tutorials should reference /v1/orders/:id/proofs.',
+  },
+  {
+    id: 'missing-socketcluster-location',
+    appliesTo: /real[- ]time location|driver location|tracking/i,
+    pattern: /socketcluster|driver(?:'s)? channel/i,
+    message:
+      'Driver realtime location guidance should mention LogisBase SocketCluster and the accepted driver channel.',
+  },
 ];
 
 function rewriteText(value) {
-    if (typeof value !== 'string') return value;
+  if (typeof value !== 'string') return value;
 
-    return TERM_REWRITES.reduce((result, [pattern, replacement]) => result.replace(pattern, replacement), value);
+  return TERM_REWRITES.reduce(
+    (result, [pattern, replacement]) => result.replace(pattern, replacement),
+    value,
+  );
 }
 
-export function normalizeFleetbaseArticle(article) {
-    const linked = normalizeArticleLinks(article);
+export function normalizeLogisBaseArticle(article) {
+  const linked = normalizeArticleLinks(article);
 
-    return {
-        ...linked,
-        title: rewriteText(linked.title),
-        excerpt: rewriteText(linked.excerpt),
-        html: rewriteText(linked.html),
-        metaTitle: rewriteText(linked.metaTitle),
-        metaDescription: rewriteText(linked.metaDescription),
-    };
+  return {
+    ...linked,
+    title: rewriteText(linked.title),
+    excerpt: rewriteText(linked.excerpt),
+    html: rewriteText(linked.html),
+    metaTitle: rewriteText(linked.metaTitle),
+    metaDescription: rewriteText(linked.metaDescription),
+  };
 }
 
-export function validateFleetbaseArticle(article) {
-    const text = [article.title, article.excerpt, article.html, article.metaTitle, article.metaDescription].filter(Boolean).join('\n');
-    const reviewWarnings = REVIEW_RULES.filter((rule) => rule.pattern.test(text)).map((rule) => `[${rule.id}] ${rule.message}`);
-    const missingGuidanceWarnings = WARNING_RULES.filter((rule) => rule.appliesTo.test(text) && !rule.pattern.test(text)).map((rule) => `[${rule.id}] ${rule.message}`);
+export function validateLogisBaseArticle(article) {
+  const text = [
+    article.title,
+    article.excerpt,
+    article.html,
+    article.metaTitle,
+    article.metaDescription,
+  ]
+    .filter(Boolean)
+    .join('\n');
+  const reviewWarnings = REVIEW_RULES.filter((rule) =>
+    rule.pattern.test(text),
+  ).map((rule) => `[${rule.id}] ${rule.message}`);
+  const missingGuidanceWarnings = WARNING_RULES.filter(
+    (rule) => rule.appliesTo.test(text) && !rule.pattern.test(text),
+  ).map((rule) => `[${rule.id}] ${rule.message}`);
 
-    return {
-        blockingIssues: [],
-        warnings: [...reviewWarnings, ...missingGuidanceWarnings],
-    };
+  return {
+    blockingIssues: [],
+    warnings: [...reviewWarnings, ...missingGuidanceWarnings],
+  };
 }

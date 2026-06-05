@@ -1,5 +1,5 @@
 /**
- * Fetches the live GitHub star count for fleetbase/fleetbase and formats it
+ * Fetches the live GitHub star count for logisbase/logisbase and formats it
  * for display (e.g. "1.9k+", "850+"). Server-component only — relies on
  * Next.js's request-level cache keyed on the URL + revalidate window, so
  * multiple callers in the same render share a single fetch.
@@ -11,14 +11,18 @@ const FALLBACK = '1.9k+';
 
 export async function getGitHubStars(): Promise<string> {
   try {
-    const res = await fetch('https://api.github.com/repos/fleetbase/fleetbase', {
-      next: { revalidate: 3600 },
-    });
+    const res = await fetch(
+      'https://api.github.com/repos/logisbase/logisbase',
+      {
+        next: { revalidate: 3600 },
+      },
+    );
     if (!res.ok) return FALLBACK;
     const data = await res.json();
     const count: number = data.stargazers_count;
     if (typeof count !== 'number') return FALLBACK;
-    if (count >= 1000) return `${(count / 1000).toFixed(1).replace(/\.0$/, '')}k+`;
+    if (count >= 1000)
+      return `${(count / 1000).toFixed(1).replace(/\.0$/, '')}k+`;
     return `${count}+`;
   } catch {
     return FALLBACK;

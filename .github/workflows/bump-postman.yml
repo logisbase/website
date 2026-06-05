@@ -1,7 +1,7 @@
 name: Bump Postman Submodule
 
-# Triggered by fleetbase/postman pushing to main (via repository_dispatch from
-# its notify-fleetbase-io.yml workflow), or manually from the Actions tab.
+# Triggered by logisbase/postman pushing to main (via repository_dispatch from
+# its notify-logisbase-io.yml workflow), or manually from the Actions tab.
 #
 # Updates the vendor/postman submodule pointer to the latest commit on main,
 # regenerates the API docs to verify the build still works, and opens a PR.
@@ -22,7 +22,7 @@ jobs:
     name: Update submodule and open PR
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout fleetbase.io
+      - name: Checkout logisbase.com
         uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -83,12 +83,12 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: bump postman submodule (${{ steps.bump.outputs.old_short }} → ${{ steps.bump.outputs.new_short }})"
-          title: "chore: bump postman submodule"
+          commit-message: 'chore: bump postman submodule (${{ steps.bump.outputs.old_short }} → ${{ steps.bump.outputs.new_short }})'
+          title: 'chore: bump postman submodule'
           body: |
             Automated bump of the `vendor/postman` submodule.
 
-            **Diff:** [`${{ steps.bump.outputs.old_short }}...${{ steps.bump.outputs.new_short }}`](https://github.com/fleetbase/postman/compare/${{ steps.bump.outputs.old_sha }}...${{ steps.bump.outputs.new_sha }})
+            **Diff:** [`${{ steps.bump.outputs.old_short }}...${{ steps.bump.outputs.new_short }}`](https://github.com/logisbase/postman/compare/${{ steps.bump.outputs.old_sha }}...${{ steps.bump.outputs.new_sha }})
 
             Triggered by:
             - **SHA:** `${{ github.event.client_payload.sha }}`

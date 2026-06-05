@@ -8,7 +8,7 @@
  * Output layout:
  *   content/docs/api/
  *     index.mdx                        ← hand-authored, NOT touched by the generator
- *     fleetbase/<resource>.mdx         ← generated
+ *     logisbase/<resource>.mdx         ← generated
  *     storefront/<resource>.mdx        ← generated
  *     workflows/integrated-vendor.mdx  ← generated
  *
@@ -225,7 +225,9 @@ async function generateResourcePage({
   await fs.writeFile(outFile, mdx, 'utf8');
   const total = endpoints.length + (objectMeta ? 1 : 0);
   const objectSuffix = objectMeta ? ' + object' : '';
-  console.log(`   • ${slug}.mdx (${endpoints.length} endpoints${objectSuffix})`);
+  console.log(
+    `   • ${slug}.mdx (${endpoints.length} endpoints${objectSuffix})`,
+  );
 
   // Sidebar / TOC entries — prepend the object section when present so it's
   // the first link both in the resource-page header and the sidebar.
@@ -396,7 +398,11 @@ function formatJson(s) {
 function pickCanonicalResponse(examples) {
   // Prefer 2xx with a non-empty body.
   for (const ex of examples) {
-    if (ex.responseBody && ex.responseStatus >= 200 && ex.responseStatus < 300) {
+    if (
+      ex.responseBody &&
+      ex.responseStatus >= 200 &&
+      ex.responseStatus < 300
+    ) {
       return ex;
     }
   }
@@ -483,9 +489,9 @@ async function loadResourceDefinition(resourceDir) {
  * (Postman uses this to control display order in the collection panel).
  */
 async function loadRequests(resourceDir) {
-  const entries = (await fs.readdir(resourceDir, { withFileTypes: true })).filter(
-    (e) => e.isFile() && e.name.endsWith('.request.yaml'),
-  );
+  const entries = (
+    await fs.readdir(resourceDir, { withFileTypes: true })
+  ).filter((e) => e.isFile() && e.name.endsWith('.request.yaml'));
 
   const requests = [];
   for (const e of entries) {
@@ -495,11 +501,7 @@ async function loadRequests(resourceDir) {
 
     const requestName = e.name.replace(/\.request\.yaml$/, '');
     const examples = await loadExamples(resourceDir, requestName);
-    const bodyParams = await loadParamsFile(
-      resourceDir,
-      requestName,
-      'params',
-    );
+    const bodyParams = await loadParamsFile(resourceDir, requestName, 'params');
     const queryParams = await loadParamsFile(
       resourceDir,
       requestName,
@@ -592,7 +594,8 @@ function extractStructuredQueryParams(raw) {
   const out = {};
   for (const [k, v] of Object.entries(raw)) {
     if (typeof v === 'string') out[k] = v;
-    else if (typeof v === 'number' || typeof v === 'boolean') out[k] = String(v);
+    else if (typeof v === 'number' || typeof v === 'boolean')
+      out[k] = String(v);
   }
   return out;
 }
@@ -715,8 +718,9 @@ function descriptionForWorkflow() {
  * folder (no per-resource subfolders). Walk the folder for `*.request.yaml`.
  */
 async function loadFlatRequests(collectionDir) {
-  const entries = (await fs.readdir(collectionDir, { withFileTypes: true }))
-    .filter((e) => e.isFile() && e.name.endsWith('.request.yaml'));
+  const entries = (
+    await fs.readdir(collectionDir, { withFileTypes: true })
+  ).filter((e) => e.isFile() && e.name.endsWith('.request.yaml'));
 
   const requests = [];
   for (const e of entries) {
@@ -805,17 +809,13 @@ function renderResourcePage({ title, description, endpoints, objectMeta }) {
  */
 function renderResourceObject(meta) {
   const attrTable =
-    meta.fields.length > 0
-      ? renderParamTable(meta.fields, 'Attributes')
-      : '';
+    meta.fields.length > 0 ? renderParamTable(meta.fields, 'Attributes') : '';
 
   return [
     `<ResourceObject`,
     `  name=${jsxString(meta.name)}`,
     `  id=${jsxString(meta.id)}`,
-    meta.description
-      ? `  description=${jsxString(meta.description)}`
-      : '',
+    meta.description ? `  description=${jsxString(meta.description)}` : '',
     `  example={${jsxBacktickString(meta.example)}}`,
     `  exampleHtml={${jsxBacktickString(meta.exampleHtml)}}`,
     `>`,
@@ -950,9 +950,7 @@ function formatParamDescription(description, type, values) {
 
 /** Inline-escape a string of plain prose for safe placement inside JSX. */
 function escapeJsxText(s) {
-  return String(s)
-    .replace(/\{/g, '\\{')
-    .replace(/\}/g, '\\}');
+  return String(s).replace(/\{/g, '\\{').replace(/\}/g, '\\}');
 }
 
 /**
@@ -1097,7 +1095,7 @@ ${groupsCode}
 
 function groupOrder(label) {
   const order = [
-    'Fleetbase API',
+    'LogisBase API',
     'Core API',
     'Ledger API',
     'Storefront API',
@@ -1119,7 +1117,7 @@ function slugify(s) {
 }
 
 function humanTitle(folder) {
-  return folder.replace(/^Fleetbase\s+/i, '');
+  return folder.replace(/^LogisBase\s+/i, '');
 }
 
 function cleanText(s) {

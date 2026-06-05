@@ -11,18 +11,18 @@ description: Manage third-party carriers and service providers — assign driver
 
 ## Vendor Attributes
 
-| Field | Description |
-| :--- | :--- |
-| **Name** | Vendor company name |
-| **Email** | Contact email |
-| **Phone** | Contact phone |
-| `website_url` | Vendor's website URL |
-| **Country** | Primary operating country |
-| **Business ID** | Business registration number |
-| **Type** | Carrier, courier, partner, etc. |
-| **Place** | Vendor's physical address/headquarters |
-| **Status** | active, inactive, suspended |
-| **Notes** | Internal notes about the vendor |
+| Field           | Description                            |
+| :-------------- | :------------------------------------- |
+| **Name**        | Vendor company name                    |
+| **Email**       | Contact email                          |
+| **Phone**       | Contact phone                          |
+| `website_url`   | Vendor's website URL                   |
+| **Country**     | Primary operating country              |
+| **Business ID** | Business registration number           |
+| **Type**        | Carrier, courier, partner, etc.        |
+| **Place**       | Vendor's physical address/headquarters |
+| **Status**      | active, inactive, suspended            |
+| **Notes**       | Internal notes about the vendor        |
 
 ## Vendor vs. Contact
 
@@ -31,21 +31,11 @@ Contacts represent individuals (customers, suppliers). Vendors represent compani
 ## Creating a Vendor
 
 <Steps>
-  <Step>
-    Navigate to **Fleet-Ops → Resources → Vendors**.
-  </Step>
-  <Step>
-    Click **+ New Vendor**.
-  </Step>
-  <Step>
-    Enter the vendor name, contact details, and type.
-  </Step>
-  <Step>
-    Link a **Place** for the vendor's headquarters or dispatch hub.
-  </Step>
-  <Step>
-    Click **Save**.
-  </Step>
+  <Step>Navigate to **Fleet-Ops → Resources → Vendors**.</Step>
+  <Step>Click **+ New Vendor**.</Step>
+  <Step>Enter the vendor name, contact details, and type.</Step>
+  <Step>Link a **Place** for the vendor's headquarters or dispatch hub.</Step>
+  <Step>Click **Save**.</Step>
 </Steps>
 
 ## Assigning Drivers and Fleets to a Vendor
@@ -67,13 +57,14 @@ For external logistics platforms (like Lalamove) connected via their API, Fleet-
 When creating an order, you can assign a vendor as the **Facilitator** — the entity responsible for executing the delivery. The facilitator role is separate from the driver assignment: the vendor is the company, the driver is the individual executing the job.
 
 This is useful for:
+
 - Third-party carrier orders where the vendor dispatches internally
 - Integrated vendor orders relayed to a partner platform
 - Sub-contracting specific order types to specialist carriers
 
 ## Sub-Organizations
 
-If your Fleetbase instance is part of a multi-tenant setup, a vendor can be linked to another Fleetbase organization via the `connect_company_uuid` field. This enables cross-organization order relay and tracking.
+If your LogisBase instance is part of a multi-tenant setup, a vendor can be linked to another LogisBase organization via the `connect_company_uuid` field. This enables cross-organization order relay and tracking.
 
 ## Related Pages
 

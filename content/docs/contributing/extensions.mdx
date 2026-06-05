@@ -1,12 +1,12 @@
 ---
 title: Extensions
-description: How to build, publish, and contribute extensions for the Fleetbase Marketplace.
+description: How to build, publish, and contribute extensions for the LogisBase Marketplace.
 sidebarTitle: Extensions
 ---
 
 # Extension contributions
 
-The biggest single way to contribute to Fleetbase is building an **extension** — a packaged module that other operators can install from the marketplace.
+The biggest single way to contribute to LogisBase is building an **extension** — a packaged module that other operators can install from the marketplace.
 
 Extensions can:
 
@@ -15,17 +15,21 @@ Extensions can:
 - Add new order types, workflows, or business logic
 - Provide industry-specific functionality (medical delivery, container freight, food trucks)
 
-Extensions are full-stack — a Laravel backend package and an Ember.js frontend engine — registered through the Fleetbase extension system.
+Extensions are full-stack — a Laravel backend package and an Ember.js frontend engine — registered through the LogisBase extension system.
 
 ## Where to start
 
 This page is a contribution-flow overview. The full developer guide for building extensions lives in its own section:
 
 <Cards>
-  <Card title="Extension Development" href="/docs/extension-development" description="Complete guide to scaffolding, building, testing, and publishing extensions." />
+  <Card
+    title="Extension Development"
+    href="/docs/extension-development"
+    description="Complete guide to scaffolding, building, testing, and publishing extensions."
+  />
 </Cards>
 
-Read that section first if you've never built an extension before. The notes below cover **contributing** — getting your extension into the wider Fleetbase ecosystem.
+Read that section first if you've never built an extension before. The notes below cover **contributing** — getting your extension into the wider LogisBase ecosystem.
 
 ## Two kinds of extension contributions
 
@@ -34,6 +38,7 @@ Read that section first if you've never built an extension before. The notes bel
 You build an extension to solve your own operational need. You publish it to the marketplace. Other operators install it.
 
 You retain ownership and control:
+
 - You set the price (or make it free)
 - You handle support
 - You decide when to update
@@ -41,11 +46,11 @@ You retain ownership and control:
 
 The marketplace handles distribution, licensing, and payment infrastructure on your behalf.
 
-See [Building Extensions](/docs/extension-development) for the developer flow, and the [Marketplace developer dashboard](https://console.fleetbase.io) for publishing.
+See [Building Extensions](/docs/extension-development) for the developer flow, and the [Marketplace developer dashboard](https://console.logisbase.com) for publishing.
 
-### 2. Contribute to a Fleetbase-published extension
+### 2. Contribute to a LogisBase-published extension
 
-The first-party extensions (FleetOps, Storefront, Pallet, Ledger, IAM) are open-source and accept community contributions. You can:
+The first-party extensions (FleetOps, Storefront, Pallet, Ledger, IAM) are source-available and accept community contributions. You can:
 
 - Fix bugs in the extension
 - Add features that fit the extension's scope
@@ -54,15 +59,15 @@ The first-party extensions (FleetOps, Storefront, Pallet, Ledger, IAM) are open-
 
 These follow the same flow as core code contributions. See [Code →](/docs/contributing/code) for the PR conventions, and the relevant extension's repo:
 
-- [`fleetbase/fleetops`](https://github.com/fleetbase/fleetops)
-- [`fleetbase/storefront`](https://github.com/fleetbase/storefront)
-- [`fleetbase/pallet`](https://github.com/fleetbase/pallet)
-- [`fleetbase/ledger`](https://github.com/fleetbase/ledger)
-- [`fleetbase/iam-engine`](https://github.com/fleetbase/iam-engine)
+- [`logisbase/fleetops`](https://github.com/logisbase/fleetops)
+- [`logisbase/storefront`](https://github.com/logisbase/storefront)
+- [`logisbase/pallet`](https://github.com/logisbase/pallet)
+- [`logisbase/ledger`](https://github.com/logisbase/ledger)
+- [`logisbase/iam-engine`](https://github.com/logisbase/iam-engine)
 
 ## What makes a good extension
 
-Whether you're publishing your own or contributing to a Fleetbase-published one:
+Whether you're publishing your own or contributing to a LogisBase-published one:
 
 - **Solves a real problem** — built for an operator's actual workflow, not a hypothetical one
 - **Scoped narrowly** — does one thing well; doesn't try to replace a separate extension
@@ -74,16 +79,16 @@ Whether you're publishing your own or contributing to a Fleetbase-published one:
 ## Where to ask questions
 
 - **Building your first extension?** Start in `#extension-development` on [Discord](/docs/community/discord)
-- **Publishing flow questions?** [`fleetbase/registry-bridge`](https://github.com/fleetbase/registry-bridge) issues
+- **Publishing flow questions?** [`logisbase/registry-bridge`](https://github.com/logisbase/registry-bridge) issues
 - **Specific to a first-party extension?** Open an issue on that extension's repo
 
 ## What you'll need
 
 Before you start building anything publishable:
 
-- A **developer account** on the Fleetbase Marketplace ([sign up](https://console.fleetbase.io/onboard))
-- The **Fleetbase CLI** installed: `npm install -g @fleetbase/cli`
-- A **local Fleetbase instance** for development (see [System Setup](/docs/platform/system-setup))
+- A **developer account** on the LogisBase Marketplace ([sign up](https://console.logisbase.com/onboard))
+- The **LogisBase CLI** installed: `npm install -g @logisbase/cli`
+- A **local LogisBase instance** for development (see [System Setup](/docs/platform/system-setup))
 - **Stripe Connect** if you plan to charge for the extension
 
 Continue to [Extension Development](/docs/extension-development) for the full developer guide.

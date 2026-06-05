@@ -28,7 +28,6 @@ export function GoogleAnalyticsProvider({ optInRequired }: Props) {
 
   if (!measurementId) {
     if (process.env.NODE_ENV === 'development') {
-
       console.warn(
         '[GA] NEXT_PUBLIC_GA_MEASUREMENT_ID not set — Google Analytics disabled',
       );
@@ -57,7 +56,7 @@ export function GoogleAnalyticsProvider({ optInRequired }: Props) {
           gtag('js', new Date());
           gtag('config', '${measurementId}', {
             transport_url: window.location.origin,
-            cookie_domain: /\\.fleetbase\\.io$/.test(window.location.hostname) ? 'fleetbase.io' : 'auto',
+            cookie_domain: /\\.logisbase\\.io$/.test(window.location.hostname) ? 'logisbase.com' : 'auto',
             cookie_flags: 'SameSite=Lax;Secure',
             send_page_view: false,
             anonymize_ip: true

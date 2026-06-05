@@ -1,34 +1,34 @@
 ---
 title: Changelog
-description: Release notes and version history across the Fleetbase platform — core API, Console, extensions, and mobile apps.
+description: Release notes and version history across the LogisBase platform — core API, Console, extensions, and mobile apps.
 ---
 
 # Changelog
 
-Fleetbase is a modular platform composed of several independent repositories, each with its own release cycle. Release notes are maintained on GitHub Releases for each repository.
+LogisBase is a modular platform composed of several independent repositories, each with its own release cycle. Release notes are maintained on GitHub Releases for each repository.
 
 ## Platform Releases
 
-| Repository | What it covers | Releases |
-| :--- | :--- | :--- |
-| **fleetbase/fleetbase** | Core platform — API, Console, IAM, Developer Console | [View releases →](https://github.com/fleetbase/fleetbase/releases) |
-| **fleetbase/fleetops** | FleetOps extension — fleet management, dispatch, tracking | [View releases →](https://github.com/fleetbase/fleetops/releases) |
-| **fleetbase/storefront** | Storefront extension — e-commerce, catalog, orders | [View releases →](https://github.com/fleetbase/storefront/releases) |
-| **fleetbase/pallet** | Pallet extension — warehouse and inventory management | [View releases →](https://github.com/fleetbase/pallet/releases) |
-| **fleetbase/ledger** | Ledger extension — accounting and invoicing | [View releases →](https://github.com/fleetbase/ledger/releases) |
+| Repository               | What it covers                                            | Releases                                                            |
+| :----------------------- | :-------------------------------------------------------- | :------------------------------------------------------------------ |
+| **logisbase/logisbase**  | Core platform — API, Console, IAM, Developer Console      | [View releases →](https://github.com/logisbase/logisbase/releases)  |
+| **logisbase/fleetops**   | FleetOps extension — fleet management, dispatch, tracking | [View releases →](https://github.com/logisbase/fleetops/releases)   |
+| **logisbase/storefront** | Storefront extension — e-commerce, catalog, orders        | [View releases →](https://github.com/logisbase/storefront/releases) |
+| **logisbase/pallet**     | Pallet extension — warehouse and inventory management     | [View releases →](https://github.com/logisbase/pallet/releases)     |
+| **logisbase/ledger**     | Ledger extension — accounting and invoicing               | [View releases →](https://github.com/logisbase/ledger/releases)     |
 
 ## Mobile App Releases
 
-| Repository | What it covers | Releases |
-| :--- | :--- | :--- |
-| **fleetbase/navigator-app** | Navigator driver app (React Native) | [View releases →](https://github.com/fleetbase/navigator-app/releases) |
-| **fleetbase/storefront-app** | Storefront customer app (React Native) | [View releases →](https://github.com/fleetbase/storefront-app/releases) |
+| Repository                   | What it covers                         | Releases                                                                |
+| :--------------------------- | :------------------------------------- | :---------------------------------------------------------------------- |
+| **logisbase/navigator-app**  | Navigator driver app (React Native)    | [View releases →](https://github.com/logisbase/navigator-app/releases)  |
+| **logisbase/storefront-app** | Storefront customer app (React Native) | [View releases →](https://github.com/logisbase/storefront-app/releases) |
 
 ## CLI Releases
 
-| Repository | What it covers | Releases |
-| :--- | :--- | :--- |
-| **fleetbase/fleetbase-cli** | Fleetbase CLI — install, publish, and manage extensions | [View releases →](https://github.com/fleetbase/fleetbase-cli/releases) |
+| Repository                  | What it covers                                          | Releases                                                               |
+| :-------------------------- | :------------------------------------------------------ | :--------------------------------------------------------------------- |
+| **logisbase/logisbase-cli** | LogisBase CLI — install, publish, and manage extensions | [View releases →](https://github.com/logisbase/logisbase-cli/releases) |
 
 ## Subscribing to Release Notifications
 
@@ -36,16 +36,16 @@ To receive an email when a new version is published:
 
 <Steps>
   <Step>
-    Go to the GitHub repository you want to follow (e.g. [fleetbase/fleetbase](https://github.com/fleetbase/fleetbase)).
+    Go to the GitHub repository you want to follow (e.g.
+    [logisbase/logisbase](https://github.com/logisbase/logisbase)).
   </Step>
   <Step>
     Click the **Watch** button in the top-right corner of the repository page.
   </Step>
+  <Step>Select **Custom**, then check **Releases**.</Step>
   <Step>
-    Select **Custom**, then check **Releases**.
-  </Step>
-  <Step>
-    Click **Apply**. GitHub will now email you whenever a new release is published.
+    Click **Apply**. GitHub will now email you whenever a new release is
+    published.
   </Step>
 </Steps>
 
@@ -54,7 +54,7 @@ To receive an email when a new version is published:
 For high-level product announcements, new extension launches, and company news:
 
 - **Discord `#announcements`** — join the [Discord server](/docs/community/discord) and watch the `#announcements` channel
-- **Twitter/X** — follow [@fleetbase_io](https://twitter.com/fleetbase_io)
+- **Twitter/X** — follow [@logisbase](https://twitter.com/logisbase)
 
 ## Upgrading
 
@@ -70,5 +70,7 @@ docker compose up -d
 The `deploy.sh` script handles database migrations, cache clearing, and any other steps required by the release. See [Deploy in Cloud](/docs/platform/quickstart/deploy-in-cloud) for full upgrade instructions.
 
 <Callout type="warn">
-Always review the release notes for breaking changes before upgrading a production instance. Extension packages may require separate updates when the core platform version changes.
+  Always review the release notes for breaking changes before upgrading a
+  production instance. Extension packages may require separate updates when the
+  core platform version changes.
 </Callout>

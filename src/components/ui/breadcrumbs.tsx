@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/json-ld';
 import { cn } from '@/lib/utils';
 
-const BASE_URL = 'https://fleetbase.io';
+const BASE_URL = 'https://logisbase.com';
 
 export type BreadcrumbItem = {
   label: string;
@@ -37,7 +37,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
       <BreadcrumbSchema items={schemaItems} />
       <nav
         aria-label="Breadcrumb"
-        className={cn('text-xs text-muted-foreground', className)}
+        className={cn('text-muted-foreground text-xs', className)}
       >
         <ol className="flex flex-wrap items-center gap-1.5">
           {fullTrail.map((item, idx) => {
@@ -46,16 +46,22 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
             return (
               <li key={item.href} className="flex items-center gap-1.5">
                 {idx > 0 && (
-                  <ChevronRight className="size-3 shrink-0 opacity-50" aria-hidden />
+                  <ChevronRight
+                    className="size-3 shrink-0 opacity-50"
+                    aria-hidden
+                  />
                 )}
                 {isLast ? (
                   <span
-                    className="font-medium text-foreground"
+                    className="text-foreground font-medium"
                     aria-current="page"
                   >
                     {isHome ? (
                       <>
-                        <Home className="inline size-3.5 -mt-0.5 mr-1" aria-hidden />
+                        <Home
+                          className="-mt-0.5 mr-1 inline size-3.5"
+                          aria-hidden
+                        />
                         {item.label}
                       </>
                     ) : (
@@ -65,12 +71,14 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
                 ) : (
                   <Link
                     href={item.href}
-                    className="transition-colors hover:text-foreground"
+                    className="hover:text-foreground transition-colors"
                   >
                     {isHome ? (
                       <span className="inline-flex items-center gap-1">
                         <Home className="size-3.5" aria-hidden />
-                        <span className="sr-only sm:not-sr-only">{item.label}</span>
+                        <span className="sr-only sm:not-sr-only">
+                          {item.label}
+                        </span>
                       </span>
                     ) : (
                       item.label

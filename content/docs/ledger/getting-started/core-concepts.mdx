@@ -21,13 +21,13 @@ Every financial event is recorded as a **journal entry** that debits one account
 
 Ledger uses five standard account types. Account `code` values in Ledger are **alphanumeric tags** (e.g. `CASH-DEFAULT`, `WALLET-POOL`, `REVENUE-DELIVERY`), not numeric ranges.
 
-| Type | Normal Balance | Seeded examples |
-| :--- | :--- | :--- |
-| **Asset** | Debit | Cash, Bank Account, Accounts Receivable, Stripe Clearing |
-| **Liability** | Credit | Accounts Payable, Wallet Liability Pool, Driver Earnings Payable, Tax Payable |
-| **Equity** | Credit | Owner's Equity, Retained Earnings |
-| **Revenue** | Credit | Delivery Revenue, Service Fee Revenue, Subscription Revenue, Other Revenue |
-| **Expense** | Debit | Driver Payout Expense, Payment Gateway Fees, Refunds & Chargebacks, Other Operating Expenses |
+| Type          | Normal Balance | Seeded examples                                                                              |
+| :------------ | :------------- | :------------------------------------------------------------------------------------------- |
+| **Asset**     | Debit          | Cash, Bank Account, Accounts Receivable, Stripe Clearing                                     |
+| **Liability** | Credit         | Accounts Payable, Wallet Liability Pool, Driver Earnings Payable, Tax Payable                |
+| **Equity**    | Credit         | Owner's Equity, Retained Earnings                                                            |
+| **Revenue**   | Credit         | Delivery Revenue, Service Fee Revenue, Subscription Revenue, Other Revenue                   |
+| **Expense**   | Debit          | Driver Payout Expense, Payment Gateway Fees, Refunds & Chargebacks, Other Operating Expenses |
 
 **Debit-normal** accounts (Assets, Expenses): debits increase the balance; credits decrease it.
 **Credit-normal** accounts (Liabilities, Equity, Revenue): credits increase the balance; debits decrease it.
@@ -37,6 +37,7 @@ See [Chart of Accounts](/docs/ledger/accounting/chart-of-accounts) for the compl
 ## Journal Entries
 
 Every financial event creates one journal entry with:
+
 - A **debit account** and a **credit account**
 - An **amount** in the account's currency (stored as integer minor units)
 - A **type** — system-written types include `general` (default), `manual_entry`, `revenue_recognition`, `invoice_payment`, `gateway_payment`, and `storefront_sale`. The form picker for manual entries also offers `standard`, `adjusting`, `closing`, `reversing`, and `opening`
@@ -46,6 +47,7 @@ Every financial event creates one journal entry with:
 Journal entry numbers follow the format `JE-00001` (5-digit zero-padded).
 
 Example — customer pays an invoice:
+
 ```
 DEBIT  Cash (Asset)               +$100
 CREDIT Accounts Receivable (Asset) +$100  ← decreases the AR balance
@@ -57,14 +59,15 @@ CREDIT Accounts Receivable (Asset) +$100  ← decreases the AR balance
 
 A **Wallet** is a digital balance tracked in Ledger. Wallets are polymorphic — `subject_uuid` + `subject_type` point at the entity that owns the balance:
 
-| Wallet Type | Subject | Use Case |
-| :--- | :--- | :--- |
-| **Driver** | Fleet-Ops Driver | Track earnings from completed deliveries |
-| **Customer** | Storefront / Fleet-Ops Customer | Prepaid credit or store loyalty balance |
-| **Company** | Your organization | Operating account, platform revenue |
-| **User** | Individual user | Personal account |
+| Wallet Type  | Subject                         | Use Case                                 |
+| :----------- | :------------------------------ | :--------------------------------------- |
+| **Driver**   | Fleet-Ops Driver                | Track earnings from completed deliveries |
+| **Customer** | Storefront / Fleet-Ops Customer | Prepaid credit or store loyalty balance  |
+| **Company**  | Your organization               | Operating account, platform revenue      |
+| **User**     | Individual user                 | Personal account                         |
 
 Wallet operations:
+
 - **Credit** — manual credit, no gateway charge
 - **Top-Up** — gateway-charged top-up via Stripe or QPay
 - **Transfer** — move funds between two wallets — produces two transactions (`transfer_out` and `transfer_in`) and one journal entry between the two wallet liability accounts
@@ -73,6 +76,7 @@ Wallet operations:
 - **Recalculate** — recompute the balance from completed transactions
 
 Every wallet operation automatically creates a journal entry:
+
 ```
 Top-up:    DEBIT Cash → CREDIT Wallet Liability
 Payout:    DEBIT Wallet Liability → CREDIT Cash
@@ -89,21 +93,22 @@ An **Invoice** is a formal payment request with a lifecycle:
 draft → sent → viewed → partial / paid / overdue / cancelled / refunded / void
 ```
 
-| Status | Meaning |
-| :--- | :--- |
-| `draft` | Created, not yet sent |
-| `sent` | Marked as sent |
-| `viewed` | Customer opened the public URL |
-| `partial` | Some payment received |
-| `paid` | Fully paid (`balance = 0`) |
-| `overdue` | Past due date, not yet paid (set by the `ledger:update-overdue-invoices` console command) |
-| `cancelled` | User-cancelled |
-| `refunded` | Set when a gateway refund is processed |
-| `void` | Set programmatically when a draft invoice is superseded by a new one (e.g., from Fleet-Ops auto-invoicing) |
+| Status      | Meaning                                                                                                    |
+| :---------- | :--------------------------------------------------------------------------------------------------------- |
+| `draft`     | Created, not yet sent                                                                                      |
+| `sent`      | Marked as sent                                                                                             |
+| `viewed`    | Customer opened the public URL                                                                             |
+| `partial`   | Some payment received                                                                                      |
+| `paid`      | Fully paid (`balance = 0`)                                                                                 |
+| `overdue`   | Past due date, not yet paid (set by the `ledger:update-overdue-invoices` console command)                  |
+| `cancelled` | User-cancelled                                                                                             |
+| `refunded`  | Set when a gateway refund is processed                                                                     |
+| `void`      | Set programmatically when a draft invoice is superseded by a new one (e.g., from Fleet-Ops auto-invoicing) |
 
 Key invoice fields:
+
 - **Number** — auto-generated, format `INV-` plus a 6-digit random integer (e.g., `INV-004821`); not sequential
-- **Customer** — polymorphic reference (`customer_uuid` + `customer_type`); supports Fleetbase contacts, vendors, drivers, and users
+- **Customer** — polymorphic reference (`customer_uuid` + `customer_type`); supports LogisBase contacts, vendors, drivers, and users
 - **Line Items** — description, quantity, unit price, tax_rate (decimal 0–100); subtotal, tax, total are computed
 - **Totals** — `subtotal`, `tax`, `total_amount`, `amount_paid`, `balance` (all computed)
 - **Due Date** — auto-set from the `due_date_offset_days` invoice setting (only when non-zero)
@@ -119,6 +124,7 @@ When payment is recorded, an `invoice_payment` journal entry is posted (DEBIT Ca
 A **Transaction** is the immutable record of money moving relative to a wallet. Transactions are never edited or deleted — they are the audit trail.
 
 Key fields:
+
 - `direction` — `credit` (money in) or `debit` (money out)
 - `status` — currently the system only produces `completed` (the model also supports `pending`, `failed`, `voided`, `reversed`, `expired` timestamps if you write them yourself)
 - `type` — types written by the system are `deposit`, `withdrawal`, `transfer_in`, `transfer_out`, `earning`, `payout`, and `invoice_payment`
@@ -132,11 +138,11 @@ See [Transactions](/docs/ledger/payments/transactions).
 
 **Gateways** are payment processors with encrypted credentials. Ledger ships with three drivers:
 
-| Driver | Capabilities |
-| :--- | :--- |
+| Driver   | Capabilities                                                                                 |
+| :------- | :------------------------------------------------------------------------------------------- |
 | `stripe` | purchase, refund, tokenization, setup_intent, checkout_session, webhooks, sandbox, recurring |
-| `qpay` | purchase, refund, webhooks, sandbox |
-| `cash` | purchase, refund |
+| `qpay`   | purchase, refund, webhooks, sandbox                                                          |
+| `cash`   | purchase, refund                                                                             |
 
 Every gateway interaction creates a `GatewayTransaction` audit record — used for idempotency (duplicate webhook protection via the `isProcessed()` check) and debugging.
 
@@ -145,6 +151,7 @@ Third-party drivers can be registered via the `PaymentGatewayManager::extend()` 
 ## How It All Connects
 
 Fleet-Ops:
+
 ```
 Fleet-Ops Order → PurchaseRate created
   → Ledger PurchaseRateObserver creates a draft Invoice
@@ -154,6 +161,7 @@ Fleet-Ops Order → PurchaseRate created
 ```
 
 Storefront:
+
 ```
 Storefront Checkout completes (order.type === 'storefront')
   → Ledger StorefrontOrderObserver creates a storefront_sale journal entry
@@ -162,6 +170,7 @@ Storefront Checkout completes (order.type === 'storefront')
 ```
 
 Wallet flows:
+
 ```
 Customer top-up via Stripe → GatewayTransaction logged → Wallet Transaction (deposit, credit) → Journal entry (DEBIT Cash → CREDIT Wallet Liability)
 Driver earning payout → Wallet Transaction (payout, debit) → Journal entry (DEBIT Wallet Liability → CREDIT Cash)

@@ -44,7 +44,11 @@ function formatSeconds(ms) {
 }
 
 function getOutputDir() {
-  return process.env.CONTENT_AGENT_OUTPUT_DIR || process.env.RUNNER_TEMP || os.tmpdir();
+  return (
+    process.env.CONTENT_AGENT_OUTPUT_DIR ||
+    process.env.RUNNER_TEMP ||
+    os.tmpdir()
+  );
 }
 
 function summarizeValidationError(error) {
@@ -60,7 +64,13 @@ function summarizeValidationError(error) {
   return error.message;
 }
 
-async function writeClaudeFailureArtifact({ model, attempt, parsedResponse, rawText, error }) {
+async function writeClaudeFailureArtifact({
+  model,
+  attempt,
+  parsedResponse,
+  rawText,
+  error,
+}) {
   const outputDir = getOutputDir();
 
   if (!outputDir) return;
@@ -97,7 +107,9 @@ export async function callClaudeJson({
   heartbeatMs = getNumberEnv('ANTHROPIC_HEARTBEAT_MS', 60000),
 }) {
   if (!apiKey) {
-    throw new Error('Missing ANTHROPIC_API_KEY. Add it as a GitHub Actions secret.');
+    throw new Error(
+      'Missing ANTHROPIC_API_KEY. Add it as a GitHub Actions secret.',
+    );
   }
 
   let lastError;
@@ -154,7 +166,9 @@ export async function callClaudeJson({
       });
     } catch (error) {
       if (error.name === 'AbortError') {
-        throw new Error(`Anthropic request timed out after ${formatSeconds(timeoutMs)} seconds.`);
+        throw new Error(
+          `Anthropic request timed out after ${formatSeconds(timeoutMs)} seconds.`,
+        );
       }
 
       throw error;
@@ -184,7 +198,9 @@ export async function callClaudeJson({
     const toolInput = extractToolInputFromMessage(message);
     const text = toolInput ? '' : extractTextFromMessage(message);
     let parsedResponse = toolInput;
-    console.log(`[content-agent:claude] Anthropic response received for attempt ${attempt + 1}.`);
+    console.log(
+      `[content-agent:claude] Anthropic response received for attempt ${attempt + 1}.`,
+    );
 
     if (message.stop_reason === 'max_tokens') {
       const error = new Error(
@@ -220,23 +236,31 @@ export async function callClaudeJson({
     }
   }
 
-  throw new Error(`Claude response failed schema validation: ${summarizeValidationError(lastError)}`);
+  throw new Error(
+    `Claude response failed schema validation: ${summarizeValidationError(lastError)}`,
+  );
 }
 
-export async function scoreTopics({ opportunities, context, config, contentFocus, fetchImpl }) {
+export async function scoreTopics({
+  opportunities,
+  context,
+  config,
+  contentFocus,
+  fetchImpl,
+}) {
   const system =
-    'You are Fleetbase SEO strategist. Prefer accurate, product-backed logistics and supply chain topics over generic traffic. Avoid inventing Fleetbase capabilities.';
+    'You are LogisBase SEO strategist. Prefer accurate, product-backed logistics and supply chain topics over generic traffic. Avoid inventing LogisBase capabilities.';
   const prompt = JSON.stringify(
     {
-      task: 'Score SEO content opportunities for Fleetbase.',
+      task: 'Score SEO content opportunities for LogisBase.',
       contentFocus,
       contentStrategy: config.contentStrategy,
-      fleetbaseEditorialRules: config.contentStrategy.editorialRules,
+      logisbaseEditorialRules: config.contentStrategy.editorialRules,
       hardRules: [
-        'Reject generic keywords that cannot be tied directly to Fleetbase logistics software, supply chain software, fleet operations, delivery management, warehouse/inventory workflows, or Fleetbase API tutorials.',
-        'For fleetbase-api-tutorial focus, prefer build/use/tutorial topics over comparison or generic definition posts.',
-        'For logistics-software and supply-chain-software focus, prefer commercial and informational SEO topics with clear Fleetbase product relevance.',
-        'Do not choose topics where Fleetbase context does not support a credible article.',
+        'Reject generic keywords that cannot be tied directly to LogisBase logistics software, supply chain software, fleet operations, delivery management, warehouse/inventory workflows, or LogisBase API tutorials.',
+        'For logisbase-api-tutorial focus, prefer build/use/tutorial topics over comparison or generic definition posts.',
+        'For logistics-software and supply-chain-software focus, prefer commercial and informational SEO topics with clear LogisBase product relevance.',
+        'Do not choose topics where LogisBase context does not support a credible article.',
       ],
       scoring: {
         score: '0-100 weighted total',
@@ -247,7 +271,7 @@ export async function scoreTopics({ opportunities, context, config, contentFocus
       maxResults: config.maxShortlistedTopics,
       competitorDomains: config.competitorDomains,
       opportunities: opportunities.slice(0, 40),
-      fleetbaseContext: context.summary,
+      logisbaseContext: context.summary,
       existingBlogPosts: context.existingBlogPosts,
       requiredJsonShape: {
         topics: [
@@ -286,26 +310,32 @@ export async function scoreTopics({ opportunities, context, config, contentFocus
     .slice(0, config.maxShortlistedTopics);
 }
 
-export async function generateBrief({ topic, context, config, contentFocus, fetchImpl }) {
+export async function generateBrief({
+  topic,
+  context,
+  config,
+  contentFocus,
+  fetchImpl,
+}) {
   const { ContentBriefSchema } = await import('./schemas.mjs');
   const system =
-    'You write SEO briefs for Fleetbase. Every claim must be supported by provided Fleetbase context or framed as general industry guidance.';
+    'You write SEO briefs for LogisBase. Every claim must be supported by provided LogisBase context or framed as general industry guidance.';
   const prompt = JSON.stringify(
     {
-      task: 'Create a detailed content brief for one Fleetbase blog article.',
+      task: 'Create a detailed content brief for one LogisBase blog article.',
       contentFocus,
       contentStrategy: config.contentStrategy,
-      fleetbaseEditorialRules: config.contentStrategy.editorialRules,
+      logisbaseEditorialRules: config.contentStrategy.editorialRules,
       topic,
       siteUrl: config.siteUrl,
-      fleetbaseContext: context.summary,
+      logisbaseContext: context.summary,
       requirements: [
-        'The article must be specific to Fleetbase logistics software, supply chain software, or a practical Fleetbase API/tutorial workflow.',
-        'Include Fleetbase-specific internal links from the provided context.',
-        `Use ${config.siteUrl} for all Fleetbase website links and ${config.siteUrl}/docs for all documentation links. Never use fleetbase.ghost.io for docs or website links.`,
-        'If this is a tutorial focus, define what the reader will build or configure with Fleetbase.',
+        'The article must be specific to LogisBase logistics software, supply chain software, or a practical LogisBase API/tutorial workflow.',
+        'Include LogisBase-specific internal links from the provided context.',
+        `Use ${config.siteUrl} for all LogisBase website links and ${config.siteUrl}/docs for all documentation links. Never use logisbase.ghost.io for docs or website links.`,
+        'If this is a tutorial focus, define what the reader will build or configure with LogisBase.',
         'Avoid generic SaaS content that could apply to any logistics vendor.',
-        'Use the Fleetbase editorial rules as hard product facts. Do not contradict them.',
+        'Use the LogisBase editorial rules as hard product facts. Do not contradict them.',
       ],
       requiredJsonShape: {
         title: 'string',
@@ -328,30 +358,41 @@ export async function generateBrief({ topic, context, config, contentFocus, fetc
     2,
   );
 
-  return callClaudeJson({ system, prompt, fetchImpl, schema: ContentBriefSchema });
+  return callClaudeJson({
+    system,
+    prompt,
+    fetchImpl,
+    schema: ContentBriefSchema,
+  });
 }
 
-export async function generateArticle({ brief, context, config, contentFocus, fetchImpl }) {
+export async function generateArticle({
+  brief,
+  context,
+  config,
+  contentFocus,
+  fetchImpl,
+}) {
   const { ArticleDraftSchema } = await import('./schemas.mjs');
   const system =
-    'You write polished Fleetbase blog tutorials and SEO content. Output clean semantic HTML. Do not invent product features. Do not include scripts, styles, or iframes.';
+    'You write polished LogisBase blog tutorials and SEO content. Output clean semantic HTML. Do not invent product features. Do not include scripts, styles, or iframes.';
   const prompt = JSON.stringify(
     {
       task: 'Write the article draft from the approved brief.',
       contentFocus,
       contentStrategy: config.contentStrategy,
-      fleetbaseEditorialRules: config.contentStrategy.editorialRules,
+      logisbaseEditorialRules: config.contentStrategy.editorialRules,
       brief,
-      fleetbaseContext: context.summary,
+      logisbaseContext: context.summary,
       requirements: [
         'Use semantic HTML: h2, h3, p, ul, ol, pre, code, table when useful.',
-        'Include practical Fleetbase-specific guidance and internal links.',
-        `Use ${config.siteUrl} for all Fleetbase website links and ${config.siteUrl}/docs for all documentation links. Never link to fleetbase.ghost.io/docs or fleetbase.ghost.io website paths.`,
-        'Keep the article useful even if the reader is evaluating open-source logistics software.',
-        'For Fleetbase API tutorials, include a practical build/configure/use flow with code or request examples only when supported by context.',
-        'For software SEO articles, connect the topic to Fleetbase modules and logistics/supply-chain operating workflows.',
+        'Include practical LogisBase-specific guidance and internal links.',
+        `Use ${config.siteUrl} for all LogisBase website links and ${config.siteUrl}/docs for all documentation links. Never link to logisbase.ghost.io/docs or logisbase.ghost.io website paths.`,
+        'Keep the article useful even if the reader is evaluating source-available logistics software.',
+        'For LogisBase API tutorials, include a practical build/configure/use flow with code or request examples only when supported by context.',
+        'For software SEO articles, connect the topic to LogisBase modules and logistics/supply-chain operating workflows.',
         'No publication language such as "in this AI-generated draft".',
-        'Use the Fleetbase editorial rules as hard product facts. Do not contradict them.',
+        'Use the LogisBase editorial rules as hard product facts. Do not contradict them.',
       ],
       requiredJsonShape: {
         title: 'string',
@@ -376,13 +417,19 @@ export async function generateArticle({ brief, context, config, contentFocus, fe
   });
 }
 
-export async function generateFeatureImageBrief({ brief, draft, config, contentFocus, fetchImpl }) {
+export async function generateFeatureImageBrief({
+  brief,
+  draft,
+  config,
+  contentFocus,
+  fetchImpl,
+}) {
   const { FeatureImageBriefSchema } = await import('./schemas.mjs');
   const system =
-    'You write image-generation prompts for Fleetbase blog feature images. Create precise visual direction for an image model. Avoid text, logos, trademarked marks, and UI labels.';
+    'You write image-generation prompts for LogisBase blog feature images. Create precise visual direction for an image model. Avoid text, logos, trademarked marks, and UI labels.';
   const prompt = JSON.stringify(
     {
-      task: 'Create a feature image prompt for this Fleetbase blog article.',
+      task: 'Create a feature image prompt for this LogisBase blog article.',
       contentFocus,
       styleGuide: config.featureImage.styleGuide,
       brief,
@@ -418,23 +465,30 @@ export async function generateFeatureImageBrief({ brief, draft, config, contentF
   });
 }
 
-export async function qaArticle({ brief, draft, context, config, contentFocus, fetchImpl }) {
+export async function qaArticle({
+  brief,
+  draft,
+  context,
+  config,
+  contentFocus,
+  fetchImpl,
+}) {
   const { QaResultSchema } = await import('./schemas.mjs');
   const system =
-    'You are an advisory editor for Fleetbase draft content. Identify review notes for a human editor, but do not block draft creation.';
+    'You are an advisory editor for LogisBase draft content. Identify review notes for a human editor, but do not block draft creation.';
   const prompt = JSON.stringify(
     {
-      task: 'QA this Fleetbase blog draft.',
+      task: 'QA this LogisBase blog draft.',
       contentFocus,
       contentStrategy: config.contentStrategy,
-      fleetbaseEditorialRules: config.contentStrategy.editorialRules,
+      logisbaseEditorialRules: config.contentStrategy.editorialRules,
       brief,
       draft,
-      fleetbaseContext: context.summary,
+      logisbaseContext: context.summary,
       passCriteria: [
-        'Flag unsupported Fleetbase claims as warnings for human review.',
+        'Flag unsupported LogisBase claims as warnings for human review.',
         'Matches search intent and target keyword.',
-        'Is clearly specific to Fleetbase logistics software, supply chain software, or a Fleetbase API/tutorial workflow.',
+        'Is clearly specific to LogisBase logistics software, supply chain software, or a LogisBase API/tutorial workflow.',
         'Does not read like generic logistics SaaS content.',
         'Tutorial-focused drafts explain a concrete build/configure/use workflow.',
         'Unsupported API or code claims should be reported as warnings, not blocking issues.',

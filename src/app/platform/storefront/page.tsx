@@ -5,32 +5,32 @@ import { SoftwareApplicationSchema } from '@/components/seo/json-ld';
 import StorefrontPageContent from './storefront-page-content';
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://fleetbase.io/platform/storefront' },
-  title: 'Storefront — Headless Commerce & Marketplace Platform | Fleetbase',
+  alternates: { canonical: 'https://logisbase.com/platform/storefront' },
+  title: 'Storefront — Headless Commerce & Marketplace Platform | LogisBase',
   description:
-    'Storefront by Fleetbase is open-source headless commerce built for on-demand businesses. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and native Fleet-Ops delivery integration.',
+    'Storefront by LogisBase is source-available headless commerce built for on-demand businesses. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and native Fleet-Ops delivery integration.',
   keywords: [
     'headless commerce platform',
     'online ordering software',
     'white label delivery app',
     'multi vendor marketplace software',
     'on demand commerce platform',
-    'open source storefront',
+    'source-available storefront',
     'delivery management ecommerce',
     'hyperlocal delivery platform',
     'zero commission ordering',
   ],
   openGraph: {
-    title: 'Storefront — Headless Commerce & Marketplace Platform | Fleetbase',
+    title: 'Storefront — Headless Commerce & Marketplace Platform | LogisBase',
     description:
-      'Open-source, logistics-first commerce platform. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and delivery built in.',
+      'Source-available, logistics-first commerce platform. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and delivery built in.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Storefront — Headless Commerce & Marketplace Platform | Fleetbase',
+    title: 'Storefront — Headless Commerce & Marketplace Platform | LogisBase',
     description:
-      'Open-source, logistics-first commerce platform. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and delivery built in.',
+      'Source-available, logistics-first commerce platform. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and delivery built in.',
   },
 };
 
@@ -38,9 +38,9 @@ export default function StorefrontPage() {
   return (
     <>
       <SoftwareApplicationSchema
-        name="Fleetbase Storefront"
-        url="https://fleetbase.io/platform/storefront"
-        description="Open-source headless commerce and multi-vendor marketplace platform with white-label mobile apps, zero commission fees, and native Fleet-Ops delivery integration."
+        name="LogisBase Storefront"
+        url="https://logisbase.com/platform/storefront"
+        description="Source-available headless commerce and multi-vendor marketplace platform with white-label mobile apps, zero commission fees, and native Fleet-Ops delivery integration."
       />
       <StorefrontPageContent />
     </>

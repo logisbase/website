@@ -31,7 +31,7 @@ export interface ResourceEndpoint extends AnchorItem {
 export interface ResourcePage {
   /** Display title. */
   title: string;
-  /** URL slug under `/docs/api/`. e.g. `"fleetbase/places"`. */
+  /** URL slug under `/docs/api/`. e.g. `"logisbase/places"`. */
   slug: string;
   /** Endpoint anchors on this page — rendered as sub-items in the sidebar. */
   endpoints: ResourceEndpoint[];

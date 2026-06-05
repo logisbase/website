@@ -20,8 +20,12 @@ function parseArgs(argv) {
     useAhrefs: process.env.CONTENT_AGENT_USE_AHREFS === 'true',
     outputDir:
       process.env.CONTENT_AGENT_OUTPUT_DIR ||
-      path.join(process.env.RUNNER_TEMP || os.tmpdir(), 'fleetbase-content-agent'),
-    allowSeedFallback: process.env.CONTENT_AGENT_ALLOW_SEED_FALLBACK !== 'false',
+      path.join(
+        process.env.RUNNER_TEMP || os.tmpdir(),
+        'logisbase-content-agent',
+      ),
+    allowSeedFallback:
+      process.env.CONTENT_AGENT_ALLOW_SEED_FALLBACK !== 'false',
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -30,9 +34,11 @@ function parseArgs(argv) {
     if (arg === '--keyword') args.keyword = argv[index + 1] || '';
     if (arg === '--focus') args.focus = argv[index + 1] || 'auto';
     if (arg === '--topic-mode') args.topicMode = argv[index + 1] || 'auto';
-    if (arg === '--integration-target') args.integrationTarget = argv[index + 1] || '';
+    if (arg === '--integration-target')
+      args.integrationTarget = argv[index + 1] || '';
     if (arg === '--use-ahrefs') args.useAhrefs = true;
-    if (arg === '--output-dir') args.outputDir = argv[index + 1] || args.outputDir;
+    if (arg === '--output-dir')
+      args.outputDir = argv[index + 1] || args.outputDir;
     if (arg === '--allow-seed-fallback') args.allowSeedFallback = true;
   }
 
@@ -43,7 +49,9 @@ function requireEnv(names) {
   const missing = names.filter((name) => !process.env[name]?.trim());
 
   if (missing.length > 0) {
-    throw new Error(`Missing required environment variable(s): ${missing.join(', ')}.`);
+    throw new Error(
+      `Missing required environment variable(s): ${missing.join(', ')}.`,
+    );
   }
 }
 
@@ -59,12 +67,17 @@ function resolveContentFocus(config, requestedFocus) {
   }
 
   const utcDay = new Date().getUTCDay();
-  return config.contentStrategy.defaultFocusByUtcDay[utcDay] || 'logistics-software';
+  return (
+    config.contentStrategy.defaultFocusByUtcDay[utcDay] || 'logistics-software'
+  );
 }
 
 async function writeJson(outputDir, name, value) {
   await fs.mkdir(outputDir, { recursive: true });
-  await fs.writeFile(path.join(outputDir, name), `${JSON.stringify(value, null, 2)}\n`);
+  await fs.writeFile(
+    path.join(outputDir, name),
+    `${JSON.stringify(value, null, 2)}\n`,
+  );
 }
 
 function compactGhostPost(post) {
@@ -95,10 +108,14 @@ async function main() {
     requireEnv(['AHREFS_API_TOKEN']);
   }
 
-  console.log(`[content-agent:prepare] Preparing research. focus=${contentFocus}`);
+  console.log(
+    `[content-agent:prepare] Preparing research. focus=${contentFocus}`,
+  );
 
   const manifest = await buildContextManifest(contentAgentConfig);
-  const ghostPosts = (await listGhostPosts(contentAgentConfig)).map(compactGhostPost);
+  const ghostPosts = (await listGhostPosts(contentAgentConfig)).map(
+    compactGhostPost,
+  );
   const research = await buildAhrefsOrManualResearch(contentAgentConfig, {
     topic: args.topic,
     keyword: args.keyword,
@@ -141,10 +158,14 @@ async function main() {
   });
 
   if (!args.topic && filteredOpportunities.length === 0) {
-    throw new Error('All Ahrefs opportunities were blocked as duplicates of existing Ghost content.');
+    throw new Error(
+      'All Ahrefs opportunities were blocked as duplicates of existing Ghost content.',
+    );
   }
 
-  const outputOpportunities = args.topic ? research.opportunities : filteredOpportunities;
+  const outputOpportunities = args.topic
+    ? research.opportunities
+    : filteredOpportunities;
 
   const researchInput = {
     generatedAt: new Date().toISOString(),
@@ -180,8 +201,16 @@ async function main() {
   await writeJson(args.outputDir, 'context-manifest.json', manifest);
   await writeJson(args.outputDir, 'ghost-history.json', ghostPosts);
   await writeJson(args.outputDir, 'ahrefs-requests.json', research.requests);
-  await writeJson(args.outputDir, 'ahrefs-raw-results.json', research.rawResults);
-  await writeJson(args.outputDir, 'ahrefs-summary.json', researchInput.ahrefs.summary);
+  await writeJson(
+    args.outputDir,
+    'ahrefs-raw-results.json',
+    research.rawResults,
+  );
+  await writeJson(
+    args.outputDir,
+    'ahrefs-summary.json',
+    researchInput.ahrefs.summary,
+  );
   await writeJson(args.outputDir, 'dedupe-report.json', {
     duplicateOpportunities,
     existingGhostCount: ghostPosts.length,
@@ -189,7 +218,7 @@ async function main() {
   await writeJson(args.outputDir, 'research-input.json', researchInput);
 
   await appendStepSummary(`
-## Fleetbase SEO Content Agent Research
+## LogisBase SEO Content Agent Research
 
 - Content focus: ${contentFocus}
 - Topic mode: ${args.topicMode}
@@ -203,13 +232,15 @@ async function main() {
 - Indexed source files: ${manifest.length}
 `);
 
-  console.log(`[content-agent:prepare] Research artifacts written to ${args.outputDir}`);
+  console.log(
+    `[content-agent:prepare] Research artifacts written to ${args.outputDir}`,
+  );
 }
 
 main().catch(async (error) => {
   console.error(`[content-agent:prepare] ${error.message}`);
   await appendStepSummary(`
-## Fleetbase SEO Content Agent Research
+## LogisBase SEO Content Agent Research
 
 Research prep failed.
 

@@ -1,24 +1,24 @@
 ---
 title: Resource Layouts
-description: "<Layout::Resource::Tabular>, <Layout::Resource::Card>, <Layout::Resource::CardsGrid>, and <Layout::Resource::Panel> — pre-built page layouts for resource list views."
+description: '<Layout::Resource::Tabular>, <Layout::Resource::Card>, <Layout::Resource::CardsGrid>, and <Layout::Resource::Panel> — pre-built page layouts for resource list views.'
 ---
 
 # Resource Layouts
 
-`@fleetbase/ember-ui` ships four pre-built page layouts for rendering a resource list. They are higher-level wrappers around `<Table>`, search, filters, bulk actions, and pagination — drop one in and you get a complete resource page.
+`@logisbase/ember-ui` ships four pre-built page layouts for rendering a resource list. They are higher-level wrappers around `<Table>`, search, filters, bulk actions, and pagination — drop one in and you get a complete resource page.
 
-| Layout | Component | When to use |
-| :--- | :--- | :--- |
-| Tabular | `<Layout::Resource::Tabular>` | Standard list/detail page (the default for most resources) |
-| Card | `<Layout::Resource::Card>` | Single-card detail view |
-| CardsGrid | `<Layout::Resource::CardsGrid>` | Grid of cards (e.g. media gallery, store grid) |
-| Panel | `<Layout::Resource::Panel>` | Sectioned panel layout |
+| Layout    | Component                       | When to use                                                |
+| :-------- | :------------------------------ | :--------------------------------------------------------- |
+| Tabular   | `<Layout::Resource::Tabular>`   | Standard list/detail page (the default for most resources) |
+| Card      | `<Layout::Resource::Card>`      | Single-card detail view                                    |
+| CardsGrid | `<Layout::Resource::CardsGrid>` | Grid of cards (e.g. media gallery, store grid)             |
+| Panel     | `<Layout::Resource::Panel>`     | Sectioned panel layout                                     |
 
 ## Tabular Example
 
 ```handlebars
 <Layout::Resource::Tabular
-  @title="Drivers"
+  @title='Drivers'
   @searchQuery={{this.q}}
   @onSearch={{this.onSearch}}
   @onReload={{this.onReload}}
@@ -40,20 +40,20 @@ description: "<Layout::Resource::Tabular>, <Layout::Resource::Card>, <Layout::Re
 
 ## Common Arguments
 
-| Argument | Description |
-| :--- | :--- |
-| `@title` | Header title |
-| `@columns` | Column descriptors (passed to `<Table>`) |
-| `@rows` | Row data |
-| `@table` | The ember-light-table model object |
-| `@searchQuery` | Bound to the search input |
-| `@onSearch` | Search callback |
-| `@onReload` | Refresh button callback |
-| `@onRowClick` | Click callback for each row |
-| `@onSubmitBulkSearch` | Optional advanced search |
-| `@bulkSearchValue` | Bound to advanced search |
-| `@withoutHeader` | Skip the entire header row |
-| `@hideColumnsPicker` | Skip the visible-column picker |
+| Argument              | Description                              |
+| :-------------------- | :--------------------------------------- |
+| `@title`              | Header title                             |
+| `@columns`            | Column descriptors (passed to `<Table>`) |
+| `@rows`               | Row data                                 |
+| `@table`              | The ember-light-table model object       |
+| `@searchQuery`        | Bound to the search input                |
+| `@onSearch`           | Search callback                          |
+| `@onReload`           | Refresh button callback                  |
+| `@onRowClick`         | Click callback for each row              |
+| `@onSubmitBulkSearch` | Optional advanced search                 |
+| `@bulkSearchValue`    | Bound to advanced search                 |
+| `@withoutHeader`      | Skip the entire header row               |
+| `@hideColumnsPicker`  | Skip the visible-column picker           |
 
 Plus a long tail of `*Class` and `*Width` overrides for each subsection.
 
@@ -69,13 +69,13 @@ Studying any of these is the fastest way to see the full set of arguments in act
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/layout/resource/tabular.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/layout/resource/tabular.hbs) | Template |
-| [`addon/components/layout/resource/tabular.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/layout/resource/tabular.js) | Class |
-| [`addon/components/layout/resource/card.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/layout/resource/card.hbs) | Sibling — single-card detail view (template) |
-| [`addon/components/layout/resource/card.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/layout/resource/card.js) | |
-| [`addon/components/layout/resource/cards-grid.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/layout/resource/cards-grid.hbs) | Sibling — grid of cards (template) |
-| [`addon/components/layout/resource/cards-grid.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/layout/resource/cards-grid.js) | |
-| [`addon/components/layout/resource/panel.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/layout/resource/panel.hbs) | Sibling — sectioned panel layout (template) |
-| [`addon/components/layout/resource/panel.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/layout/resource/panel.js) | |
+| File                                                                                                                                                 | Description                                  |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------- |
+| [`addon/components/layout/resource/tabular.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/layout/resource/tabular.hbs)       | Template                                     |
+| [`addon/components/layout/resource/tabular.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/layout/resource/tabular.js)         | Class                                        |
+| [`addon/components/layout/resource/card.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/layout/resource/card.hbs)             | Sibling — single-card detail view (template) |
+| [`addon/components/layout/resource/card.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/layout/resource/card.js)               |                                              |
+| [`addon/components/layout/resource/cards-grid.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/layout/resource/cards-grid.hbs) | Sibling — grid of cards (template)           |
+| [`addon/components/layout/resource/cards-grid.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/layout/resource/cards-grid.js)   |                                              |
+| [`addon/components/layout/resource/panel.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/layout/resource/panel.hbs)           | Sibling — sectioned panel layout (template)  |
+| [`addon/components/layout/resource/panel.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/layout/resource/panel.js)             |                                              |

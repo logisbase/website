@@ -5,7 +5,7 @@ description: How extensions contribute UI into each other — registries, slots,
 
 # Registry & Slots
 
-Fleetbase extensions are isolated by default — each one ships its own components, services, and routes. But many features are richer when extensions can plug UI into each other:
+LogisBase extensions are isolated by default — each one ships its own components, services, and routes. But many features are richer when extensions can plug UI into each other:
 
 - A payment-gateway extension contributing a configuration form into Ledger's gateway settings
 - An analytics extension contributing a chart into the FleetOps dashboard
@@ -34,43 +34,46 @@ Both halves are decoupled — the host doesn't need to know which extensions wil
 
 A **registry** is a named bag of items. The naming convention is `<host-extension>:<slot-name>`:
 
-| Example registry | What it holds |
-| :--- | :--- |
-| `engine:fleet-ops` | Settings menu items inside Fleet-Ops |
-| `fleet-ops:contextmenu:vehicle` | Right-click context-menu items on a vehicle |
-| `fleet-ops:component:vehicle:details` | Tabs / panels on the vehicle detail view |
-| `fleet-ops:component:map:drawer` | Items in the Fleet-Ops map drawer |
-| `fleet-ops:template:settings:routing` | Components in the routing settings |
-| `auth:login` | Buttons on the login screen |
+| Example registry                      | What it holds                               |
+| :------------------------------------ | :------------------------------------------ |
+| `engine:fleet-ops`                    | Settings menu items inside Fleet-Ops        |
+| `fleet-ops:contextmenu:vehicle`       | Right-click context-menu items on a vehicle |
+| `fleet-ops:component:vehicle:details` | Tabs / panels on the vehicle detail view    |
+| `fleet-ops:component:map:drawer`      | Items in the Fleet-Ops map drawer           |
+| `fleet-ops:template:settings:routing` | Components in the routing settings          |
+| `auth:login`                          | Buttons on the login screen                 |
 
 Each item is either a **component** (renders into the slot via `<RegistryYield>`) or a **menu item** (a `MenuItem`-shaped object).
 
 ## Registering Items via `addon/extension.js`
 
-Every modern Fleetbase extension declares a single `addon/extension.js` that exports an object with a `setupExtension(app, universe)` hook. The console calls this hook once when the extension boots — this is where you register your contributions.
+Every modern LogisBase extension declares a single `addon/extension.js` that exports an object with a `setupExtension(app, universe)` hook. The console calls this hook once when the extension boots — this is where you register your contributions.
 
 A minimal example:
 
 ```js
 // addon/extension.js
-import { MenuItem, ExtensionComponent } from '@fleetbase/ember-core/contracts';
+import { MenuItem, ExtensionComponent } from '@logisbase/ember-core/contracts';
 
 export default {
-    setupExtension(app, universe) {
-        const menuService = universe.getService('menu');
+  setupExtension(app, universe) {
+    const menuService = universe.getService('menu');
 
-        // Add a settings entry inside Fleet-Ops
-        menuService.registerMenuItem(
-            'engine:fleet-ops',
-            new MenuItem({
-                title: 'My Plugin Config',
-                component: new ExtensionComponent('@my-org/my-plugin-engine', 'my-plugin-settings'),
-                icon: 'gear',
-                slug: 'my-plugin',
-                section: 'settings',
-            })
-        );
-    },
+    // Add a settings entry inside Fleet-Ops
+    menuService.registerMenuItem(
+      'engine:fleet-ops',
+      new MenuItem({
+        title: 'My Plugin Config',
+        component: new ExtensionComponent(
+          '@my-org/my-plugin-engine',
+          'my-plugin-settings',
+        ),
+        icon: 'gear',
+        slug: 'my-plugin',
+        section: 'settings',
+      }),
+    );
+  },
 };
 ```
 
@@ -83,12 +86,12 @@ The `setupExtension` hook receives:
 
 Look these up via `universe.getService('<name>')`:
 
-| Service | Purpose |
-| :--- | :--- |
-| `menu` | Register menu items, header menu items, settings menu items |
-| `registry` | Create and read registries; register renderable components |
-| `widget` | Register dashboards and dashboard widgets |
-| `hook` | Register lifecycle hooks (e.g. `application:before-model`) |
+| Service    | Purpose                                                     |
+| :--------- | :---------------------------------------------------------- |
+| `menu`     | Register menu items, header menu items, settings menu items |
+| `registry` | Create and read registries; register renderable components  |
+| `widget`   | Register dashboards and dashboard widgets                   |
+| `hook`     | Register lifecycle hooks (e.g. `application:before-model`)  |
 
 ## Common Patterns
 
@@ -97,13 +100,21 @@ Look these up via `universe.getService('<name>')`:
 ```js
 // Register the extension's main entry in the console header
 menuService.registerHeaderMenuItem('Storefront', 'console.storefront', {
-    icon: 'store',
-    priority: 1,
-    description: 'Online store management.',
-    shortcuts: [
-        { title: 'Products', icon: 'box-open',     route: 'console.storefront.products' },
-        { title: 'Orders',   icon: 'bag-shopping', route: 'console.storefront.orders'   },
-    ],
+  icon: 'store',
+  priority: 1,
+  description: 'Online store management.',
+  shortcuts: [
+    {
+      title: 'Products',
+      icon: 'box-open',
+      route: 'console.storefront.products',
+    },
+    {
+      title: 'Orders',
+      icon: 'bag-shopping',
+      route: 'console.storefront.orders',
+    },
+  ],
 });
 ```
 
@@ -111,13 +122,16 @@ menuService.registerHeaderMenuItem('Storefront', 'console.storefront', {
 
 ```js
 menuService.registerSettingsMenuItem(
-    new MenuItem({
-        title: 'Customer Portal',
-        icon: 'users-gear',
-        slug: 'customer-portal',
-        view: 'index',
-        component: new ExtensionComponent('@fleetbase/customer-portal-engine', 'customer-portal-admin-settings'),
-    })
+  new MenuItem({
+    title: 'Customer Portal',
+    icon: 'users-gear',
+    slug: 'customer-portal',
+    view: 'index',
+    component: new ExtensionComponent(
+      '@logisbase/customer-portal-engine',
+      'customer-portal-admin-settings',
+    ),
+  }),
 );
 ```
 
@@ -125,8 +139,11 @@ menuService.registerSettingsMenuItem(
 
 ```js
 universe.registerRenderableComponent(
-    'fleet-ops:template:settings:routing',
-    new ExtensionComponent('@fleetbase/vroom-engine', 'organization/vroom-settings')
+  'fleet-ops:template:settings:routing',
+  new ExtensionComponent(
+    '@logisbase/vroom-engine',
+    'organization/vroom-settings',
+  ),
 );
 ```
 
@@ -136,19 +153,22 @@ If your extension wants other extensions to plug into it, create the registry fi
 
 ```js
 const registryService = universe.getService('registry');
-registryService.createRegistries(['my-extension:sidebar', 'my-extension:detail-tabs']);
+registryService.createRegistries([
+  'my-extension:sidebar',
+  'my-extension:detail-tabs',
+]);
 ```
 
 ### Register a Hook
 
 ```js
-import { Hook } from '@fleetbase/ember-core/contracts';
+import { Hook } from '@logisbase/ember-core/contracts';
 
 const hookService = universe.getService('hook');
 hookService.registerHook(
-    new Hook('application:before-model', (session, router, transition) => {
-        // run before the application route's model hook
-    })
+  new Hook('application:before-model', (session, router, transition) => {
+    // run before the application route's model hook
+  }),
 );
 ```
 
@@ -157,12 +177,18 @@ hookService.registerHook(
 Some setup needs to happen only after another engine has loaded — e.g. registering a service provider into Fleet-Ops's route-optimization engine:
 
 ```js
-universe.whenEngineLoaded('@fleetbase/fleetops-engine', async (fleetopsEngine, universe) => {
-    const myEngine = await universe.extensionManager.ensureEngineLoaded('@my-org/my-engine');
-    const routeOptimization = fleetopsEngine.lookup('service:route-optimization');
+universe.whenEngineLoaded(
+  '@logisbase/fleetops-engine',
+  async (fleetopsEngine, universe) => {
+    const myEngine =
+      await universe.extensionManager.ensureEngineLoaded('@my-org/my-engine');
+    const routeOptimization = fleetopsEngine.lookup(
+      'service:route-optimization',
+    );
     const myProvider = myEngine.lookup('service:my-provider');
     routeOptimization.register('my-provider', myProvider);
-});
+  },
+);
 ```
 
 ### Register a Dashboard or Widget
@@ -174,21 +200,25 @@ widgetService.registerDashboard('customer-portal');
 
 ## The Contracts
 
-`@fleetbase/ember-core/contracts` exports the canonical shapes you pass to the registries:
+`@logisbase/ember-core/contracts` exports the canonical shapes you pass to the registries:
 
-| Contract | Purpose |
-| :--- | :--- |
-| `MenuItem` | Menu entries — `{ title, route, component, icon, slug, section, shortcuts, onClick, ... }` |
+| Contract             | Purpose                                                                                            |
+| :------------------- | :------------------------------------------------------------------------------------------------- |
+| `MenuItem`           | Menu entries — `{ title, route, component, icon, slug, section, shortcuts, onClick, ... }`         |
 | `ExtensionComponent` | A reference to a component in another engine — `new ExtensionComponent(engineName, componentName)` |
-| `Widget` | Dashboard widget descriptor |
-| `Hook` | Lifecycle hook — `new Hook(eventName, callback)` |
+| `Widget`             | Dashboard widget descriptor                                                                        |
+| `Hook`               | Lifecycle hook — `new Hook(eventName, callback)`                                                   |
 
 ## Rendering Items
 
 Wherever a host extension wants to expose a slot, it uses `<RegistryYield>`:
 
 ```handlebars
-<RegistryYield @registry="fleet-ops:component:vehicle:details" @context={{this.vehicle}} as |Component ctx|>
+<RegistryYield
+  @registry='fleet-ops:component:vehicle:details'
+  @context={{this.vehicle}}
+  as |Component ctx|
+>
   <Component @vehicle={{ctx}} />
 </RegistryYield>
 ```
@@ -197,15 +227,15 @@ See [`<RegistryYield>`](/docs/ui/registry/registry-yield) for the full component
 
 ## Real-World Examples
 
-These open-source extensions all use `addon/extension.js` to register their contributions — read them as reference:
+These source-available extensions all use `addon/extension.js` to register their contributions — read them as reference:
 
-| Extension | What it registers | `addon/extension.js` |
-| :--- | :--- | :--- |
-| Customer Portal | Hooks, registries, login menu item, settings menu item | [customer-portal/addon/extension.js](https://github.com/fleetbase/customer-portal/blob/main/addon/extension.js) |
-| Storefront | Header menu item with shortcuts, dashboard widgets | [storefront/addon/extension.js](https://github.com/fleetbase/storefront/blob/main/addon/extension.js) |
-| VROOM | Renderable settings components, route-optimization provider via `whenEngineLoaded` | [vroom/addon/extension.js](https://github.com/fleetbase/vroom/blob/main/addon/extension.js) |
-| Flespi | Settings menu, map drawer items, vehicle-detail panels, context-menu commands | [flespi/addon/extension.js](https://github.com/fleetbase/flespi/blob/main/addon/extension.js) |
-| Ledger | Invoice template context, settings panels | [ledger/addon/extension.js](https://github.com/fleetbase/ledger/blob/main/addon/extension.js) |
+| Extension       | What it registers                                                                  | `addon/extension.js`                                                                                            |
+| :-------------- | :--------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+| Customer Portal | Hooks, registries, login menu item, settings menu item                             | [customer-portal/addon/extension.js](https://github.com/logisbase/customer-portal/blob/main/addon/extension.js) |
+| Storefront      | Header menu item with shortcuts, dashboard widgets                                 | [storefront/addon/extension.js](https://github.com/logisbase/storefront/blob/main/addon/extension.js)           |
+| VROOM           | Renderable settings components, route-optimization provider via `whenEngineLoaded` | [vroom/addon/extension.js](https://github.com/logisbase/vroom/blob/main/addon/extension.js)                     |
+| Flespi          | Settings menu, map drawer items, vehicle-detail panels, context-menu commands      | [flespi/addon/extension.js](https://github.com/logisbase/flespi/blob/main/addon/extension.js)                   |
+| Ledger          | Invoice template context, settings panels                                          | [ledger/addon/extension.js](https://github.com/logisbase/ledger/blob/main/addon/extension.js)                   |
 
 ## See Also
 

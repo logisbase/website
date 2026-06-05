@@ -1,11 +1,11 @@
 ---
 title: Publish
-description: "Publish your extension to the Fleetbase Extension Registry using `flb publish` — runs `npm publish` against the configured registry."
+description: 'Publish your extension to the LogisBase Extension Registry using `flb publish` — runs `npm publish` against the configured registry.'
 ---
 
 # `flb publish`
 
-Publish your extension to the Fleetbase Extension Registry. Under the hood this runs `npm publish` against the registry. Both an npm package (`package.json`) and a Composer package (`composer.json`) are typically published — but `flb publish` handles them via the same npm publish mechanism (the CLI auto-converts `composer.json` into a temporary `package.json` for the API side).
+Publish your extension to the LogisBase Extension Registry. Under the hood this runs `npm publish` against the registry. Both an npm package (`package.json`) and a Composer package (`composer.json`) are typically published — but `flb publish` handles them via the same npm publish mechanism (the CLI auto-converts `composer.json` into a temporary `package.json` for the API side).
 
 ```bash
 flb publish               # Publish from current directory
@@ -14,10 +14,10 @@ flb publish ./api         # Publish from a subdirectory
 
 ## Options
 
-| Option | Description |
-| :--- | :--- |
-| `[packagePath]` | Path of the package to publish (default: current directory) |
-| `-r, --registry <url>` | Registry URL (default: `https://registry.fleetbase.io`) |
+| Option                 | Description                                                 |
+| :--------------------- | :---------------------------------------------------------- |
+| `[packagePath]`        | Path of the package to publish (default: current directory) |
+| `-r, --registry <url>` | Registry URL (default: `https://registry.logisbase.com`)    |
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ flb publish ./api
 
 When publishing from a directory that has `composer.json` but no `package.json`, the CLI:
 
-1. Converts `composer.json` to a synthetic `package.json` with `fleetbase.from-composer = true`
+1. Converts `composer.json` to a synthetic `package.json` with `logisbase.from-composer = true`
 2. Runs `npm publish`
 3. Removes the synthetic `package.json` afterwards
 
@@ -101,7 +101,7 @@ For CI, use a token-based auth flow:
 # .github/workflows/publish.yml (excerpt)
 - name: Configure auth
   run: |
-    echo "//registry.fleetbase.io/:_authToken=${FLEETBASE_TOKEN}" > ~/.npmrc
+    echo "//registry.logisbase.com/:_authToken=${FLEETBASE_TOKEN}" > ~/.npmrc
   env:
     FLEETBASE_TOKEN: ${{ secrets.FLEETBASE_TOKEN }}
 
@@ -113,7 +113,7 @@ Generate the token once with [`flb generate-token`](/docs/cli/account/generate-t
 
 ## Difference from `flb bundle-upload`
 
-- **`flb publish`** uses the npm publish flow — the canonical path for distribution. The package becomes installable via `flb install fleetbase/<slug>`.
+- **`flb publish`** uses the npm publish flow — the canonical path for distribution. The package becomes installable via `flb install logisbase/<slug>`.
 - **`flb bundle-upload`** ships a pre-built `.tar.gz` to the registry's bundle storage. Useful for distribution channels that don't pull from npm.
 
 Most extensions use **`flb publish`** as their primary distribution method.

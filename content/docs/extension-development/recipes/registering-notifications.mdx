@@ -91,8 +91,8 @@ Use a dedicated method that runs from `boot()`:
 <?php
 // server/src/Providers/MyExtensionServiceProvider.php
 
-use Fleetbase\Providers\CoreServiceProvider;
-use Fleetbase\Support\NotificationRegistry;
+use LogisBase\Providers\CoreServiceProvider;
+use LogisBase\Support\NotificationRegistry;
 
 class MyExtensionServiceProvider extends CoreServiceProvider
 {
@@ -134,7 +134,7 @@ NotificationRegistry::registerNotifiable([
 `NotificationRegistry::notify()` resolves to all recipients who have opted in for this notification class:
 
 ```php
-use Fleetbase\Support\NotificationRegistry;
+use LogisBase\Support\NotificationRegistry;
 use MyOrg\MyExtension\Notifications\WidgetCreated;
 
 NotificationRegistry::notify(WidgetCreated::class, $widget);
@@ -163,7 +163,7 @@ Most "X happened" notifications hang off a model observer:
 
 namespace MyOrg\MyExtension\Observers;
 
-use Fleetbase\Support\NotificationRegistry;
+use LogisBase\Support\NotificationRegistry;
 use MyOrg\MyExtension\Models\Widget;
 use MyOrg\MyExtension\Notifications\WidgetCreated;
 
@@ -184,21 +184,21 @@ Open the user notification preferences in the console — your notification appe
 
 ## Channel Reference
 
-| Channel | Use for |
-| :--- | :--- |
-| `'mail'` | Email — implement `toMail($notifiable)` returning a `MailMessage` |
-| `'broadcast'` | Real-time UI push via SocketCluster — implement `toBroadcast($notifiable)` |
-| `'database'` | In-app notification feed — implement `toArray($notifiable)` |
-| `FcmChannel::class` | Android push (Firebase) |
-| `ApnChannel::class` | iOS push (Apple Push) |
-| `'sms'` (custom) | Wire through [`SmsService`](/docs/extension-development/reference/api-services#fleetbase-services-smsservice) in a custom channel |
+| Channel             | Use for                                                                                                                           |
+| :------------------ | :-------------------------------------------------------------------------------------------------------------------------------- |
+| `'mail'`            | Email — implement `toMail($notifiable)` returning a `MailMessage`                                                                 |
+| `'broadcast'`       | Real-time UI push via SocketCluster — implement `toBroadcast($notifiable)`                                                        |
+| `'database'`        | In-app notification feed — implement `toArray($notifiable)`                                                                       |
+| `FcmChannel::class` | Android push (Firebase)                                                                                                           |
+| `ApnChannel::class` | iOS push (Apple Push)                                                                                                             |
+| `'sms'` (custom)    | Wire through [`SmsService`](/docs/extension-development/reference/api-services#logisbase-services-smsservice) in a custom channel |
 
 See <LaravelDocs path="notifications">Laravel Notifications</LaravelDocs> for the full channel API.
 
 ## Reference
 
-- [`fleetops/server/src/Notifications/OrderAssigned.php`](https://github.com/fleetbase/fleetops/blob/main/server/src/Notifications/OrderAssigned.php) — reference notification class with `$name`, `$description`, `$package`
-- [`fleetops/server/src/Providers/FleetOpsServiceProvider.php`](https://github.com/fleetbase/fleetops/blob/main/server/src/Providers/FleetOpsServiceProvider.php) — `registerNotifications()` pattern
-- [`storefront/server/src/Notifications/`](https://github.com/fleetbase/storefront/tree/main/server/src/Notifications) — many notification examples
-- [`core-api/src/Support/NotificationRegistry.php`](https://github.com/fleetbase/core-api/blob/main/src/Support/NotificationRegistry.php) — registry implementation
-- [API Services → NotificationRegistry](/docs/extension-development/reference/api-services#fleetbase-support-notificationregistry)
+- [`fleetops/server/src/Notifications/OrderAssigned.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Notifications/OrderAssigned.php) — reference notification class with `$name`, `$description`, `$package`
+- [`fleetops/server/src/Providers/FleetOpsServiceProvider.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Providers/FleetOpsServiceProvider.php) — `registerNotifications()` pattern
+- [`storefront/server/src/Notifications/`](https://github.com/logisbase/storefront/tree/main/server/src/Notifications) — many notification examples
+- [`core-api/src/Support/NotificationRegistry.php`](https://github.com/logisbase/core-api/blob/main/src/Support/NotificationRegistry.php) — registry implementation
+- [API Services → NotificationRegistry](/docs/extension-development/reference/api-services#logisbase-support-notificationregistry)

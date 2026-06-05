@@ -1,24 +1,24 @@
 ---
 title: API Services
-description: Backend support classes shipped by fleetbase/core-api — SmsService, the Support\Http and Support\Find/Resolve helpers, NotificationRegistry, and the SocketCluster broadcaster.
+description: Backend support classes shipped by logisbase/core-api — SmsService, the Support\Http and Support\Find/Resolve helpers, NotificationRegistry, and the SocketCluster broadcaster.
 ---
 
 # API Services
 
-`fleetbase/core-api` ships a set of support classes you can rely on instead of rebuilding them per extension. This page surveys the most important ones and shows the canonical usage. Source files for each are linked at the bottom.
+`logisbase/core-api` ships a set of support classes you can rely on instead of rebuilding them per extension. This page surveys the most important ones and shows the canonical usage. Source files for each are linked at the bottom.
 
 For frontend host services (the `fetch`, `store`, `notifications`, etc. you inject in your engine), see [Ember Services](/docs/extension-development/reference/ember-services).
 
-All of these are available once your service provider extends [`Fleetbase\Providers\CoreServiceProvider`](https://github.com/fleetbase/core-api/blob/main/src/Providers/CoreServiceProvider.php) — see [Service Provider](/docs/extension-development/backend/service-provider).
+All of these are available once your service provider extends [`LogisBase\Providers\CoreServiceProvider`](https://github.com/logisbase/core-api/blob/main/src/Providers/CoreServiceProvider.php) — see [Service Provider](/docs/extension-development/backend/service-provider).
 
-## `Fleetbase\Services\SmsService`
+## `LogisBase\Services\SmsService`
 
 Multi-provider SMS sender with phone-prefix-based routing rules. Resolved from the Laravel container as a singleton; you'll typically inject it or use `app()`.
 
 ### Resolving
 
 ```php
-use Fleetbase\Services\SmsService;
+use LogisBase\Services\SmsService;
 
 $sms = app(SmsService::class);
 ```
@@ -44,30 +44,30 @@ Drop a new service class beside `SmsService` and `CallProSmsService`, register i
 
 ### Source
 
-[`src/Services/SmsService.php`](https://github.com/fleetbase/core-api/blob/main/src/Services/SmsService.php) · [`src/Services/CallProSmsService.php`](https://github.com/fleetbase/core-api/blob/main/src/Services/CallProSmsService.php)
+[`src/Services/SmsService.php`](https://github.com/logisbase/core-api/blob/main/src/Services/SmsService.php) · [`src/Services/CallProSmsService.php`](https://github.com/logisbase/core-api/blob/main/src/Services/CallProSmsService.php)
 
 ---
 
-## `Fleetbase\Support\Http`
+## `LogisBase\Support\Http`
 
 Static helpers for inspecting the current HTTP request. Extends Laravel's <LaravelApi path="Http/Client/Factory.html">`Http`</LaravelApi> facade so you also get the standard HTTP-client methods.
 
 ### Methods
 
-| Method | Returns |
-| :--- | :--- |
-| `Http::isInternalRequest($request?)` | `true` for routes under the `int/` prefix or namespaced `Internal\\` |
-| `Http::isPublicRequest($request?)` | `true` for routes under `v1/` |
-| `Http::useSort($sort)` | Parses `?sort=-name` style params into `['param', 'direction']` |
-| `Http::trace($key?)` | Request tracing data — useful for distributed-trace logging |
-| `Http::isPublicIp($ip?)` / `Http::isPrivateIp($ip?)` | IP type checks |
-| `Http::lookupIp($ip?)` | GeoIP lookup |
-| `Http::action($verb?)` | Resolves the controller action verb (`'index'`, `'store'`, etc.) |
+| Method                                               | Returns                                                              |
+| :--------------------------------------------------- | :------------------------------------------------------------------- |
+| `Http::isInternalRequest($request?)`                 | `true` for routes under the `int/` prefix or namespaced `Internal\\` |
+| `Http::isPublicRequest($request?)`                   | `true` for routes under `v1/`                                        |
+| `Http::useSort($sort)`                               | Parses `?sort=-name` style params into `['param', 'direction']`      |
+| `Http::trace($key?)`                                 | Request tracing data — useful for distributed-trace logging          |
+| `Http::isPublicIp($ip?)` / `Http::isPrivateIp($ip?)` | IP type checks                                                       |
+| `Http::lookupIp($ip?)`                               | GeoIP lookup                                                         |
+| `Http::action($verb?)`                               | Resolves the controller action verb (`'index'`, `'store'`, etc.)     |
 
 ### Example
 
 ```php
-use Fleetbase\Support\Http;
+use LogisBase\Support\Http;
 
 if (Http::isInternalRequest()) {
     // Console-side request — load the internal resource transformer
@@ -79,22 +79,22 @@ $query->orderBy($sortField, $direction);
 
 ### Source
 
-[`src/Support/Http.php`](https://github.com/fleetbase/core-api/blob/main/src/Support/Http.php)
+[`src/Support/Http.php`](https://github.com/logisbase/core-api/blob/main/src/Support/Http.php)
 
 ---
 
-## `Fleetbase\Support\Find`
+## `LogisBase\Support\Find`
 
 Resolves the **class names** for the HTTP resource, request, and filter classes that correspond to a given Eloquent model. Used by `HasApiControllerBehavior` to look up the right transformer for `index`, `show`, etc.
 
 ### Methods
 
-| Method | Returns |
-| :--- | :--- |
-| `Find::httpResourceForModel($model, $namespace?, $version?)` | Class name of the matching `JsonResource` |
-| `Find::httpRequestForModel($model, $namespace?, $version?)` | Class name of the matching `FormRequest` |
-| `Find::httpFilterForModel($model, $namespace?, $version?)` | Class name of the matching filter |
-| `Find::getModelPackage($model)` | The package namespace prefix (`'FleetOps'`, `'Storefront'`, etc.) |
+| Method                                                       | Returns                                                           |
+| :----------------------------------------------------------- | :---------------------------------------------------------------- |
+| `Find::httpResourceForModel($model, $namespace?, $version?)` | Class name of the matching `JsonResource`                         |
+| `Find::httpRequestForModel($model, $namespace?, $version?)`  | Class name of the matching `FormRequest`                          |
+| `Find::httpFilterForModel($model, $namespace?, $version?)`   | Class name of the matching filter                                 |
+| `Find::getModelPackage($model)`                              | The package namespace prefix (`'FleetOps'`, `'Storefront'`, etc.) |
 
 ### Behavior
 
@@ -103,34 +103,34 @@ For a `MyOrg\MyExtension\Models\Widget` model on an internal request, `Find` wal
 1. `MyOrg\MyExtension\Http\Resources\Internal\v1\Widget`
 2. `MyOrg\MyExtension\Http\Resources\v1\Widget`
 3. `MyOrg\MyExtension\Http\Resources\Widget`
-4. `Fleetbase\Http\Resources\FleetbaseResource` (universal fallback)
+4. `LogisBase\Http\Resources\LogisBaseResource` (universal fallback)
 
 This is why a basic resource at `Http/Resources/Widget.php` is enough to start — the platform finds and uses it without explicit registration.
 
 ### Source
 
-[`src/Support/Find.php`](https://github.com/fleetbase/core-api/blob/main/src/Support/Find.php)
+[`src/Support/Find.php`](https://github.com/logisbase/core-api/blob/main/src/Support/Find.php)
 
 ---
 
-## `Fleetbase\Support\Resolve`
+## `LogisBase\Support\Resolve`
 
 A thin layer above `Find` — instead of returning class names, `Resolve` **instantiates** the matching resource/request and returns the live object.
 
 ### Methods
 
-| Method | Returns |
-| :--- | :--- |
-| `Resolve::httpResourceForModel($model, $namespace?, $version?)` | A `JsonResource` instance wrapping the model |
-| `Resolve::httpRequestForModel($model, $namespace?, $version?)` | A `FormRequest` instance |
-| `Resolve::httpFilterForModel($model, $request, $version?)` | A filter instance |
-| `Resolve::resourceForMorph($type, $id, $resourceClass?)` | Resolves a polymorphic relation to a resource |
-| `Resolve::instance($class, $args?)` | Generic instantiator with constructor-arg passing |
+| Method                                                          | Returns                                           |
+| :-------------------------------------------------------------- | :------------------------------------------------ |
+| `Resolve::httpResourceForModel($model, $namespace?, $version?)` | A `JsonResource` instance wrapping the model      |
+| `Resolve::httpRequestForModel($model, $namespace?, $version?)`  | A `FormRequest` instance                          |
+| `Resolve::httpFilterForModel($model, $request, $version?)`      | A filter instance                                 |
+| `Resolve::resourceForMorph($type, $id, $resourceClass?)`        | Resolves a polymorphic relation to a resource     |
+| `Resolve::instance($class, $args?)`                             | Generic instantiator with constructor-arg passing |
 
 ### Example
 
 ```php
-use Fleetbase\Support\Resolve;
+use LogisBase\Support\Resolve;
 
 public function show(Widget $widget)
 {
@@ -143,24 +143,24 @@ Most controllers won't call `Resolve` directly — `HasApiControllerBehavior` ha
 
 ### Source
 
-[`src/Support/Resolve.php`](https://github.com/fleetbase/core-api/blob/main/src/Support/Resolve.php)
+[`src/Support/Resolve.php`](https://github.com/logisbase/core-api/blob/main/src/Support/Resolve.php)
 
 ---
 
-## `Fleetbase\Support\NotificationRegistry`
+## `LogisBase\Support\NotificationRegistry`
 
 The platform-wide registry for notifications. Notifications you register here are surfaced in the user's notification preferences UI, dispatchable via the standard <LaravelDocs path="notifications">Laravel notifications</LaravelDocs> channels (mail, SMS, broadcast, database, push).
 
 ### Methods
 
-| Method | Description |
-| :--- | :--- |
-| `NotificationRegistry::register($notificationClassOrArray, $options?)` | Register one or many notification classes |
-| `NotificationRegistry::registerNotifiable($notifiableClass)` | Register a class that can receive notifications (default: `User`, `Group`, `Role`, `Company`) |
-| `NotificationRegistry::getNotificationsByPackage($package)` | Filter to a single package's notifications |
-| `NotificationRegistry::getNotifiables()` / `getNotifiablesForCompany($companyId)` | List recipients available for opt-in |
-| `NotificationRegistry::notify($notificationClass, ...$params)` | Send to all registered recipients who have opted in |
-| `NotificationRegistry::notifyUsingDefinitionName($class, $name, ...$params)` | Same, but selectable by registered name |
+| Method                                                                            | Description                                                                                   |
+| :-------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| `NotificationRegistry::register($notificationClassOrArray, $options?)`            | Register one or many notification classes                                                     |
+| `NotificationRegistry::registerNotifiable($notifiableClass)`                      | Register a class that can receive notifications (default: `User`, `Group`, `Role`, `Company`) |
+| `NotificationRegistry::getNotificationsByPackage($package)`                       | Filter to a single package's notifications                                                    |
+| `NotificationRegistry::getNotifiables()` / `getNotifiablesForCompany($companyId)` | List recipients available for opt-in                                                          |
+| `NotificationRegistry::notify($notificationClass, ...$params)`                    | Send to all registered recipients who have opted in                                           |
+| `NotificationRegistry::notifyUsingDefinitionName($class, $name, ...$params)`      | Same, but selectable by registered name                                                       |
 
 ### Registering from Your Service Provider
 
@@ -184,7 +184,7 @@ Each notification class declares its own `name`, `description`, and `package` pr
 
 ### Source
 
-[`src/Support/NotificationRegistry.php`](https://github.com/fleetbase/core-api/blob/main/src/Support/NotificationRegistry.php)
+[`src/Support/NotificationRegistry.php`](https://github.com/logisbase/core-api/blob/main/src/Support/NotificationRegistry.php)
 
 ---
 
@@ -237,7 +237,7 @@ The frontend [`socket` service](/docs/extension-development/reference/ember-serv
 For ad-hoc messages, use the `SocketClusterService` singleton directly:
 
 ```php
-use Fleetbase\Support\SocketCluster\SocketClusterService;
+use LogisBase\Support\SocketCluster\SocketClusterService;
 
 SocketClusterService::publish('company.' . $companyUuid, [
     'type' => 'my-extension.refresh-needed',
@@ -247,7 +247,7 @@ SocketClusterService::publish('company.' . $companyUuid, [
 
 ### Source
 
-[`src/Providers/SocketClusterServiceProvider.php`](https://github.com/fleetbase/core-api/blob/main/src/Providers/SocketClusterServiceProvider.php) · [`src/Support/SocketCluster/SocketClusterService.php`](https://github.com/fleetbase/core-api/blob/main/src/Support/SocketCluster/SocketClusterService.php) · upstream <SocketClusterDocs>SocketCluster docs</SocketClusterDocs>
+[`src/Providers/SocketClusterServiceProvider.php`](https://github.com/logisbase/core-api/blob/main/src/Providers/SocketClusterServiceProvider.php) · [`src/Support/SocketCluster/SocketClusterService.php`](https://github.com/logisbase/core-api/blob/main/src/Support/SocketCluster/SocketClusterService.php) · upstream <SocketClusterDocs>SocketCluster docs</SocketClusterDocs>
 
 ---
 
@@ -255,25 +255,27 @@ SocketClusterService::publish('company.' . $companyUuid, [
 
 The `src/Support/` directory contains a number of smaller helpers worth knowing about:
 
-| Class | Purpose |
-| :--- | :--- |
-| `Fleetbase\Support\Auth` | Auth state helpers — current user/company resolution |
-| `Fleetbase\Support\ApiModelCache` | Per-request model cache to avoid duplicate queries |
-| `Fleetbase\Support\Utils` | General utilities — `classExists`, `classBasename`, slugification, etc. |
-| `Fleetbase\Support\PushNotification` | Cross-platform push notification dispatcher |
-| `Fleetbase\Support\ParsePhone` | Phone number normalization (libphonenumber wrapper) |
-| `Fleetbase\Support\IdempotencyManager` | Idempotency-key handling for safely retryable POST endpoints |
-| `Fleetbase\Support\QueryOptimizer` | Heuristics for pre-loading relations to avoid N+1 |
-| `Fleetbase\Support\Reporting\ReportSchemaRegistry` | Register a report schema — see the [recipe](/docs/extension-development/recipes/registering-a-report-schema) |
-| `Fleetbase\Services\TemplateRenderService` | Variable-substitution renderer for templates (PDFs, emails) |
-| `Fleetbase\Services\FileResolverService` | File URL/path resolver across S3 / disk / data URLs |
+| Class                                              | Purpose                                                                                                      |
+| :------------------------------------------------- | :----------------------------------------------------------------------------------------------------------- |
+| `LogisBase\Support\Auth`                           | Auth state helpers — current user/company resolution                                                         |
+| `LogisBase\Support\ApiModelCache`                  | Per-request model cache to avoid duplicate queries                                                           |
+| `LogisBase\Support\Utils`                          | General utilities — `classExists`, `classBasename`, slugification, etc.                                      |
+| `LogisBase\Support\PushNotification`               | Cross-platform push notification dispatcher                                                                  |
+| `LogisBase\Support\ParsePhone`                     | Phone number normalization (libphonenumber wrapper)                                                          |
+| `LogisBase\Support\IdempotencyManager`             | Idempotency-key handling for safely retryable POST endpoints                                                 |
+| `LogisBase\Support\QueryOptimizer`                 | Heuristics for pre-loading relations to avoid N+1                                                            |
+| `LogisBase\Support\Reporting\ReportSchemaRegistry` | Register a report schema — see the [recipe](/docs/extension-development/recipes/registering-a-report-schema) |
+| `LogisBase\Services\TemplateRenderService`         | Variable-substitution renderer for templates (PDFs, emails)                                                  |
+| `LogisBase\Services\FileResolverService`           | File URL/path resolver across S3 / disk / data URLs                                                          |
 
-Browse the full directory at [`src/Support/`](https://github.com/fleetbase/core-api/tree/main/src/Support) and [`src/Services/`](https://github.com/fleetbase/core-api/tree/main/src/Services).
+Browse the full directory at [`src/Support/`](https://github.com/logisbase/core-api/tree/main/src/Support) and [`src/Services/`](https://github.com/logisbase/core-api/tree/main/src/Services).
 
 ## See Also
 
 - [Service Provider](/docs/extension-development/backend/service-provider) — how `CoreServiceProvider` wires these in
 - [Expansions & Observers](/docs/extension-development/backend/expansions-and-observers) — patterns for extending model behavior
 - [Calling Your Extension's API](/docs/extension-development/recipes/calling-your-extension-api) and other [recipes](/docs/extension-development/recipes/calling-your-extension-api) — concrete tutorials using these services
-- <LaravelDocs path="container">Laravel Service Container</LaravelDocs> — for resolving services from the container
-- <LaravelDocs path="broadcasting">Laravel Broadcasting</LaravelDocs> — the framework backend behind SocketCluster integration
+- <LaravelDocs path="container">Laravel Service Container</LaravelDocs> — for
+  resolving services from the container
+- <LaravelDocs path="broadcasting">Laravel Broadcasting</LaravelDocs> — the
+  framework backend behind SocketCluster integration

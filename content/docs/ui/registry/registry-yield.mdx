@@ -1,18 +1,18 @@
 ---
 title: RegistryYield
-description: "<RegistryYield> renders contributions from other extensions — components or menu items — into a named slot. Drives extension-to-extension UI integration."
+description: '<RegistryYield> renders contributions from other extensions — components or menu items — into a named slot. Drives extension-to-extension UI integration.'
 ---
 
 # `<RegistryYield>`
 
 `<RegistryYield>` is the primary mechanism for letting one extension contribute UI into another. It iterates over items in a named registry (components or menu items) and yields each one for you to render.
 
-This is what makes Fleetbase extensible: a payment-gateway extension can register a button in Ledger's gateway settings; an analytics extension can register a chart in the FleetOps dashboard; etc. — without either side knowing the other exists at compile time.
+This is what makes LogisBase extensible: a payment-gateway extension can register a button in Ledger's gateway settings; an analytics extension can register a chart in the FleetOps dashboard; etc. — without either side knowing the other exists at compile time.
 
 ## Component Contributions
 
 ```handlebars
-<RegistryYield @registry="ledger:invoice-actions" as |Component context|>
+<RegistryYield @registry='ledger:invoice-actions' as |Component context|>
   <Component @invoice={{this.invoice}} @context={{context}} />
 </RegistryYield>
 ```
@@ -22,8 +22,8 @@ Other extensions register their components via the Universe `registry-service`, 
 ## Menu Item Contributions
 
 ```handlebars
-<RegistryYield @registry="fleet-ops:driver-row-actions" @type="menu" as |item|>
-  <a {{on "click" item.onClick}} class="next-dd-item">
+<RegistryYield @registry='fleet-ops:driver-row-actions' @type='menu' as |item|>
+  <a {{on 'click' item.onClick}} class='next-dd-item'>
     {{#if item.icon}}<FaIcon @icon={{item.icon}} />{{/if}}
     {{item.label}}
   </a>
@@ -34,11 +34,11 @@ Pass `@type="menu"` (or `buttons`, `menuItems`, `menu-item`) when iterating menu
 
 ## Arguments
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
-| `@registry` | string | The registry key to read from |
-| `@type` | string | Optional — `menu`, `menuItems`, `menu-item`, or `buttons` to read menu items instead of components |
-| `@context` | any | Context object yielded as the second positional value to your block |
+| Argument    | Type   | Description                                                                                        |
+| :---------- | :----- | :------------------------------------------------------------------------------------------------- |
+| `@registry` | string | The registry key to read from                                                                      |
+| `@type`     | string | Optional — `menu`, `menuItems`, `menu-item`, or `buttons` to read menu items instead of components |
+| `@context`  | any    | Context object yielded as the second positional value to your block                                |
 
 ## Yielded Block
 
@@ -58,13 +58,17 @@ Lazy engine components (those that come from another Ember Engine) are wrapped w
 ## Real-World Example
 
 ```handlebars
-{{!-- Inside a Ledger invoice detail page --}}
-<ContentPanel @title="Actions" @open={{true}}>
+{{! Inside a Ledger invoice detail page }}
+<ContentPanel @title='Actions' @open={{true}}>
   <:default>
-    <Button @text="Edit" @onClick={{this.edit}} />
+    <Button @text='Edit' @onClick={{this.edit}} />
 
-    {{!-- Other extensions can contribute additional actions here --}}
-    <RegistryYield @registry="ledger:invoice-actions" @context={{this.invoice}} as |Action ctx|>
+    {{! Other extensions can contribute additional actions here }}
+    <RegistryYield
+      @registry='ledger:invoice-actions'
+      @context={{this.invoice}}
+      as |Action ctx|
+    >
       <Action @invoice={{ctx}} />
     </RegistryYield>
   </:default>
@@ -78,9 +82,9 @@ Lazy engine components (those that come from another Ember Engine) are wrapped w
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/registry-yield.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/registry-yield.hbs) | Template |
-| [`addon/components/registry-yield.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/registry-yield.js) | Class |
-| [`addon/services/universe/menu-service.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/services/universe/menu-service.js) | Backing service for menu items |
-| [`addon/services/universe/registry-service.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/services/universe/registry-service.js) | Backing service for components |
+| File                                                                                                                                         | Description                    |
+| :------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------- |
+| [`addon/components/registry-yield.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/registry-yield.hbs)                 | Template                       |
+| [`addon/components/registry-yield.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/registry-yield.js)                   | Class                          |
+| [`addon/services/universe/menu-service.js`](https://github.com/logisbase/ember-ui/blob/main/addon/services/universe/menu-service.js)         | Backing service for menu items |
+| [`addon/services/universe/registry-service.js`](https://github.com/logisbase/ember-ui/blob/main/addon/services/universe/registry-service.js) | Backing service for components |

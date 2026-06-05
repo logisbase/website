@@ -10,7 +10,7 @@ description: The Storefront checkout is a two-step API flow — `/checkouts/befo
 1. **`/checkouts/before`** — submit the cart, service quote, gateway, tip, and pickup/delivery flag. Storefront returns a **token** (and a Stripe `clientSecret` if the gateway is Stripe).
 2. **`/checkouts/capture`** — once payment is confirmed by the customer's frontend, finalize by sending back the same token. Storefront creates one or more Fleet-Ops orders.
 
-This split exists so the frontend can confirm payment with the gateway SDK (which keeps card data out of Fleetbase) and Storefront only needs to verify the gateway-confirmed token at capture time.
+This split exists so the frontend can confirm payment with the gateway SDK (which keeps card data out of LogisBase) and Storefront only needs to verify the gateway-confirmed token at capture time.
 
 ## Step 1 — `/checkouts/before`
 
@@ -31,12 +31,14 @@ Customer-Token: 1|VlKK7lZ...
 ```
 
 Required:
+
 - **`cart`** — the cart's public id
 - **`gateway`** — the gateway public id selected by the customer
 - **`serviceQuote`** — the [Service Quote](/docs/storefront/orders/service-quotes) id (omit for pickup orders)
 - **`customer`** — the customer's public id
 
 Optional:
+
 - **`pickup`** — `true` for in-store pickup, defaults to delivery
 - **`tip`** — driver tip in minor currency units (e.g. `100` = $1.00 USD)
 - **`deliveryTip`** — separate delivery tip when `delivery_tips_enabled`
@@ -68,9 +70,11 @@ Customer-Token: 1|VlKK7lZ...
 ```
 
 Required:
+
 - **`token`** — the token returned by `before`
 
 Optional:
+
 - **`transactionDetails`** — gateway-specific confirmation payload
 - **`notes`** — order notes for the merchant
 
@@ -89,6 +93,7 @@ You don't call this directly — QPay does — but it must be reachable from QPa
 ## Pickup Orders
 
 If the customer selects in-store pickup:
+
 - No service quote is required (the `serviceQuote` field can be omitted)
 - The order's activity flow uses the **`pickup_ready`** status instead of dispatching a driver
 - The customer-facing app polls or subscribes to receive the ready notification, then collects in-store
@@ -102,12 +107,14 @@ A store or network can require a minimum cart subtotal. Toggle `options.required
 ## Error Cases
 
 The `/before` step validates that:
+
 - The cart exists and is not expired
 - The selected gateway is configured for the store/network
 - The customer is authenticated (when authentication is required by your flow)
 - The cart subtotal meets the minimum order amount (if configured)
 
 The `/capture` step validates that:
+
 - The token is valid and not yet used
 - The gateway has confirmed the payment (for Stripe, that the PaymentIntent succeeded)
 

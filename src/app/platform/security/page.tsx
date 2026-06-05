@@ -5,12 +5,12 @@ import { SoftwareApplicationSchema } from '@/components/seo/json-ld';
 import SecurityCompliancePageContent from './security-page-content';
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://fleetbase.io/platform/security' },
-  title: 'Security & Compliance — RBAC, Encryption & Audit Logs | Fleetbase',
+  alternates: { canonical: 'https://logisbase.com/platform/security' },
+  title: 'Security & Compliance — RBAC, Encryption & Audit Logs | LogisBase',
   description:
     'Enterprise-grade security for logistics operations. End-to-end encryption, granular RBAC, MFA, comprehensive audit logs, GDPR compliance, and full self-hosting for data sovereignty.',
   keywords: [
-    'Fleetbase security',
+    'LogisBase security',
     'logistics platform security',
     'IAM access control',
     'role-based access control logistics',
@@ -21,17 +21,17 @@ export const metadata: Metadata = {
     'API key management',
     'audit logs fleet management',
     'data encryption logistics',
-    'open-source security logistics',
+    'source-available security logistics',
   ],
   openGraph: {
-    title: 'Security & Compliance | Fleetbase',
+    title: 'Security & Compliance | LogisBase',
     description:
       'End-to-end encryption, granular RBAC, MFA, audit logs, and full self-hosting for complete data sovereignty.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Security & Compliance | Fleetbase',
+    title: 'Security & Compliance | LogisBase',
     description:
       'Enterprise-grade security built into every layer — encryption, RBAC, audit logs, and self-hosting for total control.',
   },
@@ -41,8 +41,8 @@ export default function SecurityCompliancePage() {
   return (
     <>
       <SoftwareApplicationSchema
-        name="Fleetbase Security & Compliance"
-        url="https://fleetbase.io/platform/security"
+        name="LogisBase Security & Compliance"
+        url="https://logisbase.com/platform/security"
         description="Enterprise-grade security for logistics operations — end-to-end encryption, granular RBAC, MFA, comprehensive audit logs, GDPR compliance, and self-hosting for full data sovereignty."
         applicationCategory="SecurityApplication"
       />

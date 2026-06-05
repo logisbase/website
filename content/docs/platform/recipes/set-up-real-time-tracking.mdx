@@ -1,29 +1,29 @@
 ---
 title: Set Up Real-Time Tracking
-description: Subscribe to Fleetbase socket events to display live driver locations and order status updates in your own application or dashboard.
+description: Subscribe to LogisBase socket events to display live driver locations and order status updates in your own application or dashboard.
 ---
 
 # Set Up Real-Time Tracking
 
-Fleetbase broadcasts real-time events — driver location updates, order status changes, and platform events — over WebSocket using [SocketCluster](https://socketcluster.io/). This recipe shows how to subscribe to those channels from your own application and render live driver positions on a map.
+LogisBase broadcasts real-time events — driver location updates, order status changes, and platform events — over WebSocket using [SocketCluster](https://socketcluster.io/). This recipe shows how to subscribe to those channels from your own application and render live driver positions on a map.
 
 ## What You'll Build
 
-A browser page that connects to the Fleetbase socket server, subscribes to your organisation's event channel, and plots incoming driver locations on a Leaflet.js map in real time.
+A browser page that connects to the LogisBase socket server, subscribes to your organisation's event channel, and plots incoming driver locations on a Leaflet.js map in real time.
 
 ## Prerequisites
 
-- A Fleetbase account with FleetOps installed and at least one active driver using the Navigator app
+- A LogisBase account with FleetOps installed and at least one active driver using the Navigator app
 - Your **API public key** and **company UUID** from the Developer Console
-- Your socket server hostname (for self-hosted: your domain; for Fleetbase Cloud: provided in your account settings)
+- Your socket server hostname (for self-hosted: your domain; for LogisBase Cloud: provided in your account settings)
 
 ## How the Socket Layer Works
 
-Fleetbase maintains two types of channels you can subscribe to:
+LogisBase maintains two types of channels you can subscribe to:
 
-| Channel | What it receives |
-| :--- | :--- |
-| `api.{key_id}` | Events scoped to a specific API key |
+| Channel                | What it receives                                    |
+| :--------------------- | :-------------------------------------------------- |
+| `api.{key_id}`         | Events scoped to a specific API key                 |
 | `company.{company_id}` | All events for your organisation, regardless of key |
 
 Driver location updates are published to `company.{company_id}` as drivers move. The event type is `driver.location_changed` and the payload includes the driver's current latitude, longitude, bearing, and speed.
@@ -48,22 +48,23 @@ Or via CDN in a browser page:
 import socketClusterClient from 'socketcluster-client';
 
 const socket = socketClusterClient.create({
-    hostname: 'socket.your-instance.com', // or your Fleetbase Cloud socket host
-    secure: true,
-    port: 443,
+  hostname: 'socket.your-instance.com', // or your LogisBase Cloud socket host
+  secure: true,
+  port: 443,
 });
 
 socket.on('connect', () => {
-    console.log('Connected to Fleetbase socket server');
+  console.log('Connected to LogisBase socket server');
 });
 
 socket.on('disconnect', () => {
-    console.log('Disconnected — will attempt to reconnect automatically');
+  console.log('Disconnected — will attempt to reconnect automatically');
 });
 ```
 
 <Callout type="info">
-SocketCluster automatically reconnects on disconnect. You do not need to implement reconnect logic yourself.
+  SocketCluster automatically reconnects on disconnect. You do not need to
+  implement reconnect logic yourself.
 </Callout>
 
 ## Step 3 — Subscribe to the Organisation Channel
@@ -72,27 +73,27 @@ SocketCluster automatically reconnects on disconnect. You do not need to impleme
 const COMPANY_ID = 'your-company-uuid'; // from Developer Console → API Keys
 
 async function subscribeToCompanyChannel() {
-    const channel = socket.subscribe(`company.${COMPANY_ID}`);
+  const channel = socket.subscribe(`company.${COMPANY_ID}`);
 
-    for await (const event of channel) {
-        handleSocketEvent(event);
-    }
+  for await (const event of channel) {
+    handleSocketEvent(event);
+  }
 }
 
 function handleSocketEvent(event) {
-    console.log(`Event received [${event.event}]:`, event.data);
+  console.log(`Event received [${event.event}]:`, event.data);
 
-    switch (event.event) {
-        case 'driver.location_changed':
-            updateDriverMarker(event.data);
-            break;
-        case 'order.dispatched':
-            onOrderDispatched(event.data);
-            break;
-        case 'order.completed':
-            onOrderCompleted(event.data);
-            break;
-    }
+  switch (event.event) {
+    case 'driver.location_changed':
+      updateDriverMarker(event.data);
+      break;
+    case 'order.dispatched':
+      onOrderDispatched(event.data);
+      break;
+    case 'order.completed':
+      onOrderCompleted(event.data);
+      break;
+  }
 }
 
 subscribeToCompanyChannel();
@@ -100,68 +101,71 @@ subscribeToCompanyChannel();
 
 ## Step 4 — Render Driver Locations on a Map
 
-This example uses [Leaflet.js](https://leafletjs.com/), a lightweight open-source mapping library.
+This example uses [Leaflet.js](https://leafletjs.com/), a lightweight source-available mapping library.
 
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>Live Driver Tracking</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-    #map { height: 100vh; width: 100%; }
-  </style>
-</head>
-<body>
-  <div id="map"></div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Live Driver Tracking</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      #map {
+        height: 100vh;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/socketcluster-client/socketcluster-client.min.js"></script>
-  <script>
-    // Initialise map
-    const map = L.map('map').setView([1.3521, 103.8198], 12);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/socketcluster-client/socketcluster-client.min.js"></script>
+    <script>
+      // Initialise map
+      const map = L.map('map').setView([1.3521, 103.8198], 12);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+      }).addTo(map);
 
-    // Track markers by driver ID
-    const driverMarkers = {};
+      // Track markers by driver ID
+      const driverMarkers = {};
 
-    function updateDriverMarker(driver) {
+      function updateDriverMarker(driver) {
         const { id, name, location } = driver;
         const { coordinates } = location; // [lng, lat] in GeoJSON order
         const latLng = [coordinates[1], coordinates[0]];
 
         if (driverMarkers[id]) {
-            driverMarkers[id].setLatLng(latLng);
+          driverMarkers[id].setLatLng(latLng);
         } else {
-            const marker = L.marker(latLng)
-                .bindPopup(`<strong>${name}</strong>`)
-                .addTo(map);
-            driverMarkers[id] = marker;
+          const marker = L.marker(latLng)
+            .bindPopup(`<strong>${name}</strong>`)
+            .addTo(map);
+          driverMarkers[id] = marker;
         }
-    }
+      }
 
-    // Connect to Fleetbase socket
-    const socket = socketClusterClient.create({
+      // Connect to LogisBase socket
+      const socket = socketClusterClient.create({
         hostname: 'socket.your-instance.com',
         secure: true,
         port: 443,
-    });
+      });
 
-    const COMPANY_ID = 'your-company-uuid';
+      const COMPANY_ID = 'your-company-uuid';
 
-    (async () => {
+      (async () => {
         const channel = socket.subscribe(`company.${COMPANY_ID}`);
         for await (const event of channel) {
-            if (event.event === 'driver.location_changed') {
-                updateDriverMarker(event.data);
-            }
+          if (event.event === 'driver.location_changed') {
+            updateDriverMarker(event.data);
+          }
         }
-    })();
-  </script>
-</body>
+      })();
+    </script>
+  </body>
 </html>
 ```
 
@@ -173,20 +177,23 @@ Socket events only deliver updates from when you connect. To show drivers alread
 const API_KEY = 'flb_live_your_public_key_here';
 
 async function loadActiveDrivers() {
-    const response = await fetch('https://api.fleetbase.io/v1/drivers?status=active', {
-        headers: {
-            'Authorization': `Bearer ${API_KEY}`,
-            'Content-Type': 'application/json',
-        }
-    });
+  const response = await fetch(
+    'https://api.logisbase.com/v1/drivers?status=active',
+    {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    },
+  );
 
-    const { data: drivers } = await response.json();
+  const { data: drivers } = await response.json();
 
-    for (const driver of drivers) {
-        if (driver.location) {
-            updateDriverMarker(driver);
-        }
+  for (const driver of drivers) {
+    if (driver.location) {
+      updateDriverMarker(driver);
     }
+  }
 }
 
 loadActiveDrivers();
@@ -216,7 +223,8 @@ The `driver.location_changed` event payload looks like this:
 ```
 
 <Callout type="info">
-Coordinates follow GeoJSON order: `[longitude, latitude]`. Swap them when passing to Leaflet's `[lat, lng]` convention.
+  Coordinates follow GeoJSON order: `[longitude, latitude]`. Swap them when
+  passing to Leaflet's `[lat, lng]` convention.
 </Callout>
 
 ## Subscribing to a Specific API Key Channel

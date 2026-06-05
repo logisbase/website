@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { formatBlogHtml } from '@/lib/blog-html';
 import { getAllBlogSlugs, getBlogPostBySlug } from '@/lib/ghost';
 
-const BASE_URL = 'https://fleetbase.io';
+const BASE_URL = 'https://logisbase.com';
 
 function formatPublishedDate(value: string) {
   return new Intl.DateTimeFormat('en-US', {
@@ -36,7 +36,7 @@ export async function generateMetadata(props: {
 
   if (!post) {
     return {
-      title: 'Blog | Fleetbase',
+      title: 'Blog | LogisBase',
     };
   }
 
@@ -111,15 +111,19 @@ export default async function BlogPostPage(props: {
       />
       <section className="section-padding container">
         <div className="mx-auto max-w-4xl">
-          <Button variant="ghost" asChild className="mb-8 px-0 hover:bg-transparent">
+          <Button
+            variant="ghost"
+            asChild
+            className="mb-8 px-0 hover:bg-transparent"
+          >
             <Link href="/blog">
               <ArrowLeft className="mr-2 size-4" />
               Back to blog
             </Link>
           </Button>
 
-          <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-            <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-primary">
+          <div className="text-muted-foreground mb-6 flex flex-wrap items-center gap-3 text-sm">
+            <span className="border-primary/30 bg-primary/10 text-primary rounded-full border px-3 py-1">
               {post.isFeatured ? 'Featured article' : 'Blog article'}
             </span>
             <span>{formatPublishedDate(post.publishedAt)}</span>
@@ -131,7 +135,7 @@ export default async function BlogPostPage(props: {
           </h1>
 
           {post.excerpt && (
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            <p className="text-muted-foreground mt-6 max-w-3xl text-lg leading-relaxed md:text-xl">
               {post.excerpt}
             </p>
           )}
@@ -139,9 +143,13 @@ export default async function BlogPostPage(props: {
           {(post.authors.length > 0 || post.tags.length > 0) && (
             <div className="mt-8 flex flex-col gap-4 border-y py-5 md:flex-row md:items-center md:justify-between">
               {post.authors.length > 0 && (
-                <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-                  <span className="font-medium text-foreground">Written by</span>
-                  <span>{post.authors.map((author) => author.name).join(', ')}</span>
+                <div className="text-muted-foreground flex flex-wrap items-center gap-2 text-sm">
+                  <span className="text-foreground font-medium">
+                    Written by
+                  </span>
+                  <span>
+                    {post.authors.map((author) => author.name).join(', ')}
+                  </span>
                 </div>
               )}
 
@@ -150,7 +158,7 @@ export default async function BlogPostPage(props: {
                   {post.tags.map((tag) => (
                     <span
                       key={tag.slug}
-                      className="rounded-full border bg-muted/40 px-3 py-1 text-xs text-muted-foreground"
+                      className="bg-muted/40 text-muted-foreground rounded-full border px-3 py-1 text-xs"
                     >
                       {tag.name}
                     </span>
@@ -161,7 +169,7 @@ export default async function BlogPostPage(props: {
           )}
 
           {post.featureImage && (
-            <div className="mt-10 overflow-hidden rounded-3xl border bg-card">
+            <div className="bg-card mt-10 overflow-hidden rounded-3xl border">
               <Image
                 src={post.featureImage}
                 alt={post.featureImageAlt || post.title}
@@ -182,21 +190,21 @@ export default async function BlogPostPage(props: {
 
       <section className="border-t py-16 md:py-20">
         <div className="container">
-          <div className="relative overflow-hidden rounded-2xl border bg-card px-8 py-14 text-center md:px-16">
+          <div className="bg-card relative overflow-hidden rounded-2xl border px-8 py-14 text-center md:px-16">
             <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-              <div className="absolute -top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/5 blur-3xl" />
+              <div className="bg-primary/5 absolute -top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full blur-3xl" />
             </div>
             <div className="mx-auto max-w-2xl">
               <h2 className="mb-4 text-3xl font-bold tracking-tight text-balance md:text-4xl">
                 Ready to put these ideas into practice?
               </h2>
-              <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
-                Explore the platform, docs, and open-source modules behind the workflows we
-                write about on the Fleetbase blog.
+              <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
+                Explore the platform, docs, and source-available modules behind
+                the workflows we write about on the LogisBase blog.
               </p>
               <Button asChild>
                 <Link href="/product">
-                  Explore Fleetbase <ArrowRight className="ml-2 size-4" />
+                  Explore LogisBase <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
             </div>

@@ -1,6 +1,14 @@
 'use client';
 
-import { Activity, ArrowRight, Check, Copy, DollarSign, MapPin, Package } from 'lucide-react';
+import {
+  Activity,
+  ArrowRight,
+  Check,
+  Copy,
+  DollarSign,
+  MapPin,
+  Package,
+} from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -23,11 +31,11 @@ const TABS_DATA = [
     icon: DollarSign,
     title: 'Fetch Service Quotes',
     description: 'Get real-time quotes for pickup/dropoff',
-    code: `import Fleetbase from '@fleetbase/sdk';
+    code: `import LogisBase from '@logisbase/sdk';
 
-const fleetbase = new Fleetbase('<Your API Key>');
+const logisbase = new LogisBase('<Your API Key>');
 
-const serviceQuotes = await fleetbase.serviceQuotes.query({
+const serviceQuotes = await logisbase.serviceQuotes.query({
   pickup: '10020 2nd Ave S, Seattle, WA',
   dropoff: '101 W Olympic Pl, Seattle, WA',
   currency: 'USD',
@@ -53,11 +61,11 @@ console.log(
     icon: Package,
     title: 'Create an Order',
     description: 'Easily create logistics orders via API',
-    code: `import Fleetbase from '@fleetbase/sdk';
+    code: `import LogisBase from '@logisbase/sdk';
 
-const fleetbase = new Fleetbase('<Your API Key>');
+const logisbase = new LogisBase('<Your API Key>');
 
-const order = await fleetbase.orders.create({
+const order = await logisbase.orders.create({
   payload: {
     pickup: '123 Main St, Seattle, WA 98101',
     dropoff: '456 Pike St, Seattle, WA 98102',
@@ -83,12 +91,12 @@ console.log(\`  Tracking Number: \${order.getAttribute('tracking_number')}\`);`,
     icon: Activity,
     title: 'Subscribe to Activity',
     description: 'Listen for order and driver events live',
-    code: `import Fleetbase from '@fleetbase/sdk';
+    code: `import LogisBase from '@logisbase/sdk';
 
-const fleetbase = new Fleetbase('<Your API Key>');
+const logisbase = new LogisBase('<Your API Key>');
 
 // Order status changes
-fleetbase.on('order.status_changed', (event) => {
+logisbase.on('order.status_changed', (event) => {
   console.log('Order updated:');
   console.log(\`  ID:         \${event.data.id}\`);
   console.log(\`  New Status: \${event.data.status}\`);
@@ -96,7 +104,7 @@ fleetbase.on('order.status_changed', (event) => {
 });
 
 // Driver location updates
-fleetbase.on('driver.location_updated', (event) => {
+logisbase.on('driver.location_updated', (event) => {
   console.log('Driver moved:');
   console.log(\`  Driver:   \${event.data.name}\`);
   console.log(\`  Location: \${event.data.latitude}, \${event.data.longitude}\`);
@@ -104,7 +112,7 @@ fleetbase.on('driver.location_updated', (event) => {
 });
 
 // Order completion with proof of delivery
-fleetbase.on('order.completed', (event) => {
+logisbase.on('order.completed', (event) => {
   console.log(\`Order \${event.data.tracking_number} completed!\`);
   console.log(\`  POD: \${event.data.proof_of_delivery_url}\`);
 });`,
@@ -114,11 +122,11 @@ fleetbase.on('order.completed', (event) => {
     icon: MapPin,
     title: 'Locate Nearby Drivers',
     description: 'Search for drivers by proximity radius',
-    code: `import Fleetbase from '@fleetbase/sdk';
+    code: `import LogisBase from '@logisbase/sdk';
 
-const fleetbase = new Fleetbase('<Your API Key>');
+const logisbase = new LogisBase('<Your API Key>');
 
-const drivers = await fleetbase.drivers.queryNearby({
+const drivers = await logisbase.drivers.queryNearby({
   latitude: 47.6062,
   longitude: -122.3321,
   radius: 5000,   // 5 km
@@ -155,7 +163,10 @@ const FeaturesTabsSection = () => {
     };
     checkTheme();
     const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
     return () => observer.disconnect();
   }, []);
 
@@ -178,17 +189,18 @@ const FeaturesTabsSection = () => {
       <div className="flex flex-col justify-between gap-2">
         <div className="space-y-6 text-balance lg:max-w-lg">
           <h2 className="text-4xxl leading-tight tracking-tight md:text-5xl">
-            Integrate in{' '}
-            <br className="hidden lg:block" />
-            Minutes, Not{' '}
-            <br className="hidden lg:block" />
+            Integrate in <br className="hidden lg:block" />
+            Minutes, Not <br className="hidden lg:block" />
             Months
           </h2>
-          <span className="text-xl font-bold leading-7">Fleetbase Developer Toolkit</span>
+          <span className="text-xl leading-7 font-bold">
+            LogisBase Developer Toolkit
+          </span>
           <p className="text-muted-foreground mt-3 text-lg leading-snug">
-            A fully documented REST API, JavaScript SDK, and real-time WebSocket events give your
-            team everything needed to build, automate, and extend your logistics operations —
-            without waiting on vendor support.
+            A fully documented REST API, JavaScript SDK, and real-time WebSocket
+            events give your team everything needed to build, automate, and
+            extend your logistics operations — without waiting on vendor
+            support.
           </p>
         </div>
 
@@ -210,20 +222,22 @@ const FeaturesTabsSection = () => {
                       <div className="flex items-center gap-2">
                         <tab.icon
                           className={cn(
-                            'size-4 shrink-0 text-muted-foreground transition-colors',
+                            'text-muted-foreground size-4 shrink-0 transition-colors',
                             activeTab === tab.id && 'text-accent-foreground',
                           )}
                         />
                         <span
                           className={cn(
-                            'text-lg text-muted-foreground transition-colors',
+                            'text-muted-foreground text-lg transition-colors',
                             activeTab === tab.id && 'text-accent-foreground',
                           )}
                         >
                           {tab.title}
                         </span>
                       </div>
-                      <span className="text-sm text-muted-foreground">{tab.description}</span>
+                      <span className="text-muted-foreground text-sm">
+                        {tab.description}
+                      </span>
                     </div>
                     <AnimatePresence>
                       {activeTab === tab.id && (
@@ -232,7 +246,10 @@ const FeaturesTabsSection = () => {
                           initial={{ opacity: 0, x: -8 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -8 }}
-                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{
+                            duration: 0.3,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
                         >
                           <ArrowRight className="size-5" />
                         </motion.div>
@@ -265,8 +282,15 @@ const FeaturesTabsSection = () => {
                         className="flex items-center justify-between border-b px-3 py-2"
                         style={{ backgroundColor: headerBg, borderColor }}
                       >
-                        <span className="font-mono text-xs text-muted-foreground">JavaScript</span>
-                        <Button variant="ghost" size="sm" onClick={handleCopy} className="h-7 px-2">
+                        <span className="text-muted-foreground font-mono text-xs">
+                          JavaScript
+                        </span>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={handleCopy}
+                          className="h-7 px-2"
+                        >
                           {copied ? (
                             <Check className="h-3.5 w-3.5" />
                           ) : (
@@ -315,8 +339,15 @@ const FeaturesTabsSection = () => {
           className="flex shrink-0 items-center justify-between border-b px-4 py-3"
           style={{ backgroundColor: headerBg, borderColor }}
         >
-          <span className="font-mono text-sm text-muted-foreground">JavaScript</span>
-          <Button variant="ghost" size="sm" onClick={handleCopy} className="h-8 px-2">
+          <span className="text-muted-foreground font-mono text-sm">
+            JavaScript
+          </span>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={handleCopy}
+            className="h-8 px-2"
+          >
             {copied ? (
               <>
                 <Check className="mr-1.5 h-3.5 w-3.5" />

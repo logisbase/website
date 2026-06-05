@@ -7,10 +7,17 @@ import { fileURLToPath } from 'node:url';
 
 import { z } from 'zod';
 
-import { readAgentArtifacts, readJsonFile, writeJsonFile } from './artifacts.mjs';
+import {
+  readAgentArtifacts,
+  readJsonFile,
+  writeJsonFile,
+} from './artifacts.mjs';
 import { callOpenAiJson } from './openai-json.mjs';
 import { contentAgentConfig } from './content-agent.config.mjs';
-import { normalizeFleetbaseArticle, validateFleetbaseArticle } from './content-rules.mjs';
+import {
+  normalizeLogisBaseArticle,
+  validateLogisBaseArticle,
+} from './content-rules.mjs';
 import { findDuplicateContent } from './dedupe.mjs';
 import { selectContextSources } from './context.mjs';
 import {
@@ -53,7 +60,10 @@ const TOPIC_JSON_SCHEMA = {
           businessFit: { type: 'number', minimum: 0, maximum: 10 },
           opportunity: { type: 'number', minimum: 0, maximum: 10 },
           competitorWeakness: { type: 'number', minimum: 0, maximum: 10 },
-          cannibalizationRisk: { type: 'string', enum: ['low', 'medium', 'high'] },
+          cannibalizationRisk: {
+            type: 'string',
+            enum: ['low', 'medium', 'high'],
+          },
           rationale: { type: 'string', minLength: 20 },
           suggestedInternalLinks: { type: 'array', items: { type: 'string' } },
         },
@@ -87,7 +97,11 @@ const BRIEF_JSON_SCHEMA = {
     audience: { type: 'string', minLength: 1 },
     searchIntent: { type: 'string', minLength: 1 },
     thesis: { type: 'string', minLength: 20 },
-    outline: { type: 'array', minItems: 4, items: { type: 'string', minLength: 3 } },
+    outline: {
+      type: 'array',
+      minItems: 4,
+      items: { type: 'string', minLength: 3 },
+    },
     internalLinks: { type: 'array', items: { type: 'string' } },
     cta: { type: 'string', minLength: 10 },
     metaTitle: { type: 'string', minLength: 10, maxLength: 80 },
@@ -152,7 +166,13 @@ const QA_JSON_SCHEMA = {
     warnings: { type: 'array', items: { type: 'string' } },
     recommendedFixes: { type: 'array', items: { type: 'string' } },
   },
-  required: ['publishReady', 'score', 'blockingIssues', 'warnings', 'recommendedFixes'],
+  required: [
+    'publishReady',
+    'score',
+    'blockingIssues',
+    'warnings',
+    'recommendedFixes',
+  ],
 };
 
 const FEATURE_IMAGE_JSON_SCHEMA = {
@@ -176,7 +196,10 @@ function parseArgs(argv) {
   const args = {
     outputDir:
       process.env.CONTENT_AGENT_OUTPUT_DIR ||
-      path.join(process.env.RUNNER_TEMP || os.tmpdir(), 'fleetbase-content-agent'),
+      path.join(
+        process.env.RUNNER_TEMP || os.tmpdir(),
+        'logisbase-content-agent',
+      ),
     topicMode: process.env.CONTENT_AGENT_TOPIC_MODE || 'auto',
     integrationTarget: process.env.CONTENT_AGENT_INTEGRATION_TARGET || '',
     generateFeatureImage: process.env.GENERATE_FEATURE_IMAGE !== 'false',
@@ -184,16 +207,22 @@ function parseArgs(argv) {
 
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
-    if (arg === '--output-dir') args.outputDir = argv[index + 1] || args.outputDir;
-    if (arg === '--topic-mode') args.topicMode = argv[index + 1] || args.topicMode;
-    if (arg === '--integration-target') args.integrationTarget = argv[index + 1] || '';
+    if (arg === '--output-dir')
+      args.outputDir = argv[index + 1] || args.outputDir;
+    if (arg === '--topic-mode')
+      args.topicMode = argv[index + 1] || args.topicMode;
+    if (arg === '--integration-target')
+      args.integrationTarget = argv[index + 1] || '';
     if (arg === '--no-feature-image') args.generateFeatureImage = false;
   }
 
   return args;
 }
 
-function summarizeContext(selectedContext, { maxCharsPerSource = 1200, maxTotalChars = 12000 } = {}) {
+function summarizeContext(
+  selectedContext,
+  { maxCharsPerSource = 1200, maxTotalChars = 12000 } = {},
+) {
   const chunks = [];
   let totalChars = 0;
 
@@ -246,11 +275,24 @@ function dedupeTopics(topics) {
   return uniqueTopics;
 }
 
-function summarizeFleetbaseKnowledge(manifest = [], { maxItems = 18, maxExcerptChars = 260 } = {}) {
-  const preferredCategories = new Set(['website-page', 'documentation', 'api-reference', 'fleetops', 'core-api']);
+function summarizeLogisBaseKnowledge(
+  manifest = [],
+  { maxItems = 18, maxExcerptChars = 260 } = {},
+) {
+  const preferredCategories = new Set([
+    'website-page',
+    'documentation',
+    'api-reference',
+    'fleetops',
+    'core-api',
+  ]);
 
   return manifest
-    .filter((item) => preferredCategories.has(item.category) || ['fleetbase.io', 'fleetops', 'core-api'].includes(item.repo))
+    .filter(
+      (item) =>
+        preferredCategories.has(item.category) ||
+        ['logisbase.com', 'fleetops', 'core-api'].includes(item.repo),
+    )
     .slice(0, maxItems)
     .map((item) => ({
       repo: item.repo,
@@ -284,7 +326,9 @@ function topicToOpportunity(topic) {
 
 function findOpportunityForTopic(topic, opportunities) {
   return (
-    opportunities.find((opportunity) => opportunity.keyword === topic.keyword) || {
+    opportunities.find(
+      (opportunity) => opportunity.keyword === topic.keyword,
+    ) || {
       keyword: topic.keyword,
       cluster: topic.cluster,
       volume: null,
@@ -306,7 +350,7 @@ function titleizeKeyword(keyword) {
 }
 
 function slugifyText(value) {
-  return String(value || 'fleetbase-logistics-article')
+  return String(value || 'logisbase-logistics-article')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
@@ -314,7 +358,9 @@ function slugifyText(value) {
 }
 
 function truncateText(value, maxLength) {
-  const text = String(value || '').replace(/\s+/g, ' ').trim();
+  const text = String(value || '')
+    .replace(/\s+/g, ' ')
+    .trim();
   if (text.length <= maxLength) return text;
 
   return text.slice(0, maxLength - 1).trimEnd();
@@ -332,7 +378,7 @@ function topicFromManualOpportunity(opportunity) {
     competitorWeakness: 5,
     cannibalizationRisk: 'low',
     rationale: 'Manual workflow_dispatch topic override supplied by an editor.',
-    suggestedInternalLinks: ['https://fleetbase.io/docs'],
+    suggestedInternalLinks: ['https://logisbase.com/docs'],
   };
 }
 
@@ -351,7 +397,9 @@ function selectNonDuplicateTopic(topics, existingGhostContent) {
   );
 
   if (!selected) {
-    throw new Error('OpenAI returned only duplicate topic ideas. Add a manual topic or expand curated topic ideas.');
+    throw new Error(
+      'OpenAI returned only duplicate topic ideas. Add a manual topic or expand curated topic ideas.',
+    );
   }
 
   return selected;
@@ -363,28 +411,33 @@ function getContentFocus(researchInput) {
 
 async function expandTopicCandidates({ researchInput, config, fetchImpl }) {
   const system =
-    'You are a Fleetbase content strategist. Brainstorm useful, specific article topics with strong logistics, developer, and operations intent. Return only valid JSON matching the schema.';
+    'You are a LogisBase content strategist. Brainstorm useful, specific article topics with strong logistics, developer, and operations intent. Return only valid JSON matching the schema.';
   const prompt = JSON.stringify(
     {
-      task: 'Expand Fleetbase blog topic candidates before final topic selection.',
+      task: 'Expand LogisBase blog topic candidates before final topic selection.',
       contentFocus: getContentFocus(researchInput),
       topicMode: researchInput.topicMode || 'auto',
       integrationTarget: researchInput.integrationTarget || '',
       siteUrl: config.siteUrl,
-      fleetbasePositioning: config.contentStrategy.requiredRelevance,
+      logisbasePositioning: config.contentStrategy.requiredRelevance,
       contentMix: config.contentStrategy.contentMix,
       editorialRules: config.contentStrategy.editorialRules,
       curatedTopicIdeas: config.topicIdeas,
-      seedOpportunities: (researchInput.ahrefs?.opportunities || []).slice(0, 60),
+      seedOpportunities: (researchInput.ahrefs?.opportunities || []).slice(
+        0,
+        60,
+      ),
       existingGhostContent: compactPosts(researchInput.existingGhostContent),
-      fleetbaseKnowledge: summarizeFleetbaseKnowledge(researchInput.sourceManifest || []),
+      logisbaseKnowledge: summarizeLogisBaseKnowledge(
+        researchInput.sourceManifest || [],
+      ),
       requirements: [
         `Return ${MAX_EXPANDED_TOPICS} varied topic candidates.`,
         'Use your general knowledge of logistics, ecommerce, ERP, CRM, dispatch, delivery operations, and developer integration patterns.',
         'Do not merely restate the seed topics. Create fresh angles, practical workflows, comparisons, integration guides, and operator pain-point articles.',
-        'Prefer topics Fleetbase can credibly support with website, docs, Fleet-Ops, core API, or source-truth context.',
+        'Prefer topics LogisBase can credibly support with website, docs, Fleet-Ops, core API, or source-truth context.',
         'Include integration ideas beyond the seed list when they are plausible for logistics operations, such as marketplaces, ERPs, CRMs, ecommerce platforms, webhooks, automation tools, and order-management systems.',
-        'Do not invent specific Fleetbase endpoint names, UI screens, SocketCluster channels, parameters, or product behavior.',
+        'Do not invent specific LogisBase endpoint names, UI screens, SocketCluster channels, parameters, or product behavior.',
         'Avoid topics already covered by existingGhostContent.',
         'Numeric score fields must be numbers. cannibalizationRisk must be low, medium, or high.',
       ],
@@ -395,7 +448,7 @@ async function expandTopicCandidates({ researchInput, config, fetchImpl }) {
   const result = await callOpenAiJson({
     system,
     prompt,
-    schemaName: 'fleetbase_topic_expansion',
+    schemaName: 'logisbase_topic_expansion',
     jsonSchema: TOPIC_JSON_SCHEMA,
     zodSchema: TopicListSchema,
     maxOutputTokens: 7200,
@@ -408,14 +461,20 @@ async function expandTopicCandidates({ researchInput, config, fetchImpl }) {
 
 async function generateTopic({ researchInput, config, fetchImpl }) {
   const opportunities = researchInput.ahrefs?.opportunities || [];
-  const manualOpportunity = opportunities.find((opportunity) => opportunity.source === 'manual');
+  const manualOpportunity = opportunities.find(
+    (opportunity) => opportunity.source === 'manual',
+  );
 
   if (manualOpportunity) {
     const topic = topicFromManualOpportunity(manualOpportunity);
     return { topic, topics: [topic] };
   }
 
-  const expandedTopics = await expandTopicCandidates({ researchInput, config, fetchImpl });
+  const expandedTopics = await expandTopicCandidates({
+    researchInput,
+    config,
+    fetchImpl,
+  });
   const expandedOpportunities = dedupeTopics([
     ...expandedTopics,
     ...opportunities.map((opportunity) => ({
@@ -428,16 +487,20 @@ async function generateTopic({ researchInput, config, fetchImpl }) {
       opportunity: opportunity.opportunity || 6,
       competitorWeakness: opportunity.competitorWeakness || 5,
       cannibalizationRisk: opportunity.cannibalizationRisk || 'low',
-      rationale: opportunity.rationale || 'Seed topic candidate from configured topic opportunities.',
-      suggestedInternalLinks: opportunity.suggestedInternalLinks || ['https://fleetbase.io/docs'],
+      rationale:
+        opportunity.rationale ||
+        'Seed topic candidate from configured topic opportunities.',
+      suggestedInternalLinks: opportunity.suggestedInternalLinks || [
+        'https://logisbase.com/docs',
+      ],
     })),
   ]).map(topicToOpportunity);
 
   const system =
-    'You are Fleetbase editorial strategist. Choose specific, useful logistics software article topics. Return only valid JSON matching the schema.';
+    'You are LogisBase editorial strategist. Choose specific, useful logistics software article topics. Return only valid JSON matching the schema.';
   const prompt = JSON.stringify(
     {
-      task: 'Generate and score Fleetbase blog topic candidates.',
+      task: 'Generate and score LogisBase blog topic candidates.',
       contentFocus: getContentFocus(researchInput),
       topicMode: researchInput.topicMode || 'auto',
       integrationTarget: researchInput.integrationTarget || '',
@@ -451,7 +514,7 @@ async function generateTopic({ researchInput, config, fetchImpl }) {
         'Prefer practical articles a logistics operator or developer would actually read.',
         'Choose from the expanded candidate pool or synthesize a stronger topic from it.',
         'Use AI-first topic creativity; do not limit yourself to narrow keyword rows.',
-        'Integration articles are welcome when they connect Fleetbase to an ERP, CRM, ecommerce, webhook, or automation workflow.',
+        'Integration articles are welcome when they connect LogisBase to an ERP, CRM, ecommerce, webhook, or automation workflow.',
         'Return at least five candidate topics unless a manual topic is the only candidate.',
         'Numeric score fields must be numbers. cannibalizationRisk must be low, medium, or high.',
       ],
@@ -462,7 +525,7 @@ async function generateTopic({ researchInput, config, fetchImpl }) {
   const result = await callOpenAiJson({
     system,
     prompt,
-    schemaName: 'fleetbase_topic_candidates',
+    schemaName: 'logisbase_topic_candidates',
     jsonSchema: TOPIC_JSON_SCHEMA,
     zodSchema: TopicListSchema,
     maxOutputTokens: 2400,
@@ -470,28 +533,37 @@ async function generateTopic({ researchInput, config, fetchImpl }) {
   });
 
   return {
-    topic: selectNonDuplicateTopic(result.topics, researchInput.existingGhostContent || []),
+    topic: selectNonDuplicateTopic(
+      result.topics,
+      researchInput.existingGhostContent || [],
+    ),
     topics: result.topics,
     expandedTopics,
   };
 }
 
-async function generateBrief({ topic, contextSummary, researchInput, config, fetchImpl }) {
+async function generateBrief({
+  topic,
+  contextSummary,
+  researchInput,
+  config,
+  fetchImpl,
+}) {
   const system =
-    'You write concise, source-grounded SEO content briefs for Fleetbase. Return only valid JSON matching the schema.';
+    'You write concise, source-grounded SEO content briefs for LogisBase. Return only valid JSON matching the schema.';
   const prompt = JSON.stringify(
     {
-      task: 'Create one Fleetbase blog brief.',
+      task: 'Create one LogisBase blog brief.',
       topic,
       contentFocus: getContentFocus(researchInput),
       siteUrl: config.siteUrl,
       editorialRules: config.contentStrategy.editorialRules,
       sourceContext: contextSummary,
       requirements: [
-        'Make the brief specific to Fleetbase, Fleet-Ops, logistics operations, or a practical integration/API workflow.',
-        'Use https://fleetbase.io for website links and https://fleetbase.io/docs for documentation links.',
-        'Do not use fleetbase.ghost.io links.',
-        'Do not include steps to install, enable, activate, add, or turn on Fleet-Ops or other core Fleetbase extensions. They are bundled and active by default in Fleetbase Cloud and standard self-hosted Fleetbase.',
+        'Make the brief specific to LogisBase, Fleet-Ops, logistics operations, or a practical integration/API workflow.',
+        'Use https://logisbase.com for website links and https://logisbase.com/docs for documentation links.',
+        'Do not use logisbase.ghost.io links.',
+        'Do not include steps to install, enable, activate, add, or turn on Fleet-Ops or other core LogisBase extensions. They are bundled and active by default in LogisBase Cloud and standard self-hosted LogisBase.',
         'Keep metaTitle between 10 and 80 characters. Keep metaDescription between 30 and 180 characters.',
         'Include only internal links supported by the context.',
       ],
@@ -503,7 +575,7 @@ async function generateBrief({ topic, contextSummary, researchInput, config, fet
   return callOpenAiJson({
     system,
     prompt,
-    schemaName: 'fleetbase_content_brief',
+    schemaName: 'logisbase_content_brief',
     jsonSchema: BRIEF_JSON_SCHEMA,
     zodSchema: ContentBriefSchema,
     maxOutputTokens: 3200,
@@ -511,12 +583,20 @@ async function generateBrief({ topic, contextSummary, researchInput, config, fet
   });
 }
 
-async function generateDraft({ brief, topic, contextSummary, citationCandidates, researchInput, config, fetchImpl }) {
+async function generateDraft({
+  brief,
+  topic,
+  contextSummary,
+  citationCandidates,
+  researchInput,
+  config,
+  fetchImpl,
+}) {
   const system =
-    'You write polished Fleetbase blog articles in clean semantic HTML. Return only valid JSON matching the schema.';
+    'You write polished LogisBase blog articles in clean semantic HTML. Return only valid JSON matching the schema.';
   const prompt = JSON.stringify(
     {
-      task: 'Write one complete Fleetbase blog article.',
+      task: 'Write one complete LogisBase blog article.',
       topic,
       brief,
       contentFocus: getContentFocus(researchInput),
@@ -530,11 +610,11 @@ async function generateDraft({ brief, topic, contextSummary, citationCandidates,
         'Do not include markdown fences, scripts, styles, iframes, or publication boilerplate.',
         'Use Fleet-Ops spelling exactly.',
         'Avoid outdated API-first positioning.',
-        'Do not tell readers to install, enable, activate, add, turn on, or set up Fleet-Ops or other core Fleetbase extensions before use. Fleet-Ops and other core extensions are already bundled, installed, and active by default in Fleetbase Cloud and standard self-hosted Fleetbase.',
-        'Every Fleetbase product/API claim must be supported by sourceContext and represented in sourceCitations.',
+        'Do not tell readers to install, enable, activate, add, turn on, or set up Fleet-Ops or other core LogisBase extensions before use. Fleet-Ops and other core extensions are already bundled, installed, and active by default in LogisBase Cloud and standard self-hosted LogisBase.',
+        'Every LogisBase product/API claim must be supported by sourceContext and represented in sourceCitations.',
         'Do not name API request fields, query parameters, response properties, webhook fields, or configuration keys unless the exact name appears in sourceContext or citationCandidates.',
         'Keep excerpt between 30 and 300 characters. Keep metaTitle between 10 and 80 characters. Keep metaDescription between 30 and 180 characters.',
-        'Use https://fleetbase.io and https://fleetbase.io/docs links only.',
+        'Use https://logisbase.com and https://logisbase.com/docs links only.',
       ],
     },
     null,
@@ -544,7 +624,7 @@ async function generateDraft({ brief, topic, contextSummary, citationCandidates,
   return callOpenAiJson({
     system,
     prompt,
-    schemaName: 'fleetbase_article_draft',
+    schemaName: 'logisbase_article_draft',
     jsonSchema: DRAFT_JSON_SCHEMA,
     zodSchema: DraftWithCitationsSchema,
     maxOutputTokens: 9000,
@@ -553,12 +633,19 @@ async function generateDraft({ brief, topic, contextSummary, citationCandidates,
   });
 }
 
-async function generateQa({ brief, draft, topic, ruleCheck, researchInput, fetchImpl }) {
+async function generateQa({
+  brief,
+  draft,
+  topic,
+  ruleCheck,
+  researchInput,
+  fetchImpl,
+}) {
   const system =
-    'You are an advisory Fleetbase editor. Return only valid JSON matching the schema.';
+    'You are an advisory LogisBase editor. Return only valid JSON matching the schema.';
   const prompt = JSON.stringify(
     {
-      task: 'QA this Fleetbase blog draft for human review.',
+      task: 'QA this LogisBase blog draft for human review.',
       topic,
       brief,
       draft,
@@ -567,7 +654,7 @@ async function generateQa({ brief, draft, topic, ruleCheck, researchInput, fetch
       requirements: [
         'Set publishReady true unless there is a severe factual or structural issue.',
         'Put review concerns in warnings and recommendedFixes, not blockingIssues.',
-        'Warn if the draft tells readers to install, enable, activate, add, turn on, or set up Fleet-Ops or another bundled core Fleetbase extension.',
+        'Warn if the draft tells readers to install, enable, activate, add, turn on, or set up Fleet-Ops or another bundled core LogisBase extension.',
         'Warn if the draft names API fields, query parameters, response properties, webhook fields, or configuration keys that are not visibly supported by the provided citations or source context.',
         'Do not ask to publish or schedule the post.',
       ],
@@ -579,7 +666,7 @@ async function generateQa({ brief, draft, topic, ruleCheck, researchInput, fetch
   return callOpenAiJson({
     system,
     prompt,
-    schemaName: 'fleetbase_article_qa',
+    schemaName: 'logisbase_article_qa',
     jsonSchema: QA_JSON_SCHEMA,
     zodSchema: QaResultSchema,
     maxOutputTokens: 1600,
@@ -589,7 +676,9 @@ async function generateQa({ brief, draft, topic, ruleCheck, researchInput, fetch
 }
 
 function buildFallbackFeatureImageBrief({ brief, draft, config }) {
-  const tags = draft.publicTags?.length ? draft.publicTags.join(', ') : 'logistics software';
+  const tags = draft.publicTags?.length
+    ? draft.publicTags.join(', ')
+    : 'logistics software';
   const prompt = [
     config.featureImage.styleGuide,
     `Create a landscape editorial feature image for an article titled "${draft.title || brief.title}".`,
@@ -602,7 +691,10 @@ function buildFallbackFeatureImageBrief({ brief, draft, config }) {
   );
   const fallback = {
     prompt,
-    altText: altText.length >= 20 ? altText : 'Editorial logistics software scene with delivery routes and dispatch panels.',
+    altText:
+      altText.length >= 20
+        ? altText
+        : 'Editorial logistics software scene with delivery routes and dispatch panels.',
     filename: `${slugifyText(draft.slug || brief.slug || draft.title || brief.title)}.png`,
   };
 
@@ -611,7 +703,7 @@ function buildFallbackFeatureImageBrief({ brief, draft, config }) {
 
 async function generateFeatureImageBrief({ brief, draft, config, fetchImpl }) {
   const system =
-    'You write image-generation prompts for Fleetbase blog feature images. Return only valid JSON matching the schema.';
+    'You write image-generation prompts for LogisBase blog feature images. Return only valid JSON matching the schema.';
   const prompt = JSON.stringify(
     {
       task: 'Create a feature image brief for this article.',
@@ -636,7 +728,7 @@ async function generateFeatureImageBrief({ brief, draft, config, fetchImpl }) {
   return callOpenAiJson({
     system,
     prompt,
-    schemaName: 'fleetbase_feature_image_brief',
+    schemaName: 'logisbase_feature_image_brief',
     jsonSchema: FEATURE_IMAGE_JSON_SCHEMA,
     zodSchema: FeatureImageBriefSchema,
     maxOutputTokens: 900,
@@ -645,26 +737,52 @@ async function generateFeatureImageBrief({ brief, draft, config, fetchImpl }) {
   });
 }
 
-export async function generateArtifacts({ outputDir, config = contentAgentConfig, fetchImpl = fetch, generateFeatureImage = true } = {}) {
-  const researchInput = await readJsonFile(path.join(outputDir, 'research-input.json'));
-  const { topic, topics, expandedTopics } = await generateTopic({ researchInput, config, fetchImpl });
-  const selectedContext = selectContextSources(researchInput.sourceManifest || [], config, {
-    contentFocus: getContentFocus(researchInput),
-    topic,
-    keyword: topic.keyword,
-    contentStrategy: config.contentStrategy,
-    maxSelectedFiles: 10,
+export async function generateArtifacts({
+  outputDir,
+  config = contentAgentConfig,
+  fetchImpl = fetch,
+  generateFeatureImage = true,
+} = {}) {
+  const researchInput = await readJsonFile(
+    path.join(outputDir, 'research-input.json'),
+  );
+  const { topic, topics, expandedTopics } = await generateTopic({
+    researchInput,
+    config,
+    fetchImpl,
   });
-  const boundedContext = selectedContext.length > 0 ? selectedContext : (researchInput.sourceManifest || []).slice(0, 10);
+  const selectedContext = selectContextSources(
+    researchInput.sourceManifest || [],
+    config,
+    {
+      contentFocus: getContentFocus(researchInput),
+      topic,
+      keyword: topic.keyword,
+      contentStrategy: config.contentStrategy,
+      maxSelectedFiles: 10,
+    },
+  );
+  const boundedContext =
+    selectedContext.length > 0
+      ? selectedContext
+      : (researchInput.sourceManifest || []).slice(0, 10);
   const contextSummary = summarizeContext(boundedContext);
-  const citationCandidates = boundedContext.map(({ repo, category, path: sourcePath, title, excerpt }) => ({
-    repo,
-    category,
-    path: sourcePath,
-    title,
-    evidence: String(excerpt || '').slice(0, 500),
-  }));
-  const brief = await generateBrief({ topic, contextSummary, researchInput, config, fetchImpl });
+  const citationCandidates = boundedContext.map(
+    ({ repo, category, path: sourcePath, title, excerpt }) => ({
+      repo,
+      category,
+      path: sourcePath,
+      title,
+      evidence: String(excerpt || '').slice(0, 500),
+    }),
+  );
+  const brief = await generateBrief({
+    topic,
+    contextSummary,
+    researchInput,
+    config,
+    fetchImpl,
+  });
   const draftResult = await generateDraft({
     brief,
     topic,
@@ -678,13 +796,20 @@ export async function generateArtifacts({ outputDir, config = contentAgentConfig
     ...(expandedTopics || []).map(topicToOpportunity),
     ...(researchInput.ahrefs?.opportunities || []),
   ]);
-  const draft = normalizeFleetbaseArticle({
+  const draft = normalizeLogisBaseArticle({
     ...draftResult,
     targetKeyword: brief.targetKeyword || topic.keyword,
     ahrefsOpportunity: opportunity,
   });
-  const ruleCheck = validateFleetbaseArticle(draft);
-  const qa = await generateQa({ brief, draft, topic, ruleCheck, researchInput, fetchImpl });
+  const ruleCheck = validateLogisBaseArticle(draft);
+  const qa = await generateQa({
+    brief,
+    draft,
+    topic,
+    ruleCheck,
+    researchInput,
+    fetchImpl,
+  });
 
   await writeJsonFile(path.join(outputDir, 'topic.json'), topic);
   await writeJsonFile(path.join(outputDir, 'topic-candidates.json'), {
@@ -694,7 +819,10 @@ export async function generateArtifacts({ outputDir, config = contentAgentConfig
   });
   await writeJsonFile(path.join(outputDir, 'brief.json'), brief);
   await writeJsonFile(path.join(outputDir, 'draft.json'), draft);
-  await writeJsonFile(path.join(outputDir, 'source-citations.json'), draft.sourceCitations);
+  await writeJsonFile(
+    path.join(outputDir, 'source-citations.json'),
+    draft.sourceCitations,
+  );
   await writeJsonFile(path.join(outputDir, 'qa.json'), {
     ...qa,
     blockingIssues: [],
@@ -703,11 +831,26 @@ export async function generateArtifacts({ outputDir, config = contentAgentConfig
 
   if (generateFeatureImage) {
     try {
-      const featureImageBrief = await generateFeatureImageBrief({ brief, draft, config, fetchImpl });
-      await writeJsonFile(path.join(outputDir, 'feature-image-brief.json'), featureImageBrief);
+      const featureImageBrief = await generateFeatureImageBrief({
+        brief,
+        draft,
+        config,
+        fetchImpl,
+      });
+      await writeJsonFile(
+        path.join(outputDir, 'feature-image-brief.json'),
+        featureImageBrief,
+      );
     } catch (error) {
-      const fallbackFeatureImageBrief = buildFallbackFeatureImageBrief({ brief, draft, config });
-      await writeJsonFile(path.join(outputDir, 'feature-image-brief.json'), fallbackFeatureImageBrief);
+      const fallbackFeatureImageBrief = buildFallbackFeatureImageBrief({
+        brief,
+        draft,
+        config,
+      });
+      await writeJsonFile(
+        path.join(outputDir, 'feature-image-brief.json'),
+        fallbackFeatureImageBrief,
+      );
       console.warn(
         `[content-agent:generate-artifacts] Feature image brief failed; using fallback brief: ${error.message}`,
       );
@@ -722,10 +865,15 @@ export async function generateArtifacts({ outputDir, config = contentAgentConfig
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   await generateArtifacts(args);
-  console.log(`[content-agent:generate-artifacts] Artifacts written to ${args.outputDir}`);
+  console.log(
+    `[content-agent:generate-artifacts] Artifacts written to ${args.outputDir}`,
+  );
 }
 
-if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
+if (
+  process.argv[1] &&
+  fileURLToPath(import.meta.url) === path.resolve(process.argv[1])
+) {
   main().catch((error) => {
     console.error(`[content-agent:generate-artifacts] ${error.message}`);
     process.exitCode = 1;

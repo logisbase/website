@@ -1,6 +1,6 @@
 ---
 title: Badge
-description: "<Badge> is a small status pill — used everywhere to show order statuses, account states, and categorical labels."
+description: '<Badge> is a small status pill — used everywhere to show order statuses, account states, and categorical labels.'
 ---
 
 # `<Badge>`
@@ -26,10 +26,10 @@ The status string is humanized for display (`pickup_ready` → `Pickup Ready`) a
 If your status doesn't have a styled color, pass `@type` for the visual color and `@status` (or `@text`) for the label:
 
 ```handlebars
-<Badge @type="info"    @text="Beta" />
-<Badge @type="success" @text="Active" />
-<Badge @type="warning" @text="Pending review" />
-<Badge @type="danger"  @text="Suspended" />
+<Badge @type='info' @text='Beta' />
+<Badge @type='success' @text='Active' />
+<Badge @type='warning' @text='Pending review' />
+<Badge @type='danger' @text='Suspended' />
 ```
 
 The default color is `info` if neither `@type` nor `@status` is set.
@@ -37,7 +37,7 @@ The default color is `info` if neither `@type` nor `@status` is set.
 ## Without the Status Dot
 
 ```handlebars
-<Badge @status="published" @hideStatusDot={{true}} />
+<Badge @status='published' @hideStatusDot={{true}} />
 ```
 
 ## Custom Icon
@@ -45,8 +45,8 @@ The default color is `info` if neither `@type` nor `@status` is set.
 Replace the default circle dot with any FontAwesome icon:
 
 ```handlebars
-<Badge @status="vip" @icon="star" @iconPrefix="fas" />
-<Badge @text="Refunded" @icon="undo" @type="warning" />
+<Badge @status='vip' @icon='star' @iconPrefix='fas' />
+<Badge @text='Refunded' @icon='undo' @type='warning' />
 ```
 
 ## Disable Humanization
@@ -54,7 +54,7 @@ Replace the default circle dot with any FontAwesome icon:
 By default the badge text is humanized — `pickup_ready` becomes `Pickup Ready`. To show the raw status string:
 
 ```handlebars
-<Badge @status="ABC-123" @disableHumanize={{true}} />
+<Badge @status='ABC-123' @disableHumanize={{true}} />
 ```
 
 ## Yielding Custom Content
@@ -63,8 +63,8 @@ Yield a block to take full control of the body. The yielded value is `@status`:
 
 ```handlebars
 <Badge @status={{this.order.status}} as |status|>
-  <span class="font-bold">{{status}}</span>
-  <span class="ml-1">({{@order.public_id}})</span>
+  <span class='font-bold'>{{status}}</span>
+  <span class='ml-1'>({{@order.public_id}})</span>
 </Badge>
 ```
 
@@ -73,51 +73,56 @@ Yield a block to take full control of the body. The yielded value is `@status`:
 For a more pill-like shape:
 
 ```handlebars
-<Badge @status="completed" @roundedFull={{true}} />
+<Badge @status='completed' @roundedFull={{true}} />
 ```
 
 ## Arguments
 
-| Argument | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `@status` | string | — | The status — drives both color (via class `<status>-status-badge`) and label |
-| `@type` | string | falls back to `@status`, then `info` | Override for the color class |
-| `@text` | string | — | Override for the label (otherwise `@status` is used) |
-| `@disableHumanize` | boolean | `false` | Show the raw status string instead of humanizing it |
-| `@hideText` | boolean | `false` | Render only the dot/icon |
-| `@hideStatusDot` | boolean | `false` | Hide the status dot |
-| `@hideIcon` | boolean | `false` | Same as `@hideStatusDot` |
-| `@icon` | string | `circle` | FontAwesome icon for the dot |
-| `@iconPrefix` | string | `fas` | FontAwesome prefix |
-| `@iconClass` | string | — | Extra classes on the icon |
-| `@size` | string | `xs` | Icon size — `xs`, `sm`, `lg`, etc. |
-| `@roundedFull` | boolean | `false` | Render as a fully rounded pill instead of a small rounded rectangle |
-| `@helpText` | string | — | Tooltip on hover |
-| `@exampleText` | string | — | Optional example beneath the help text |
-| `@tooltipPlacement` | string | `top` | Tooltip placement |
-| `@wrapperClass` | string | — | Extra classes on the outer `<div>` |
-| `@spanClass` | string | — | Extra classes on the inner `<span>` |
+| Argument            | Type    | Default                              | Description                                                                  |
+| :------------------ | :------ | :----------------------------------- | :--------------------------------------------------------------------------- |
+| `@status`           | string  | —                                    | The status — drives both color (via class `<status>-status-badge`) and label |
+| `@type`             | string  | falls back to `@status`, then `info` | Override for the color class                                                 |
+| `@text`             | string  | —                                    | Override for the label (otherwise `@status` is used)                         |
+| `@disableHumanize`  | boolean | `false`                              | Show the raw status string instead of humanizing it                          |
+| `@hideText`         | boolean | `false`                              | Render only the dot/icon                                                     |
+| `@hideStatusDot`    | boolean | `false`                              | Hide the status dot                                                          |
+| `@hideIcon`         | boolean | `false`                              | Same as `@hideStatusDot`                                                     |
+| `@icon`             | string  | `circle`                             | FontAwesome icon for the dot                                                 |
+| `@iconPrefix`       | string  | `fas`                                | FontAwesome prefix                                                           |
+| `@iconClass`        | string  | —                                    | Extra classes on the icon                                                    |
+| `@size`             | string  | `xs`                                 | Icon size — `xs`, `sm`, `lg`, etc.                                           |
+| `@roundedFull`      | boolean | `false`                              | Render as a fully rounded pill instead of a small rounded rectangle          |
+| `@helpText`         | string  | —                                    | Tooltip on hover                                                             |
+| `@exampleText`      | string  | —                                    | Optional example beneath the help text                                       |
+| `@tooltipPlacement` | string  | `top`                                | Tooltip placement                                                            |
+| `@wrapperClass`     | string  | —                                    | Extra classes on the outer `<div>`                                           |
+| `@spanClass`        | string  | —                                    | Extra classes on the inner `<span>`                                          |
 
 Any additional `...attributes` are forwarded to the outer `<div>`.
 
 ## Real-World Examples
 
 ```handlebars
-{{!-- Order status in a list row --}}
+{{! Order status in a list row }}
 <Badge @status={{order.status}} />
 
-{{!-- Inside a table cell --}}
+{{! Inside a table cell }}
 <Badge @status={{row.account.status}} @hideStatusDot={{true}} />
 
-{{!-- Indicator of unread messages --}}
+{{! Indicator of unread messages }}
 {{#if this.unreadCount}}
-  <Badge @text={{this.unreadCount}} @type="danger" @hideStatusDot={{true}} @roundedFull={{true}} />
+  <Badge
+    @text={{this.unreadCount}}
+    @type='danger'
+    @hideStatusDot={{true}}
+    @roundedFull={{true}}
+  />
 {{/if}}
 
-{{!-- With tooltip explaining the state --}}
+{{! With tooltip explaining the state }}
 <Badge
-  @status="pickup_ready"
-  @helpText="Order has been prepared and is awaiting customer pickup"
+  @status='pickup_ready'
+  @helpText='Order has been prepared and is awaiting customer pickup'
 />
 ```
 
@@ -127,6 +132,6 @@ Any additional `...attributes` are forwarded to the outer `<div>`.
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/badge.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/badge.hbs) | Template (template-only — no JS class) |
+| File                                                                                                       | Description                            |
+| :--------------------------------------------------------------------------------------------------------- | :------------------------------------- |
+| [`addon/components/badge.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/badge.hbs) | Template (template-only — no JS class) |

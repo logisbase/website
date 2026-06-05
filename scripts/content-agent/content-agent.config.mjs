@@ -1,5 +1,5 @@
 export const contentAgentConfig = {
-  siteUrl: 'https://fleetbase.io',
+  siteUrl: 'https://logisbase.com',
   defaultCountry: 'us',
   scheduleDescription: 'Weekly, Monday UTC',
   maxAhrefsRowsPerRequest: 10,
@@ -9,7 +9,13 @@ export const contentAgentConfig = {
   maxDraftsPerRun: 1,
   requireExplicitDraftCreation: true,
   topicIdeas: {
-    modes: ['auto', 'integration', 'api-tutorial', 'software-seo', 'comparison'],
+    modes: [
+      'auto',
+      'integration',
+      'api-tutorial',
+      'software-seo',
+      'comparison',
+    ],
     integrationTargets: [
       'WordPress and WooCommerce',
       'Shopify',
@@ -31,20 +37,20 @@ export const contentAgentConfig = {
       'proof of delivery workflows',
       'driver tracking and customer visibility',
       'route optimization and dispatch planning',
-      'Fleetbase API tutorials',
+      'LogisBase API tutorials',
       'webhook-driven logistics automation',
-      'open-source logistics software',
+      'source-available logistics software',
       'logistics integrations for ERP and CRM systems',
     ],
     examples: [
-      'Integrating Fleetbase with WordPress and WooCommerce for delivery workflows',
-      'Connecting Shopify orders to Fleetbase dispatch',
-      'Building proof of delivery workflows with the Fleetbase API',
-      'Connecting Odoo or ERPNext to Fleetbase for last-mile fulfillment',
-      'Using Fleetbase webhooks to sync delivery status into Salesforce or HubSpot',
-      'Comparing Fleetbase with Onfleet for open-source last-mile delivery software',
-      'Building customer delivery tracking with Fleetbase and webhooks',
-      'Automating dispatch from NetSuite or QuickBooks into Fleetbase',
+      'Integrating LogisBase with WordPress and WooCommerce for delivery workflows',
+      'Connecting Shopify orders to LogisBase dispatch',
+      'Building proof of delivery workflows with the LogisBase API',
+      'Connecting Odoo or ERPNext to LogisBase for last-mile fulfillment',
+      'Using LogisBase webhooks to sync delivery status into Salesforce or HubSpot',
+      'Comparing LogisBase with Onfleet for source-available last-mile delivery software',
+      'Building customer delivery tracking with LogisBase and webhooks',
+      'Automating dispatch from NetSuite or QuickBooks into LogisBase',
     ],
   },
   featureImage: {
@@ -59,38 +65,38 @@ export const contentAgentConfig = {
   contentStrategy: {
     defaultFocusByUtcDay: {
       1: 'logistics-software',
-      3: 'fleetbase-api-tutorial',
+      3: 'logisbase-api-tutorial',
       5: 'supply-chain-software',
     },
     allowedFocuses: [
       'logistics-software',
       'supply-chain-software',
-      'fleetbase-api-tutorial',
+      'logisbase-api-tutorial',
     ],
     requiredRelevance:
-      'Topics must be specific to Fleetbase, Fleet-Ops, last-mile delivery software, delivery management, courier dispatch, proof of delivery, driver tracking, route optimization, or building delivery workflows with the Fleetbase API.',
+      'Topics must be specific to LogisBase, Fleet-Ops, last-mile delivery software, delivery management, courier dispatch, proof of delivery, driver tracking, route optimization, or building delivery workflows with the LogisBase API.',
     contentMix:
-      'Use Monday runs for last-mile delivery software SEO, Wednesday runs for Fleetbase API/tutorial articles, and Friday runs for competitor-alternative or proof-of-delivery SEO. Avoid broad supply-chain keywords until Pallet, Ledger, and Storefront are the primary content focus.',
+      'Use Monday runs for last-mile delivery software SEO, Wednesday runs for LogisBase API/tutorial articles, and Friday runs for competitor-alternative or proof-of-delivery SEO. Avoid broad supply-chain keywords until Pallet, Ledger, and Storefront are the primary content focus.',
     tutorialExamples: [
-      'build a delivery tracking workflow with the Fleetbase API',
-      'create proof of delivery workflows with Fleetbase',
-      'connect Fleetbase webhooks to an order management system',
-      'build a dispatch dashboard with Fleetbase APIs',
-      'set up route planning and driver assignment in Fleetbase',
+      'build a delivery tracking workflow with the LogisBase API',
+      'create proof of delivery workflows with LogisBase',
+      'connect LogisBase webhooks to an order management system',
+      'build a dispatch dashboard with LogisBase APIs',
+      'set up route planning and driver assignment in LogisBase',
     ],
     editorialRules: [
-      'Fleetbase should be positioned as serious logistics, fleet operations, and last-mile delivery software for SMB and enterprise teams. Do not use outdated "API-first" positioning.',
+      'LogisBase should be positioned as serious logistics, fleet operations, and last-mile delivery software for SMB and enterprise teams. Do not use outdated "API-first" positioning.',
       'Spell Fleet-Ops exactly as "Fleet-Ops". Do not write "FleetOps".',
       'Refer to Fleet-Ops as Fleet-Ops, not "Fleet-Ops extension".',
-      'Do not tell readers to install, enable, activate, add, or turn on Fleet-Ops, Pallet, Storefront, Ledger, or other core Fleetbase extensions. Core Fleetbase extensions are bundled, installed, and active by default in Fleetbase Cloud and standard self-hosted Fleetbase.',
-      'The Fleetbase website is https://fleetbase.io and the documentation URL is https://fleetbase.io/docs.',
+      'Do not tell readers to install, enable, activate, add, or turn on Fleet-Ops, Pallet, Storefront, Ledger, or other core LogisBase extensions. Core LogisBase extensions are bundled, installed, and active by default in LogisBase Cloud and standard self-hosted LogisBase.',
+      'The LogisBase website is https://logisbase.com and the documentation URL is https://logisbase.com/docs.',
       'Manage order configs at Fleet-Ops -> Operations -> Order Config. Do not call this screen "Order Configurations".',
       'Activity definitions are configured by the order config; do not invent platform-level activity definitions.',
       'For Uber-like or ad hoc order flows, create orders with adhoc: true and use adhoc_distance to set the driver broadcast radius in meters.',
       'Ad hoc orders are broadcast to drivers near the pickup. Drivers accept or decline in Navigator; do not require manual dispatch, manual driver assignment, or orchestrator allocation for that flow.',
       'For service quote queries, do not use an order_config parameter. Use service for the service rate ID, defaulting to all, and serviceType for the order config type derived from the order_config key.',
       'Proof of delivery for an order is available at /v1/orders/:id/proofs.',
-      'For realtime driver location, subscribe to the Fleetbase SocketCluster instance using the accepted driver channel.',
+      'For realtime driver location, subscribe to the LogisBase SocketCluster instance using the accepted driver channel.',
       'When writing API tutorials, verify endpoint names, request parameters, and resource names against the indexed API docs or cloned source context.',
       'Do not name API request fields, query parameters, response properties, webhook fields, or configuration keys unless the exact name appears in sourceContext and is cited in sourceCitations.',
     ],
@@ -121,8 +127,8 @@ export const contentAgentConfig = {
     'onfleet competitors',
     'tookan alternatives',
     'detrack alternatives',
-    'open source delivery management software',
-    'open source last mile delivery software',
+    'source-available delivery management software',
+    'source-available last mile delivery software',
     'route optimization API',
     'dispatch API',
     'delivery tracking API',
@@ -140,7 +146,7 @@ export const contentAgentConfig = {
       'delivery route optimization software',
       'detrack alternatives',
     ],
-    'fleetbase-api-tutorial': [
+    'logisbase-api-tutorial': [
       'delivery tracking API',
       'proof of delivery API',
       'dispatch API',
@@ -193,7 +199,7 @@ export const contentAgentConfig = {
         intents: ['commercial'],
       },
     ],
-    'fleetbase-api-tutorial': [
+    'logisbase-api-tutorial': [
       {
         keyword: 'delivery tracking API',
         cluster: 'delivery-api-tutorial',
@@ -258,7 +264,7 @@ export const contentAgentConfig = {
   },
   sourceTruthRepos: [
     {
-      repo: 'fleetbase/core-api',
+      repo: 'logisbase/core-api',
       path: 'source-truth/core-api',
       category: 'backend-api',
       includeGlobs: [
@@ -274,7 +280,7 @@ export const contentAgentConfig = {
       ],
     },
     {
-      repo: 'fleetbase/fleetops',
+      repo: 'logisbase/fleetops',
       path: 'source-truth/fleetops',
       category: 'fleetops',
       includeGlobs: [
@@ -286,7 +292,7 @@ export const contentAgentConfig = {
       ],
     },
     {
-      repo: 'fleetbase/ledger',
+      repo: 'logisbase/ledger',
       path: 'source-truth/ledger',
       category: 'ledger',
       includeGlobs: [
@@ -299,7 +305,7 @@ export const contentAgentConfig = {
       ],
     },
     {
-      repo: 'fleetbase/storefront',
+      repo: 'logisbase/storefront',
       path: 'source-truth/storefront',
       category: 'storefront',
       includeGlobs: [
@@ -312,7 +318,7 @@ export const contentAgentConfig = {
       ],
     },
     {
-      repo: 'fleetbase/dev-engine',
+      repo: 'logisbase/dev-engine',
       path: 'source-truth/dev-engine',
       category: 'developer-platform',
       includeGlobs: [
@@ -325,7 +331,7 @@ export const contentAgentConfig = {
       ],
     },
     {
-      repo: 'fleetbase/iam-engine',
+      repo: 'logisbase/iam-engine',
       path: 'source-truth/iam-engine',
       category: 'identity-access',
       includeGlobs: [
@@ -338,7 +344,7 @@ export const contentAgentConfig = {
       ],
     },
     {
-      repo: 'fleetbase/ember-core',
+      repo: 'logisbase/ember-core',
       path: 'source-truth/ember-core',
       category: 'frontend-core',
       includeGlobs: [
@@ -350,7 +356,7 @@ export const contentAgentConfig = {
       ],
     },
     {
-      repo: 'fleetbase/pallet',
+      repo: 'logisbase/pallet',
       path: 'source-truth/pallet',
       category: 'pallet',
       includeGlobs: [
@@ -363,13 +369,10 @@ export const contentAgentConfig = {
       ],
     },
     {
-      repo: 'fleetbase/postman',
+      repo: 'logisbase/postman',
       path: 'vendor/postman',
       category: 'api-collections',
-      includeGlobs: [
-        '**/*.json',
-        '**/*.md',
-      ],
+      includeGlobs: ['**/*.json', '**/*.md'],
     },
   ],
   ghost: {

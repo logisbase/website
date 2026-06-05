@@ -1,11 +1,11 @@
 ---
 title: Overview
-description: Build, test, version, bundle, and publish custom Fleetbase extensions using the CLI.
+description: Build, test, version, bundle, and publish custom LogisBase extensions using the CLI.
 ---
 
 # Publishing Extensions
 
-The CLI gives you the full lifecycle for authoring and shipping a Fleetbase extension — from scaffolding a new project to publishing it on the Extension Registry.
+The CLI gives you the full lifecycle for authoring and shipping a LogisBase extension — from scaffolding a new project to publishing it on the Extension Registry.
 
 ## The Lifecycle
 
@@ -27,59 +27,101 @@ flb publish         →  Run npm publish against the registry
 
 ## Pages
 
-<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 not-prose">
+<div className="not-prose mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
   <Card>
     <CardHeader>
       <CardTitle className="text-sm font-semibold">Scaffold</CardTitle>
-      <CardDescription className="text-xs">Generate a new extension from the starter template.</CardDescription>
+      <CardDescription className="text-xs">
+        Generate a new extension from the starter template.
+      </CardDescription>
     </CardHeader>
     <CardContent>
-      <a href="/docs/cli/extension-development/scaffold" className="text-sm text-primary hover:underline">flb scaffold →</a>
+      <a
+        href="/docs/cli/extension-development/scaffold"
+        className="text-primary text-sm hover:underline"
+      >
+        flb scaffold →
+      </a>
     </CardContent>
   </Card>
   <Card>
     <CardHeader>
       <CardTitle className="text-sm font-semibold">Version Bump</CardTitle>
-      <CardDescription className="text-xs">Increment major / minor / patch / prerelease across all manifest files.</CardDescription>
+      <CardDescription className="text-xs">
+        Increment major / minor / patch / prerelease across all manifest files.
+      </CardDescription>
     </CardHeader>
     <CardContent>
-      <a href="/docs/cli/extension-development/version-bump" className="text-sm text-primary hover:underline">flb version-bump →</a>
+      <a
+        href="/docs/cli/extension-development/version-bump"
+        className="text-primary text-sm hover:underline"
+      >
+        flb version-bump →
+      </a>
     </CardContent>
   </Card>
   <Card>
     <CardHeader>
       <CardTitle className="text-sm font-semibold">Bundle</CardTitle>
-      <CardDescription className="text-xs">Pack the extension into a versioned .tar.gz, optionally uploading.</CardDescription>
+      <CardDescription className="text-xs">
+        Pack the extension into a versioned .tar.gz, optionally uploading.
+      </CardDescription>
     </CardHeader>
     <CardContent>
-      <a href="/docs/cli/extension-development/bundle" className="text-sm text-primary hover:underline">flb bundle →</a>
+      <a
+        href="/docs/cli/extension-development/bundle"
+        className="text-primary text-sm hover:underline"
+      >
+        flb bundle →
+      </a>
     </CardContent>
   </Card>
   <Card>
     <CardHeader>
       <CardTitle className="text-sm font-semibold">Bundle Upload</CardTitle>
-      <CardDescription className="text-xs">Upload an existing bundle to the registry.</CardDescription>
+      <CardDescription className="text-xs">
+        Upload an existing bundle to the registry.
+      </CardDescription>
     </CardHeader>
     <CardContent>
-      <a href="/docs/cli/extension-development/bundle-upload" className="text-sm text-primary hover:underline">flb bundle-upload →</a>
+      <a
+        href="/docs/cli/extension-development/bundle-upload"
+        className="text-primary text-sm hover:underline"
+      >
+        flb bundle-upload →
+      </a>
     </CardContent>
   </Card>
   <Card>
     <CardHeader>
       <CardTitle className="text-sm font-semibold">Publish</CardTitle>
-      <CardDescription className="text-xs">Run `npm publish` against the registry.</CardDescription>
+      <CardDescription className="text-xs">
+        Run `npm publish` against the registry.
+      </CardDescription>
     </CardHeader>
     <CardContent>
-      <a href="/docs/cli/extension-development/publish" className="text-sm text-primary hover:underline">flb publish →</a>
+      <a
+        href="/docs/cli/extension-development/publish"
+        className="text-primary text-sm hover:underline"
+      >
+        flb publish →
+      </a>
     </CardContent>
   </Card>
   <Card>
     <CardHeader>
       <CardTitle className="text-sm font-semibold">Unpublish</CardTitle>
-      <CardDescription className="text-xs">Remove a published extension from the registry.</CardDescription>
+      <CardDescription className="text-xs">
+        Remove a published extension from the registry.
+      </CardDescription>
     </CardHeader>
     <CardContent>
-      <a href="/docs/cli/extension-development/unpublish" className="text-sm text-primary hover:underline">flb unpublish →</a>
+      <a
+        href="/docs/cli/extension-development/unpublish"
+        className="text-primary text-sm hover:underline"
+      >
+        flb unpublish →
+      </a>
     </CardContent>
   </Card>
 </div>
@@ -94,7 +136,7 @@ Before you can publish, you need:
 
 ## Extension Anatomy
 
-A Fleetbase extension is a single repository that contains both:
+A LogisBase extension is a single repository that contains both:
 
 - **An Ember addon** — the console UI (npm package, e.g. `@yourcompany/yourext-engine`)
 - **A Laravel package** — the API server code (composer package, e.g. `yourcompany/yourext-api`)

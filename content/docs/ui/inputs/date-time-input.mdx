@@ -1,6 +1,6 @@
 ---
 title: DateTimeInput
-description: "<DateTimeInput> is a combined HTML date + time picker. Renders side-by-side native inputs and emits a JavaScript Date on change."
+description: '<DateTimeInput> is a combined HTML date + time picker. Renders side-by-side native inputs and emits a JavaScript Date on change.'
 ---
 
 # `<DateTimeInput>`
@@ -30,28 +30,28 @@ For a calendar-style picker, use [`<DatePicker>`](/docs/ui/inputs/date-picker).
 ```handlebars
 <DateTimeInput
   @value={{this.scheduled_at}}
-  @minDate="2025-01-01"
-  @maxDate="2025-12-31"
-  @minTime="06:00"
-  @maxTime="22:00"
+  @minDate='2025-01-01'
+  @maxDate='2025-12-31'
+  @minTime='06:00'
+  @maxTime='22:00'
   @onUpdate={{this.handleScheduleChange}}
 />
 ```
 
 ## Arguments
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
-| `@value` | Date | Initial value as a JavaScript `Date` |
-| `@minDate` | string | Minimum date (`yyyy-MM-dd`) |
-| `@maxDate` | string | Maximum date |
-| `@minTime` | string | Minimum time (`HH:mm`) |
-| `@maxTime` | string | Maximum time |
+| Argument    | Type                | Description                                                 |
+| :---------- | :------------------ | :---------------------------------------------------------- |
+| `@value`    | Date                | Initial value as a JavaScript `Date`                        |
+| `@minDate`  | string              | Minimum date (`yyyy-MM-dd`)                                 |
+| `@maxDate`  | string              | Maximum date                                                |
+| `@minTime`  | string              | Minimum time (`HH:mm`)                                      |
+| `@maxTime`  | string              | Maximum time                                                |
 | `@onUpdate` | `(date, formatted)` | Called with both a `Date` and a `"yyyy-MM-dd HH:mm"` string |
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/date-time-input.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/date-time-input.hbs) | Template |
-| [`addon/components/date-time-input.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/date-time-input.js) | Class |
+| File                                                                                                                           | Description |
+| :----------------------------------------------------------------------------------------------------------------------------- | :---------- |
+| [`addon/components/date-time-input.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/date-time-input.hbs) | Template    |
+| [`addon/components/date-time-input.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/date-time-input.js)   | Class       |

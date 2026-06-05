@@ -1,9 +1,9 @@
 /**
  * PostHog client wrapper for the marketing site.
  *
- * Mirrors the surface of console.fleetbase.io's PosthogService
+ * Mirrors the surface of console.logisbase.com's PosthogService
  * (packages/internals/addon/services/posthog.js) so both apps reason about
- * tracking the same way. Identity is shared across `*.fleetbase.io` via
+ * tracking the same way. Identity is shared across `*.logisbase.com` via
  * cross_subdomain_cookie so a marketing visitor's distinct_id rides through
  * to the console after they click "Start Free Trial".
  *
@@ -22,7 +22,7 @@ import {
 let initialized = false;
 let initPromise: Promise<void> | null = null;
 
-const COOKIE_DOMAIN = '.fleetbase.io';
+const COOKIE_DOMAIN = '.logisbase.com';
 
 interface InitOptions {
   apiKey: string;
@@ -58,12 +58,10 @@ export function initPostHog(options: InitOptions): Promise<void> {
         capture_pageview: false,
         capture_pageleave: true,
 
-        // Cross-subdomain identity stitching with console.fleetbase.io.
+        // Cross-subdomain identity stitching with console.logisbase.com.
         cross_subdomain_cookie: options.crossSubdomain ?? true,
         cookie_name: 'ph_marketing',
-        ...(options.crossSubdomain
-          ? { cookie_domain: COOKIE_DOMAIN }
-          : {}),
+        ...(options.crossSubdomain ? { cookie_domain: COOKIE_DOMAIN } : {}),
 
         // Privacy posture — mask all inputs in replays by default.
         session_recording: {
@@ -82,14 +80,12 @@ export function initPostHog(options: InitOptions): Promise<void> {
           // Super-property: every event sent from this app is tagged.
           ph.register({ app: 'marketing' });
           if (process.env.NODE_ENV === 'development') {
-             
             console.info('[PostHog] initialized');
           }
           resolve();
         },
       });
     } catch (error) {
-       
       console.error('[PostHog] init failed', error);
       resolve();
     }
@@ -129,7 +125,6 @@ export function track<N extends EventName>(
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-
     console.error('[PostHog] capture failed', name, error);
   }
 }
@@ -176,7 +171,6 @@ export function identifyUser(user: IdentifyableUser): void {
           : (user.createdAt ?? undefined),
     });
   } catch (error) {
-     
     console.error('[PostHog] identify failed', error);
   }
 }

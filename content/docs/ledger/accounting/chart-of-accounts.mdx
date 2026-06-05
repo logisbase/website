@@ -11,96 +11,89 @@ Navigate to **Ledger → Accounting → Accounts**.
 
 ## Default (Seeded) Chart
 
-When your Fleetbase company is created, Ledger seeds the following accounts. They are flagged `is_system_account: true` and protected from deletion.
+When your LogisBase company is created, Ledger seeds the following accounts. They are flagged `is_system_account: true` and protected from deletion.
 
 ### Assets
 
-| Code | Name |
-| :--- | :--- |
-| `CASH-DEFAULT` | Cash |
-| `BANK-DEFAULT` | Bank Account |
-| `AR-DEFAULT` | Accounts Receivable |
-| `STRIPE-CLEARING` | Stripe Clearing Account |
+| Code               | Name                     |
+| :----------------- | :----------------------- |
+| `CASH-DEFAULT`     | Cash                     |
+| `BANK-DEFAULT`     | Bank Account             |
+| `AR-DEFAULT`       | Accounts Receivable      |
+| `STRIPE-CLEARING`  | Stripe Clearing Account  |
 | `GATEWAY-CLEARING` | Payment Gateway Clearing |
-| `PREPAID-DEFAULT` | Prepaid Expenses |
+| `PREPAID-DEFAULT`  | Prepaid Expenses         |
 
 ### Liabilities
 
-| Code | Name |
-| :--- | :--- |
-| `AP-DEFAULT` | Accounts Payable |
-| `WALLET-POOL` | Wallet Liability Pool |
-| `DRIVER-PAYABLE` | Driver Earnings Payable |
-| `CUSTOMER-CREDIT` | Customer Credit Liability |
-| `TAX-PAYABLE` | Tax Payable |
-| `STRIPE-FEES-PAYABLE` | Stripe Fees Payable |
-| `DEFERRED-REVENUE` | Deferred Revenue |
+| Code                  | Name                      |
+| :-------------------- | :------------------------ |
+| `AP-DEFAULT`          | Accounts Payable          |
+| `WALLET-POOL`         | Wallet Liability Pool     |
+| `DRIVER-PAYABLE`      | Driver Earnings Payable   |
+| `CUSTOMER-CREDIT`     | Customer Credit Liability |
+| `TAX-PAYABLE`         | Tax Payable               |
+| `STRIPE-FEES-PAYABLE` | Stripe Fees Payable       |
+| `DEFERRED-REVENUE`    | Deferred Revenue          |
 
 ### Equity
 
-| Code | Name |
-| :--- | :--- |
-| `EQUITY-DEFAULT` | Owner's Equity |
+| Code                | Name              |
+| :------------------ | :---------------- |
+| `EQUITY-DEFAULT`    | Owner's Equity    |
 | `RETAINED-EARNINGS` | Retained Earnings |
 
 ### Revenue
 
-| Code | Name |
-| :--- | :--- |
-| `REVENUE-DELIVERY` | Delivery Revenue |
-| `REVENUE-SERVICE-FEE` | Service Fee Revenue |
+| Code                   | Name                 |
+| :--------------------- | :------------------- |
+| `REVENUE-DELIVERY`     | Delivery Revenue     |
+| `REVENUE-SERVICE-FEE`  | Service Fee Revenue  |
 | `REVENUE-SUBSCRIPTION` | Subscription Revenue |
-| `REVENUE-OTHER` | Other Revenue |
+| `REVENUE-OTHER`        | Other Revenue        |
 
 ### Expenses
 
-| Code | Name |
-| :--- | :--- |
-| `EXPENSE-DRIVER-PAYOUT` | Driver Payout Expense |
-| `EXPENSE-GATEWAY-FEES` | Payment Gateway Fees |
-| `EXPENSE-REFUNDS` | Refunds & Chargebacks |
-| `EXPENSE-WALLET` | Wallet Expenses |
-| `EXPENSE-OTHER` | Other Operating Expenses |
+| Code                    | Name                     |
+| :---------------------- | :----------------------- |
+| `EXPENSE-DRIVER-PAYOUT` | Driver Payout Expense    |
+| `EXPENSE-GATEWAY-FEES`  | Payment Gateway Fees     |
+| `EXPENSE-REFUNDS`       | Refunds & Chargebacks    |
+| `EXPENSE-WALLET`        | Wallet Expenses          |
+| `EXPENSE-OTHER`         | Other Operating Expenses |
 
 In addition, every wallet auto-creates its own per-wallet liability account with code `WALLET-{wallet_uuid}` — these don't appear in the seeded list above but show up alongside it.
 
 ## Account Attributes
 
-| Field | Description |
-| :--- | :--- |
-| **Name** | Descriptive account name |
-| **Code** | Short alphanumeric identifier (`AR-DEFAULT`, `REVENUE-DELIVERY`, etc.). Unique per company |
-| **Type** | `asset`, `liability`, `equity`, `revenue`, or `expense` |
-| **Currency** | ISO 4217 code from the picker's fixed list of 35 currencies |
-| **Status** | `active`, `inactive`, or `archived` |
-| **Description** | Optional notes about the account's purpose |
-| **Balance** | Computed from posted journal entries; updated automatically |
-| **Is System Account** | `true` for seeded accounts; protected from deletion |
-| **Meta** | Arbitrary key/value JSON |
+| Field                 | Description                                                                                |
+| :-------------------- | :----------------------------------------------------------------------------------------- |
+| **Name**              | Descriptive account name                                                                   |
+| **Code**              | Short alphanumeric identifier (`AR-DEFAULT`, `REVENUE-DELIVERY`, etc.). Unique per company |
+| **Type**              | `asset`, `liability`, `equity`, `revenue`, or `expense`                                    |
+| **Currency**          | ISO 4217 code from the picker's fixed list of 35 currencies                                |
+| **Status**            | `active`, `inactive`, or `archived`                                                        |
+| **Description**       | Optional notes about the account's purpose                                                 |
+| **Balance**           | Computed from posted journal entries; updated automatically                                |
+| **Is System Account** | `true` for seeded accounts; protected from deletion                                        |
+| **Meta**              | Arbitrary key/value JSON                                                                   |
 
 The auto-generated `public_id` follows the format `account_<10 hex chars>`.
 
 ## Creating an Account
 
 <Steps>
+  <Step>Navigate to **Ledger → Accounting → Accounts**.</Step>
+  <Step>Click **New Account**.</Step>
   <Step>
-    Navigate to **Ledger → Accounting → Accounts**.
+    Enter the **Name**, **Code** (free-form alphanumeric), and select the
+    **Type**.
   </Step>
-  <Step>
-    Click **New Account**.
-  </Step>
-  <Step>
-    Enter the **Name**, **Code** (free-form alphanumeric), and select the **Type**.
-  </Step>
-  <Step>
-    Set the **Currency** (defaults to your company's base currency).
-  </Step>
+  <Step>Set the **Currency** (defaults to your company's base currency).</Step>
   <Step>
     Set the **Status** — `active` (default), `inactive`, or `archived`.
   </Step>
-  <Step>
-    Click **Save**.
-  </Step>
+  <Step>Click **Save**.</Step>
 </Steps>
 
 ## Account Codes

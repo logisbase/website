@@ -1,25 +1,25 @@
 ---
 title: Request Logs
-description: Inspect a complete, filterable history of every API request made to your Fleetbase instance.
+description: Inspect a complete, filterable history of every API request made to your LogisBase instance.
 ---
 
 # Request Logs
 
-Request Logs records every inbound API request to your Fleetbase instance. Use it to debug integration issues, audit API usage, or trace unexpected behaviour back to a specific call. Navigate to **Developers → Request Logs**.
+Request Logs records every inbound API request to your LogisBase instance. Use it to debug integration issues, audit API usage, or trace unexpected behaviour back to a specific call. Navigate to **Developers → Request Logs**.
 
 ![Request Logs list — Description, Status badge, ID, API Credential, Method, Version, Date columns](/images/screenshots/developers/developers-request-logs.webp)
 
 ## Request Table
 
-| Column | Description |
-| :--- | :--- |
-| **Description** | A summary of the request (route and action) |
-| **Status** | The HTTP response status code returned — colour-coded (green for 2xx, red for 4xx/5xx) |
-| **ID** | The public request ID — click to copy |
-| **API Credential** | The API key used to authenticate the request — click to copy the key name |
-| **HTTP Method** | `GET`, `POST`, `PUT`, `PATCH`, or `DELETE` |
-| **Version** | The API version targeted by the request |
-| **Date** | When the request was received |
+| Column             | Description                                                                            |
+| :----------------- | :------------------------------------------------------------------------------------- |
+| **Description**    | A summary of the request (route and action)                                            |
+| **Status**         | The HTTP response status code returned — colour-coded (green for 2xx, red for 4xx/5xx) |
+| **ID**             | The public request ID — click to copy                                                  |
+| **API Credential** | The API key used to authenticate the request — click to copy the key name              |
+| **HTTP Method**    | `GET`, `POST`, `PUT`, `PATCH`, or `DELETE`                                             |
+| **Version**        | The API version targeted by the request                                                |
+| **Date**           | When the request was received                                                          |
 
 ## Filtering
 
@@ -58,7 +58,7 @@ The JSON body sent with the request (for `POST`, `PUT`, and `PATCH` requests). E
 
 ### Response Body
 
-The exact JSON payload returned by Fleetbase. For failed requests, the error message and validation details appear here — this is usually the fastest way to understand why a request failed.
+The exact JSON payload returned by LogisBase. For failed requests, the error message and validation details appear here — this is usually the fastest way to understand why a request failed.
 
 Use the **Back** button in the header to return to the list.
 

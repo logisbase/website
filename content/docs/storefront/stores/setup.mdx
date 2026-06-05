@@ -10,17 +10,15 @@ This guide covers creating and configuring a single store. For multi-vendor mark
 ## Creating a Store
 
 <Steps>
+  <Step>Navigate to **Storefront** in the LogisBase Console sidebar.</Step>
+  <Step>Click **New Store**.</Step>
   <Step>
-    Navigate to **Storefront** in the Fleetbase Console sidebar.
+    Enter the **Name**, **Description**, and select the **Currency** used for
+    all product pricing.
   </Step>
   <Step>
-    Click **New Store**.
-  </Step>
-  <Step>
-    Enter the **Name**, **Description**, and select the **Currency** used for all product pricing.
-  </Step>
-  <Step>
-    Click **Save**. The store is created and assigned a unique `store_*` API key automatically.
+    Click **Save**. The store is created and assigned a unique `store_*` API key
+    automatically.
   </Step>
 </Steps>
 
@@ -44,21 +42,22 @@ If you manage multiple stores, switch between them using the **store selector** 
 
 Open a store and scroll to **General Settings**. All toggles below (except `online`, `order_config_uuid`, and `pod_method`) are stored on the store's `options` JSON column.
 
-| Setting | Key | What it does |
-| :--- | :--- | :--- |
-| **Online** | `online` | Master switch — when off, the store is hidden from listings and cannot accept orders |
-| **Default Order Config** | `order_config_uuid` | Fleet-Ops order configuration applied to orders created from this store |
-| **Enable tax** | `options.tax_enabled` | Apply a tax line item to checkouts. When on, set **Tax percentage** in `options.tax_percentage` |
-| **Enable minimum order amount** | `options.required_checkout_min` | Block checkout below a threshold. When on, set the value in `options.required_checkout_min_amount` |
-| **Auto-accept incoming orders** | `options.auto_accept_orders` | Skip the manual accept step — incoming orders move straight to the next status |
-| **Auto-dispatch orders** | `options.auto_dispatch` | Automatically dispatch accepted orders to Fleet-Ops without manual intervention |
-| **Require proof of delivery** | `options.require_pod` | Drivers must capture POD on completion. Method is set in `pod_method` (`scan`, `signature`, `photo`, or `sms`) |
-| **Enable cash on delivery** | `options.cod_enabled` | Show Cash on Delivery as a payment option at checkout |
-| **Enable order pickup** | `options.pickup_enabled` | Allow customers to choose pickup instead of delivery |
-| **Enable tips** | `options.tips_enabled` | Show a tip field at checkout |
-| **Enable delivery tips** | `options.delivery_tips_enabled` | Allow customers to add a separate tip for the driver after delivery |
+| Setting                         | Key                             | What it does                                                                                                   |
+| :------------------------------ | :------------------------------ | :------------------------------------------------------------------------------------------------------------- |
+| **Online**                      | `online`                        | Master switch — when off, the store is hidden from listings and cannot accept orders                           |
+| **Default Order Config**        | `order_config_uuid`             | Fleet-Ops order configuration applied to orders created from this store                                        |
+| **Enable tax**                  | `options.tax_enabled`           | Apply a tax line item to checkouts. When on, set **Tax percentage** in `options.tax_percentage`                |
+| **Enable minimum order amount** | `options.required_checkout_min` | Block checkout below a threshold. When on, set the value in `options.required_checkout_min_amount`             |
+| **Auto-accept incoming orders** | `options.auto_accept_orders`    | Skip the manual accept step — incoming orders move straight to the next status                                 |
+| **Auto-dispatch orders**        | `options.auto_dispatch`         | Automatically dispatch accepted orders to Fleet-Ops without manual intervention                                |
+| **Require proof of delivery**   | `options.require_pod`           | Drivers must capture POD on completion. Method is set in `pod_method` (`scan`, `signature`, `photo`, or `sms`) |
+| **Enable cash on delivery**     | `options.cod_enabled`           | Show Cash on Delivery as a payment option at checkout                                                          |
+| **Enable order pickup**         | `options.pickup_enabled`        | Allow customers to choose pickup instead of delivery                                                           |
+| **Enable tips**                 | `options.tips_enabled`          | Show a tip field at checkout                                                                                   |
+| **Enable delivery tips**        | `options.delivery_tips_enabled` | Allow customers to add a separate tip for the driver after delivery                                            |
 
 Stores also have:
+
 - **Alert recipients** — under the **Alerts** panel, select users notified for new orders (`alertable.for_new_order`)
 - **Translations** — store name and description per locale
 

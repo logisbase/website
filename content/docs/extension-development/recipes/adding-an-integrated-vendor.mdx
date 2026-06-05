@@ -23,7 +23,7 @@ The bridge is an injectable PHP class that talks to the third-party API. It must
 
 namespace MyOrg\MyExtension\Integrations\AcmeDispatch;
 
-use Fleetbase\FleetOps\Models\IntegratedVendor;
+use LogisBase\FleetOps\Models\IntegratedVendor;
 use Illuminate\Support\Facades\Http;
 
 class AcmeDispatch
@@ -76,7 +76,7 @@ class AcmeDispatch
             ->post('v1/webhooks', ['url' => $webhookUrl]);
     }
 
-    public function cancelFromFleetbaseOrder(): void
+    public function cancelFromLogisBaseOrder(): void
     {
         // Cancel any in-flight delivery the vendor is tracking
     }
@@ -91,7 +91,7 @@ In your service provider's `boot()`, append a descriptor to `IntegratedVendors::
 <?php
 // server/src/Providers/MyExtensionServiceProvider.php
 
-use Fleetbase\FleetOps\Support\IntegratedVendors;
+use LogisBase\FleetOps\Support\IntegratedVendors;
 use MyOrg\MyExtension\Integrations\AcmeDispatch\AcmeDispatch;
 
 public function boot()
@@ -128,7 +128,7 @@ public function boot()
         'callbacks' => [
             'onCreated'  => ['setWebhook' => ['webhook_url']],
             'onUpdated'  => ['setWebhook' => ['webhook_url']],
-            'onCanceled' => ['cancelFromFleetbaseOrder' => []],
+            'onCanceled' => ['cancelFromLogisBaseOrder' => []],
         ],
     ];
 }
@@ -136,17 +136,17 @@ public function boot()
 
 ### Descriptor Fields
 
-| Field | Purpose |
-| :--- | :--- |
-| `name` / `code` | Display name + URL-safe machine code |
-| `host` / `sandbox` | Base URLs for production / sandbox |
-| `bridge` | FQCN of your bridge class |
-| `svc_bridge` | Optional — class providing `::all()` for selectable service types |
-| `iso2cc_bridge` | Optional — class providing `::codes()` for regional codes |
-| `credentialParams` | Form fields rendered when adding the vendor |
-| `optionParams` | Additional non-credential config fields |
-| `bridgeParams` | Maps `IntegratedVendor` attribute paths to your bridge constructor args |
-| `callbacks` | Methods to invoke on the bridge at `onCreated`, `onUpdated`, `onDeleted`, `onCanceled` |
+| Field              | Purpose                                                                                |
+| :----------------- | :------------------------------------------------------------------------------------- |
+| `name` / `code`    | Display name + URL-safe machine code                                                   |
+| `host` / `sandbox` | Base URLs for production / sandbox                                                     |
+| `bridge`           | FQCN of your bridge class                                                              |
+| `svc_bridge`       | Optional — class providing `::all()` for selectable service types                      |
+| `iso2cc_bridge`    | Optional — class providing `::codes()` for regional codes                              |
+| `credentialParams` | Form fields rendered when adding the vendor                                            |
+| `optionParams`     | Additional non-credential config fields                                                |
+| `bridgeParams`     | Maps `IntegratedVendor` attribute paths to your bridge constructor args                |
+| `callbacks`        | Methods to invoke on the bridge at `onCreated`, `onUpdated`, `onDeleted`, `onCanceled` |
 
 `bridgeParams` paths are resolved against the live `IntegratedVendor` model — `'credentials.api_key'` reads `$vendor->credentials['api_key']`, `'sandbox'` reads `$vendor->sandbox`, etc.
 
@@ -159,7 +159,7 @@ Upload a PNG named `<your-code>.png` to the platform's `integrated-vendors/` ass
 The frontend "Add Integrated Vendor" UI now lists your vendor. Adding it persists an `IntegratedVendor` record; from there:
 
 ```php
-use Fleetbase\FleetOps\Support\IntegratedVendors;
+use LogisBase\FleetOps\Support\IntegratedVendors;
 
 $vendor = IntegratedVendor::find('iv_xxx');
 $bridge = IntegratedVendors::bridgeFromIntegratedVendor($vendor);
@@ -171,6 +171,6 @@ Or from the order dispatch flow, Fleet-Ops will route orders assigned to this ve
 
 ## Reference
 
-- [`fleetops/server/src/Support/IntegratedVendors.php`](https://github.com/fleetbase/fleetops/blob/main/server/src/Support/IntegratedVendors.php) — descriptor registry + `bridgeFromIntegratedVendor` helper
-- [`fleetops/server/src/Integrations/Lalamove/`](https://github.com/fleetbase/fleetops/tree/main/server/src/Integrations/Lalamove) — full reference bridge with service types, market codes, and webhook handling
-- [`fleetops/server/src/Models/IntegratedVendor.php`](https://github.com/fleetbase/fleetops/blob/main/server/src/Models/IntegratedVendor.php) — the persisted model
+- [`fleetops/server/src/Support/IntegratedVendors.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Support/IntegratedVendors.php) — descriptor registry + `bridgeFromIntegratedVendor` helper
+- [`fleetops/server/src/Integrations/Lalamove/`](https://github.com/logisbase/fleetops/tree/main/server/src/Integrations/Lalamove) — full reference bridge with service types, market codes, and webhook handling
+- [`fleetops/server/src/Models/IntegratedVendor.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Models/IntegratedVendor.php) — the persisted model

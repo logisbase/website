@@ -14,7 +14,7 @@ This guide walks you through creating your first order in Fleet-Ops, assigning i
 
 ## Step 1 — Open Fleet-Ops
 
-Click **Fleet-Ops** in the top navigation bar of the Fleetbase Console. The Fleet-Ops dashboard opens showing the live map and the operations sidebar.
+Click **Fleet-Ops** in the top navigation bar of the LogisBase Console. The Fleet-Ops dashboard opens showing the live map and the operations sidebar.
 
 ![Fleet-Ops main dashboard with live map and sidebar navigation](/images/screenshots/fleet-ops/fleet-ops-live-orders-panel.webp)
 
@@ -25,6 +25,7 @@ Click **Fleet-Ops** in the top navigation bar of the Fleetbase Console. The Flee
     ### Open the Orders list
 
     In the left sidebar, click **Operations → Orders**. This shows all existing orders with their current status.
+
   </Step>
   <Step>
     ### Click New Order
@@ -32,26 +33,31 @@ Click **Fleet-Ops** in the top navigation bar of the Fleetbase Console. The Flee
     Click the **+ New Order** button in the top right. The new order form opens.
 
     ![New order form — order config selector, customer, pickup, dropoff, scheduling, and entity fields](/images/screenshots/fleet-ops/fleet-ops-create-order.webp)
+
   </Step>
   <Step>
     ### Select an Order Configuration
 
     Choose an **Order Config** from the dropdown. The order config determines the workflow steps, entity fields, and proof of delivery method for this order. For a basic delivery, select the default **Delivery** config.
+
   </Step>
   <Step>
     ### Set the Pickup and Dropoff
 
     Enter the **Pickup** address (where the driver collects the item) and the **Dropoff** address (where it is delivered). You can type an address for geocoding, or select a saved Place.
+
   </Step>
   <Step>
     ### Add Entities (optional)
 
     Entities are the individual items being delivered. Click **Add Entity** to attach an item with a description, barcode, dimensions, and weight. Entities each get their own tracking number.
+
   </Step>
   <Step>
     ### Save the Order
 
     Click **Save**. The order is created with system status **`created`** and appears in the orders list.
+
   </Step>
 </Steps>
 
@@ -62,6 +68,7 @@ Click **Fleet-Ops** in the top navigation bar of the Fleetbase Console. The Flee
     ### Open the order detail
 
     Click the order row in the list to open the order detail panel.
+
   </Step>
   <Step>
     ### Assign driver and vehicle
@@ -69,6 +76,7 @@ Click **Fleet-Ops** in the top navigation bar of the Fleetbase Console. The Flee
     In the detail panel, click **Assign Driver**. Select a driver from the list of available drivers. Optionally assign a vehicle.
 
     The driver and vehicle are now linked to the order. The order's system status remains **`created`** until you dispatch it — assignment alone does not change the system status.
+
   </Step>
 </Steps>
 
@@ -81,11 +89,13 @@ Click **Fleet-Ops** in the top navigation bar of the Fleetbase Console. The Flee
     With the order detail open, click **Dispatch**. This sends the order to the driver's Navigator app.
 
     The order status moves to **dispatched**.
+
   </Step>
   <Step>
     ### Driver accepts in Navigator app
 
     The driver receives a push notification in the Navigator app. When they accept and start the order, the status moves to **started** and their live location appears on the map.
+
   </Step>
 </Steps>
 

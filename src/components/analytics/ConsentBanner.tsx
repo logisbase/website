@@ -26,7 +26,7 @@ interface Props {
  * - Opt-out jurisdictions: never shown by default; visitors manage preferences
  *   from the privacy page.
  *
- * Decisions persist via the {@link CONSENT_COOKIE} cookie on `.fleetbase.io`.
+ * Decisions persist via the {@link CONSENT_COOKIE} cookie on `.logisbase.com`.
  */
 export function ConsentBanner({ optInRequired }: Props) {
   const [status, setStatus] = useState<ConsentStatus>('unknown');
@@ -62,18 +62,15 @@ export function ConsentBanner({ optInRequired }: Props) {
       aria-labelledby="consent-heading"
       className={cn(
         'fixed inset-x-3 bottom-3 z-[60] mx-auto max-w-2xl',
-        'rounded-xl border border-border bg-background/95 p-4 shadow-lg backdrop-blur',
-        'sm:inset-x-auto sm:right-4 sm:left-auto sm:bottom-4 sm:p-5',
+        'border-border bg-background/95 rounded-xl border p-4 shadow-lg backdrop-blur',
+        'sm:inset-x-auto sm:right-4 sm:bottom-4 sm:left-auto sm:p-5',
       )}
       data-ph-no-capture
     >
-      <p
-        id="consent-heading"
-        className="text-base font-medium text-foreground"
-      >
-        We use cookies to improve Fleetbase.
+      <p id="consent-heading" className="text-foreground text-base font-medium">
+        We use cookies to improve LogisBase.
       </p>
-      <p className="mt-1 text-sm text-muted-foreground">
+      <p className="text-muted-foreground mt-1 text-sm">
         We use a small set of cookies for product analytics and to understand
         how visitors use the site. You can change your mind anytime — see our{' '}
         <Link href="/privacy" className="underline underline-offset-2">

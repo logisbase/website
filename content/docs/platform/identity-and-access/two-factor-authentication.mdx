@@ -7,11 +7,11 @@ description: Enable 2FA on your personal account, enforce it for your organizati
 
 Two-factor authentication (2FA) adds a second verification step to login. After entering a password, users must confirm a one-time code before gaining access. There are three levels where 2FA can be configured:
 
-| Level | Where | Who controls it |
-| :--- | :--- | :--- |
-| **User** | Your profile → Auth | Each user for their own account |
+| Level            | Where                              | Who controls it                           |
+| :--------------- | :--------------------------------- | :---------------------------------------- |
+| **User**         | Your profile → Auth                | Each user for their own account           |
 | **Organization** | Organization settings → Two Factor | Organization admins for their org's users |
-| **System-wide** | Admin → 2FA Config | Instance admins for all organizations |
+| **System-wide**  | Admin → 2FA Config                 | Instance admins for all organizations     |
 
 ---
 
@@ -24,6 +24,7 @@ Individual users can enable 2FA on their own account. The 2FA settings section i
     ### Open Your Profile
 
     Click your avatar in the top-right corner of the console and select **Your profile**. This opens your personal profile and account settings.
+
   </Step>
   <Step>
     ### Find the Auth Section
@@ -31,6 +32,7 @@ Individual users can enable 2FA on their own account. The 2FA settings section i
     Click the **Auth** tab on your profile page.
 
     ![Profile Auth tab — 2FA method selector and enable toggle below the Change Password panel](/images/screenshots/general/user-auth-two-fa.webp)
+
   </Step>
   <Step>
     ### Choose a Method
@@ -41,11 +43,13 @@ Individual users can enable 2FA on their own account. The 2FA settings section i
     | :--- | :--- |
     | **Email** | A code is sent to your registered email address at login |
     | **SMS** | A code is sent to your registered phone number — requires Twilio to be configured on the instance |
+
   </Step>
   <Step>
     ### Enable and Save
 
     Toggle 2FA on and click **Save 2FA Settings**. From your next login, you'll be prompted for a code after entering your password.
+
   </Step>
 </Steps>
 
@@ -69,19 +73,23 @@ Organization administrators can require all users within their organization to s
 
 ![Organization Two Factor settings — Enable 2FA toggle and Require Users to Set-Up 2FA toggle](/images/screenshots/admin/admin-two-fa.webp)
 
-| Setting | Description |
-| :--- | :--- |
-| **Enable Two-Factor Authentication** | Makes 2FA available as an option for users in this organization |
-| **Require Users to Set-Up 2FA** | Forces all users in the organization to configure 2FA on their next login — they cannot access the console until setup is complete |
+| Setting                              | Description                                                                                                                        |
+| :----------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| **Enable Two-Factor Authentication** | Makes 2FA available as an option for users in this organization                                                                    |
+| **Require Users to Set-Up 2FA**      | Forces all users in the organization to configure 2FA on their next login — they cannot access the console until setup is complete |
 
 Click **Save 2FA Settings** to apply. The enforcement toggle only appears when 2FA is enabled.
 
-<Callout type="info">Organization-level 2FA enforcement only controls access within your organization. The available delivery methods (Email or SMS) are determined by the system-wide configuration set by the instance administrator.</Callout>
+<Callout type="info">
+  Organization-level 2FA enforcement only controls access within your
+  organization. The available delivery methods (Email or SMS) are determined by
+  the system-wide configuration set by the instance administrator.
+</Callout>
 
 ---
 
 ## System-Wide 2FA
 
-Instance administrators can enable and enforce 2FA across the entire Fleetbase instance — for all users in all organizations. This is configured from **Admin → 2FA Config**.
+Instance administrators can enable and enforce 2FA across the entire LogisBase instance — for all users in all organizations. This is configured from **Admin → 2FA Config**.
 
 See [System Setup → Two-Factor Authentication](/docs/platform/system-setup/two-factor-authentication) for details.

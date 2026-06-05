@@ -34,7 +34,7 @@ on:
           - auto
           - logistics-software
           - supply-chain-software
-          - fleetbase-api-tutorial
+          - logisbase-api-tutorial
       generate_feature_image:
         description: Generate and attach an OpenAI feature image when creating the Ghost draft
         required: true
@@ -113,56 +113,56 @@ jobs:
       - name: Checkout core-api source truth
         uses: actions/checkout@v4
         with:
-          repository: fleetbase/core-api
+          repository: logisbase/core-api
           path: source-truth/core-api
           token: ${{ secrets.FLEETBASE_SOURCE_READ_TOKEN || github.token }}
 
       - name: Checkout fleetops source truth
         uses: actions/checkout@v4
         with:
-          repository: fleetbase/fleetops
+          repository: logisbase/fleetops
           path: source-truth/fleetops
           token: ${{ secrets.FLEETBASE_SOURCE_READ_TOKEN || github.token }}
 
       - name: Checkout ledger source truth
         uses: actions/checkout@v4
         with:
-          repository: fleetbase/ledger
+          repository: logisbase/ledger
           path: source-truth/ledger
           token: ${{ secrets.FLEETBASE_SOURCE_READ_TOKEN || github.token }}
 
       - name: Checkout storefront source truth
         uses: actions/checkout@v4
         with:
-          repository: fleetbase/storefront
+          repository: logisbase/storefront
           path: source-truth/storefront
           token: ${{ secrets.FLEETBASE_SOURCE_READ_TOKEN || github.token }}
 
       - name: Checkout dev-engine source truth
         uses: actions/checkout@v4
         with:
-          repository: fleetbase/dev-engine
+          repository: logisbase/dev-engine
           path: source-truth/dev-engine
           token: ${{ secrets.FLEETBASE_SOURCE_READ_TOKEN || github.token }}
 
       - name: Checkout iam-engine source truth
         uses: actions/checkout@v4
         with:
-          repository: fleetbase/iam-engine
+          repository: logisbase/iam-engine
           path: source-truth/iam-engine
           token: ${{ secrets.FLEETBASE_SOURCE_READ_TOKEN || github.token }}
 
       - name: Checkout ember-core source truth
         uses: actions/checkout@v4
         with:
-          repository: fleetbase/ember-core
+          repository: logisbase/ember-core
           path: source-truth/ember-core
           token: ${{ secrets.FLEETBASE_SOURCE_READ_TOKEN || github.token }}
 
       - name: Checkout pallet source truth
         uses: actions/checkout@v4
         with:
-          repository: fleetbase/pallet
+          repository: logisbase/pallet
           path: source-truth/pallet
           token: ${{ secrets.FLEETBASE_SOURCE_READ_TOKEN || github.token }}
 

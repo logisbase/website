@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 
 import FleetOpsPageContent from './fleetops-page-content';
 
-const TITLE = 'Fleet-Ops — Fleet Management & Dispatch Software | Fleetbase';
+const TITLE = 'Fleet-Ops — Fleet Management & Dispatch Software | LogisBase';
 const DESCRIPTION =
-  'Fleet-Ops by Fleetbase is open-source fleet management and dispatch software. Real-time GPS tracking, route optimization, configurable workflows, and automated dispatch — self-hosted or cloud.';
-const CANONICAL = 'https://fleetbase.io/platform/fleetops';
+  'Fleet-Ops by LogisBase is source-available fleet management and dispatch software. Real-time GPS tracking, route optimization, configurable workflows, and automated dispatch — self-hosted or cloud.';
+const CANONICAL = 'https://logisbase.com/platform/fleetops';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     'real time fleet tracking',
     'GPS fleet tracking',
     'driver management software',
-    'open source fleet management',
+    'source-available fleet management',
     'transport management system',
     'TMS software',
   ],
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
  * JSON-LD schema for Fleet-Ops — emitted into the page as a <script> tag so
  * search engines can render richer results (product name, description,
  * features, pricing model). Schema.org SoftwareApplication is the right
- * type for a SaaS / open-source TMS product page.
+ * type for a SaaS / source-available TMS product page.
  */
 const softwareApplicationSchema = {
   '@context': 'https://schema.org',
@@ -52,17 +52,17 @@ const softwareApplicationSchema = {
   description: DESCRIPTION,
   publisher: {
     '@type': 'Organization',
-    name: 'Fleetbase',
-    url: 'https://fleetbase.io',
-    logo: 'https://fleetbase.io/images/icon.png',
+    name: 'LogisBase',
+    url: 'https://logisbase.com',
+    logo: 'https://logisbase.com/images/icon.png',
   },
   offers: {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
     description:
-      'Free to self-host under AGPL-3.0. Cloud SaaS available with resource-unit-based pricing — no per-driver fees.',
-    url: 'https://fleetbase.io/pricing',
+      'Free to self-host under SOURCE-AVAILABLE. Cloud SaaS available with resource-unit-based pricing — no per-driver fees.',
+    url: 'https://logisbase.com/pricing',
   },
   featureList: [
     'Phase-based Orchestrator Workbench',
@@ -71,7 +71,7 @@ const softwareApplicationSchema = {
     'Vehicle maintenance scheduling and work orders',
     'Telematics integrations (Samsara, Geotab, Flespi)',
     'REST API, webhooks, and WebSocket event streams',
-    'Open-source under AGPL-3.0',
+    'Source-available under SOURCE-AVAILABLE',
     'Self-hostable or managed cloud',
   ],
   softwareVersion: 'Latest',
@@ -84,7 +84,9 @@ export default function FleetOpsPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareApplicationSchema),
+        }}
       />
       <FleetOpsPageContent />
     </>

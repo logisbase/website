@@ -1,11 +1,11 @@
 ---
 title: Socket Events
-description: Monitor live WebSocket channels and subscribe to real-time event streams from your Fleetbase instance.
+description: Monitor live WebSocket channels and subscribe to real-time event streams from your LogisBase instance.
 ---
 
 # Socket Events
 
-Fleetbase uses **SocketCluster** to broadcast real-time events over WebSocket connections. The Socket Events panel in the Developer Console lets you browse available channels and watch live event output directly in the console. Navigate to **Developers → Socket Events**.
+LogisBase uses **SocketCluster** to broadcast real-time events over WebSocket connections. The Socket Events panel in the Developer Console lets you browse available channels and watch live event output directly in the console. Navigate to **Developers → Socket Events**.
 
 ![Socket Events list — Listen button and Channel name columns for each available channel](/images/screenshots/developers/developers-websockets.webp)
 
@@ -13,9 +13,9 @@ Fleetbase uses **SocketCluster** to broadcast real-time events over WebSocket co
 
 The panel lists all channels available for your organization:
 
-| Channel | Description |
-| :--- | :--- |
-| `api.{key_id}` | One channel per API key — broadcasts events scoped to that credential |
+| Channel                | Description                                                                                                  |
+| :--------------------- | :----------------------------------------------------------------------------------------------------------- |
+| `api.{key_id}`         | One channel per API key — broadcasts events scoped to that credential                                        |
 | `company.{company_id}` | Your organization's main channel — broadcasts all events for your org regardless of which key triggered them |
 
 ## Listening on a Channel
@@ -36,19 +36,19 @@ Click **Listen on custom channel** in the header to enter any channel name manua
 
 ## Connecting Programmatically
 
-To receive socket events in your own application, connect to the Fleetbase SocketCluster server using the `socketcluster-client` library.
+To receive socket events in your own application, connect to the LogisBase SocketCluster server using the `socketcluster-client` library.
 
 ```javascript
 import socketClusterClient from 'socketcluster-client';
 
 const socket = socketClusterClient.create({
-    hostname: 'socket.your-instance.com',
-    secure: true,
-    port: 443,
+  hostname: 'socket.your-instance.com',
+  secure: true,
+  port: 443,
 });
 
 socket.on('connect', () => {
-    console.log('Connected to Fleetbase socket server');
+  console.log('Connected to LogisBase socket server');
 });
 ```
 
@@ -59,9 +59,9 @@ socket.on('connect', () => {
 const channel = socket.subscribe('company.your-company-uuid');
 
 (async () => {
-    for await (const data of channel) {
-        console.log('Event received:', data);
-    }
+  for await (const data of channel) {
+    console.log('Event received:', data);
+  }
 })();
 ```
 
@@ -72,9 +72,9 @@ const channel = socket.subscribe('company.your-company-uuid');
 const channel = socket.subscribe('api.your-api-key-id');
 
 (async () => {
-    for await (const data of channel) {
-        console.log('Event received:', data);
-    }
+  for await (const data of channel) {
+    console.log('Event received:', data);
+  }
 })();
 ```
 
@@ -84,7 +84,7 @@ In production, restrict which origins can connect to your socket server. Configu
 
 ```yaml
 environment:
-    SOCKETCLUSTER_OPTIONS: '{"origins":"https://yourdomain.com:*"}'
+  SOCKETCLUSTER_OPTIONS: '{"origins":"https://yourdomain.com:*"}'
 ```
 
 Without this restriction, any client that knows your socket server address can connect and receive event data. See [System Setup → Socket](/docs/platform/system-setup/socket) for full configuration details.

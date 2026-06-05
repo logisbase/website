@@ -1,16 +1,16 @@
-# fleetbase.io
+# logisbase.com
 
-The marketing site, documentation, and developer portal for [Fleetbase](https://fleetbase.io) — the open-source logistics and supply-chain platform.
+The marketing site, documentation, and developer portal for [LogisBase](https://logisbase.com) — the source-available logistics and supply-chain platform.
 
-![Fleetbase — Your Fleet. Your Data. Your Platform.](./public/images/og-image.webp)
+![LogisBase — Your Fleet. Your Data. Your Platform.](./public/images/og-image.webp)
 
 ## What's in this repo
 
 - **Marketing site** — home, platform pages, solutions, pricing, partners, customer stories (`/oli-max`, `/true-vegan`)
-- **Documentation** — Platform, FleetOps, Storefront, Pallet, Ledger, CLI, Fleetbase UI, Extension Development, API Reference, Contributing — all rendered with [Fumadocs](https://fumadocs.dev)
-- **API reference generator** — auto-generates `/docs/api/*` MDX from the [`fleetbase/postman`](https://github.com/fleetbase/postman) collection at build time (see `scripts/generate-api-docs.mjs`)
+- **Documentation** — Platform, FleetOps, Storefront, Pallet, Ledger, CLI, LogisBase UI, Extension Development, API Reference, Contributing — all rendered with [Fumadocs](https://fumadocs.dev)
+- **API reference generator** — auto-generates `/docs/api/*` MDX from the [`logisbase/postman`](https://github.com/logisbase/postman) collection at build time (see `scripts/generate-api-docs.mjs`)
 - **Blog** — pulled from a Ghost CMS via the Content API
-- **Customer stories** — branded landing pages for production deployments of the Fleetbase Storefront app
+- **Customer stories** — branded landing pages for production deployments of the LogisBase Storefront app
 
 ## Tech stack
 
@@ -28,8 +28,8 @@ The marketing site, documentation, and developer portal for [Fleetbase](https://
 Requirements: Node.js 20+, pnpm 10+.
 
 ```bash
-git clone --recurse-submodules git@github.com:fleetbase/fleetbase.io.git
-cd fleetbase.io
+git clone --recurse-submodules git@github.com:logisbase/logisbase.io.git
+cd logisbase.com
 pnpm install
 pnpm dev
 ```
@@ -65,7 +65,7 @@ pnpm lint              # next lint
 ## Project layout
 
 ```
-fleetbase.io/
+logisbase.com/
 ├── content/            # MDX content for docs, blog, changelog
 │   ├── docs/           # docs sections — platform, fleet-ops, storefront, etc.
 │   ├── blog/           # blog post sources
@@ -80,9 +80,9 @@ fleetbase.io/
 ├── src/
 │   ├── app/            # Next.js App Router routes
 │   ├── components/     # UI components, layout, MDX components
-│   └── lib/            # utilities, source loaders, GitHub stars helper
+│   └── lib/            # utilities, source loaders, Deployments helper
 ├── vendor/
-│   └── postman/        # submodule — fleetbase/postman collection
+│   └── postman/        # submodule — logisbase/postman collection
 ├── source.config.ts    # Fumadocs MDX source registration
 └── next.config.ts
 ```
@@ -95,8 +95,8 @@ The API reference under `/docs/api/*` is **auto-generated** from the [postman su
 
 ## Contributing
 
-The [Contributing Guide](https://fleetbase.io/docs/contributing) covers code, documentation, translations, extensions, and reporting issues. PRs welcome.
+The [Contributing Guide](https://logisbase.com/docs/contributing) covers code, documentation, translations, extensions, and reporting issues. PRs welcome.
 
 ## License
 
-[AGPL-3.0](./LICENSE.md). Commercial licensing is available — see [/licensing/commercial](https://fleetbase.io/licensing/commercial) for full details, pricing tiers, and terms.
+[SOURCE-AVAILABLE](./LICENSE.md). Commercial licensing is available — see [/licensing/commercial](https://logisbase.com/licensing/commercial) for full details, pricing tiers, and terms.

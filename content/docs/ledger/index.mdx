@@ -1,29 +1,29 @@
 ---
 title: Ledger
-description: Ledger is the accounting and invoicing extension for Fleetbase — double-entry bookkeeping, invoicing, digital wallets, payment gateway processing, and financial reporting.
+description: Ledger is the accounting and invoicing extension for LogisBase — double-entry bookkeeping, invoicing, digital wallets, payment gateway processing, and financial reporting.
 ---
 
 # Ledger
 
-**Ledger** is the accounting and invoicing extension for Fleetbase. It provides a complete financial management layer — double-entry bookkeeping, automated invoicing, digital wallets, payment gateway processing, and standard financial reporting — integrated directly with Fleet-Ops and Storefront.
+**Ledger** is the accounting and invoicing extension for LogisBase. It provides a complete financial management layer — double-entry bookkeeping, automated invoicing, digital wallets, payment gateway processing, and standard financial reporting — integrated directly with Fleet-Ops and Storefront.
 
 ![Ledger dashboard — KPI cards, revenue trend chart, recent journal entries](/images/screenshots/ledger/ledger-dashboard.webp)
 
 ## What Ledger Does
 
-| Capability | What it covers |
-| :--- | :--- |
-| **Chart of Accounts** | Define asset, liability, equity, revenue, and expense accounts |
-| **Double-Entry Bookkeeping** | Every transaction creates journal entries across two accounts |
-| **Invoicing** | Create, send, and collect payment on invoices |
-| **Invoice Templates** | Customize the look of your invoices with company branding |
-| **Digital Wallets** | Track balances for drivers, customers, your company, and individual users |
-| **Payment Gateways** | Stripe, QPay, and Cash — purchases, refunds, and webhook idempotency |
-| **Transactions** | Immutable audit trail for every wallet movement |
-| **Financial Reports** | Balance sheet, income statement, cash flow, trial balance, AR aging, wallet summary |
-| **Fleet-Ops Integration** | Auto-create draft invoices when a `PurchaseRate` is added to an order |
-| **Storefront Integration** | Record direct journal entries (DEBIT Cash, CREDIT Revenue) when a Storefront order completes — no invoice |
-| **Settings** | Configure invoice prefix, payment terms, default gateway, default template, fiscal year, and base currency |
+| Capability                   | What it covers                                                                                             |
+| :--------------------------- | :--------------------------------------------------------------------------------------------------------- |
+| **Chart of Accounts**        | Define asset, liability, equity, revenue, and expense accounts                                             |
+| **Double-Entry Bookkeeping** | Every transaction creates journal entries across two accounts                                              |
+| **Invoicing**                | Create, send, and collect payment on invoices                                                              |
+| **Invoice Templates**        | Customize the look of your invoices with company branding                                                  |
+| **Digital Wallets**          | Track balances for drivers, customers, your company, and individual users                                  |
+| **Payment Gateways**         | Stripe, QPay, and Cash — purchases, refunds, and webhook idempotency                                       |
+| **Transactions**             | Immutable audit trail for every wallet movement                                                            |
+| **Financial Reports**        | Balance sheet, income statement, cash flow, trial balance, AR aging, wallet summary                        |
+| **Fleet-Ops Integration**    | Auto-create draft invoices when a `PurchaseRate` is added to an order                                      |
+| **Storefront Integration**   | Record direct journal entries (DEBIT Cash, CREDIT Revenue) when a Storefront order completes — no invoice  |
+| **Settings**                 | Configure invoice prefix, payment terms, default gateway, default template, fiscal year, and base currency |
 
 ## Key Concepts
 
@@ -36,36 +36,67 @@ description: Ledger is the accounting and invoicing extension for Fleetbase — 
 
 ## Getting Started
 
-<div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 not-prose">
+<div className="not-prose mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
   <Card>
     <CardHeader>
-      <CardTitle className="text-sm font-semibold">Get up and running</CardTitle>
-      <CardDescription className="text-xs">Set up your chart of accounts, configure a gateway, and create your first invoice.</CardDescription>
+      <CardTitle className="text-sm font-semibold">
+        Get up and running
+      </CardTitle>
+      <CardDescription className="text-xs">
+        Set up your chart of accounts, configure a gateway, and create your
+        first invoice.
+      </CardDescription>
     </CardHeader>
     <CardContent>
-      <a href="/docs/ledger/getting-started/quickstart" className="text-sm text-primary hover:underline">Quickstart →</a>
+      <a
+        href="/docs/ledger/getting-started/quickstart"
+        className="text-primary text-sm hover:underline"
+      >
+        Quickstart →
+      </a>
     </CardContent>
   </Card>
   <Card>
     <CardHeader>
-      <CardTitle className="text-sm font-semibold">Understand the basics</CardTitle>
-      <CardDescription className="text-xs">Learn double-entry bookkeeping, accounts, wallets, and the invoice lifecycle.</CardDescription>
+      <CardTitle className="text-sm font-semibold">
+        Understand the basics
+      </CardTitle>
+      <CardDescription className="text-xs">
+        Learn double-entry bookkeeping, accounts, wallets, and the invoice
+        lifecycle.
+      </CardDescription>
     </CardHeader>
     <CardContent>
-      <a href="/docs/ledger/getting-started/core-concepts" className="text-sm text-primary hover:underline">Core Concepts →</a>
+      <a
+        href="/docs/ledger/getting-started/core-concepts"
+        className="text-primary text-sm hover:underline"
+      >
+        Core Concepts →
+      </a>
     </CardContent>
   </Card>
   <Card>
     <CardHeader>
-      <CardTitle className="text-sm font-semibold">Bill your customers</CardTitle>
-      <CardDescription className="text-xs">Create and send invoices, record payments, and export PDFs.</CardDescription>
+      <CardTitle className="text-sm font-semibold">
+        Bill your customers
+      </CardTitle>
+      <CardDescription className="text-xs">
+        Create and send invoices, record payments, and export PDFs.
+      </CardDescription>
     </CardHeader>
     <CardContent>
-      <a href="/docs/ledger/billing/invoices" className="text-sm text-primary hover:underline">Invoices →</a>
+      <a
+        href="/docs/ledger/billing/invoices"
+        className="text-primary text-sm hover:underline"
+      >
+        Invoices →
+      </a>
     </CardContent>
   </Card>
 </div>
 
 <Callout type="info">
-Ledger comes pre-installed with every Fleetbase instance. Navigate to **Ledger** in the console sidebar to begin. Default chart of accounts is provisioned automatically when your company is created.
+  Ledger comes pre-installed with every LogisBase instance. Navigate to
+  **Ledger** in the console sidebar to begin. Default chart of accounts is
+  provisioned automatically when your company is created.
 </Callout>

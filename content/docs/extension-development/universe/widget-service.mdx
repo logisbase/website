@@ -1,6 +1,6 @@
 ---
 title: Widget Service
-description: Register dashboards and widgets that show up on the Fleetbase home dashboard or your extension's own dashboard surface.
+description: Register dashboards and widgets that show up on the LogisBase home dashboard or your extension's own dashboard surface.
 ---
 
 # Widget Service
@@ -16,13 +16,13 @@ You'll most often add widgets to the built-in `'dashboard'`. You can also regist
 
 ```js
 // addon/extension.js
-import { Widget, ExtensionComponent } from '@fleetbase/ember-core/contracts';
+import { Widget, ExtensionComponent } from '@logisbase/ember-core/contracts';
 
 export default {
-    setupExtension(app, universe) {
-        const widgetService = universe.getService('widget');
-        // …
-    },
+  setupExtension(app, universe) {
+    const widgetService = universe.getService('widget');
+    // …
+  },
 };
 ```
 
@@ -32,32 +32,32 @@ The most common pattern — add one or more widgets to the console home dashboar
 
 ```js
 // addon/extension.js
-import { Widget, ExtensionComponent } from '@fleetbase/ember-core/contracts';
+import { Widget, ExtensionComponent } from '@logisbase/ember-core/contracts';
 
 export default {
-    setupExtension(app, universe) {
-        const widgetService = universe.getService('widget');
+  setupExtension(app, universe) {
+    const widgetService = universe.getService('widget');
 
-        widgetService.registerWidgets('dashboard', [
-            new Widget({
-                id: 'storefront-key-metrics-widget',
-                name: 'Storefront Metrics',
-                description: 'Key metrics from Storefront.',
-                icon: 'store',
-                component: new ExtensionComponent(
-                    '@fleetbase/storefront-engine',
-                    'widget/storefront-key-metrics'
-                ),
-                grid_options: { w: 12, h: 7, minW: 8, minH: 7 },
-                options: { title: 'Storefront Metrics' },
-                default: true,
-            }),
-        ]);
-    },
+    widgetService.registerWidgets('dashboard', [
+      new Widget({
+        id: 'storefront-key-metrics-widget',
+        name: 'Storefront Metrics',
+        description: 'Key metrics from Storefront.',
+        icon: 'store',
+        component: new ExtensionComponent(
+          '@logisbase/storefront-engine',
+          'widget/storefront-key-metrics',
+        ),
+        grid_options: { w: 12, h: 7, minW: 8, minH: 7 },
+        options: { title: 'Storefront Metrics' },
+        default: true,
+      }),
+    ]);
+  },
 };
 ```
 
-Real example: [`packages/storefront/addon/extension.js:55`](https://github.com/fleetbase/fleetbase/blob/main/packages/storefront/addon/extension.js#L55).
+Real example: [`packages/storefront/addon/extension.js:55`](https://github.com/logisbase/logisbase/blob/main/packages/storefront/addon/extension.js#L55).
 
 ## Registering a New Dashboard
 
@@ -68,7 +68,7 @@ widgetService.registerDashboard('ledger');
 widgetService.registerWidgets('ledger', widgets);
 ```
 
-Real example: [`packages/ledger/addon/extension.js:185`](https://github.com/fleetbase/fleetbase/blob/main/packages/ledger/addon/extension.js#L185) — Ledger registers its own dashboard, attaches its full widget set there, and additionally exposes a curated subset on the built-in `'dashboard'`.
+Real example: [`packages/ledger/addon/extension.js:185`](https://github.com/logisbase/logisbase/blob/main/packages/ledger/addon/extension.js#L185) — Ledger registers its own dashboard, attaches its full widget set there, and additionally exposes a curated subset on the built-in `'dashboard'`.
 
 ## Methods
 
@@ -78,8 +78,8 @@ Registers a named dashboard. `options` are stored alongside the dashboard record
 
 ```js
 widgetService.registerDashboard('ledger', {
-    title: 'Ledger Overview',
-    icon: 'gauge-high',
+  title: 'Ledger Overview',
+  icon: 'gauge-high',
 });
 ```
 
@@ -115,28 +115,31 @@ Returns the dashboard registry / a single dashboard record.
 
 `Widget` accepts both an options object and a fluent-builder form. See [Contracts → `Widget`](/docs/extension-development/reference/contracts#widget) for the full property table.
 
-| Property | Description |
-| :--- | :--- |
-| `id` | **Required.** Unique identifier (alias `widgetId` accepted) |
-| `name` | Display name in the picker |
-| `description` | Short description in the picker |
-| `icon` | FontAwesome icon |
-| `component` | An `ExtensionComponent` (string path, class, or full options) |
-| `grid_options` | `{ w, h, minW, minH }` — passed through to `grid-stack` |
-| `options` | Default options forwarded to the widget component |
-| `category` | Picker category (default `'default'`) |
-| `default` | Auto-add to the dashboard's default-widget list |
+| Property       | Description                                                   |
+| :------------- | :------------------------------------------------------------ |
+| `id`           | **Required.** Unique identifier (alias `widgetId` accepted)   |
+| `name`         | Display name in the picker                                    |
+| `description`  | Short description in the picker                               |
+| `icon`         | FontAwesome icon                                              |
+| `component`    | An `ExtensionComponent` (string path, class, or full options) |
+| `grid_options` | `{ w, h, minW, minH }` — passed through to `grid-stack`       |
+| `options`      | Default options forwarded to the widget component             |
+| `category`     | Picker category (default `'default'`)                         |
+| `default`      | Auto-add to the dashboard's default-widget list               |
 
 ```js
 new Widget({
-    id: 'fleet-ops-key-metrics',
-    name: 'Fleet-Ops Metrics',
-    description: 'Active vehicles, drivers, and live orders.',
-    icon: 'truck',
-    component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/fleet-ops-key-metrics'),
-    grid_options: { w: 12, h: 7, minW: 8, minH: 7 },
-    options: { title: 'Fleet-Ops Metrics' },
-    default: true,
+  id: 'fleet-ops-key-metrics',
+  name: 'Fleet-Ops Metrics',
+  description: 'Active vehicles, drivers, and live orders.',
+  icon: 'truck',
+  component: new ExtensionComponent(
+    '@logisbase/fleetops-engine',
+    'widget/fleet-ops-key-metrics',
+  ),
+  grid_options: { w: 12, h: 7, minW: 8, minH: 7 },
+  options: { title: 'Fleet-Ops Metrics' },
+  default: true,
 });
 ```
 
@@ -145,14 +148,14 @@ new Widget({
 A widget component lives inside your engine — anywhere under `addon/components/` works. The `ExtensionComponent` reference is what crosses the engine boundary.
 
 ```handlebars
-{{!-- addon/components/widget/storefront-key-metrics.hbs --}}
-<div class="widget">
-    {{#if this.isLoading}}
-        <Spinner />
-    {{else}}
-        <div class="text-2xl">{{this.metrics.totalOrders}}</div>
-        <div class="text-xs text-secondary">Total orders this week</div>
-    {{/if}}
+{{! addon/components/widget/storefront-key-metrics.hbs }}
+<div class='widget'>
+  {{#if this.isLoading}}
+    <Spinner />
+  {{else}}
+    <div class='text-2xl'>{{this.metrics.totalOrders}}</div>
+    <div class='text-secondary text-xs'>Total orders this week</div>
+  {{/if}}
 </div>
 ```
 
@@ -163,19 +166,19 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
 export default class StorefrontKeyMetricsWidget extends Component {
-    @service fetch;
-    @tracked metrics = null;
-    @tracked isLoading = true;
+  @service fetch;
+  @tracked metrics = null;
+  @tracked isLoading = true;
 
-    constructor() {
-        super(...arguments);
-        this.load();
-    }
+  constructor() {
+    super(...arguments);
+    this.load();
+  }
 
-    async load() {
-        this.metrics = await this.fetch.get('storefront/v1/metrics');
-        this.isLoading = false;
-    }
+  async load() {
+    this.metrics = await this.fetch.get('storefront/v1/metrics');
+    this.isLoading = false;
+  }
 }
 ```
 
@@ -183,16 +186,16 @@ export default class StorefrontKeyMetricsWidget extends Component {
 
 The two façade shortcuts on `UniverseService` are still wired but emit deprecation warnings:
 
-| Deprecated | Use instead |
-| :--- | :--- |
-| `universe.registerDashboardWidgets(widgets)` | `universe.getService('widget').registerWidgets('dashboard', widgets)` |
+| Deprecated                                          | Use instead                                                                  |
+| :-------------------------------------------------- | :--------------------------------------------------------------------------- |
+| `universe.registerDashboardWidgets(widgets)`        | `universe.getService('widget').registerWidgets('dashboard', widgets)`        |
 | `universe.registerDefaultDashboardWidgets(widgets)` | `universe.getService('widget').registerDefaultWidgets('dashboard', widgets)` |
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/services/universe/widget-service.js`](https://github.com/fleetbase/ember-core/blob/main/addon/services/universe/widget-service.js) | `WidgetService` |
-| [`addon/contracts/widget.js`](https://github.com/fleetbase/ember-core/blob/main/addon/contracts/widget.js) | `Widget` contract |
-| [`packages/storefront/addon/extension.js`](https://github.com/fleetbase/fleetbase/blob/main/packages/storefront/addon/extension.js) | Single-widget on built-in dashboard |
-| [`packages/ledger/addon/extension.js`](https://github.com/fleetbase/fleetbase/blob/main/packages/ledger/addon/extension.js) | Custom dashboard + widget set |
+| File                                                                                                                                       | Description                         |
+| :----------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------- |
+| [`addon/services/universe/widget-service.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/universe/widget-service.js) | `WidgetService`                     |
+| [`addon/contracts/widget.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/widget.js)                                 | `Widget` contract                   |
+| [`packages/storefront/addon/extension.js`](https://github.com/logisbase/logisbase/blob/main/packages/storefront/addon/extension.js)        | Single-widget on built-in dashboard |
+| [`packages/ledger/addon/extension.js`](https://github.com/logisbase/logisbase/blob/main/packages/ledger/addon/extension.js)                | Custom dashboard + widget set       |

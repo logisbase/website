@@ -17,7 +17,9 @@ Drivers log into Navigator using their registered phone number. The app sends an
 4. Location permissions are requested and must be granted
 
 <Callout type="info">
-The phone number used for login must exactly match the phone number in the driver's record in **Fleet-Ops → Resources → Drivers**. International format is required (e.g., +6591234567).
+  The phone number used for login must exactly match the phone number in the
+  driver's record in **Fleet-Ops → Resources → Drivers**. International format
+  is required (e.g., +6591234567).
 </Callout>
 
 ## Device Registration
@@ -42,7 +44,8 @@ You can manually regenerate a driver's auth token from their detail panel:
 3. The new token is sent to the driver's app on next sync
 
 <Callout type="warn">
-Regenerating a driver's auth token will immediately invalidate their current session. They will need to log in again via SMS.
+  Regenerating a driver's auth token will immediately invalidate their current
+  session. They will need to log in again via SMS.
 </Callout>
 
 ## Revoking Access
@@ -67,18 +70,18 @@ Push notifications require the device token to be registered and the driver to h
 
 ## Multi-Organization Support
 
-Drivers can belong to multiple Fleetbase organizations. In Navigator, they can switch between organizations using the **Switch Organization** option in the app menu. They must be registered as a driver in each organization they want to access.
+Drivers can belong to multiple LogisBase organizations. In Navigator, they can switch between organizations using the **Switch Organization** option in the app menu. They must be registered as a driver in each organization they want to access.
 
 ## Navigator App Settings
 
 Administrators can configure Navigator app behavior for all drivers from **Fleet-Ops → Settings → Navigator App**:
 
-| Setting | Description |
-| :--- | :--- |
-| **SMS Verification** | Enable/disable SMS code login |
+| Setting                       | Description                                     |
+| :---------------------------- | :---------------------------------------------- |
+| **SMS Verification**          | Enable/disable SMS code login                   |
 | **Allow Driver Registration** | Let drivers self-register without console setup |
-| **Order Acceptance Mode** | Auto-accept dispatches or require manual accept |
-| **Broadcast Frequency** | How often GPS location is sent (seconds) |
-| **Language** | Default language for the driver app UI |
+| **Order Acceptance Mode**     | Auto-accept dispatches or require manual accept |
+| **Broadcast Frequency**       | How often GPS location is sent (seconds)        |
+| **Language**                  | Default language for the driver app UI          |
 
 See [Settings → Navigator App](/docs/fleet-ops/settings/navigator-app) for the full reference.

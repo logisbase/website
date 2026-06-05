@@ -28,10 +28,10 @@ STRIPE_ENABLE_APPLE_PAY=true    # adds Apple Pay to PaymentSheet on iOS
 STRIPE_ENABLE_GOOGLE_PAY=true   # adds Google Pay to PaymentSheet on Android
 ```
 
-| UI mode | Behavior |
-| :--- | :--- |
+| UI mode | Behavior                                                                                      |
+| :------ | :-------------------------------------------------------------------------------------------- |
 | `sheet` | Opens Stripe's native PaymentSheet — supports cards, Apple Pay, Google Pay, and saved methods |
-| `field` | Inline `CardField` for cards only |
+| `field` | Inline `CardField` for cards only                                                             |
 
 Apple Pay also requires a Merchant Identifier in your Apple Developer account, and a corresponding entitlement enabled in `ios/StorefrontApp/StorefrontApp.entitlements`. Google Pay requires no client-side configuration beyond the env flag.
 
@@ -67,11 +67,11 @@ FACEBOOK_CLIENT_TOKEN=00000000000000000000000000000000
 
 Underlying packages:
 
-| Provider | Package |
-| :--- | :--- |
-| Apple | `@invertase/react-native-apple-authentication` |
-| Google | `@react-native-google-signin/google-signin` |
-| Facebook | `react-native-fbsdk-next` |
+| Provider | Package                                        |
+| :------- | :--------------------------------------------- |
+| Apple    | `@invertase/react-native-apple-authentication` |
+| Google   | `@react-native-google-signin/google-signin`    |
+| Facebook | `react-native-fbsdk-next`                      |
 
 Each provider needs the matching native setup:
 
@@ -106,12 +106,12 @@ The app registers for push tokens on first launch and submits them to Storefront
 The app uses [SocketCluster](https://socketcluster.io) to receive live order status, driver location, and dispatch updates.
 
 ```
-SOCKETCLUSTER_HOST=socket.your-fleetbase.example.com
+SOCKETCLUSTER_HOST=socket.your-logisbase.example.com
 SOCKETCLUSTER_PORT=8000
 SOCKETCLUSTER_SECURE=true
 ```
 
-These map to the SocketCluster service deployed alongside Fleetbase. With these set, an order's status card updates without polling, and (if `MAP_DISPLAY_DRIVERS=true`) drivers are visible on the map.
+These map to the SocketCluster service deployed alongside LogisBase. With these set, an order's status card updates without polling, and (if `MAP_DISPLAY_DRIVERS=true`) drivers are visible on the map.
 
 ## Maps
 
@@ -125,6 +125,7 @@ DISABLE_GEOCODING_SCREEN=false
 ```
 
 Required Google Cloud APIs:
+
 - **Maps SDK for iOS**
 - **Maps SDK for Android**
 - **Maps JavaScript API** (only if you also run the web build)

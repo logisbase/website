@@ -1,24 +1,25 @@
 ---
 title: Quickstart
-description: Clone the Storefront App, install dependencies, configure your Fleetbase keys, and run it in iOS, Android, or web.
+description: Clone the Storefront App, install dependencies, configure your LogisBase keys, and run it in iOS, Android, or web.
 ---
 
 # Storefront App Quickstart
 
-Get the Storefront App running locally against your Fleetbase backend in about 15 minutes.
+Get the Storefront App running locally against your LogisBase backend in about 15 minutes.
 
 ## Prerequisites
 
-| Tool | Version | Notes |
-| :--- | :--- | :--- |
-| **Node.js** | ≥20 | See `.nvmrc` |
-| **Yarn** | 3.6.4 | Installed via Corepack — do not use Yarn 1 |
-| **React Native CLI environment** | — | [Set up your dev environment](https://reactnative.dev/docs/set-up-your-environment) for iOS (Xcode + Watchman) and Android (Android Studio + JDK 17) |
-| **Ruby + Bundler** | 3.x | iOS pods are installed via `bundle exec pod install` |
-| **A Fleetbase account** | — | Self-hosted or [fleetbase.io](https://fleetbase.io) |
+| Tool                             | Version | Notes                                                                                                                                                |
+| :------------------------------- | :------ | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Node.js**                      | ≥20     | See `.nvmrc`                                                                                                                                         |
+| **Yarn**                         | 3.6.4   | Installed via Corepack — do not use Yarn 1                                                                                                           |
+| **React Native CLI environment** | —       | [Set up your dev environment](https://reactnative.dev/docs/set-up-your-environment) for iOS (Xcode + Watchman) and Android (Android Studio + JDK 17) |
+| **Ruby + Bundler**               | 3.x     | iOS pods are installed via `bundle exec pod install`                                                                                                 |
+| **A LogisBase account**          | —       | Self-hosted or [logisbase.com](https://logisbase.com)                                                                                                |
 
 You will also need:
-- A **Fleetbase API secret key** — Console → **Developers**
+
+- A **LogisBase API secret key** — Console → **Developers**
 - A **Storefront key** — Console → **Storefront → Settings → API** (`store_*` for one store; `network_*` for a network)
 - A **Google Maps API key** with Maps SDK for iOS, Maps SDK for Android, and (if running web) Maps JavaScript API enabled
 - A **Stripe publishable key** if you plan to use Stripe
@@ -26,7 +27,7 @@ You will also need:
 ## 1. Clone and Install
 
 ```bash
-git clone git@github.com:fleetbase/storefront-app.git
+git clone git@github.com:logisbase/storefront-app.git
 cd storefront-app
 
 corepack enable
@@ -54,13 +55,13 @@ Create a `.env` file at the project root with at minimum:
 APP_NAME=Storefront
 APP_IDENTIFIER=com.yourcompany.storefront
 
-# Your Fleetbase backend
-FLEETBASE_HOST=https://your-fleetbase.example.com
+# Your LogisBase backend
+FLEETBASE_HOST=https://your-logisbase.example.com
 FLEETBASE_KEY=flb_live_...
 STOREFRONT_KEY=$store.your_store_key
 
 # Real-time order updates
-SOCKETCLUSTER_HOST=socket.your-fleetbase.example.com
+SOCKETCLUSTER_HOST=socket.your-logisbase.example.com
 SOCKETCLUSTER_PORT=8000
 SOCKETCLUSTER_SECURE=true
 
@@ -71,7 +72,8 @@ PAYMENT_GATEWAY=stripe
 ```
 
 <Callout type="warn">
-The bundled `.env.example` lists `GOOGLE_MAPS_KEY`, but the runtime reads `GOOGLE_MAPS_API_KEY`. Use `GOOGLE_MAPS_API_KEY`.
+  The bundled `.env.example` lists `GOOGLE_MAPS_KEY`, but the runtime reads
+  `GOOGLE_MAPS_API_KEY`. Use `GOOGLE_MAPS_API_KEY`.
 </Callout>
 
 The full set of supported environment variables — theming, tabs, payments, social login, locale labels, etc. — is documented in [Configuration](/docs/storefront/app/configuration).
@@ -107,26 +109,29 @@ yarn web
 Webpack dev server boots and serves the app at the URL it logs. The web target uses `react-native-web` with build-time aliasing for native-only modules.
 
 <Callout type="info">
-The web build is functional for development and demos. There is no production-optimized webpack configuration in the repo — if you intend to ship the web app to customers, plan to add one.
+  The web build is functional for development and demos. There is no
+  production-optimized webpack configuration in the repo — if you intend to ship
+  the web app to customers, plan to add one.
 </Callout>
 
 ## 5. Sign In and Browse
 
 Once the app launches:
-1. The boot screen calls your Fleetbase backend using `STOREFRONT_KEY`.
+
+1. The boot screen calls your LogisBase backend using `STOREFRONT_KEY`.
 2. The app discovers the configured store (or network) and renders its catalog.
 3. Customer accounts are created via the **Phone + SMS** flow by default, or via Apple/Google/Facebook if you've enabled those (see [Integrations](/docs/storefront/app/integrations)).
 
 ## Common Issues
 
-| Symptom | Likely cause |
-| :--- | :--- |
-| `Unauthorized` on launch | `STOREFRONT_KEY` or `FLEETBASE_KEY` is missing or wrong, or `FLEETBASE_HOST` is unreachable |
-| Empty store list / blank catalog | Your store has no published products, or the wrong Storefront key for your environment |
-| Maps not rendering | `GOOGLE_MAPS_API_KEY` missing, or the relevant platform SDK is not enabled in Google Cloud |
-| Real-time updates stuck | `SOCKETCLUSTER_HOST`/`PORT` not set, or the Fleetbase socket service isn't reachable |
-| Yarn install fails | Using Yarn 1 — switch to Yarn 3 via Corepack |
-| iOS build fails on first run | Run `yarn pod:install` (or `cd ios && bundle exec pod install`) again after a clean checkout |
+| Symptom                          | Likely cause                                                                                 |
+| :------------------------------- | :------------------------------------------------------------------------------------------- |
+| `Unauthorized` on launch         | `STOREFRONT_KEY` or `FLEETBASE_KEY` is missing or wrong, or `FLEETBASE_HOST` is unreachable  |
+| Empty store list / blank catalog | Your store has no published products, or the wrong Storefront key for your environment       |
+| Maps not rendering               | `GOOGLE_MAPS_API_KEY` missing, or the relevant platform SDK is not enabled in Google Cloud   |
+| Real-time updates stuck          | `SOCKETCLUSTER_HOST`/`PORT` not set, or the LogisBase socket service isn't reachable         |
+| Yarn install fails               | Using Yarn 1 — switch to Yarn 3 via Corepack                                                 |
+| iOS build fails on first run     | Run `yarn pod:install` (or `cd ios && bundle exec pod install`) again after a clean checkout |
 
 ## Next Steps
 

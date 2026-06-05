@@ -16,8 +16,8 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const title =
     searchParams.get('title') ||
-    'Open-Source Fleet Management & TMS Software';
-  const eyebrow = searchParams.get('eyebrow') || 'Fleetbase';
+    'Source-Available Fleet Management & TMS Software';
+  const eyebrow = searchParams.get('eyebrow') || 'LogisBase';
   const subtitle =
     searchParams.get('subtitle') ||
     'Self-hosted or cloud. No per-seat pricing.';
@@ -106,7 +106,7 @@ export async function GET(request: NextRequest) {
               color: '#fafafa',
             }}
           >
-            Fleetbase
+            LogisBase
           </span>
         </div>
 
@@ -185,7 +185,7 @@ export async function GET(request: NextRequest) {
             display: 'flex',
           }}
         >
-          fleetbase.io
+          logisbase.com
         </div>
       </div>
     ),

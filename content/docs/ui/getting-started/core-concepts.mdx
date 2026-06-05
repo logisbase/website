@@ -1,11 +1,11 @@
 ---
 title: Core Concepts
-description: How ember-ui is structured — components, helpers, modifiers, services, and the conventions that make every Fleetbase extension feel native.
+description: How ember-ui is structured — components, helpers, modifiers, services, and the conventions that make every LogisBase extension feel native.
 ---
 
 # Core Concepts
 
-`@fleetbase/ember-ui` is a standard Ember addon. If you're new to Ember, the four concepts below are the only ones you need before reading the rest of this section.
+`@logisbase/ember-ui` is a standard Ember addon. If you're new to Ember, the four concepts below are the only ones you need before reading the rest of this section.
 
 ## Components
 
@@ -14,7 +14,7 @@ A **component** is a reusable piece of UI. Ember-ui exports 200+ components — 
 You use components by their angle-bracket name in any `.hbs` template:
 
 ```handlebars
-<Button @type="primary" @text="Save" @onClick={{this.save}} />
+<Button @type='primary' @text='Save' @onClick={{this.save}} />
 ```
 
 The `@`-prefixed values are the component's **arguments** — the equivalent of React props. Arguments are typed and named.
@@ -22,7 +22,7 @@ The `@`-prefixed values are the component's **arguments** — the equivalent of 
 Components can also yield content. The `<ContentPanel>` example below yields its body so you can put any markup inside:
 
 ```handlebars
-<ContentPanel @title="Settings">
+<ContentPanel @title='Settings'>
   <p>Anything in here is rendered inside the panel body.</p>
 </ContentPanel>
 ```
@@ -31,8 +31,8 @@ Some components yield a curried subcomponent. For example, `<Tabs>` yields a `<T
 
 ```handlebars
 <Tabs as |Tab|>
-  <Tab @title="Profile">Profile content</Tab>
-  <Tab @title="Security">Security content</Tab>
+  <Tab @title='Profile'>Profile content</Tab>
+  <Tab @title='Security'>Security content</Tab>
 </Tabs>
 ```
 
@@ -43,11 +43,16 @@ Each component's page in this section lists every argument, the default value, t
 A **helper** is a function you call inside a template — usually to format a value:
 
 ```handlebars
-{{format-currency 12500 "USD"}}      {{!-- $125.00 --}}
-{{format-bytes 1048576}}              {{!-- 1 MB --}}
-{{format-date-fns @order.created_at "PPpp"}}   {{!-- Jul 4, 2025 at 3:42 PM --}}
-{{is-uuid this.id}}                  {{!-- true / false --}}
-{{can-action "fleet-ops driver" "delete"}}     {{!-- permission check --}}
+{{format-currency 12500 'USD'}}
+{{! $125.00 }}
+{{format-bytes 1048576}}
+{{! 1 MB }}
+{{format-date-fns @order.created_at 'PPpp'}}
+{{! Jul 4, 2025 at 3:42 PM }}
+{{is-uuid this.id}}
+{{! true / false }}
+{{can-action 'fleet-ops driver' 'delete'}}
+{{! permission check }}
 ```
 
 Helpers are pure functions — they take inputs and return values. They are globally available; no import needed.
@@ -59,9 +64,9 @@ See [Formatting](/docs/ui/helpers/formatting), [Type Checking](/docs/ui/helpers/
 A **modifier** attaches behavior to an element. They look like helpers but apply to the element itself rather than producing a value:
 
 ```handlebars
-<div {{set-height "400px"}}>fixed-height container</div>
-<input {{imask "phone"}} type="text" />
-<img {{fallback-img-src "/assets/placeholder.png"}} src={{this.url}} />
+<div {{set-height '400px'}}>fixed-height container</div>
+<input {{imask 'phone'}} type='text' />
+<img {{fallback-img-src '/assets/placeholder.png'}} src={{this.url}} />
 ```
 
 The modifier runs whenever the element renders or its inputs change. Use modifiers for things you'd otherwise do with `didInsertElement` hooks: setting heights, masks, fallback images, dimension constraints.
@@ -72,14 +77,14 @@ See [Modifiers](/docs/ui/helpers/modifiers) for the full list.
 
 A **service** is a long-lived singleton you inject into your component, controller, or other service. Ember-ui exposes six services:
 
-| Service | What it does |
-| :--- | :--- |
-| `modals-manager` | Show, hide, and configure modals from JavaScript |
-| `sidebar` | Toggle the console sidebar; register sidebar items |
-| `dashboard` | Manage dashboard widgets and layouts |
-| `template-builder` | Manage templates for invoices, emails, etc. |
+| Service                  | What it does                                                                   |
+| :----------------------- | :----------------------------------------------------------------------------- |
+| `modals-manager`         | Show, hide, and configure modals from JavaScript                               |
+| `sidebar`                | Toggle the console sidebar; register sidebar items                             |
+| `dashboard`              | Manage dashboard widgets and layouts                                           |
+| `template-builder`       | Manage templates for invoices, emails, etc.                                    |
 | `resource-context-panel` | Manage the resource context panel (the right-hand drawer for selected records) |
-| `leaflet` | Shared map state for any component using Leaflet |
+| `leaflet`                | Shared map state for any component using Leaflet                               |
 
 Inject and use them like any Ember service:
 
@@ -109,7 +114,7 @@ export default class DriverActionsComponent extends Component {
 Inside the ember-ui package:
 
 ```
-@fleetbase/ember-ui
+@logisbase/ember-ui
 ├── addon/
 │   ├── components/    ← every component (.hbs template + .js class)
 │   ├── helpers/       ← every helper
@@ -123,7 +128,7 @@ Inside your extension, you don't touch any of the above directly — you just us
 
 ## How It Connects to the Console
 
-Every Fleetbase extension is loaded into the console as an Ember Engine. When the engine boots, it inherits the host application's resolver — and ember-ui's components are part of that resolver. That's why you can use `<Button>` in any extension template without importing anything.
+Every LogisBase extension is loaded into the console as an Ember Engine. When the engine boots, it inherits the host application's resolver — and ember-ui's components are part of that resolver. That's why you can use `<Button>` in any extension template without importing anything.
 
 The same applies to extensions loading other extensions via the **Universe** registry — see [Extension Development](/docs/extension-development/getting-started/quickstart) for that side of the story.
 

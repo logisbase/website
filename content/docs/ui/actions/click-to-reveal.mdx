@@ -31,25 +31,25 @@ Yield a block to control how the masked value is rendered:
 
 ```handlebars
 <ClickToReveal @value={{this.gateway.secret_key}}>
-  <span class="font-mono text-sm">{{this.gateway.secret_key}}</span>
+  <span class='font-mono text-sm'>{{this.gateway.secret_key}}</span>
 </ClickToReveal>
 ```
 
 ## Custom Button Text
 
 ```handlebars
-<ClickToReveal @value={{this.token}} @buttonText="Show token" />
+<ClickToReveal @value={{this.token}} @buttonText='Show token' />
 ```
 
 ## Arguments
 
-| Argument | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `@value` | string | — | The sensitive value. Hidden until revealed; copied on click after reveal |
-| `@buttonText` | string | `Click to reveal` | Override for the reveal button text |
-| `@clickToCopy` | boolean | `false` | After reveal, the wrapper also acts as a click-to-copy target |
-| `@wrapperClass` | string | — | Extra classes on the outer wrapper |
-| `@column` | object | — | When used as a `<Table>` cell component, the column descriptor — pulls `clickToCopy` and `wrapperClass` from `column.cellComponentArgs` |
+| Argument        | Type    | Default           | Description                                                                                                                             |
+| :-------------- | :------ | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| `@value`        | string  | —                 | The sensitive value. Hidden until revealed; copied on click after reveal                                                                |
+| `@buttonText`   | string  | `Click to reveal` | Override for the reveal button text                                                                                                     |
+| `@clickToCopy`  | boolean | `false`           | After reveal, the wrapper also acts as a click-to-copy target                                                                           |
+| `@wrapperClass` | string  | —                 | Extra classes on the outer wrapper                                                                                                      |
+| `@column`       | object  | —                 | When used as a `<Table>` cell component, the column descriptor — pulls `clickToCopy` and `wrapperClass` from `column.cellComponentArgs` |
 
 Any additional `...attributes` are forwarded to the outer `<div>`.
 
@@ -76,17 +76,20 @@ The component reads `column.cellComponentArgs.clickToCopy` and `column.cellCompo
 ## Real-World Examples
 
 ```handlebars
-{{!-- Stripe secret key on the gateway settings page --}}
-<InputGroup @name="Secret Key">
+{{! Stripe secret key on the gateway settings page }}
+<InputGroup @name='Secret Key'>
   <ClickToReveal @value={{this.gateway.secret_key}} @clickToCopy={{true}} />
 </InputGroup>
 
-{{!-- Webhook signing secret --}}
-<ClickToReveal @value={{this.webhook.signing_secret}} @buttonText="Reveal signing secret" />
+{{! Webhook signing secret }}
+<ClickToReveal
+  @value={{this.webhook.signing_secret}}
+  @buttonText='Reveal signing secret'
+/>
 
-{{!-- API key in a list --}}
+{{! API key in a list }}
 <ClickToReveal @value={{store.key}} @clickToCopy={{true}}>
-  <span class="font-mono text-xs">{{store.key}}</span>
+  <span class='font-mono text-xs'>{{store.key}}</span>
 </ClickToReveal>
 ```
 
@@ -96,7 +99,7 @@ The component reads `column.cellComponentArgs.clickToCopy` and `column.cellCompo
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/click-to-reveal.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/click-to-reveal.hbs) | Template |
-| [`addon/components/click-to-reveal.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/click-to-reveal.js) | Class (extends `click-to-copy`) |
+| File                                                                                                                           | Description                     |
+| :----------------------------------------------------------------------------------------------------------------------------- | :------------------------------ |
+| [`addon/components/click-to-reveal.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/click-to-reveal.hbs) | Template                        |
+| [`addon/components/click-to-reveal.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/click-to-reveal.js)   | Class (extends `click-to-copy`) |

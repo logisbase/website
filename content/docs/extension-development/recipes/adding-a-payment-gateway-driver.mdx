@@ -5,22 +5,22 @@ description: Plug a new payment gateway (PayPal, Razorpay, etc.) into Ledger by 
 
 # Adding a Payment Gateway Driver
 
-The [Ledger](https://github.com/fleetbase/ledger) extension uses a Laravel [`Manager`](https://laravel.com/api/11.x/Illuminate/Support/Manager.html)-based driver pattern for payment gateways. Stripe, QPay, and Cash drivers ship by default — third-party drivers register via `PaymentGatewayManager::extend()`.
+The [Ledger](https://github.com/logisbase/ledger) extension uses a Laravel [`Manager`](https://laravel.com/api/11.x/Illuminate/Support/Manager.html)-based driver pattern for payment gateways. Stripe, QPay, and Cash drivers ship by default — third-party drivers register via `PaymentGatewayManager::extend()`.
 
 ## What a Driver Implements
 
-The contract is `Fleetbase\Ledger\Contracts\GatewayDriverInterface`. The abstract base class `AbstractGatewayDriver` covers most of it; you only need to fill in gateway-specific methods.
+The contract is `LogisBase\Ledger\Contracts\GatewayDriverInterface`. The abstract base class `AbstractGatewayDriver` covers most of it; you only need to fill in gateway-specific methods.
 
-| Method | What it does |
-| :--- | :--- |
-| `getName()` / `getCode()` | Display name + URL-safe machine code |
-| `getCapabilities()` | Array of `'purchase'`, `'refund'`, `'tokenization'`, `'webhooks'`, `'sandbox'`, `'recurring'`, etc. |
-| `getConfigSchema()` | Form schema rendered when configuring the gateway |
-| `initialize($config, $sandbox)` | Receives decrypted config — handled by `AbstractGatewayDriver` |
-| `purchase(PurchaseRequest $req)` | Charge the customer |
-| `refund(RefundRequest $req)` | Refund a transaction |
-| `handleWebhook(Request $req)` | Process inbound webhook events |
-| `createPaymentMethod($data)` | Tokenize/save a payment method (if supported) |
+| Method                           | What it does                                                                                        |
+| :------------------------------- | :-------------------------------------------------------------------------------------------------- |
+| `getName()` / `getCode()`        | Display name + URL-safe machine code                                                                |
+| `getCapabilities()`              | Array of `'purchase'`, `'refund'`, `'tokenization'`, `'webhooks'`, `'sandbox'`, `'recurring'`, etc. |
+| `getConfigSchema()`              | Form schema rendered when configuring the gateway                                                   |
+| `initialize($config, $sandbox)`  | Receives decrypted config — handled by `AbstractGatewayDriver`                                      |
+| `purchase(PurchaseRequest $req)` | Charge the customer                                                                                 |
+| `refund(RefundRequest $req)`     | Refund a transaction                                                                                |
+| `handleWebhook(Request $req)`    | Process inbound webhook events                                                                      |
+| `createPaymentMethod($data)`     | Tokenize/save a payment method (if supported)                                                       |
 
 ## 1. Implement the Driver
 
@@ -30,10 +30,10 @@ The contract is `Fleetbase\Ledger\Contracts\GatewayDriverInterface`. The abstrac
 
 namespace MyOrg\MyExtension\Gateways;
 
-use Fleetbase\Ledger\DTO\GatewayResponse;
-use Fleetbase\Ledger\DTO\PurchaseRequest;
-use Fleetbase\Ledger\DTO\RefundRequest;
-use Fleetbase\Ledger\Gateways\AbstractGatewayDriver;
+use LogisBase\Ledger\DTO\GatewayResponse;
+use LogisBase\Ledger\DTO\PurchaseRequest;
+use LogisBase\Ledger\DTO\RefundRequest;
+use LogisBase\Ledger\Gateways\AbstractGatewayDriver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -150,7 +150,7 @@ In your service provider's `boot()`, extend the `PaymentGatewayManager`:
 <?php
 // server/src/Providers/MyExtensionServiceProvider.php
 
-use Fleetbase\Ledger\PaymentGatewayManager;
+use LogisBase\Ledger\PaymentGatewayManager;
 use MyOrg\MyExtension\Gateways\PaypalDriver;
 
 public function boot()
@@ -200,8 +200,8 @@ Configure that URL in PayPal's webhook dashboard, with the events you handle.
 In Ledger's settings, "Add Payment Gateway" now offers PayPal. The form reads `getConfigSchema()`; user input is encrypted and persisted on a `Gateway` model. From any code path:
 
 ```php
-use Fleetbase\Ledger\PaymentGatewayManager;
-use Fleetbase\Ledger\DTO\PurchaseRequest;
+use LogisBase\Ledger\PaymentGatewayManager;
+use LogisBase\Ledger\DTO\PurchaseRequest;
 
 $manager = app(PaymentGatewayManager::class);
 $paypal  = $manager->gateway('paypal');
@@ -215,8 +215,11 @@ $response = $paypal->purchase(new PurchaseRequest(
 
 ## Reference
 
-- [`ledger/server/src/Contracts/GatewayDriverInterface.php`](https://github.com/fleetbase/ledger/blob/main/server/src/Contracts/GatewayDriverInterface.php) — full contract
-- [`ledger/server/src/Gateways/AbstractGatewayDriver.php`](https://github.com/fleetbase/ledger/blob/main/server/src/Gateways/AbstractGatewayDriver.php) — extend this
-- [`ledger/server/src/Gateways/StripeDriver.php`](https://github.com/fleetbase/ledger/blob/main/server/src/Gateways/StripeDriver.php) — full reference driver with tokenization
-- [`ledger/server/src/PaymentGatewayManager.php`](https://github.com/fleetbase/ledger/blob/main/server/src/PaymentGatewayManager.php) — registration via `extend()`
-- <LaravelApi path="Illuminate/Support/Manager.html">Laravel `Manager` API</LaravelApi> — the upstream driver pattern
+- [`ledger/server/src/Contracts/GatewayDriverInterface.php`](https://github.com/logisbase/ledger/blob/main/server/src/Contracts/GatewayDriverInterface.php) — full contract
+- [`ledger/server/src/Gateways/AbstractGatewayDriver.php`](https://github.com/logisbase/ledger/blob/main/server/src/Gateways/AbstractGatewayDriver.php) — extend this
+- [`ledger/server/src/Gateways/StripeDriver.php`](https://github.com/logisbase/ledger/blob/main/server/src/Gateways/StripeDriver.php) — full reference driver with tokenization
+- [`ledger/server/src/PaymentGatewayManager.php`](https://github.com/logisbase/ledger/blob/main/server/src/PaymentGatewayManager.php) — registration via `extend()`
+- <LaravelApi path="Illuminate/Support/Manager.html">
+    Laravel `Manager` API
+  </LaravelApi>
+  — the upstream driver pattern

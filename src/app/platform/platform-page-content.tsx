@@ -25,7 +25,7 @@ import Link from 'next/link';
 
 import DeploymentOptions from '@/components/sections/deployment-options';
 import IntegrationsEcosystem from '@/components/sections/integrations-ecosystem';
-import OpenSourceAdvantage from '@/components/sections/open-source-advantage';
+import OpenSourceAdvantage from '@/components/sections/source-available-advantage';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -36,7 +36,7 @@ function buildStats(stars: string) {
     { value: '8,000+', label: 'Active instances' },
     { value: '10M+', label: 'Orders processed' },
     { value: '50K+', label: 'Fleet vehicles tracked' },
-    { value: stars, label: 'GitHub stars' },
+    { value: stars, label: 'Deployments' },
   ];
 }
 
@@ -97,7 +97,7 @@ const modules = [
     border: 'border-green-500/20',
     dot: 'bg-green-500',
     description:
-      'The open-source driver app. Turn-by-turn navigation, proof of delivery, fault reporting, and live order communication — AGPL-3.0 licensed, fully white-label.',
+      'The source-available driver app. Turn-by-turn navigation, proof of delivery, fault reporting, and live order communication — SOURCE-AVAILABLE licensed, fully white-label.',
     href: '/platform/navigator',
     badge: null,
   },
@@ -133,7 +133,7 @@ const modules = [
     border: 'border-pink-500/20',
     dot: 'bg-pink-500',
     description:
-      'Official and community-built extensions via the Fleetbase Marketplace. One-click install from the console or CLI — telematics, payments, analytics, and more.',
+      'Official and community-built extensions via the LogisBase Marketplace. One-click install from the console or CLI — telematics, payments, analytics, and more.',
     href: '/platform/extensions',
     badge: null,
   },
@@ -146,7 +146,8 @@ const integrationFlow = [
     bg: 'bg-violet-500/10',
     module: 'Storefront',
     title: 'Customer places order',
-    description: 'Order paid via branded web or mobile app. Storefront captures payment and creates a delivery order automatically.',
+    description:
+      'Order paid via branded web or mobile app. Storefront captures payment and creates a delivery order automatically.',
   },
   {
     icon: GitBranch,
@@ -154,7 +155,8 @@ const integrationFlow = [
     bg: 'bg-blue-500/10',
     module: 'Fleet-Ops',
     title: 'Orchestrator assigns & dispatches',
-    description: 'Fleet-Ops receives the order, runs optimization phases, assigns the best driver, and sends navigation to the Navigator app.',
+    description:
+      'Fleet-Ops receives the order, runs optimization phases, assigns the best driver, and sends navigation to the Navigator app.',
   },
   {
     icon: Smartphone,
@@ -162,7 +164,8 @@ const integrationFlow = [
     bg: 'bg-green-500/10',
     module: 'Navigator',
     title: 'Driver completes delivery',
-    description: 'Driver navigates turn-by-turn, captures proof of delivery, and marks the order complete. Customer tracking link updates in real time.',
+    description:
+      'Driver navigates turn-by-turn, captures proof of delivery, and marks the order complete. Customer tracking link updates in real time.',
   },
   {
     icon: BookOpen,
@@ -170,7 +173,8 @@ const integrationFlow = [
     bg: 'bg-emerald-500/10',
     module: 'Ledger',
     title: 'Revenue recorded automatically',
-    description: 'Ledger posts the journal entry, credits the driver earnings wallet, and updates the income statement — without any manual step.',
+    description:
+      'Ledger posts the journal entry, credits the driver earnings wallet, and updates the income statement — without any manual step.',
   },
 ];
 
@@ -179,13 +183,13 @@ const platformPrinciples = [
     icon: Puzzle,
     title: 'Modular by design',
     description:
-      'Deploy only the modules your operation needs. Add more as you grow. No bloated monolith forcing you to buy capabilities you won\'t use.',
+      "Deploy only the modules your operation needs. Add more as you grow. No bloated monolith forcing you to buy capabilities you won't use.",
   },
   {
     icon: Globe,
-    title: 'Open source at the core',
+    title: 'Source-available at the core',
     description:
-      'Every module is open-source under AGPL-3.0. Inspect the code, self-host anywhere, fork and extend — or use our managed cloud.',
+      'Every module is source-available under SOURCE-AVAILABLE. Inspect the code, self-host anywhere, fork and extend — or use our managed cloud.',
   },
   {
     icon: Lock,
@@ -207,43 +211,55 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
   const stats = buildStats(stars);
   return (
     <div className="flex flex-col">
-
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="section-padding relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -top-24 left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-chart-1/[0.10] blur-[120px]" />
-          <div className="absolute top-1/3 -right-24 h-[500px] w-[500px] rounded-full bg-chart-3/[0.07] blur-3xl" />
-          <div className="absolute top-1/2 -left-24 h-[400px] w-[400px] rounded-full bg-chart-2/[0.06] blur-3xl" />
+          <div className="bg-chart-1/[0.10] absolute -top-24 left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full blur-[120px]" />
+          <div className="bg-chart-3/[0.07] absolute top-1/3 -right-24 h-[500px] w-[500px] rounded-full blur-3xl" />
+          <div className="bg-chart-2/[0.06] absolute top-1/2 -left-24 h-[400px] w-[400px] rounded-full blur-3xl" />
         </div>
         <div className="container space-y-12">
           <div className="mx-auto max-w-4xl space-y-8 text-center">
-            <div className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            <div className="text-muted-foreground inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+              <span className="bg-primary h-1.5 w-1.5 rounded-full" />
               Platform Overview
             </div>
             <h1 className="text-5xl leading-none tracking-tight text-balance md:text-6xl lg:text-7xl">
               One Platform for Every{' '}
               <span className="text-gradient">Logistics Operation</span>
             </h1>
-            <p className="mx-auto max-w-2xl text-lg leading-snug text-muted-foreground md:text-xl">
-              Fleetbase is a modular, open-source logistics OS. Deploy the modules you need — fleet
-              management, commerce, warehousing, finance, driver apps — and expand as your
-              operation grows. No vendor lock-in. Self-host or cloud.
+            <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-snug md:text-xl">
+              LogisBase is a modular, source-available logistics OS. Deploy the
+              modules you need — fleet management, commerce, warehousing,
+              finance, driver apps — and expand as your operation grows. No
+              vendor lock-in. Self-host or cloud.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
-                <a href="https://console.fleetbase.io/onboard" target="_blank" rel="noopener noreferrer">
-                  Try Fleetbase Cloud <ArrowRight className="ml-2 size-4" />
+                <a
+                  href="https://console.logisbase.com/onboard"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Try LogisBase Cloud <ArrowRight className="ml-2 size-4" />
                 </a>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <a href="https://cal.com/shivthakker/enquiry" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://cal.com/shivthakker/enquiry"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Schedule a Demo
                 </a>
               </Button>
               <Button size="lg" variant="ghost" asChild>
-                <a href="https://github.com/fleetbase/fleetbase" target="_blank" rel="noopener noreferrer">
-                  View on GitHub
+                <a
+                  href="https://github.com/logisbase/logisbase"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Request source access
                 </a>
               </Button>
             </div>
@@ -251,36 +267,44 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
 
           {/* Stats */}
           <div
-            className="overflow-hidden rounded-xl border bg-border"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px' }}
+            className="bg-border overflow-hidden rounded-xl border"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '1px',
+            }}
           >
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="flex flex-col items-center justify-center gap-1 bg-card px-6 py-8 text-center"
+                className="bg-card flex flex-col items-center justify-center gap-1 px-6 py-8 text-center"
               >
-                <span className="text-3xl font-bold tracking-tight text-primary md:text-4xl">
+                <span className="text-primary text-3xl font-bold tracking-tight md:text-4xl">
                   {stat.value}
                 </span>
-                <span className="text-xs text-muted-foreground">{stat.label}</span>
+                <span className="text-muted-foreground text-xs">
+                  {stat.label}
+                </span>
               </div>
             ))}
           </div>
 
           {/* Hero screenshot */}
           <div className="overflow-hidden rounded-xl border shadow-2xl">
-            <div className="flex items-center gap-2 border-b bg-muted/50 px-4 py-3">
+            <div className="bg-muted/50 flex items-center gap-2 border-b px-4 py-3">
               <div className="flex gap-1.5">
                 <div className="h-2.5 w-2.5 rounded-full bg-red-400/60" />
                 <div className="h-2.5 w-2.5 rounded-full bg-yellow-400/60" />
                 <div className="h-2.5 w-2.5 rounded-full bg-green-400/60" />
               </div>
-              <span className="ml-2 text-xs text-muted-foreground">Fleetbase — Fleet-Ops Live Operations</span>
+              <span className="text-muted-foreground ml-2 text-xs">
+                LogisBase — Fleet-Ops Live Operations
+              </span>
             </div>
             <div className="relative aspect-[16/7] w-full">
               <Image
                 src="/images/screenshots/fleet-ops/fleet-ops-live-orders-panel.webp"
-                alt="Fleetbase platform showing the Fleet-Ops live operations dashboard with real-time fleet map, active orders, and driver positions"
+                alt="LogisBase platform showing the Fleet-Ops live operations dashboard with real-time fleet map, active orders, and driver positions"
                 fill
                 className="object-cover object-top"
                 priority
@@ -296,28 +320,34 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
             <div className="flex flex-col justify-center gap-5 lg:col-span-2">
-              <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+              <div className="text-muted-foreground inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs font-medium">
                 How It Works
               </div>
               <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl">
                 Built to Work the Way Your Operation Does
               </h2>
-              <p className="leading-relaxed text-muted-foreground">
-                Most logistics platforms force you to use everything or nothing. Fleetbase is
-                modular — each piece works independently, and every piece works better together.
+              <p className="text-muted-foreground leading-relaxed">
+                Most logistics platforms force you to use everything or nothing.
+                LogisBase is modular — each piece works independently, and every
+                piece works better together.
               </p>
             </div>
             <div className="divide-y lg:col-span-3">
               {platformPrinciples.map((principle) => {
                 const Icon = principle.icon;
                 return (
-                  <div key={principle.title} className="flex gap-5 py-6 first:pt-0 last:pb-0">
-                    <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-md border bg-muted/30">
-                      <Icon className="size-4 text-muted-foreground" />
+                  <div
+                    key={principle.title}
+                    className="flex gap-5 py-6 first:pt-0 last:pb-0"
+                  >
+                    <div className="bg-muted/30 mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-md border">
+                      <Icon className="text-muted-foreground size-4" />
                     </div>
                     <div className="space-y-1">
-                      <h3 className="font-semibold text-accent-foreground">{principle.title}</h3>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
+                      <h3 className="text-accent-foreground font-semibold">
+                        {principle.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
                         {principle.description}
                       </p>
                     </div>
@@ -333,21 +363,22 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
       <section className="section-padding">
         <div className="container space-y-10">
           <div className="mx-auto max-w-3xl space-y-4 text-center">
-            <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
               The Full Platform
             </div>
             <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
               Every Module You Need,{' '}
               <span className="text-gradient">Nothing You Don't</span>
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-              Start with one module. Activate others as your operation grows. Every module is
-              open-source, independently deployable, and natively connected to the rest.
+            <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+              Start with one module. Activate others as your operation grows.
+              Every module is source-available, independently deployable, and
+              natively connected to the rest.
             </p>
           </div>
 
           <div
-            className="grid grid-cols-1 overflow-hidden rounded-xl border bg-border sm:grid-cols-2 lg:grid-cols-4"
+            className="bg-border grid grid-cols-1 overflow-hidden rounded-xl border sm:grid-cols-2 lg:grid-cols-4"
             style={{ gap: '1px' }}
           >
             {modules.map((mod) => {
@@ -356,10 +387,15 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
                 <Link
                   key={mod.name}
                   href={mod.href}
-                  className="group flex flex-col gap-4 bg-card p-6 transition-colors hover:bg-muted/30"
+                  className="group bg-card hover:bg-muted/30 flex flex-col gap-4 p-6 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <div className={cn('flex size-10 items-center justify-center rounded-lg', mod.bg)}>
+                    <div
+                      className={cn(
+                        'flex size-10 items-center justify-center rounded-lg',
+                        mod.bg,
+                      )}
+                    >
                       <Icon className={cn('size-5', mod.color)} />
                     </div>
                     {mod.badge && (
@@ -369,11 +405,16 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
                     )}
                   </div>
                   <div className="space-y-1.5">
-                    <h3 className="font-semibold text-accent-foreground">{mod.name}</h3>
-                    <p className="text-xs leading-snug text-muted-foreground">{mod.description}</p>
+                    <h3 className="text-accent-foreground font-semibold">
+                      {mod.name}
+                    </h3>
+                    <p className="text-muted-foreground text-xs leading-snug">
+                      {mod.description}
+                    </p>
                   </div>
-                  <div className="mt-auto flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors group-hover:text-accent-foreground">
-                    Explore {mod.name} <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
+                  <div className="text-muted-foreground group-hover:text-accent-foreground mt-auto flex items-center gap-1 text-xs font-medium transition-colors">
+                    Explore {mod.name}{' '}
+                    <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
                   </div>
                 </Link>
               );
@@ -386,42 +427,61 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
       <section className="section-padding">
         <div className="container space-y-12">
           <div className="mx-auto max-w-3xl space-y-4 text-center">
-            <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
               Native Integration
             </div>
             <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
               Modules That Talk to Each Other{' '}
               <span className="text-gradient">Out of the Box</span>
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-              When you run multiple Fleetbase modules, they share the same data layer. A Storefront
-              order becomes a Fleet-Ops dispatch becomes a Ledger journal entry — automatically,
-              without a single webhook or middleware to maintain.
+            <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+              When you run multiple LogisBase modules, they share the same data
+              layer. A Storefront order becomes a Fleet-Ops dispatch becomes a
+              Ledger journal entry — automatically, without a single webhook or
+              middleware to maintain.
             </p>
           </div>
 
           {/* Flow steps */}
           <div
-            className="overflow-hidden rounded-xl border bg-border"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px' }}
+            className="bg-border overflow-hidden rounded-xl border"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '1px',
+            }}
           >
             {integrationFlow.map((step, i) => {
               const Icon = step.icon;
               return (
-                <div key={step.module} className="relative flex flex-col gap-3 bg-card p-6">
+                <div
+                  key={step.module}
+                  className="bg-card relative flex flex-col gap-3 p-6"
+                >
                   {i < integrationFlow.length - 1 && (
-                    <div className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 translate-x-1/2 lg:flex">
-                      <ArrowRight className="size-4 text-muted-foreground/40" />
+                    <div className="absolute top-1/2 right-0 z-10 hidden translate-x-1/2 -translate-y-1/2 lg:flex">
+                      <ArrowRight className="text-muted-foreground/40 size-4" />
                     </div>
                   )}
                   <div className="flex items-center gap-2">
-                    <div className={cn('flex size-8 items-center justify-center rounded-md', step.bg)}>
+                    <div
+                      className={cn(
+                        'flex size-8 items-center justify-center rounded-md',
+                        step.bg,
+                      )}
+                    >
                       <Icon className={cn('size-4', step.color)} />
                     </div>
-                    <span className={cn('text-xs font-semibold', step.color)}>{step.module}</span>
+                    <span className={cn('text-xs font-semibold', step.color)}>
+                      {step.module}
+                    </span>
                   </div>
-                  <h4 className="font-semibold text-accent-foreground">{step.title}</h4>
-                  <p className="text-xs leading-snug text-muted-foreground">{step.description}</p>
+                  <h4 className="text-accent-foreground font-semibold">
+                    {step.title}
+                  </h4>
+                  <p className="text-muted-foreground text-xs leading-snug">
+                    {step.description}
+                  </p>
                 </div>
               );
             })}
@@ -434,9 +494,14 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
               'Shared contact, place, and vehicle data across all modules',
               'One IAM layer controls permissions everywhere',
             ].map((point) => (
-              <div key={point} className="flex items-start gap-3 rounded-lg border bg-muted/20 p-4">
-                <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
-                <span className="text-sm leading-snug text-muted-foreground">{point}</span>
+              <div
+                key={point}
+                className="bg-muted/20 flex items-start gap-3 rounded-lg border p-4"
+              >
+                <CheckCircle2 className="text-primary mt-0.5 size-4 shrink-0" />
+                <span className="text-muted-foreground text-sm leading-snug">
+                  {point}
+                </span>
               </div>
             ))}
           </div>
@@ -451,48 +516,60 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
       {/* ── Final CTA ─────────────────────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
-          <div className="relative overflow-hidden rounded-2xl border bg-card px-8 py-16 text-center md:px-16">
+          <div className="bg-card relative overflow-hidden rounded-2xl border px-8 py-16 text-center md:px-16">
             <div className="pointer-events-none absolute inset-0 -z-10">
-              <div className="absolute -top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-chart-1/[0.12] blur-3xl" />
-              <div className="absolute -bottom-1/2 right-1/4 h-72 w-72 rounded-full bg-chart-3/[0.08] blur-3xl" />
+              <div className="bg-chart-1/[0.12] absolute -top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full blur-3xl" />
+              <div className="bg-chart-3/[0.08] absolute right-1/4 -bottom-1/2 h-72 w-72 rounded-full blur-3xl" />
             </div>
             <div className="mx-auto max-w-3xl space-y-6">
-              <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+              <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
                 Get Started
               </div>
               <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
                 Your Logistics Stack,{' '}
                 <span className="text-gradient">Owned by You.</span>
               </h2>
-              <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Start with a 7-day free trial on Fleetbase Cloud, or self-host the full platform
-                under AGPL for free. No per-seat fees, no lock-in.
+              <p className="text-muted-foreground mx-auto max-w-xl text-lg leading-relaxed">
+                Start with a 7-day free trial on LogisBase Cloud, or self-host
+                the full platform under AGPL for free. No per-seat fees, no
+                lock-in.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
-                  <a href="https://console.fleetbase.io/onboard" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://console.logisbase.com/onboard"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Start Free Trial <ArrowRight className="ml-2 size-4" />
                   </a>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <a href="https://cal.com/shivthakker/enquiry" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://cal.com/shivthakker/enquiry"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Schedule a Demo
                   </a>
                 </Button>
                 <Button size="lg" variant="ghost" asChild>
-                  <a href="https://github.com/fleetbase/fleetbase" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://github.com/logisbase/logisbase"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Self-Host for Free
                   </a>
                 </Button>
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-muted-foreground text-xs">
                 Free 7-day trial · Free to self-host under AGPL
               </p>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

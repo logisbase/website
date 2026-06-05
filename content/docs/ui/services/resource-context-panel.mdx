@@ -1,6 +1,6 @@
 ---
 title: Resource Context Panel Service
-description: "The `resource-context-panel` service opens contextual detail overlays for any Fleetbase resource — single-content or tabbed, with route-sync and a stack of nested panels."
+description: 'The `resource-context-panel` service opens contextual detail overlays for any LogisBase resource — single-content or tabbed, with route-sync and a stack of nested panels.'
 ---
 
 # Resource Context Panel Service
@@ -63,45 +63,45 @@ A tabbed panel is required to have **either** `tabs` **or** `content`, not both.
 
 ## Definition Object
 
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| `id` | string | Optional — auto-generated if omitted |
-| `title` | string | Panel title |
-| `resource` (or `model`) | model | The Fleetbase record the panel is about |
-| `size` | string | `sm`, `md`, `lg`, `xl`, `full` (default `sm`) |
-| `content` | string | Component path for a single-content panel |
-| `tabs` | array | Tab descriptors (mutually exclusive with `content`) |
-| `initialTab` | string | Initial tab key |
-| `routeSync` | boolean | Reflect the open panel + active tab in the URL via `panel_id` and `panel_tab` query params |
-| `closeOnTransition` | boolean | Close automatically when the user navigates away |
-| `onOpen` | `({ resource, model, close })` | Called when the panel opens |
-| `onClose` | `({ model, close })` | Called when closing — return a Promise to wait |
+| Field                   | Type                           | Description                                                                                |
+| :---------------------- | :----------------------------- | :----------------------------------------------------------------------------------------- |
+| `id`                    | string                         | Optional — auto-generated if omitted                                                       |
+| `title`                 | string                         | Panel title                                                                                |
+| `resource` (or `model`) | model                          | The LogisBase record the panel is about                                                    |
+| `size`                  | string                         | `sm`, `md`, `lg`, `xl`, `full` (default `sm`)                                              |
+| `content`               | string                         | Component path for a single-content panel                                                  |
+| `tabs`                  | array                          | Tab descriptors (mutually exclusive with `content`)                                        |
+| `initialTab`            | string                         | Initial tab key                                                                            |
+| `routeSync`             | boolean                        | Reflect the open panel + active tab in the URL via `panel_id` and `panel_tab` query params |
+| `closeOnTransition`     | boolean                        | Close automatically when the user navigates away                                           |
+| `onOpen`                | `({ resource, model, close })` | Called when the panel opens                                                                |
+| `onClose`               | `({ model, close })`           | Called when closing — return a Promise to wait                                             |
 
 ### Tab Descriptor
 
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| `key` | string | Unique key |
-| `label` (or `title`) | string | Display label |
-| `component` | string | Component path |
-| `render` | function | Alternative — render function |
-| `beforeLeave` | `({ model, close }) → bool \| Promise<bool>` | Guard that runs when switching away from this tab — return `false` to block |
+| Field                | Type                                         | Description                                                                 |
+| :------------------- | :------------------------------------------- | :-------------------------------------------------------------------------- |
+| `key`                | string                                       | Unique key                                                                  |
+| `label` (or `title`) | string                                       | Display label                                                               |
+| `component`          | string                                       | Component path                                                              |
+| `render`             | function                                     | Alternative — render function                                               |
+| `beforeLeave`        | `({ model, close }) → bool \| Promise<bool>` | Guard that runs when switching away from this tab — return `false` to block |
 
 ## Public API
 
-| Method | Description |
-| :--- | :--- |
-| `open(definition)` | Open a panel. Returns the panel ID |
-| `update(id, partial)` | Merge updates into an existing panel |
-| `close(id?)` | Close a specific panel, or the active one if no id |
-| `closeAll()` | Close every panel in the stack |
-| `setActiveTab(id, tabKey)` | Switch tabs (respects `beforeLeave`) |
-| `getActive()` | The top-most panel |
-| `getById(id)` | Find a specific panel |
-| `getActiveTab(id)` | The active tab key for a panel |
-| `isOpen(id?)` | Whether the panel (or any panel) is open |
-| `stack()` | Snapshot of the panel stack |
-| `bringToFront(id)` | Move a panel to the top of the stack |
+| Method                     | Description                                        |
+| :------------------------- | :------------------------------------------------- |
+| `open(definition)`         | Open a panel. Returns the panel ID                 |
+| `update(id, partial)`      | Merge updates into an existing panel               |
+| `close(id?)`               | Close a specific panel, or the active one if no id |
+| `closeAll()`               | Close every panel in the stack                     |
+| `setActiveTab(id, tabKey)` | Switch tabs (respects `beforeLeave`)               |
+| `getActive()`              | The top-most panel                                 |
+| `getById(id)`              | Find a specific panel                              |
+| `getActiveTab(id)`         | The active tab key for a panel                     |
+| `isOpen(id?)`              | Whether the panel (or any panel) is open           |
+| `stack()`                  | Snapshot of the panel stack                        |
+| `bringToFront(id)`         | Move a panel to the top of the stack               |
 
 ## Route Sync
 
@@ -158,8 +158,8 @@ Pair `routeSync: true` with `closeOnTransition: true` if you want the panel to c
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/services/resource-context-panel.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/services/resource-context-panel.js) | Service class |
-| [`addon/components/resource-context-panel.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/resource-context-panel.hbs) | Component template |
-| [`addon/components/resource-context-panel.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/resource-context-panel.js) | Component class |
+| File                                                                                                                                         | Description        |
+| :------------------------------------------------------------------------------------------------------------------------------------------- | :----------------- |
+| [`addon/services/resource-context-panel.js`](https://github.com/logisbase/ember-ui/blob/main/addon/services/resource-context-panel.js)       | Service class      |
+| [`addon/components/resource-context-panel.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/resource-context-panel.hbs) | Component template |
+| [`addon/components/resource-context-panel.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/resource-context-panel.js)   | Component class    |

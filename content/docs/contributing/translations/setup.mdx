@@ -1,12 +1,12 @@
 ---
 title: Setup
-description: Fork, clone, and prepare your environment to contribute Fleetbase translations.
+description: Fork, clone, and prepare your environment to contribute LogisBase translations.
 sidebarTitle: Setup
 ---
 
 # Setup
 
-This page covers the practical setup before you translate anything. None of it is Fleetbase-specific — if you've contributed to any GitHub project before, skim and skip.
+This page covers the practical setup before you translate anything. None of it is LogisBase-specific — if you've contributed to any GitHub project before, skim and skip.
 
 ## Prerequisites
 
@@ -15,24 +15,24 @@ You need:
 - A **GitHub account**
 - **Git** installed locally
 - A **text editor** that handles YAML well (VS Code, Sublime, Vim, anything with syntax highlighting)
-- *(Optional)* A way to run Fleetbase locally to preview your translation in context — see [Self-hosting](/docs/platform/system-setup) if you want to go this route
+- _(Optional)_ A way to run LogisBase locally to preview your translation in context — see [Self-hosting](/docs/platform/system-setup) if you want to go this route
 
-You don't need to run Fleetbase locally to contribute — you can translate the YAML files directly and rely on the maintainers to verify rendering during review. Running locally is faster feedback though, especially for languages that change UI sizing (long German words, RTL Arabic, dense CJK).
+You don't need to run LogisBase locally to contribute — you can translate the YAML files directly and rely on the maintainers to verify rendering during review. Running locally is faster feedback though, especially for languages that change UI sizing (long German words, RTL Arabic, dense CJK).
 
 ## Step 1 — Identify the repository
 
 Decide what you want to translate:
 
-| If you want to translate... | Fork this repo |
-| :--- | :--- |
-| **The Console shell** (nav, settings, auth) | [`fleetbase/fleetbase`](https://github.com/fleetbase/fleetbase) |
-| **FleetOps** (fleet management UI) | [`fleetbase/fleetops`](https://github.com/fleetbase/fleetops) |
-| **Storefront** (e-commerce UI) | [`fleetbase/storefront`](https://github.com/fleetbase/storefront) |
-| **Pallet** (warehouse UI) | [`fleetbase/pallet`](https://github.com/fleetbase/pallet) |
-| **Ledger** (finance UI) | [`fleetbase/ledger`](https://github.com/fleetbase/ledger) |
-| **IAM** (users, roles, policies) | [`fleetbase/iam-engine`](https://github.com/fleetbase/iam-engine) |
-| **Developer Console** (API keys, webhooks) | [`fleetbase/dev-engine`](https://github.com/fleetbase/dev-engine) |
-| **Extensions Marketplace** | [`fleetbase/registry-bridge`](https://github.com/fleetbase/registry-bridge) |
+| If you want to translate...                 | Fork this repo                                                              |
+| :------------------------------------------ | :-------------------------------------------------------------------------- |
+| **The Console shell** (nav, settings, auth) | [`logisbase/logisbase`](https://github.com/logisbase/logisbase)             |
+| **FleetOps** (fleet management UI)          | [`logisbase/fleetops`](https://github.com/logisbase/fleetops)               |
+| **Storefront** (e-commerce UI)              | [`logisbase/storefront`](https://github.com/logisbase/storefront)           |
+| **Pallet** (warehouse UI)                   | [`logisbase/pallet`](https://github.com/logisbase/pallet)                   |
+| **Ledger** (finance UI)                     | [`logisbase/ledger`](https://github.com/logisbase/ledger)                   |
+| **IAM** (users, roles, policies)            | [`logisbase/iam-engine`](https://github.com/logisbase/iam-engine)           |
+| **Developer Console** (API keys, webhooks)  | [`logisbase/dev-engine`](https://github.com/logisbase/dev-engine)           |
+| **Extensions Marketplace**                  | [`logisbase/registry-bridge`](https://github.com/logisbase/registry-bridge) |
 
 Full repo map with translation paths: [Repositories →](/docs/contributing/translations/repositories).
 
@@ -50,7 +50,7 @@ cd <repo-name>
 Add the upstream remote so you can pull latest changes:
 
 ```bash
-git remote add upstream https://github.com/fleetbase/<repo-name>.git
+git remote add upstream https://github.com/logisbase/<repo-name>.git
 git fetch upstream
 ```
 
@@ -58,7 +58,7 @@ git fetch upstream
 
 Translation files live at one of two paths depending on the repo:
 
-- **Main `fleetbase/fleetbase` repository** → `console/translations/`
+- **Main `logisbase/logisbase` repository** → `console/translations/`
 - **Every other extension** → `translations/` (at repo root)
 
 Inside, you'll see one YAML file per locale:

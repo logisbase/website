@@ -5,7 +5,7 @@ description: Design reusable invoice templates with variable interpolation — i
 
 # Invoice Templates
 
-**Invoice Templates** control how invoices are rendered for PDF and the public online portal. Ledger's templates use Fleetbase's core `Template` model with the `invoice` context — they are HTML bodies with variable interpolation, edited via the **Template Builder** component.
+**Invoice Templates** control how invoices are rendered for PDF and the public online portal. Ledger's templates use LogisBase's core `Template` model with the `invoice` context — they are HTML bodies with variable interpolation, edited via the **Template Builder** component.
 
 Navigate to **Ledger → Billing → Invoice Templates**.
 
@@ -14,24 +14,19 @@ Navigate to **Ledger → Billing → Invoice Templates**.
 ## Creating a Template
 
 <Steps>
+  <Step>Navigate to **Ledger → Billing → Invoice Templates**.</Step>
+  <Step>Click **New Template**.</Step>
+  <Step>Enter a **Name** (e.g., "Standard Invoice", "Service Agreement").</Step>
   <Step>
-    Navigate to **Ledger → Billing → Invoice Templates**.
+    Use the **Template Builder** to author the HTML body. Insert variables via
+    the variable picker — they resolve at render time against the invoice you're
+    previewing.
   </Step>
   <Step>
-    Click **New Template**.
+    Click **Preview** at any time to see the template rendered with sample data
+    so you can iterate on the layout.
   </Step>
-  <Step>
-    Enter a **Name** (e.g., "Standard Invoice", "Service Agreement").
-  </Step>
-  <Step>
-    Use the **Template Builder** to author the HTML body. Insert variables via the variable picker — they resolve at render time against the invoice you're previewing.
-  </Step>
-  <Step>
-    Click **Preview** at any time to see the template rendered with sample data so you can iterate on the layout.
-  </Step>
-  <Step>
-    Click **Save**.
-  </Step>
+  <Step>Click **Save**.</Step>
 </Steps>
 
 ## Template Variables
@@ -39,18 +34,22 @@ Navigate to **Ledger → Billing → Invoice Templates**.
 Templates can reference any of these namespaces. Each maps to fields on the corresponding model.
 
 ### `{invoice.*}`
+
 - `{invoice.number}`, `{invoice.status}`, `{invoice.invoice_date}`, `{invoice.due_date}`, `{invoice.currency}`
 - `{invoice.subtotal}`, `{invoice.tax}`, `{invoice.total_amount}`, `{invoice.amount_paid}`, `{invoice.balance}`
 - `{invoice.notes}`, `{invoice.terms}`
 - `{invoice.formatted_total_amount}`, `{invoice.formatted_balance}`, `{invoice.formatted_due_date}`
 
 ### `{transaction.*}`
+
 - `{transaction.reference}`, `{transaction.amount}`, `{transaction.formatted_amount}`, `{transaction.created_at}`
 
 ### `{account.*}`
+
 - `{account.name}`, `{account.code}`, `{account.type}`
 
 ### `{wallet.*}`
+
 - `{wallet.balance}`, `{wallet.formatted_balance}`, `{wallet.currency}`
 
 The full set of registered variables is defined by the Ledger service provider's context schema and is what the template builder's variable picker offers.
@@ -60,15 +59,12 @@ The full set of registered variables is defined by the Ledger service provider's
 To automatically apply a template to all new invoices and to allow PDF rendering without per-invoice template selection:
 
 <Steps>
+  <Step>Navigate to **Ledger → Settings → Invoice**.</Step>
   <Step>
-    Navigate to **Ledger → Settings → Invoice**.
+    Select your preferred template in the **Default Template** field
+    (`default_template_uuid`).
   </Step>
-  <Step>
-    Select your preferred template in the **Default Template** field (`default_template_uuid`).
-  </Step>
-  <Step>
-    Save.
-  </Step>
+  <Step>Save.</Step>
 </Steps>
 
 If neither the invoice nor the settings have a template, **Download PDF** on an invoice will fail until one is set.
@@ -82,11 +78,11 @@ When creating or editing an invoice, the **Template** field lets you choose a di
 The fastest way to preview a template is from the template editor itself:
 
 <Steps>
+  <Step>Open the template under **Ledger → Billing → Invoice Templates**.</Step>
   <Step>
-    Open the template under **Ledger → Billing → Invoice Templates**.
-  </Step>
-  <Step>
-    Click **Preview** in the template editor — the template renders with sample data so you can adjust layout, variables, and styling without needing a real invoice.
+    Click **Preview** in the template editor — the template renders with sample
+    data so you can adjust layout, variables, and styling without needing a real
+    invoice.
   </Step>
 </Steps>
 

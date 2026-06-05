@@ -13,7 +13,7 @@ True if the value is an array (Ember array or native array):
 
 ```handlebars
 {{#if (is-array @items)}}
-  {{!-- safe to iterate --}}
+  {{! safe to iterate }}
 {{/if}}
 ```
 
@@ -64,7 +64,7 @@ True if the value matches the UUID v1–v5 format:
 True if the value is in the array:
 
 ```handlebars
-{{#if (in-array "admin" @user.roles)}}
+{{#if (in-array 'admin' @user.roles)}}
   <AdminPanel />
 {{/if}}
 ```
@@ -75,7 +75,7 @@ True if the value is a plain object:
 
 ```handlebars
 {{#if (is-object @data)}}
-  {{!-- iterate keys with each-in --}}
+  {{! iterate keys with each-in }}
 {{/if}}
 ```
 
@@ -85,7 +85,7 @@ True if a plain object has no keys:
 
 ```handlebars
 {{#if (is-object-empty @options)}}
-  <span class="text-gray-400">No options set</span>
+  <span class='text-gray-400'>No options set</span>
 {{/if}}
 ```
 
@@ -104,7 +104,7 @@ True if the value is not null/undefined and (for strings/arrays) has length:
 True when the host application is in dark mode — useful for branching styles:
 
 ```handlebars
-<img src={{if (is-dark-mode) "/logo-dark.svg" "/logo-light.svg"}} />
+<img src={{if (is-dark-mode) '/logo-dark.svg' '/logo-light.svg'}} />
 ```
 
 ## `{{is-dd-item-visible}}`
@@ -113,16 +113,16 @@ Internal helper used by dropdown menus to decide visibility — typically not ne
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/helpers/is-array.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/is-array.js) | Helper |
-| [`addon/helpers/is-bool-value.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/is-bool-value.js) | Helper |
-| [`addon/helpers/is-dark-mode.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/is-dark-mode.js) | Helper |
-| [`addon/helpers/is-dd-item-visible.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/is-dd-item-visible.js) | Helper |
-| [`addon/helpers/is-model.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/is-model.js) | Helper |
-| [`addon/helpers/is-not-empty.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/is-not-empty.js) | Helper |
-| [`addon/helpers/is-object-empty.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/is-object-empty.js) | Helper |
-| [`addon/helpers/is-object.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/is-object.js) | Helper |
-| [`addon/helpers/is-url.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/is-url.js) | Helper |
-| [`addon/helpers/is-uuid.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/is-uuid.js) | Helper |
-| [`addon/helpers/in-array.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/helpers/in-array.js) | Helper |
+| File                                                                                                                         | Description |
+| :--------------------------------------------------------------------------------------------------------------------------- | :---------- |
+| [`addon/helpers/is-array.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/is-array.js)                     | Helper      |
+| [`addon/helpers/is-bool-value.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/is-bool-value.js)           | Helper      |
+| [`addon/helpers/is-dark-mode.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/is-dark-mode.js)             | Helper      |
+| [`addon/helpers/is-dd-item-visible.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/is-dd-item-visible.js) | Helper      |
+| [`addon/helpers/is-model.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/is-model.js)                     | Helper      |
+| [`addon/helpers/is-not-empty.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/is-not-empty.js)             | Helper      |
+| [`addon/helpers/is-object-empty.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/is-object-empty.js)       | Helper      |
+| [`addon/helpers/is-object.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/is-object.js)                   | Helper      |
+| [`addon/helpers/is-url.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/is-url.js)                         | Helper      |
+| [`addon/helpers/is-uuid.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/is-uuid.js)                       | Helper      |
+| [`addon/helpers/in-array.js`](https://github.com/logisbase/ember-ui/blob/main/addon/helpers/in-array.js)                     | Helper      |

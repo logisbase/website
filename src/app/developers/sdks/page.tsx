@@ -2,31 +2,32 @@ import type { Metadata } from 'next';
 import SdksPageContent from './sdks-page-content';
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://fleetbase.io/developers/sdks' },
-  title: 'SDKs & Libraries — JavaScript, PHP & Storefront | Fleetbase',
+  alternates: { canonical: 'https://logisbase.com/developers/sdks' },
+  title: 'SDKs & Libraries — JavaScript, PHP & Storefront | LogisBase',
   description:
-    'Official Fleetbase client libraries for JavaScript and PHP, plus a dedicated Storefront SDK. Integrate fleet management and logistics into your application in minutes.',
+    'Official LogisBase client libraries for JavaScript and PHP, plus a dedicated Storefront SDK. Integrate fleet management and logistics into your application in minutes.',
   keywords: [
-    'Fleetbase JavaScript SDK',
-    'Fleetbase PHP SDK',
+    'LogisBase JavaScript SDK',
+    'LogisBase PHP SDK',
     'Storefront SDK',
     'fleet management SDK',
     'logistics API library',
-    'fleetbase-js',
-    'fleetbase-php',
+    'logisbase-js',
+    'logisbase-php',
     'storefront-js',
-    'npm fleetbase',
+    'npm logisbase',
   ],
   openGraph: {
-    title: 'SDKs & Libraries | Fleetbase',
-    description: 'Official JavaScript and PHP SDKs for the Fleetbase API. Get integrated in minutes.',
+    title: 'SDKs & Libraries | LogisBase',
+    description:
+      'Official JavaScript and PHP SDKs for the LogisBase API. Get integrated in minutes.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SDKs & Libraries | Fleetbase',
+    title: 'SDKs & Libraries | LogisBase',
     description:
-      'Official client libraries for the Fleetbase platform — JavaScript, PHP, and Storefront.',
+      'Official client libraries for the LogisBase platform — JavaScript, PHP, and Storefront.',
   },
 };
 

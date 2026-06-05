@@ -1,6 +1,6 @@
 ---
 title: CoordinatesInput
-description: "<CoordinatesInput> renders side-by-side lat/lng fields with a map-picker dropdown that supports drag-to-place and address geocoding."
+description: '<CoordinatesInput> renders side-by-side lat/lng fields with a map-picker dropdown that supports drag-to-place and address geocoding.'
 ---
 
 # `<CoordinatesInput>`
@@ -32,22 +32,22 @@ The map picker includes an address search field — type an address, click **Loo
 
 ## Arguments
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
-| `@latitude` | number | Latitude in decimal degrees |
-| `@longitude` | number | Longitude in decimal degrees |
-| `@onUpdate` | `(lat, lng)` | Called when either coordinate changes |
-| `@disabled` | boolean | Disable input and dropdown |
-| `@renderInPlace` | boolean | Render the dropdown in DOM order (default: `true`) |
-| `@triggerClass` | string | Extra classes on the "Select from map" trigger |
-| `@mapContainerClass` | string | Extra classes on the map container |
-| `@leafletMapClass` | string | Extra classes on the Leaflet map |
-| `@zoomControlClass` / `@zoomControlContainerClass` | string | Extra classes on the zoom buttons |
+| Argument                                           | Type         | Description                                        |
+| :------------------------------------------------- | :----------- | :------------------------------------------------- |
+| `@latitude`                                        | number       | Latitude in decimal degrees                        |
+| `@longitude`                                       | number       | Longitude in decimal degrees                       |
+| `@onUpdate`                                        | `(lat, lng)` | Called when either coordinate changes              |
+| `@disabled`                                        | boolean      | Disable input and dropdown                         |
+| `@renderInPlace`                                   | boolean      | Render the dropdown in DOM order (default: `true`) |
+| `@triggerClass`                                    | string       | Extra classes on the "Select from map" trigger     |
+| `@mapContainerClass`                               | string       | Extra classes on the map container                 |
+| `@leafletMapClass`                                 | string       | Extra classes on the Leaflet map                   |
+| `@zoomControlClass` / `@zoomControlContainerClass` | string       | Extra classes on the zoom buttons                  |
 
 ## Real-World Examples
 
 ```handlebars
-<InputGroup @name="Pickup location">
+<InputGroup @name='Pickup location'>
   <CoordinatesInput
     @latitude={{this.location.lat}}
     @longitude={{this.location.lng}}
@@ -58,13 +58,13 @@ The map picker includes an address search field — type an address, click **Loo
 
 ## See Also
 
-- `<ModelCoordinatesInput>` — same component, but bound to a Fleetbase model's `location` polygon
+- `<ModelCoordinatesInput>` — same component, but bound to a LogisBase model's `location` polygon
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/coordinates-input.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/coordinates-input.hbs) | Template |
-| [`addon/components/coordinates-input.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/coordinates-input.js) | Class — uses Leaflet via the `leaflet` service |
-| [`addon/components/model-coordinates-input.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/model-coordinates-input.hbs) | Sibling — bound to a Fleetbase model's `location` |
-| [`addon/components/model-coordinates-input.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/model-coordinates-input.js) | |
+| File                                                                                                                                           | Description                                       |
+| :--------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
+| [`addon/components/coordinates-input.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/coordinates-input.hbs)             | Template                                          |
+| [`addon/components/coordinates-input.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/coordinates-input.js)               | Class — uses Leaflet via the `leaflet` service    |
+| [`addon/components/model-coordinates-input.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/model-coordinates-input.hbs) | Sibling — bound to a LogisBase model's `location` |
+| [`addon/components/model-coordinates-input.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/model-coordinates-input.js)   |                                                   |

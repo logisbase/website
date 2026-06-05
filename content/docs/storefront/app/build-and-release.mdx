@@ -82,6 +82,7 @@ cd android
 ```
 
 Output:
+
 - APK: `android/app/build/outputs/apk/release/app-release.apk`
 - AAB: `android/app/build/outputs/bundle/release/app-release.aab`
 
@@ -107,26 +108,26 @@ The build outputs a `bundle.web.js` and the Tamagui-extracted `tamagui.css` (pos
 
 ### iOS
 
-| File | Change |
-| :--- | :--- |
-| `ios/StorefrontApp/Info.plist` | `CFBundleDisplayName` (already wired to `$(APP_NAME)` via xcconfig — set `APP_NAME` in `.env`) |
+| File                           | Change                                                                                                  |
+| :----------------------------- | :------------------------------------------------------------------------------------------------------ |
+| `ios/StorefrontApp/Info.plist` | `CFBundleDisplayName` (already wired to `$(APP_NAME)` via xcconfig — set `APP_NAME` in `.env`)          |
 | `ios/StorefrontApp/Info.plist` | `CFBundleIdentifier` (already wired to `$(PRODUCT_BUNDLE_IDENTIFIER)` — set `APP_IDENTIFIER` in `.env`) |
-| `ios/StorefrontApp.xcodeproj` | Rename the Xcode project (use Xcode's rename refactor) |
+| `ios/StorefrontApp.xcodeproj`  | Rename the Xcode project (use Xcode's rename refactor)                                                  |
 
 ### Android
 
-| File | Change |
-| :--- | :--- |
-| `.env` | `APP_IDENTIFIER` — read by `build.gradle` for `applicationId` |
-| `android/app/build.gradle` | `namespace` is hardcoded to `com.storefront.app` — change to your package |
-| `android/app/src/main/res/values/strings.xml` | `<string name="app_name">` |
-| `android/app/src/main/AndroidManifest.xml` | If using the legacy `package=` attribute, update it |
+| File                                          | Change                                                                    |
+| :-------------------------------------------- | :------------------------------------------------------------------------ |
+| `.env`                                        | `APP_IDENTIFIER` — read by `build.gradle` for `applicationId`             |
+| `android/app/build.gradle`                    | `namespace` is hardcoded to `com.storefront.app` — change to your package |
+| `android/app/src/main/res/values/strings.xml` | `<string name="app_name">`                                                |
+| `android/app/src/main/AndroidManifest.xml`    | If using the legacy `package=` attribute, update it                       |
 
 ### React Native registry
 
-| File | Change |
-| :--- | :--- |
-| `app.json` | Both `name` and `displayName` |
+| File                                | Change                                                                          |
+| :---------------------------------- | :------------------------------------------------------------------------------ |
+| `app.json`                          | Both `name` and `displayName`                                                   |
 | `index.native.tsx`, `index.web.tsx` | Both import `appName` from `app.json` — no edit needed if you change `app.json` |
 
 After renaming, run a clean rebuild:
@@ -140,12 +141,12 @@ yarn pod:install
 
 `patches/` contains `patch-package` patches applied automatically on `yarn install`:
 
-| Patch | Purpose |
-| :--- | :--- |
-| `@backpackapp-io+react-native-toast` | Drops a missing re-export that breaks the build |
-| `react-native-gesture-handler` | Adds the modern `compileSdk` line |
-| `react-native-i18n` | Replaces deprecated `compile` Gradle directive with `implementation` |
-| `react-native-notifications` | Removes deprecated `dexOptions` block (fails on AGP 8) |
+| Patch                                | Purpose                                                              |
+| :----------------------------------- | :------------------------------------------------------------------- |
+| `@backpackapp-io+react-native-toast` | Drops a missing re-export that breaks the build                      |
+| `react-native-gesture-handler`       | Adds the modern `compileSdk` line                                    |
+| `react-native-i18n`                  | Replaces deprecated `compile` Gradle directive with `implementation` |
+| `react-native-notifications`         | Removes deprecated `dexOptions` block (fails on AGP 8)               |
 
 If you bump versions of any of these packages, regenerate or remove the corresponding patch.
 
@@ -170,8 +171,8 @@ When the web target imports a native-only module, an alias in `webpack.config.js
 - `react-native-device-info`
 - `react-native-fast-image`
 - `react-native-svg/css`
-- `@fleetbase/storefront`
-- `@fleetbase/sdk`
+- `@logisbase/storefront`
+- `@logisbase/sdk`
 
 If you add a new native dependency, add a corresponding `<package-name>.web.js` shim and an alias entry to `webpack.config.js`, otherwise the web build will fail.
 

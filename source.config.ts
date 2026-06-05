@@ -1,4 +1,8 @@
-import { defineDocs, defineConfig, frontmatterSchema } from 'fumadocs-mdx/config';
+import {
+  defineDocs,
+  defineConfig,
+  frontmatterSchema,
+} from 'fumadocs-mdx/config';
 import { z } from 'zod';
 
 // Frontmatter schema extended with `sidebarTitle` — overrides the sidebar label
@@ -10,8 +14,13 @@ const docFrontmatter = frontmatterSchema.extend({
 // Platform — general docs, getting started, IAM, developer console
 export const docs = defineDocs({
   dir: 'content/docs',
-  docs: { files: ['*.mdx', 'platform/**', 'community/**'], schema: docFrontmatter },
-  meta: { files: ['meta.json', 'platform/**/meta.json', 'community/meta.json'] },
+  docs: {
+    files: ['*.mdx', 'platform/**', 'community/**'],
+    schema: docFrontmatter,
+  },
+  meta: {
+    files: ['meta.json', 'platform/**/meta.json', 'community/meta.json'],
+  },
 });
 
 // Fleet-Ops — fleet management extension
@@ -42,21 +51,21 @@ export const ledgerDocs = defineDocs({
   meta: { files: ['meta.json', '**/meta.json'] },
 });
 
-// CLI — Fleetbase command-line tool
+// CLI — LogisBase command-line tool
 export const cliDocs = defineDocs({
   dir: 'content/docs/cli',
   docs: { files: ['**/*.mdx'], schema: docFrontmatter },
   meta: { files: ['meta.json', '**/meta.json'] },
 });
 
-// Fleetbase UI — ember-ui component library
+// LogisBase UI — ember-ui component library
 export const uiDocs = defineDocs({
   dir: 'content/docs/ui',
   docs: { files: ['**/*.mdx'], schema: docFrontmatter },
   meta: { files: ['meta.json', '**/meta.json'] },
 });
 
-// Extension Development — building and extending Fleetbase
+// Extension Development — building and extending LogisBase
 export const extensionDevelopmentDocs = defineDocs({
   dir: 'content/docs/extension-development',
   docs: { files: ['**/*.mdx'], schema: docFrontmatter },

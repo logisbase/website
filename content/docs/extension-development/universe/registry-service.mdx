@@ -14,13 +14,13 @@ You'll touch it for two main reasons:
 
 ```js
 // addon/extension.js
-import { ExtensionComponent } from '@fleetbase/ember-core/contracts';
+import { ExtensionComponent } from '@logisbase/ember-core/contracts';
 
 export default {
-    setupExtension(app, universe) {
-        const registryService = universe.getService('registry');
-        // …
-    },
+  setupExtension(app, universe) {
+    const registryService = universe.getService('registry');
+    // …
+  },
 };
 ```
 
@@ -39,41 +39,44 @@ The menu service writes into `<registry>:menu-item` lists; the registry service'
 Inject a component into a host extension's slot. The host renders it via [`<RegistryYield>`](/docs/ui/registry/registry-yield).
 
 ```js
-import { ExtensionComponent } from '@fleetbase/ember-core/contracts';
+import { ExtensionComponent } from '@logisbase/ember-core/contracts';
 
 registryService.registerRenderableComponent(
-    'fleet-ops:component:order:details',
-    new ExtensionComponent('@fleetbase/storefront-engine', 'storefront-order-summary')
+  'fleet-ops:component:order:details',
+  new ExtensionComponent(
+    '@logisbase/storefront-engine',
+    'storefront-order-summary',
+  ),
 );
 ```
 
 Forms supported for the `component` argument:
 
-| Form | Example |
-| :--- | :--- |
-| `ExtensionComponent` instance | `new ExtensionComponent('@fleetbase/my-engine', 'components/my-tab')` |
-| Component class with `engineName` option | `MyComponent` + `{ engineName: '@my-org/my-engine' }` |
-| Array of any of the above | Iterates and registers each |
+| Form                                     | Example                                                               |
+| :--------------------------------------- | :-------------------------------------------------------------------- |
+| `ExtensionComponent` instance            | `new ExtensionComponent('@logisbase/my-engine', 'components/my-tab')` |
+| Component class with `engineName` option | `MyComponent` + `{ engineName: '@my-org/my-engine' }`                 |
+| Array of any of the above                | Iterates and registers each                                           |
 
 ### Well-Known Renderable-Component Registries
 
-Real engines expose these slots (extracted from the `extension.js` files of the open-source extensions):
+Real engines expose these slots (extracted from the `extension.js` files of the source-available extensions):
 
-| Registry | Where it renders |
-| :--- | :--- |
-| `fleet-ops:component:order:details` | Tabs/panels in the order detail view |
-| `fleet-ops:component:driver:details` | Tabs/panels in the driver detail view |
-| `fleet-ops:component:vehicle:details` | Tabs/panels in the vehicle detail view |
-| `fleet-ops:component:map:drawer` | Items in the Fleet-Ops map drawer |
-| `fleet-ops:contextmenu:vehicle` | Right-click context-menu on a vehicle |
-| `fleet-ops:contextmenu:driver` | Right-click context-menu on a driver |
-| `fleet-ops:template:settings:routing` | Components on the routing settings page |
-| `fleet-ops:template:settings:orchestrator` | Components on the orchestrator settings page |
-| `fleet-ops:component:admin:routing-settings` | Components on the admin routing settings page |
-| `fleet-ops:template:operations:orders:new:entities-input` | Custom inputs in the new-order entities flow |
-| `@fleetbase/console` | App-wide tour/launcher/guard components (rare — only system extensions use this) |
+| Registry                                                  | Where it renders                                                                 |
+| :-------------------------------------------------------- | :------------------------------------------------------------------------------- |
+| `fleet-ops:component:order:details`                       | Tabs/panels in the order detail view                                             |
+| `fleet-ops:component:driver:details`                      | Tabs/panels in the driver detail view                                            |
+| `fleet-ops:component:vehicle:details`                     | Tabs/panels in the vehicle detail view                                           |
+| `fleet-ops:component:map:drawer`                          | Items in the Fleet-Ops map drawer                                                |
+| `fleet-ops:contextmenu:vehicle`                           | Right-click context-menu on a vehicle                                            |
+| `fleet-ops:contextmenu:driver`                            | Right-click context-menu on a driver                                             |
+| `fleet-ops:template:settings:routing`                     | Components on the routing settings page                                          |
+| `fleet-ops:template:settings:orchestrator`                | Components on the orchestrator settings page                                     |
+| `fleet-ops:component:admin:routing-settings`              | Components on the admin routing settings page                                    |
+| `fleet-ops:template:operations:orders:new:entities-input` | Custom inputs in the new-order entities flow                                     |
+| `@logisbase/console`                                      | App-wide tour/launcher/guard components (rare — only system extensions use this) |
 
-For Fleet-Ops's full list of slots, see [`fleetops/addon/extension.js#createRegistries`](https://github.com/fleetbase/fleetops/blob/main/addon/extension.js).
+For Fleet-Ops's full list of slots, see [`fleetops/addon/extension.js#createRegistries`](https://github.com/logisbase/fleetops/blob/main/addon/extension.js).
 
 ## `createRegistry(name)` / `createRegistries(names)`
 
@@ -83,9 +86,9 @@ Create your own registries so other extensions can plug into them.
 const registryService = universe.getService('registry');
 
 registryService.createRegistries([
-    'my-extension:sidebar',
-    'my-extension:order:tabs',
-    'my-extension:dashboard:widgets',
+  'my-extension:sidebar',
+  'my-extension:order:tabs',
+  'my-extension:dashboard:widgets',
 ]);
 ```
 
@@ -105,16 +108,16 @@ get sidebarComponents() {
 
 These methods underpin the higher-level registrars. You'll rarely call them directly.
 
-| Method | Purpose |
-| :--- | :--- |
-| `register(sectionName, listName, key, value)` | Base method — write any value to any `(section, list, key)` slot |
-| `lookup(sectionName, listName, key)` | Read a single item |
-| `getRegistry(sectionName, listName)` | Read an entire list as an array |
-| `getSection(sectionName)` | Read all lists in a section |
-| `getAllFromPrefix(sectionName, listName, prefix)` | Partial-key lookup |
-| `hasSection(name)` / `hasList(section, list)` | Existence checks |
-| `clearList(section, list)` / `clearSection(section)` / `clearAll()` | Removal |
-| `createSection(name)` / `createSections(names)` | Lower-level section creation |
+| Method                                                              | Purpose                                                          |
+| :------------------------------------------------------------------ | :--------------------------------------------------------------- |
+| `register(sectionName, listName, key, value)`                       | Base method — write any value to any `(section, list, key)` slot |
+| `lookup(sectionName, listName, key)`                                | Read a single item                                               |
+| `getRegistry(sectionName, listName)`                                | Read an entire list as an array                                  |
+| `getSection(sectionName)`                                           | Read all lists in a section                                      |
+| `getAllFromPrefix(sectionName, listName, prefix)`                   | Partial-key lookup                                               |
+| `hasSection(name)` / `hasList(section, list)`                       | Existence checks                                                 |
+| `clearList(section, list)` / `clearSection(section)` / `clearAll()` | Removal                                                          |
+| `createSection(name)` / `createSections(names)`                     | Lower-level section creation                                     |
 
 ## Registering Components, Services, and Helpers Globally
 
@@ -143,11 +146,14 @@ registryService.registerService('my-service', MyService);
 Register a Handlebars helper. Supports lazy-loading via the `TemplateHelper` contract:
 
 ```js
-import TemplateHelper from '@fleetbase/ember-core/contracts/template-helper';
+import TemplateHelper from '@logisbase/ember-core/contracts/template-helper';
 
 registryService.registerHelper(
-    'calculate-delivery-fee',
-    new TemplateHelper('@fleetbase/storefront-engine', 'helpers/calculate-delivery-fee')
+  'calculate-delivery-fee',
+  new TemplateHelper(
+    '@logisbase/storefront-engine',
+    'helpers/calculate-delivery-fee',
+  ),
 );
 ```
 
@@ -155,13 +161,13 @@ Most extensions don't need these global registrars — engine-local components, 
 
 ## Real-World References
 
-| Extension | Pattern | Source |
-| :--- | :--- | :--- |
-| Fleet-Ops | Creates 40+ registries for its own slots | [fleetops/addon/extension.js](https://github.com/fleetbase/fleetops/blob/main/addon/extension.js) |
-| Storefront | Registers components into `fleet-ops:component:order:details` | [storefront/addon/extension.js](https://github.com/fleetbase/storefront/blob/main/addon/extension.js) |
-| VROOM | Registers `fleet-ops:template:settings:routing` and `fleet-ops:component:admin:routing-settings` | [vroom/addon/extension.js](https://github.com/fleetbase/vroom/blob/main/addon/extension.js) |
-| Valhalla | Registers settings components into Fleet-Ops routing slots | [valhalla/addon/extension.js](https://github.com/fleetbase/valhalla/blob/main/addon/extension.js) |
-| Ledger | Registers an order-details tab into Fleet-Ops | [ledger/addon/extension.js](https://github.com/fleetbase/ledger/blob/main/addon/extension.js) |
+| Extension  | Pattern                                                                                          | Source                                                                                                |
+| :--------- | :----------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------- |
+| Fleet-Ops  | Creates 40+ registries for its own slots                                                         | [fleetops/addon/extension.js](https://github.com/logisbase/fleetops/blob/main/addon/extension.js)     |
+| Storefront | Registers components into `fleet-ops:component:order:details`                                    | [storefront/addon/extension.js](https://github.com/logisbase/storefront/blob/main/addon/extension.js) |
+| VROOM      | Registers `fleet-ops:template:settings:routing` and `fleet-ops:component:admin:routing-settings` | [vroom/addon/extension.js](https://github.com/logisbase/vroom/blob/main/addon/extension.js)           |
+| Valhalla   | Registers settings components into Fleet-Ops routing slots                                       | [valhalla/addon/extension.js](https://github.com/logisbase/valhalla/blob/main/addon/extension.js)     |
+| Ledger     | Registers an order-details tab into Fleet-Ops                                                    | [ledger/addon/extension.js](https://github.com/logisbase/ledger/blob/main/addon/extension.js)         |
 
 ## See Also
 
@@ -171,8 +177,8 @@ Most extensions don't need these global registrars — engine-local components, 
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/services/universe/registry-service.js`](https://github.com/fleetbase/ember-core/blob/main/addon/services/universe/registry-service.js) | RegistryService implementation |
-| [`addon/contracts/extension-component.js`](https://github.com/fleetbase/ember-core/blob/main/addon/contracts/extension-component.js) | `ExtensionComponent` |
-| [`addon/contracts/registry.js`](https://github.com/fleetbase/ember-core/blob/main/addon/contracts/registry.js) | `Registry` |
+| File                                                                                                                                           | Description                    |
+| :--------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------- |
+| [`addon/services/universe/registry-service.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/universe/registry-service.js) | RegistryService implementation |
+| [`addon/contracts/extension-component.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/extension-component.js)           | `ExtensionComponent`           |
+| [`addon/contracts/registry.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/registry.js)                                 | `Registry`                     |

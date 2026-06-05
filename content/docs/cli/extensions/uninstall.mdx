@@ -1,11 +1,11 @@
 ---
 title: Uninstall
-description: "Remove an installed extension from a running Fleetbase instance using `flb uninstall`."
+description: 'Remove an installed extension from a running LogisBase instance using `flb uninstall`.'
 ---
 
 # `flb uninstall`
 
-Remove a previously installed extension from a Fleetbase instance. The CLI runs `pnpm remove` (in `console/`) and `composer remove` (in `api/`).
+Remove a previously installed extension from a LogisBase instance. The CLI runs `pnpm remove` (in `console/`) and `composer remove` (in `api/`).
 
 ```bash
 flb uninstall <packageName>
@@ -15,24 +15,24 @@ The package name follows the same forms as [`flb install`](/docs/cli/extensions/
 
 ## Options
 
-| Option | Description |
-| :--- | :--- |
-| `[packageName]` | Slug or ID of the extension to uninstall |
-| `-p, --path <path>` | Path to the Fleetbase instance (default: current directory) |
+| Option              | Description                                                 |
+| :------------------ | :---------------------------------------------------------- |
+| `[packageName]`     | Slug or ID of the extension to uninstall                    |
+| `-p, --path <path>` | Path to the LogisBase instance (default: current directory) |
 
 ## Examples
 
-### From inside your Fleetbase directory
+### From inside your LogisBase directory
 
 ```bash
-cd /path/to/fleetbase
-flb uninstall fleetbase/storefront
+cd /path/to/logisbase
+flb uninstall logisbase/storefront
 ```
 
 ### From anywhere
 
 ```bash
-flb uninstall fleetbase/storefront --path /path/to/fleetbase
+flb uninstall logisbase/storefront --path /path/to/logisbase
 ```
 
 ## What Happens
@@ -71,6 +71,6 @@ If the extension provides a cleanup command (e.g. an `artisan` command or a sett
 
 ## Troubleshooting
 
-**`Invalid Fleetbase instance path: …`** — the `--path` (or current directory) doesn't contain both `console/` and `api/`. Pass the correct path.
+**`Invalid LogisBase instance path: …`** — the `--path` (or current directory) doesn't contain both `console/` and `api/`. Pass the correct path.
 
 **`Uninstall failed: …`** — the underlying `pnpm remove` or `composer remove` failed. Check the printed error.

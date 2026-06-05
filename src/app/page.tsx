@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-import { getGitHubStars } from '@/lib/github-stars';
-import { OrganizationSchema, SoftwareApplicationSchema, WebSiteSchema } from '@/components/seo/json-ld';
 import Hero from '@/components/sections/hero';
 import PlatformModules from '@/components/sections/platform-modules';
 import StatsBar from '@/components/sections/stats-bar';
+import {
+  OrganizationSchema,
+  SoftwareApplicationSchema,
+  WebSiteSchema,
+} from '@/components/seo/json-ld';
+import { getGitHubStars } from '@/lib/github-stars';
 
 // Below-the-fold sections — split into separate client bundles so the
 // initial homepage JS payload stays small. SSR remains on (default) so
@@ -31,36 +35,36 @@ const DeploymentOptions = dynamic(
 const FinalCTA = dynamic(() => import('@/components/sections/final-cta'));
 
 export const metadata: Metadata = {
-  title: 'Fleetbase | Open-Source Logistics & Supply Chain Platform',
+  title: 'LogisBase | Source-Available Logistics & Supply Chain Platform',
   description:
-    'Fleetbase is the open-source logistics OS. Fleet management, e-commerce fulfillment, warehouse, and accounting — one platform, no per-driver fees, self-hosted or cloud.',
+    'LogisBase is the source-available logistics OS. Fleet management, e-commerce fulfillment, warehouse, and accounting — one platform, no per-driver fees, self-hosted or cloud.',
   keywords:
-    'open source logistics platform, fleet management software, TMS software, transportation management system, delivery management, supply chain software, self hosted fleet management, open source logistics, last mile delivery software, route optimization software, warehouse management',
+    'source-available logistics platform, fleet management software, TMS software, transportation management system, delivery management, supply chain software, self hosted fleet management, source-available logistics, last mile delivery software, route optimization software, warehouse management',
   alternates: {
-    canonical: 'https://fleetbase.io',
+    canonical: 'https://logisbase.com',
   },
   openGraph: {
-    title: 'Fleetbase | Open-Source Logistics & Supply Chain Platform',
+    title: 'LogisBase | Source-Available Logistics & Supply Chain Platform',
     description:
-      'Fleet management, e-commerce fulfillment, warehouse, and accounting — unified in one open-source platform. No per-driver fees. Self-hosted or cloud.',
-    url: 'https://fleetbase.io',
+      'Fleet management, e-commerce fulfillment, warehouse, and accounting — unified in one source-available platform. No per-driver fees. Self-hosted or cloud.',
+    url: 'https://logisbase.com',
     type: 'website',
     images: [
       {
-        url: '/og?title=Open-Source%20Logistics%20%26%20Supply%20Chain%20Platform&eyebrow=Fleetbase&subtitle=Fleet%20management%2C%20fulfillment%2C%20warehouse%2C%20and%20accounting%20%E2%80%94%20one%20platform%2C%20no%20per-driver%20fees',
+        url: '/og?title=Source-Available%20Logistics%20%26%20Supply%20Chain%20Platform&eyebrow=LogisBase&subtitle=Fleet%20management%2C%20fulfillment%2C%20warehouse%2C%20and%20accounting%20%E2%80%94%20one%20platform%2C%20no%20per-driver%20fees',
         width: 1200,
         height: 630,
-        alt: 'Fleetbase — open-source logistics and supply chain platform',
+        alt: 'LogisBase — source-available logistics and supply chain platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Fleetbase | Open-Source Logistics Platform',
+    title: 'LogisBase | Source-Available Logistics Platform',
     description:
-      'Fleet management, e-commerce fulfillment, warehouse, and accounting — unified, open-source, no per-driver fees.',
+      'Fleet management, e-commerce fulfillment, warehouse, and accounting — unified, source-available, no per-driver fees.',
     images: [
-      '/og?title=Open-Source%20Logistics%20%26%20Supply%20Chain%20Platform&eyebrow=Fleetbase&subtitle=Fleet%20management%2C%20fulfillment%2C%20warehouse%2C%20and%20accounting%20%E2%80%94%20one%20platform%2C%20no%20per-driver%20fees',
+      '/og?title=Source-Available%20Logistics%20%26%20Supply%20Chain%20Platform&eyebrow=LogisBase&subtitle=Fleet%20management%2C%20fulfillment%2C%20warehouse%2C%20and%20accounting%20%E2%80%94%20one%20platform%2C%20no%20per-driver%20fees',
     ],
   },
 };

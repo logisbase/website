@@ -15,8 +15,8 @@ Your extension declares its API prefix in `server/src/routes.php`:
 Route::prefix(config('my-extension.api.routing.prefix', 'my-extension'))
     ->namespace('MyOrg\MyExtension\Http\Controllers')
     ->group(function ($router) {
-        $router->group(['middleware' => ['fleetbase.protected']], function ($router) {
-            $router->fleetbaseRoutes('widgets');
+        $router->group(['middleware' => ['logisbase.protected']], function ($router) {
+            $router->logisbaseRoutes('widgets');
         });
     });
 ```
@@ -33,34 +33,34 @@ Pass `options.namespace` as the third argument to any `fetch` method:
 import { inject as service } from '@ember/service';
 
 export default class WidgetsController extends Controller {
-    @service fetch;
+  @service fetch;
 
-    async loadWidgets() {
-        const widgets = await this.fetch.get(
-            'widgets',                        // path (relative to the namespace)
-            { status: 'active' },             // query params
-            { namespace: 'my-extension' }     // ← targets your API
-        );
-        return widgets;
-    }
+  async loadWidgets() {
+    const widgets = await this.fetch.get(
+      'widgets', // path (relative to the namespace)
+      { status: 'active' }, // query params
+      { namespace: 'my-extension' }, // ← targets your API
+    );
+    return widgets;
+  }
 
-    async createWidget(payload) {
-        return this.fetch.post('widgets', payload, { namespace: 'my-extension' });
-    }
+  async createWidget(payload) {
+    return this.fetch.post('widgets', payload, { namespace: 'my-extension' });
+  }
 }
 ```
 
 This works for one-off calls. If your namespace is versioned (`my-extension/v1`), include the version in the namespace string.
 
-| Method | Signature |
-| :--- | :--- |
-| `fetch.get(path, query?, options?)` | GET request |
-| `fetch.post(path, data?, options?)` | POST with JSON body |
-| `fetch.put(path, data?, options?)` | PUT |
-| `fetch.patch(path, data?, options?)` | PATCH |
-| `fetch.delete(path, data?, options?)` | DELETE |
-| `fetch.upload(path, files[], options?)` | Multipart upload |
-| `fetch.download(path, query?, options?)` | File download |
+| Method                                   | Signature           |
+| :--------------------------------------- | :------------------ |
+| `fetch.get(path, query?, options?)`      | GET request         |
+| `fetch.post(path, data?, options?)`      | POST with JSON body |
+| `fetch.put(path, data?, options?)`       | PUT                 |
+| `fetch.patch(path, data?, options?)`     | PATCH               |
+| `fetch.delete(path, data?, options?)`    | DELETE              |
+| `fetch.upload(path, files[], options?)`  | Multipart upload    |
+| `fetch.download(path, query?, options?)` | File download       |
 
 The `options` bag accepts `namespace`, `host`, `externalRequest`, `fromCache`, `normalizeToEmberData`, `onSuccess`, `onError`, and `rawError`. See [Ember Services → fetch](/docs/extension-development/reference/ember-services#fetch).
 
@@ -73,29 +73,29 @@ When the same component or controller makes many calls to your API, repeating th
 import Service, { inject as service } from '@ember/service';
 
 export default class MyExtensionApi extends Service {
-    @service fetch;
+  @service fetch;
 
-    namespace = 'my-extension/v1';
+  namespace = 'my-extension/v1';
 
-    get(path, query) {
-        return this.fetch.get(path, query, { namespace: this.namespace });
-    }
+  get(path, query) {
+    return this.fetch.get(path, query, { namespace: this.namespace });
+  }
 
-    post(path, data) {
-        return this.fetch.post(path, data, { namespace: this.namespace });
-    }
+  post(path, data) {
+    return this.fetch.post(path, data, { namespace: this.namespace });
+  }
 
-    put(path, data) {
-        return this.fetch.put(path, data, { namespace: this.namespace });
-    }
+  put(path, data) {
+    return this.fetch.put(path, data, { namespace: this.namespace });
+  }
 
-    delete(path, data) {
-        return this.fetch.delete(path, data, { namespace: this.namespace });
-    }
+  delete(path, data) {
+    return this.fetch.delete(path, data, { namespace: this.namespace });
+  }
 
-    upload(path, files) {
-        return this.fetch.upload(path, files, { namespace: this.namespace });
-    }
+  upload(path, files) {
+    return this.fetch.upload(path, files, { namespace: this.namespace });
+  }
 }
 ```
 
@@ -105,23 +105,23 @@ Inject and use it like the underlying `fetch`:
 import { inject as service } from '@ember/service';
 
 export default class WidgetsController extends Controller {
-    @service('my-extension-api') api;
+  @service('my-extension-api') api;
 
-    async loadWidgets() {
-        return this.api.get('widgets', { status: 'active' });
-    }
+  async loadWidgets() {
+    return this.api.get('widgets', { status: 'active' });
+  }
 
-    async createWidget(payload) {
-        return this.api.post('widgets', payload);
-    }
+  async createWidget(payload) {
+    return this.api.post('widgets', payload);
+  }
 }
 ```
 
-The wrapper makes the intent ("we're talking to *our* API") explicit at the call site without leaking the namespace string everywhere.
+The wrapper makes the intent ("we're talking to _our_ API") explicit at the call site without leaking the namespace string everywhere.
 
 ## Solution 3 — `setNamespace()` (use sparingly)
 
-`fetch.setNamespace('my-extension')` mutates the *shared* fetch service to use your namespace as default. **This affects every other call** site too — including unrelated console calls in components from other engines that might run in parallel. Don't reach for this unless you fully own the route lifecycle (e.g., a customer-portal-style isolated app where your extension is the only thing running).
+`fetch.setNamespace('my-extension')` mutates the _shared_ fetch service to use your namespace as default. **This affects every other call** site too — including unrelated console calls in components from other engines that might run in parallel. Don't reach for this unless you fully own the route lifecycle (e.g., a customer-portal-style isolated app where your extension is the only thing running).
 
 ```js
 this.fetch.setNamespace('my-extension');
@@ -138,8 +138,8 @@ If your API is versioned (recommended for any public surface), include the versi
 // server/src/routes.php
 Route::prefix('my-extension')
     ->group(function ($router) {
-        $router->group(['prefix' => 'v1', 'middleware' => ['fleetbase.api']], function ($router) {
-            $router->fleetbaseRestRoutes('widgets');
+        $router->group(['prefix' => 'v1', 'middleware' => ['logisbase.api']], function ($router) {
+            $router->logisbaseRestRoutes('widgets');
         });
     });
 ```
@@ -152,8 +152,8 @@ Internal-only console endpoints often use the `int/v1` convention:
 
 ```php
 $router->prefix('int/v1')->group(function ($router) {
-    $router->group(['middleware' => ['fleetbase.protected']], function ($router) {
-        $router->fleetbaseRoutes('widgets');
+    $router->group(['middleware' => ['logisbase.protected']], function ($router) {
+        $router->logisbaseRoutes('widgets');
     });
 });
 ```
@@ -189,5 +189,5 @@ If you're loading **records** (not raw JSON), use the `store` instead and let an
 ## Reference
 
 - [Ember Services → fetch](/docs/extension-development/reference/ember-services#fetch) — full method surface
-- [`addon/services/fetch.js`](https://github.com/fleetbase/ember-core/blob/main/addon/services/fetch.js) — service source
+- [`addon/services/fetch.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/fetch.js) — service source
 - [Routes & Controllers](/docs/extension-development/backend/routes-and-controllers) — declaring the API on the backend

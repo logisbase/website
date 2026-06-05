@@ -6,7 +6,10 @@ import path from 'node:path';
 
 import { callClaudeJson } from './claude.mjs';
 import { contentAgentConfig } from './content-agent.config.mjs';
-import { normalizeFleetbaseArticle, validateFleetbaseArticle } from './content-rules.mjs';
+import {
+  normalizeLogisBaseArticle,
+  validateLogisBaseArticle,
+} from './content-rules.mjs';
 import { getGhostPost, updateGhostPost } from './ghost-admin.mjs';
 import { RevisedArticleSchema } from './schemas.mjs';
 
@@ -22,7 +25,10 @@ function parseArgs(argv) {
     bypassContentRules: process.env.BYPASS_CONTENT_RULES === 'true',
     outputDir:
       process.env.CONTENT_AGENT_OUTPUT_DIR ||
-      path.join(process.env.RUNNER_TEMP || os.tmpdir(), 'fleetbase-content-agent-revision'),
+      path.join(
+        process.env.RUNNER_TEMP || os.tmpdir(),
+        'logisbase-content-agent-revision',
+      ),
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -36,9 +42,12 @@ function parseArgs(argv) {
     if (arg === '--allow-published') args.allowPublished = true;
     if (arg === '--bypass-content-rules') args.bypassContentRules = true;
     if (arg === '--rule-repair-attempts') {
-      args.ruleRepairAttempts = Number(argv[index + 1] || args.ruleRepairAttempts);
+      args.ruleRepairAttempts = Number(
+        argv[index + 1] || args.ruleRepairAttempts,
+      );
     }
-    if (arg === '--output-dir') args.outputDir = argv[index + 1] || args.outputDir;
+    if (arg === '--output-dir')
+      args.outputDir = argv[index + 1] || args.outputDir;
   }
 
   return args;
@@ -54,7 +63,10 @@ async function readPrompt(args) {
 
 async function writeOutput(outputDir, name, value) {
   await fs.mkdir(outputDir, { recursive: true });
-  await fs.writeFile(path.join(outputDir, name), typeof value === 'string' ? value : `${JSON.stringify(value, null, 2)}\n`);
+  await fs.writeFile(
+    path.join(outputDir, name),
+    typeof value === 'string' ? value : `${JSON.stringify(value, null, 2)}\n`,
+  );
 }
 
 async function appendStepSummary(markdown) {
@@ -73,7 +85,8 @@ function toArticleInput(post) {
     html,
     wordCount,
     metaTitle: post.meta_title || post.title,
-    metaDescription: post.meta_description || post.custom_excerpt || post.excerpt || '',
+    metaDescription:
+      post.meta_description || post.custom_excerpt || post.excerpt || '',
     status: post.status,
     updatedAt: post.updated_at,
     tags: (post.tags || []).map((tag) => tag.name),
@@ -106,7 +119,9 @@ function decodeHtmlBase64(value) {
 }
 
 function truncateText(value, maxLength) {
-  const normalized = String(value || '').replace(/\s+/g, ' ').trim();
+  const normalized = String(value || '')
+    .replace(/\s+/g, ' ')
+    .trim();
 
   if (normalized.length <= maxLength) return normalized;
 
@@ -121,11 +136,16 @@ function normalizeRevisedArticle(revised, post) {
   const existing = toArticleInput(post);
   const html = revised.html || decodeHtmlBase64(revised.htmlBase64);
 
-  return normalizeFleetbaseArticle({
+  return normalizeLogisBaseArticle({
     ...revised,
     html,
     metaTitle: truncateText(
-      chooseMetadataValue(revised.metaTitle, revised.title, existing.metaTitle, existing.title),
+      chooseMetadataValue(
+        revised.metaTitle,
+        revised.title,
+        existing.metaTitle,
+        existing.title,
+      ),
       80,
     ),
     metaDescription: truncateText(
@@ -145,7 +165,12 @@ function validateRevisionLength({ post, revised }) {
   const revisedWordCount = countWords(revised.html);
 
   if (originalWordCount < 600) {
-    return { originalWordCount, revisedWordCount, minimumWordCount: 0, passed: true };
+    return {
+      originalWordCount,
+      revisedWordCount,
+      minimumWordCount: 0,
+      passed: true,
+    };
   }
 
   const minimumWordCount = Math.floor(originalWordCount * 0.7);
@@ -156,26 +181,37 @@ function validateRevisionLength({ post, revised }) {
     );
   }
 
-  return { originalWordCount, revisedWordCount, minimumWordCount, passed: true };
+  return {
+    originalWordCount,
+    revisedWordCount,
+    minimumWordCount,
+    passed: true,
+  };
 }
 
-async function reviseWithClaude({ post, revisionPrompt, previousRevision = null, ruleIssues = [] }) {
+async function reviseWithClaude({
+  post,
+  revisionPrompt,
+  previousRevision = null,
+  ruleIssues = [],
+}) {
   const article = toArticleInput(post);
   const system =
-    'You revise Fleetbase Ghost blog drafts. Preserve factual accuracy, keep the article specific to Fleetbase, and output clean semantic HTML. Do not include scripts, styles, iframes, markdown fences, or comments.';
+    'You revise LogisBase Ghost blog drafts. Preserve factual accuracy, keep the article specific to LogisBase, and output clean semantic HTML. Do not include scripts, styles, iframes, markdown fences, or comments.';
   const prompt = JSON.stringify(
     {
       task: previousRevision
-        ? 'Repair the revised Ghost blog post so it satisfies all Fleetbase content rules.'
+        ? 'Repair the revised Ghost blog post so it satisfies all LogisBase content rules.'
         : 'Revise this Ghost blog post according to the editor prompt.',
       editorPrompt: revisionPrompt,
-      fleetbaseEditorialRules: contentAgentConfig.contentStrategy.editorialRules,
+      logisbaseEditorialRules:
+        contentAgentConfig.contentStrategy.editorialRules,
       blockingRuleIssues: ruleIssues,
       article,
       previousRevision,
       requirements: [
-        'Preserve accurate Fleetbase product and API claims.',
-        `Use ${contentAgentConfig.siteUrl} for all Fleetbase website links and ${contentAgentConfig.siteUrl}/docs for all documentation links. Never use fleetbase.ghost.io for docs or website links.`,
+        'Preserve accurate LogisBase product and API claims.',
+        `Use ${contentAgentConfig.siteUrl} for all LogisBase website links and ${contentAgentConfig.siteUrl}/docs for all documentation links. Never use logisbase.ghost.io for docs or website links.`,
         'If blockingRuleIssues are present, remove or rewrite the violating language instead of explaining the issue.',
         'For ad hoc order flows, say the order is broadcast to nearby drivers who accept or decline in Navigator. Do not mention orchestrator, manual dispatch, or driver assignment for that flow.',
         'Do not mention platform-level activity definitions; activity is defined by the order config.',
@@ -210,11 +246,21 @@ async function reviseWithClaude({ post, revisionPrompt, previousRevision = null,
   return normalizeRevisedArticle(revised, post);
 }
 
-async function reviseUntilRulesPass({ post, revisionPrompt, outputDir, maxAttempts, bypassContentRules }) {
+async function reviseUntilRulesPass({
+  post,
+  revisionPrompt,
+  outputDir,
+  maxAttempts,
+  bypassContentRules,
+}) {
   console.log('[content-agent:revise] Requesting initial Claude revision.');
   let revised = await reviseWithClaude({ post, revisionPrompt });
-  let ruleCheck = validateFleetbaseArticle(revised);
-  await writeOutput(outputDir, `rule-check-${revised.slug}-attempt-1.json`, ruleCheck);
+  let ruleCheck = validateLogisBaseArticle(revised);
+  await writeOutput(
+    outputDir,
+    `rule-check-${revised.slug}-attempt-1.json`,
+    ruleCheck,
+  );
   console.log(
     `[content-agent:revise] Initial revision returned with ${ruleCheck.blockingIssues.length} blocking rule issue(s).`,
   );
@@ -226,9 +272,13 @@ async function reviseUntilRulesPass({ post, revisionPrompt, outputDir, maxAttemp
     return { revised, ruleCheck };
   }
 
-  for (let attempt = 1; ruleCheck.blockingIssues.length > 0 && attempt <= maxAttempts; attempt += 1) {
+  for (
+    let attempt = 1;
+    ruleCheck.blockingIssues.length > 0 && attempt <= maxAttempts;
+    attempt += 1
+  ) {
     console.warn(
-      `[content-agent:revise] Fleetbase content rules blocked attempt ${attempt}. Asking Claude to repair: ${ruleCheck.blockingIssues.join('; ')}`,
+      `[content-agent:revise] LogisBase content rules blocked attempt ${attempt}. Asking Claude to repair: ${ruleCheck.blockingIssues.join('; ')}`,
     );
     revised = await reviseWithClaude({
       post,
@@ -236,8 +286,12 @@ async function reviseUntilRulesPass({ post, revisionPrompt, outputDir, maxAttemp
       previousRevision: revised,
       ruleIssues: ruleCheck.blockingIssues,
     });
-    ruleCheck = validateFleetbaseArticle(revised);
-    await writeOutput(outputDir, `rule-check-${revised.slug}-attempt-${attempt + 1}.json`, ruleCheck);
+    ruleCheck = validateLogisBaseArticle(revised);
+    await writeOutput(
+      outputDir,
+      `rule-check-${revised.slug}-attempt-${attempt + 1}.json`,
+      ruleCheck,
+    );
     console.log(
       `[content-agent:revise] Repair attempt ${attempt} returned with ${ruleCheck.blockingIssues.length} blocking rule issue(s).`,
     );
@@ -257,12 +311,20 @@ async function main() {
   }
 
   if (!revisionPrompt) {
-    throw new Error('Provide --prompt, --prompt-file, REVISION_PROMPT, or REVISION_PROMPT_FILE.');
+    throw new Error(
+      'Provide --prompt, --prompt-file, REVISION_PROMPT, or REVISION_PROMPT_FILE.',
+    );
   }
 
-  console.log(`[content-agent:revise] Fetching Ghost post by ${identifierType}: ${identifier}`);
-  const post = await getGhostPost(identifier, contentAgentConfig, { identifierType });
-  console.log(`[content-agent:revise] Loaded Ghost post "${post.title}" (${post.status}).`);
+  console.log(
+    `[content-agent:revise] Fetching Ghost post by ${identifierType}: ${identifier}`,
+  );
+  const post = await getGhostPost(identifier, contentAgentConfig, {
+    identifierType,
+  });
+  console.log(
+    `[content-agent:revise] Loaded Ghost post "${post.title}" (${post.status}).`,
+  );
 
   if (post.status !== 'draft' && !args.allowPublished) {
     throw new Error(
@@ -270,8 +332,16 @@ async function main() {
     );
   }
 
-  await writeOutput(args.outputDir, `original-${post.slug}.json`, toArticleInput(post));
-  await writeOutput(args.outputDir, `original-${post.slug}.html`, post.html || '');
+  await writeOutput(
+    args.outputDir,
+    `original-${post.slug}.json`,
+    toArticleInput(post),
+  );
+  await writeOutput(
+    args.outputDir,
+    `original-${post.slug}.html`,
+    post.html || '',
+  );
 
   const { revised, ruleCheck } = await reviseUntilRulesPass({
     post,
@@ -281,37 +351,59 @@ async function main() {
     bypassContentRules: args.bypassContentRules,
   });
   const lengthCheck = validateRevisionLength({ post, revised });
-  await writeOutput(args.outputDir, `rule-check-${revised.slug}.json`, ruleCheck);
-  await writeOutput(args.outputDir, `length-check-${revised.slug}.json`, lengthCheck);
+  await writeOutput(
+    args.outputDir,
+    `rule-check-${revised.slug}.json`,
+    ruleCheck,
+  );
+  await writeOutput(
+    args.outputDir,
+    `length-check-${revised.slug}.json`,
+    lengthCheck,
+  );
 
   if (ruleCheck.blockingIssues.length > 0 && !args.bypassContentRules) {
     throw new Error(
-      `Fleetbase content rules blocked revision "${revised.title}": ${ruleCheck.blockingIssues.join('; ')}`,
+      `LogisBase content rules blocked revision "${revised.title}": ${ruleCheck.blockingIssues.join('; ')}`,
     );
   }
 
   if (ruleCheck.blockingIssues.length > 0 && args.bypassContentRules) {
     console.warn(
-      `[content-agent:revise] Bypassing Fleetbase content rule warnings for "${revised.title}": ${ruleCheck.blockingIssues.join('; ')}`,
+      `[content-agent:revise] Bypassing LogisBase content rule warnings for "${revised.title}": ${ruleCheck.blockingIssues.join('; ')}`,
     );
   }
 
   await writeOutput(args.outputDir, `revised-${revised.slug}.json`, revised);
-  await writeOutput(args.outputDir, `revised-${revised.slug}.html`, revised.html);
+  await writeOutput(
+    args.outputDir,
+    `revised-${revised.slug}.html`,
+    revised.html,
+  );
 
   let updatedPost = null;
 
   if (!args.dryRun) {
-    console.log(`[content-agent:revise] Applying revision to Ghost post "${post.slug}".`);
+    console.log(
+      `[content-agent:revise] Applying revision to Ghost post "${post.slug}".`,
+    );
     updatedPost = await updateGhostPost(post, revised, contentAgentConfig);
-    await writeOutput(args.outputDir, `updated-${updatedPost.slug}.json`, updatedPost);
-    console.log(`[content-agent:revise] Ghost update returned status "${updatedPost.status}".`);
+    await writeOutput(
+      args.outputDir,
+      `updated-${updatedPost.slug}.json`,
+      updatedPost,
+    );
+    console.log(
+      `[content-agent:revise] Ghost update returned status "${updatedPost.status}".`,
+    );
   } else {
-    console.log('[content-agent:revise] Dry run enabled; Ghost update skipped.');
+    console.log(
+      '[content-agent:revise] Dry run enabled; Ghost update skipped.',
+    );
   }
 
   await appendStepSummary(`
-## Fleetbase Ghost Draft Revision
+## LogisBase Ghost Draft Revision
 
 - Mode: ${args.dryRun ? 'Dry run, Ghost was not updated' : 'Applied to Ghost'}
 - Original post: ${post.title} (${post.slug})
@@ -330,14 +422,16 @@ async function main() {
 - Artifacts: ${args.outputDir}
 `);
 
-  console.log(`[content-agent:revise] ${args.dryRun ? 'Dry-run complete' : 'Ghost draft updated'}.`);
+  console.log(
+    `[content-agent:revise] ${args.dryRun ? 'Dry-run complete' : 'Ghost draft updated'}.`,
+  );
   console.log(`[content-agent:revise] Artifacts written to ${args.outputDir}`);
 }
 
 main().catch(async (error) => {
   console.error(`[content-agent:revise] ${error.message}`);
   await appendStepSummary(`
-## Fleetbase Ghost Draft Revision
+## LogisBase Ghost Draft Revision
 
 The revision failed.
 

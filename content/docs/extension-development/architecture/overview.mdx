@@ -1,18 +1,18 @@
 ---
 title: Overview
-description: A Fleetbase extension is a single repository with two halves — an Ember.js addon (the console UI) and a Laravel package (the API). The extension.json manifest ties them together and addon/extension.js is the registration entry point.
+description: A LogisBase extension is a single repository with two halves — an Ember.js addon (the console UI) and a Laravel package (the API). The extension.json manifest ties them together and addon/extension.js is the registration entry point.
 ---
 
 # Architecture Overview
 
-A Fleetbase extension is **one repository with two halves**:
+A LogisBase extension is **one repository with two halves**:
 
 1. An **Ember.js addon** under `addon/` — your console UI
 2. A **Laravel/Composer package** under `server/` — your API
 
 Plus a top-level `extension.json` manifest that links the two.
 
-When the console boots, it loads each installed extension's `addon/extension.js` and runs its `setupExtension(app, universe)` hook. When Laravel boots, your `<Name>ServiceProvider.php` (extending `Fleetbase\Providers\CoreServiceProvider`) wires up routes, observers, expansions, and migrations.
+When the console boots, it loads each installed extension's `addon/extension.js` and runs its `setupExtension(app, universe)` hook. When Laravel boots, your `<Name>ServiceProvider.php` (extending `LogisBase\Providers\CoreServiceProvider`) wires up routes, observers, expansions, and migrations.
 
 ## Repository Layout
 
@@ -54,27 +54,27 @@ The frontend is an **Ember Engine** that mounts inside the host console applicat
 
 Two files are special:
 
-| File | Role |
-| :--- | :--- |
+| File                 | Role                                                                                                                                                                            |
+| :------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `addon/extension.js` | The **registration entry point**. Exports a default object with `setupExtension(app, universe)` (and optionally `onEngineLoaded`). Called by `ExtensionManager` at console boot |
-| `addon/engine.js` | The **Ember Engine declaration**. Declares `dependencies.services` (host services to inject), the resolver, and exports the Engine class |
+| `addon/engine.js`    | The **Ember Engine declaration**. Declares `dependencies.services` (host services to inject), the resolver, and exports the Engine class                                        |
 
 **Registration code lives in `addon/extension.js`, not `engine.js`.** The Engine is just a container — registrations happen at boot via `setupExtension`. See [Extension Registration](/docs/extension-development/architecture/extension-registration).
 
 A typical `addon/extension.js`:
 
 ```js
-import { MenuItem, ExtensionComponent } from '@fleetbase/ember-core/contracts';
+import { MenuItem, ExtensionComponent } from '@logisbase/ember-core/contracts';
 
 export default {
-    setupExtension(app, universe) {
-        const menuService = universe.getService('menu');
+  setupExtension(app, universe) {
+    const menuService = universe.getService('menu');
 
-        menuService.registerHeaderMenuItem('My Extension', 'console.my-extension', {
-            icon: 'puzzle-piece',
-            description: 'My custom feature.',
-        });
-    },
+    menuService.registerHeaderMenuItem('My Extension', 'console.my-extension', {
+      icon: 'puzzle-piece',
+      description: 'My custom feature.',
+    });
+  },
 };
 ```
 
@@ -82,14 +82,14 @@ See [Frontend Routing](/docs/extension-development/frontend/routing) for engine 
 
 ## Backend — `server/`
 
-The backend is a **Composer package** with a Laravel service provider extending `Fleetbase\Providers\CoreServiceProvider` (from `core-api`):
+The backend is a **Composer package** with a Laravel service provider extending `LogisBase\Providers\CoreServiceProvider` (from `core-api`):
 
 ```php
 <?php
 
 namespace MyOrg\MyExtension\Providers;
 
-use Fleetbase\Providers\CoreServiceProvider;
+use LogisBase\Providers\CoreServiceProvider;
 
 class MyExtensionServiceProvider extends CoreServiceProvider
 {
@@ -115,8 +115,8 @@ Routes live in `server/src/routes.php` (loaded via `loadRoutesFrom(__DIR__ . '/.
 
 - Auto-registration for `$observers` and `$middleware` arrays you declare
 - Auto-loading of `Expansions/`, `Macros/`, `Mixins/` directories
-- Route helpers — `$router->fleetbaseRoutes($name)`, `$router->fleetbaseRestRoutes(...)`, `$router->fleetbaseAuthRoutes(...)`
-- Middleware groups — `'fleetbase.api'` (API-key auth), `'fleetbase.protected'` (session auth)
+- Route helpers — `$router->logisbaseRoutes($name)`, `$router->logisbaseRestRoutes(...)`, `$router->logisbaseAuthRoutes(...)`
+- Middleware groups — `'logisbase.api'` (API-key auth), `'logisbase.protected'` (session auth)
 - Schedule helper — `$this->scheduleCommands($callable)`
 
 See [Service Provider](/docs/extension-development/backend/service-provider) for the full pattern.
@@ -127,18 +127,18 @@ A small file that links the two halves:
 
 ```jsonc
 {
-    "name": "Ledger",
-    "version": "0.0.3",
-    "description": "Accounting & Invoicing Extension for Fleetbase",
-    "repository": "https://github.com/fleetbase/ledger",
-    "license": "AGPL-3.0-or-later",
-    "author": "Fleetbase Pte Ltd <hello@fleetbase.io>",
-    "engine": "package.json",
-    "api": "composer.json"
+  "name": "Ledger",
+  "version": "0.0.3",
+  "description": "Accounting & Invoicing Extension for LogisBase",
+  "repository": "https://github.com/logisbase/ledger",
+  "license": "SOURCE-AVAILABLE-or-later",
+  "author": "LogisBase Pte Ltd <hello@logisbase.com>",
+  "engine": "package.json",
+  "api": "composer.json",
 }
 ```
 
-`engine` and `api` are paths to the two package definitions (relative to the manifest). The Fleetbase registry uses this manifest to discover and install your extension.
+`engine` and `api` are paths to the two package definitions (relative to the manifest). The LogisBase registry uses this manifest to discover and install your extension.
 
 ## How Boot Works
 

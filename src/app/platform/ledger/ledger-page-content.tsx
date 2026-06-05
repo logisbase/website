@@ -60,7 +60,7 @@ const problems = [
       'Traditional accounting systems are retrospective. By the time your books reflect what happened, the routes are done, the drivers are home, and the decisions have already been made.',
   },
   {
-    title: 'Generic chart of accounts that doesn\'t fit logistics',
+    title: "Generic chart of accounts that doesn't fit logistics",
     description:
       'Off-the-shelf accounting tools were not built for freight revenue, driver earnings wallets, or multi-leg cost allocation. Forcing logistics data into generic structures means losing the detail you need.',
   },
@@ -82,13 +82,15 @@ const featureTabs = [
       'Trial Balance generation for accuracy verification',
     ],
     image: '/images/screenshots/ledger/ledger-balance-sheet.webp',
-    imageAlt: 'Ledger balance sheet showing assets, liabilities, and equity totals generated from the double-entry accounting engine',
+    imageAlt:
+      'Ledger balance sheet showing assets, liabilities, and equity totals generated from the double-entry accounting engine',
   },
   {
     id: 'invoicing',
     icon: Receipt,
     title: 'Invoicing & Billing',
-    tagline: 'Auto-generated invoices. Branded templates. Full payment tracking.',
+    tagline:
+      'Auto-generated invoices. Branded templates. Full payment tracking.',
     description:
       'Generate professional invoices automatically from completed orders, contracts, or recurring schedules — and track them from draft through to settled. Customizable line items, tax rates, payment terms, and branded templates mean every client receives a polished invoice without manual effort.',
     features: [
@@ -99,7 +101,8 @@ const featureTabs = [
       'Payment status tracking from draft to settled',
     ],
     image: '/images/screenshots/ledger/ledger-invoice-details.webp',
-    imageAlt: 'Ledger invoice detail view showing line items, tax configuration, customer details, and payment status',
+    imageAlt:
+      'Ledger invoice detail view showing line items, tax configuration, customer details, and payment status',
   },
   {
     id: 'wallets',
@@ -107,7 +110,7 @@ const featureTabs = [
     title: 'Digital Wallets',
     tagline: 'Driver earnings. Customer pre-pay. Company funds.',
     description:
-      'Ledger\'s polymorphic wallet system creates dedicated digital wallets for drivers, customers, and company funds. Completed orders credit driver earnings automatically. Customers can pre-load a balance for recurring services. Every balance and transaction is recorded with full history and proper journal entries.',
+      "Ledger's polymorphic wallet system creates dedicated digital wallets for drivers, customers, and company funds. Completed orders credit driver earnings automatically. Customers can pre-load a balance for recurring services. Every balance and transaction is recorded with full history and proper journal entries.",
     features: [
       'Driver earnings wallets — auto-credited on order completion',
       'Bulk driver payout review, approval, and settlement',
@@ -116,7 +119,8 @@ const featureTabs = [
       'All balances stored in smallest currency unit for precision',
     ],
     image: '/images/screenshots/ledger/ledger-wallet-add-funds.webp',
-    imageAlt: 'Ledger wallet top-up flow showing add-funds form with currency selection and source account',
+    imageAlt:
+      'Ledger wallet top-up flow showing add-funds form with currency selection and source account',
   },
   {
     id: 'reporting',
@@ -124,7 +128,7 @@ const featureTabs = [
     title: 'Financial Reports',
     tagline: 'Balance Sheet. P&L. Cash Flow. All in real time.',
     description:
-      'Stop waiting for month-end. Ledger generates all core financial statements — Balance Sheet, Income Statement, Cash Flow, A/R Aging, Trial Balance — in real time. Every report reflects the current state of your books, so you can make decisions based on what\'s actually happening.',
+      "Stop waiting for month-end. Ledger generates all core financial statements — Balance Sheet, Income Statement, Cash Flow, A/R Aging, Trial Balance — in real time. Every report reflects the current state of your books, so you can make decisions based on what's actually happening.",
     features: [
       'Balance Sheet: assets, liabilities, and equity snapshot',
       'Income Statement (P&L): revenue, costs, and net profit by period',
@@ -133,7 +137,8 @@ const featureTabs = [
       'Wallet Summary: consolidated balance and movement view',
     ],
     image: '/images/screenshots/ledger/ledger-ar-aging.webp',
-    imageAlt: 'Ledger A/R aging report showing overdue invoices grouped by age bucket and customer',
+    imageAlt:
+      'Ledger A/R aging report showing overdue invoices grouped by age bucket and customer',
   },
   {
     id: 'gateways',
@@ -150,7 +155,8 @@ const featureTabs = [
       'Extensible gateway driver interface for custom providers',
     ],
     image: '/images/screenshots/ledger/ledger-payment-gateway-details.webp',
-    imageAlt: 'Ledger payment gateway details showing Stripe configuration, sandbox toggle, and webhook events',
+    imageAlt:
+      'Ledger payment gateway details showing Stripe configuration, sandbox toggle, and webhook events',
   },
 ];
 
@@ -163,7 +169,12 @@ const modules = [
     name: 'Accounting',
     description:
       'A rigorous double-entry engine with a customizable Chart of Accounts, automated journal entries, and a fully drillable General Ledger — purpose-built for logistics finance.',
-    capabilities: ['Chart of Accounts', 'Journal entries', 'General Ledger', 'Trial Balance'],
+    capabilities: [
+      'Chart of Accounts',
+      'Journal entries',
+      'General Ledger',
+      'Trial Balance',
+    ],
   },
   {
     icon: Receipt,
@@ -173,7 +184,12 @@ const modules = [
     name: 'Invoicing',
     description:
       'Auto-generate and track professional invoices from completed orders or recurring schedules. Branded templates, line-item control, and full payment status tracking.',
-    capabilities: ['Auto-generation', 'Branded templates', 'Line items & tax', 'Payment tracking'],
+    capabilities: [
+      'Auto-generation',
+      'Branded templates',
+      'Line items & tax',
+      'Payment tracking',
+    ],
   },
   {
     icon: Wallet,
@@ -183,7 +199,12 @@ const modules = [
     name: 'Wallets',
     description:
       'Polymorphic digital wallets for drivers, customers, and company funds. Earnings auto-credited on order completion, with bulk payout settlement and full transaction history.',
-    capabilities: ['Driver earnings', 'Customer pre-pay', 'Company funds', 'Bulk settlement'],
+    capabilities: [
+      'Driver earnings',
+      'Customer pre-pay',
+      'Company funds',
+      'Bulk settlement',
+    ],
   },
   {
     icon: BarChart3,
@@ -193,7 +214,12 @@ const modules = [
     name: 'Reports',
     description:
       'Real-time Balance Sheet, Income Statement, Cash Flow, A/R Aging, and Wallet Summary — generated on demand from your live operational and financial data.',
-    capabilities: ['Balance Sheet', 'Income Statement', 'Cash Flow', 'A/R Aging'],
+    capabilities: [
+      'Balance Sheet',
+      'Income Statement',
+      'Cash Flow',
+      'A/R Aging',
+    ],
   },
   {
     icon: CreditCard,
@@ -203,7 +229,12 @@ const modules = [
     name: 'Gateways',
     description:
       'Connect payment gateways with sandbox/live mode, real-time webhook events, and an extensible driver architecture for any custom provider.',
-    capabilities: ['Stripe built-in', 'Sandbox mode', 'Webhook events', 'Custom drivers'],
+    capabilities: [
+      'Stripe built-in',
+      'Sandbox mode',
+      'Webhook events',
+      'Custom drivers',
+    ],
   },
 ];
 
@@ -292,42 +323,50 @@ const useCases = [
   {
     icon: Truck,
     title: 'Last-Mile Delivery',
-    description: 'Automate driver payouts, reconcile cash-on-delivery collections, and track route profitability in real time.',
+    description:
+      'Automate driver payouts, reconcile cash-on-delivery collections, and track route profitability in real time.',
   },
   {
     icon: Package,
     title: '3PL & 4PL Providers',
-    description: 'Manage complex client billing, automate multi-client invoicing, and generate per-client P&L reports.',
+    description:
+      'Manage complex client billing, automate multi-client invoicing, and generate per-client P&L reports.',
   },
   {
     icon: Link2,
     title: 'Freight Brokerage',
-    description: 'Track carrier payments, client invoices, and agent commissions. Ensure every load is profitable and fully accounted for.',
+    description:
+      'Track carrier payments, client invoices, and agent commissions. Ensure every load is profitable and fully accounted for.',
   },
   {
     icon: DollarSign,
     title: 'E-commerce & Retail',
-    description: 'Reconcile payments from multiple sales channels and manage the cost of goods sold for every order shipped.',
+    description:
+      'Reconcile payments from multiple sales channels and manage the cost of goods sold for every order shipped.',
   },
   {
     icon: Wallet,
     title: 'On-Demand Services',
-    description: 'Manage customer pre-pay wallets, automate service billing, and track platform financial performance in real time.',
+    description:
+      'Manage customer pre-pay wallets, automate service billing, and track platform financial performance in real time.',
   },
   {
     icon: Scale,
     title: 'Field Service',
-    description: 'Invoice clients on job completion, track parts and labour costs per job, and manage technician commissions and expenses.',
+    description:
+      'Invoice clients on job completion, track parts and labour costs per job, and manage technician commissions and expenses.',
   },
   {
     icon: TrendingUp,
     title: 'Cross-Border Logistics',
-    description: 'Handle multi-currency transactions with exchange rate tracking and settled currency recording for international operations.',
+    description:
+      'Handle multi-currency transactions with exchange rate tracking and settled currency recording for international operations.',
   },
   {
     icon: BarChart3,
     title: 'Warehousing & Distribution',
-    description: 'Integrate with Pallet to automatically record storage fees, inbound receiving costs, and outbound fulfillment revenue.',
+    description:
+      'Integrate with Pallet to automatically record storage fees, inbound receiving costs, and outbound fulfillment revenue.',
   },
 ];
 
@@ -342,7 +381,7 @@ const faqs = [
   },
   {
     q: 'How does Ledger integrate with Fleet-Ops and Storefront?',
-    a: 'Ledger is a native Fleetbase extension that connects directly to your operational data. When a Fleet-Ops order is completed, Ledger can automatically generate the corresponding revenue journal entry and invoice. When a Storefront payment is processed, Ledger records the transaction against the customer wallet. No manual data entry required.',
+    a: 'Ledger is a native LogisBase extension that connects directly to your operational data. When a Fleet-Ops order is completed, Ledger can automatically generate the corresponding revenue journal entry and invoice. When a Storefront payment is processed, Ledger records the transaction against the customer wallet. No manual data entry required.',
   },
   {
     q: 'How does Ledger ensure financial data integrity?',
@@ -361,8 +400,8 @@ const faqs = [
     a: 'Ledger generates all core financial statements including Balance Sheets, Income Statements (P&L), and Cash Flow Statements. It also produces operational reports such as Accounts Receivable (A/R) Aging, Trial Balances, and Wallet Summaries — giving you both the financial and operational picture in one place.',
   },
   {
-    q: 'Is Ledger open source?',
-    a: 'Yes. Ledger is an open-source Fleetbase extension available on GitHub. You can self-host it, inspect the full source code, contribute to its development, and customize it to your exact requirements.',
+    q: 'Is Ledger source-available?',
+    a: 'Yes. Ledger is an source-available LogisBase extension available on GitHub. You can self-host it, inspect the full source code, contribute to its development, and customize it to your exact requirements.',
   },
 ];
 
@@ -378,14 +417,16 @@ function BrowserFrame({
   className?: string;
 }) {
   return (
-    <div className={cn('overflow-hidden rounded-xl border shadow-lg', className)}>
-      <div className="flex items-center gap-2 border-b bg-muted/50 px-4 py-3">
+    <div
+      className={cn('overflow-hidden rounded-xl border shadow-lg', className)}
+    >
+      <div className="bg-muted/50 flex items-center gap-2 border-b px-4 py-3">
         <div className="flex gap-1.5">
           <div className="h-2.5 w-2.5 rounded-full bg-red-400/60" />
           <div className="h-2.5 w-2.5 rounded-full bg-yellow-400/60" />
           <div className="h-2.5 w-2.5 rounded-full bg-green-400/60" />
         </div>
-        <span className="ml-2 text-xs text-muted-foreground">{label}</span>
+        <span className="text-muted-foreground ml-2 text-xs">{label}</span>
       </div>
       {children}
     </div>
@@ -400,28 +441,28 @@ export default function LedgerPageContent() {
 
   return (
     <div className="flex flex-col">
-
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="section-padding relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -top-24 left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-chart-1/[0.12] blur-[120px]" />
-          <div className="absolute top-1/3 -right-24 h-[500px] w-[500px] rounded-full bg-chart-3/[0.08] blur-3xl" />
-          <div className="absolute top-1/2 -left-24 h-[400px] w-[400px] rounded-full bg-chart-2/[0.07] blur-3xl" />
+          <div className="bg-chart-1/[0.12] absolute -top-24 left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full blur-[120px]" />
+          <div className="bg-chart-3/[0.08] absolute top-1/3 -right-24 h-[500px] w-[500px] rounded-full blur-3xl" />
+          <div className="bg-chart-2/[0.07] absolute top-1/2 -left-24 h-[400px] w-[400px] rounded-full blur-3xl" />
         </div>
         <div className="container space-y-12">
           <div className="mx-auto max-w-4xl space-y-8 text-center">
-            <div className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            <div className="text-muted-foreground inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+              <span className="bg-primary h-1.5 w-1.5 rounded-full" />
               Ledger · Logistics Finance & Accounting
             </div>
             <h1 className="text-5xl leading-none tracking-tight text-balance md:text-6xl lg:text-7xl">
               The Financial Ledger for{' '}
               <span className="text-gradient">Modern Logistics</span>
             </h1>
-            <p className="mx-auto max-w-2xl text-lg leading-snug text-muted-foreground md:text-xl">
-              Stop manually reconciling operational data with your books. Ledger is a
-              developer-first, double-entry accounting engine that turns every delivery, driver
-              payment, and customer transaction into an immutable financial record — automatically.
+            <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-snug md:text-xl">
+              Stop manually reconciling operational data with your books. Ledger
+              is a developer-first, double-entry accounting engine that turns
+              every delivery, driver payment, and customer transaction into an
+              immutable financial record — automatically.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
@@ -430,12 +471,20 @@ export default function LedgerPageContent() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <a href="https://cal.com/shivthakker/enquiry" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://cal.com/shivthakker/enquiry"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Book a Demo
                 </a>
               </Button>
               <Button size="lg" variant="ghost" asChild>
-                <a href="https://github.com/fleetbase/ledger" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/logisbase/ledger"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Explore the Code
                 </a>
               </Button>
@@ -444,24 +493,33 @@ export default function LedgerPageContent() {
 
           {/* Outcome stats */}
           <div
-            className="overflow-hidden rounded-xl border bg-border"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px' }}
+            className="bg-border overflow-hidden rounded-xl border"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '1px',
+            }}
           >
             {outcomes.map((stat) => (
               <div
                 key={stat.label}
-                className="flex flex-col items-center justify-center gap-1 bg-card px-6 py-8 text-center"
+                className="bg-card flex flex-col items-center justify-center gap-1 px-6 py-8 text-center"
               >
-                <span className="text-3xl font-bold tracking-tight text-primary md:text-4xl">
+                <span className="text-primary text-3xl font-bold tracking-tight md:text-4xl">
                   {stat.value}
                 </span>
-                <span className="text-xs text-muted-foreground">{stat.label}</span>
+                <span className="text-muted-foreground text-xs">
+                  {stat.label}
+                </span>
               </div>
             ))}
           </div>
 
           {/* Hero screenshot */}
-          <BrowserFrame label="Ledger — Financial Dashboard" className="shadow-2xl">
+          <BrowserFrame
+            label="Ledger — Financial Dashboard"
+            className="shadow-2xl"
+          >
             <div className="relative aspect-[16/7] w-full">
               <Image
                 src="/images/screenshots/ledger/ledger-dashboard.webp"
@@ -481,26 +539,29 @@ export default function LedgerPageContent() {
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
             <div className="flex flex-col justify-center gap-5 lg:col-span-2">
-              <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+              <div className="text-muted-foreground inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs font-medium">
                 The Problem
               </div>
               <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl">
                 Your Operations and Finances Shouldn't Live in Separate Systems
               </h2>
-              <p className="leading-relaxed text-muted-foreground">
-                Most logistics businesses run their operations in one platform and their finances in
-                another. The result is a constant, expensive battle to reconcile the two.
+              <p className="text-muted-foreground leading-relaxed">
+                Most logistics businesses run their operations in one platform
+                and their finances in another. The result is a constant,
+                expensive battle to reconcile the two.
               </p>
             </div>
             <div className="divide-y lg:col-span-3">
               {problems.map((problem, i) => (
                 <div key={i} className="flex gap-5 py-6 first:pt-0 last:pb-0">
-                  <div className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-md bg-destructive/10">
-                    <XCircle className="size-4 text-destructive" />
+                  <div className="bg-destructive/10 mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-md">
+                    <XCircle className="text-destructive size-4" />
                   </div>
                   <div className="space-y-1">
-                    <h3 className="font-semibold text-accent-foreground">{problem.title}</h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <h3 className="text-accent-foreground font-semibold">
+                      {problem.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                       {problem.description}
                     </p>
                   </div>
@@ -515,17 +576,18 @@ export default function LedgerPageContent() {
       <section className="section-padding">
         <div className="container space-y-12">
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            <div className="text-muted-foreground inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+              <span className="bg-primary h-1.5 w-1.5 rounded-full" />
               Core Capabilities
             </div>
-            <h2 className="max-w-3xl text-4xxl leading-tight tracking-tight text-balance md:text-5xl lg:text-6xl">
+            <h2 className="text-4xxl max-w-3xl leading-tight tracking-tight text-balance md:text-5xl lg:text-6xl">
               Every Financial Workflow{' '}
               <span className="text-gradient">Your Operation Needs</span>
             </h2>
-            <p className="max-w-2xl text-lg leading-snug text-muted-foreground">
-              From the first delivery to month-end close — Ledger automates the financial record
-              keeping so your team can focus on operations, not spreadsheets.
+            <p className="text-muted-foreground max-w-2xl text-lg leading-snug">
+              From the first delivery to month-end close — Ledger automates the
+              financial record keeping so your team can focus on operations, not
+              spreadsheets.
             </p>
           </div>
 
@@ -549,7 +611,7 @@ export default function LedgerPageContent() {
                         'flex size-9 shrink-0 items-center justify-center rounded-md border transition-colors',
                         isActive
                           ? 'border-primary bg-primary text-primary-foreground'
-                          : 'bg-gradient-to-br from-muted/30 via-muted/10 to-card',
+                          : 'from-muted/30 via-muted/10 to-card bg-gradient-to-br',
                       )}
                     >
                       <Icon className="size-4" />
@@ -557,8 +619,10 @@ export default function LedgerPageContent() {
                     <div className="flex flex-col gap-1 overflow-hidden">
                       <span
                         className={cn(
-                          'text-base font-semibold leading-tight transition-colors',
-                          isActive ? 'text-accent-foreground' : 'text-muted-foreground',
+                          'text-base leading-tight font-semibold transition-colors',
+                          isActive
+                            ? 'text-accent-foreground'
+                            : 'text-muted-foreground',
                         )}
                       >
                         {tab.title}
@@ -567,7 +631,7 @@ export default function LedgerPageContent() {
                         <motion.span
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
-                          className="text-sm leading-snug text-muted-foreground"
+                          className="text-muted-foreground text-sm leading-snug"
                         >
                           {tab.tagline}
                         </motion.span>
@@ -576,7 +640,7 @@ export default function LedgerPageContent() {
                     {isActive && (
                       <motion.div
                         layoutId="ledger-page-tab-indicator"
-                        className="absolute bottom-0 left-0 h-0.5 w-1/3 origin-left rounded-full bg-gradient-to-r from-chart-1 via-chart-2 to-chart-3"
+                        className="from-chart-1 via-chart-2 to-chart-3 absolute bottom-0 left-0 h-0.5 w-1/3 origin-left rounded-full bg-gradient-to-r"
                       />
                     )}
                   </button>
@@ -595,7 +659,7 @@ export default function LedgerPageContent() {
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="flex flex-col gap-6"
                 >
-                  <Card className="dark:to-muted/30 dark:via-muted/10 to-background via-card from-card overflow-hidden bg-gradient-to-br dark:from-transparent p-0">
+                  <Card className="dark:to-muted/30 dark:via-muted/10 to-background via-card from-card overflow-hidden bg-gradient-to-br p-0 dark:from-transparent">
                     <div className="relative aspect-video overflow-hidden">
                       <Image
                         src={active.image}
@@ -606,13 +670,13 @@ export default function LedgerPageContent() {
                       />
                     </div>
                   </Card>
-                  <p className="text-base leading-relaxed text-muted-foreground">
+                  <p className="text-muted-foreground text-base leading-relaxed">
                     {active.description}
                   </p>
                   <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                     {active.features.map((f) => (
                       <div key={f} className="flex items-center gap-2 text-sm">
-                        <div className="size-1.5 shrink-0 rounded-full bg-chart-2" />
+                        <div className="bg-chart-2 size-1.5 shrink-0 rounded-full" />
                         <span className="text-muted-foreground">{f}</span>
                       </div>
                     ))}
@@ -628,28 +692,28 @@ export default function LedgerPageContent() {
       <section className="section-padding">
         <div className="container space-y-10">
           <div className="mx-auto max-w-3xl space-y-4 text-center">
-            <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
               Five Modules. One Financial Platform.
             </div>
             <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
               Built Around{' '}
               <span className="text-gradient">How Logistics Finance Works</span>
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-              Ledger is organized into five purpose-built modules — each covering a distinct domain
-              of logistics finance. Use them all from day one, or activate them as your operation
-              grows.
+            <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+              Ledger is organized into five purpose-built modules — each
+              covering a distinct domain of logistics finance. Use them all from
+              day one, or activate them as your operation grows.
             </p>
           </div>
 
           <div
-            className="grid grid-cols-1 overflow-hidden rounded-xl border bg-border sm:grid-cols-2 lg:grid-cols-5"
+            className="bg-border grid grid-cols-1 overflow-hidden rounded-xl border sm:grid-cols-2 lg:grid-cols-5"
             style={{ gap: '1px' }}
           >
             {modules.map((mod) => {
               const Icon = mod.icon;
               return (
-                <div key={mod.name} className="flex flex-col gap-4 bg-card p-6">
+                <div key={mod.name} className="bg-card flex flex-col gap-4 p-6">
                   <div
                     className={cn(
                       'flex size-10 items-center justify-center rounded-lg',
@@ -659,14 +723,25 @@ export default function LedgerPageContent() {
                     <Icon className={cn('size-5', mod.color)} />
                   </div>
                   <div className="space-y-1.5">
-                    <h3 className="font-semibold text-accent-foreground">{mod.name}</h3>
-                    <p className="text-xs leading-snug text-muted-foreground">{mod.description}</p>
+                    <h3 className="text-accent-foreground font-semibold">
+                      {mod.name}
+                    </h3>
+                    <p className="text-muted-foreground text-xs leading-snug">
+                      {mod.description}
+                    </p>
                   </div>
                   <ul className="mt-auto space-y-1.5">
                     {mod.capabilities.map((cap) => (
                       <li key={cap} className="flex items-center gap-2">
-                        <div className={cn('size-1.5 shrink-0 rounded-full', mod.dot)} />
-                        <span className="text-xs text-muted-foreground">{cap}</span>
+                        <div
+                          className={cn(
+                            'size-1.5 shrink-0 rounded-full',
+                            mod.dot,
+                          )}
+                        />
+                        <span className="text-muted-foreground text-xs">
+                          {cap}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -689,10 +764,11 @@ export default function LedgerPageContent() {
               A Double-Entry Core Built for{' '}
               <span className="text-gradient">Logistics Reality</span>
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-              Rigorous accounting principles — immutable journal entries, customizable accounts,
-              and a complete audit trail — purpose-built for the financial complexity of freight,
-              delivery, and fleet operations.
+            <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+              Rigorous accounting principles — immutable journal entries,
+              customizable accounts, and a complete audit trail — purpose-built
+              for the financial complexity of freight, delivery, and fleet
+              operations.
             </p>
           </div>
 
@@ -702,13 +778,18 @@ export default function LedgerPageContent() {
               {accountingFeatures.map((feature) => {
                 const Icon = feature.icon;
                 return (
-                  <div key={feature.title} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-                    <div className="flex size-9 shrink-0 items-center justify-center rounded-md border bg-muted/30">
-                      <Icon className="size-4 text-muted-foreground" />
+                  <div
+                    key={feature.title}
+                    className="flex gap-4 py-5 first:pt-0 last:pb-0"
+                  >
+                    <div className="bg-muted/30 flex size-9 shrink-0 items-center justify-center rounded-md border">
+                      <Icon className="text-muted-foreground size-4" />
                     </div>
                     <div className="space-y-0.5">
-                      <h4 className="font-semibold text-accent-foreground">{feature.title}</h4>
-                      <p className="text-sm leading-snug text-muted-foreground">
+                      <h4 className="text-accent-foreground font-semibold">
+                        {feature.title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm leading-snug">
                         {feature.description}
                       </p>
                     </div>
@@ -758,9 +839,10 @@ export default function LedgerPageContent() {
               Professional Invoicing That{' '}
               <span className="text-gradient">Runs on Autopilot</span>
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-              Generate, send, and track invoices automatically from completed orders or on a
-              recurring schedule. Get paid faster with less effort.
+            <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+              Generate, send, and track invoices automatically from completed
+              orders or on a recurring schedule. Get paid faster with less
+              effort.
             </p>
           </div>
 
@@ -796,13 +878,18 @@ export default function LedgerPageContent() {
               {invoicingFeatures.map((feature) => {
                 const Icon = feature.icon;
                 return (
-                  <div key={feature.title} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-                    <div className="flex size-9 shrink-0 items-center justify-center rounded-md border bg-muted/30">
-                      <Icon className="size-4 text-muted-foreground" />
+                  <div
+                    key={feature.title}
+                    className="flex gap-4 py-5 first:pt-0 last:pb-0"
+                  >
+                    <div className="bg-muted/30 flex size-9 shrink-0 items-center justify-center rounded-md border">
+                      <Icon className="text-muted-foreground size-4" />
                     </div>
                     <div className="space-y-0.5">
-                      <h4 className="font-semibold text-accent-foreground">{feature.title}</h4>
-                      <p className="text-sm leading-snug text-muted-foreground">
+                      <h4 className="text-accent-foreground font-semibold">
+                        {feature.title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm leading-snug">
                         {feature.description}
                       </p>
                     </div>
@@ -826,9 +913,10 @@ export default function LedgerPageContent() {
               Automate Driver Payouts and{' '}
               <span className="text-gradient">Customer Payments</span>
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-              A polymorphic wallet system creates dedicated digital wallets for drivers, customers,
-              and company funds. Earnings are credited automatically as work is completed.
+            <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+              A polymorphic wallet system creates dedicated digital wallets for
+              drivers, customers, and company funds. Earnings are credited
+              automatically as work is completed.
             </p>
           </div>
 
@@ -853,13 +941,18 @@ export default function LedgerPageContent() {
               {walletFeatures.map((feature) => {
                 const Icon = feature.icon;
                 return (
-                  <div key={feature.title} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-                    <div className="flex size-9 shrink-0 items-center justify-center rounded-md border bg-muted/30">
-                      <Icon className="size-4 text-muted-foreground" />
+                  <div
+                    key={feature.title}
+                    className="flex gap-4 py-5 first:pt-0 last:pb-0"
+                  >
+                    <div className="bg-muted/30 flex size-9 shrink-0 items-center justify-center rounded-md border">
+                      <Icon className="text-muted-foreground size-4" />
                     </div>
                     <div className="space-y-0.5">
-                      <h4 className="font-semibold text-accent-foreground">{feature.title}</h4>
-                      <p className="text-sm leading-snug text-muted-foreground">
+                      <h4 className="text-accent-foreground font-semibold">
+                        {feature.title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm leading-snug">
                         {feature.description}
                       </p>
                     </div>
@@ -883,9 +976,10 @@ export default function LedgerPageContent() {
               Real-Time Financial Statements,{' '}
               <span className="text-gradient">On Demand</span>
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-              Stop waiting for month-end reports. Ledger generates all core financial statements in
-              real time — Balance Sheet, Income Statement, Cash Flow, A/R Aging, and more.
+            <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+              Stop waiting for month-end reports. Ledger generates all core
+              financial statements in real time — Balance Sheet, Income
+              Statement, Cash Flow, A/R Aging, and more.
             </p>
           </div>
 
@@ -893,25 +987,60 @@ export default function LedgerPageContent() {
             {/* Left: report cards */}
             <div className="lg:col-span-2">
               <div
-                className="overflow-hidden rounded-xl border bg-border"
-                style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1px' }}
+                className="bg-border overflow-hidden rounded-xl border"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '1px',
+                }}
               >
                 {[
-                  { icon: BarChart3, label: 'Balance Sheet', desc: 'Real-time assets, liabilities & equity' },
-                  { icon: TrendingUp, label: 'Income Statement', desc: 'Revenue, costs & net profit by period' },
-                  { icon: DollarSign, label: 'Cash Flow', desc: 'Cash movement in and out of the business' },
-                  { icon: Clock, label: 'A/R Aging', desc: 'Identify and manage overdue invoices' },
-                  { icon: Scale, label: 'Trial Balance', desc: 'Verify ledger accuracy with debit/credit summary' },
-                  { icon: Wallet, label: 'Wallet Summary', desc: 'Consolidated balance and movement view' },
+                  {
+                    icon: BarChart3,
+                    label: 'Balance Sheet',
+                    desc: 'Real-time assets, liabilities & equity',
+                  },
+                  {
+                    icon: TrendingUp,
+                    label: 'Income Statement',
+                    desc: 'Revenue, costs & net profit by period',
+                  },
+                  {
+                    icon: DollarSign,
+                    label: 'Cash Flow',
+                    desc: 'Cash movement in and out of the business',
+                  },
+                  {
+                    icon: Clock,
+                    label: 'A/R Aging',
+                    desc: 'Identify and manage overdue invoices',
+                  },
+                  {
+                    icon: Scale,
+                    label: 'Trial Balance',
+                    desc: 'Verify ledger accuracy with debit/credit summary',
+                  },
+                  {
+                    icon: Wallet,
+                    label: 'Wallet Summary',
+                    desc: 'Consolidated balance and movement view',
+                  },
                 ].map((report) => {
                   const Icon = report.icon;
                   return (
-                    <div key={report.label} className="flex flex-col gap-2 bg-card p-4">
-                      <div className="flex size-8 items-center justify-center rounded-md bg-primary/10">
-                        <Icon className="size-4 text-primary" />
+                    <div
+                      key={report.label}
+                      className="bg-card flex flex-col gap-2 p-4"
+                    >
+                      <div className="bg-primary/10 flex size-8 items-center justify-center rounded-md">
+                        <Icon className="text-primary size-4" />
                       </div>
-                      <p className="text-xs font-semibold text-accent-foreground">{report.label}</p>
-                      <p className="text-xs leading-snug text-muted-foreground">{report.desc}</p>
+                      <p className="text-accent-foreground text-xs font-semibold">
+                        {report.label}
+                      </p>
+                      <p className="text-muted-foreground text-xs leading-snug">
+                        {report.desc}
+                      </p>
                     </div>
                   );
                 })}
@@ -953,30 +1082,34 @@ export default function LedgerPageContent() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div className="flex flex-col gap-6">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  Open Source & API-First
+                <div className="text-muted-foreground inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+                  <span className="bg-primary h-1.5 w-1.5 rounded-full" />
+                  Source-available & API-First
                 </div>
                 <h2 className="text-4xxl leading-tight tracking-tight text-balance md:text-5xl">
                   Automate Any Financial{' '}
                   <span className="text-gradient">Workflow via API</span>
                 </h2>
-                <p className="leading-relaxed text-muted-foreground">
-                  Use our clean, consistent REST API to integrate Ledger into any application or
-                  workflow. Manage accounts, create invoices, process payments, and receive
-                  real-time events — all programmatically.
+                <p className="text-muted-foreground leading-relaxed">
+                  Use our clean, consistent REST API to integrate Ledger into
+                  any application or workflow. Manage accounts, create invoices,
+                  process payments, and receive real-time events — all
+                  programmatically.
                 </p>
               </div>
               <div className="divide-y">
                 {[
                   'Full REST API for accounts, journals, invoices, wallets, and transactions',
                   'Event webhooks for payment events, invoice status, and wallet transactions',
-                  'Open-source codebase — inspect, fork, self-host, or contribute',
+                  'Source-available codebase — inspect, fork, self-host, or contribute',
                   'Modular extension — install alongside Fleet-Ops, Storefront, or Pallet',
                   'No per-transaction fees — usage-based plan pricing only',
                 ].map((point) => (
-                  <div key={point} className="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
-                    <CheckCircle2 className="size-4 shrink-0 text-primary" />
+                  <div
+                    key={point}
+                    className="flex items-center gap-3 py-3 first:pt-0 last:pb-0"
+                  >
+                    <CheckCircle2 className="text-primary size-4 shrink-0" />
                     <span className="text-sm">{point}</span>
                   </div>
                 ))}
@@ -987,7 +1120,7 @@ export default function LedgerPageContent() {
                 </Button>
                 <Button variant="outline" asChild>
                   <a
-                    href="https://github.com/fleetbase/ledger"
+                    href="https://github.com/logisbase/ledger"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -1037,31 +1170,40 @@ export default function LedgerPageContent() {
       <section className="section-padding">
         <div className="container space-y-10">
           <div className="mx-auto max-w-3xl space-y-4 text-center">
-            <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
               Industry Use Cases
             </div>
             <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl">
               The Financial Engine for Every Logistics Model
             </h2>
-            <p className="text-lg leading-snug text-muted-foreground">
-              Ledger handles the financial complexity of any logistics operation — from last-mile
-              delivery to enterprise freight brokerage.
+            <p className="text-muted-foreground text-lg leading-snug">
+              Ledger handles the financial complexity of any logistics operation
+              — from last-mile delivery to enterprise freight brokerage.
             </p>
           </div>
           <div
-            className="overflow-hidden rounded-xl border bg-border"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1px' }}
+            className="bg-border overflow-hidden rounded-xl border"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '1px',
+            }}
           >
             {useCases.map((useCase) => {
               const Icon = useCase.icon;
               return (
-                <div key={useCase.title} className="flex items-start gap-4 bg-card p-5">
-                  <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-primary/10">
-                    <Icon className="size-4 text-primary" />
+                <div
+                  key={useCase.title}
+                  className="bg-card flex items-start gap-4 p-5"
+                >
+                  <div className="bg-primary/10 flex size-8 shrink-0 items-center justify-center rounded-md">
+                    <Icon className="text-primary size-4" />
                   </div>
                   <div className="space-y-0.5">
-                    <h3 className="text-sm font-semibold text-accent-foreground">{useCase.title}</h3>
-                    <p className="text-xs leading-snug text-muted-foreground">
+                    <h3 className="text-accent-foreground text-sm font-semibold">
+                      {useCase.title}
+                    </h3>
+                    <p className="text-muted-foreground text-xs leading-snug">
                       {useCase.description}
                     </p>
                   </div>
@@ -1077,14 +1219,15 @@ export default function LedgerPageContent() {
         <div className="container">
           <div className="mx-auto max-w-3xl">
             <div className="mb-12 space-y-4 text-center">
-              <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+              <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
                 FAQ
               </div>
               <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl">
                 Frequently Asked Questions
               </h2>
               <p className="text-muted-foreground">
-                Everything you need to know about Ledger and how it fits into your financial operations.
+                Everything you need to know about Ledger and how it fits into
+                your financial operations.
               </p>
             </div>
             <Accordion type="single" collapsible className="space-y-3">
@@ -1092,12 +1235,12 @@ export default function LedgerPageContent() {
                 <AccordionItem
                   key={i}
                   value={`faq-${i}`}
-                  className="rounded-lg border bg-card px-6"
+                  className="bg-card rounded-lg border px-6"
                 >
                   <AccordionTrigger className="py-5 text-left font-semibold hover:no-underline">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="pb-5 leading-relaxed text-muted-foreground">
+                  <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -1110,22 +1253,23 @@ export default function LedgerPageContent() {
       {/* ── Final CTA ─────────────────────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
-          <div className="relative overflow-hidden rounded-2xl border bg-card px-8 py-16 text-center md:px-16">
+          <div className="bg-card relative overflow-hidden rounded-2xl border px-8 py-16 text-center md:px-16">
             <div className="pointer-events-none absolute inset-0 -z-10">
-              <div className="absolute -top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-chart-1/[0.12] blur-3xl" />
-              <div className="absolute -bottom-1/2 right-1/4 h-72 w-72 rounded-full bg-chart-3/[0.08] blur-3xl" />
+              <div className="bg-chart-1/[0.12] absolute -top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full blur-3xl" />
+              <div className="bg-chart-3/[0.08] absolute right-1/4 -bottom-1/2 h-72 w-72 rounded-full blur-3xl" />
             </div>
             <div className="mx-auto max-w-3xl space-y-6">
-              <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+              <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
                 Start Today
               </div>
               <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
                 Take Control of Your{' '}
                 <span className="text-gradient">Logistics Finances.</span>
               </h2>
-              <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Start your free trial and explore the full power of Ledger. Connect your operations
-                to your finances and get a real-time view of your business health.
+              <p className="text-muted-foreground mx-auto max-w-xl text-lg leading-relaxed">
+                Start your free trial and explore the full power of Ledger.
+                Connect your operations to your finances and get a real-time
+                view of your business health.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
@@ -1143,14 +1287,13 @@ export default function LedgerPageContent() {
                   </a>
                 </Button>
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-muted-foreground text-xs">
                 Free 7-day trial · Free to self-host under AGPL
               </p>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

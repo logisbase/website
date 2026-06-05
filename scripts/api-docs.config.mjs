@@ -24,7 +24,7 @@
  * Numbers" → "trackingNumbers") which is correct most of the time but worth
  * verifying against the SDK source when adding a new resource.
  */
-const fleetbaseStores = {
+const logisbaseStores = {
   Places: 'places',
   'Service Areas': 'serviceAreas',
   Zones: 'zones',
@@ -83,56 +83,56 @@ const coreStores = {
 
 /** @type {Record<string, ApiConfig>} */
 export const apis = {
-  'Fleetbase API': {
-    slug: 'fleetbase',
-    sidebarGroup: 'Fleetbase API',
+  'LogisBase API': {
+    slug: 'logisbase',
+    sidebarGroup: 'LogisBase API',
     type: 'api',
     sdk: {
       js: {
-        pkg: '@fleetbase/sdk',
-        client: 'fleetbase',
-        stores: fleetbaseStores,
+        pkg: '@logisbase/sdk',
+        client: 'logisbase',
+        stores: logisbaseStores,
         orderActions,
       },
       php: {
-        pkg: 'fleetbase/fleetbase-php',
-        client: 'fleetbase',
-        stores: fleetbaseStores,
+        pkg: 'logisbase/logisbase-php',
+        client: 'logisbase',
+        stores: logisbaseStores,
         orderActions,
       },
     },
   },
 
-  'Fleetbase Core API': {
+  'LogisBase Core API': {
     slug: 'core',
     sidebarGroup: 'Core API',
     type: 'api',
     sdk: {
       // Core resources currently fall back to raw HTTP — no first-class SDK
       // wrappers for Files / Comments / Chat Channels yet. Organizations is
-      // mapped through the main `@fleetbase/sdk`.
+      // mapped through the main `@logisbase/sdk`.
       js: {
-        pkg: '@fleetbase/sdk',
-        client: 'fleetbase',
+        pkg: '@logisbase/sdk',
+        client: 'logisbase',
         stores: coreStores,
       },
     },
   },
 
-  'Fleetbase Ledger API': {
+  'LogisBase Ledger API': {
     slug: 'ledger',
     sidebarGroup: 'Ledger API',
     type: 'api',
     // No Ledger SDK yet — generator emits raw HTTP samples for JS and PHP.
   },
 
-  'Fleetbase Storefront API': {
+  'LogisBase Storefront API': {
     slug: 'storefront',
     sidebarGroup: 'Storefront API',
     type: 'api',
     sdk: {
       js: {
-        pkg: '@fleetbase/storefront-js',
+        pkg: '@logisbase/storefront-js',
         client: 'storefront',
         stores: storefrontStores,
       },
@@ -140,7 +140,7 @@ export const apis = {
     },
   },
 
-  'Fleetbase Integrated Vendor Flow': {
+  'LogisBase Integrated Vendor Flow': {
     slug: 'workflows/integrated-vendor',
     sidebarGroup: 'Workflows',
     type: 'workflow',
@@ -152,7 +152,7 @@ export function defaultConfig(folderName) {
   return {
     slug: folderName
       .toLowerCase()
-      .replace(/^fleetbase\s+/i, '')
+      .replace(/^logisbase\s+/i, '')
       .replace(/\s+api$/i, '')
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, ''),

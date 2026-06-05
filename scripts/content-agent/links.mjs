@@ -1,13 +1,28 @@
 const LINK_REWRITES = [
-  [/https:\/\/fleetbase\.ghost\.io\/docs(?=\/|["')\s?#]|$)/gi, 'https://fleetbase.io/docs'],
-  [/https:\/\/www\.fleetbase\.io\/docs(?=\/|["')\s?#]|$)/gi, 'https://fleetbase.io/docs'],
-  [/https:\/\/fleetbase\.ghost\.io\/blog(?=\/|["')\s?#]|$)/gi, 'https://fleetbase.io/blog'],
-  [/https:\/\/www\.fleetbase\.io\/blog(?=\/|["')\s?#]|$)/gi, 'https://fleetbase.io/blog'],
-  [/https:\/\/fleetbase\.ghost\.io(?=\/|["')\s?#]|$)/gi, 'https://fleetbase.io'],
-  [/https:\/\/www\.fleetbase\.io(?=\/|["')\s?#]|$)/gi, 'https://fleetbase.io'],
+  [
+    /https:\/\/logisbase\.ghost\.io\/docs(?=\/|["')\s?#]|$)/gi,
+    'https://logisbase.com/docs',
+  ],
+  [
+    /https:\/\/www\.logisbase\.io\/docs(?=\/|["')\s?#]|$)/gi,
+    'https://logisbase.com/docs',
+  ],
+  [
+    /https:\/\/logisbase\.ghost\.io\/blog(?=\/|["')\s?#]|$)/gi,
+    'https://logisbase.com/blog',
+  ],
+  [
+    /https:\/\/www\.logisbase\.io\/blog(?=\/|["')\s?#]|$)/gi,
+    'https://logisbase.com/blog',
+  ],
+  [
+    /https:\/\/logisbase\.ghost\.io(?=\/|["')\s?#]|$)/gi,
+    'https://logisbase.com',
+  ],
+  [/https:\/\/www\.logisbase\.io(?=\/|["')\s?#]|$)/gi, 'https://logisbase.com'],
 ];
 
-export function normalizeFleetbaseLinks(value) {
+export function normalizeLogisBaseLinks(value) {
   if (typeof value !== 'string') return value;
 
   return LINK_REWRITES.reduce(
@@ -19,8 +34,8 @@ export function normalizeFleetbaseLinks(value) {
 export function normalizeArticleLinks(article) {
   return {
     ...article,
-    excerpt: normalizeFleetbaseLinks(article.excerpt),
-    html: normalizeFleetbaseLinks(article.html),
-    metaDescription: normalizeFleetbaseLinks(article.metaDescription),
+    excerpt: normalizeLogisBaseLinks(article.excerpt),
+    html: normalizeLogisBaseLinks(article.html),
+    metaDescription: normalizeLogisBaseLinks(article.metaDescription),
   };
 }

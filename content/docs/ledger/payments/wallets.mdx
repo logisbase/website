@@ -13,12 +13,12 @@ Navigate to **Ledger → Payments → Wallets**.
 
 Wallets are polymorphic — `subject_uuid` + `subject_type` point at the entity that owns the balance:
 
-| Type | Subject | Common Use |
-| :--- | :--- | :--- |
-| **Driver** | Fleet-Ops driver | Track earnings from completed deliveries |
-| **Customer** | Storefront / Fleet-Ops customer | Prepaid credit, loyalty balance, refunds |
-| **Company** | Your organization | Platform revenue, operating, payout / refund reserves |
-| **User** | Individual Fleetbase user | Personal account |
+| Type         | Subject                         | Common Use                                            |
+| :----------- | :------------------------------ | :---------------------------------------------------- |
+| **Driver**   | Fleet-Ops driver                | Track earnings from completed deliveries              |
+| **Customer** | Storefront / Fleet-Ops customer | Prepaid credit, loyalty balance, refunds              |
+| **Company**  | Your organization               | Platform revenue, operating, payout / refund reserves |
+| **User**     | Individual LogisBase user       | Personal account                                      |
 
 A single subject can have multiple wallets in different currencies.
 
@@ -35,11 +35,11 @@ Each wallet additionally has an internal ledger account auto-created with code `
 
 The `status` field is the single source of truth for whether a wallet can transact. It accepts one of three values:
 
-| Status | Behavior |
-| :--- | :--- |
-| **active** | Normal — credits and debits allowed |
+| Status     | Behavior                              |
+| :--------- | :------------------------------------ |
+| **active** | Normal — credits and debits allowed   |
 | **frozen** | Operations blocked while under review |
-| **closed** | Permanently disabled |
+| **closed** | Permanently disabled                  |
 
 API responses also expose a derived **`is_frozen`** attribute — it's a computed accessor that returns `true` when `status === 'frozen'`. Don't write to `is_frozen`; set the wallet's `status` instead. The legacy `is_frozen` toggle in the wallet form is a frontend remnant and does not drive backend behaviour.
 
@@ -48,40 +48,31 @@ API responses also expose a derived **`is_frozen`** attribute — it's a compute
 Wallets are usually provisioned automatically. To create one manually:
 
 <Steps>
+  <Step>Navigate to **Ledger → Payments → Wallets**.</Step>
+  <Step>Click **New Wallet**.</Step>
   <Step>
-    Navigate to **Ledger → Payments → Wallets**.
+    Select the **Subject** — the driver, customer, company, or user the wallet
+    belongs to.
   </Step>
-  <Step>
-    Click **New Wallet**.
-  </Step>
-  <Step>
-    Select the **Subject** — the driver, customer, company, or user the wallet belongs to.
-  </Step>
-  <Step>
-    Select the **Currency**.
-  </Step>
-  <Step>
-    Enter an optional **Name** and **Description**.
-  </Step>
-  <Step>
-    Click **Save**.
-  </Step>
+  <Step>Select the **Currency**.</Step>
+  <Step>Enter an optional **Name** and **Description**.</Step>
+  <Step>Click **Save**.</Step>
 </Steps>
 
 ## Wallet Operations
 
 Each operation below is a button on the wallet detail panel.
 
-| Action | Effect |
-| :--- | :--- |
-| **Credit** | Manual credit (no gateway) |
-| **Top-Up** | Gateway-charged top-up via Stripe or QPay |
-| **Transfer** | Move funds to another wallet |
-| **Payout** (sometimes labelled "Withdraw") | Debit the wallet (e.g., driver payout) |
-| **Freeze** | Set the wallet status to `frozen` |
-| **Unfreeze** | Set the wallet status to `active` |
-| **Recalculate Balance** | Recompute the balance from completed transactions |
-| **Transactions** tab | Filtered transaction list for this wallet |
+| Action                                     | Effect                                            |
+| :----------------------------------------- | :------------------------------------------------ |
+| **Credit**                                 | Manual credit (no gateway)                        |
+| **Top-Up**                                 | Gateway-charged top-up via Stripe or QPay         |
+| **Transfer**                               | Move funds to another wallet                      |
+| **Payout** (sometimes labelled "Withdraw") | Debit the wallet (e.g., driver payout)            |
+| **Freeze**                                 | Set the wallet status to `frozen`                 |
+| **Unfreeze**                               | Set the wallet status to `active`                 |
+| **Recalculate Balance**                    | Recompute the balance from completed transactions |
+| **Transactions** tab                       | Filtered transaction list for this wallet         |
 
 ### Credit (manual deposit, no gateway)
 

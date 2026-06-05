@@ -1,6 +1,6 @@
 ---
 title: UnitInput
-description: "<UnitInput> is a numeric input with an attached unit label or unit picker — used for weights, distances, capacities, and any measurement."
+description: '<UnitInput> is a numeric input with an attached unit label or unit picker — used for weights, distances, capacities, and any measurement.'
 ---
 
 # `<UnitInput>`
@@ -12,7 +12,7 @@ Used for weights (`kg`, `lb`), distances (`km`, `mi`), capacities (`L`, `gal`), 
 ## Basic Usage
 
 ```handlebars
-<UnitInput @value={{this.vehicle.max_weight}} @unit="kg" />
+<UnitInput @value={{this.vehicle.max_weight}} @unit='kg' />
 ```
 
 ## With Unit Picker
@@ -37,24 +37,24 @@ weightUnits = [
 
 ## Arguments
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
-| `@value` | number | The numeric value |
-| `@unit` | string | The unit code shown on the right |
-| `@units` | array | Array of `{ name, value }` for the unit picker |
-| `@canSelectUnit` | boolean | Show the dropdown picker |
-| `@onUnitChange` | `(unit)` | Called when the user picks a different unit |
-| `@disabled` | boolean | Disable the input |
-| `@placeholder` | string | Placeholder for the numeric input |
-| `@wrapperClass` | string | Extra classes on the outer wrapper |
+| Argument         | Type     | Description                                    |
+| :--------------- | :------- | :--------------------------------------------- |
+| `@value`         | number   | The numeric value                              |
+| `@unit`          | string   | The unit code shown on the right               |
+| `@units`         | array    | Array of `{ name, value }` for the unit picker |
+| `@canSelectUnit` | boolean  | Show the dropdown picker                       |
+| `@onUnitChange`  | `(unit)` | Called when the user picks a different unit    |
+| `@disabled`      | boolean  | Disable the input                              |
+| `@placeholder`   | string   | Placeholder for the numeric input              |
+| `@wrapperClass`  | string   | Extra classes on the outer wrapper             |
 
 Any additional `...attributes` are forwarded to the inner `<input>`.
 
 ## Real-World Examples
 
 ```handlebars
-{{!-- Vehicle capacity --}}
-<InputGroup @name="Maximum Weight">
+{{! Vehicle capacity }}
+<InputGroup @name='Maximum Weight'>
   <UnitInput
     @value={{this.vehicle.max_weight}}
     @unit={{this.vehicle.weight_unit}}
@@ -64,14 +64,14 @@ Any additional `...attributes` are forwarded to the inner `<input>`.
   />
 </InputGroup>
 
-{{!-- Service rate base distance --}}
-<UnitInput @value={{this.rate.base_distance}} @unit="km" />
+{{! Service rate base distance }}
+<UnitInput @value={{this.rate.base_distance}} @unit='km' />
 ```
 
 ## Source
 
-| File | Description |
-| :--- | :--- |
-| [`addon/components/unit-input.hbs`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/unit-input.hbs) | Template |
-| [`addon/components/unit-input.js`](https://github.com/fleetbase/ember-ui/blob/main/addon/components/unit-input.js) | Class |
-| [`addon/components/unit-input/`](https://github.com/fleetbase/ember-ui/tree/main/addon/components/unit-input) | `UnitHandle` subcomponent |
+| File                                                                                                                 | Description               |
+| :------------------------------------------------------------------------------------------------------------------- | :------------------------ |
+| [`addon/components/unit-input.hbs`](https://github.com/logisbase/ember-ui/blob/main/addon/components/unit-input.hbs) | Template                  |
+| [`addon/components/unit-input.js`](https://github.com/logisbase/ember-ui/blob/main/addon/components/unit-input.js)   | Class                     |
+| [`addon/components/unit-input/`](https://github.com/logisbase/ember-ui/tree/main/addon/components/unit-input)        | `UnitHandle` subcomponent |
