@@ -25,7 +25,7 @@ import Link from 'next/link';
 
 import DeploymentOptions from '@/components/sections/deployment-options';
 import IntegrationsEcosystem from '@/components/sections/integrations-ecosystem';
-import OpenSourceAdvantage from '@/components/sections/source-available-advantage';
+import OpenSourceAdvantage from '@/components/sections/open-source-advantage';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 

@@ -10,13 +10,11 @@ import {
   Package,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import { useState, useEffect } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { CodeBlock } from '@/components/ui/code-block';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 
@@ -274,52 +272,14 @@ const FeaturesTabsSection = () => {
 
                   {/* Mobile code view */}
                   {activeTab === tab.id && (
-                    <div
-                      className="mt-3 w-full overflow-hidden rounded-lg border lg:hidden"
-                      style={{ backgroundColor: codeBg, borderColor }}
-                    >
-                      <div
-                        className="flex items-center justify-between border-b px-3 py-2"
-                        style={{ backgroundColor: headerBg, borderColor }}
-                      >
-                        <span className="text-muted-foreground font-mono text-xs">
-                          JavaScript
-                        </span>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={handleCopy}
-                          className="h-7 px-2"
-                        >
-                          {copied ? (
-                            <Check className="h-3.5 w-3.5" />
-                          ) : (
-                            <Copy className="h-3.5 w-3.5" />
-                          )}
-                        </Button>
-                      </div>
-                      <motion.div
-                        key={tab.id}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="max-h-80 overflow-auto"
-                      >
-                        <SyntaxHighlighter
-                          language="javascript"
-                          style={isDarkMode ? vscDarkPlus : vs}
-                          customStyle={{
-                            margin: 0,
-                            padding: '1rem',
-                            background: 'transparent',
-                            fontSize: '0.8rem',
-                            lineHeight: '1.6',
-                          }}
-                        >
-                          {tab.code}
-                        </SyntaxHighlighter>
-                      </motion.div>
+                    <div className="mt-3 w-full max-w-[calc(100vw-2rem)] lg:hidden">
+                      <CodeBlock
+                        code={tab.code}
+                        language="javascript"
+                        label="JavaScript"
+                        className="w-full text-xs"
+                        showLineNumbers={false}
+                      />
                     </div>
                   )}
                 </TabsTrigger>
@@ -330,73 +290,14 @@ const FeaturesTabsSection = () => {
       </div>
 
       {/* Right: Desktop code viewer */}
-      <div
-        className="hidden h-[560px] overflow-hidden rounded-xl border lg:flex lg:flex-col"
-        style={{ backgroundColor: codeBg, borderColor }}
-      >
-        {/* Header */}
-        <div
-          className="flex shrink-0 items-center justify-between border-b px-4 py-3"
-          style={{ backgroundColor: headerBg, borderColor }}
-        >
-          <span className="text-muted-foreground font-mono text-sm">
-            JavaScript
-          </span>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleCopy}
-            className="h-8 px-2"
-          >
-            {copied ? (
-              <>
-                <Check className="mr-1.5 h-3.5 w-3.5" />
-                <span className="text-xs">Copied!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="mr-1.5 h-3.5 w-3.5" />
-                <span className="text-xs">Copy</span>
-              </>
-            )}
-          </Button>
-        </div>
-
-        {/* Code area */}
-        <div className="relative min-h-0 flex-1 overflow-auto">
-          <AnimatePresence mode="wait">
-            {TABS_DATA.filter((tab) => tab.id === activeTab).map((tab) => (
-              <motion.div
-                key={tab.id}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <SyntaxHighlighter
-                  language="javascript"
-                  style={isDarkMode ? vscDarkPlus : vs}
-                  customStyle={{
-                    margin: 0,
-                    padding: '1.25rem 1rem',
-                    background: 'transparent',
-                    fontSize: '0.875rem',
-                    lineHeight: '1.7',
-                  }}
-                  showLineNumbers
-                  lineNumberStyle={{
-                    color: isDarkMode ? '#4a4a4a' : '#bbb',
-                    paddingRight: '1.5rem',
-                    minWidth: '2.5rem',
-                    userSelect: 'none',
-                  }}
-                >
-                  {tab.code}
-                </SyntaxHighlighter>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
+      <div className="hidden h-[560px] lg:flex lg:flex-col">
+        <CodeBlock
+          code={TABS_DATA.find((tab) => tab.id === activeTab)?.code || ''}
+          language="javascript"
+          label="JavaScript"
+          showLineNumbers
+          className="h-full flex-1"
+        />
       </div>
     </section>
   );

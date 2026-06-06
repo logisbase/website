@@ -7,14 +7,14 @@
  */
 .oli-max-page {
   position: relative;
-  --oli-orange: #e5471f;       /* primary brand orange (logo-mark warm tone) */
-  --oli-red: #b62a14;          /* deeper red on the gradient bottom */
-  --oli-gold: #f2c430;         /* accent yellow — warhorse logomark */
-  --oli-deep: #4a1407;         /* deepest red, used for high-contrast text on gold */
-  --oli-bg: #0a0e18;           /* primary page background — dark navy */
-  --oli-card: #131826;         /* card surface */
+  --oli-orange: #e5471f; /* primary brand orange (logo-mark warm tone) */
+  --oli-red: #b62a14; /* deeper red on the gradient bottom */
+  --oli-gold: #f2c430; /* accent yellow — warhorse logomark */
+  --oli-deep: #4a1407; /* deepest red, used for high-contrast text on gold */
+  --oli-bg: #0a0e18; /* primary page background — dark navy */
+  --oli-card: #131826; /* card surface */
   --oli-border: rgba(255, 255, 255, 0.08);
-  --oli-fg: #f5f7fa;           /* default text */
+  --oli-fg: #f5f7fa; /* default text */
   --oli-fg-muted: rgba(245, 247, 250, 0.65);
 }
 
@@ -39,18 +39,3 @@
  * opaque-glass blur (triggered by the scroll threshold in navbar.tsx) takes
  * over for the rest of the page.
  */
-.oli-max-page::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  /* The 8px buffer absorbs the navbar's 1px border-b plus any subpixel
-     rounding so there's no thin sliver of body overlay leaking through at
-     viewport y=0. The extra height extends offscreen above viewport top
-     (harmless) but guarantees the strip fully covers the navbar zone. */
-  top: calc(-1 * var(--header-height) - 8px);
-  height: calc(var(--header-height) + 8px);
-  background-color: var(--oli-orange);
-  z-index: 0;
-  pointer-events: none;
-}

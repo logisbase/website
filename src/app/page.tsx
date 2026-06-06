@@ -17,7 +17,7 @@ import { getGitHubStars } from '@/lib/github-stars';
 const FleetOpsShowcase = dynamic(
   () => import('@/components/sections/fleetops-showcase'),
 );
-const OpenSourceAdvantage = dynamic(
+const EnterpriseAdvantage = dynamic(
   () => import('@/components/sections/open-source-advantage'),
 );
 const FeaturesTabsSection = dynamic(
@@ -37,34 +37,34 @@ const FinalCTA = dynamic(() => import('@/components/sections/final-cta'));
 export const metadata: Metadata = {
   title: 'LogisBase | Source-Available Logistics & Supply Chain Platform',
   description:
-    'LogisBase is the source-available logistics OS. Fleet management, e-commerce fulfillment, warehouse, and accounting — one platform, no per-driver fees, self-hosted or cloud.',
+    'LogisBase is the enterprise logistics OS. Fleet management, e-commerce fulfillment, warehouse, and accounting — one platform, no per-driver fees, self-hosted or cloud.',
   keywords:
     'source-available logistics platform, fleet management software, TMS software, transportation management system, delivery management, supply chain software, self hosted fleet management, source-available logistics, last mile delivery software, route optimization software, warehouse management',
   alternates: {
     canonical: 'https://logisbase.com',
   },
   openGraph: {
-    title: 'LogisBase | Source-Available Logistics & Supply Chain Platform',
+    title: 'LogisBase | Enterprise Logistics & Supply Chain Platform',
     description:
-      'Fleet management, e-commerce fulfillment, warehouse, and accounting — unified in one source-available platform. No per-driver fees. Self-hosted or cloud.',
+      'Fleet management, e-commerce fulfillment, warehouse, and accounting — unified in one enterprise platform. No per-driver fees. Self-hosted or cloud.',
     url: 'https://logisbase.com',
     type: 'website',
     images: [
       {
-        url: '/og?title=Source-Available%20Logistics%20%26%20Supply%20Chain%20Platform&eyebrow=LogisBase&subtitle=Fleet%20management%2C%20fulfillment%2C%20warehouse%2C%20and%20accounting%20%E2%80%94%20one%20platform%2C%20no%20per-driver%20fees',
+        url: '/og?title=Enterprise%20Logistics%20%26%20Supply%20Chain%20Platform&eyebrow=LogisBase&subtitle=Fleet%20management%2C%20fulfillment%2C%20warehouse%2C%20and%20accounting%20%E2%80%94%20one%20platform%2C%20no%20per-driver%20fees',
         width: 1200,
         height: 630,
-        alt: 'LogisBase — source-available logistics and supply chain platform',
+        alt: 'LogisBase — enterprise logistics and supply chain platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LogisBase | Source-Available Logistics Platform',
+    title: 'LogisBase | Enterprise Logistics Platform',
     description:
-      'Fleet management, e-commerce fulfillment, warehouse, and accounting — unified, source-available, no per-driver fees.',
+      'Fleet management, e-commerce fulfillment, warehouse, and accounting — unified, enterprise, no per-driver fees.',
     images: [
-      '/og?title=Source-Available%20Logistics%20%26%20Supply%20Chain%20Platform&eyebrow=LogisBase&subtitle=Fleet%20management%2C%20fulfillment%2C%20warehouse%2C%20and%20accounting%20%E2%80%94%20one%20platform%2C%20no%20per-driver%20fees',
+      '/og?title=Enterprise%20Logistics%20%26%20Supply%20Chain%20Platform&eyebrow=LogisBase&subtitle=Fleet%20management%2C%20fulfillment%2C%20warehouse%2C%20and%20accounting%20%E2%80%94%20one%20platform%2C%20no%20per-driver%20fees',
     ],
   },
 };
@@ -80,7 +80,7 @@ export default async function Home() {
       <StatsBar />
       <PlatformModules />
       <FleetOpsShowcase />
-      <OpenSourceAdvantage stars={stars} />
+      <EnterpriseAdvantage stars={stars} />
       <FeaturesTabsSection />
       <IndustryUseCases />
       <IntegrationsEcosystem />

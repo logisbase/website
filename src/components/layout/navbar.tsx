@@ -8,6 +8,7 @@ import {
   Brain,
   Briefcase,
   Building2,
+  Calendar,
   ClipboardList,
   Code,
   FileCheck,
@@ -918,19 +919,14 @@ const Navbar = () => {
             <ThemeToggle />
             <Button size="sm" variant="ghost" asChild>
               <Link
-                href="https://github.com/logisbase/logisbase"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="https://cal.com/shivthakker/enquiry"
                 className="flex items-center gap-1.5"
-                data-cta-id="star_github"
+                data-cta-id="book_a_demo"
                 data-cta-location="navbar"
                 data-cta-variant="tertiary"
               >
-                <Github className="size-4" />
-                <span>Star us</span>
-                <span className="bg-muted inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium tabular-nums">
-                  {ghStars}
-                </span>
+                <Calendar className="size-4" />
+                <span>Book a Demo</span>
               </Link>
             </Button>
             {ACTION_BUTTONS.map((button) => (
@@ -962,7 +958,7 @@ const Navbar = () => {
             <button
               type="button"
               aria-label={triggerOpen ? 'Close menu' : 'Open main menu'}
-              aria-expanded={triggerOpen}
+              aria-expanded={triggerOpen ? 'true' : 'false'}
               className="text-muted-foreground relative flex size-8 rounded-sm border lg:hidden"
               onClick={onTriggerClick}
             >

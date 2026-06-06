@@ -14,25 +14,27 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://logisbase.com/company/source-available' },
+  alternates: {
+    canonical: 'https://logisbase.com/company/platform-independence',
+  },
   title: 'Platform Independence | LogisBase',
   description:
-    'LogisBase is fully source-available under SOURCE-AVAILABLE. Learn why we chose transparency, what it means for your deployment, how to self-host, and how to contribute to the project.',
+    'LogisBase is an enterprise, source-available logistics platform with self-hostable options. Learn why we chose transparency, what it means for your deployment, how to self-host, and how to contribute to the project.',
   keywords: [
-    'logisbase source-available',
+    'logisbase enterprise',
     'source-available logistics platform',
-    'Source-available logistics software',
+    'self-hostable logistics software',
     'self-hosted fleet management',
   ],
   openGraph: {
     title: 'Platform Independence | LogisBase',
     description:
-      'Fully source-available logistics infrastructure under SOURCE-AVAILABLE. Deploy anywhere, own everything.',
+      'Enterprise, source-available logistics infrastructure. Deploy anywhere, own everything.',
   },
   twitter: {
     card: 'summary_large_image',
     title: `Platform Independence | LogisBase`,
-    description: `Fully source-available logistics infrastructure under SOURCE-AVAILABLE. Deploy anywhere, own everything.`,
+    description: `Enterprise, source-available logistics infrastructure. Deploy anywhere, own everything.`,
   },
 };
 
@@ -47,7 +49,7 @@ const reasons = [
     icon: Code2,
     title: 'Security auditable',
     description:
-      'Every line of code that processes your orders, tracks your drivers, and stores your data is Enterprise code review. No hidden telemetry, no undisclosed data sharing, no black boxes.',
+      'Every line of code that processes your orders, tracks your drivers, and stores your data is available for enterprise code review. No hidden telemetry, no undisclosed data sharing, no black boxes.',
   },
   {
     icon: GitBranch,
@@ -59,7 +61,7 @@ const reasons = [
     icon: Users,
     title: 'Enterprise-grade quality',
     description:
-      'Source-available software is reviewed, tested, and improved by thousands of developers worldwide. The community finds bugs faster, suggests better solutions, and builds extensions that benefit everyone.',
+      'LogisBase is built to enterprise standards, with a focus on reliability, scalability, and security. Our source-available model ensures you have full visibility into the platform.',
   },
   {
     icon: Database,
@@ -71,7 +73,7 @@ const reasons = [
     icon: BookOpen,
     title: 'Sustainable by design',
     description:
-      'Source-available projects outlast any single company. Even if LogisBase as a business changed, the platform would continue to exist, be maintained, and be deployable by the community.',
+      'LogisBase is designed for long-term sustainability. Our source-available model ensures that your logistics infrastructure remains under your control, regardless of the business landscape.',
   },
 ];
 
@@ -149,10 +151,10 @@ export default function OpenSourcePage() {
         <div className="container">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {[
-              { value: 'SOURCE-AVAILABLE', label: 'Platform licence' },
-              { value: 'Commercial', label: 'Proprietary option available' },
-              { value: '100%', label: 'Source code public' },
-              { value: 'Self-host', label: 'Deploy anywhere' },
+              { value: 'Enterprise', label: 'Platform model' },
+              { value: 'Source-Available', label: 'Transparency' },
+              { value: 'Self-Hostable', label: 'Deployment' },
+              { value: 'Customizable', label: 'Extensibility' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-primary text-2xl font-bold md:text-3xl">
@@ -167,7 +169,7 @@ export default function OpenSourcePage() {
         </div>
       </section>
 
-      {/* Why Source-available */}
+      {/* Why Platform Independence */}
       <section className="py-16 md:py-24">
         <div className="container">
           <div className="mb-12">
@@ -204,9 +206,9 @@ export default function OpenSourcePage() {
               Licensing explained
             </h2>
             <p className="text-muted-foreground mt-3 max-w-2xl text-lg">
-              LogisBase is released under SOURCE-AVAILABLE. An Enterprise
-              License is available for businesses that need to keep their
-              modifications proprietary. Here is what each option means.
+              LogisBase is a source-available platform. An Enterprise License is
+              available for businesses that need to keep their modifications
+              proprietary. Here is what each option means.
             </p>
           </div>
           <div className="space-y-6">

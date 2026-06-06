@@ -145,7 +145,7 @@ const OpenSourceAdvantage = ({ stars = '1.9k+' }: { stars?: string }) => {
                     Source-available, verified.
                   </h3>
                   <p className="text-muted-foreground text-xs">
-                    Public code means real transparency.
+                    Enterprise transparency.
                   </p>
                 </div>
               </div>

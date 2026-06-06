@@ -21,7 +21,8 @@ const modules = [
       'Telematics, maintenance & fuel tracking',
     ],
     image: '/images/screenshots/fleet-ops/fleet-ops-orders-kanban.webp',
-    imageAlt: 'Fleet-Ops order management kanban board with live dispatch and driver assignments',
+    imageAlt:
+      'Fleet-Ops order management kanban board with live dispatch and driver assignments',
     href: '/platform/fleetops',
     colSpan: 'lg:col-span-2',
     imageAspect: 'aspect-[16/10]',
@@ -51,15 +52,16 @@ const modules = [
     labelColor: 'bg-violet-500/10 text-violet-600 dark:text-violet-400',
     headline: 'Warehouse & Inventory',
     description:
-      'Prepare for unified warehouse and inventory workflows inside Fleetbase. Pallet will bring stock control, fulfillment operations, and warehouse visibility into the same platform.',
+      'Prepare for unified warehouse and inventory workflows inside LogisBase. Pallet will bring stock control, fulfillment operations, and warehouse visibility into the same platform.',
     features: [
       'Inventory visibility by location',
       'Pick, pack & fulfillment workflows',
-      'Warehouse operations inside Fleetbase',
+      'Warehouse operations inside LogisBase',
       'Launching soon as a first-party module',
     ],
     image: '/images/screenshots/pallet/pallet-dashboard-beta.webp',
-    imageAlt: 'Pallet warehouse management and inventory tracking interface (beta)',
+    imageAlt:
+      'Pallet warehouse management and inventory tracking interface (beta)',
     href: '/platform/pallet',
     colSpan: 'lg:col-span-1',
     imageAspect: 'aspect-[4/3]',
@@ -78,7 +80,8 @@ const modules = [
       'Full double-entry accounting',
     ],
     image: '/images/screenshots/ledger/ledger-dashboard.webp',
-    imageAlt: 'Ledger finance dashboard showing revenue, invoices and wallet management',
+    imageAlt:
+      'Ledger finance dashboard showing revenue, invoices and wallet management',
     href: '/platform/ledger',
     colSpan: 'lg:col-span-1',
     imageAspect: 'aspect-[4/3]',
@@ -89,7 +92,7 @@ const modules = [
     labelColor: 'bg-pink-500/10 text-pink-600 dark:text-pink-400',
     headline: 'Extensions & Marketplace',
     description:
-      'Extend Fleetbase with official and community-built extensions. Build your own or install from the registry in one click.',
+      'Extend LogisBase with official and community-built extensions. Build your own or install from the registry in one click.',
     features: [
       'Official & community registry',
       'One-click installation',
@@ -97,7 +100,8 @@ const modules = [
       'CLI scaffolding tools',
     ],
     image: '/images/screenshots/extensions/extensions-browse.webp',
-    imageAlt: 'Fleetbase extensions marketplace showing available modules and integrations',
+    imageAlt:
+      'LogisBase extensions marketplace showing available modules and integrations',
     href: '/platform/extensions',
     colSpan: 'lg:col-span-1',
     imageAspect: 'aspect-[4/3]',
@@ -110,17 +114,20 @@ export default function PlatformModules() {
       <div className="container space-y-10">
         {/* Header */}
         <div className="mx-auto max-w-3xl space-y-4 text-center">
-          <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
+          <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
             The Platform
           </div>
           <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
             One Platform.{' '}
-            <span className="text-gradient">Multiple Logistics Capabilities.</span>
+            <span className="text-gradient">
+              Multiple Logistics Capabilities.
+            </span>
           </h2>
-          <p className="text-lg leading-snug text-muted-foreground lg:text-xl">
-            Fleetbase includes modules for fleet management, e-commerce delivery, warehouse
-            operations, accounting, identity management, and developer tooling. Use what fits
-            your operation — it's all on one platform, without stitching tools together.
+          <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
+            LogisBase includes modules for fleet management, e-commerce
+            delivery, warehouse operations, accounting, identity management, and
+            developer tooling. Use what fits your operation — it's all on one
+            platform, without stitching tools together.
           </p>
         </div>
 
@@ -136,7 +143,12 @@ export default function PlatformModules() {
             >
               <CardContent className="flex h-full flex-col p-0">
                 {/* Screenshot */}
-                <div className={cn('relative w-full overflow-hidden border-b', mod.imageAspect)}>
+                <div
+                  className={cn(
+                    'relative w-full overflow-hidden border-b',
+                    mod.imageAspect,
+                  )}
+                >
                   <Image
                     src={mod.image}
                     alt={mod.imageAlt}
@@ -158,16 +170,18 @@ export default function PlatformModules() {
                   </span>
 
                   <div>
-                    <h3 className="mb-1 text-xl font-bold tracking-tight text-accent-foreground">
+                    <h3 className="text-accent-foreground mb-1 text-xl font-bold tracking-tight">
                       {mod.headline}
                     </h3>
-                    <p className="text-sm leading-snug text-muted-foreground">{mod.description}</p>
+                    <p className="text-muted-foreground text-sm leading-snug">
+                      {mod.description}
+                    </p>
                   </div>
 
                   <ul className="space-y-1.5">
                     {mod.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm">
-                        <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
+                        <CheckCircle2 className="text-primary mt-0.5 size-4 shrink-0" />
                         <span className="text-muted-foreground">{f}</span>
                       </li>
                     ))}
@@ -176,7 +190,7 @@ export default function PlatformModules() {
                   <div className="mt-auto pt-2">
                     <Link
                       href={mod.href}
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-foreground transition-all hover:gap-2.5"
+                      className="text-accent-foreground inline-flex items-center gap-1.5 text-sm font-medium transition-all hover:gap-2.5"
                     >
                       Explore {mod.name} <ArrowRight className="size-3.5" />
                     </Link>
@@ -192,7 +206,7 @@ export default function PlatformModules() {
           <Button
             variant="ghost"
             asChild
-            className="group gap-2 text-muted-foreground hover:text-foreground"
+            className="group text-muted-foreground hover:text-foreground gap-2"
           >
             <Link href="/platform">
               Explore the full platform
