@@ -28,7 +28,7 @@ git submodule update --init --recursive
 
 ## Adding a new collection
 
-When the postman repo gains a new top-level collection folder (e.g. `Fleetbase Ledger API`):
+When the postman repo gains a new top-level collection folder (e.g. `LogisBase Ledger API`):
 
 1. **Bump the submodule** in this repo so it picks up the new collection:
 
@@ -41,7 +41,7 @@ When the postman repo gains a new top-level collection folder (e.g. `Fleetbase L
 2. **Add a config entry** in [`api-docs.config.mjs`](./api-docs.config.mjs):
 
    ```js
-   'Fleetbase Ledger API': {
+   'LogisBase Ledger API': {
      slug: 'ledger',
      sidebarGroup: 'APIs',
      type: 'api',
@@ -55,7 +55,7 @@ When the postman repo gains a new top-level collection folder (e.g. `Fleetbase L
    pnpm generate:api-docs
    ```
 
-   You should see `📘 Fleetbase Ledger API → /docs/api/ledger/` plus one `.mdx` line per resource.
+   You should see `📘 LogisBase Ledger API → /docs/api/ledger/` plus one `.mdx` line per resource.
 
 If you skip step 2, the generator picks the collection up anyway with sluggified defaults (slug = sluggified folder name, group = `"APIs"`, no SDK code samples). It emits a warning so you know to add config when you have time.
 
@@ -93,16 +93,16 @@ fields:
   - name: pickup
     type: object
     required: true
-    description: "Pickup location for the order."
+    description: 'Pickup location for the order.'
     fields:
       - name: public_id
         type: string
         required: true
-        description: "Public identifier of an existing place."
+        description: 'Public identifier of an existing place.'
   - name: status
     type: enum
-    values: ["created", "preparing", "dispatched"]
-    description: "Initial status."
+    values: ['created', 'preparing', 'dispatched']
+    description: 'Initial status.'
 ```
 
 Per-field keys: `name`, `type`, `description` are required. `required`, `default`, `values` (for `type: enum`), and `fields` (for nested objects) are optional. Type vocabulary: `string`, `integer`, `number`, `boolean`, `timestamp`, `date`, `currency`, `object`, `array of strings`, `array of objects`, `enum`.
@@ -118,7 +118,7 @@ Response examples for the request. The generator picks the first 2xx-with-body e
 ```yaml
 $kind: http-example
 request:
-  url: "{{base_url}}/{{namespace}}/orders"
+  url: '{{base_url}}/{{namespace}}/orders'
   method: POST
   body:
     type: json
@@ -157,11 +157,19 @@ example: |
 fields:
   - name: id
     type: string
-    description: "Unique identifier for the order."
+    description: 'Unique identifier for the order.'
   - name: status
     type: enum
-    values: ["created", "preparing", "dispatched", "in_progress", "completed", "canceled"]
-    description: "Lifecycle status."
+    values:
+      [
+        'created',
+        'preparing',
+        'dispatched',
+        'in_progress',
+        'completed',
+        'canceled',
+      ]
+    description: 'Lifecycle status.'
   # ...one entry per attribute, same schema as params.yaml fields
 ```
 

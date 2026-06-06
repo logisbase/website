@@ -18,7 +18,10 @@ function toTopicIdeaOpportunity(item, contentFocus) {
 
   return {
     keyword,
-    cluster: typeof item === 'string' ? contentFocus || 'ai-topic-idea' : item.cluster || contentFocus || 'ai-topic-idea',
+    cluster:
+      typeof item === 'string'
+        ? contentFocus || 'ai-topic-idea'
+        : item.cluster || contentFocus || 'ai-topic-idea',
     volume: null,
     difficulty: null,
     trafficPotential: null,
@@ -28,12 +31,15 @@ function toTopicIdeaOpportunity(item, contentFocus) {
   };
 }
 
-export function buildAiTopicResearch(config, { contentFocus, topicMode = 'auto', integrationTarget = '' } = {}) {
+export function buildAiTopicResearch(
+  config,
+  { contentFocus, topicMode = 'auto', integrationTarget = '' } = {},
+) {
   const ideas = [];
 
   if (integrationTarget) {
     ideas.push({
-      keyword: `integrate Fleetbase with ${integrationTarget}`,
+      keyword: `integrate LogisBase with ${integrationTarget}`,
       cluster: 'integration',
       parentTopic: `${integrationTarget} logistics integration`,
       intents: ['informational', 'developer'],
@@ -43,7 +49,7 @@ export function buildAiTopicResearch(config, { contentFocus, topicMode = 'auto',
   if (topicMode === 'integration' || topicMode === 'auto') {
     for (const target of config.topicIdeas?.integrationTargets || []) {
       ideas.push({
-        keyword: `integrate Fleetbase with ${target}`,
+        keyword: `integrate LogisBase with ${target}`,
         cluster: 'integration',
         parentTopic: `${target} logistics integration`,
         intents: ['informational', 'developer'],
@@ -54,7 +60,8 @@ export function buildAiTopicResearch(config, { contentFocus, topicMode = 'auto',
   for (const example of config.topicIdeas?.examples || []) {
     ideas.push({
       keyword: example,
-      cluster: topicMode === 'auto' ? contentFocus || 'ai-topic-idea' : topicMode,
+      cluster:
+        topicMode === 'auto' ? contentFocus || 'ai-topic-idea' : topicMode,
       parentTopic: null,
       intents: ['informational'],
     });
@@ -63,13 +70,16 @@ export function buildAiTopicResearch(config, { contentFocus, topicMode = 'auto',
   for (const pillar of config.topicIdeas?.pillars || []) {
     ideas.push({
       keyword: pillar,
-      cluster: topicMode === 'auto' ? contentFocus || 'ai-topic-idea' : topicMode,
+      cluster:
+        topicMode === 'auto' ? contentFocus || 'ai-topic-idea' : topicMode,
       parentTopic: null,
       intents: ['commercial', 'informational'],
     });
   }
 
-  const opportunities = ideas.map((idea) => toTopicIdeaOpportunity(idea, contentFocus));
+  const opportunities = ideas.map((idea) =>
+    toTopicIdeaOpportunity(idea, contentFocus),
+  );
 
   return {
     bypassedAhrefs: true,
@@ -84,7 +94,8 @@ export function buildAiTopicResearch(config, { contentFocus, topicMode = 'auto',
       validOpportunityCount: opportunities.length,
       malformedRowCount: 0,
       selectedFields: [],
-      bypassedReason: 'Ahrefs disabled; using AI-first curated Fleetbase topic ideas.',
+      bypassedReason:
+        'Ahrefs disabled; using AI-first curated LogisBase topic ideas.',
       topicMode,
       integrationTarget,
       strict: false,
@@ -92,12 +103,17 @@ export function buildAiTopicResearch(config, { contentFocus, topicMode = 'auto',
   };
 }
 
-export function buildFallbackResearch(config, { contentFocus, reason, error = null } = {}) {
+export function buildFallbackResearch(
+  config,
+  { contentFocus, reason, error = null } = {},
+) {
   const fallbackItems =
     config.fallbackOpportunitiesByFocus?.[contentFocus] ||
     config.fallbackOpportunitiesByFocus?.['logistics-software'] ||
     [];
-  const opportunities = fallbackItems.map((item) => toFallbackOpportunity(item, contentFocus));
+  const opportunities = fallbackItems.map((item) =>
+    toFallbackOpportunity(item, contentFocus),
+  );
 
   return {
     bypassedAhrefs: true,
@@ -145,7 +161,8 @@ export function buildManualResearch({ topic, keyword }) {
       validOpportunityCount: 1,
       malformedRowCount: 0,
       selectedFields: [],
-      bypassedReason: 'Manual topic override supplied through workflow_dispatch.',
+      bypassedReason:
+        'Manual topic override supplied through workflow_dispatch.',
       strict: false,
     },
   };
@@ -153,7 +170,10 @@ export function buildManualResearch({ topic, keyword }) {
 
 export async function buildAhrefsOrManualResearch(config, options = {}) {
   if (options.topic) {
-    return buildManualResearch({ topic: options.topic, keyword: options.keyword });
+    return buildManualResearch({
+      topic: options.topic,
+      keyword: options.keyword,
+    });
   }
 
   if (!options.useAhrefs) {
