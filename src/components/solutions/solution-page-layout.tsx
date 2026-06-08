@@ -117,7 +117,7 @@ export default function SolutionPageLayout({
     primary: 'Start Free Trial',
     primaryHref: 'https://console.logisbase.com/onboard',
     secondary: 'Book a Demo',
-    secondaryHref: 'https://cal.com/shivthakker/enquiry',
+    secondaryHref: 'https://cal.com/logisbase/demo',
   };
 
   return (

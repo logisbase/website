@@ -169,7 +169,7 @@ export default function SecurityCompliancePageContent() {
               every layer — and you remain in full control.
             </p>
             <div className="mt-4 flex flex-wrap justify-center gap-4">
-              <Link href="https://cal.com/shivthakker/enquiry">
+              <Link href="https://cal.com/logisbase/demo">
                 <Button size="lg">Talk to Our Security Team</Button>
               </Link>
               <Link href="/pricing">
@@ -612,7 +612,7 @@ export default function SecurityCompliancePageContent() {
                 evaluate LogisBase for your environment.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link href="https://cal.com/shivthakker/enquiry">
+                <Link href="https://cal.com/logisbase/demo">
                   <Button size="lg">Talk to Our Security Team</Button>
                 </Link>
                 <Link href="/pricing">

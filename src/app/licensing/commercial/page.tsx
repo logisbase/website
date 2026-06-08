@@ -255,7 +255,7 @@ export default function CommercialLicensePage() {
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button size="lg" asChild>
-                <Link href="https://cal.com/shivthakker/enquiry">
+                <Link href="https://cal.com/logisbase/demo">
                   Book a discovery call <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
@@ -447,7 +447,7 @@ export default function CommercialLicensePage() {
                     variant={tier.highlight ? 'default' : 'outline'}
                     className="w-full"
                   >
-                    <Link href="https://cal.com/shivthakker/enquiry">
+                    <Link href="https://cal.com/logisbase/demo">
                       Book a call
                     </Link>
                   </Button>
@@ -459,7 +459,7 @@ export default function CommercialLicensePage() {
             Need a custom enterprise agreement — multi-year, regional, or
             multi-product?{' '}
             <Link
-              href="https://cal.com/shivthakker/enquiry"
+              href="https://cal.com/logisbase/demo"
               className="text-primary underline underline-offset-4"
             >
               We negotiate bespoke terms
@@ -565,7 +565,7 @@ export default function CommercialLicensePage() {
               </p>
               <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Button size="lg" asChild>
-                  <Link href="https://cal.com/shivthakker/enquiry">
+                  <Link href="https://cal.com/logisbase/demo">
                     Book a discovery call <ArrowRight className="ml-2 size-4" />
                   </Link>
                 </Button>

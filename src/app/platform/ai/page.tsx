@@ -751,7 +751,7 @@ export default function LogisticsAIPage() {
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link
-                href="https://cal.com/shivthakker/enquiry"
+                href="https://cal.com/logisbase/demo"
                 target="_blank"
                 rel="noopener noreferrer"
               >

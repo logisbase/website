@@ -207,7 +207,7 @@ export default function GovernmentPage() {
       ctaPrimary="Start Free Trial"
       ctaPrimaryHref="https://console.logisbase.com/onboard"
       ctaSecondary="Contact Us"
-      ctaSecondaryHref="https://cal.com/shivthakker/enquiry"
+      ctaSecondaryHref="https://cal.com/logisbase/demo"
     />
   );
 }

@@ -608,7 +608,7 @@ export default function ExtensionsMarketplacePageContent() {
             </Link>{' '}
             or{' '}
             <Link
-              href="https://cal.com/shivthakker/enquiry"
+              href="https://cal.com/logisbase/demo"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary underline underline-offset-4"
@@ -691,7 +691,7 @@ export default function ExtensionsMarketplacePageContent() {
                   </Button>
                 </Link>
                 <Link
-                  href="https://cal.com/shivthakker/enquiry"
+                  href="https://cal.com/logisbase/demo"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

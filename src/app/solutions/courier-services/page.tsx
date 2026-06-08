@@ -201,7 +201,7 @@ export default function CourierServicesPage() {
       ctaPrimary="Start Free Trial"
       ctaPrimaryHref="https://console.logisbase.com/onboard"
       ctaSecondary="Book a Demo"
-      ctaSecondaryHref="https://cal.com/shivthakker/enquiry"
+      ctaSecondaryHref="https://cal.com/logisbase/demo"
     />
   );
 }

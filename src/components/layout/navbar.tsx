@@ -477,7 +477,7 @@ export const NAV_LINKS: NavLink[] = [
       },
       {
         label: 'Contact Sales',
-        href: 'https://cal.com/shivthakker/enquiry',
+        href: 'https://cal.com/logisbase/demo',
         description:
           'Get in touch with our enterprise team for custom solutions.',
         icon: Mail,
@@ -919,7 +919,7 @@ const Navbar = () => {
             <ThemeToggle />
             <Button size="sm" variant="ghost" asChild>
               <Link
-                href="https://cal.com/shivthakker/enquiry"
+                href="https://cal.com/logisbase/demo"
                 className="flex items-center gap-1.5"
                 data-cta-id="book_a_demo"
                 data-cta-location="navbar"

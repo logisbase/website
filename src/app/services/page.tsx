@@ -361,9 +361,7 @@ function ServiceCard({
           </Button>
         ) : (
           <Button className="w-full" size="sm" variant="outline" asChild>
-            <Link href="https://cal.com/shivthakker/enquiry">
-              Request a Quote
-            </Link>
+            <Link href="https://cal.com/logisbase/demo">Request a Quote</Link>
           </Button>
         )}
       </CardFooter>
@@ -391,7 +389,7 @@ export default function ServicesPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild>
-              <Link href="https://cal.com/shivthakker/enquiry">
+              <Link href="https://cal.com/logisbase/demo">
                 Talk to Our Team <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -599,7 +597,7 @@ export default function ServicesPage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Button size="lg" asChild>
                 <Link
-                  href="https://cal.com/shivthakker/enquiry"
+                  href="https://cal.com/logisbase/demo"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

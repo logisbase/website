@@ -835,7 +835,7 @@ export default function NavigatorPageContent() {
                   </Button>
                 </Link>
                 <Link
-                  href="https://cal.com/shivthakker/enquiry"
+                  href="https://cal.com/logisbase/demo"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

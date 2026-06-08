@@ -177,7 +177,7 @@ export default async function InvestorsPage() {
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
-              <Link href="https://cal.com/shivthakker/enquiry">
+              <Link href="https://cal.com/logisbase/demo">
                 Open a conversation <ArrowRight className="ml-2 size-4" />
               </Link>
             </Button>
@@ -374,7 +374,7 @@ export default async function InvestorsPage() {
             </p>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button size="lg" asChild>
-                <Link href="https://cal.com/shivthakker/enquiry">
+                <Link href="https://cal.com/logisbase/demo">
                   Book an intro call <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>

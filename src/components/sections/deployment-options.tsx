@@ -98,7 +98,7 @@ const deploymentOptions = [
     price: 'Custom pricing',
     cta: {
       text: 'Book a Call',
-      href: 'https://cal.com/shivthakker/enquiry',
+      href: 'https://cal.com/logisbase/demo',
       variant: 'outline' as const,
     },
     features: {
@@ -161,7 +161,7 @@ export default function DeploymentOptions() {
         </p>
         <Button variant="outline" asChild>
           <Link
-            href="https://cal.com/shivthakker/enquiry"
+            href="https://cal.com/logisbase/demo"
             target="_blank"
             rel="noopener noreferrer"
             data-cta-id="book_demo"

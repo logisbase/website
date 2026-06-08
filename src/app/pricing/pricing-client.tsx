@@ -331,7 +331,7 @@ const SUPPORT_TIERS = [
       { label: 'Custom SLA', included: true },
     ],
     cta: 'Contact Sales',
-    ctaHref: 'https://cal.com/shivthakker/enquiry',
+    ctaHref: 'https://cal.com/logisbase/demo',
     highlight: false,
   },
 ];
@@ -467,7 +467,7 @@ export default function PricingClient() {
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link
-                href="https://cal.com/shivthakker/enquiry"
+                href="https://cal.com/logisbase/demo"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cta-id="contact_sales"
@@ -823,7 +823,7 @@ export default function PricingClient() {
               </CardContent>
               <CardFooter>
                 <Button className="w-full" variant="outline" asChild>
-                  <Link href="https://cal.com/shivthakker/enquiry">
+                  <Link href="https://cal.com/logisbase/demo">
                     Request a Quote <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -956,7 +956,7 @@ export default function PricingClient() {
                     variant={lic.highlight ? 'default' : 'outline'}
                     asChild
                   >
-                    <Link href="https://cal.com/shivthakker/enquiry">
+                    <Link href="https://cal.com/logisbase/demo">
                       Get License
                     </Link>
                   </Button>
@@ -982,7 +982,7 @@ export default function PricingClient() {
             </Link>{' '}
             or{' '}
             <Link
-              href="https://cal.com/shivthakker/enquiry"
+              href="https://cal.com/logisbase/demo"
               className="text-primary underline underline-offset-4"
             >
               talk to our team
@@ -1046,7 +1046,7 @@ export default function PricingClient() {
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                   <Link
-                    href="https://cal.com/shivthakker/enquiry"
+                    href="https://cal.com/logisbase/demo"
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cta-id="contact_sales"

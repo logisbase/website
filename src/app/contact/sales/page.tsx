@@ -193,7 +193,7 @@ export default function ContactSalesPage() {
 
               {/* Cal.com */}
               <Link
-                href="https://cal.com/shivthakker/enquiry"
+                href="https://cal.com/logisbase/demo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block"

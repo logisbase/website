@@ -330,7 +330,7 @@ export default function LicensingPage() {
             <p className="text-muted-foreground mt-2 text-sm">
               Still unsure which licence applies to your use case?{' '}
               <Link
-                href="https://cal.com/shivthakker/enquiry"
+                href="https://cal.com/logisbase/demo"
                 className="text-primary hover:underline"
               >
                 Contact our team

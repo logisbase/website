@@ -144,7 +144,7 @@ export default function PartnersPage() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
-              <Link href="https://cal.com/shivthakker/enquiry">
+              <Link href="https://cal.com/logisbase/demo">
                 Apply to partner <ArrowRight className="ml-2 size-4" />
               </Link>
             </Button>
@@ -214,7 +214,7 @@ export default function PartnersPage() {
                   </div>
                 </div>
                 <Link
-                  href="https://cal.com/shivthakker/enquiry"
+                  href="https://cal.com/logisbase/demo"
                   className="text-primary flex items-center text-sm font-medium hover:underline"
                 >
                   {type.cta} <ArrowRight className="ml-1 size-3.5" />
@@ -270,7 +270,7 @@ export default function PartnersPage() {
                 business days.
               </p>
               <Button size="lg" asChild>
-                <Link href="https://cal.com/shivthakker/enquiry">
+                <Link href="https://cal.com/logisbase/demo">
                   Apply now <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>

@@ -537,7 +537,7 @@ export default function FleetOpsPageContent() {
                 className="h-[52px] border-white/40 bg-white/5 px-6 text-base font-[600] text-white backdrop-blur-sm hover:bg-white/15 hover:text-white"
               >
                 <a
-                  href="https://cal.com/shivthakker/enquiry"
+                  href="https://cal.com/logisbase/demo"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -1058,7 +1058,7 @@ console.log(\`ETA: \${order.eta}\`);`}
                 className="h-[52px] border-white/40 bg-white/10 px-6 text-base font-[600] text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
               >
                 <a
-                  href="https://cal.com/shivthakker/enquiry"
+                  href="https://cal.com/logisbase/demo"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

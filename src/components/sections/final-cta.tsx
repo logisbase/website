@@ -53,7 +53,7 @@ export default function FinalCTA() {
               </Button>
               <Button size="lg" variant="outline" className="gap-2" asChild>
                 <Link
-                  href="https://cal.com/shivthakker/enquiry"
+                  href="https://cal.com/logisbase/demo"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cta-id="book_demo"

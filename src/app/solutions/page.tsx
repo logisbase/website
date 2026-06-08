@@ -363,7 +363,7 @@ export default function SolutionsPage() {
                 Start Free Trial <ArrowRight className="size-4" />
               </Link>
               <Link
-                href="https://cal.com/shivthakker/enquiry"
+                href="https://cal.com/logisbase/demo"
                 className="hover:bg-accent inline-flex items-center justify-center gap-2 rounded-md border px-6 py-2.5 text-sm font-medium transition-colors"
               >
                 Talk to Sales

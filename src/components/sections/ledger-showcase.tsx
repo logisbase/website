@@ -167,7 +167,7 @@ export default function LedgerShowcase() {
             </Button>
             <Button variant="outline" asChild>
               <Link
-                href="https://cal.com/shivthakker/enquiry"
+                href="https://cal.com/logisbase/demo"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cta-id="contact_sales"

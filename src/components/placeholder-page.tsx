@@ -35,9 +35,7 @@ export default function PlaceholderPage({
             </Link>
           </Button>
           <Button size="lg" variant="outline" asChild>
-            <Link href="https://cal.com/shivthakker/enquiry">
-              Contact Sales
-            </Link>
+            <Link href="https://cal.com/logisbase/demo">Contact Sales</Link>
           </Button>
         </div>
       </div>

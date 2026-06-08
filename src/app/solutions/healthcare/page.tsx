@@ -202,7 +202,7 @@ export default function HealthcarePage() {
       ctaPrimary="Start Free Trial"
       ctaPrimaryHref="https://console.logisbase.com/onboard"
       ctaSecondary="Talk to Sales"
-      ctaSecondaryHref="https://cal.com/shivthakker/enquiry"
+      ctaSecondaryHref="https://cal.com/logisbase/demo"
     />
   );
 }

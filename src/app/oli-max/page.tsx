@@ -538,9 +538,7 @@ export default function OliMaxPage() {
                 asChild
                 className="border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white"
               >
-                <Link href="https://cal.com/shivthakker/enquiry">
-                  Talk to us
-                </Link>
+                <Link href="https://cal.com/logisbase/demo">Talk to us</Link>
               </Button>
             </div>
             <p className="mt-8 text-xs text-white/70">
