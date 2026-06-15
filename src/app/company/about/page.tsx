@@ -1,6 +1,7 @@
 import {
   ArrowRight,
   Code2,
+  Github,
   Globe,
   Heart,
   Linkedin,
@@ -371,7 +372,7 @@ export default function AboutPage() {
                     Lagos, Nigeria
                   </div>
                   <Link
-                    href="https://www.linkedin.com/in/shivthakker"
+                    href="https://www.linkedin.com/in/chikeziengwu/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary mt-2 inline-flex items-center gap-1.5 text-xs transition-colors"
@@ -420,13 +421,13 @@ export default function AboutPage() {
                     Lagos, Nigeria
                   </div>
                   <Link
-                    href="https://www.linkedin.com/in/ronald-a-richardson"
+                    href="https://github.com/tekorakle"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary mt-2 inline-flex items-center gap-1.5 text-xs transition-colors"
                   >
-                    <Linkedin className="size-3.5" />
-                    LinkedIn
+                    <Github className="size-3.5" />
+                    GitHub
                   </Link>
                 </div>
               </div>
