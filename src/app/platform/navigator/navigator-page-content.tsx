@@ -76,7 +76,9 @@ export default function NavigatorPageContent() {
                 <span className="bg-muted rounded-full px-3 py-1">
                   Navigator
                 </span>
-                <span className="px-3">Source-Available Driver App</span>
+                <span className="px-3">
+                  Driver App for Real-World Logistics Operations
+                </span>
               </div>
 
               <h1 className="text-4xxl leading-none tracking-tight text-balance">
@@ -85,10 +87,12 @@ export default function NavigatorPageContent() {
               </h1>
 
               <p className="text-foreground/90 dark:text-foreground/95 max-w-xl leading-snug md:text-lg">
-                Navigator is LogisBase&apos;s source-available mobile app for
-                drivers and field agents. Jobs auto-dispatch from Fleet-Ops,
-                routes are calculated instantly, and proof of delivery is
-                captured on the spot — with or without a signal.
+                Navigator is LogisBase’s mobile application for drivers and
+                field agents, designed to execute logistics at scale in dynamic,
+                real-world conditions. Jobs are automatically dispatched from
+                Fleet-Ops, routes are optimized in real time, and proof of
+                delivery is captured instantly at the point of completion — even
+                in low or no connectivity environments.
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -119,7 +123,7 @@ export default function NavigatorPageContent() {
                 >
                   <Button size="lg" variant="ghost">
                     <FaGithub className="mr-2 h-4 w-4" />
-                    View Source
+                    Request source access
                   </Button>
                 </Link>
               </div>
@@ -128,8 +132,8 @@ export default function NavigatorPageContent() {
               <div className="flex flex-wrap gap-8 pt-2">
                 {[
                   {
-                    value: 'SOURCE-AVAILABLE',
-                    label: 'Source-available licence',
+                    value: 'Source Access Available',
+                    label: 'Transparent, inspectable platform architecture',
                   },
                   { value: 'iOS + Android', label: 'Both platforms' },
                   { value: 'Offline-first', label: 'Works without signal' },
@@ -208,14 +212,14 @@ export default function NavigatorPageContent() {
                 Live Job Dispatch
               </div>
               <h2 className="text-4xl leading-tight font-bold tracking-tight">
-                Orders from Fleet-Ops land in the app the moment they&apos;re
+                Orders from Fleet-Ops land in the app the moment they're
                 assigned
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 Dispatchers assign jobs in the Fleet-Ops console and Navigator
                 alerts the driver immediately via push notification. No phone
                 calls, no WhatsApp chains — the full order brief is already on
-                the driver&apos;s screen.
+                the driver's screen.
               </p>
               <ul className="space-y-3">
                 {[
@@ -428,8 +432,8 @@ export default function NavigatorPageContent() {
               Complete driver toolkit
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl">
-              Every feature a driver needs to execute deliveries professionally
-              — built into one source-available app that you fully control.
+              Everything drivers need to execute deliveries professionally in
+              one fully controlled, white-label mobile application.
             </p>
           </div>
 
@@ -518,12 +522,11 @@ export default function NavigatorPageContent() {
                 Ship it under your own brand — not ours
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Navigator is SOURCE-AVAILABLE source-available. Fork the repo,
-                swap the logo, set your primary colour, point it at your
-                LogisBase instance, and submit to the app stores as your own
-                product. No royalties, no white-label fees — or purchase a
-                Enterprise License if you need to keep your modifications
-                proprietary.
+                Navigator is built for full white-label deployment, allowing
+                organizations to launch a fully branded driver application
+                connected to their LogisBase environment. Configure, customize,
+                and distribute it as your own product with complete operational
+                control.
               </p>
               <ul className="space-y-3">
                 {[
@@ -551,7 +554,7 @@ export default function NavigatorPageContent() {
                 >
                   <Button variant="outline">
                     <FaGithub className="mr-2 h-4 w-4" />
-                    Fork on GitHub
+                    Request source access
                   </Button>
                 </Link>
                 <Link href="/docs/fleet-ops/navigator-app/theming">
@@ -564,7 +567,7 @@ export default function NavigatorPageContent() {
                 </Link>
               </div>
               <p className="text-muted-foreground mt-1 text-sm">
-                Don&apos;t want to manage the publishing process?{' '}
+                Don't want to manage the publishing process?{' '}
                 <Link
                   href="/services/navigator-publishing"
                   className="text-primary underline underline-offset-4"
@@ -575,13 +578,13 @@ export default function NavigatorPageContent() {
               </p>
             </div>
             <div className="relative flex items-center justify-center">
-              <div className="relative aspect-[4/3] w-full max-w-sm overflow-hidden rounded-xl border">
+              <div className="relative aspect-video w-full max-w-md overflow-hidden rounded-xl border">
                 <Image
                   src="/images/screenshots/admin/admin-branding.webp"
                   alt="White-label Navigator configuration — custom branding controls in the admin console"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  width={1280}
+                  height={720}
+                  className="object-contain"
                 />
               </div>
             </div>
@@ -670,8 +673,8 @@ export default function NavigatorPageContent() {
               Get Navigator
             </h2>
             <p className="text-muted-foreground mx-auto max-w-xl">
-              Free on both platforms. Self-host the backend or use LogisBase
-              Cloud.
+              Available on mobile with full integration to LogisBase Cloud or
+              any self-hosted instance.
             </p>
           </div>
           <div className="mx-auto grid max-w-3xl gap-6 md:grid-cols-3">
@@ -681,8 +684,8 @@ export default function NavigatorPageContent() {
               </div>
               <h3 className="font-semibold">Google Play</h3>
               <p className="text-muted-foreground text-sm">
-                Download the official Navigator app and connect it to any
-                LogisBase instance.
+                Download Navigator for Android and connect it to your LogisBase
+                environment.
               </p>
               <Link
                 href="https://play.google.com/store/apps/details?id=io.logisbase.navigator"
@@ -703,7 +706,8 @@ export default function NavigatorPageContent() {
               </div>
               <h3 className="font-semibold">App Store</h3>
               <p className="text-muted-foreground text-sm">
-                iPhone and iPad — same feature set, native iOS build.
+                Native iOS application with the same full feature set for iPhone
+                and iPad.
               </p>
               <Link
                 href="https://apps.apple.com/us/app/logisbase-navigator/id1554208255"
@@ -724,8 +728,8 @@ export default function NavigatorPageContent() {
               </div>
               <h3 className="font-semibold">Build Your Own</h3>
               <p className="text-muted-foreground text-sm">
-                Fork the repo, white-label, extend, and publish under your own
-                brand.
+                Fork, customize, and extend Navigator to launch under your own
+                brand with full white-label control.
               </p>
               <Link
                 href="https://github.com/logisbase/navigator-app"
@@ -806,12 +810,13 @@ export default function NavigatorPageContent() {
             <div className="from-primary/5 to-primary/10 absolute inset-0 bg-gradient-to-br via-transparent" />
             <div className="relative flex flex-col items-center gap-6">
               <h2 className="text-4xl font-bold tracking-tight text-balance">
-                Give your drivers the tools they deserve
+                Equip Your Drivers With a Professional Toolkit
               </h2>
               <p className="text-muted-foreground max-w-xl">
-                Navigator is free, source-available, and ready to deploy today.
-                Connect it to your LogisBase instance in minutes and put
-                professional-grade tools in every driver&apos;s pocket.
+                Navigator is source-accessible, production-ready, and designed
+                for immediate deployment. Connect it to your LogisBase instance
+                in minutes and provide drivers with a fully integrated
+                operational mobile experience.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Link
@@ -845,8 +850,7 @@ export default function NavigatorPageContent() {
                 </Link>
               </div>
               <p className="text-muted-foreground text-xs">
-                Free to use · SOURCE-AVAILABLE source-available · iOS &amp;
-                Android
+                Source Access Available · iOS & Android · Ready to Deploy
               </p>
             </div>
           </div>
