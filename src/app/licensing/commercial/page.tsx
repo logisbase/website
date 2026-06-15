@@ -68,7 +68,7 @@ const includes = [
     icon: Network,
     title: 'SaaS distribution rights',
     description:
-      "Deploy modified versions of LogisBase as a service to your customers — without triggering AGPL's source sharing requirement.",
+      'Deploy modified versions of LogisBase as a service to your customers — without triggering source accessible sharing requirement.',
   },
   {
     icon: Layers,
@@ -113,7 +113,7 @@ const useCases = [
     icon: Building2,
     title: 'Enterprises with proprietary IP',
     description:
-      "Internal-use deployments with proprietary integrations or workflows that include trade-secret business logic you can't source-available.",
+      "Internal-use deployments with proprietary integrations or workflows that include trade-secret business logic you can't share.",
   },
   {
     icon: Briefcase,
@@ -217,11 +217,11 @@ const faqs = [
   },
   {
     q: 'Is the Commercial License compatible with LogisBase Cloud?',
-    a: 'Yes. You can use a Commercial License on either LogisBase Cloud or self-hosted deployments. On Cloud, the license waives AGPL on any extensions or modifications you deploy alongside the managed core. Self-hosted gives you maximum flexibility for proprietary infrastructure-level changes.',
+    a: 'Yes. You can use a Commercial License on either LogisBase Cloud or self-hosted deployments. On Cloud, the license waives source-accessible on any extensions or modifications you deploy alongside the managed core. Self-hosted gives you maximum flexibility for proprietary infrastructure-level changes.',
   },
   {
     q: 'Can extensions I publish to the Marketplace remain proprietary under a Commercial License?',
-    a: "Yes. Extensions you publish for sale on the LogisBase Marketplace can be closed-source under a Commercial License. Free extensions you contribute to the community can stay source-available. The license gives you the choice — it doesn't mandate one path.",
+    a: "Yes. Extensions you publish for sale on the LogisBase Marketplace can be closed-source under a Commercial License. Free extensions you contribute to the community can stay source-accessible. The license gives you the choice — it doesn't mandate one path.",
   },
   {
     q: "What if my use case doesn't neatly fit one of the listed tiers?",
@@ -245,13 +245,15 @@ export default function CommercialLicensePage() {
             </div>
             <h1 className="mb-6 text-4xl font-bold tracking-tight text-balance md:text-5xl lg:text-6xl">
               Build proprietary on LogisBase.{' '}
-              <span className="text-gradient">No AGPL strings attached.</span>
+              <span className="text-gradient">No strings attached.</span>
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
-              The LogisBase Commercial License removes SOURCE-AVAILABLE copyleft
-              obligations entirely — so you can ship customised versions, build
-              SaaS products, white-label deployments, and protect your custom
-              code under your own terms.
+              The LogisBase Commercial License provides an alternative set of
+              rights for organizations that need to deploy LogisBase in
+              proprietary environments. It enables white-label deployments, SaaS
+              offerings, and custom extensions under commercial terms, without
+              applying copyleft obligations to those proprietary components
+              covered under the agreement.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button size="lg" asChild>
@@ -277,14 +279,14 @@ export default function CommercialLicensePage() {
           <div className="mx-auto max-w-4xl">
             <div className="mb-12 text-center">
               <h2 className="mb-3 text-3xl font-bold tracking-tight md:text-4xl">
-                Why your business probably needs one
+                Why your business may need a commercial license
               </h2>
               <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-relaxed">
-                LogisBase Core is SOURCE-AVAILABLE. That&apos;s ideal for
-                internal use and community contribution — but the source sharing
-                requirement means any modifications you deploy as a service must
-                also be released under AGPL. For commercial use, that&apos;s
-                often a non-starter.
+                LogisBase Core is provided under a source-accessible based
+                license. This works well for internal deployments and community
+                participation, but it introduces obligations around distribution
+                of modified versions when the software is offered as a network
+                service.
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
@@ -293,12 +295,13 @@ export default function CommercialLicensePage() {
                   <Code2 className="size-4" />
                 </div>
                 <h3 className="mb-1.5 text-sm font-semibold">
-                  Under SOURCE-AVAILABLE
+                  Under the default license
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Modifications deployed over a network must be released as
-                  AGPL. No proprietary customisations. No private SaaS
-                  modifications.
+                  If you modify and deploy LogisBase as a service, the license
+                  requires that those modifications remain available under the
+                  same terms. This limits the ability to keep custom
+                  enhancements private in a commercial SaaS environment.
                 </p>
               </div>
               <div className="bg-card rounded-xl border p-6">
@@ -306,12 +309,13 @@ export default function CommercialLicensePage() {
                   <Scale className="size-4" />
                 </div>
                 <h3 className="mb-1.5 text-sm font-semibold">
-                  In legal review
+                  In enterprise environments
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Enterprise procurement and legal teams flag AGPL on every
-                  commercial contract. A commercial license neutralises the
-                  conversation entirely.
+                  Legal and procurement teams often require clarification or
+                  exception handling for source-accessible obligations during
+                  vendor onboarding, which can slow down or block commercial
+                  adoption.
                 </p>
               </div>
               <div className="border-primary bg-primary/5 rounded-xl border-2 p-6">
@@ -322,9 +326,10 @@ export default function CommercialLicensePage() {
                   With a Commercial License
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Build, modify, and distribute proprietary versions of
-                  LogisBase under your own terms. AGPL obligations don&apos;t
-                  apply.
+                  A Commercial License provides alternative terms for enterprise
+                  use, enabling proprietary modifications, white-label
+                  deployments, and SaaS distribution without copyleft
+                  obligations applying to those licensed components.
                 </p>
               </div>
             </div>
@@ -518,8 +523,7 @@ export default function CommercialLicensePage() {
               Common questions
             </h2>
             <p className="text-muted-foreground mb-10">
-              Specific to commercial licensing. For general AGPL questions, see
-              the{' '}
+              Specific to commercial licensing. For general questions, see the{' '}
               <Link
                 href="/licensing"
                 className="text-primary underline underline-offset-4"

@@ -6,7 +6,8 @@ import NavigatorPageContent from './navigator-page-content';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/platform/navigator' },
-  title: 'Navigator — Source-Available Driver App | LogisBase',
+  title:
+    'Navigator — Driver App for Real-World Logistics Operations | LogisBase',
   description:
     "Navigator is LogisBase's source-available mobile app for drivers. Real-time dispatch, turn-by-turn navigation, proof of delivery, and offline support — available on iOS and Android.",
   keywords: [
@@ -20,14 +21,16 @@ export const metadata: Metadata = {
     'iOS Android driver app',
   ],
   openGraph: {
-    title: 'Navigator — Source-Available Driver App | LogisBase',
+    title:
+      'Navigator — Driver App for Real-World Logistics Operations | LogisBase',
     description:
       'Source-available iOS and Android driver app with live dispatch, turn-by-turn navigation, proof of delivery, and offline-first operation.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Navigator — Source-Available Driver App | LogisBase',
+    title:
+      'Navigator — Driver App for Real-World Logistics Operations | LogisBase',
     description:
       'Free, white-label driver app for iOS and Android. Connects natively to Fleet-Ops dispatch.',
   },

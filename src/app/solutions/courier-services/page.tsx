@@ -1,16 +1,17 @@
-import type { Metadata } from 'next';
 import {
-  Package,
-  MapPin,
-  FileCheck,
   BarChart3,
-  Smartphone,
-  Zap,
   Bell,
   Clock,
-  Users,
+  FileCheck,
+  MapPin,
+  Package,
   RefreshCw,
+  Smartphone,
+  Users,
+  Zap,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
 import SolutionPageLayout from '@/components/solutions/solution-page-layout';
 
 export const metadata: Metadata = {
@@ -55,7 +56,7 @@ export default function CourierServicesPage() {
           <span className="text-gradient">Less Cost Per Parcel.</span>
         </>
       }
-      description="Every failed delivery attempt costs you $17 or more. LogisBase helps courier and parcel operators maximize first-attempt success rates with intelligent route density optimization, proactive customer notifications, and real-time tracking — on source-available infrastructure that scales with your volume."
+      description="Each failed delivery attempt costs operators $17 or more. LogisBase helps courier and parcel businesses increase first-attempt success rates through intelligent route density optimization, proactive customer notifications, and real-time tracking — built on scalable infrastructure designed to grow with operational demand."
       stats={[
         { value: '94%', label: 'First-attempt delivery rate' },
         { value: '25%', label: 'Reduction in cost-per-parcel' },

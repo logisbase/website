@@ -1,14 +1,15 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
 import {
   ArrowRight,
+  BookOpen,
+  Code2,
   Github,
   MessageSquare,
-  BookOpen,
-  Users,
-  Code2,
   Rss,
+  Users,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
@@ -39,7 +40,7 @@ const channels = [
     icon: MessageSquare,
     title: 'Discord',
     description:
-      'The most active LogisBase community hub. Get help with your deployment, discuss features, share your extensions, and connect with other operators and developers in real-time.',
+      'The most active LogisBase community space. Get deployment support, discuss features, share extensions, and connect with operators and developers in real time.',
     cta: 'Join Discord',
     href: 'https://discord.com/invite/HnTqQ6zAVn',
     badge: '5,000+ members',
@@ -48,7 +49,7 @@ const channels = [
     icon: Github,
     title: 'GitHub',
     description:
-      'Browse the source code, report bugs, submit pull requests, and follow the development roadmap. All LogisBase development happens in the open on GitHub.',
+      'Explore the codebase, report issues, submit pull requests, and track development progress. LogisBase development happens transparently in the open.',
     cta: 'Request source access',
     href: 'https://github.com/logisbase/logisbase',
     badge: 'Source-available',
@@ -57,7 +58,7 @@ const channels = [
     icon: BookOpen,
     title: 'Developer Forums',
     description:
-      'Long-form technical discussions, architecture questions, integration guides, and extension development help. Searchable and indexed — your question may already be answered.',
+      'Structured, searchable discussions for architecture design, integrations, and extension development. Ideal for in-depth technical questions and long-form answers.',
     cta: 'Browse forums',
     href: '/developers',
     badge: 'Technical discussions',
@@ -66,7 +67,7 @@ const channels = [
     icon: Rss,
     title: 'Blog & Updates',
     description:
-      "Product updates, engineering deep-dives, logistics industry insights, and community spotlights. Stay up to date with what's happening in the LogisBase ecosystem.",
+      'Product releases, engineering insights, logistics industry analysis, and community highlights. Stay informed on platform progress and ecosystem updates.',
     cta: 'Read the blog',
     href: '/blog',
     badge: 'Latest updates',
@@ -78,25 +79,25 @@ const contributions = [
     icon: Code2,
     title: 'Contribute code',
     description:
-      'Fix bugs, build features, and improve the platform. All skill levels welcome — from first-time contributors to experienced engineers.',
+      'Fix bugs, build features, and improve the platform. Contributions are welcome from first-time contributors through to experienced engineers.',
   },
   {
     icon: BookOpen,
     title: 'Improve documentation',
     description:
-      'Help other operators and developers by improving guides, adding examples, and fixing unclear documentation.',
+      'Help operators and developers succeed by refining guides, adding examples, and clarifying technical documentation.',
   },
   {
     icon: Users,
     title: 'Help in Discord',
     description:
-      'Answer questions from other community members, share your deployment experience, and help newcomers get started.',
+      'Answer questions, share deployment experience, and help new users get started in Discord.',
   },
   {
     icon: Github,
     title: 'Build extensions',
     description:
-      'Create and publish extensions to the LogisBase marketplace. Add new integrations, order types, and capabilities that benefit the whole community.',
+      'Develop and publish extensions for the LogisBase ecosystem — adding integrations, workflows, and capabilities that benefit all users.',
   },
 ];
 
@@ -111,13 +112,12 @@ export default function CommunityPage() {
           </div>
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-balance md:text-5xl lg:text-6xl">
             Built by the community,{' '}
-            <span className="text-primary">for the community.</span>
+            <span className="text-primary">for the operators.</span>
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
-            LogisBase is shaped by thousands of logistics operators, developers,
-            and contributors worldwide. Join the conversation, get help with
-            your deployment, and help build the future of source-available
-            logistics.
+            LogisBase is shaped by logistics teams, developers, and contributors
+            around the world. Join discussions, get support for your deployment,
+            and contribute to the evolution of modern logistics infrastructure.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
@@ -202,8 +202,8 @@ export default function CommunityPage() {
               How to contribute
             </h2>
             <p className="text-muted-foreground mt-3 max-w-2xl text-lg">
-              There are many ways to contribute to LogisBase — you don&apos;t
-              need to be a developer.
+              There are many ways to contribute to LogisBase — no coding
+              required.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -246,8 +246,8 @@ export default function CommunityPage() {
                 Join 5,000+ community members
               </h2>
               <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
-                Get help with your deployment, share your experience, and help
-                shape the future of source-available logistics.
+                Get deployment support, share operational experience, and
+                contribute to the evolution of modern logistics infrastructure.
               </p>
               <Button size="lg" asChild>
                 <Link

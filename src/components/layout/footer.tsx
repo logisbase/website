@@ -116,7 +116,7 @@ const FOOTER_LINKS = [
     title: 'Company',
     links: [
       { label: 'About Us', href: '/company/about' },
-      { label: 'Platform Independence', href: '/company/source-available' },
+      { label: 'Platform Independence', href: '/company/open-source' },
       { label: 'Partners', href: '/partners' },
       { label: 'Investors', href: '/company/investors' },
       { label: 'Licensing Options', href: '/licensing' },
@@ -180,7 +180,7 @@ const Footer = () => {
         </div>
 
         <p className="mt-3 text-sm">
-          Source-available · Modular platform · Self-hosted or cloud
+          Flexible Deployment · Modular Architecture · Self-Hosted or Cloud
         </p>
       </div>
 

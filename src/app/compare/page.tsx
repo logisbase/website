@@ -1,6 +1,7 @@
+import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
@@ -25,7 +26,7 @@ const COMPARISONS = [
     slug: 'vs-onfleet',
     tagline: 'No per-task pricing. Self-hosted. Full platform.',
     description:
-      'Onfleet charges per task and locks you into the cloud. LogisBase is source-available, self-hostable, and includes WMS, storefront, and accounting — not just dispatch.',
+      'Onfleet charges per task and locks you into the cloud. LogisBase is source-accessible, self-hostable, and includes WMS, storefront, and accounting — not just dispatch.',
     badge: 'Most Popular',
   },
   {
@@ -41,7 +42,7 @@ const COMPARISONS = [
     slug: 'vs-route4me',
     tagline: 'Route optimization plus a full fleet management platform.',
     description:
-      'Route4Me plans routes. LogisBase does that and more — dispatch, driver management, real-time tracking, POD, WMS, storefront, and accounting in one source-available platform.',
+      'Route4Me plans routes. LogisBase does that and more — dispatch, driver management, real-time tracking, POD, WMS, storefront, and accounting in one source-accessible platform.',
     badge: null,
   },
   {
@@ -49,7 +50,7 @@ const COMPARISONS = [
     slug: 'vs-bringg',
     tagline: 'Enterprise delivery management without enterprise pricing.',
     description:
-      'Bringg targets large enterprises with custom pricing. LogisBase gives you enterprise-grade fleet management and TMS from $50/month — or free if you self-host.',
+      'Bringg targets large enterprises with custom pricing. LogisBase gives you enterprise-grade fleet management and TMS from $25/month.',
     badge: null,
   },
 ];
@@ -65,7 +66,7 @@ export default function ComparePage() {
           </h1>
           <p className="text-muted-foreground mx-auto max-w-3xl text-xl leading-relaxed">
             See how LogisBase stacks up against the most popular fleet
-            management and delivery management platforms. Source-available, no
+            management and delivery management platforms. Source-accessible, no
             per-task or per-agent pricing, self-hostable.
           </p>
         </div>

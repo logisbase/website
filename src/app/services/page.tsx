@@ -1,26 +1,27 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
 import {
   ArrowRight,
-  Check,
   Calendar,
-  Wrench,
+  Check,
   Code2,
   GraduationCap,
-  Shield,
-  Zap,
-  Server,
   Navigation,
+  Server,
+  Shield,
   ShoppingBag,
+  Wrench,
+  Zap,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
-  CardHeader,
-  CardTitle,
   CardDescription,
   CardFooter,
+  CardHeader,
+  CardTitle,
 } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
@@ -56,7 +57,7 @@ const SUPPORT_TIERS = [
     sla: 'No SLA',
     colorClass: 'bg-green-500',
     description:
-      'Access our source-available community, documentation, and public forums.',
+      'Access documentation, developer resources, and public forums for LogisBase deployments and integrations.',
     features: [
       'Full documentation & guides',
       'Discord community access',

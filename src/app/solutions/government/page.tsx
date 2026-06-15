@@ -187,7 +187,7 @@ export default function GovernmentPage() {
         },
         {
           q: 'Is the full source code available for security assessment?',
-          a: 'Yes. LogisBase is fully source-available under SOURCE-AVAILABLE. The complete source code is available on GitHub for inspection, security assessment, and modification. An Enterprise License is available for modifications that need to remain proprietary.',
+          a: 'Yes. LogisBase is fully source-available. The complete source code is available on GitHub for inspection, security assessment, and modification. An Enterprise License is available for modifications that need to remain proprietary.',
         },
         {
           q: 'What data encryption does LogisBase provide?',
@@ -203,7 +203,7 @@ export default function GovernmentPage() {
         },
       ]}
       ctaHeading="Logistics infrastructure you can trust with classified operations"
-      ctaBody="If your operations require data sovereignty, source-available auditability, and the option to deploy anywhere — LogisBase was built for exactly that. Let\'s talk."
+      ctaBody="If your operations require data sovereignty, source-available auditability, and the option to deploy anywhere — LogisBase was built for exactly that. Let's talk."
       ctaPrimary="Start Free Trial"
       ctaPrimaryHref="https://console.logisbase.com/onboard"
       ctaSecondary="Contact Us"

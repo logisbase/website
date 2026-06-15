@@ -148,11 +148,11 @@ const techStack = [
 const faqs = [
   {
     q: 'Are the LogisBase mobile apps free to use?',
-    a: 'Yes. Both Navigator and Storefront mobile apps are fully source-available and free to use. You can download them from the App Store and Google Play, or build and deploy your own branded version from the source code on GitHub.',
+    a: 'Yes. Both Navigator and Storefront mobile apps are available as source-accessible applications and can be used immediately within your LogisBase deployment. You can install them from the App Store and Google Play, or build and deploy your own branded versions directly from the source code repository.',
   },
   {
     q: 'Can I white-label the Navigator or Storefront app?',
-    a: 'Absolutely. Both apps are source-available under SOURCE-AVAILABLE. You can fork the repositories, replace the branding, customise the UI, add features, and publish your own branded app to the App Store and Google Play. If you need to keep your modifications proprietary, an Enterprise License is available.',
+    a: 'Absolutely. Both apps are available for full customization. You can fork the repositories, replace branding, customize the UI, extend functionality, and publish your own branded apps to the App Store and Google Play. If you need to keep your modifications proprietary, an Enterprise License is available.',
   },
   {
     q: 'What technology are the apps built with?',
@@ -202,14 +202,15 @@ export default function MobileAppsPageContent() {
               <span className="px-3">Mobile Apps</span>
             </div>
             <h1 className="text-5xl leading-none tracking-tight text-balance md:text-6xl lg:text-7xl">
-              Source-Available Mobile Apps,{' '}
+              Production-Ready Mobile Apps,{' '}
               <span className="text-gradient">Ready to Deploy</span>
             </h1>
             <p className="text-foreground/90 dark:text-foreground/95 max-w-3xl leading-snug md:text-lg lg:text-xl">
-              LogisBase ships with two production-ready source-available mobile
-              apps — Navigator for drivers and Storefront for customers. Use
-              them as-is, white-label them as your own, or use them as the
-              foundation for a fully custom app built on the LogisBase API.
+              LogisBase includes production-ready mobile applications for every
+              side of your logistics network — Navigator for drivers and
+              Storefront for customers. Deploy them immediately, customize them
+              with your brand, or build tailored experiences on top of the
+              LogisBase API.
             </p>
             <div className="mt-4 flex flex-wrap justify-center gap-4">
               <Link
@@ -590,10 +591,10 @@ export default function MobileAppsPageContent() {
               </h2>
               <p className="text-muted-foreground mb-8 text-lg">
                 Navigator and Storefront are just the beginning. The LogisBase
-                API is fully open and documented, enabling you to build any
-                mobile experience you can imagine — custom driver apps, field
-                service apps, customer portals, or entirely new logistics
-                products. The existing apps are your reference implementation.
+                API is fully documented, enabling you to build any mobile
+                experience you can imagine — custom driver apps, field service
+                apps, customer portals, or entirely new logistics products. The
+                existing apps are your reference implementation.
               </p>
               <div className="mb-8 space-y-3">
                 {[
@@ -634,7 +635,7 @@ export default function MobileAppsPageContent() {
         <div className="container">
           <div className="mb-16 text-center">
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-              Built on Modern, Open Technology
+              Built on Modern, Technology Stack
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
               Both apps share the same technology stack, making it easy for any
@@ -741,8 +742,8 @@ export default function MobileAppsPageContent() {
                 </Link>
               </div>
               <p className="text-muted-foreground mt-6 text-sm">
-                100% source-available · SOURCE-AVAILABLE · iOS & Android · Free
-                to use and white-label
+                100% accessible codebase · iOS & Android · Fully customizable
+                and white-label ready
               </p>
             </div>
           </div>

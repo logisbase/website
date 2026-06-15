@@ -19,13 +19,14 @@ export default function FinalCTA() {
               Get Started Today
             </div>
             <h2 className="mb-4 text-3xl font-bold tracking-tight text-balance md:text-4xl lg:text-5xl">
-              Stop Paying Per Driver.{' '}
-              <span className="text-gradient">Start Owning Your Stack.</span>
+              Own Your Operations.{' '}
+              <span className="text-gradient">Scale With Confidence.</span>
             </h2>
             <p className="text-muted-foreground mx-auto mb-10 max-w-xl text-lg leading-relaxed">
-              Join 8,000+ logistics operations running on LogisBase.
-              Source-available, no per-seat fees, free to self-host. Start with
-              a 7-day free trial.
+              Join 8,000+ active deployments using LogisBase to manage logistics
+              operations with greater control, flexibility, and visibility.
+              Deploy anywhere, customize every workflow, and build on a platform
+              designed for long-term ownership. Start your 7-day trial today.
             </p>
 
             <div className="flex flex-col justify-center gap-4 sm:flex-row sm:flex-wrap">
@@ -66,8 +67,7 @@ export default function FinalCTA() {
             </div>
 
             <p className="text-muted-foreground mt-6 text-xs">
-              Full platform access · Cancel anytime · Self-host under
-              SOURCE-AVAILABLE
+              Full Platform Access · Cancel Anytime · Self-Hosted or Cloud
             </p>
           </div>
         </div>

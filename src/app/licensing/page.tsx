@@ -47,22 +47,22 @@ export const metadata: Metadata = {
 const licences = [
   {
     icon: Code2,
-    title: 'Source-Available License',
-    badge: 'Free',
+    title: 'Source-Accessible License',
+    badge: 'Standard',
     highlight: false,
     description:
-      'LogisBase is released under the GNU Affero General Public License v3.0. You can use, modify, and self-host it freely. The AGPL source sharing requirement means that if you deploy a modified version over a network, you must make those modifications available under SOURCE-AVAILABLE as well.',
+      'LogisBase is provided under a source-accessible model that allows you to use, modify, and self-host the platform for operational needs. When you deploy modified versions over a network, those changes must remain available under the same license terms.',
     suitable: [
       'Running LogisBase for your own fleet or internal operations',
-      'Self-hosted deployments with no proprietary modifications',
-      'Source-available projects, research, and academic use',
-      'Developers who are happy to contribute changes back to the community',
-      'Operators who want full transparency and auditability',
+      'Self-hosted deployments without proprietary modifications',
+      'Research, academic, and evaluation use cases',
+      'Developers contributing improvements back to the ecosystem',
+      'Teams that prioritize transparency and auditability',
     ],
     notSuitable: [
-      'Keeping modifications private while serving users over a network',
-      'Building proprietary SaaS products without disclosing source changes',
-      'OEM or white-label distribution with proprietary customisations',
+      'Keeping modifications private while offering the system as a service',
+      'Building proprietary SaaS products without sharing changes',
+      'OEM or white-label deployments with closed modifications',
     ],
     cta: 'Get started free',
     ctaHref: 'https://console.logisbase.com',
@@ -73,13 +73,13 @@ const licences = [
     badge: 'Enterprise',
     highlight: true,
     description:
-      'The Enterprise License removes the AGPL copyleft obligation entirely. Build proprietary modifications, deploy SaaS products, and distribute customised versions of LogisBase — all without any source-available disclosure requirement. Your IP stays yours.',
+      'The Enterprise License provides expanded commercial rights for organizations that require full confidentiality over their customizations and deployments. It enables proprietary use of LogisBase within commercial environments under negotiated terms, including SaaS, white-label, and OEM scenarios. Your proprietary extensions and modifications remain your intellectual property under the terms of the agreement.',
     suitable: [
-      'Making proprietary modifications without open-sourcing them',
-      'Building and selling SaaS logistics products on LogisBase',
-      'OEM and white-label distribution to your customers',
-      'Managed service providers offering LogisBase to multiple clients',
-      'Enterprises that require confidential customisations or specific licence terms',
+      'Proprietary modifications kept private within commercial deployments',
+      'Building and operating SaaS products on top of LogisBase',
+      'OEM and white-label distribution models',
+      'Managed service providers serving multiple client environments',
+      'Enterprises requiring confidential customizations and tailored licensing terms',
     ],
     notSuitable: [],
     cta: 'View Commercial License',
@@ -89,36 +89,36 @@ const licences = [
 
 const faqs = [
   {
-    q: 'What is SOURCE-AVAILABLE and how is it different from other source-available licences?',
-    a: 'SOURCE-AVAILABLE (GNU Affero General Public License) is a copyleft licence with a network use clause. Unlike MIT or Apache, AGPL requires that if you deploy modified software over a network — including as a SaaS product — you must make the source code of your modifications available to users under the same AGPL licence. This ensures that improvements to the platform remain open and benefit the whole community.',
+    q: 'What is LogisBase licensing and how is it different from other open-source models?',
+    a: 'LogisBase uses a source-accessible licensing model designed for transparency and operational flexibility. Unlike permissive models such as MIT or Apache, it includes conditions around how modified versions can be deployed as network-accessible services. This ensures improvements to the platform remain traceable while supporting both internal and commercial use cases.',
   },
   {
     q: 'If I run LogisBase internally for my own fleet, do I need an Enterprise License?',
-    a: 'No. Running LogisBase internally for your own operations — even in a commercial business — does not trigger AGPL obligations as long as you are not serving external users over a network. Internal deployments with no external distribution are fully covered by the free SOURCE-AVAILABLE licence.',
+    a: 'No. Internal use of LogisBase within your own organisation does not trigger any external sharing requirements, even in commercial environments, as long as it is not exposed to external users over a network.',
   },
   {
-    q: 'I want to make modifications to LogisBase. Do I have to source-available them?',
-    a: 'It depends on how you deploy. If you keep your modified LogisBase instance entirely internal (not accessible to external users over a network), you are not required to release your changes. However, if you deploy your modified version as a service accessible to others — including your own customers — SOURCE-AVAILABLE requires you to make those modifications available under AGPL. If you need to keep your modifications proprietary, an Enterprise License is required.',
+    q: 'I want to make modifications to LogisBase. Do I have to share them?',
+    a: 'It depends on how you deploy it. If your modified version is used strictly within your organisation, there is no requirement to share changes. If you deploy a modified version as a network-accessible service for external users or customers, the licence requires those modifications to be made available under the standard terms. An Enterprise License is required if you want to keep modifications proprietary in such cases.',
   },
   {
-    q: 'What counts as "network use" under SOURCE-AVAILABLE?',
-    a: 'Network use means making the software available to users over a network — for example, running it as a web application or API that external users interact with. This includes SaaS products, customer-facing portals, and any deployment where users outside your organisation access the software. Purely internal use within your own organisation does not count as network use.',
+    q: 'What counts as "network use" under the LogisBase license?',
+    a: 'Network use refers to making LogisBase available to users over a network — such as through a web application, API, or customer-facing system. This includes SaaS deployments and any system accessed by users outside your internal organisation.',
   },
   {
     q: 'Can I build a SaaS product on top of LogisBase?',
-    a: 'Yes, but the licence terms depend on whether you make modifications. If you deploy LogisBase as-is (without modifying the core), you can offer it as a service under SOURCE-AVAILABLE without additional obligations. If you make proprietary modifications and want to keep them private while serving users over a network, you need an Enterprise License.',
+    a: 'Yes. If you deploy LogisBase without modifying the core platform, you can offer it as a service under the standard licensing terms. If you introduce modifications and want to keep them private while serving users over a network, an Enterprise License is required.',
   },
   {
     q: 'What does the Enterprise License cover?',
-    a: 'The Enterprise License removes all AGPL copyleft obligations. It allows you to make proprietary modifications, deploy modified versions as SaaS, distribute customised builds to customers, and build OEM or white-label products — all without any source-available disclosure requirement. Pricing is based on your use case and deployment scale; contact our sales team for a quote.',
+    a: 'The Enterprise License removes external sharing requirements for covered components. It enables proprietary modifications, SaaS deployment with private changes, OEM and white-label distribution, and customised enterprise deployments under negotiated commercial terms.',
   },
   {
     q: 'Who owns the custom extensions or modifications I build?',
-    a: "You do. LogisBase's modular architecture is designed so that custom extensions and modifications you build remain your intellectual property. LogisBase Pte. Ltd. has no claim over your custom code. The AGPL licence governs how you must share that code if you deploy it over a network — but ownership always stays with you. An Enterprise License removes even the sharing obligation.",
+    a: 'You retain full ownership of any custom extensions or code you develop for LogisBase. The license governs how modified platform components must be handled when deployed over a network, but does not transfer ownership of your intellectual property. An Enterprise License removes external sharing requirements for covered modifications.',
   },
   {
     q: 'How is Enterprise License pricing structured?',
-    a: 'Enterprise License pricing is tailored to your use case, deployment scale, and distribution model. Contact our sales team to discuss your specific requirements and receive a quote.',
+    a: 'Enterprise pricing is customised based on deployment size, use case, and commercial requirements. Contact the LogisBase team to receive a tailored quote.',
   },
 ];
 
@@ -132,14 +132,16 @@ export default function LicensingPage() {
             Licensing
           </div>
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-balance md:text-5xl lg:text-6xl">
-            Source-available with{' '}
-            <span className="text-primary">clear, honest terms.</span>
+            Clear, practical terms{' '}
+            <span className="text-primary">for real-world operations.</span>
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
-            LogisBase is released under SOURCE-AVAILABLE. Use it freely for
-            internal operations. If you deploy a modified version over a
-            network, those changes must remain source-available — or you need an
-            Enterprise License to keep them proprietary.
+            LogisBase is provided under a source-accessible model. You can use
+            and self-host it for internal business operations. If you deploy
+            modified versions as part of an externally accessible service, those
+            modifications are subject to the standard sharing requirements — or
+            you can obtain an Enterprise License to keep them proprietary under
+            commercial terms.
           </p>
         </div>
       </section>
@@ -235,26 +237,25 @@ export default function LicensingPage() {
         <div className="container">
           <div className="mx-auto max-w-3xl">
             <h2 className="mb-4 text-2xl font-bold tracking-tight md:text-3xl">
-              Understanding the AGPL source sharing requirement
+              Understanding the source-sharing requirement
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              The key distinction in SOURCE-AVAILABLE compared to other
-              source-available licences is the
-              <strong> source sharing requirement</strong>. Standard GPL only
-              requires you to share modifications if you distribute the software
-              as a file. AGPL goes further: if you run a modified version of the
-              software as a service that others interact with over a network,
-              you must make your modifications available under SOURCE-AVAILABLE.
+              The key distinction in LogisBase’s source-accessible model is how
+              modifications are treated when the platform is deployed beyond
+              private infrastructure. If you modify LogisBase and operate it as
+              a service for external users, those changes fall under the
+              standard sharing requirements of the license.
             </p>
             <div className="grid gap-6 md:grid-cols-3">
               <div className="bg-card rounded-xl border p-6">
                 <div className="bg-background mb-4 flex size-10 items-center justify-center rounded-lg border">
                   <Home className="text-primary size-5" />
                 </div>
-                <h3 className="mb-2 font-semibold">Internal use</h3>
+                <h3 className="mb-2 font-semibold">Internal deployment</h3>
                 <p className="text-muted-foreground text-sm">
-                  Running LogisBase for your own organisation with no external
-                  users. No AGPL obligations. Free forever.
+                  Running LogisBase within your organization for operational use
+                  only, with no external customer or third-party access. No
+                  source-sharing obligations apply.
                 </p>
               </div>
               <div className="bg-card rounded-xl border p-6">
@@ -262,12 +263,13 @@ export default function LicensingPage() {
                   <Globe className="text-primary size-5" />
                 </div>
                 <h3 className="mb-2 font-semibold">
-                  Network deployment with changes
+                  Network deployment with modifications
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  Deploying a modified LogisBase as a service to external users.
-                  AGPL requires you to publish your modifications under
-                  SOURCE-AVAILABLE.
+                  Operating a modified version of LogisBase as a service
+                  accessed by external users or customers. Modifications to the
+                  platform must remain available under the standard license
+                  terms.
                 </p>
               </div>
               <Link
@@ -281,9 +283,9 @@ export default function LicensingPage() {
                   Proprietary modifications
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  Want to keep your changes private? An Enterprise License
-                  removes all AGPL obligations and lets you build proprietary
-                  products.
+                  If you need to keep your custom changes private while running
+                  LogisBase as part of a commercial offering, an Enterprise
+                  License is required.
                 </p>
                 <span className="text-primary mt-3 inline-flex items-center gap-1 text-xs font-medium">
                   Enterprise License details{' '}

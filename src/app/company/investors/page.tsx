@@ -55,7 +55,7 @@ function buildNumbers(stars: string) {
       label: 'Orders processed',
       sub: 'Across the platform globally',
     },
-    { value: stars, label: 'Deployments', sub: 'Source-available community' },
+    { value: stars, label: 'Organizations', sub: 'Source-available community' },
     { value: '40+', label: 'Countries', sub: 'Production deployments' },
   ];
 }
@@ -65,63 +65,63 @@ const principles = [
     icon: Sprout,
     title: 'Bootstrapped to date',
     description:
-      'LogisBase has been built and grown without venture capital. That gave us the time to validate the product with real operators, the freedom to make long-horizon decisions, and the discipline of needing to be profitable.',
+      'LogisBase has been built without venture funding. This has allowed us to validate the platform directly with operators, make long-term product decisions without external pressure, and maintain a focus on sustainable, revenue-driven growth.',
   },
   {
     icon: Lock,
-    title: 'Open core, by conviction',
+    title: 'Open foundation, by design',
     description:
-      'The core platform is and will remain source-available under SOURCE-AVAILABLE. Closing the core is not a lever we will pull — it is the foundation operators trust us on, and the reason developers choose to build with us.',
+      'The core platform is built on a source-accessible foundation and will remain so. This transparency is central to how operators trust the system and how developers extend it. It is a structural commitment, not a temporary positioning.',
   },
   {
     icon: Compass,
-    title: 'Operator-first product',
+    title: 'Operator-first product philosophy',
     description:
-      'Every product decision starts with a real operator running real freight, deliveries, or service routes. We optimise for the people doing the work, not for procurement officers buying the software.',
+      'Every product decision starts with real operational environments — fleets, dispatch teams, warehouses, and delivery networks. We design for execution and reliability in live operations, not for abstract procurement requirements or feature checklists.',
   },
 ];
 
 const opportunity = [
   {
     icon: Globe,
-    title: 'A market that runs on legacy software',
+    title: 'A market still running on legacy systems',
     description:
-      'Logistics, fleet, and last-mile operators globally still depend on closed, expensive, hard-to-customise systems. The migration from legacy TMS to modern, API-first, open infrastructure is in its early innings.',
+      'Across logistics, fleet management, and last-mile delivery, many operators still rely on rigid, closed platforms that are difficult to integrate, slow to adapt, and costly to customise. The shift toward modern, API-first, modular infrastructure is still early, creating significant room for new platforms to define the category.',
   },
   {
     icon: Code2,
-    title: 'Source-available as the distribution model',
+    title: 'Transparency as a new distribution model',
     description:
-      'The same pattern that played out in databases, observability, and developer tools is now playing out in logistics. Operators want to own their infrastructure; developers want to build on platforms they can inspect.',
+      'Across infrastructure software, a clear pattern has emerged: operators increasingly want control over their systems, while developers prefer platforms they can inspect, extend, and integrate deeply into. This shift is reshaping how next-generation operational software is adopted and distributed.',
   },
   {
     icon: Network,
-    title: 'A platform, not a product',
+    title: 'A platform, not a single product',
     description:
-      'FleetOps, Storefront, Pallet, Ledger, IAM, the Marketplace — LogisBase is a horizontal platform with multiple verticals layered on top, each with its own monetisation surface.',
+      'LogisBase is built as a modular logistics platform rather than a single-use application. Core components such as FleetOps, Storefront, Pallet, Ledger, IAM, and the Extensions Marketplace form a layered system where each module serves a distinct operational domain and creates its own expansion and monetisation opportunities.',
   },
 ];
 
 const businessModel = [
   {
-    title: 'Source-available community edition',
+    title: 'Self-hosted core platform',
     description:
-      'Free, SOURCE-AVAILABLE, self-hosted. Includes every core capability operators need to run an end-to-end logistics business.',
+      'A source-accessible deployment model that enables operators to run LogisBase on their own infrastructure with full control over configuration and scale.',
   },
   {
     title: 'LogisBase Cloud',
     description:
-      'Fully managed deployment with automatic upgrades, backups, monitoring, and 24/7 platform operations. Per-instance pricing, no per-seat fees.',
+      'A fully managed deployment option with infrastructure operations handled end-to-end, including upgrades, backups, monitoring, and system reliability. Pricing is based on deployment, not per-user or per-driver.',
   },
   {
-    title: 'Enterprise & support',
+    title: 'Enterprise services',
     description:
-      'SLAs, dedicated infrastructure, custom extensions, on-prem deployment assistance, and direct engineering support for production-critical operators.',
+      'Enterprise-grade offerings including SLAs, dedicated environments, custom integrations, on-premise deployment support, and direct engineering assistance for production-critical operations.',
   },
   {
     title: 'Extensions Marketplace',
     description:
-      'Revenue share on paid first-party and third-party extensions. A growing developer ecosystem with built-in monetisation rails.',
+      'A commercial ecosystem for first-party and third-party extensions, with revenue-sharing mechanisms that allow developers and partners to build and monetize logistics capabilities on top of the platform.',
   },
 ];
 
@@ -130,27 +130,27 @@ const fitWeAreLookingFor = [
     icon: Target,
     title: 'Strategic alignment',
     description:
-      'Investors and partners who understand source-available, infrastructure, and long product cycles — and who are not pushing for a forced exit on a 5-year clock.',
+      'Partners who understand infrastructure software, long-term product cycles, and source-accessible models — and who are aligned with building durable systems rather than short-term exit timelines.',
   },
   {
     icon: Building2,
     title: 'Industry depth',
     description:
-      'Operating partners and capital with real exposure to logistics, fleet, supply chain, or commerce — strong networks into operators we can partner with.',
+      'Operators, investors, or strategic partners with real experience in logistics, supply chain, fleet operations, or adjacent commerce systems, with strong understanding of how these environments function in practice.',
   },
   {
     icon: Users,
     title: 'Distribution leverage',
     description:
-      'Channels into specific verticals or geographies where LogisBase fits — last-mile, freight, ports, healthcare logistics, government, or emerging markets.',
+      'Access to meaningful channels across priority sectors or regions — including last-mile delivery, freight and haulage, ports, healthcare logistics, government operations, and high-growth emerging markets.',
   },
 ];
 
 const wonts = [
-  'Close-source the core platform',
-  'Move to per-seat or per-driver pricing on the community edition',
-  'Sacrifice the developer experience for short-term enterprise revenue',
-  'Optimise the roadmap for an exit window',
+  'Close the core platform or restrict access to its source foundation',
+  'Shift the core offering to per-seat or per-driver pricing models',
+  'Compromise developer experience for short-term commercial gains',
+  'Shape the roadmap primarily around exit-driven timelines or acquisition cycles',
 ];
 
 export default async function InvestorsPage() {
@@ -165,15 +165,15 @@ export default async function InvestorsPage() {
             For Investors &amp; Strategic Partners
           </div>
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-balance md:text-5xl lg:text-6xl">
-            We&apos;re building the source-available{' '}
-            <span className="text-primary">logistics infrastructure</span> for
-            the next decade.
+            We&apos;re building the{' '}
+            <span className="text-primary">next generation logistics</span>{' '}
+            infrastructure platform.
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
-            LogisBase is a bootstrapped, profitable source-available platform
-            powering 8,000+ active deployments and 10M+ orders across 40+
-            countries. We&apos;re not actively raising — but we&apos;re open to
-            conversations with the right long-term partners.
+            LogisBase is a self-sustained, revenue-generating platform
+            supporting 8,000+ deployments and 10M+ orders across 40+ countries.
+            We are not actively raising capital, but we remain open to strategic
+            conversations with long-term partners who align with our vision.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
@@ -217,9 +217,8 @@ export default async function InvestorsPage() {
               How we operate
             </h2>
             <p className="text-muted-foreground mt-3 text-lg">
-              The principles behind how LogisBase is built and run today — and
-              how we&apos;d expect any capital or partnership conversation to
-              align.
+              The principles that guide how LogisBase is built today — and how
+              we evaluate any capital or partnership discussions.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -246,9 +245,11 @@ export default async function InvestorsPage() {
               The opportunity
             </h2>
             <p className="text-muted-foreground mt-3 text-lg">
-              Logistics is one of the largest sectors in the world economy. The
-              infrastructure powering it is overwhelmingly closed, expensive,
-              and shaped for the buyers — not the operators.
+              Logistics is one of the largest sectors in the global economy, yet
+              the software infrastructure behind it remains largely closed,
+              expensive, and designed around procurement rather than operational
+              reality. The migration to modern, open, API-first platforms is
+              just beginning.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -275,8 +276,8 @@ export default async function InvestorsPage() {
               How LogisBase makes money
             </h2>
             <p className="text-muted-foreground mt-3 text-lg">
-              Open core with multiple commercial surfaces — each with its own
-              growth curve and margin profile.
+              A multi-surface commercial model built around deployment
+              flexibility, enterprise needs, and ecosystem expansion.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -310,9 +311,9 @@ export default async function InvestorsPage() {
               What we look for
             </h2>
             <p className="text-muted-foreground mt-3 text-lg">
-              We&apos;re selective. The right capital or partnership accelerates
-              LogisBase without changing what makes it valuable in the first
-              place.
+              We are selective about capital and partnerships. The right
+              relationship should accelerate LogisBase without compromising the
+              principles that make the platform valuable. place.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -340,8 +341,7 @@ export default async function InvestorsPage() {
                 What we won&apos;t do
               </h2>
               <p className="text-muted-foreground mt-3 text-lg">
-                If a conversation starts here, we&apos;re probably not the right
-                fit.
+                If a conversation starts here, we’re likely not the right fit.
               </p>
             </div>
             <ul className="space-y-3">
@@ -368,9 +368,9 @@ export default async function InvestorsPage() {
               Open a conversation
             </h2>
             <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
-              We respond directly — there is no pitch process and no funnel.
-              Tell us a little about your firm, your thesis, and what you&apos;d
-              want to explore together.
+              We engage directly — no formal pitch process or structured funnel.
+              Share a bit about your firm, your focus areas, and what you’re
+              exploring, and we’ll take it from there.
             </p>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button size="lg" asChild>

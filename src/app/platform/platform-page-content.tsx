@@ -36,7 +36,7 @@ function buildStats(stars: string) {
     { value: '8,000+', label: 'Active instances' },
     { value: '10M+', label: 'Orders processed' },
     { value: '50K+', label: 'Fleet vehicles tracked' },
-    { value: stars, label: 'Deployments' },
+    { value: stars, label: 'Organizations' },
   ];
 }
 
@@ -97,7 +97,7 @@ const modules = [
     border: 'border-green-500/20',
     dot: 'bg-green-500',
     description:
-      'The source-available driver app. Turn-by-turn navigation, proof of delivery, fault reporting, and live order communication — SOURCE-AVAILABLE licensed, fully white-label.',
+      'The driver application for logistics operations. Turn-by-turn navigation, proof of delivery, issue reporting, and real-time order communication — fully white-label and enterprise ready.',
     href: '/platform/navigator',
     badge: null,
   },
@@ -183,25 +183,25 @@ const platformPrinciples = [
     icon: Puzzle,
     title: 'Modular by design',
     description:
-      "Deploy only the modules your operation needs. Add more as you grow. No bloated monolith forcing you to buy capabilities you won't use.",
+      'Deploy only the capabilities your operation requires. Expand as your business grows without the constraints of a rigid, all-in-one monolith or unnecessary bundled features.',
   },
   {
     icon: Globe,
-    title: 'Source-available at the core',
+    title: 'Controlled Access Architecture',
     description:
-      'Every module is source-available under SOURCE-AVAILABLE. Inspect the code, self-host anywhere, fork and extend — or use our managed cloud.',
+      'LogisBase is built with a transparent, inspectable architecture that supports self-hosted or managed deployments. Organizations can review implementation details, extend functionality, or operate through our hosted environment based on internal requirements.',
   },
   {
     icon: Lock,
-    title: 'You own your stack',
+    title: 'Full Ownership of Your Environment',
     description:
-      'No per-seat fees, no vendor lock-in, no data held hostage. Your infrastructure, your data, your rules.',
+      'Maintain complete control over your deployment, data, and configuration. Scale without per-user or per-seat restrictions, and operate free from vendor dependency or forced usage models.',
   },
   {
     icon: Zap,
-    title: 'Modules connect natively',
+    title: 'Unified Data Layer',
     description:
-      'Fleet-Ops, Storefront, Ledger, and Pallet share the same data layer. No integrations to build or maintain between them.',
+      'Fleet operations, commerce, warehousing, finance, and fulfillment modules are built on a shared data foundation. This eliminates the need for external integrations between core system components and ensures consistent operational flow across the platform.',
   },
 ];
 
@@ -229,10 +229,12 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
               <span className="text-gradient">Logistics Operation</span>
             </h1>
             <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-snug md:text-xl">
-              LogisBase is a modular, source-available logistics OS. Deploy the
-              modules you need — fleet management, commerce, warehousing,
-              finance, driver apps — and expand as your operation grows. No
-              vendor lock-in. Self-host or cloud.
+              LogisBase unifies fleet management, warehousing, commerce,
+              fulfillment, finance, and driver operations in a single modular
+              platform. Start with the capabilities you need today and expand as
+              your business grows. Deploy on your infrastructure or in the
+              cloud, with the flexibility and control modern logistics
+              operations demand.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
@@ -371,9 +373,11 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
               <span className="text-gradient">Nothing You Don't</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
-              Start with one module. Activate others as your operation grows.
-              Every module is source-available, independently deployable, and
-              natively connected to the rest.
+              Begin with a single module and expand as your business evolves.
+              Each capability is independently deployable, fully integrated
+              through a shared system architecture, and designed to work
+              seamlessly with the rest of the platform. Activate only what you
+              need, when you need it, without unnecessary overhead.
             </p>
           </div>
 
@@ -435,10 +439,13 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
               <span className="text-gradient">Out of the Box</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-snug lg:text-xl">
-              When you run multiple LogisBase modules, they share the same data
-              layer. A Storefront order becomes a Fleet-Ops dispatch becomes a
-              Ledger journal entry — automatically, without a single webhook or
-              middleware to maintain.
+              When multiple LogisBase modules are deployed together, they
+              operate on a shared data layer by default. A Storefront order
+              seamlessly becomes a Fleet-Ops dispatch and a Ledger entry
+              automatically—without requiring webhooks, middleware, or custom
+              integration layers. This native connectivity ensures that your
+              systems work together from day one, with less development overhead
+              and more operational reliability.
             </p>
           </div>
 
@@ -527,12 +534,13 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
               </div>
               <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
                 Your Logistics Stack,{' '}
-                <span className="text-gradient">Owned by You.</span>
+                <span className="text-gradient">Under Your Control</span>
               </h2>
               <p className="text-muted-foreground mx-auto max-w-xl text-lg leading-relaxed">
-                Start with a 7-day free trial on LogisBase Cloud, or self-host
-                the full platform under AGPL for free. No per-seat fees, no
-                lock-in.
+                Start a 7-day free trial on LogisBase Cloud or deploy the full
+                platform in your own environment. No per-seat pricing, no vendor
+                lock-in, and complete flexibility across cloud or self-hosted
+                deployments.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
@@ -559,12 +567,13 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Self-Host for Free
+                    Deploy Self-Hosted
                   </a>
                 </Button>
               </div>
               <p className="text-muted-foreground text-xs">
-                Free 7-day trial · Free to self-host under AGPL
+                7-day free trial · Deploy self-hosted or cloud · Full platform
+                access
               </p>
             </div>
           </div>

@@ -1,35 +1,36 @@
+import {
+  AlertTriangle,
+  ArrowRight,
+  BarChart3,
+  Bot,
+  Brain,
+  Check,
+  ChevronRight,
+  Clock,
+  Cpu,
+  Eye,
+  GitBranch,
+  Layers,
+  MessageSquare,
+  Package,
+  Route,
+  Shield,
+  Sparkles,
+  Star,
+  Truck,
+  X,
+  Zap,
+} from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import {
-  Brain,
-  Zap,
-  Route,
-  MessageSquare,
-  AlertTriangle,
-  BarChart3,
-  Truck,
-  Package,
-  Clock,
-  Shield,
-  ArrowRight,
-  Sparkles,
-  Bot,
-  Eye,
-  Layers,
-  GitBranch,
-  Cpu,
-  ChevronRight,
-  Star,
-  Check,
-  X,
-} from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
 } from '@/components/ui/card';
 
 export const metadata: Metadata = {
@@ -189,7 +190,7 @@ const OPEN_SOURCE_ADVANTAGES = [
     icon: GitBranch,
     title: 'No AI Black Box',
     description:
-      'With closed-source logistics AI, you have no idea why a route was chosen or a driver was flagged. LogisBase AI is open — inspect the models, understand the decisions, trust the output.',
+      'With closed-source logistics AI, you have no idea why a route was chosen or a driver was flagged. LogisBase AI is transparent — inspect the logic, understand the decisions, and validate the outputs.',
   },
   {
     icon: Cpu,
@@ -207,7 +208,7 @@ const OPEN_SOURCE_ADVANTAGES = [
     icon: Sparkles,
     title: 'Community-Driven Intelligence',
     description:
-      'AI capabilities built by the LogisBase community — logistics operators, developers, and researchers — not just a product team. The best ideas ship fastest in source-available.',
+      'AI capabilities are shaped by logistics operators, developers, and researchers building on LogisBase, not just an internal product team. In a source-accessible ecosystem, the most effective ideas can be adopted, extended, and shipped faster.',
   },
 ];
 
@@ -324,21 +325,21 @@ export default function LogisticsAIPage() {
           </div>
 
           <h1 className="mb-6 text-5xl leading-tight font-bold tracking-tight text-balance md:text-7xl">
-            The Source-Available <span className="text-primary">AI Layer</span>{' '}
-            for Logistics
+            The <span className="text-primary">AI Layer</span> for Logistics
+            Operations
           </h1>
 
           <p className="text-muted-foreground mx-auto mb-4 max-w-3xl text-xl text-balance md:text-2xl">
-            LogisBase is building AI that doesn&apos;t just surface insights —
-            it <strong>acts</strong>. Route decisions, autonomous dispatch,
-            anomaly detection, and natural language fleet control. All on
-            infrastructure you own.
+            LogisBase is building AI that goes beyond insights to execution —
+            enabling route optimization, automated dispatch, anomaly detection,
+            and natural-language fleet control. All deployed on infrastructure
+            you control.
           </p>
 
           <p className="text-muted-foreground mx-auto mb-10 max-w-2xl text-base">
-            No black-box AI. No data leaving your servers. No vendor lock-in.
-            Source-available, auditable, and model-agnostic — so you stay in
-            control of your intelligence.
+            No black-box systems, no external data exposure, and no vendor
+            dependency. Fully transparent, auditable, and model-agnostic so you
+            retain complete control over your operational intelligence.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -353,7 +354,7 @@ export default function LogisticsAIPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Follow on GitHub <Star className="ml-2 h-4 w-4" />
+                Request source access <Star className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
@@ -378,22 +379,24 @@ export default function LogisticsAIPage() {
               </h2>
               <div className="text-muted-foreground space-y-4">
                 <p>
-                  Most &quot;AI-powered&quot; logistics platforms are black
-                  boxes. You get a recommendation with no explanation. Your data
-                  is sent to a third-party AI provider. You can&apos;t customise
-                  the models. And when the AI gets it wrong, you have no way to
-                  understand why.
+                  Most &quot;AI-powered&quot; logistics platforms operate as
+                  closed systems. Recommendations are generated without
+                  transparency, data is often routed through third-party AI
+                  services, and models cannot be meaningfully customized. When
+                  outputs fail, there is little visibility into why. understand
+                  why.
                 </p>
                 <p>
-                  Closed-source AI also means vendor lock-in. The moment you
-                  rely on their AI, you&apos;re dependent on their pricing,
-                  their uptime, and their roadmap.
+                  his architecture also creates dependency. Once core decisions
+                  rely on external AI systems, organizations inherit their
+                  pricing, uptime constraints, and roadmap decisions.
                 </p>
                 <p>
-                  LogisBase is building a different kind of logistics AI — open,
-                  auditable, and embedded directly into the operations platform.
-                  AI that acts inside your workflow, not in a separate dashboard
-                  you have to translate back into decisions.
+                  LogisBase takes a different approach — embedding AI directly
+                  into the logistics operating system as a transparent,
+                  controllable layer. Intelligence is designed to operate within
+                  your workflows, not as an external tool requiring
+                  interpretation.
                 </p>
               </div>
             </div>
@@ -560,15 +563,17 @@ export default function LogisticsAIPage() {
         <div className="container mx-auto max-w-5xl">
           <div className="mb-12 text-center">
             <div className="text-muted-foreground mb-4 inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase">
-              <span className="bg-muted-foreground/40 h-px w-6" /> Why
-              Source-available
+              <span className="bg-muted-foreground/40 h-px w-6" /> Why Source
+              Access Matters
             </div>
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-              Source-available AI is a competitive advantage
+              Source-accessible AI is a strategic advantage
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl">
-              Closed-source logistics AI is a liability. Source-available AI is
-              an asset you can build on, audit, and own.
+              Closed logistics AI systems introduce operational and strategic
+              risk through opacity and dependency. Source-accessible AI provides
+              transparency, extensibility, and long-term control — allowing
+              organizations to audit, adapt, and build on top of the system.
             </p>
           </div>
 
@@ -604,8 +609,9 @@ export default function LogisticsAIPage() {
               AI is on our immediate roadmap
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl">
-              We are building LogisBase AI in the open. Follow our progress on
-              GitHub and join the community to shape what gets built next.
+              LogisBase AI is actively in development. Track progress publicly
+              and participate in shaping upcoming capabilities through the
+              community and development roadmap.
             </p>
           </div>
 
@@ -735,12 +741,12 @@ export default function LogisticsAIPage() {
             <span className="text-primary font-medium">Get Early Access</span>
           </div>
           <h2 className="mb-6 text-4xl font-bold text-balance md:text-5xl">
-            Be the first to run AI on your logistics operations
+            Be among the first to run AI in logistics operations
           </h2>
           <p className="text-muted-foreground mx-auto mb-8 max-w-2xl text-xl">
-            Join the LogisBase community today. Star us on GitHub to follow AI
-            development, or talk to our team about your specific AI use case —
-            we are actively shaping the roadmap with early partners.
+            Join the LogisBase community to follow active AI development.
+            Connect with our team to explore your use case — we are shaping the
+            roadmap alongside early partners and operators.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild>
@@ -766,7 +772,7 @@ export default function LogisticsAIPage() {
               rel="noopener noreferrer"
               className="hover:text-foreground flex items-center gap-1.5 transition-colors"
             >
-              <Star className="h-4 w-4" /> Star on GitHub
+              <Star className="h-4 w-4" /> Request source access
             </Link>
             <Link
               href="https://discord.com/invite/HnTqQ6zAVn"

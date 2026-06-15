@@ -40,7 +40,7 @@ const companyLinks = [
     cta: 'Our story',
   },
   {
-    href: '/company/source-available',
+    href: '/company/open-source',
     icon: Code2,
     title: 'Platform Independence',
     description:

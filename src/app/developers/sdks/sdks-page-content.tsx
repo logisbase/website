@@ -387,17 +387,17 @@ export default function SdksPageContent() {
         <div className="container mx-auto max-w-4xl">
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div>
-              <h2 className="mb-4 text-3xl font-bold">Source-available</h2>
+              <h2 className="mb-4 text-3xl font-bold">Code Access Included</h2>
               <p className="text-muted-foreground mb-6">
-                All LogisBase SDKs are source-available under the
-                SOURCE-AVAILABLE license. Read the source, file issues, or
-                contribute improvements directly on GitHub.
+                All LogisBase SDKs are available with full code access. Inspect
+                implementations, submit issues, and contribute improvements
+                through the development workflow.
               </p>
               <div className="space-y-2.5">
                 {[
-                  'Full source available on GitHub',
+                  'Full codebase available on GitHub',
                   'Issues and pull requests welcome',
-                  'SOURCE-AVAILABLE licensed',
+                  'Enterprise licensing available',
                   'Semantic versioning',
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2 text-sm">

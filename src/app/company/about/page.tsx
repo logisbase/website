@@ -44,72 +44,72 @@ export const metadata: Metadata = {
 const values = [
   {
     icon: Code2,
-    title: 'Security by design',
+    title: 'Transparency and control',
     description:
-      "Every line of LogisBase is source-available. We believe software that runs critical business operations should be inspectable, modifiable, and owned by the people who use it — not locked inside a vendor's black box.",
+      'Businesses should understand and control the infrastructure they depend on. We believe operational software should be configurable, inspectable, and adaptable — not hidden behind rigid systems or vendor limitations.',
   },
   {
     icon: Globe,
-    title: 'Built for everyone',
+    title: 'Logistics technology should be accessible',
     description:
-      'The best logistics technology should not be reserved for companies with eight-figure IT budgets. LogisBase is designed to give a 10-vehicle courier operation the same capabilities as a 10,000-vehicle enterprise fleet.',
+      'Powerful operations infrastructure should not be reserved for companies with massive IT budgets. LogisBase is designed to help growing operators and large enterprises run with the same level of operational discipline and capability.',
   },
   {
     icon: Heart,
-    title: 'Community first',
+    title: 'Customer-driven evolution',
     description:
-      'LogisBase is shaped by the people who use it. Our roadmap is driven by community feedback, our extensions marketplace is built by contributors, and our Discord is where real product decisions get made.',
+      'The strongest platforms are shaped by real operators solving real problems. Customer feedback, implementation experience, and operational insight directly influence how LogisBase evolves.',
   },
   {
     icon: Shield,
-    title: 'Data sovereignty',
+    title: 'Ownership of your operations',
     description:
-      'Your logistics data is yours. LogisBase can be self-hosted on your own infrastructure, giving you complete control over where your data lives and who can access it.',
+      'Your infrastructure, data, and workflows should remain under your control. Whether deployed in your environment or managed by us, LogisBase is built to support long-term operational independence.',
   },
   {
     icon: Zap,
-    title: 'Pragmatic over perfect',
+    title: 'Practical over theoretical',
     description:
-      'We ship fast, iterate based on real operator feedback, and prioritize features that solve real problems over features that look good in demos. Logistics is a practical business — our software should be too.',
+      'We prioritize capabilities that create measurable operational outcomes. We move quickly, iterate from production feedback, and focus on solving problems that matter in day-to-day logistics execution.',
   },
   {
     icon: Puzzle,
     title: 'Extensible by design',
     description:
-      'No two logistics operations are the same. LogisBase is built as a platform — with a full API, Extensions SDK, and modular architecture — so it can be shaped to fit any operation, not the other way around.',
+      'Every operation runs differently. LogisBase is built as a flexible platform with APIs, extensions, and modular architecture — allowing teams to adapt the system to their workflows instead of adapting their business to the software.',
   },
 ];
 
 const milestones = [
   {
-    year: '2018',
+    year: '2022',
     title: 'Founded',
     description:
-      'LogisBase was founded in Singapore with a single conviction: logistics technology should be open, accessible, and operator-first — not locked inside expensive, static enterprise systems with high monthly subscriptions.',
-  },
-  {
-    year: '2022',
-    title: 'Source-availabled',
-    description:
-      'After years of building and validating the platform with real operators, LogisBase was source-availabled under SOURCE-AVAILABLE. The community immediately embraced it — hundreds of operators deployed within the first month and the Discord reached 1,000 members.',
+      'LogisBase was founded with a clear belief: logistics infrastructure should be flexible, extensible, and accessible — not trapped inside rigid systems, expensive implementation cycles, and software that businesses cannot adapt as they grow.',
   },
   {
     year: '2023',
-    title: 'Extensions marketplace',
+    title: 'Source-accessible',
     description:
-      'The LogisBase Extensions marketplace launched, enabling the community to build and publish custom integrations, order types, and UI extensions for the platform.',
+      'LogisBase adopted a source-accessible approach, giving operators and technical teams greater visibility, deployment flexibility, and control over the platform while maintaining a sustainable commercial model.',
   },
   {
     year: '2024',
-    title: 'Global scale',
+    title: 'Extensions Marketplace',
     description:
-      'LogisBase reached 500+ companies across 40+ countries, processing over 10 million orders. Pallet WMS and Storefront joined the platform as first-party extensions.',
+      'The LogisBase Extensions Marketplace launched, opening the platform for integrations, custom workflows, operational modules, and ecosystem development — allowing businesses to tailor LogisBase to their operations.',
   },
   {
     year: '2025',
-    title: 'Enterprise & beyond',
+    title: 'Global Scale',
     description:
-      'Enterprise support plans, professional services, and a global partner network launched to serve large-scale deployments while keeping the core platform free and source-available.',
+      'LogisBase expanded beyond its initial markets and evolved into a broader logistics operating platform. New modules, implementation capabilities, and deployment models supported customers operating across regions and industries.',
+  },
+  {
+    year: '2026 & Beyond',
+    title: 'Enterprise Growth',
+    description:
+      'Enterprise services, implementation support, partner programs, and advanced deployment options continue to expand — while LogisBase remains focused on helping businesses build and operate logistics infrastructure with greater ownership, flexibility, and control.',
   },
 ];
 
@@ -124,29 +124,30 @@ export default function AboutPage() {
           </div>
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-balance md:text-5xl lg:text-6xl">
             We built the logistics platform{' '}
-            <span className="text-primary">we wished existed.</span>
+            <span className="text-primary">we wanted to run ourselves.</span>
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
-            LogisBase was born out of frustration. The logistics software market
-            was dominated by expensive, closed-source platforms that locked
-            operators into long contracts, charged per driver, and made
-            customization impossible without paying for professional services.
-            Developers who wanted to build on top of logistics infrastructure
-            had nowhere to start — and operators who needed flexibility were
-            forced into static systems with high monthly subscriptions and no
-            way to adapt.
+            LogisBase was created from a simple observation: modern logistics
+            software had become increasingly expensive, rigid, and disconnected
+            from how operators actually work. Businesses were being pushed into
+            closed platforms, per-seat pricing, long implementation cycles, and
+            systems that became difficult to adapt as operations evolved.
           </p>
           <p className="text-muted-foreground mt-4 text-lg leading-relaxed md:text-xl">
-            We believed there was a better way — a fully source-available
-            logistics platform built for both <strong>developers</strong> and{' '}
-            <strong>operators</strong> alike. One that developers could extend
-            without months of custom development time, and that operators could
-            deploy, own, and adapt without vendor lock-in, per-seat pricing, or
-            black boxes.
+            For teams building logistics businesses, customization often meant
+            costly service engagements. For operators, growth meant adding more
+            vendors, more integrations, and more operational complexity. We
+            believed there should be a better model — a logistics operating
+            platform designed for ownership, flexibility, and scale.
           </p>
           <p className="text-muted-foreground mt-4 text-lg leading-relaxed md:text-xl">
-            That platform is LogisBase. Founded in 2018 in Singapore,
-            source-availabled in 2022.
+            LogisBase was built to give operators and technical teams a unified
+            platform they can deploy, extend, and operate on their own terms.
+            Fleet operations, warehousing, commerce, delivery, finance, and
+            automation — connected through a single operational layer designed
+            to adapt to the way businesses actually run. LogisBase is building
+            infrastructure for the next generation of logistics operations
+            across emerging and global markets.
           </p>
         </div>
       </section>
@@ -159,11 +160,11 @@ export default function AboutPage() {
               Our mission
             </h2>
             <blockquote className="text-xl leading-relaxed text-white md:text-2xl">
-              &ldquo;To democratize logistics technology by building
-              source-available infrastructure that gives every business the
-              tools to operate with the efficiency and intelligence of the
-              world&apos;s best logistics companies — without vendor lock-in,
-              without prohibitive costs, and without compromise.&rdquo;
+              &ldquo;To make world-class logistics infrastructure accessible to
+              every business by building flexible, extensible, and
+              operator-first technology — giving teams the tools to run, adapt,
+              and scale their operations with greater control, efficiency, and
+              independence.&rdquo;
             </blockquote>
           </div>
         </div>
@@ -177,21 +178,22 @@ export default function AboutPage() {
               How we operate
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              LogisBase is led by two founders who built the platform from the
-              ground up and stay hands-on with every part of the business —
-              engineering, product, customer relationships, and partnerships.
-              We&apos;ve grown a powerful company largely on our own, and
-              we&apos;re intimately involved in the operators and businesses
-              running on LogisBase day to day.
+              LogisBase is founder-led and built with long-term ownership in
+              mind. The platform was designed from the ground up by the founding
+              team, who remain deeply involved across product, engineering,
+              customer relationships, and strategic partnerships.
             </p>
             <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
-              We&apos;ve taken a bootstrapped path — that means we move on our
-              own conviction and timeline — but it doesn&apos;t mean we work
-              alone. We have full-time engineering, customer support, and DevOps
-              teams behind us, delivering the SLAs, custom development, and
-              operational depth our enterprise customers rely on. The founders
-              set the direction and stay close to every decision; the team makes
-              it happen at scale.
+              We operate with a focused approach — prioritizing customer
+              outcomes, platform quality, and sustainable execution over
+              short-term growth cycles. Our decisions are guided by operator
+              needs and real-world logistics complexity, not quarterly targets.
+            </p>
+            <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
+              Behind the platform is a dedicated team across engineering,
+              customer operations, and infrastructure, delivering the
+              reliability, implementation support, and operational depth
+              enterprise customers expect.
             </p>
             <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
               What this means in practice:
@@ -201,45 +203,43 @@ export default function AboutPage() {
                 <span className="bg-primary mt-2.5 size-1.5 shrink-0 rounded-full" />
                 <span>
                   <strong className="text-foreground font-semibold">
-                    Direct access to the founders.
+                    Close access to decision makers:
                   </strong>{' '}
-                  Above the standard support tiers, the founders are personally
-                  reachable. Bug reports, feature requests, and partnership
-                  conversations land with the people who actually built the
-                  platform.
+                  Product feedback, implementation conversations, and strategic
+                  partnerships stay close to the team shaping the platform.
                 </span>
               </li>
               <li className="flex gap-3">
                 <span className="bg-primary mt-2.5 size-1.5 shrink-0 rounded-full" />
                 <span>
                   <strong className="text-foreground font-semibold">
-                    A real team behind every release.
+                    A team built for execution:
                   </strong>{' '}
-                  Engineering, customer support, and DevOps work full-time on
-                  LogisBase. Enterprise customers get dedicated support, custom
-                  development, and the same operational depth they&apos;d expect
-                  from any commercial platform.
+                  Engineering, customer operations, and infrastructure teams
+                  work continuously to deliver platform improvements, deployment
+                  support, and enterprise-grade reliability.
                 </span>
               </li>
               <li className="flex gap-3">
                 <span className="bg-primary mt-2.5 size-1.5 shrink-0 rounded-full" />
                 <span>
                   <strong className="text-foreground font-semibold">
-                    A roadmap that reflects what operators need.
+                    A roadmap driven by operational reality:
                   </strong>{' '}
-                  We say &ldquo;no&rdquo; to features that don&apos;t fit, and
-                  &ldquo;yes&rdquo; to small, unglamorous fixes that make a real
-                  difference for the businesses already on the platform.
+                  We prioritize capabilities that improve how logistics
+                  businesses actually operate — focusing on practical outcomes
+                  over feature volume.
                 </span>
               </li>
               <li className="flex gap-3">
                 <span className="bg-primary mt-2.5 size-1.5 shrink-0 rounded-full" />
                 <span>
                   <strong className="text-foreground font-semibold">
-                    A platform that stays open and self-hostable.
+                    Deployment flexibility by design:
                   </strong>{' '}
-                  The core remains SOURCE-AVAILABLE — the foundation operators
-                  trust us on.
+                  Run LogisBase in the environment that fits your business —
+                  self-hosted, managed, or hybrid — with the flexibility to
+                  evolve as your operation grows.
                 </span>
               </li>
             </ul>
@@ -276,8 +276,8 @@ export default function AboutPage() {
               What we believe
             </h2>
             <p className="text-muted-foreground mt-3 max-w-2xl text-lg">
-              These are the principles that guide every product decision, every
-              line of code, and every interaction with our community.
+              These principles guide how we build, how we make decisions, and
+              how we support the businesses running on LogisBase.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -339,13 +339,13 @@ export default function AboutPage() {
               The founders
             </h2>
             <p className="text-muted-foreground mt-3 max-w-2xl text-lg">
-              LogisBase was built by two founders who bring together enterprise
-              finance, technology, and operational expertise — from the trading
-              floors of JP Morgan to the logistics operations of the US Marines.
-              Their combined background gives LogisBase a rare perspective: the
-              rigour of enterprise systems, the discipline of military
-              operations, and the pragmatism of operators who have run logistics
-              at scale.
+              LogisBase was founded by two operators with complementary
+              backgrounds across technology, financial infrastructure, and
+              logistics operations. Together, they bring a combination of
+              enterprise systems thinking, operational discipline, and execution
+              experience shaped by emerging markets. Their shared belief was
+              simple: logistics software should give businesses more ownership,
+              more flexibility, and more control over how operations are run.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
@@ -362,13 +362,13 @@ export default function AboutPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">Shiv Thakker</h3>
+                  <h3 className="text-xl font-bold">Chike Ngwu</h3>
                   <p className="text-primary text-sm font-medium">
                     Co-founder &amp; CEO
                   </p>
                   <div className="text-muted-foreground mt-1 flex items-center gap-1 text-xs">
                     <MapPin className="size-3" />
-                    Singapore
+                    Lagos, Nigeria
                   </div>
                   <Link
                     href="https://www.linkedin.com/in/shivthakker"
@@ -382,21 +382,20 @@ export default function AboutPage() {
                 </div>
               </div>
               <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                Shiv is an enterprise technologist and serial entrepreneur with
-                a background spanning investment banking, precious metals
-                logistics, and technology. He began his career at JP Morgan at
-                17, working across the UK and Singapore, where he developed deep
-                expertise at the intersection of financial systems and physical
-                supply chains. He has 10+ years of experience building and
-                running logistics platforms across Southeast Asia.
+                Chike Ngwu is a technology entrepreneur with experience building
+                products across payment infrastructure, financial operations,
+                and business systems. Prior to LogisBase, he worked across
+                payment orchestration and accounting technology, developing a
+                practical understanding of how businesses manage transactions,
+                operations, and growth at scale.
               </p>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                His experience navigating the gap between enterprise-grade
-                logistics software and the operational reality of emerging
-                markets became the founding insight behind LogisBase — that
-                operators and developers alike deserved infrastructure that was
-                open, adaptable, and free from the constraints of static,
-                high-subscription legacy systems.
+                That experience shaped a core belief behind LogisBase:
+                operational software should adapt to businesses — not force
+                businesses to adapt to software. As CEO, Chike leads company
+                strategy, product direction, customer relationships, and the
+                long-term vision for building modern logistics infrastructure
+                from Africa for global markets.
               </p>
             </div>
             {/* Ronald Richardson */}
@@ -412,13 +411,13 @@ export default function AboutPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">Ronald Richardson</h3>
+                  <h3 className="text-xl font-bold">Tek Orakle</h3>
                   <p className="text-primary text-sm font-medium">
                     Co-founder &amp; CTO
                   </p>
                   <div className="text-muted-foreground mt-1 flex items-center gap-1 text-xs">
                     <MapPin className="size-3" />
-                    Singapore
+                    Lagos, Nigeria
                   </div>
                   <Link
                     href="https://www.linkedin.com/in/ronald-a-richardson"
@@ -432,21 +431,20 @@ export default function AboutPage() {
                 </div>
               </div>
               <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                Ron is a former US Marine with 5 years of military logistics
-                experience, where he developed a first-hand understanding of
-                what it means to run operations under pressure, at scale, and
-                without margin for error. After leaving the Marines, he spent
-                over 6 years building supply chain and logistics software for
-                ports, brokers, and operators handling millions of dollars in
-                oil, chemicals, and container freight.
+                Tek Orakle combines technical leadership with formal training in
+                logistics and supply chain operations. He studied at the
+                Nigerian Defence Academy (NDA), earning a B.Sc. in Logistics and
+                Supply Chain Management under the Faculty of Management
+                Sciences. His background developed a systems-oriented approach
+                to operations — emphasizing planning, coordination, execution,
+                and reliability in complex environments.
               </p>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                His background in military-grade operations and port logistics
-                shaped LogisBase&apos;s architecture: built for reliability,
-                designed for scale, and engineered to handle the complexity of
-                real-world logistics from day one. As CTO, Ron leads the
-                technical vision that makes LogisBase a platform developers can
-                build on without months of custom development time.
+                As Co-Founder and CTO, Tek leads platform architecture,
+                engineering direction, and the technical foundation behind
+                LogisBase — building infrastructure designed to support modern
+                logistics operations with flexibility, extensibility, and
+                long-term operational control.
               </p>
             </div>
           </div>
@@ -458,29 +456,33 @@ export default function AboutPage() {
         <div className="container">
           <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 md:flex-row">
             <div className="bg-card flex min-w-[180px] flex-shrink-0 flex-col items-center gap-3 rounded-xl border p-6">
-              <div className="text-4xl">🇸🇬</div>
+              <div className="text-4xl">🇳🇬</div>
               <div className="text-center">
                 <div className="font-semibold">Headquartered in</div>
-                <div className="text-primary text-lg font-bold">Singapore</div>
+                <div className="text-primary text-lg font-bold">
+                  Lagos, Nigeria
+                </div>
               </div>
             </div>
             <div>
               <h2 className="mb-3 text-2xl font-bold">
-                Built in Singapore, deployed worldwide
+                Built in Lagos, designed for global logistics
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                LogisBase is headquartered in Singapore — one of the
-                world&apos;s leading logistics and trade hubs. Our location
-                gives us direct access to the complex, high-volume logistics
-                markets of Southeast Asia, while our source-available model
-                means our platform is deployed by operators in 40+ countries
-                across every continent.
+                LogisBase is built in Lagos, Nigeria — one of Africa’s largest
+                commercial and logistics ecosystems. Operating in a market
+                defined by scale, infrastructure complexity, and rapidly
+                evolving supply chains has shaped how we think about logistics
+                software: flexible, resilient, and built for real operations.
               </p>
               <p className="text-muted-foreground mt-3 leading-relaxed">
-                Singapore&apos;s position as a global port and supply chain hub
-                isn&apos;t just our address — it&apos;s our proving ground.
-                Every feature we build is tested against the demands of one of
-                the world&apos;s most sophisticated logistics ecosystems.
+                Our location influences more than where we work — it shapes how
+                we build. We design for environments where execution matters,
+                systems must adapt, and operators need technology that supports
+                growth rather than constraining it. From local delivery networks
+                to multi-site logistics operations, LogisBase is built to help
+                businesses deploy, operate, and scale with greater control —
+                wherever they run.
               </p>
             </div>
           </div>
@@ -499,9 +501,10 @@ export default function AboutPage() {
                 Join the movement
               </h2>
               <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
-                Whether you&apos;re a logistics operator looking for a better
-                platform, a developer who wants to contribute, or a business
-                exploring partnership — we&apos;d love to hear from you.
+                Whether you’re a logistics operator looking for a more flexible
+                platform, a developer building on logistics infrastructure, or a
+                business exploring partnership opportunities — we’d be glad to
+                connect and explore how LogisBase fits your needs.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>

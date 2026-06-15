@@ -268,7 +268,7 @@ const faqs = [
   },
   {
     q: 'Are the mobile apps really included?',
-    a: 'Yes. Storefront includes production-ready iOS and Android apps built with React Native. You can customize the branding, colors, and logo, then submit to the App Store and Google Play. The app source code is source-available under SOURCE-AVAILABLE — inspect it, fork it, extend it.',
+    a: 'Yes. Storefront includes production-ready iOS and Android apps built with React Native. You can customize the branding, colors, and logo, then submit to the App Store and Google Play. The app source code is source-available — inspect it, fork it, extend it.',
   },
   {
     q: 'Can I use my own drivers or do I have to use Fleet-Ops?',
@@ -280,7 +280,7 @@ const faqs = [
   },
   {
     q: 'Is Storefront really source-available?',
-    a: 'Yes. Storefront is fully source-available under SOURCE-AVAILABLE. View the code on GitHub, self-host on your own infrastructure, and customise it to your exact needs. An Enterprise License is available if you need to keep your changes proprietary.',
+    a: 'Yes. Storefront is fully source-available. View the code on GitHub, self-host on your own infrastructure, and customise it to your exact needs. An Enterprise License is available if you need to keep your changes proprietary.',
   },
   {
     q: 'Can I migrate from DoorDash or Uber Eats?',
@@ -371,9 +371,9 @@ export default function StorefrontPageContent() {
               <span className="text-gradient">Zero Commission.</span>
             </h1>
             <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-snug md:text-xl">
-              The source-available, logistics-first commerce platform for
-              on-demand businesses. Launch your branded storefront and mobile
-              app — no platform fees, no vendor lock-in, and delivery built in.
+              A logistics-first commerce platform for on-demand businesses.
+              Launch your branded storefront and mobile app with integrated
+              delivery — no platform fees and no vendor lock-in.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
@@ -396,7 +396,7 @@ export default function StorefrontPageContent() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Explore the Code
+                  Request source access
                 </a>
               </Button>
             </div>
@@ -743,16 +743,15 @@ export default function StorefrontPageContent() {
                 <h2 className="text-4xxl leading-tight tracking-tight text-balance md:text-5xl">
                   A Branded App.{' '}
                   <span className="text-gradient">
-                    Source-available. SOURCE-AVAILABLE.
+                    Source-available. Fully Customizable.
                   </span>
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
                   The Storefront App is a production-ready, white-label iOS and
-                  Android app for your customers. Replace your logo and brand
-                  colors, submit to the App Store and Google Play — no coding
-                  required for standard white-labelling. The full source is
-                  source-available under SOURCE-AVAILABLE if you want to go
-                  further.
+                  Android application for your customers. Replace your logo and
+                  brand colors, then publish to the App Store and Google Play —
+                  no coding required for standard branding. Full source access
+                  is available if you need deeper customization.
                 </p>
               </div>
               <div className="divide-y">
@@ -785,7 +784,7 @@ export default function StorefrontPageContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    View App Source
+                    Request source access
                   </a>
                 </Button>
                 <Button variant="outline" asChild>
@@ -1105,7 +1104,8 @@ export default function StorefrontPageContent() {
                 </Button>
               </div>
               <p className="text-muted-foreground text-xs">
-                Free 7-day trial · Free to self-host under AGPL
+                7-day trial · Self-host or cloud deployment · Full platform
+                access
               </p>
             </div>
           </div>

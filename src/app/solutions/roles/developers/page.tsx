@@ -50,14 +50,14 @@ export default function DevelopersPage() {
           <span className="text-gradient">Built to Be Extended.</span>
         </>
       }
-      description="Most logistics platforms are black boxes — closed source, poorly documented, and built for forms-based configuration rather than programmatic control. LogisBase is different. The full source code is on GitHub. Every capability is accessible via a documented REST API. The extension system lets you build custom modules that run inside the platform. And self-hosted deployment means your team owns the infrastructure."
+      description="Most logistics platforms are closed systems — limited visibility, constrained customization, and designed around manual configuration instead of programmable control. LogisBase is built differently. The full codebase is available for inspection, every capability is exposed through a structured REST API, and the extension framework enables custom modules to run natively within the platform. With self-hosted deployment, your team retains full control of infrastructure and operations."
       stats={[
         {
-          value: 'SOURCE-AVAILABLE',
-          label: 'Source-available — full source code on GitHub',
+          value: 'Source-Accessible',
+          label: 'full source code on GitHub',
         },
         { value: '<200ms', label: 'Average API response time' },
-        { value: '1,800+', label: 'Deployments and growing' },
+        { value: '1,900+', label: 'Organizations and growing' },
         {
           value: '100%',
           label: 'API coverage — every feature accessible programmatically',
@@ -108,7 +108,7 @@ export default function DevelopersPage() {
         {
           title: 'Extensions SDK — Build Custom Modules',
           description:
-            "Don't fork the core — extend it. The LogisBase Extensions SDK lets your team build custom modules that run inside the platform: custom API endpoints, background workers, database models, and UI panels rendered in the Ember.js console — all within the existing auth context.",
+            'The LogisBase Extensions SDK lets your team build custom modules that run inside the platform: custom API endpoints, background workers, database models, and UI panels rendered in the Ember.js console — all within the existing auth context.',
           bullets: [
             'Laravel-based backend extensions with custom routes and models',
             'Ember.js frontend engine for console UI panel development',
@@ -119,13 +119,13 @@ export default function DevelopersPage() {
             '/images/screenshots/fleet-ops/fleet-ops-orchestrator-settings.webp',
         },
         {
-          title: 'Source-available — Full Code Access',
+          title: 'Source-accessible — Full Code Access',
           description:
-            "LogisBase is licensed under SOURCE-AVAILABLE. Every line of backend and frontend code is on GitHub — readable, customizable, and security-assessable. Understand exactly what's running in your environment. Contribute upstream. Or use an Enterprise License for proprietary modifications.",
+            'LogisBase provides full access to its codebase on GitHub, covering both backend and frontend systems. The platform is fully readable, customizable, and suitable for security review, giving teams complete visibility into what runs in their environment. Extend it internally, contribute improvements, or use an Enterprise License for proprietary deployments.',
           bullets: [
-            'Full backend (Laravel/PHP) and frontend (Ember.js) source on GitHub',
-            'Active source-available community with maintained issue tracker',
-            'Enterprise License available for proprietary modifications',
+            'Full backend (Laravel/PHP) and frontend (Ember.js) codebase available on Github',
+            'Active development community with a maintained issue tracker',
+            'Enterprise License available for proprietary extensions and deployments',
           ],
           icon: GitBranch,
           screenshot:
@@ -178,7 +178,7 @@ export default function DevelopersPage() {
       faqs={[
         {
           q: 'Where is the LogisBase source code?',
-          a: 'The full source code is on GitHub at github.com/logisbase. The backend is Laravel/PHP and the frontend is Ember.js — all licensed under SOURCE-AVAILABLE with an Enterprise License available for proprietary modifications.',
+          a: 'The full codebase is available on GitHub. It includes a Laravel/PHP backend and an Ember.js frontend, with an Enterprise License available for proprietary modifications.',
         },
         {
           q: 'Is there a JavaScript SDK?',

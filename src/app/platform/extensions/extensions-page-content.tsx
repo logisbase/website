@@ -316,10 +316,11 @@ export default function ExtensionsMarketplacePageContent() {
             </h1>
 
             <p className="text-foreground/90 dark:text-foreground/95 max-w-3xl leading-snug md:text-lg">
-              The Extensions Marketplace is where the LogisBase platform grows.
-              Browse and install extensions built by LogisBase and the
-              source-available community — or publish your own and monetize it
-              to reach thousands of logistics operators worldwide.
+              The Extensions Marketplace expands the capabilities of the
+              LogisBase platform. Discover and deploy extensions built by
+              LogisBase and trusted partners, create custom solutions for your
+              operations, or publish your own extensions to serve logistics
+              businesses worldwide.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -342,7 +343,7 @@ export default function ExtensionsMarketplacePageContent() {
               >
                 <Button size="lg" variant="ghost">
                   <FaGithub className="mr-2 h-4 w-4" />
-                  Registry Source
+                  Request source access
                 </Button>
               </Link>
             </div>

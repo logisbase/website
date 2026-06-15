@@ -77,7 +77,7 @@ const DELIVERABLES = [
     icon: Code2,
     title: 'Branded App Scaffold',
     description:
-      'A custom fork of the source-available Storefront app, configured with your bundle identifier, app name, and connection to your LogisBase Storefront backend.',
+      'A custom fork of the source-accessible Storefront app, configured with your bundle identifier, app name, and connection to your LogisBase Storefront backend.',
   },
   {
     icon: Palette,
@@ -197,7 +197,7 @@ const FAQS = [
   },
   {
     q: 'What licence applies to the published Storefront app?',
-    a: 'Storefront is source-available under SOURCE-AVAILABLE. Your branded fork is covered by AGPL by default. If you need to keep proprietary modifications private, an Enterprise License is required — see the Commercial License page for details.',
+    a: 'Storefront is provided under a source-accessible license. Any branded or modified deployment is governed by the default license terms. If you need to keep proprietary modifications private, an Enterprise License is required—see the Commercial License page for details.',
   },
   {
     q: 'What is the refund policy?',

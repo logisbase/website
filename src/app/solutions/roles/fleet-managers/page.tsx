@@ -1,16 +1,17 @@
-import type { Metadata } from 'next';
 import {
-  Truck,
-  Wrench,
-  Shield,
-  MapPin,
   BarChart3,
   Bell,
-  FileCheck,
   Clock,
-  Users,
+  FileCheck,
+  MapPin,
+  Shield,
   Smartphone,
+  Truck,
+  Users,
+  Wrench,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
 import SolutionPageLayout from '@/components/solutions/solution-page-layout';
 
 export const metadata: Metadata = {
@@ -192,7 +193,7 @@ export default function FleetManagersPage() {
           a: 'Yes. Multi-depot fleet structures are fully supported — with separate driver pools, vehicle groups, and compliance reporting per location, and consolidated management at account level.',
         },
       ]}
-      ctaHeading="A fleet that\'s always available, always compliant, always tracked"
+      ctaHeading="A fleet that's always available, always compliant, always tracked"
       ctaBody="Stop managing your fleet from spreadsheets and paper forms. Start your free trial and get every vehicle, driver, and compliance deadline visible from one dashboard."
       ctaPrimary="Start Free Trial"
       ctaPrimaryHref="https://console.logisbase.com/onboard"

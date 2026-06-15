@@ -1,16 +1,17 @@
-import type { Metadata } from 'next';
 import {
-  Truck,
-  Wrench,
-  MapPin,
   BarChart3,
+  Bell,
+  Clock,
+  FileCheck,
+  MapPin,
   Shield,
   Smartphone,
-  Bell,
-  FileCheck,
-  Clock,
+  Truck,
   Users,
+  Wrench,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
 import SolutionPageLayout from '@/components/solutions/solution-page-layout';
 
 export const metadata: Metadata = {
@@ -65,7 +66,7 @@ export default function FleetManagementPage() {
         { value: '45%', label: 'Less time spent on compliance documentation' },
         {
           value: '8,000+',
-          label: 'Active fleet instances running on LogisBase',
+          label: 'Active instances running on LogisBase',
         },
       ]}
       heroScreenshot="/images/screenshots/fleet-ops/fleet-ops-vehicle-position-playback.webp"

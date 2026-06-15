@@ -1,9 +1,10 @@
+import { ArrowRight, CheckCircle2, Minus, XCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle2, XCircle, ArrowRight, Minus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Breadcrumbs } from '@/components/ui/breadcrumbs';
+
 import { SoftwareApplicationSchema } from '@/components/seo/json-ld';
+import { Breadcrumbs } from '@/components/ui/breadcrumbs';
+import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: 'LogisBase vs Onfleet | Source-Available Onfleet Alternative',
@@ -56,12 +57,12 @@ const COMPARISON: FeatureRow[] = [
   { feature: 'Cloud Hosting', logisbase: true, onfleet: true },
   {
     feature: 'Free Tier / Trial',
-    logisbase: 'Free trial + source-available',
+    logisbase: 'Free trial + source-accessible',
     onfleet: '14-day trial only',
   },
   {
     feature: 'Pricing Model',
-    logisbase: 'Usage-based (from $50/mo)',
+    logisbase: 'Usage-based (from $25/mo)',
     onfleet: 'Per-task pricing (expensive at scale)',
   },
   {
@@ -75,7 +76,7 @@ const COMPARISON: FeatureRow[] = [
   { feature: 'Automated Dispatch', logisbase: true, onfleet: true },
   {
     feature: 'Driver Mobile App',
-    logisbase: 'Free source-available (Navigator)',
+    logisbase: 'Source-accessible (Navigator)',
     onfleet: 'Proprietary',
   },
   { feature: 'Proof of Delivery (POD)', logisbase: true, onfleet: true },

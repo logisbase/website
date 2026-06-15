@@ -1,9 +1,10 @@
+import { ArrowRight, CheckCircle2, XCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+
 import { SoftwareApplicationSchema } from '@/components/seo/json-ld';
 import { Breadcrumbs } from '@/components/ui/breadcrumbs';
+import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: 'LogisBase vs Route4Me | Source-Available Route4Me Alternative',
@@ -56,12 +57,12 @@ const COMPARISON: FeatureRow[] = [
   { feature: 'Cloud Hosting', logisbase: true, route4me: true },
   {
     feature: 'Free Tier',
-    logisbase: 'Free trial + source-available',
+    logisbase: 'Free trial + source-accessible',
     route4me: '7-day trial only',
   },
   {
     feature: 'Pricing Model',
-    logisbase: 'Usage-based (from $50/mo)',
+    logisbase: 'Usage-based (from $25/mo)',
     route4me: 'Per-route + per-driver fees',
   },
   { feature: 'Route Optimization', logisbase: true, route4me: true },
@@ -69,7 +70,7 @@ const COMPARISON: FeatureRow[] = [
   { feature: 'Automated Dispatch', logisbase: true, route4me: 'Limited' },
   {
     feature: 'Driver Mobile App',
-    logisbase: 'Free source-available (Navigator)',
+    logisbase: 'Source-accessible (Navigator)',
     route4me: 'Proprietary (extra cost)',
   },
   { feature: 'Proof of Delivery (POD)', logisbase: true, route4me: true },
@@ -148,7 +149,7 @@ export default function VsRoute4MePage() {
           </h1>
           <p className="text-muted-foreground mx-auto max-w-3xl text-xl leading-relaxed">
             Route4Me is a route planning tool. LogisBase is a complete
-            source-available fleet management and TMS platform — with route
+            source-accessible fleet management and TMS platform — with route
             optimization built in, plus dispatch, driver management, WMS,
             storefront, and accounting.
           </p>
@@ -179,9 +180,9 @@ export default function VsRoute4MePage() {
                   'Route4Me optimizes routes. LogisBase does that and much more — full dispatch, real-time tracking, driver management, POD capture, WMS, and storefront all in one platform.',
               },
               {
-                title: 'Source-available & self-hostable',
+                title: 'Source-accessible & self-hostable',
                 description:
-                  'Route4Me is closed-source and cloud-only. LogisBase is fully source-available under AGPL. Deploy on your own infrastructure and keep full control of your data.',
+                  'Route4Me is closed-source and cloud-only. LogisBase is fully source-accessible. Deploy on your own infrastructure and keep full control of your data.',
               },
               {
                 title: 'No per-route fees',

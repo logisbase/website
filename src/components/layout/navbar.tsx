@@ -32,6 +32,7 @@ import {
   Smartphone,
   Store,
   Terminal,
+  TrendingUp,
   Truck,
   UserCog,
   Users,
@@ -382,10 +383,10 @@ export const NAV_LINKS: NavLink[] = [
         icon: Puzzle,
       },
       {
-        label: 'GitHub Repository',
+        label: 'Repository Access',
         href: 'https://github.com/logisbase/logisbase',
         description:
-          'Contribute to the source-available project and join our community.',
+          'Explore the codebase, contribute improvements, and collaborate with the LogisBase developer community.',
         icon: Github,
         external: true,
       },
@@ -412,13 +413,6 @@ export const NAV_LINKS: NavLink[] = [
         description:
           'Join our Discord server and connect with other LogisBase users.',
         icon: MessageSquare,
-      },
-      {
-        label: 'Services',
-        href: '/services',
-        description:
-          'Professional implementation, development, and enterprise support options.',
-        icon: Handshake,
       },
       {
         label: 'Changelog',
@@ -456,7 +450,7 @@ export const NAV_LINKS: NavLink[] = [
       },
       {
         label: 'Platform Independence',
-        href: '/company/source-available',
+        href: '/company/open-source',
         description:
           'Our commitment to building transparent, community-driven software.',
         icon: Github,
@@ -467,6 +461,13 @@ export const NAV_LINKS: NavLink[] = [
         description:
           'Explore our network of integration partners and solution providers.',
         icon: Handshake,
+      },
+      {
+        label: 'Investors',
+        href: '/company/investors',
+        description:
+          'Learn about our growth strategy, operating model, and opportunities for strategic capital partnerships.',
+        icon: TrendingUp,
       },
       {
         label: 'Licensing Options',
@@ -488,18 +489,6 @@ export const NAV_LINKS: NavLink[] = [
         description:
           'Implementation, custom development, training, and support services.',
         icon: Briefcase,
-      },
-      {
-        label: 'Terms of Service',
-        href: '/terms',
-        description: 'Our SaaS and Cloud terms of service.',
-        icon: FileCheck,
-      },
-      {
-        label: 'Privacy Policy',
-        href: '/privacy',
-        description: 'How we collect, use, and protect your data.',
-        icon: FileCheck,
       },
     ],
   },

@@ -184,7 +184,7 @@ const STATIC_ROUTES: StaticEntry[] = [
   { path: '/company', changeFrequency: 'monthly', priority: 0.6 },
   { path: '/company/about', changeFrequency: 'monthly', priority: 0.7 },
   {
-    path: '/company/source-available',
+    path: '/company/open-source',
     changeFrequency: 'monthly',
     priority: 0.7,
   },

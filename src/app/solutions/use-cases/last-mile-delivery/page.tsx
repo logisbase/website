@@ -1,16 +1,17 @@
-import type { Metadata } from 'next';
 import {
-  MapPin,
-  Zap,
-  Smartphone,
   BarChart3,
-  FileCheck,
-  Users,
   Bell,
   Clock,
+  FileCheck,
+  MapPin,
   RefreshCw,
   Shield,
+  Smartphone,
+  Users,
+  Zap,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
 import SolutionPageLayout from '@/components/solutions/solution-page-layout';
 
 export const metadata: Metadata = {
@@ -58,7 +59,7 @@ export default function LastMileDeliveryPage() {
           <span className="text-gradient">Where You Win or Lose.</span>
         </>
       }
-      description="Last-mile delivery is your most expensive, most visible, and most customer-defining operation. Every failed attempt costs you £8–15 in re-delivery. Every missing ETA costs you a repeat purchase. LogisBase gives you the automation, visibility, and customer experience tools to turn your last mile from a cost centre into a competitive advantage."
+      description="Last-mile delivery is your most expensive, most visible, and most customer-defining operation. Every failed attempt costs you $8–15 in re-delivery. Every missing ETA costs you a repeat purchase. LogisBase gives you the automation, visibility, and customer experience tools to turn your last mile from a cost centre into a competitive advantage."
       stats={[
         {
           value: '94%',
@@ -79,7 +80,7 @@ export default function LastMileDeliveryPage() {
       painPoints={{
         heading: 'Last-mile problems that cost you money and customers',
         items: [
-          'Failed first-attempt deliveries costing £8–15 each in re-delivery and lost SLA credits',
+          'Failed first-attempt deliveries costing $8–15 each in re-delivery and lost SLA credits',
           'Customers with no idea when their delivery will arrive — flooding your support team with "where is my order?" calls',
           'Dispatchers manually assigning orders one by one, creating bottlenecks at peak hours',
           'Drivers taking inefficient routes between stops with no real-time traffic awareness',

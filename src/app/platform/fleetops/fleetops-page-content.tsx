@@ -106,7 +106,7 @@ const faqs = [
   },
   {
     q: 'Does Fleet-Ops include a mobile app for drivers?',
-    a: 'Yes. The Navigator app (iOS and Android) is an source-available mobile app built for Fleet-Ops. Drivers receive dispatched orders, navigate to stops, capture proof of delivery, and report vehicle faults from the app.',
+    a: 'Yes. The Navigator app (iOS and Android) is a source-available mobile app built for Fleet-Ops. Drivers receive dispatched orders, navigate to stops, capture proof of delivery, and report vehicle faults from the app.',
   },
   {
     q: 'How does Fleet-Ops pricing work?',
@@ -115,7 +115,7 @@ const faqs = [
   },
   {
     q: 'Is Fleet-Ops source-available?',
-    a: 'Yes. Fully source-available under SOURCE-AVAILABLE at github.com/logisbase/fleetops. Self-host, inspect the code, contribute, or build extensions.',
+    a: 'Yes. Fully source-available. Self-host, inspect the code, contribute, or build extensions.',
   },
   {
     q: 'Can I integrate with my existing systems?',
@@ -307,7 +307,7 @@ const comparisonSections: readonly CmpSection[] = [
     rows: [
       {
         feature: 'Source-available',
-        info: 'Fleet-Ops is licensed under SOURCE-AVAILABLE.',
+        info: 'Fleet-Ops is licensed for flexible deployment and customization.',
         values: [true, false, false, false, false, false],
       },
       {
@@ -411,10 +411,11 @@ function ComparisonSection() {
             How Fleet-Ops compares.
           </h2>
           <p className="mt-6 text-[18px] leading-[25px] font-[460] tracking-[0.15px] text-[var(--fo-fg-muted)] lg:max-w-2xl lg:text-[22px] lg:leading-[29px] lg:tracking-[0.12px]">
-            Most last-mile and dispatch platforms run as proprietary SaaS with
-            per-driver pricing. Fleet-Ops takes a different approach —
-            source-available, self-hostable, and resource-unit priced.
-            Here&apos;s how we line up on the features that actually matter.
+            Most last-mile and dispatch solutions are built around proprietary
+            SaaS models with pricing tied to every driver. Fleet-Ops offers a
+            more flexible approach — designed for deployment control,
+            operational ownership, and scalable resource-based pricing. Here’s
+            how we compare across the features that matter most.
           </p>
         </div>
 
@@ -509,16 +510,18 @@ export default function FleetOpsPageContent() {
             <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
               <span className="fo-pulse-dot" />
               <span className="text-[10px] tracking-[0.7px] uppercase">
-                Fleet-Ops · Flagship Source-Available TMS
+                Fleet-Ops · Flagship Transportation Management System
               </span>
             </div>
             <h1 className="mt-6 text-center text-[40px] leading-[44px] font-[680] tracking-[-0.6px] text-balance text-white lg:text-left lg:text-[60px] lg:leading-[64px] lg:tracking-[-1px] xl:text-[68px] xl:leading-[70px] xl:tracking-[-1.2px]">
-              Fleet management, dispatch, and transport — one operations module.
+              Fleet management, dispatch, and transportation operations —
+              unified in one platform.
             </h1>
             <p className="mt-5 text-center text-[18px] leading-[26px] font-[460] tracking-[0.15px] text-white/85 lg:mt-7 lg:text-left lg:text-[21px] lg:leading-[30px] lg:tracking-[0.12px]">
-              Route planning. Live tracking. Vehicle allocation. Maintenance
-              scheduling. Dynamic workflows. All in one platform you can
-              self-host, extend, and own.
+              Optimize routes. Track vehicles in real time. Manage driver
+              assignments. Schedule maintenance. Automate workflows. Run your
+              entire transport operation from a flexible platform built for
+              control, customization, and scale.
             </p>
             <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start lg:mt-10">
               <Button
@@ -546,8 +549,8 @@ export default function FleetOpsPageContent() {
               </Button>
             </div>
             <p className="mt-5 text-center text-[13px] font-[460] tracking-[0.25px] text-white/70 lg:text-left">
-              7-day free trial · No per-driver fees · Self-host under
-              SOURCE-AVAILABLE
+              7-day free trial · No per-driver pricing · Self-hosted or cloud
+              deployment
             </p>
           </div>
 
@@ -633,7 +636,7 @@ export default function FleetOpsPageContent() {
               How it works
             </span>
             <h2 className="mt-4 text-[32px] leading-[36px] font-[680] tracking-[-0.4px] text-balance text-[var(--fo-fg-strong)] lg:text-[50px] lg:leading-[54px] lg:tracking-[-0.6px]">
-              From the first order in to the last vehicle service log.
+              From the first order placed to the final vehicle service record.
             </h2>
           </div>
 
@@ -678,7 +681,7 @@ export default function FleetOpsPageContent() {
             <SpineBeat
               id="beat-plan-dispatch"
               label="02 · Plan & Dispatch"
-              title="A live operations queue every dispatcher can run from."
+              title="A real-time operations hub every dispatcher can manage from one place."
               description="Kanban, table, or live-map views of every active order. Schedule deliveries ahead of time, plan capacity by zone or driver, and send dispatches to the Navigator app in seconds."
               cta={{
                 label: 'More on operations',
@@ -698,7 +701,7 @@ export default function FleetOpsPageContent() {
                     icon={Calendar}
                     label="Scheduler"
                     title="Plan ahead, dispatch later"
-                    description="Queue orders by date, assign time windows, give dispatchers an ahead-of-time visual plan to work from."
+                    description="Organize orders by date, assign delivery windows, and give dispatchers a clear forward-looking schedule to plan, coordinate, and execute operations efficiently."
                   />
                   <FeatureCard
                     icon={Route}
@@ -715,7 +718,7 @@ export default function FleetOpsPageContent() {
               id="beat-track"
               label="03 · Track"
               title="Every driver, vehicle, and order — on one live map."
-              description="Sub-minute GPS via the Navigator app. Geofence-triggered automatic status updates. Branded customer tracking links with live ETA. Telematics providers connected out of the box."
+              description="Real-time GPS tracking through the Navigator app. Automated status updates powered by geofencing. Branded customer tracking pages with live ETAs. Seamless connectivity with leading telematics providers."
               cta={{
                 label: 'More on tracking',
                 href: '/docs/fleet-ops/connectivity/overview',
@@ -1039,7 +1042,8 @@ console.log(\`ETA: \${order.eta}\`);`}
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-[18px] leading-[25px] font-[460] tracking-[0.15px] text-white/85 lg:text-[22px] lg:leading-[29px] lg:tracking-[0.12px]">
               Join 8,000+ logistics operations running on LogisBase.
-              Source-available, no per-seat fees, free to self-host.
+              Source-accessible, no per-seat fees, deploy on your own
+              infrastructure or in the cloud.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button
@@ -1067,7 +1071,7 @@ console.log(\`ETA: \${order.eta}\`);`}
               </Button>
             </div>
             <p className="mt-8 text-xs text-white/70">
-              Free 7-day trial · Free to self-host under SOURCE-AVAILABLE
+              7-day trial · Deploy self-hosted or cloud · Full platform access
             </p>
           </div>
         </div>

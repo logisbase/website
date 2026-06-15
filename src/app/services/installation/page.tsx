@@ -170,7 +170,7 @@ const FAQS = [
   },
   {
     q: 'What licence applies to my installation?',
-    a: 'LogisBase is source-available under SOURCE-AVAILABLE. Your deployment is covered by this licence. If you need to keep proprietary modifications private or build a commercial product on top of LogisBase, an Enterprise License is required — ask us for details.',
+    a: 'LogisBase is provided under a source-accessible license. Your deployment is governed by this license. If you need to keep proprietary modifications private or build a commercial product on top of LogisBase, an Enterprise License is required—contact us for details.',
   },
   {
     q: 'What is your refund policy?',

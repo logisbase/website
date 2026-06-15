@@ -54,7 +54,7 @@ export default function TruckingPage() {
           <span className="text-gradient">Cut Costs. Deliver On Time.</span>
         </>
       }
-      description="LogisBase gives trucking and haulage operators a complete operations platform — real-time fleet visibility, intelligent route optimization, digital proof of delivery, and driver management — on source-available infrastructure you own and control. No per-seat fees. No vendor lock-in."
+      description="LogisBase provides trucking and haulage operators with a complete operations platform — real-time fleet visibility, intelligent route optimization, digital proof of delivery, and driver management — built on infrastructure you control and can deploy anywhere. No per-seat fees. No vendor lock-in."
       stats={[
         { value: '30%', label: 'Average fuel cost reduction' },
         { value: '2×', label: 'Faster dispatch times' },
@@ -188,7 +188,7 @@ export default function TruckingPage() {
         },
         {
           q: 'Is LogisBase source-available?',
-          a: 'Yes — fully source-available under SOURCE-AVAILABLE. Self-host on your own infrastructure, inspect the code, and extend it for your exact workflows. An Enterprise License is available if you need to keep modifications proprietary.',
+          a: 'Yes. You can deploy it on your own infrastructure, inspect the codebase, and extend it to match your workflows. An Enterprise License is available if you require proprietary modifications.',
         },
         {
           q: 'How is pricing structured?',

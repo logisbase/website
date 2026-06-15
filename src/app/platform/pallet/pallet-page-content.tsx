@@ -262,10 +262,11 @@ export default function PalletPageContent() {
               <span className="text-gradient">Connected to Delivery</span>
             </h1>
             <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-snug md:text-xl">
-              Pallet is an source-available WMS built natively into LogisBase.
-              Inventory, pick lists, cycle counts, and stock transfers —
-              connected directly to Fleet-Ops dispatch and Storefront orders
-              with no integration layer required.
+              Pallet is a powerful warehouse management system built natively
+              into LogisBase. Manage inventory, pick lists, cycle counts, and
+              stock transfers — seamlessly connected with Fleet-Ops dispatch and
+              Storefront orders through a unified platform with no complex
+              integrations required.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
@@ -288,7 +289,7 @@ export default function PalletPageContent() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Explore the Code
+                  Request source access
                 </a>
               </Button>
             </div>
@@ -571,12 +572,12 @@ export default function PalletPageContent() {
                 <p className="text-muted-foreground leading-relaxed">
                   Core inventory management, pick lists, cycle counts, stock
                   transfers, and Fleet-Ops integration are functional and
-                  available today. We\'re actively expanding capabilities based
+                  available today. We are actively expanding capabilities based
                   on feedback from beta users.
                 </p>
                 <p className="text-muted-foreground text-sm">
                   If you have warehouse operations running today and want to
-                  help shape the roadmap, we\'d love to hear from you.
+                  help shape the roadmap, we would love to hear from you.
                 </p>
               </div>
               <div className="flex flex-col justify-center gap-4 lg:col-span-2">
@@ -683,8 +684,10 @@ export default function PalletPageContent() {
                 </span>
               </h2>
               <p className="text-muted-foreground mx-auto max-w-xl text-lg leading-relaxed">
-                Start your free trial and explore Pallet alongside Fleet-Ops and
-                Storefront. Self-host for free, or run on LogisBase Cloud.
+                Start your trial and experience Pallet alongside Fleet-Ops and
+                Storefront in one unified logistics platform. Deploy in your
+                preferred environment — use LogisBase Cloud or run it on your
+                own infrastructure with full flexibility.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
@@ -712,7 +715,8 @@ export default function PalletPageContent() {
                 </Button>
               </div>
               <p className="text-muted-foreground text-xs">
-                Free 7-day trial · Free to self-host under SOURCE-AVAILABLE
+                7-day free trial · Flexible deployment options · Self-hosted or
+                cloud
               </p>
             </div>
           </div>

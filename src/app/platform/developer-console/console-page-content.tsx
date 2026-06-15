@@ -109,7 +109,7 @@ export default function DeveloperConsolePageContent() {
               >
                 <Button size="lg" variant="ghost">
                   <FaGithub className="mr-2 h-4 w-4" />
-                  View Source
+                  Request source access
                 </Button>
               </Link>
             </div>
@@ -580,8 +580,8 @@ export default function DeveloperConsolePageContent() {
                 </Link>
               </div>
               <p className="text-muted-foreground text-xs">
-                Free on all plans · Full API access · No rate limits on core
-                endpoints
+                Available on all plans · Full API access · No rate limits on
+                core endpoints
               </p>
             </div>
           </div>

@@ -1,16 +1,17 @@
-import type { Metadata } from 'next';
 import {
-  Recycle,
-  MapPin,
   BarChart3,
-  Truck,
-  ClipboardList,
-  Zap,
   Bell,
+  ClipboardList,
   Clock,
-  Shield,
   FileCheck,
+  MapPin,
+  Recycle,
+  Shield,
+  Truck,
+  Zap,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
 import SolutionPageLayout from '@/components/solutions/solution-page-layout';
 
 export const metadata: Metadata = {
@@ -54,7 +55,7 @@ export default function WasteManagementPage() {
           </span>
         </>
       }
-      description="Waste and recycling operations run on tight margins, strict compliance timelines, and the constant pressure to do more with the same number of vehicles. LogisBase gives waste operators intelligent route optimization, container tracking, compliance reporting, and real-time fleet visibility — all on source-available infrastructure you own and control."
+      description="Waste and recycling operations run on tight margins, strict compliance timelines, and the constant pressure to do more with the same number of vehicles. LogisBase gives waste operators intelligent route optimization, container tracking, compliance reporting, and real-time fleet visibility — all on infrastructure you own and control."
       stats={[
         {
           value: '28%',

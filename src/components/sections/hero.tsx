@@ -1,46 +1,34 @@
-import { Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
-import { getGitHubStars } from '@/lib/github-stars';
 
-export default async function Hero() {
-  const stars = await getGitHubStars();
-
+export default function Hero() {
   return (
     <header className="section-padding relative overflow-hidden">
       <div className="relative container flex flex-col items-center gap-6 text-center">
         {/* Badge */}
         <div className="flex items-center rounded-full border p-1 text-xs">
           <span className="bg-muted rounded-full px-3 py-1 font-medium">
-            Source-available
+            Deploy Anywhere
           </span>
-          <Link
-            href="https://github.com/logisbase/logisbase"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 transition-opacity hover:opacity-80"
-            data-cta-id="star_github"
-            data-cta-location="hero"
-            data-cta-variant="tertiary"
-          >
-            <Star className="h-3 w-3 fill-yellow-500 text-yellow-500" />
-            {stars} on GitHub
-          </Link>
+          <span className="flex items-center gap-1.5 px-3 transition-opacity hover:opacity-80">
+            No Vendor Lock-In
+          </span>
         </div>
 
         {/* Headline */}
         <h1 className="max-w-4xl text-5xl leading-none tracking-tight text-balance md:text-6xl lg:text-7xl">
-          Your Fleet. Your Data.{' '}
+          Your Logistics. Your Data.{' '}
           <span className="text-gradient">Your Platform.</span>
         </h1>
 
         {/* Subheadline */}
         <p className="text-foreground/80 max-w-2xl text-lg leading-snug md:text-xl">
-          Fleet management, e-commerce fulfillment, warehouse operations, and
-          accounting — in one source-available platform. No per-driver fees, no
-          vendor lock-in. Self-host or use our cloud.
+          Fleet management, warehouse operations, e-commerce fulfillment, and
+          accounting in one platform. Maintain full control of your data,
+          eliminate operational silos, and scale without per-driver fees.
+          Self-host on your infrastructure or use LogisBase Cloud.
         </p>
 
         {/* CTAs */}
@@ -71,7 +59,7 @@ export default async function Hero() {
 
         {/* Trust signal */}
         <p className="text-muted-foreground text-sm">
-          Free 7-day trial · Free to self-host under AGPL
+          Start with a 7-Day Trial · Deploy Anywhere
         </p>
 
         {/* Hero screenshot */}

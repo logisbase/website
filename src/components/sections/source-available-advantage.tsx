@@ -17,56 +17,56 @@ const FEATURES = [
     icon: Database,
     title: 'Your Data',
     description:
-      'Maintain complete control of your operational data with deployment options that fit your security, compliance, and governance requirements.',
+      'Keep your operational data in infrastructure you control — not ours.',
   },
   {
     icon: Workflow,
-    title: 'Your Operations',
+    title: 'Your Workflows',
     description:
-      'Configure workflows, processes, and business rules to match the way your organization operates.',
+      'Model how your team actually operates, not how a vendor decided it should.',
   },
   {
     icon: Code,
-    title: 'Your Platform',
+    title: 'Your Code',
     description:
-      'Customize, extend, and brand the platform to support your unique operational and customer requirements.',
+      'Extend the platform, fork it, audit it. Every line is readable and modifiable.',
   },
   {
     icon: Server,
     title: 'Your Infrastructure',
     description:
-      'Deploy on your cloud, within your data center, or through our managed hosting environment — with the flexibility to choose what works best for your business.',
+      'Deploy to your cloud, your servers, or our managed hosting — your choice.',
   },
 ];
 
 function buildGithubStats(stars: string) {
   return [
     { label: 'Organizations', value: stars },
-    { label: 'Business Modules', value: '50+' },
-    { label: 'Integration Endpoints', value: '200+' },
+    { label: 'Contributors', value: '50+' },
+    { label: 'Forks', value: '200+' },
     { label: 'Active Instances', value: '8,000+' },
   ];
 }
 
 const WHY_POINTS = [
   {
-    title: 'Transparent by Design',
+    title: 'No hidden behavior',
     description:
-      'Enterprise-grade logistics software shouldn’t require blind trust. LogisBase gives organizations visibility, flexibility, and long-term control over their operations.',
+      'The code is public. Audit the security model, data handling, and logic yourself.',
   },
   {
-    title: 'No Vendor Dependency',
+    title: 'No migration trap',
     description:
-      'Maintain ownership of your data and deployment environment, with the flexibility to move, scale, or operate on your own terms.',
+      "Your data is portable. Switch providers or self-host — you're never locked in.",
   },
   {
-    title: 'Business Continuity',
+    title: 'Survives us',
     description:
-      'Your operations remain under your control. Deployments, configurations, and data stay accessible regardless of how your infrastructure evolves.',
+      'Even if we disappeared tomorrow, your deployment keeps running. Your code, your call.',
   },
 ];
 
-const OpenSourceAdvantage = ({ stars = '1.9k+' }: { stars?: string }) => {
+const SourceAvailableAdvantage = ({ stars = '1.9k+' }: { stars?: string }) => {
   const githubStats = buildGithubStats(stars);
   return (
     <section className="section-padding">
@@ -74,14 +74,13 @@ const OpenSourceAdvantage = ({ stars = '1.9k+' }: { stars?: string }) => {
         {/* Header */}
         <div className="mx-auto max-w-3xl space-y-4 text-center">
           <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
-            Deployment Freedom Without Compromise
+            Freedom from Vendor Lock-In
           </h2>
           <p className="text-muted-foreground text-lg lg:text-xl">
-            Maintain full control of your logistics operations, data, and
-            infrastructure. Deploy on your own environment or in the cloud,
-            customize workflows to match your business, and build a branded
-            logistics platform without being constrained by third-party software
-            vendors.
+            Own your data, your code, and your infrastructure. With Logisbase,
+            you're not dependent on our roadmap, our pricing, or our servers.
+            Audit everything, self-host anywhere, and extend it however you
+            need.
           </p>
         </div>
 
@@ -110,7 +109,7 @@ const OpenSourceAdvantage = ({ stars = '1.9k+' }: { stars?: string }) => {
           {/* Left: What you own (3 cols) */}
           <div className="lg:col-span-3">
             <p className="text-muted-foreground mb-6 text-xs font-semibold tracking-widest uppercase">
-              Ownership Without Compromise
+              What ownership actually means
             </p>
             <div className="divide-y">
               {FEATURES.map((feature, i) => {
@@ -143,12 +142,10 @@ const OpenSourceAdvantage = ({ stars = '1.9k+' }: { stars?: string }) => {
                 </div>
                 <div>
                   <h3 className="text-accent-foreground font-semibold">
-                    Built on Transparency. Designed for Ownership.
+                    Source-available, verified.
                   </h3>
                   <p className="text-muted-foreground text-xs">
-                    Enterprise-grade logistics software shouldn’t require blind
-                    trust. LogisBase gives organizations visibility,
-                    flexibility, and long-term control over their operations.
+                    Public code means real transparency.
                   </p>
                 </div>
               </div>
@@ -190,4 +187,4 @@ const OpenSourceAdvantage = ({ stars = '1.9k+' }: { stars?: string }) => {
   );
 };
 
-export default OpenSourceAdvantage;
+export default SourceAvailableAdvantage;

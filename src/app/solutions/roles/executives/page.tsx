@@ -131,7 +131,7 @@ export default function ExecutivesPage() {
         {
           title: 'Vendor Independence & Strategic Control',
           description:
-            "Source-available licensing means LogisBase can't hold your operation hostage. Your team can read, modify, and own the platform. You can contribute to the community, fork the codebase, or switch to an Enterprise License — on your terms, not a vendor's renewal deadline.",
+            'Source-accessible licensing ensures LogisBase never becomes a dependency trap. Your team can inspect, modify, and fully control the platform. You can contribute improvements, fork the codebase, or transition to an Enterprise License — on your terms, not a vendor’s renewal cycle.',
           bullets: [
             'Full source code access — read, inspect, and modify without restriction',
             'No vendor lock-in — data is exportable and infrastructure is portable',
@@ -185,12 +185,12 @@ export default function ExecutivesPage() {
           a: 'Yes. LogisBase is source-available and designed for self-hosting on AWS, Azure, GCP, or on-premise infrastructure. No operational or customer data is sent to LogisBase servers in a self-hosted deployment.',
         },
         {
-          q: 'How does source-available licensing work for commercial use?',
-          a: 'LogisBase is licensed under SOURCE-AVAILABLE for source-available use. An Enterprise License is available for organisations that need to run proprietary modifications without source-available disclosure obligations.',
+          q: 'How does source-accessible licensing work for commercial use?',
+          a: 'LogisBase is provided under a source-accessible license for operational use. An Enterprise License is available for organizations that require proprietary modifications without disclosure obligations.',
         },
         {
           q: 'What security certifications does LogisBase have?',
-          a: "As source-available software, LogisBase's complete codebase is available for your security team to inspect and assess. For organisations requiring formal certifications on hosted infrastructure, cloud plans can be deployed in certified cloud environments.",
+          a: "As source-accessible software, LogisBase's complete codebase is available for your security team to inspect and assess. For organisations requiring formal certifications on hosted infrastructure, cloud plans can be deployed in certified cloud environments.",
         },
       ]}
       ctaHeading="Lower cost. More control. Real business outcomes."

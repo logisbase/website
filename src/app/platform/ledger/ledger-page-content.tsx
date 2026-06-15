@@ -401,7 +401,7 @@ const faqs = [
   },
   {
     q: 'Is Ledger source-available?',
-    a: 'Yes. Ledger is an source-available LogisBase extension available on GitHub. You can self-host it, inspect the full source code, contribute to its development, and customize it to your exact requirements.',
+    a: 'Yes. Ledger is a LogisBase extension available on GitHub. You can self-host it, inspect the full codebase, contribute to its development, and customize it to your exact requirements.',
   },
 ];
 
@@ -485,7 +485,7 @@ export default function LedgerPageContent() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Explore the Code
+                  Request source access
                 </a>
               </Button>
             </div>
@@ -1269,7 +1269,7 @@ export default function LedgerPageContent() {
               <p className="text-muted-foreground mx-auto max-w-xl text-lg leading-relaxed">
                 Start your free trial and explore the full power of Ledger.
                 Connect your operations to your finances and get a real-time
-                view of your business health.
+                view of your business financial health.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
@@ -1288,7 +1288,8 @@ export default function LedgerPageContent() {
                 </Button>
               </div>
               <p className="text-muted-foreground text-xs">
-                Free 7-day trial · Free to self-host under AGPL
+                7-day trial · Self-host or cloud deployment · Full platform
+                access
               </p>
             </div>
           </div>

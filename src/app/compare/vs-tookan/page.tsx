@@ -1,9 +1,10 @@
+import { ArrowRight, CheckCircle2, Minus, XCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle2, XCircle, ArrowRight, Minus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+
 import { SoftwareApplicationSchema } from '@/components/seo/json-ld';
 import { Breadcrumbs } from '@/components/ui/breadcrumbs';
+import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: 'LogisBase vs Tookan | Source-Available Tookan Alternative',
@@ -56,12 +57,12 @@ const COMPARISON: FeatureRow[] = [
   { feature: 'Cloud Hosting', logisbase: true, tookan: true },
   {
     feature: 'Free Tier',
-    logisbase: 'Free trial + source-available',
+    logisbase: 'Free trial + source-accessible',
     tookan: 'Free plan (200 tasks/mo)',
   },
   {
     feature: 'Pricing Model',
-    logisbase: 'Usage-based (from $50/mo)',
+    logisbase: 'Usage-based (from $25/mo)',
     tookan: 'Per-agent + per-task fees',
   },
   {
@@ -75,7 +76,7 @@ const COMPARISON: FeatureRow[] = [
   { feature: 'Automated Dispatch', logisbase: true, tookan: true },
   {
     feature: 'Driver Mobile App',
-    logisbase: 'Free source-available (Navigator)',
+    logisbase: 'Source-accessible (Navigator)',
     tookan: 'Proprietary',
   },
   { feature: 'Proof of Delivery (POD)', logisbase: true, tookan: true },
@@ -149,7 +150,7 @@ export default function VsTookanPage() {
           </h1>
           <p className="text-muted-foreground mx-auto max-w-3xl text-xl leading-relaxed">
             Tookan charges per agent and per task — costs that compound fast as
-            your team grows. LogisBase is the source-available alternative with
+            your team grows. LogisBase is the source-accessible alternative with
             predictable usage-based pricing, self-hosting, and a full logistics
             platform built in.
           </p>
@@ -180,9 +181,9 @@ export default function VsTookanPage() {
                   'Tookan charges per agent — the more drivers you add, the more you pay. LogisBase uses resource units: one flat pool that covers orders, drivers, vehicles, and API calls.',
               },
               {
-                title: 'Source-available & self-hostable',
+                title: 'Source-accessible & self-hostable',
                 description:
-                  'Tookan is closed-source and cloud-only. LogisBase is fully source-available under AGPL. Deploy on your own servers, keep your data, and never worry about vendor lock-in.',
+                  'Tookan is closed-source and cloud-only. LogisBase is fully source-accessibleL. Deploy on your own servers, keep your data, and never worry about vendor lock-in.',
               },
               {
                 title: 'A complete logistics OS',

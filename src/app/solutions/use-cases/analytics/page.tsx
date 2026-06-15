@@ -1,16 +1,17 @@
-import type { Metadata } from 'next';
 import {
   BarChart3,
-  TrendingUp,
-  MapPin,
-  FileText,
-  Zap,
-  Settings,
   Bell,
   Clock,
-  Users,
+  FileText,
+  MapPin,
+  Settings,
   Shield,
+  TrendingUp,
+  Users,
+  Zap,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
 import SolutionPageLayout from '@/components/solutions/solution-page-layout';
 
 export const metadata: Metadata = {
@@ -53,9 +54,9 @@ export default function AnalyticsPage() {
       badge="Use Case — Analytics & Reporting"
       title={
         <>
-          Stop Managing Your Operation
+          Stop Managing Your Operation by Feel.
           <br />
-          <span className="text-gradient">by Feel. Manage it by Data.</span>
+          <span className="text-gradient"> Manage it by Data.</span>
         </>
       }
       description="Most logistics operations are flying blind. You know something is wrong when costs spike or customers complain — but by then, the damage is done. LogisBase's analytics layer captures every operational data point — deliveries, routes, driver behaviour, fuel, costs, SLAs — and surfaces the insights that let you fix problems before they become expensive, and prove performance to your clients and leadership."
