@@ -23,11 +23,11 @@ Navigate to **Fleet-Ops → Settings → Routing**.
 
 The service Fleet-Ops calls to render routes on maps and return ETAs. Stored as `display_engine`. Default: `osrm`.
 
-| Option          | Default | Notes                                                                                |
-| :-------------- | :------ | :----------------------------------------------------------------------------------- |
-| **OSRM**        | ✓       | Source-available, self-hosted. The default for both Cloud and self-hosted LogisBase. |
-| **Google Maps** |         | Traffic-aware routing using Google's directions API.                                 |
-| **Valhalla**    |         | Source-available routing engine — alternative to OSRM with multi-modal support.      |
+| Option          | Default | Notes                                                                                 |
+| :-------------- | :------ | :------------------------------------------------------------------------------------ |
+| **OSRM**        | ✓       | Source-accessible, self-hosted. The default for both Cloud and self-hosted LogisBase. |
+| **Google Maps** |         | Traffic-aware routing using Google's directions API.                                  |
+| **Valhalla**    |         | Source-accessible routing engine — alternative to OSRM with multi-modal support.      |
 
 The list is registry-driven from the `routeEngine` service, so additional providers may appear if installed by an extension.
 

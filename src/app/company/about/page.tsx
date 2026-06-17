@@ -17,9 +17,10 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
-  title: 'About LogisBase | Source-Available Logistics Platform — Singapore',
+  title:
+    'About LogisBase | Source-Accessible Logistics Platform — Lagos, Nigeria',
   description:
-    'LogisBase is an source-available logistics and fleet management platform founded in 2018 in Singapore by Shiv Thakker and Ronald Richardson. Learn our story, mission, and the team behind the platform.',
+    'LogisBase is an source-available logistics and fleet management platform founded in 2022 in Lagos, Nigeria by Chike Ngwu and Tek Orakle. Learn our story, mission, and the team behind the platform.',
   keywords: [
     'about logisbase',
     'logisbase team',
@@ -356,7 +357,7 @@ export default function AboutPage() {
                 <div className="bg-muted border-primary/20 size-20 flex-shrink-0 overflow-hidden rounded-full border-2">
                   <Image
                     src="/images/team/shiv-thakker.jpg"
-                    alt="Shiv Thakker — Co-founder & CEO of LogisBase"
+                    alt="Chike Ngwu — Co-founder & CEO of LogisBase"
                     width={80}
                     height={80}
                     className="h-full w-full object-cover"
@@ -405,7 +406,7 @@ export default function AboutPage() {
                 <div className="bg-muted border-primary/20 size-20 flex-shrink-0 overflow-hidden rounded-full border-2">
                   <Image
                     src="/images/team/ronald-richardson.jpg"
-                    alt="Ronald Richardson — Co-founder & CTO of LogisBase"
+                    alt="Tek Orakle — Co-founder & CTO of LogisBase"
                     width={80}
                     height={80}
                     className="h-full w-full object-cover"

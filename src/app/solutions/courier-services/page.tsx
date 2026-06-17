@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/solutions/courier-services' },
   title: 'Courier & Parcel Delivery Management Software | LogisBase',
   description:
-    'Maximize first-attempt delivery rates, automate dispatch, and give customers real-time parcel tracking. Source-available courier management software built for scale.',
+    'Maximize first-attempt delivery rates, automate dispatch, and give customers real-time parcel tracking. Source-accessible courier management software built for scale.',
   keywords: [
     'courier management software',
     'parcel delivery platform',

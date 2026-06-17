@@ -15,7 +15,7 @@ export default function AboutHero() {
       </h1>
 
       <p className="text-muted-foreground leading-snug md:text-lg lg:text-xl">
-        Plasma is an source-available, local-first automation platform for
+        Plasma is an source-accessible, local-first automation platform for
         people who value speed, precision, and autonomy. We believe automation
         should live where your work does — on your machine. That means no
         third-party servers, no forced integrations, and no silent failures.
@@ -25,7 +25,7 @@ export default function AboutHero() {
         <br />
         <br />
         We believe good software should be scriptable, inspectable, and fully
-        yours. That’s why Plasma is source-available, privacy-respecting, and
+        yours. That’s why Plasma is source-accessible, privacy-respecting, and
         built to adapt to your needs—not the other way around.
       </p>
 

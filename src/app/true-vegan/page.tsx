@@ -476,9 +476,9 @@ export default function TrueVeganPage() {
               Want a restaurant app like this?
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[var(--tv-fg-light-muted)] md:text-xl">
-              Storefront is source-available under SOURCE-AVAILABLE. Fork it,
-              brand it, ship it — or work with our team to set up, configure,
-              and publish a branded customer app for your restaurant.
+              Storefront is accessible. Fork it, brand it, ship it — or work
+              with our team to set up, configure, and publish a branded customer
+              app for your restaurant.
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button
@@ -502,7 +502,7 @@ export default function TrueVeganPage() {
             </div>
             <p className="mt-8 text-xs text-[var(--tv-fg-light-muted)]">
               True Vegan is operated by Chef Rahein in Delray Beach, Florida.
-              Independent deployment of the source-available LogisBase
+              Independent deployment of the source-accessible LogisBase
               Storefront app.
             </p>
           </div>

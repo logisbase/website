@@ -44,7 +44,7 @@ import { cn } from '@/lib/utils';
 // Form + T&C links (provided by ops). Update these here if they change.
 const TALLY_FORM = 'https://tally.so/r/nrkVRM';
 const TERMS_DOC =
-  'https://docs.google.com/document/d/1EweHYp1gkXobOWsNRALW3jE97mR1avMaKpFWsMGM1Io/edit?usp=sharing';
+  'https://docs.google.com/document/d/1pmq5u2AJYScuPycnfY2L5wiMjBrrdipPQeGlPRRA2pw/edit?usp=sharing';
 
 export const metadata: Metadata = {
   title: 'Navigator App Publishing Service | LogisBase',
@@ -597,7 +597,7 @@ export default function NavigatorPublishingPage() {
               Navigator App Publishing Terms &amp; Conditions
               <ExternalLink className="size-3" />
             </Link>
-            . The service is provided by LogisBase Pte. Ltd., Singapore.
+            . The service is provided by LogisBase Ltd., Lagos, Nigeria.
           </p>
         </div>
       </section>

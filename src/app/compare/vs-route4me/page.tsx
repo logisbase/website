@@ -7,28 +7,28 @@ import { Breadcrumbs } from '@/components/ui/breadcrumbs';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
-  title: 'LogisBase vs Route4Me | Source-Available Route4Me Alternative',
+  title: 'LogisBase vs Route4Me | Source-Accessible Route4Me Alternative',
   description:
-    'Compare LogisBase vs Route4Me. LogisBase is the source-available Route4Me alternative with full dispatch, fleet management, driver app, and route optimization — no per-route fees.',
+    'Compare LogisBase vs Route4Me. LogisBase is the source-accessible Route4Me alternative with full dispatch, fleet management, driver app, and route optimization — no per-route fees.',
   keywords: [
     'Route4Me alternative',
     'LogisBase vs Route4Me',
-    'source-available route optimization software',
+    'source-accessible route optimization software',
     'route planning software alternative',
     'Route4Me competitor',
     'cheaper than Route4Me',
     'fleet management with route optimization',
   ],
   openGraph: {
-    title: 'LogisBase vs Route4Me | Source-Available Route4Me Alternative',
+    title: 'LogisBase vs Route4Me | Source-Accessible Route4Me Alternative',
     description:
       'Compare LogisBase vs Route4Me. Full dispatch, fleet management, driver app, and route optimization — no per-route fees.',
     images: [
       {
-        url: '/og?title=LogisBase%20vs%20Route4Me&eyebrow=Compare&subtitle=Source-available%20alternative%20with%20dispatch%2C%20fleet%20management%2C%20driver%20app%2C%20and%20route%20optimization%20built%20in.',
+        url: '/og?title=LogisBase%20vs%20Route4Me&eyebrow=Compare&subtitle=Source-accessible%20alternative%20with%20dispatch%2C%20fleet%20management%2C%20driver%20app%2C%20and%20route%20optimization%20built%20in.',
         width: 1200,
         height: 630,
-        alt: 'LogisBase vs Route4Me — source-available Route4Me alternative',
+        alt: 'LogisBase vs Route4Me — source-accessible Route4Me alternative',
       },
     ],
   },
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'LogisBase vs Route4Me',
     description:
-      'Source-available alternative with dispatch, fleet management, driver app, and route optimization built in.',
+      'Source-accessible alternative with dispatch, fleet management, driver app, and route optimization built in.',
     images: [
-      '/og?title=LogisBase%20vs%20Route4Me&eyebrow=Compare&subtitle=Source-available%20alternative%20with%20dispatch%2C%20fleet%20management%2C%20driver%20app%2C%20and%20route%20optimization%20built%20in.',
+      '/og?title=LogisBase%20vs%20Route4Me&eyebrow=Compare&subtitle=Source-accessible%20alternative%20with%20dispatch%2C%20fleet%20management%2C%20driver%20app%2C%20and%20route%20optimization%20built%20in.',
     ],
   },
   alternates: { canonical: 'https://logisbase.com/compare/vs-route4me' },
@@ -52,7 +52,7 @@ type FeatureRow = {
 };
 
 const COMPARISON: FeatureRow[] = [
-  { feature: 'Source-available', logisbase: true, route4me: false },
+  { feature: 'Source-accessible', logisbase: true, route4me: false },
   { feature: 'Self-Hosted Deployment', logisbase: true, route4me: false },
   { feature: 'Cloud Hosting', logisbase: true, route4me: true },
   {

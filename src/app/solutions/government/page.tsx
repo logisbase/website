@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/solutions/government' },
   title: 'Military & Government Logistics Software | LogisBase',
   description:
-    'Source-available logistics platform for military and government operations. Self-hosted, air-gap capable, role-based access, full audit trails, and data sovereignty by design.',
+    'Source-accessible logistics platform for military and government operations. Self-hosted, air-gap capable, role-based access, full audit trails, and data sovereignty by design.',
   keywords: [
     'government logistics software',
     'military fleet management',
@@ -54,7 +54,7 @@ export default function GovernmentPage() {
           <span className="text-gradient">Your Security Standards.</span>
         </>
       }
-      description="Government and military logistics operations demand data sovereignty, comprehensive audit trails, role-based access at every level, and the option to operate completely offline. LogisBase is source-available, self-hosted, and designed from the ground up to meet the security and compliance requirements that commercial SaaS logistics software was never built to satisfy."
+      description="Government and military logistics operations demand data sovereignty, comprehensive audit trails, role-based access at every level, and the option to operate completely offline. LogisBase is source-accessible, self-hosted, and designed from the ground up to meet the security and compliance requirements that commercial SaaS logistics software was never built to satisfy."
       stats={[
         {
           value: '100%',
@@ -82,7 +82,7 @@ export default function GovernmentPage() {
         ],
       }}
       featuresHeading="Security and compliance built into every layer"
-      featuresSubheading="Source-available by design. Auditable by default. Deployable anywhere."
+      featuresSubheading="Source-accessible by design. Auditable by default. Deployable anywhere."
       features={[
         {
           title: 'Fully Self-Hosted & Data-Sovereign',
@@ -137,7 +137,7 @@ export default function GovernmentPage() {
             '/images/screenshots/fleet-ops/fleet-ops-order-config-activity-flow.webp',
         },
         {
-          title: 'Source-available — Inspectable & Modifiable',
+          title: 'Source-accessible — Inspectable & Modifiable',
           description:
             "Unlike commercial black-box software, LogisBase's complete source code is available for security assessment, modification, and approval. Your security team can inspect every line, apply custom hardening, and maintain full control over the software running in your environment.",
           bullets: [
@@ -175,7 +175,7 @@ export default function GovernmentPage() {
       ]}
       testimonial={{
         quote:
-          "The source-available architecture meant our security team could inspect and approve the entire codebase before deployment. That's something no commercial SaaS vendor could offer us.",
+          "The source-accessible architecture meant our security team could inspect and approve the entire codebase before deployment. That's something no commercial SaaS vendor could offer us.",
         author: 'Senior Logistics Officer',
         role: 'Government Fleet Operations',
         company: 'Classified Agency',

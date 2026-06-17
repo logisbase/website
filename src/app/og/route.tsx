@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const title =
     searchParams.get('title') ||
-    'Source-Available Fleet Management & TMS Software';
+    'Source-Accessible Fleet Management & TMS Software';
   const eyebrow = searchParams.get('eyebrow') || 'LogisBase';
   const subtitle =
     searchParams.get('subtitle') ||

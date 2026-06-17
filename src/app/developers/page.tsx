@@ -33,17 +33,17 @@ export const metadata: Metadata = {
   alternates: { canonical: CANONICAL },
   title: 'Developer Platform — Logistics API, SDKs, Webhooks & Extensions',
   description:
-    'Build on the source-available logistics platform. REST API, real-time WebSocket channels, JavaScript and PHP SDKs, webhooks, and a full extension framework — all on the same codebase LogisBase itself runs on.',
+    'Build on the source-accessible logistics platform. REST API, real-time WebSocket channels, JavaScript and PHP SDKs, webhooks, and a full extension framework — all on the same codebase LogisBase itself runs on.',
   keywords: [
     'logistics API',
     'fleet management API',
     'delivery management API',
-    'source-available logistics developer platform',
+    'source-accessible logistics developer platform',
     'fleet management SDK',
     'logistics platform webhooks',
     'fleet management developer console',
     'build logistics application',
-    'source-available logistics API',
+    'source-accessible logistics API',
     'TMS API',
     'logistics platform extensions',
     'logisbase developer',
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title:
       'Developer Platform — Logistics API, SDKs, Webhooks & Extensions | LogisBase',
     description:
-      'Build on the source-available logistics platform. REST API, real-time WebSockets, multi-language SDKs, webhooks, and a full extension framework.',
+      'Build on the source-accessible logistics platform. REST API, real-time WebSockets, multi-language SDKs, webhooks, and a full extension framework.',
     type: 'website',
     url: CANONICAL,
     images: [
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Developer Platform | LogisBase',
     description:
-      'REST API, real-time WebSockets, multi-language SDKs, webhooks, and a full extension framework — all source-available.',
+      'REST API, real-time WebSockets, multi-language SDKs, webhooks, and a full extension framework — all source-accessible.',
     images: [
       '/og?title=The%20developer-first%20logistics%20platform&eyebrow=Developers&subtitle=REST%20API%2C%20WebSockets%2C%20SDKs%2C%20webhooks%2C%20and%20a%20full%20extension%20framework%20%E2%80%94%20open%20source.',
     ],
@@ -182,7 +182,7 @@ const DEVELOPER_FAQS = [
   {
     question: 'Can I self-host the API?',
     answer:
-      'Yes. LogisBase is SOURCE-AVAILABLE source-available. Run the API server on your own infrastructure with full control over data residency, scaling, and customization. The same SDKs, webhooks, and extension framework work against your self-hosted instance.',
+      'Yes. LogisBase is source-accessible. Run the API server on your own infrastructure with full control over data residency, scaling, and customization. The same SDKs, webhooks, and extension framework work against your self-hosted instance.',
   },
   {
     question: 'Is there a sandbox or test environment?',
@@ -205,7 +205,7 @@ const STATS = [
   { value: 'REST', label: 'Full JSON:API' },
   { value: 'WS', label: 'SocketCluster channels' },
   { value: '50+', label: 'API endpoints' },
-  { value: 'AGPL', label: 'Source-available' },
+  { value: 'Source-accessible', label: 'Self-Hosting' },
 ];
 
 export default function DevelopersPage() {
@@ -214,7 +214,7 @@ export default function DevelopersPage() {
       <SoftwareApplicationSchema
         name="LogisBase Developer Platform"
         url={CANONICAL}
-        description="Source-available logistics developer platform with a REST API, WebSocket channels, official SDKs, webhooks, and an extension framework."
+        description="Source-accessible logistics developer platform with a REST API, WebSocket channels, official SDKs, webhooks, and an extension framework."
         applicationCategory="DeveloperApplication"
       />
       <FAQSchema faqs={DEVELOPER_FAQS} />
@@ -391,14 +391,14 @@ export default function DevelopersPage() {
           </div>
         </section>
 
-        {/* ── Source-available ────────────────────────────────────────────────── */}
+        {/* ── Source-accessible ────────────────────────────────────────────────── */}
         <section className="section-padding">
           <div className="container">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="flex flex-col gap-6">
                 <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs">
                   <Github className="text-primary mr-2 h-3 w-3" />
-                  Source-available
+                  Source-accessible
                 </div>
                 <h2 className="text-4xl leading-tight font-bold tracking-tight">
                   Built for enterprise. Customizable. Yours.
@@ -406,7 +406,7 @@ export default function DevelopersPage() {
                 <p className="text-muted-foreground leading-relaxed md:text-lg">
                   Every line of LogisBase — the API, the console, the driver
                   app, the SDKs, the CLI — lives on GitHub under
-                  SOURCE-AVAILABLE. Self-host it, fork it, audit it, contribute
+                  Source-accessible. Self-host it, fork it, audit it, contribute
                   to it. No black boxes, no vendor lock-in.
                 </p>
                 <ul className="space-y-3 text-sm">

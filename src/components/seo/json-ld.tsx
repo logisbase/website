@@ -30,13 +30,13 @@ export function OrganizationSchema() {
     ],
     address: {
       '@type': 'PostalAddress',
-      addressCountry: 'SG',
-      addressLocality: 'Singapore',
+      addressCountry: 'NG',
+      addressLocality: 'Nigeria',
     },
     foundingDate: '2021',
     founders: [
-      { '@type': 'Person', name: 'Shiv Thakker' },
-      { '@type': 'Person', name: 'Ronald Richardson' },
+      { '@type': 'Person', name: 'Chike Ngwu' },
+      { '@type': 'Person', name: 'Tek Orakle' },
     ],
   };
   return (
@@ -53,7 +53,7 @@ export function WebSiteSchema() {
     '@type': 'WebSite',
     name: 'LogisBase',
     alternateName:
-      'LogisBase — Source-Available Logistics & Supply Chain Platform',
+      'LogisBase — Source-Accessible Logistics & Supply Chain Platform',
     url: 'https://logisbase.com',
     inLanguage: 'en',
     publisher: {
@@ -74,7 +74,7 @@ export function WebSiteSchema() {
 export function SoftwareApplicationSchema({
   name = 'LogisBase',
   url = 'https://logisbase.com',
-  description = 'Source-available fleet management and TMS software. Dispatch, track, and optimize your fleet in real time. Self-hosted or cloud, no per-seat pricing.',
+  description = 'Source-accessible fleet management and TMS software. Dispatch, track, and optimize your fleet in real time. Self-hosted or cloud, no per-seat pricing.',
   applicationCategory = 'BusinessApplication',
   operatingSystem = 'Web, Android, iOS',
   price = '25',

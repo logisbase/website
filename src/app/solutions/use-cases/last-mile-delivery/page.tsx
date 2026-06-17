@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   title: 'Last-Mile Delivery Software | LogisBase',
   description:
-    'Cut failed deliveries, automate dispatch, and give customers real-time tracking. Source-available last-mile logistics platform with smart routing, digital POD, and branded tracking pages.',
+    'Cut failed deliveries, automate dispatch, and give customers real-time tracking. Source-accessible last-mile logistics platform with smart routing, digital POD, and branded tracking pages.',
   keywords: [
     'last mile delivery software',
     'last mile logistics platform',

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/solutions/waste-management' },
   title: 'Waste & Recycling Fleet Management Software | LogisBase',
   description:
-    'Optimize waste collection routes, reduce fuel costs, track containers, and generate compliance reports automatically. Source-available fleet management built for waste and recycling operations.',
+    'Optimize waste collection routes, reduce fuel costs, track containers, and generate compliance reports automatically. Source-accessible fleet management built for waste and recycling operations.',
   keywords: [
     'waste management software',
     'recycling fleet management',

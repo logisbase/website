@@ -382,7 +382,7 @@ export default function SdksPageContent() {
         </div>
       </section>
 
-      {/* Source-available */}
+      {/* Source-accessible */}
       <section className="section-padding bg-muted/20">
         <div className="container mx-auto max-w-4xl">
           <div className="grid items-center gap-10 md:grid-cols-2">

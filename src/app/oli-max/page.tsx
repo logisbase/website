@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   title:
     'Oli Max × LogisBase — Bulk Supply Across Mongolia, Powered by Storefront',
   description:
-    'Oli Max is the source-available Storefront app deployed at scale by Techbase LLC in Ulaanbaatar — connecting Mongolian restaurants, vendors, and households to bulk meat, flour, rice, oil, and household goods directly from distributors and factories.',
+    'Oli Max is the source-accessible Storefront app deployed at scale by Techbase LLC in Ulaanbaatar — connecting Mongolian restaurants, vendors, and households to bulk meat, flour, rice, oil, and household goods directly from distributors and factories.',
   keywords: [
     'Oli Max',
     'Techbase LLC',
@@ -39,12 +39,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Oli Max × LogisBase',
     description:
-      "How Techbase LLC built one of Mongolia's leading bulk-supply marketplaces on the source-available LogisBase Storefront app.",
+      "How Techbase LLC built one of Mongolia's leading bulk-supply marketplaces on the source-accessible LogisBase Storefront app.",
   },
   twitter: {
     card: 'summary_large_image',
     title: `Oli Max × LogisBase`,
-    description: `How Techbase LLC built one of Mongolia\'s leading bulk-supply marketplaces on the source-available LogisBase Storefront app.`,
+    description: `How Techbase LLC built one of Mongolia\'s leading bulk-supply marketplaces on the source-accessible LogisBase Storefront app.`,
   },
   alternates: { canonical: 'https://logisbase.com/oli-max' },
 };
@@ -92,7 +92,7 @@ const stats = [
 const stackParts = [
   {
     icon: Store,
-    title: 'Storefront — source-available customer app',
+    title: 'Storefront — source-accessible customer app',
     description:
       'A white-label Storefront fork that ships branded as Oli Max on iOS and Android. Catalog, search, cart, and checkout are all driven by the Storefront API.',
     docs: '/docs/storefront/app/overview',
@@ -421,7 +421,7 @@ export default function OliMaxPage() {
                 Mongolia&apos;s mobile-first payment rail is the default
                 checkout. Implemented once as a LogisBase Ledger payment-gateway
                 driver, it&apos;s reusable by any other Storefront deployment in
-                the country — source-available for the community.
+                the country — source-accessible for the community.
               </p>
             </div>
           </div>
@@ -463,7 +463,7 @@ export default function OliMaxPage() {
               </h2>
               <p className="text-lg leading-relaxed text-[var(--oli-fg-muted)]">
                 Techbase LLC operates Oli Max as a flagship deployment of the
-                source-available LogisBase Storefront app — and contributes
+                source-accessible LogisBase Storefront app — and contributes
                 back. Mongolian-market payment drivers, the food-truck inventory
                 model, and several FleetOps improvements originated in
                 production at Oli Max before landing upstream.
@@ -486,7 +486,7 @@ export default function OliMaxPage() {
                 <div className="rounded-xl border border-[var(--oli-border)] bg-[var(--oli-card)] p-4">
                   <Shield className="mb-2 size-5 text-[var(--oli-orange)]" />
                   <p className="text-sm font-semibold">
-                    Source-available upstream
+                    Source-accessible upstream
                   </p>
                   <p className="mt-1 text-xs leading-snug text-[var(--oli-fg-muted)]">
                     Improvements ship to the wider LogisBase community
@@ -517,9 +517,9 @@ export default function OliMaxPage() {
               Want to build the next Oli Max for your market?
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">
-              Storefront is source-available under SOURCE-AVAILABLE. Fork it,
-              brand it, ship it — or work with our team to set up, configure,
-              and publish a fully branded customer app for your operation.
+              Storefront is source-accessible. Fork it, brand it, ship it — or
+              work with our team to set up, configure, and publish a fully
+              branded customer app for your operation.
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button
@@ -544,7 +544,7 @@ export default function OliMaxPage() {
             <p className="mt-8 text-xs text-white/70">
               Oli Max is operated by Techbase LLC, Ulaanbaatar, Mongolia.
               Independent deployment. Not affiliated with LogisBase Inc., other
-              than as an source-available partner.
+              than as an source-accessible partner.
             </p>
           </div>
         </div>

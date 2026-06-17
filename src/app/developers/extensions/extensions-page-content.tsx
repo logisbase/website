@@ -120,7 +120,7 @@ const REGISTRY_FEATURES = [
   'Versioned releases with semantic versioning',
   'In-console marketplace for one-click installation',
   'Private registry support for self-hosted deployments',
-  'Source-available — self-host your own registry',
+  'Source-accessible — self-host your own registry',
 ];
 
 const ARCHITECTURE_FEATURES = [
@@ -162,7 +162,7 @@ const FAQS = [
   },
   {
     q: 'Is there an Enterprise License requirement for publishing extensions?',
-    a: 'Extensions you build for your own use are covered by the SOURCE-AVAILABLE licence that governs LogisBase. If you want to sell or distribute extensions commercially — or keep your extension source code proprietary — you will need a LogisBase Enterprise License. Contact hello@logisbase.com to discuss extension licensing.',
+    a: 'Extensions you build for your own use are covered by the Source-accessible licence that governs LogisBase. If you want to sell or distribute extensions commercially — or keep your extension source code proprietary — you will need a LogisBase Enterprise License. Contact hello@logisbase.com to discuss extension licensing.',
   },
 ];
 
@@ -277,9 +277,9 @@ export default function DeveloperExtensionsPageContent() {
               </div>
             </div>
             <div>
-              <div className="mb-1 text-2xl font-bold">SOURCE-AVAILABLE</div>
+              <div className="mb-1 text-2xl font-bold">Source-accessible</div>
               <div className="text-muted-foreground text-sm">
-                Source-available Licence
+                Source-accessible Licence
               </div>
             </div>
           </div>

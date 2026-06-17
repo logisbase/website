@@ -40,11 +40,10 @@ export default function TermsOfServicePage() {
           <p className="text-muted-foreground mt-2 text-sm">
             These Terms of Service (&ldquo;Terms&rdquo;) govern your access to
             and use of the LogisBase Cloud platform and associated services
-            provided by <strong>LogisBase Pte. Ltd.</strong>{' '}
+            provided by <strong>LogisBase Ltd.</strong>{' '}
             (&ldquo;LogisBase&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or
-            &ldquo;our&rdquo;), a company incorporated in Singapore. By
-            accessing or using our services, you agree to be bound by these
-            Terms.
+            &ldquo;our&rdquo;), a company incorporated in Nigeria. By accessing
+            or using our services, you agree to be bound by these Terms.
           </p>
         </div>
 
@@ -62,7 +61,7 @@ export default function TermsOfServicePage() {
               'Acceptable Use Policy',
               'Intellectual Property',
               'Data and Privacy',
-              'Source-available Licensing',
+              'Source-accessible Licensing',
               'Confidentiality',
               'Warranties and Disclaimers',
               'Limitation of Liability',
@@ -300,20 +299,19 @@ export default function TermsOfServicePage() {
 
           <section id="section-10">
             <h2 className="mb-4 text-2xl font-bold">
-              10. Source-available Licensing
+              10. Source-accessible Licensing
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              The LogisBase Core platform is licensed under the GNU Affero
-              General Public License v3.0 (SOURCE-AVAILABLE). Your use of the
-              Service via LogisBase Cloud does not require you to
-              source-available your own applications or data. However, if you
-              self-host LogisBase and modify the Core, AGPL obligations may
-              apply.
+              The LogisBase Core platform is licensed under the
+              (Source-accessible). Your use of the Service via LogisBase Cloud
+              does not require you to source-accessible your own applications or
+              data. However, if you self-host LogisBase and modify the Core,
+              Source-accessible obligations may apply.
             </p>
             <p className="text-muted-foreground mt-3 leading-relaxed">
               If you require a Commercial License to build proprietary
-              Extensions or integrations without AGPL obligations, separate
-              commercial licensing terms apply. See our{' '}
+              Extensions or integrations without Source-accessible obligations,
+              separate commercial licensing terms apply. See our{' '}
               <Link
                 href="/licensing/commercial"
                 className="text-primary underline underline-offset-4"
@@ -416,10 +414,10 @@ export default function TermsOfServicePage() {
             <h2 className="mb-4 text-2xl font-bold">16. Governing Law</h2>
             <p className="text-muted-foreground leading-relaxed">
               These Terms are governed by and construed in accordance with the
-              laws of Singapore, without regard to its conflict of law
-              provisions. Any disputes arising out of or in connection with
-              these Terms shall be subject to the exclusive jurisdiction of the
-              courts of Singapore.
+              laws of Nigeria, without regard to its conflict of law provisions.
+              Any disputes arising out of or in connection with these Terms
+              shall be subject to the exclusive jurisdiction of the courts of
+              Nigeria.
             </p>
           </section>
 
@@ -443,7 +441,7 @@ export default function TermsOfServicePage() {
             </p>
             <div className="bg-muted/30 mt-4 space-y-1.5 rounded-lg border p-4 text-sm">
               <div>
-                <strong>LogisBase Pte. Ltd.</strong>
+                <strong>LogisBase Ltd.</strong>
               </div>
               <div>
                 Email:{' '}
@@ -495,7 +493,7 @@ export default function TermsOfServicePage() {
             </Link>
           </div>
           <div className="text-muted-foreground text-xs">
-            &copy; {new Date().getFullYear()} LogisBase Pte. Ltd. All rights
+            &copy; {new Date().getFullYear()} LogisBase Ltd. All rights
             reserved.
           </div>
         </div>

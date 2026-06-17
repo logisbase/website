@@ -765,7 +765,7 @@ export default function PricingClient() {
                   'Environment configuration & branding',
                   'Go-live handover session',
                   'Complete data sovereignty',
-                  'Source-available — audit every line of code',
+                  'Source-accessible — audit every line of code',
                   'Add support tier separately',
                 ].map((f) => (
                   <div key={f} className="flex items-start gap-2 text-sm">
@@ -909,8 +909,8 @@ export default function PricingClient() {
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl">
               Building proprietary extensions or integrations? A Commercial
-              License waives AGPL obligations and keeps your custom code
-              private. LogisBase Core remains source-available — only your
+              License waives Source-accessible obligations and keeps your custom
+              code private. LogisBase Core remains source-accessible — only your
               extensions are covered.
             </p>
           </div>

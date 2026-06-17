@@ -31,7 +31,7 @@ const TOC_ITEMS = [
   'Additional Services',
   'Payment Terms',
   'Confidentiality',
-  'License & Source-Available Compliance',
+  'License & Source-Accessible Compliance',
   'Termination',
   'Force Majeure',
   'Data Protection',
@@ -58,7 +58,7 @@ export default function InstallationTermsPage() {
           <p className="text-muted-foreground">Last updated: {LAST_UPDATED}</p>
           <p className="text-muted-foreground mt-2 text-sm">
             These Terms and Conditions (&ldquo;Agreement&rdquo;) are entered
-            into between <strong>LogisBase Pte. Ltd.</strong> (&ldquo;Service
+            into between <strong>LogisBase Ltd.</strong> (&ldquo;Service
             Provider&rdquo;) and the subscribing entity (&ldquo;Client&rdquo;).
             This Agreement governs the implementation, deployment, and optional
             maintenance services for LogisBase Console &amp; Core.
@@ -88,8 +88,8 @@ export default function InstallationTermsPage() {
             <h2 className="mb-4 text-2xl font-bold">1. Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               These Terms and Conditions (&ldquo;Agreement&rdquo;) are entered
-              into between LogisBase Pte. Ltd. (&ldquo;Service Provider&rdquo;)
-              and the subscribing entity (&ldquo;Client&rdquo;). This Agreement
+              into between LogisBase Ltd. (&ldquo;Service Provider&rdquo;) and
+              the subscribing entity (&ldquo;Client&rdquo;). This Agreement
               governs the implementation, deployment, and optional maintenance
               services for LogisBase Console &amp; Core.
             </p>
@@ -260,10 +260,10 @@ export default function InstallationTermsPage() {
 
           <section id="section-9">
             <h2 className="mb-4 text-2xl font-bold">
-              9. License &amp; Source-Available Compliance
+              9. License &amp; Source-Accessible Compliance
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              LogisBase Console &amp; Core are source-available software
+              LogisBase Console &amp; Core are source-accessible software
               governed by the{' '}
               <a
                 href="https://github.com/logisbase/logisbase"
@@ -271,11 +271,11 @@ export default function InstallationTermsPage() {
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-4"
               >
-                SOURCE-AVAILABLE license
+                Source-accessible license
               </a>
-              . The Client agrees to comply with the AGPL license terms. If the
-              Client requires a custom license, a separate licensing agreement
-              must be executed.
+              . The Client agrees to comply with the Source-accessible license
+              terms. If the Client requires a custom license, a separate
+              licensing agreement must be executed.
             </p>
             <p className="text-muted-foreground mt-3 leading-relaxed">
               For details on licensing options, see the{' '}
@@ -362,9 +362,8 @@ export default function InstallationTermsPage() {
               Any disputes arising under this Agreement shall first be resolved
               through good faith negotiations between the parties. If a dispute
               cannot be resolved through negotiation within 30 days, it will be
-              referred to mediation or binding arbitration in Singapore under
-              the rules of the Singapore International Arbitration Centre
-              (SIAC).
+              referred to mediation or binding arbitration in Nigeria under the
+              rules of the Nigeria International Arbitration Centre (SIAC).
             </p>
           </section>
 
@@ -372,7 +371,7 @@ export default function InstallationTermsPage() {
             <h2 className="mb-4 text-2xl font-bold">15. Governing Law</h2>
             <p className="text-muted-foreground leading-relaxed">
               This Agreement shall be governed by and interpreted under the laws
-              of Singapore, without regard to its conflict of law provisions.
+              of Nigeria, without regard to its conflict of law provisions.
             </p>
           </section>
 
@@ -430,7 +429,7 @@ export default function InstallationTermsPage() {
             </Link>
           </div>
           <div className="text-muted-foreground text-xs">
-            &copy; {new Date().getFullYear()} LogisBase Pte. Ltd. All rights
+            &copy; {new Date().getFullYear()} LogisBase Ltd. All rights
             reserved.
           </div>
         </div>

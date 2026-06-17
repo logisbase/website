@@ -1084,7 +1084,7 @@ export default function LedgerPageContent() {
               <div className="space-y-4">
                 <div className="text-muted-foreground inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
                   <span className="bg-primary h-1.5 w-1.5 rounded-full" />
-                  Source-available & API-First
+                  Source-accessible & API-First
                 </div>
                 <h2 className="text-4xxl leading-tight tracking-tight text-balance md:text-5xl">
                   Automate Any Financial{' '}
@@ -1101,7 +1101,7 @@ export default function LedgerPageContent() {
                 {[
                   'Full REST API for accounts, journals, invoices, wallets, and transactions',
                   'Event webhooks for payment events, invoice status, and wallet transactions',
-                  'Source-available codebase — inspect, fork, self-host, or contribute',
+                  'Source-accessible codebase — inspect, fork, self-host, or contribute',
                   'Modular extension — install alongside Fleet-Ops, Storefront, or Pallet',
                   'No per-transaction fees — usage-based plan pricing only',
                 ].map((point) => (

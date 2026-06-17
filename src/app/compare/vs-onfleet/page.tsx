@@ -7,28 +7,28 @@ import { Breadcrumbs } from '@/components/ui/breadcrumbs';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
-  title: 'LogisBase vs Onfleet | Source-Available Onfleet Alternative',
+  title: 'LogisBase vs Onfleet | Source-Accessible Onfleet Alternative',
   description:
-    'Compare LogisBase vs Onfleet. LogisBase is the source-available Onfleet alternative with no per-task pricing, self-hosting, full API access, and a free tier. See the full feature comparison.',
+    'Compare LogisBase vs Onfleet. LogisBase is the source-accessible Onfleet alternative with no per-task pricing, self-hosting, full API access, and a free tier. See the full feature comparison.',
   keywords: [
     'Onfleet alternative',
     'LogisBase vs Onfleet',
-    'source-available Onfleet alternative',
+    'source-accessible Onfleet alternative',
     'delivery management software alternative to Onfleet',
     'Onfleet competitor',
     'cheaper than Onfleet',
     'Onfleet self hosted alternative',
   ],
   openGraph: {
-    title: 'LogisBase vs Onfleet | Source-Available Onfleet Alternative',
+    title: 'LogisBase vs Onfleet | Source-Accessible Onfleet Alternative',
     description:
-      'Compare LogisBase vs Onfleet. No per-task pricing, self-hosting, full API access, and a free tier. The source-available alternative to Onfleet.',
+      'Compare LogisBase vs Onfleet. No per-task pricing, self-hosting, full API access, and a free tier. The source-accessible alternative to Onfleet.',
     images: [
       {
-        url: '/og?title=LogisBase%20vs%20Onfleet&eyebrow=Compare&subtitle=The%20source-available%20alternative%20to%20Onfleet%20%E2%80%94%20no%20per-task%20pricing%2C%20self-hosted%20or%20cloud.',
+        url: '/og?title=LogisBase%20vs%20Onfleet&eyebrow=Compare&subtitle=The%20source-accessible%20alternative%20to%20Onfleet%20%E2%80%94%20no%20per-task%20pricing%2C%20self-hosted%20or%20cloud.',
         width: 1200,
         height: 630,
-        alt: 'LogisBase vs Onfleet — source-available Onfleet alternative',
+        alt: 'LogisBase vs Onfleet — source-accessible Onfleet alternative',
       },
     ],
   },
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'LogisBase vs Onfleet',
     description:
-      'The source-available Onfleet alternative — no per-task pricing, self-hosted or cloud.',
+      'The source-accessible Onfleet alternative — no per-task pricing, self-hosted or cloud.',
     images: [
-      '/og?title=LogisBase%20vs%20Onfleet&eyebrow=Compare&subtitle=The%20source-available%20alternative%20to%20Onfleet%20%E2%80%94%20no%20per-task%20pricing%2C%20self-hosted%20or%20cloud.',
+      '/og?title=LogisBase%20vs%20Onfleet&eyebrow=Compare&subtitle=The%20source-accessible%20alternative%20to%20Onfleet%20%E2%80%94%20no%20per-task%20pricing%2C%20self-hosted%20or%20cloud.',
     ],
   },
   alternates: { canonical: 'https://logisbase.com/compare/vs-onfleet' },
@@ -52,7 +52,7 @@ type FeatureRow = {
 };
 
 const COMPARISON: FeatureRow[] = [
-  { feature: 'Source-available', logisbase: true, onfleet: false },
+  { feature: 'Source-accessible', logisbase: true, onfleet: false },
   { feature: 'Self-Hosted Deployment', logisbase: true, onfleet: false },
   { feature: 'Cloud Hosting', logisbase: true, onfleet: true },
   {
@@ -279,7 +279,7 @@ export default function VsOnfleetPage() {
                   'No seat fees',
                   'Self-hosting available',
                   'Full API access',
-                  'Source-available — free forever if self-hosted',
+                  'Source-accessible',
                 ].map((f) => (
                   <li key={f} className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 shrink-0 text-green-500" />

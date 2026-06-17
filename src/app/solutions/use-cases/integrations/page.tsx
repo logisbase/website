@@ -1,16 +1,17 @@
-import type { Metadata } from 'next';
 import {
-  Webhook,
-  Code2,
-  Puzzle,
-  Zap,
-  Shield,
   BarChart3,
-  RefreshCw,
   Bell,
-  Settings,
+  Code2,
   Globe,
+  Puzzle,
+  RefreshCw,
+  Settings,
+  Shield,
+  Webhook,
+  Zap,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
 import SolutionPageLayout from '@/components/solutions/solution-page-layout';
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   },
   title: 'Logistics API & Integrations | LogisBase',
   description:
-    'Connect LogisBase to your entire tech stack with a full REST API, real-time webhooks, and pre-built integrations. Source-available logistics platform built to fit your existing workflows.',
+    'Connect LogisBase to your entire tech stack with a full REST API, real-time webhooks, and pre-built integrations. Source-accessible logistics platform built to fit your existing workflows.',
   keywords: [
     'logistics API',
     'fleet management API',

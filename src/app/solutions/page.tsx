@@ -1,47 +1,47 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
 import {
-  Truck,
-  Utensils,
-  Package,
-  ShoppingCart,
+  ArrowRight,
+  BarChart3,
+  Briefcase,
+  ClipboardList,
+  Code,
   Heart,
-  Recycle,
-  Ship,
-  Shield,
   MapPin,
   Navigation,
-  ClipboardList,
-  BarChart3,
-  Zap,
+  Package,
+  Recycle,
+  Shield,
+  Ship,
+  ShoppingCart,
+  Truck,
   UserCog,
-  Briefcase,
-  Code,
   Users,
-  ArrowRight,
+  Utensils,
+  Zap,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/solutions' },
   title: 'Logistics Solutions by Industry, Use Case & Role | LogisBase',
   description:
-    'Source-available logistics platform for every operation — trucking, food delivery, healthcare, container logistics, government, and more. Explore solutions by industry, use case, and role.',
+    'Source-accessible logistics platform for every operation — trucking, food delivery, healthcare, container logistics, government, and more. Explore solutions by industry, use case, and role.',
   keywords: [
     'logistics software solutions',
     'fleet management platform',
     'delivery management software',
-    'source-available logistics',
+    'source-accessible logistics',
     'logistics by industry',
   ],
   openGraph: {
     title: 'Logistics Solutions by Industry, Use Case & Role | LogisBase',
     description:
-      'The source-available logistics platform that adapts to your operation — not the other way around.',
+      'The source-accessible logistics platform that adapts to your operation — not the other way around.',
   },
   twitter: {
     card: 'summary_large_image',
     title: `Logistics Solutions by Industry, Use Case & Role | LogisBase`,
-    description: `The source-available logistics platform that adapts to your operation — not the other way around.`,
+    description: `The source-accessible logistics platform that adapts to your operation — not the other way around.`,
   },
 };
 
@@ -168,7 +168,7 @@ const BY_ROLE = [
     label: 'Developers & IT',
     href: '/solutions/roles/developers',
     description:
-      'Source-available, API-first, self-hostable, and built to be extended. The logistics platform engineers want to work with.',
+      'Source-accessible, API-first, self-hostable, and built to be extended. The logistics platform engineers want to work with.',
     icon: Code,
   },
   {
@@ -296,7 +296,7 @@ export default function SolutionsPage() {
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="bg-primary inline-block size-1.5 rounded-full" />
-                Source-available · No per-seat pricing
+                Source-accessible · No per-seat pricing
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="bg-primary inline-block size-1.5 rounded-full" />

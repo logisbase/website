@@ -1,16 +1,17 @@
-import type { Metadata } from 'next';
 import {
-  Heart,
-  Shield,
-  FileCheck,
-  MapPin,
-  ClipboardList,
-  Lock,
-  Bell,
   BarChart3,
+  Bell,
+  ClipboardList,
   Clock,
+  FileCheck,
+  Heart,
+  Lock,
+  MapPin,
+  Shield,
   Users,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
 import SolutionPageLayout from '@/components/solutions/solution-page-layout';
 
 export const metadata: Metadata = {
@@ -108,7 +109,7 @@ export default function HealthcarePage() {
         {
           title: 'Self-Hosted & Data-Sovereign Deployment',
           description:
-            "Patient data belongs in your infrastructure, not a third-party cloud. LogisBase's source-available architecture means you can deploy on your own servers, your own cloud account, or your own air-gapped network — with complete control over where data lives.",
+            "Patient data belongs in your infrastructure, not a third-party cloud. LogisBase's source-accessible architecture means you can deploy on your own servers, your own cloud account, or your own air-gapped network — with complete control over where data lives.",
           bullets: [
             'Deploy on AWS, Azure, GCP, or on-premise hardware',
             'No patient data ever leaves your environment',
@@ -182,7 +183,7 @@ export default function HealthcarePage() {
         },
         {
           q: 'Can LogisBase be deployed in our own cloud environment?',
-          a: 'Yes. LogisBase is source-available and designed for self-hosting on AWS, Azure, GCP, or on-premise infrastructure. No patient or operational data is sent to LogisBase servers in a self-hosted deployment.',
+          a: 'Yes. LogisBase is source-accessible and designed for self-hosting on AWS, Azure, GCP, or on-premise infrastructure. No patient or operational data is sent to LogisBase servers in a self-hosted deployment.',
         },
         {
           q: 'Does it support controlled substance delivery tracking?',

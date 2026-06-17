@@ -1,6 +1,6 @@
 # logisbase.com
 
-The marketing site, documentation, and developer portal for [LogisBase](https://logisbase.com) — the source-available logistics and supply-chain platform.
+The marketing site, documentation, and developer portal for [LogisBase](https://logisbase.com) — the source-accessible logistics and supply-chain platform.
 
 ![LogisBase — Your Fleet. Your Data. Your Platform.](./public/images/og-image.webp)
 
@@ -99,4 +99,4 @@ The [Contributing Guide](https://logisbase.com/docs/contributing) covers code, d
 
 ## License
 
-[SOURCE-AVAILABLE](./LICENSE.md). Commercial licensing is available — see [/licensing/commercial](https://logisbase.com/licensing/commercial) for full details, pricing tiers, and terms.
+[Source-accessible](./LICENSE.md). Commercial licensing is available — see [/licensing/commercial](https://logisbase.com/licensing/commercial) for full details, pricing tiers, and terms.

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import ProductDashboard from '@/components/sections/product-dashboard';
 import ProductFeatures from '@/components/sections/product-features';
 import ProductHero from '@/components/sections/product-hero';
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Discover what LogisBase can do — real-time fleet tracking, order management, storefront, financial management, and a full developer API.',
   keywords:
-    'logisbase product, logistics platform features, fleet management software, source-available logistics',
+    'logisbase product, logistics platform features, fleet management software, source-accessible logistics',
   openGraph: {
     title: 'Product Overview | LogisBase Logistics Platform',
     description:

@@ -18,24 +18,24 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/solutions/trucking' },
   title: 'Fleet Management Software for Trucking & Haulage | LogisBase',
   description:
-    'Replace your legacy TMS with source-available fleet management built for trucking and haulage. Real-time tracking, route optimization, digital POD, and compliance tools — on infrastructure you own.',
+    'Replace your legacy TMS with source-accessible fleet management built for trucking and haulage. Real-time tracking, route optimization, digital POD, and compliance tools — on infrastructure you own.',
   keywords: [
     'trucking software',
     'haulage management',
     'fleet management TMS',
     'freight tracking',
     'route optimization trucking',
-    'source-available TMS',
+    'source-accessible TMS',
   ],
   openGraph: {
     title: 'Trucking & Haulage Fleet Management | LogisBase',
     description:
-      'Modern source-available fleet management for trucking operators. Cut costs, eliminate paperwork, and deliver on time.',
+      'Modern source-accessible fleet management for trucking operators. Cut costs, eliminate paperwork, and deliver on time.',
   },
   twitter: {
     card: 'summary_large_image',
     title: `Trucking & Haulage Fleet Management | LogisBase`,
-    description: `Modern source-available fleet management for trucking operators. Cut costs, eliminate paperwork, and deliver on time.`,
+    description: `Modern source-accessible fleet management for trucking operators. Cut costs, eliminate paperwork, and deliver on time.`,
   },
 };
 
@@ -187,7 +187,7 @@ export default function TruckingPage() {
           a: 'Drivers share their location via the Navigator mobile app (iOS and Android) — no additional hardware needed. LogisBase also integrates with dedicated telematics hardware and OBD devices if you prefer.',
         },
         {
-          q: 'Is LogisBase source-available?',
+          q: 'Is LogisBase source-accessible?',
           a: 'Yes. You can deploy it on your own infrastructure, inspect the codebase, and extend it to match your workflows. An Enterprise License is available if you require proprietary modifications.',
         },
         {

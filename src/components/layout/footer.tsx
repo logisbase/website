@@ -224,8 +224,8 @@ const Footer = () => {
       <div className="container mt-16 flex flex-col-reverse justify-between gap-8 border-t pt-8 text-xs lg:flex-row">
         <div className="flex items-center justify-between gap-2">
           <p className="">
-            © {new Date().getFullYear()} LogisBase — Source-available logistics
-            for everyone.
+            © {new Date().getFullYear()} LogisBase — Source-accessible
+            logistics for everyone.
           </p>{' '}
           <div className="flex items-center gap-7 lg:hidden">
             {SOCIAL_LINKS.map((link, index) => (

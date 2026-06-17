@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   title: 'Fleet Management Software for Fleet Managers | LogisBase',
   description:
-    'Complete visibility over vehicle health, compliance, driver performance, and real-time locations — all from one source-available fleet management platform built for fleet managers.',
+    'Complete visibility over vehicle health, compliance, driver performance, and real-time locations — all from one source-accessible fleet management platform built for fleet managers.',
   keywords: [
     'fleet management software',
     'fleet manager tools',

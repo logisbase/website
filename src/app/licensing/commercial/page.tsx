@@ -35,10 +35,10 @@ import { Button } from '@/components/ui/button';
 export const metadata: Metadata = {
   title: 'Commercial License | LogisBase',
   description:
-    'The LogisBase Commercial License removes SOURCE-AVAILABLE copyleft obligations so you can build proprietary modifications, ship SaaS products, white-label deployments, and protect your custom code. Annual, monthly, and perpetual options available.',
+    'The LogisBase Commercial License removes Source-accessible obligations so you can build proprietary modifications, ship SaaS products, white-label deployments, and protect your custom code. Annual, monthly, and perpetual options available.',
   keywords: [
     'logisbase commercial license',
-    'AGPL commercial alternative',
+    'Source-accessible commercial alternative',
     'logistics platform commercial license',
     'logisbase OEM license',
     'logisbase white label license',
@@ -48,12 +48,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Commercial License | LogisBase',
     description:
-      'Build proprietary modifications, ship SaaS, white-label LogisBase. The Commercial License removes AGPL obligations entirely.',
+      'Build proprietary modifications, ship SaaS, white-label LogisBase. The Commercial License removes Source-accessible obligations entirely.',
   },
   twitter: {
     card: 'summary_large_image',
     title: `Commercial License | LogisBase`,
-    description: `Build proprietary modifications, ship SaaS, white-label LogisBase. The Commercial License removes AGPL obligations entirely.`,
+    description: `Build proprietary modifications, ship SaaS, white-label LogisBase. The Commercial License removes Source-accessible obligations entirely.`,
   },
 };
 
@@ -580,7 +580,7 @@ export default function CommercialLicensePage() {
                 </Button>
               </div>
               <p className="text-muted-foreground mt-6 text-xs">
-                Operated by LogisBase Pte. Ltd., Singapore. Commercial licenses
+                Operated by LogisBase Ltd., Lagos, Nigeria. Commercial licenses
                 are non-exclusive, worldwide, and transferable subject to
                 standard assignment terms.
               </p>

@@ -6,15 +6,15 @@ import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title:
-    'LogisBase Comparisons | Source-Available Alternative to Onfleet, Tookan, Route4Me',
+    'LogisBase Comparisons | Source-Accessible Alternative to Onfleet, Tookan, Route4Me',
   description:
-    'See how LogisBase compares to Onfleet, Tookan, Route4Me, and Bringg. Source-available fleet management and TMS software with no per-task or per-agent pricing.',
+    'See how LogisBase compares to Onfleet, Tookan, Route4Me, and Bringg. Source-accessible fleet management and TMS software with no per-task or per-agent pricing.',
   keywords: [
     'Onfleet alternative',
     'Tookan alternative',
     'Route4Me alternative',
     'Bringg alternative',
-    'source-available fleet management alternative',
+    'source-accessible fleet management alternative',
     'delivery management software comparison',
   ],
   alternates: { canonical: 'https://logisbase.com/compare' },
@@ -32,7 +32,7 @@ const COMPARISONS = [
   {
     competitor: 'Tookan',
     slug: 'vs-tookan',
-    tagline: 'No per-agent fees. Source-available. Complete logistics OS.',
+    tagline: 'No per-agent fees. Source-accessible. Complete logistics OS.',
     description:
       "Tookan's per-agent pricing compounds as your team grows. LogisBase uses resource units — one predictable pool for orders, drivers, vehicles, and API calls.",
     badge: null,

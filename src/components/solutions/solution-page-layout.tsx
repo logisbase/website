@@ -1,7 +1,8 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, Check, ChevronDown, X } from 'lucide-react';
-import { Breadcrumbs, type BreadcrumbItem } from '@/components/ui/breadcrumbs';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { type BreadcrumbItem, Breadcrumbs } from '@/components/ui/breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -158,7 +159,7 @@ export default function SolutionPageLayout({
             </div>
             <div className="text-muted-foreground flex flex-wrap items-center justify-center gap-6 text-xs">
               {[
-                'Source-available',
+                'Source-accessible',
                 'No per-seat pricing',
                 '7-day free trial',
               ].map((t) => (

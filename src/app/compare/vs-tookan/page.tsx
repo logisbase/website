@@ -7,28 +7,28 @@ import { Breadcrumbs } from '@/components/ui/breadcrumbs';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
-  title: 'LogisBase vs Tookan | Source-Available Tookan Alternative',
+  title: 'LogisBase vs Tookan | Source-Accessible Tookan Alternative',
   description:
-    'Compare LogisBase vs Tookan. LogisBase is the source-available Tookan alternative with no agent-based pricing, self-hosting, full API access, and a complete logistics platform. See the full comparison.',
+    'Compare LogisBase vs Tookan. LogisBase is the source-accessible Tookan alternative with no agent-based pricing, self-hosting, full API access, and a complete logistics platform. See the full comparison.',
   keywords: [
     'Tookan alternative',
     'LogisBase vs Tookan',
-    'source-available Tookan alternative',
+    'source-accessible Tookan alternative',
     'delivery management software alternative to Tookan',
     'Tookan competitor',
     'cheaper than Tookan',
     'Tookan self hosted alternative',
   ],
   openGraph: {
-    title: 'LogisBase vs Tookan | Source-Available Tookan Alternative',
+    title: 'LogisBase vs Tookan | Source-Accessible Tookan Alternative',
     description:
-      'Compare LogisBase vs Tookan. No agent-based pricing, self-hosting, full API access. The source-available alternative to Tookan.',
+      'Compare LogisBase vs Tookan. No agent-based pricing, self-hosting, full API access. The source-accessible alternative to Tookan.',
     images: [
       {
-        url: '/og?title=LogisBase%20vs%20Tookan&eyebrow=Compare&subtitle=The%20source-available%20alternative%20to%20Tookan%20%E2%80%94%20no%20agent-based%20pricing%2C%20self-hosted%20or%20cloud.',
+        url: '/og?title=LogisBase%20vs%20Tookan&eyebrow=Compare&subtitle=The%20source-accessible%20alternative%20to%20Tookan%20%E2%80%94%20no%20agent-based%20pricing%2C%20self-hosted%20or%20cloud.',
         width: 1200,
         height: 630,
-        alt: 'LogisBase vs Tookan — source-available Tookan alternative',
+        alt: 'LogisBase vs Tookan — source-accessible Tookan alternative',
       },
     ],
   },
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'LogisBase vs Tookan',
     description:
-      'The source-available Tookan alternative — no agent-based pricing, self-hosted or cloud.',
+      'The source-accessible Tookan alternative — no agent-based pricing, self-hosted or cloud.',
     images: [
-      '/og?title=LogisBase%20vs%20Tookan&eyebrow=Compare&subtitle=The%20source-available%20alternative%20to%20Tookan%20%E2%80%94%20no%20agent-based%20pricing%2C%20self-hosted%20or%20cloud.',
+      '/og?title=LogisBase%20vs%20Tookan&eyebrow=Compare&subtitle=The%20source-accessible%20alternative%20to%20Tookan%20%E2%80%94%20no%20agent-based%20pricing%2C%20self-hosted%20or%20cloud.',
     ],
   },
   alternates: { canonical: 'https://logisbase.com/compare/vs-tookan' },
@@ -52,7 +52,7 @@ type FeatureRow = {
 };
 
 const COMPARISON: FeatureRow[] = [
-  { feature: 'Source-available', logisbase: true, tookan: false },
+  { feature: 'Source-accessible', logisbase: true, tookan: false },
   { feature: 'Self-Hosted Deployment', logisbase: true, tookan: false },
   { feature: 'Cloud Hosting', logisbase: true, tookan: true },
   {

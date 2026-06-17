@@ -18,10 +18,10 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/solutions/roles/developers' },
   title: 'Logistics Platform for Developers & Engineering Teams | LogisBase',
   description:
-    'Source-available, API-first logistics platform built for developers. Full REST API, real-time webhooks, Extensions SDK, self-hosted deployment, and complete source code access.',
+    'Source-accessible, API-first logistics platform built for developers. Full REST API, real-time webhooks, Extensions SDK, self-hosted deployment, and complete source code access.',
   keywords: [
     'logistics API for developers',
-    'source-available logistics platform',
+    'source-accessible logistics platform',
     'fleet management API',
     'logistics developer tools',
     'self-hosted logistics software',
@@ -30,12 +30,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Logistics Platform for Developers | LogisBase',
     description:
-      'Source-available, API-first, and built to be extended. The logistics platform developers actually want to work with.',
+      'Source-accessible, API-first, and built to be extended. The logistics platform developers actually want to work with.',
   },
   twitter: {
     card: 'summary_large_image',
     title: `Logistics Platform for Developers | LogisBase`,
-    description: `Source-available, API-first, and built to be extended. The logistics platform developers actually want to work with.`,
+    description: `Source-accessible, API-first, and built to be extended. The logistics platform developers actually want to work with.`,
   },
 };
 
@@ -45,7 +45,7 @@ export default function DevelopersPage() {
       badge="For Developers & Engineering Teams"
       title={
         <>
-          Source-available. API-First.
+          Source-accessible. API-First.
           <br />
           <span className="text-gradient">Built to Be Extended.</span>
         </>
@@ -77,7 +77,7 @@ export default function DevelopersPage() {
         ],
       }}
       featuresHeading="A logistics platform engineers actually want to work with"
-      featuresSubheading="Source-available, API-first, extensible, and deployable anywhere."
+      featuresSubheading="Source-accessible, API-first, extensible, and deployable anywhere."
       features={[
         {
           title: 'Full REST API — Every Feature Accessible',
@@ -166,7 +166,7 @@ export default function DevelopersPage() {
         { icon: Code2, label: 'JavaScript & React Native SDK' },
         { icon: Webhook, label: 'Webhook auto-retry' },
         { icon: Globe, label: 'Self-hosted deployment' },
-        { icon: GitBranch, label: 'Full source-available' },
+        { icon: GitBranch, label: 'Full source-accessible' },
       ]}
       testimonial={{
         quote:
@@ -198,7 +198,7 @@ export default function DevelopersPage() {
         },
       ]}
       ctaHeading="Build your logistics infrastructure on a platform you control"
-      ctaBody="Source-available, API-first, and built to be extended. Start your free trial or clone the repo — your logistics platform, your rules."
+      ctaBody="Source-accessible, API-first, and built to be extended. Start your free trial or clone the repo — your logistics platform, your rules."
       ctaPrimary="Start Free Trial"
       ctaPrimaryHref="https://console.logisbase.com/onboard"
       ctaSecondary="Request source access"

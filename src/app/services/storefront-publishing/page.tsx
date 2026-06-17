@@ -44,7 +44,7 @@ import { cn } from '@/lib/utils';
 // Form + T&C links (provided by ops). Update these here if they change.
 const TALLY_FORM = 'https://tally.so/r/mBjAPR';
 const TERMS_DOC =
-  'https://docs.google.com/document/d/17NPti5SXTAMpFHqy7DlF6z73rp5iqYBkSebGk7nzfn8/edit?usp=sharing';
+  'https://docs.google.com/document/d/1oNpzxu0GlbOJgWX_79lvXhZHqec2KE4ufT4aoyPUrEw/edit?usp=sharing';
 
 export const metadata: Metadata = {
   title: 'Storefront App Publishing Service | LogisBase',
@@ -619,7 +619,7 @@ export default function StorefrontPublishingPage() {
               Storefront App Publishing Terms &amp; Conditions
               <ExternalLink className="size-3" />
             </Link>
-            . The service is provided by LogisBase Pte. Ltd., Singapore.
+            . The service is provided by LogisBase Ltd., Lagos, Nigeria.
           </p>
         </div>
       </section>

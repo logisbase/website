@@ -38,14 +38,13 @@ export default function PrivacyPolicyPage() {
             {EFFECTIVE_DATE}
           </p>
           <p className="text-muted-foreground mt-2 text-sm">
-            This Privacy Policy describes how{' '}
-            <strong>LogisBase Pte. Ltd.</strong> (&ldquo;LogisBase&rdquo;,
-            &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) collects,
-            uses, and shares information about you when you use our website at{' '}
-            <strong>logisbase.com</strong> and our cloud platform at{' '}
-            <strong>console.logisbase.com</strong> (collectively, the
-            &ldquo;Service&rdquo;). We are committed to protecting your privacy
-            and handling your data with transparency.
+            This Privacy Policy describes how <strong>LogisBase Ltd.</strong>{' '}
+            (&ldquo;LogisBase&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or
+            &ldquo;our&rdquo;) collects, uses, and shares information about you
+            when you use our website at <strong>logisbase.com</strong> and our
+            cloud platform at <strong>console.logisbase.com</strong>{' '}
+            (collectively, the &ldquo;Service&rdquo;). We are committed to
+            protecting your privacy and handling your data with transparency.
           </p>
         </div>
 
@@ -224,8 +223,8 @@ export default function PrivacyPolicyPage() {
               retain Customer Data for up to 30 days to allow you to export it,
               after which it is securely deleted. We may retain certain data for
               longer periods where required by law or for legitimate business
-              purposes (e.g. billing records for 7 years as required by
-              Singapore accounting regulations).
+              purposes (e.g. billing records for 7 years as required by Nigerian
+              accounting regulations).
             </p>
           </section>
 
@@ -260,8 +259,8 @@ export default function PrivacyPolicyPage() {
               7. International Data Transfers
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              LogisBase is headquartered in Singapore. Your data may be
-              processed in Singapore and in other countries where our service
+              LogisBase is headquartered in Lagos, Nigeria. Your data may be
+              processed in Nigeria and in other countries where our service
               providers operate. When transferring data from the EEA or UK, we
               rely on appropriate safeguards such as Standard Contractual
               Clauses (SCCs) approved by the European Commission to ensure your
@@ -478,7 +477,7 @@ export default function PrivacyPolicyPage() {
             </p>
             <div className="bg-muted/30 mt-4 space-y-1.5 rounded-lg border p-4 text-sm">
               <div>
-                <strong>LogisBase Pte. Ltd.</strong>
+                <strong>LogisBase Ltd.</strong>
               </div>
               <div>
                 Email:{' '}
@@ -530,7 +529,7 @@ export default function PrivacyPolicyPage() {
             </Link>
           </div>
           <div className="text-muted-foreground text-xs">
-            &copy; {new Date().getFullYear()} LogisBase Pte. Ltd. All rights
+            &copy; {new Date().getFullYear()} LogisBase Ltd. All rights
             reserved.
           </div>
         </div>

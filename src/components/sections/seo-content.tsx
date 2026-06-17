@@ -12,10 +12,10 @@ export default function SeoContent() {
           <div className="text-muted-foreground space-y-6 text-sm leading-relaxed">
             <div>
               <h2 className="text-foreground mb-3 text-base font-semibold">
-                Source-Available Fleet Management Software
+                Source-Accessible Fleet Management Software
               </h2>
               <p>
-                LogisBase is a fully source-available fleet management and
+                LogisBase is a fully source-accessible fleet management and
                 transportation management system (TMS) built for logistics
                 operators, courier services, food delivery companies, e-commerce
                 fulfillment teams, and enterprise supply chains. Unlike
@@ -57,14 +57,14 @@ export default function SeoContent() {
           <div className="text-muted-foreground space-y-6 text-sm leading-relaxed">
             <div>
               <h2 className="text-foreground mb-3 text-base font-semibold">
-                Source-Available Alternative to Onfleet, Tookan & Route4Me
+                Source-Accessible Alternative to Onfleet, Tookan & Route4Me
               </h2>
               <p>
-                LogisBase is the leading source-available alternative to
+                LogisBase is the leading source-accessible alternative to
                 Onfleet, Tookan, Route4Me, and other proprietary delivery
                 management platforms. Unlike these SaaS tools, LogisBase has no
                 per-driver pricing, no task limits, and no black-box algorithms.
-                You get the full source code under SOURCE-AVAILABLE, an
+                You get the full source code under Source-accessible, an
                 Enterprise License for proprietary deployments, and a growing
                 ecosystem of community extensions.
               </p>
@@ -92,7 +92,7 @@ export default function SeoContent() {
                 food delivery, e-commerce, healthcare, government, and container
                 logistics. The platform supports multi-tenant organizations,
                 role-based access control (RBAC), white-label deployments, and
-                custom branding. Founded in 2018 and source-availabled in 2022,
+                custom branding. Founded in 2022 and source-accessible in 2023,
                 LogisBase is trusted by over 8,000 organizations worldwide.
               </p>
             </div>

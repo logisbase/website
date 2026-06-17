@@ -1,16 +1,17 @@
-import type { Metadata } from 'next';
 import {
-  ClipboardList,
-  Zap,
-  FileCheck,
   BarChart3,
-  Settings,
   Bell,
-  MapPin,
-  Users,
+  ClipboardList,
   Clock,
+  FileCheck,
+  MapPin,
   RefreshCw,
+  Settings,
+  Users,
+  Zap,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
 import SolutionPageLayout from '@/components/solutions/solution-page-layout';
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   },
   title: 'Order Management Software | LogisBase',
   description:
-    'Configure, track, and fulfill any order type with custom workflows, statuses, and fields. Source-available order management that adapts to your logistics operation — not the other way around.',
+    'Configure, track, and fulfill any order type with custom workflows, statuses, and fields. Source-accessible order management that adapts to your logistics operation — not the other way around.',
   keywords: [
     'order management software',
     'logistics order management',

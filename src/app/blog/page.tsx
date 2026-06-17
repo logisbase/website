@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/blog' },
   title: 'Blog | LogisBase',
   description:
-    'Product updates, engineering deep-dives, logistics industry insights, and source-available news from the LogisBase team. Stay up to date with the latest from the platform.',
+    'Product updates, engineering deep-dives, logistics industry insights, and source-accessible news from the LogisBase team. Stay up to date with the latest from the platform.',
   keywords: [
     'logisbase blog',
     'logistics technology blog',
     'fleet management insights',
-    'source-available logistics news',
+    'source-accessible logistics news',
   ],
   openGraph: {
     title: 'Blog | LogisBase',
@@ -57,7 +57,7 @@ export default async function BlogPage() {
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
             Product updates, engineering deep-dives, logistics industry
-            analysis, and source-available news. Written by the people building
+            analysis, and source-accessible news. Written by the people building
             and using LogisBase every day.
           </p>
         </div>
@@ -213,7 +213,7 @@ export default async function BlogPage() {
                 Explore the platform behind the articles
               </h2>
               <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
-                Dive into the product, docs, and source-available modules that
+                Dive into the product, docs, and source-accessible modules that
                 power the workflows we share on the LogisBase blog.
               </p>
               <Button asChild>

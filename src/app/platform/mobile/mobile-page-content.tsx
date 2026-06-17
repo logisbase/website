@@ -487,7 +487,7 @@ export default function MobileAppsPageContent() {
               Branded apps live in the App Store today
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl">
-              Two production deployments of the source-available Storefront app
+              Two production deployments of the source-accessible Storefront app
               — one a Mongolian bulk-supply marketplace, the other a vegan
               restaurant in Florida. Same codebase, different brands, different
               markets.
@@ -603,7 +603,7 @@ export default function MobileAppsPageContent() {
                   'Webhook events for every platform action',
                   'React Native reference apps to accelerate development',
                   'Comprehensive API documentation and Postman collection',
-                  'Active developer community and source-available codebase',
+                  'Active developer community and source-accessible codebase',
                 ].map((f, i) => (
                   <div key={i} className="flex items-center gap-3 text-sm">
                     <CheckCircle2 className="text-primary h-4 w-4 flex-shrink-0" />

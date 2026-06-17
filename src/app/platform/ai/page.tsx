@@ -35,13 +35,13 @@ import {
 
 export const metadata: Metadata = {
   title:
-    'Source-available Logistics AI | AI-Powered Fleet & Delivery Management',
+    'Source-accessible Logistics AI | AI-Powered Fleet & Delivery Management',
   description:
-    'LogisBase is building the source-available AI layer for logistics. AI-powered route optimisation, predictive dispatch, anomaly detection, and natural language operations — all on infrastructure you control.',
+    'LogisBase is building the source-accessible AI layer for logistics. AI-powered route optimisation, predictive dispatch, anomaly detection, and natural language operations — all on infrastructure you control.',
   keywords: [
     'logistics AI',
     'AI fleet management',
-    'source-available logistics AI',
+    'source-accessible logistics AI',
     'AI dispatch software',
     'AI route optimization',
     'logistics automation AI',
@@ -49,22 +49,22 @@ export const metadata: Metadata = {
     'generative AI logistics',
     'AI TMS software',
     'AI supply chain platform',
-    'source-available AI logistics platform',
+    'source-accessible AI logistics platform',
     'AI last mile delivery',
     'predictive logistics AI',
     'fleet AI software',
   ],
   alternates: { canonical: 'https://logisbase.com/platform/ai' },
   openGraph: {
-    title: 'Source-available Logistics AI | LogisBase',
+    title: 'Source-accessible Logistics AI | LogisBase',
     description:
-      'The source-available AI layer for logistics operations. Route AI, dispatch AI, anomaly detection, and natural language control — on infrastructure you own.',
+      'The source-accessible AI layer for logistics operations. Route AI, dispatch AI, anomaly detection, and natural language control — on infrastructure you own.',
     images: [{ url: '/images/og-ai.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `Source-available Logistics AI | LogisBase`,
-    description: `The source-available AI layer for logistics operations. Route AI, dispatch AI, anomaly detection, and natural language control — on infrastructure you own.`,
+    title: `Source-accessible Logistics AI | LogisBase`,
+    description: `The source-accessible AI layer for logistics operations. Route AI, dispatch AI, anomaly detection, and natural language control — on infrastructure you own.`,
   },
 };
 
@@ -180,11 +180,11 @@ const HOW_IT_WORKS = [
     icon: Layers,
     title: 'You Stay in Control',
     description:
-      'Every AI action is logged, explainable, and reversible. You choose which capabilities run autonomously and which require human approval. Source-available means you can audit the models.',
+      'Every AI action is logged, explainable, and reversible. You choose which capabilities run autonomously and which require human approval. Source-accessible means you can audit the models.',
   },
 ];
 
-// ─── Why Source-available AI ───────────────────────────────────────────────────────
+// ─── Why Source-accessible AI ───────────────────────────────────────────────────────
 const OPEN_SOURCE_ADVANTAGES = [
   {
     icon: GitBranch,
@@ -298,7 +298,7 @@ export default function LogisticsAIPage() {
             applicationCategory: 'BusinessApplication',
             operatingSystem: 'Web, Cloud, Self-Hosted',
             description:
-              'Source-available AI layer for logistics operations. AI route optimisation, predictive dispatch, anomaly detection, and natural language fleet control.',
+              'Source-accessible AI layer for logistics operations. AI route optimisation, predictive dispatch, anomaly detection, and natural language fleet control.',
             url: 'https://logisbase.com/platform/ai',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
             creator: {
@@ -558,7 +558,7 @@ export default function LogisticsAIPage() {
         </div>
       </section>
 
-      {/* ── Why Source-available AI ── */}
+      {/* ── Why Source-accessible AI ── */}
       <section className="section-padding bg-muted/20">
         <div className="container mx-auto max-w-5xl">
           <div className="mb-12 text-center">
@@ -688,7 +688,7 @@ export default function LogisticsAIPage() {
                   ['Data stays on your infrastructure', true, false],
                   ['Bring your own AI model', true, false],
                   ['Embedded in operations workflow', true, false],
-                  ['Source-available codebase', true, false],
+                  ['Source-accessible codebase', true, false],
                   ['No vendor lock-in', true, false],
                   ['Community-driven development', true, false],
                   ['Custom model fine-tuning', true, false],

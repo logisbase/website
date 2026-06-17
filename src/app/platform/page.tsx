@@ -6,7 +6,7 @@ import PlatformPageContent from './platform-page-content';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/platform' },
-  title: 'Platform Overview — Source-Available Logistics OS | LogisBase',
+  title: 'Platform Overview — Source-Accessible Logistics OS | LogisBase',
   description:
     'Explore the full LogisBase platform — Fleet-Ops, Storefront, Ledger, Pallet, Navigator, and more. One modular, source-available logistics OS. Self-host or cloud.',
   keywords: [

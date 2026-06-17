@@ -35,11 +35,11 @@ const DeploymentOptions = dynamic(
 const FinalCTA = dynamic(() => import('@/components/sections/final-cta'));
 
 export const metadata: Metadata = {
-  title: 'LogisBase | Source-Available Logistics & Supply Chain Platform',
+  title: 'LogisBase | Source-Accessible Logistics & Supply Chain Platform',
   description:
     'LogisBase is the enterprise logistics OS. Fleet management, e-commerce fulfillment, warehouse, and accounting — one platform, no per-driver fees, self-hosted or cloud.',
   keywords:
-    'source-available logistics platform, fleet management software, TMS software, transportation management system, delivery management, supply chain software, self hosted fleet management, source-available logistics, last mile delivery software, route optimization software, warehouse management',
+    'source-accessible logistics platform, fleet management software, TMS software, transportation management system, delivery management, supply chain software, self hosted fleet management, source-accessible logistics, last mile delivery software, route optimization software, warehouse management',
   alternates: {
     canonical: 'https://logisbase.com',
   },

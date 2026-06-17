@@ -762,11 +762,11 @@ export default function NavigatorPageContent() {
                 },
                 {
                   q: 'Is Navigator available on iOS as well as Android?',
-                  a: 'Yes — Navigator is available on both the Google Play Store and the Apple App Store. Both apps share the same feature set and are maintained in the same source-available repository.',
+                  a: 'Yes — Navigator is available on both the Google Play Store and the Apple App Store. Both apps share the same feature set and are maintained in the same source-accessible repository.',
                 },
                 {
                   q: 'Can I white-label Navigator as my own app?',
-                  a: 'Absolutely. Navigator is SOURCE-AVAILABLE, so you can fork the repo, replace the name, logo, and colours, and publish it to the app stores as your own product at no cost. If you need to keep your modifications private, an Enterprise License is available — contact us to discuss.',
+                  a: 'Absolutely. Navigator is Source-accessible, so you can fork the repo, replace the name, logo, and colours, and publish it to the app stores as your own product at no cost. If you need to keep your modifications private, an Enterprise License is available — contact us to discuss.',
                 },
                 {
                   q: 'Does Navigator require LogisBase Cloud, or can I self-host?',

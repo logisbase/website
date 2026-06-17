@@ -382,14 +382,6 @@ export const NAV_LINKS: NavLink[] = [
           'Create custom extensions and publish them to the marketplace.',
         icon: Puzzle,
       },
-      {
-        label: 'Repository Access',
-        href: 'https://github.com/logisbase/logisbase',
-        description:
-          'Explore the codebase, contribute improvements, and collaborate with the LogisBase developer community.',
-        icon: Github,
-        external: true,
-      },
     ],
   },
   {
@@ -445,7 +437,7 @@ export const NAV_LINKS: NavLink[] = [
         label: 'About Us',
         href: '/company/about',
         description:
-          'Learn about our mission to democratize logistics through source-available license.',
+          'Learn about our mission to democratize logistics through source-accessible license.',
         icon: Building2,
       },
       {
@@ -473,7 +465,7 @@ export const NAV_LINKS: NavLink[] = [
         label: 'Licensing Options',
         href: '/licensing',
         description:
-          'Understand AGPL source-available and commercial licensing for your needs.',
+          'Understand source-accessible and commercial licensing for your needs.',
         icon: FileCheck,
       },
       {

@@ -35,11 +35,11 @@ const azeretMono = Azeret_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://logisbase.com'),
   title: {
-    default: 'LogisBase | Source-Available Fleet Management & TMS Software',
+    default: 'LogisBase | Source-Accessible Fleet Management & TMS Software',
     template: '%s | LogisBase',
   },
   description:
-    'LogisBase is source-available fleet management and TMS software. Dispatch, track, and optimize your fleet in real time. Self-hosted or cloud — free to start, no per-seat pricing.',
+    'LogisBase is source-accessible fleet management and TMS software. Dispatch, track, and optimize your fleet in real time. Self-hosted or cloud — free to start, no per-seat pricing.',
   keywords: [
     'source-available fleet management software',
     'TMS software',
@@ -74,24 +74,24 @@ export const metadata: Metadata = {
     shortcut: [{ url: '/favicon/favicon.ico' }],
   },
   openGraph: {
-    title: 'LogisBase | Source-Available Fleet Management & TMS Software',
+    title: 'LogisBase | Source-Accessible Fleet Management & TMS Software',
     description:
-      'Source-available fleet management and TMS software. Dispatch, track, and optimize your fleet in real time. Self-hosted or cloud — free to start, no per-seat pricing.',
+      'Source-accessible fleet management and TMS software. Dispatch, track, and optimize your fleet in real time. Self-hosted or cloud — free to start, no per-seat pricing.',
     siteName: 'LogisBase',
     images: [
       {
         url: '/images/og-image.jpeg',
         width: 1200,
         height: 630,
-        alt: 'LogisBase - Source-Available Fleet Management & TMS Software',
+        alt: 'LogisBase - Source-Accessible Fleet Management & TMS Software',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LogisBase | Source-Available Fleet Management & TMS Software',
+    title: 'LogisBase | Source-Accessible Fleet Management & TMS Software',
     description:
-      'Source-available fleet management and TMS software. Dispatch, track, and optimize your fleet in real time. Self-hosted or cloud — free to start, no per-seat pricing.',
+      'Source-accessible fleet management and TMS software. Dispatch, track, and optimize your fleet in real time. Self-hosted or cloud — free to start, no per-seat pricing.',
     images: ['/images/og-image.jpeg'],
     creator: '@logisbase',
   },

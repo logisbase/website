@@ -26,8 +26,8 @@ import {
   createGhostAdminToken,
   getGhostPost,
   listGhostPosts,
-  uploadGhostImage,
   updateGhostPost,
+  uploadGhostImage,
 } from './ghost-admin.mjs';
 import { normalizeArticleLinks, normalizeLogisBaseLinks } from './links.mjs';
 import { generateFeatureImage } from './openai-image.mjs';
@@ -38,8 +38,8 @@ import {
 } from './research.mjs';
 import {
   ArticleDraftSchema,
-  RevisedArticleSchema,
   parseJsonObject,
+  RevisedArticleSchema,
 } from './schemas.mjs';
 
 async function testAhrefsUrl() {
@@ -66,14 +66,14 @@ async function testAhrefsUrl() {
 function testAhrefsNormalize() {
   const row = normalizeAhrefsKeyword(
     {
-      keyword: 'source-available fleet management software',
+      keyword: 'source-accessible fleet management software',
       volume: '1200',
       difficulty: '18',
       traffic_potential: '2100',
       parent_topic: { keyword: 'fleet management software' },
       intents: 'commercial,informational',
     },
-    'source-available fleet management',
+    'source-accessible fleet management',
   );
 
   assert.equal(row.volume, 1200);
@@ -121,7 +121,7 @@ async function testAhrefsResearchArtifacts() {
     json: async () => ({
       keywords: [
         {
-          keyword: 'source-available fleet management software',
+          keyword: 'source-accessible fleet management software',
           volume: 100,
           difficulty: 12,
           traffic_potential: 300,

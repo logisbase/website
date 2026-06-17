@@ -106,7 +106,7 @@ const faqs = [
   },
   {
     q: 'Does Fleet-Ops include a mobile app for drivers?',
-    a: 'Yes. The Navigator app (iOS and Android) is a source-available mobile app built for Fleet-Ops. Drivers receive dispatched orders, navigate to stops, capture proof of delivery, and report vehicle faults from the app.',
+    a: 'Yes. The Navigator app (iOS and Android) is a source-accessible mobile app built for Fleet-Ops. Drivers receive dispatched orders, navigate to stops, capture proof of delivery, and report vehicle faults from the app.',
   },
   {
     q: 'How does Fleet-Ops pricing work?',
@@ -114,8 +114,8 @@ const faqs = [
     link: { label: 'See pricing tiers', href: '/pricing' },
   },
   {
-    q: 'Is Fleet-Ops source-available?',
-    a: 'Yes. Fully source-available. Self-host, inspect the code, contribute, or build extensions.',
+    q: 'Is Fleet-Ops source-accessible?',
+    a: 'Yes. Fully source-accessible. Self-host, inspect the code, contribute, or build extensions.',
   },
   {
     q: 'Can I integrate with my existing systems?',
@@ -306,7 +306,7 @@ const comparisonSections: readonly CmpSection[] = [
     label: 'Platform & ownership',
     rows: [
       {
-        feature: 'Source-available',
+        feature: 'Source-accessible',
         info: 'Fleet-Ops is licensed for flexible deployment and customization.',
         values: [true, false, false, false, false, false],
       },

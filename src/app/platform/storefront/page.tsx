@@ -23,14 +23,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Storefront — Headless Commerce & Marketplace Platform | LogisBase',
     description:
-      'Source-available, logistics-first commerce platform. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and delivery built in.',
+      'Source-accessible, logistics-first commerce platform. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and delivery built in.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Storefront — Headless Commerce & Marketplace Platform | LogisBase',
     description:
-      'Source-available, logistics-first commerce platform. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and delivery built in.',
+      'Source-accessible, logistics-first commerce platform. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and delivery built in.',
   },
 };
 

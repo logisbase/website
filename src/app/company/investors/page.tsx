@@ -22,10 +22,10 @@ import { getGitHubStars } from '@/lib/github-stars';
 export const metadata: Metadata = {
   title: 'Investors | LogisBase',
   description:
-    'LogisBase is a bootstrapped, profitable source-available logistics platform powering 8,000+ active instances and 10M+ orders globally. Learn about the opportunity, our model, and what we look for in long-term partners.',
+    'LogisBase is a bootstrapped, profitable source-accessible logistics platform powering 8,000+ active instances and 10M+ orders globally. Learn about the opportunity, our model, and what we look for in long-term partners.',
   keywords: [
     'logisbase investors',
-    'source-available logistics investment',
+    'source-accessible logistics investment',
     'logistics infrastructure investment',
     'bootstrapped logistics company',
     'logisbase strategic partner',
@@ -33,12 +33,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Investors | LogisBase',
     description:
-      'Bootstrapped source-available logistics platform with 8,000+ active instances. Learn about the opportunity and what we look for in long-term partners.',
+      'Bootstrapped source-accessible logistics platform with 8,000+ active instances. Learn about the opportunity and what we look for in long-term partners.',
   },
   twitter: {
     card: 'summary_large_image',
     title: `Investors | LogisBase`,
-    description: `Bootstrapped source-available logistics platform with 8,000+ active instances. Learn about the opportunity and what we look for in long-term partners.`,
+    description: `Bootstrapped source-accessible logistics platform with 8,000+ active instances. Learn about the opportunity and what we look for in long-term partners.`,
   },
   alternates: { canonical: 'https://logisbase.com/company/investors' },
 };
@@ -55,7 +55,11 @@ function buildNumbers(stars: string) {
       label: 'Orders processed',
       sub: 'Across the platform globally',
     },
-    { value: stars, label: 'Organizations', sub: 'Source-available community' },
+    {
+      value: stars,
+      label: 'Organizations',
+      sub: 'Source-accessible community',
+    },
     { value: '40+', label: 'Countries', sub: 'Production deployments' },
   ];
 }

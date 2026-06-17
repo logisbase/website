@@ -14,27 +14,25 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://logisbase.com/company/platform-independence',
-  },
+  alternates: { canonical: 'https://logisbase.com/company/enterprise' },
   title: 'Platform Independence | LogisBase',
   description:
-    'LogisBase is an enterprise, source-accessible logistics platform with self-hostable options. Learn why we chose transparency, what it means for your deployment, how to self-host, and how to contribute to the project.',
+    'LogisBase is an enterprise, source accessible platform with self hostable options. Learn why we chose transparency, what it means for your deployment, how to self-host, and how to contribute to the project.',
   keywords: [
     'logisbase enterprise',
-    'source-accessible logistics platform',
-    'self-hostable logistics software',
+    'enterprise logistics platform',
+    'enterprise logistics software',
     'self-hosted fleet management',
   ],
   openGraph: {
     title: 'Platform Independence | LogisBase',
     description:
-      'Enterprise, source-accessible logistics infrastructure. Deploy anywhere, own everything.',
+      'Fully enterprise, source accessible platform with self hostable options logistics infrastructure. Deploy anywhere, own everything.',
   },
   twitter: {
     card: 'summary_large_image',
     title: `Platform Independence | LogisBase`,
-    description: `Enterprise, source-accessible logistics infrastructure. Deploy anywhere, own everything.`,
+    description: `Fully enterprise, source accessible platform with self hostable options logistics infrastructure. Deploy anywhere, own everything.`,
   },
 };
 
@@ -43,66 +41,66 @@ const reasons = [
     icon: Shield,
     title: 'No vendor lock-in',
     description:
-      'With a source-accessible architecture, your logistics stack is not tied to a vendor’s pricing changes, product direction, or business continuity risks. You retain the ability to run, modify, and maintain your deployment independently.',
+      "When your logistics platform is an enterprise, source accessible platform with self hostable options, you are never at the mercy of a vendor's pricing decisions, acquisition, or shutdown. You own the code and can maintain it independently forever.",
   },
   {
     icon: Code2,
-    title: 'Security you can verify',
+    title: 'Security auditable',
     description:
-      'Every component that processes orders, assigns drivers, and manages operational data can be reviewed at the code level. This enables enterprise security audits, internal compliance checks, and full system transparency.',
+      'Every line of code that processes your orders, tracks your drivers, and stores your data is Enterprise-grade code review. No hidden telemetry, no undisclosed data sharing, no black boxes.',
   },
   {
     icon: GitBranch,
-    title: 'Built for extension',
+    title: 'Extend without limits',
     description:
-      'LogisBase is designed to be extended at every layer. Teams can adapt workflows, build custom modules, and integrate deeply with existing systems without waiting on external roadmaps or relying on one-off vendor development cycles.',
+      'Because LogisBase is an enterprise, source accessible platform with self hostable options, you can modify any part of the platform to fit your exact operation — without waiting for a vendor roadmap or paying for custom development.',
   },
   {
     icon: Users,
-    title: 'Enterprise-grade foundation',
+    title: 'Enterprise-grade quality',
     description:
-      'The platform is built with reliability, scalability, and operational resilience in mind. Transparency into the system architecture allows technical teams to deploy with confidence in high-volume environments.',
+      'Enterprise, source accessible platform with self hostable options software is reviewed, tested, and improved by thousands of developers worldwide. The community finds bugs faster, suggests better solutions, and builds extensions that benefit everyone.',
   },
   {
     icon: Database,
     title: 'Data sovereignty',
     description:
-      'Deploy LogisBase in your own infrastructure, cloud environment, or regulatory jurisdiction. You maintain full control over where your operational data is stored and how it is accessed.',
+      'Self-host LogisBase on your own servers, in your own cloud account, or in any jurisdiction you choose. Your logistics data never has to leave your control.',
   },
   {
     icon: BookOpen,
-    title: 'Long-term operational control',
+    title: 'Sustainable by design',
     description:
-      'The platform is designed to remain usable and maintainable over time, ensuring that your logistics infrastructure stays under your control regardless of vendor strategy changes or market shifts.',
+      'Enterprise, source accessible platform with self hostable options projects outlast any single company. Even if LogisBase as a business changed, the platform would continue to exist, be maintained, and be deployable by the community.',
   },
 ];
 
 const licenceDetails = [
   {
-    title: 'Standard License',
+    title: 'Enterprise, Source Accessible License',
     description:
-      'LogisBase can be used, modified, and self-hosted for internal operations and evaluation purposes. When deployed within an organization for internal use, you retain full operational flexibility. If you deploy modified versions as part of externally facing services or products, certain sharing obligations may apply to those modifications under the standard license terms.',
+      'LogisBase is released under the Source-accessible. You can use, modify, and self-host it freely. The Source-accessible sharing requirement means that if you deploy a modified version over a network — including as a SaaS product — you must make those modifications available under an enterprise, source accessible platform with self hostable options. Internal use with no external users has no such obligation.',
     suitable: [
       'Internal deployments for your own operations',
-      'Evaluation, testing, and development environments',
-      'Academic and non-commercial use cases',
-      'Teams that are comfortable operating within standard license conditions',
+      'Non-commercial and academic use',
+      'Enterprise, source accessible platform with self hostable options projects and contributions',
+      'Operators happy to share modifications with the community',
     ],
   },
   {
     title: 'Enterprise License',
     description:
-      'The Enterprise License provides expanded commercial rights for organizations that need to keep modifications private or operate LogisBase as part of a proprietary offering. It is designed for businesses that want to build SaaS products, white-label solutions, or custom logistics platforms on top of LogisBase without external disclosure requirements for their proprietary enhancements.',
+      'The Enterprise License removes all Source sharing agreement obligations. If you want to make proprietary modifications, build a SaaS product on LogisBase without disclosing your changes, or distribute customised versions to customers, an Enterprise License is required. Your IP stays entirely yours.',
     suitable: [
-      'Proprietary modifications kept confidential',
-      'SaaS platforms built on LogisBase',
+      'Proprietary modifications kept private',
+      'SaaS products without enterprise, source accessible platform with self hostable options disclosure',
       'OEM and white-label distribution',
-      'Managed service providers and enterprise-scale deployments',
+      'Managed service providers and enterprise deployments',
     ],
   },
 ];
 
-export default function OpenSourcePage() {
+export default function EnterprisePage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
@@ -115,17 +113,17 @@ export default function OpenSourcePage() {
             Your platform, <span className="text-primary">your control.</span>
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
-            LogisBase is built with a source-accessible model. The core system
-            can be reviewed and deployed on your own infrastructure, giving your
-            team visibility into how dispatch, driver tracking, and order
-            processing systems operate — and the ability to adapt them to your
-            requirements.
+            LogisBase is fully enterprise, source accessible platform with self
+            hostable options. Every line of code that powers your dispatch,
+            tracks your drivers, and processes your orders is publicly available
+            on request — auditable, customizable, and deployable on your own
+            infrastructure.
           </p>
           <p className="text-muted-foreground mt-4 text-lg leading-relaxed md:text-xl">
-            We treat transparency as a product principle, not a marketing
-            position. Logistics infrastructure is critical operational software,
-            and it should be built in a way that supports trust, control, and
-            long-term ownership for the businesses that depend on it.
+            We chose transparency not as a marketing strategy, but as a
+            fundamental commitment to the operators and developers who depend on
+            this platform. Logistics infrastructure is too critical to be locked
+            inside a vendor's closed system.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
@@ -152,10 +150,13 @@ export default function OpenSourcePage() {
         <div className="container">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {[
-              { value: 'Platform model', label: 'Source-accessible' },
-              { value: 'Transparency', label: 'Full system visibility' },
-              { value: 'Deployment', label: 'Self-hosted or managed' },
-              { value: 'Customization', label: 'Adaptable to your workflows' },
+              {
+                value: 'Enterprise, Source Accessible',
+                label: 'Platform licence',
+              },
+              { value: 'Commercial', label: 'Proprietary option available' },
+              { value: '100%', label: 'Source code access' },
+              { value: 'Self-host', label: 'Deploy anywhere' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-primary text-2xl font-bold md:text-3xl">
@@ -170,7 +171,7 @@ export default function OpenSourcePage() {
         </div>
       </section>
 
-      {/* Why Platform Independence */}
+      {/* Why Enterprise, Source Accessible */}
       <section className="py-16 md:py-24">
         <div className="container">
           <div className="mb-12">
@@ -178,9 +179,9 @@ export default function OpenSourcePage() {
               Why platform independence matters for logistics
             </h2>
             <p className="text-muted-foreground mt-3 max-w-2xl text-lg">
-              Logistics is core operational infrastructure. The systems that run
-              it should be transparent, adaptable, and fully controlled by the
-              businesses that depend on them.
+              Logistics is critical infrastructure. The software that runs it
+              should be transparent, trustworthy, and owned by the businesses
+              that depend on it.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -207,10 +208,10 @@ export default function OpenSourcePage() {
               Licensing explained
             </h2>
             <p className="text-muted-foreground mt-3 max-w-2xl text-lg">
-              LogisBase uses a source-accessible licensing model. An Enterprise
-              License is available for organizations that require additional
-              commercial flexibility for proprietary use cases. Below is a clear
-              breakdown of what each option provides.
+              LogisBase is released under an enterprise, source accessible
+              platform with self hostable options. An Enterprise License is
+              available for businesses that need to keep their modifications
+              proprietary. Here is what each option means.
             </p>
           </div>
           <div className="space-y-6">
@@ -262,11 +263,10 @@ export default function OpenSourcePage() {
                 Contribute to LogisBase
               </h2>
               <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
-                LogisBase evolves through collaboration with developers,
-                logistics operators, and implementation partners worldwide.
-                Whether you’re fixing issues, building extensions, improving
-                documentation, or proposing new capabilities, contributions that
-                improve the platform are encouraged and valued.
+                LogisBase is built by a global community of developers,
+                logistics operators, and contributors. Whether you want to fix a
+                bug, build an extension, improve documentation, or suggest a
+                feature — your contribution is welcome.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>

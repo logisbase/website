@@ -17,7 +17,7 @@ export const PRICING_FAQS = [
   {
     question: 'Do I need a Commercial License?',
     answer:
-      'Only if you plan to build proprietary (closed-source) extensions or integrations on top of Fleetbase. The core platform is AGPL-licensed, which requires open-sourcing modifications. A Commercial License waives this obligation and keeps your custom code private. See /licensing/commercial for full details, pricing tiers, and the FAQ.',
+      'Only if you plan to build proprietary (closed-source) extensions or integrations on top of Fleetbase. The core platform is Source-accessible-licensed, which requires open-sourcing modifications. A Commercial License waives this obligation and keeps your custom code private. See /licensing/commercial for full details, pricing tiers, and the FAQ.',
   },
   {
     question: 'Is there a free trial?',

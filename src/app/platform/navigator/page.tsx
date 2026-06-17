@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   title:
     'Navigator — Driver App for Real-World Logistics Operations | LogisBase',
   description:
-    "Navigator is LogisBase's source-available mobile app for drivers. Real-time dispatch, turn-by-turn navigation, proof of delivery, and offline support — available on iOS and Android.",
+    "Navigator is LogisBase's source-accessible mobile app for drivers. Real-time dispatch, turn-by-turn navigation, proof of delivery, and offline support — available on iOS and Android.",
   keywords: [
     'driver app',
-    'source-available driver app',
+    'source-accessible driver app',
     'fleet driver app',
     'proof of delivery app',
     'last mile delivery app',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title:
       'Navigator — Driver App for Real-World Logistics Operations | LogisBase',
     description:
-      'Source-available iOS and Android driver app with live dispatch, turn-by-turn navigation, proof of delivery, and offline-first operation.',
+      'Source-accessible iOS and Android driver app with live dispatch, turn-by-turn navigation, proof of delivery, and offline-first operation.',
     type: 'website',
   },
   twitter: {
@@ -42,7 +42,7 @@ export default function NavigatorPage() {
       <SoftwareApplicationSchema
         name="LogisBase Navigator"
         url="https://logisbase.com/platform/navigator"
-        description="Source-available iOS and Android driver app with real-time dispatch, turn-by-turn navigation, proof of delivery, and offline-first operation."
+        description="Source-accessible iOS and Android driver app with real-time dispatch, turn-by-turn navigation, proof of delivery, and offline-first operation."
         applicationCategory="MobileApplication"
         operatingSystem="iOS, Android"
       />

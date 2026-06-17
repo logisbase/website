@@ -24,23 +24,23 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/licensing' },
   title: 'Licensing | LogisBase',
   description:
-    'LogisBase is released under SOURCE-AVAILABLE. If you deploy on a network and make changes, those changes must remain AGPL — or you need an Enterprise License to keep them proprietary.',
+    'LogisBase is released under Source-accessible. If you deploy on a network and make changes, those changes must remain Source-accessible — or you need an Enterprise License to keep them proprietary.',
   keywords: [
     'logisbase licensing',
-    'Source-available logistics software',
-    'source-available logistics licence',
+    'Source-accessible logistics software',
+    'source-accessible logistics licence',
     'commercial logistics software licence',
-    'AGPL network copyleft',
+    'Source-accessible',
   ],
   openGraph: {
     title: 'Licensing | LogisBase',
     description:
-      'SOURCE-AVAILABLE source-available and commercial licensing options for LogisBase.',
+      'Source-accessible and commercial licensing options for LogisBase.',
   },
   twitter: {
     card: 'summary_large_image',
     title: `Licensing | LogisBase`,
-    description: `SOURCE-AVAILABLE source-available and commercial licensing options for LogisBase.`,
+    description: `Source-accessible and commercial licensing options for LogisBase.`,
   },
 };
 
@@ -89,7 +89,7 @@ const licences = [
 
 const faqs = [
   {
-    q: 'What is LogisBase licensing and how is it different from other open-source models?',
+    q: 'What is LogisBase licensing and how is it different from other licensing models?',
     a: 'LogisBase uses a source-accessible licensing model designed for transparency and operational flexibility. Unlike permissive models such as MIT or Apache, it includes conditions around how modified versions can be deployed as network-accessible services. This ensures improvements to the platform remain traceable while supporting both internal and commercial use cases.',
   },
   {
@@ -232,7 +232,7 @@ export default function LicensingPage() {
         </div>
       </section>
 
-      {/* AGPL Explained */}
+      {/* Source-accessible Explained */}
       <section className="bg-muted/20 border-t border-b py-16 md:py-20">
         <div className="container">
           <div className="mx-auto max-w-3xl">

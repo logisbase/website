@@ -1,27 +1,28 @@
 'use client';
 
-import Link from 'next/link';
+import {
+  CheckCircle2,
+  ClipboardList,
+  Globe,
+  KeyRound,
+  Lock,
+  MonitorSmartphone,
+  Server,
+  ShieldAlert,
+  ShieldCheck,
+  Smartphone,
+  Users,
+} from 'lucide-react';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import {
-  Lock,
-  ShieldCheck,
-  KeyRound,
-  ClipboardList,
-  Globe,
-  Server,
-  Users,
-  Smartphone,
-  MonitorSmartphone,
-  CheckCircle2,
-  ShieldAlert,
-} from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const securityFeatures = [
   {
@@ -127,7 +128,7 @@ const faqs = [
   },
   {
     q: 'Can I self-host LogisBase for maximum data control?',
-    a: 'Yes. LogisBase is fully source-available and can be self-hosted on your own infrastructure — on-premises, in your private cloud, or on any major cloud provider. Self-hosting gives you complete control over your data, network, and security configuration.',
+    a: 'Yes. LogisBase is fully source-accessible and can be self-hosted on your own infrastructure — on-premises, in your private cloud, or on any major cloud provider. Self-hosting gives you complete control over your data, network, and security configuration.',
   },
   {
     q: 'How does LogisBase manage access control?',
@@ -139,7 +140,7 @@ const faqs = [
   },
   {
     q: 'How are security vulnerabilities handled?',
-    a: 'LogisBase has a responsible disclosure policy and a dedicated security team that monitors for vulnerabilities. Critical security patches are released within 24 hours of discovery. As an source-available platform, the community also contributes to security reviews. Enterprise customers receive direct security notifications.',
+    a: 'LogisBase has a responsible disclosure policy and a dedicated security team that monitors for vulnerabilities. Critical security patches are released within 24 hours of discovery. As an source-accessible platform, the community also contributes to security reviews. Enterprise customers receive direct security notifications.',
   },
   {
     q: 'What happens to my data if I cancel?',
@@ -216,7 +217,7 @@ export default function SecurityCompliancePageContent() {
             <div>
               <div className="mb-1 text-2xl font-bold">100%</div>
               <div className="text-muted-foreground text-sm">
-                Source-Available Auditable
+                Source-Accessible & Auditable
               </div>
             </div>
           </div>
@@ -478,7 +479,7 @@ export default function SecurityCompliancePageContent() {
               <p className="text-muted-foreground mb-8 text-lg">
                 For organisations with strict data residency, regulatory, or
                 security requirements, LogisBase can be deployed entirely on
-                your own infrastructure. As a fully source-available platform,
+                your own infrastructure. As a fully source-accessible platform,
                 you can audit every line of code and ensure your data never
                 leaves your environment.
               </p>

@@ -240,7 +240,7 @@ const comparison = [
     thirdParty: { value: 'Built-in', positive: null },
   },
   {
-    feature: 'Source-available & self-hosted',
+    feature: 'Source-accessible & self-hosted',
     storefront: { value: 'Yes', positive: true },
     shopify: { value: 'No', positive: false },
     thirdParty: { value: 'No', positive: false },
@@ -256,7 +256,7 @@ const comparison = [
 const faqs = [
   {
     q: 'How is Storefront different from Shopify?',
-    a: "Storefront is built specifically for hyperlocal, on-demand commerce with integrated logistics. Unlike Shopify, which is designed for shipping products, Storefront includes native delivery management via Fleet-Ops, production-ready mobile apps, and multi-vendor marketplace capabilities out of the box. Plus, it's source-available and self-hostable.",
+    a: "Storefront is built specifically for hyperlocal, on-demand commerce with integrated logistics. Unlike Shopify, which is designed for shipping products, Storefront includes native delivery management via Fleet-Ops, production-ready mobile apps, and multi-vendor marketplace capabilities out of the box. Plus, it's source-accessible and self-hostable.",
   },
   {
     q: 'Do I really pay zero commission fees?',
@@ -268,7 +268,7 @@ const faqs = [
   },
   {
     q: 'Are the mobile apps really included?',
-    a: 'Yes. Storefront includes production-ready iOS and Android apps built with React Native. You can customize the branding, colors, and logo, then submit to the App Store and Google Play. The app source code is source-available — inspect it, fork it, extend it.',
+    a: 'Yes. Storefront includes production-ready iOS and Android apps built with React Native. You can customize the branding, colors, and logo, then submit to the App Store and Google Play. The app source code is source-accessible — inspect it, fork it, extend it.',
   },
   {
     q: 'Can I use my own drivers or do I have to use Fleet-Ops?',
@@ -279,8 +279,8 @@ const faqs = [
     a: 'Storefront supports Stripe, PayPal, and QPay out of the box, with credit cards, debit cards, Apple Pay, Google Pay, and wallet top-ups. The payment system is extensible so you can integrate additional gateways for local market requirements.',
   },
   {
-    q: 'Is Storefront really source-available?',
-    a: 'Yes. Storefront is fully source-available. View the code on GitHub, self-host on your own infrastructure, and customise it to your exact needs. An Enterprise License is available if you need to keep your changes proprietary.',
+    q: 'Is Storefront really source-accessible?',
+    a: 'Yes. Storefront is fully source-accessible. View the code on GitHub, self-host on your own infrastructure, and customise it to your exact needs. An Enterprise License is available if you need to keep your changes proprietary.',
   },
   {
     q: 'Can I migrate from DoorDash or Uber Eats?',
@@ -743,7 +743,7 @@ export default function StorefrontPageContent() {
                 <h2 className="text-4xxl leading-tight tracking-tight text-balance md:text-5xl">
                   A Branded App.{' '}
                   <span className="text-gradient">
-                    Source-available. Fully Customizable.
+                    Source-accessible. Fully Customizable.
                   </span>
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
@@ -969,7 +969,7 @@ export default function StorefrontPageContent() {
                   'Webhooks for order events, payment status, and delivery updates',
                   'JavaScript SDK for rapid frontend integration',
                   'Sandbox environment for safe integration testing',
-                  'Source-available — self-host, fork, and extend freely',
+                  'Source-accessible — self-host, fork, and extend freely',
                 ].map((point) => (
                   <div
                     key={point}

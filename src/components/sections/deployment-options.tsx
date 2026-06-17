@@ -73,7 +73,7 @@ const deploymentOptions = [
         'No vendor lock-in',
         'Unlimited customization',
         'Community support',
-        'Source-available transparency',
+        'Source-accessible transparency',
       ],
       excluded: [
         'Managed infrastructure',

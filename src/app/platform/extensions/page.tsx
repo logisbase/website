@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/platform/extensions' },
   title: 'Extensions Marketplace — Build, Install & Monetize | LogisBase',
   description:
-    'Browse and install extensions from LogisBase and the source-available community, or publish your own and monetize it to reach thousands of logistics operators worldwide.',
+    'Browse and install extensions from LogisBase and the source-accessiblee community, or publish your own and monetize it to reach thousands of logistics operators worldwide.',
   keywords: [
     'LogisBase extensions',
     'logistics platform extensions',

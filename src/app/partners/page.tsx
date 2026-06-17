@@ -1,24 +1,25 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
 import {
   ArrowRight,
-  Handshake,
   Code2,
   Globe,
-  Wrench,
+  Handshake,
   Puzzle,
+  Wrench,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: 'Partner Program | LogisBase',
   description:
-    'Join the LogisBase partner program as an integration, implementation, technology, or reseller partner. Help your customers deploy source-available logistics infrastructure.',
+    'Join the LogisBase partner program as an integration, implementation, technology, or reseller partner. Help your customers deploy source-accessible logistics infrastructure.',
   keywords: [
     'LogisBase partners',
     'logisbase partner program',
     'logistics partner program',
-    'source-available logistics partners',
+    'source-accessible logistics partners',
     'logisbase reseller',
   ],
   openGraph: {

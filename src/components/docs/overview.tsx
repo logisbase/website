@@ -81,7 +81,7 @@ const POPULAR_SEARCHES = ['Webhooks', 'Extensions', 'API Keys', 'Installation'];
 function initOrama() {
   return create({
     schema: { _: 'string' },
-    // https://docs.orama.com/source-available/supported-languages
+    // https://docs.orama.com/open-source/supported-languages
     language: 'english',
   });
 }

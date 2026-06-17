@@ -388,7 +388,7 @@ export async function generateArticle({
         'Use semantic HTML: h2, h3, p, ul, ol, pre, code, table when useful.',
         'Include practical LogisBase-specific guidance and internal links.',
         `Use ${config.siteUrl} for all LogisBase website links and ${config.siteUrl}/docs for all documentation links. Never link to logisbase.ghost.io/docs or logisbase.ghost.io website paths.`,
-        'Keep the article useful even if the reader is evaluating source-available logistics software.',
+        'Keep the article useful even if the reader is evaluating source-accessible logistics software.',
         'For LogisBase API tutorials, include a practical build/configure/use flow with code or request examples only when supported by context.',
         'For software SEO articles, connect the topic to LogisBase modules and logistics/supply-chain operating workflows.',
         'No publication language such as "in this AI-generated draft".',

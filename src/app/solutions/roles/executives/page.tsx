@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/solutions/roles/executives' },
   title: 'Logistics Platform for Executives & Business Leaders | LogisBase',
   description:
-    'Give leadership real-time visibility into logistics performance, cost efficiency, and growth metrics. Source-available logistics infrastructure that scales without vendor lock-in.',
+    'Give leadership real-time visibility into logistics performance, cost efficiency, and growth metrics. Source-accessible logistics infrastructure that scales without vendor lock-in.',
   keywords: [
     'logistics software for executives',
     'logistics ROI platform',
@@ -50,7 +50,7 @@ export default function ExecutivesPage() {
           <span className="text-gradient">Delivers ROI, Not Invoices.</span>
         </>
       }
-      description="Most logistics software is sold on features and delivers on functionality — but the business outcomes are an afterthought. LogisBase is built differently: source-available infrastructure with no per-seat pricing, no vendor lock-in, and no data held hostage by a third party. For business leaders, that means lower cost of ownership, complete data sovereignty, and a platform that scales with your operation rather than taxing it."
+      description="Most logistics software is sold on features and delivers on functionality — but the business outcomes are an afterthought. LogisBase is built differently: source-accessible infrastructure with no per-seat pricing, no vendor lock-in, and no data held hostage by a third party. For business leaders, that means lower cost of ownership, complete data sovereignty, and a platform that scales with your operation rather than taxing it."
       stats={[
         {
           value: '40%',
@@ -84,7 +84,7 @@ export default function ExecutivesPage() {
           bullets: [
             'Flat cloud pricing — no per-seat, per-driver, or per-order fees',
             'Self-hosted option eliminates vendor subscription entirely',
-            'Source-available licence means your development investment stays with you',
+            'Source-accessible licence means your development investment stays with you',
           ],
           icon: DollarSign,
           screenshot: '/images/screenshots/ledger/ledger-balance-sheet.webp',
@@ -166,7 +166,7 @@ export default function ExecutivesPage() {
       ]}
       testimonial={{
         quote:
-          "We evaluated five logistics platforms and LogisBase was the only one that didn't charge us per driver. As we scaled from 40 to 120 drivers, our platform cost barely moved. The source-available model also means we're not held hostage at renewal time.",
+          "We evaluated five logistics platforms and LogisBase was the only one that didn't charge us per driver. As we scaled from 40 to 120 drivers, our platform cost barely moved. The source-accessible model also means we're not held hostage at renewal time.",
         author: 'Diane O.',
         role: 'COO',
         company: 'Pulse Logistics Group',
@@ -182,7 +182,7 @@ export default function ExecutivesPage() {
         },
         {
           q: 'Can LogisBase be deployed in our own cloud environment for data sovereignty?',
-          a: 'Yes. LogisBase is source-available and designed for self-hosting on AWS, Azure, GCP, or on-premise infrastructure. No operational or customer data is sent to LogisBase servers in a self-hosted deployment.',
+          a: 'Yes. LogisBase is source-accessible and designed for self-hosting on AWS, Azure, GCP, or on-premise infrastructure. No operational or customer data is sent to LogisBase servers in a self-hosted deployment.',
         },
         {
           q: 'How does source-accessible licensing work for commercial use?',

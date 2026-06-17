@@ -15,7 +15,7 @@ const solutions = [
   'Automated dispatch with intelligent route optimization',
   'Live GPS tracking, ETAs, and driver status in real time',
   'Usage-based pricing — scale without cost penalties',
-  'Source-available with full REST API and self-hosting option',
+  'Source-accessible with full REST API and self-hosting option',
 ];
 
 export default function ProblemSolution() {
@@ -60,7 +60,7 @@ export default function ProblemSolution() {
               Built for the way modern logistics actually works.
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              LogisBase is modular, source-available, and designed to flex
+              LogisBase is modular, source-accessible, and designed to flex
               around your operations — not the other way around. Every feature
               is built to give you control, visibility, and the ability to scale
               without limits.

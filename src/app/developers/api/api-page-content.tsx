@@ -600,7 +600,7 @@ export default function ApiIntegrationsPageContent() {
                 },
                 {
                   q: 'Can I use the API to build a custom mobile app?',
-                  a: 'Absolutely. The LogisBase API is the foundation for our own source-available Navigator and Storefront mobile apps. You can use the same API to build custom driver apps, customer-facing apps, or any other mobile experience on top of LogisBase.',
+                  a: 'Absolutely. The LogisBase API is the foundation for our own source-accessible Navigator and Storefront mobile apps. You can use the same API to build custom driver apps, customer-facing apps, or any other mobile experience on top of LogisBase.',
                   learnMore: {
                     href: '/docs/storefront/app/overview',
                     label: 'Storefront & Navigator app docs →',

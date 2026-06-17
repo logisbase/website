@@ -17,16 +17,16 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/company' },
   title: 'Company | LogisBase',
   description:
-    'LogisBase is the source-available logistics platform built to democratize logistics technology. Learn about our mission, team, source-available commitment, and how to get involved.',
+    'LogisBase is the source-accessible logistics platform built to democratize logistics technology. Learn about our mission, team, source-accessible commitment, and how to get involved.',
   openGraph: {
     title: 'Company | LogisBase',
     description:
-      'Source-available logistics infrastructure built to democratize logistics technology.',
+      'Source-accessible logistics infrastructure built to democratize logistics technology.',
   },
   twitter: {
     card: 'summary_large_image',
     title: `Company | LogisBase`,
-    description: `Source-available logistics infrastructure built to democratize logistics technology.`,
+    description: `Source-accessible logistics infrastructure built to democratize logistics technology.`,
   },
 };
 
@@ -44,8 +44,8 @@ const companyLinks = [
     icon: Code2,
     title: 'Platform Independence',
     description:
-      'LogisBase is fully source-available under SOURCE-AVAILABLE. Understand why we chose transparency, what it means for your deployment, and how you can contribute to the project.',
-    cta: 'Our source-available commitment',
+      'LogisBase is fully source-accessible. Understand why we chose transparency, what it means for your deployment, and how you can contribute to the project.',
+    cta: 'Our source-accessible commitment',
   },
   {
     href: '/partners',
@@ -76,7 +76,7 @@ const companyLinks = [
     icon: BookOpen,
     title: 'Licensing',
     description:
-      'Understand the difference between AGPL source-available and commercial licensing, and choose the right option for your deployment and business model.',
+      'Understand the difference between source-accessible and commercial licensing, and choose the right option for your deployment and business model.',
     cta: 'Understand licensing',
   },
   {
@@ -93,7 +93,7 @@ const stats = [
   { value: '500+', label: 'Companies using LogisBase' },
   { value: '10M+', label: 'Orders processed' },
   { value: '40+', label: 'Countries' },
-  { value: '100%', label: 'Source-available' },
+  { value: '100%', label: 'Source-accessible' },
 ];
 
 export default function CompanyPage() {
@@ -111,7 +111,7 @@ export default function CompanyPage() {
             everyone.
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
-            LogisBase is the source-available logistics and fleet management
+            LogisBase is the source-accessible logistics and fleet management
             platform built to give every business — regardless of size or budget
             — the same operational capabilities as the world&apos;s largest
             logistics companies.
@@ -192,7 +192,7 @@ export default function CompanyPage() {
             </h2>
             <blockquote className="text-muted-foreground text-xl leading-relaxed md:text-2xl">
               &ldquo;To democratize logistics technology by building
-              source-available infrastructure that gives every business the
+              source-accessible infrastructure that gives every business the
               tools to operate with the efficiency and intelligence of the
               world&apos;s best logistics companies — without vendor lock-in,
               without prohibitive costs, and without compromise.&rdquo;

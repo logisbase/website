@@ -199,7 +199,7 @@ export default async function BlogPostPage(props: {
                 Ready to put these ideas into practice?
               </h2>
               <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
-                Explore the platform, docs, and source-available modules behind
+                Explore the platform, docs, and source-accessible modules behind
                 the workflows we write about on the LogisBase blog.
               </p>
               <Button asChild>

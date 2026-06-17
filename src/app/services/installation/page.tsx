@@ -22,7 +22,7 @@ import Link from 'next/link';
 
 // Canonical T&C — Google Doc maintained by ops. Update here if the URL changes.
 const TERMS_DOC =
-  'https://docs.google.com/document/d/1g0q54mbU-aCwhH0DSNBjDGlq70Rdd0d7on-E-B4FYRo/edit?usp=sharing';
+  'https://docs.google.com/document/d/1ECrnJkjJ1k1Z7fWbx3JtnN0MTfjghGDxVMtj3vPWMv8/edit?usp=sharing';
 import {
   Accordion,
   AccordionContent,
@@ -595,7 +595,7 @@ export default function InstallationServicePage() {
               LogisBase Console &amp; Core Implementation Terms &amp; Conditions
               <ExternalLink className="size-3" />
             </Link>
-            . The service is provided by LogisBase Pte. Ltd., Singapore.
+            . The service is provided by LogisBase Ltd., Singapore.
           </p>
         </div>
       </section>

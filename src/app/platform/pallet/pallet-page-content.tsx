@@ -198,8 +198,8 @@ const faqs = [
     a: 'Yes. When a customer places an order via Storefront, Pallet can receive it and generate a pick list. Once fulfilled, Fleet-Ops dispatches the delivery. The full Storefront → Pallet → Fleet-Ops flow works natively without any integration work.',
   },
   {
-    q: 'Is Pallet source-available?',
-    a: 'Yes. Pallet is source-available under SOURCE-AVAILABLE. You can view the code on GitHub, self-host it, and contribute. An Enterprise License is available if you need to keep modifications proprietary.',
+    q: 'Is Pallet source-accessible?',
+    a: 'Yes. Pallet is source-accessible. You can view the code on GitHub, self-host it, and contribute. An Enterprise License is available if you need to keep modifications proprietary.',
   },
   {
     q: 'Can I use Pallet for 3PL operations?',

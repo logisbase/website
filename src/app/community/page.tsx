@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     'logisbase community',
     'logistics software community',
     'logisbase discord',
-    'source-available logistics community',
+    'source-accessible logistics community',
   ],
   openGraph: {
     title: 'Community | LogisBase',
@@ -52,7 +52,7 @@ const channels = [
       'Explore the codebase, report issues, submit pull requests, and track development progress. LogisBase development happens transparently in the open.',
     cta: 'Request source access',
     href: 'https://github.com/logisbase/logisbase',
-    badge: 'Source-available',
+    badge: 'Source-accessible',
   },
   {
     icon: BookOpen,
