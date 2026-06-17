@@ -1,4 +1,5 @@
 # logisbase.com
+https://deepwiki.com/badge-maker?url=https%3A%2F%2Fdeepwiki.com%2Flogisbase%2Fwebsite
 
 The marketing site, documentation, and developer portal for [LogisBase](https://logisbase.com) — the source-accessible logistics and supply-chain platform.
 
