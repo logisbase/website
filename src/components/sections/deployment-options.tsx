@@ -61,7 +61,7 @@ const deploymentOptions = [
     price: '$2,500 one-time implementation',
     cta: {
       text: 'Get Started',
-      href: 'https://tally.so/r/mVbv2M',
+      href: 'https://tally.so/r/5BO78o',
       variant: 'outline' as const,
     },
     features: {

@@ -42,7 +42,7 @@ import {
 import { cn } from '@/lib/utils';
 
 // Form + T&C links (provided by ops). Update these here if they change.
-const TALLY_FORM = 'https://tally.so/r/nrkVRM';
+const TALLY_FORM = 'https://tally.so/r/XxNayO';
 const TERMS_DOC =
   'https://docs.google.com/document/d/1pmq5u2AJYScuPycnfY2L5wiMjBrrdipPQeGlPRRA2pw/edit?usp=sharing';
 

@@ -226,7 +226,7 @@ export default function InstallationServicePage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild>
               <Link
-                href="https://tally.so/r/mVbv2M"
+                href="https://tally.so/r/5BO78o"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -399,7 +399,7 @@ export default function InstallationServicePage() {
               <div className="p-6 pt-0">
                 <Button className="w-full" asChild>
                   <Link
-                    href="https://tally.so/r/mVbv2M"
+                    href="https://tally.so/r/5BO78o"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -463,7 +463,7 @@ export default function InstallationServicePage() {
               <div className="p-6 pt-0">
                 <Button className="w-full" variant="outline" asChild>
                   <Link
-                    href="https://tally.so/r/mVbv2M"
+                    href="https://tally.so/r/5BO78o"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -595,7 +595,7 @@ export default function InstallationServicePage() {
               LogisBase Console &amp; Core Implementation Terms &amp; Conditions
               <ExternalLink className="size-3" />
             </Link>
-            . The service is provided by LogisBase Ltd., Singapore.
+            . The service is provided by LogisBase Ltd., Lagos, Nigeria.
           </p>
         </div>
       </section>
@@ -615,7 +615,7 @@ export default function InstallationServicePage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Button size="lg" asChild>
                 <Link
-                  href="https://tally.so/r/mVbv2M"
+                  href="https://tally.so/r/5BO78o"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
