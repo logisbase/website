@@ -2,7 +2,15 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FaGithub, FaInstagram, FaWhatsapp, FaXTwitter } from 'react-icons/fa6';
+import {
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaTiktok,
+  FaWhatsapp,
+  FaXTwitter,
+  FaYoutube,
+} from 'react-icons/fa6';
 
 import Logo from '@/components/layout/logo';
 import { Button } from '@/components/ui/button';
@@ -22,6 +30,21 @@ const SOCIAL_LINKS = [
     name: 'WhatsApp',
     href: 'https://wa.me/2348039314584?text=Hi%20LogisBase%20team!%20I%27d%20like%20to%20learn%20more%20about%20your%20logistics%20platform.',
     icon: <FaWhatsapp className="size-4" />,
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/logisbase',
+    icon: <FaLinkedin className="size-4" />,
+  },
+  {
+    name: 'YouTube',
+    href: 'https://www.youtube.com/@logisbase',
+    icon: <FaYoutube className="size-4" />,
+  },
+  {
+    name: 'TikTok',
+    href: 'https://tiktok.com/@logisbase',
+    icon: <FaTiktok className="size-4" />,
   },
   {
     name: 'Instagram',
