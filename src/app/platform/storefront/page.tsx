@@ -8,14 +8,14 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/platform/storefront' },
   title: 'Storefront — Headless Commerce & Marketplace Platform | LogisBase',
   description:
-    'Storefront by LogisBase is source-available headless commerce built for on-demand businesses. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and native Fleet-Ops delivery integration.',
+    'Storefront by LogisBase is source-accessible headless commerce built for on-demand businesses. Zero commission fees, white-label mobile apps, multi-vendor marketplace, and native Fleet-Ops delivery integration.',
   keywords: [
     'headless commerce platform',
     'online ordering software',
     'white label delivery app',
     'multi vendor marketplace software',
     'on demand commerce platform',
-    'source-available storefront',
+    'source-accessible storefront',
     'delivery management ecommerce',
     'hyperlocal delivery platform',
     'zero commission ordering',
@@ -40,7 +40,7 @@ export default function StorefrontPage() {
       <SoftwareApplicationSchema
         name="LogisBase Storefront"
         url="https://logisbase.com/platform/storefront"
-        description="Source-available headless commerce and multi-vendor marketplace platform with white-label mobile apps, zero commission fees, and native Fleet-Ops delivery integration."
+        description="Source-accessible headless commerce and multi-vendor marketplace platform with white-label mobile apps, zero commission fees, and native Fleet-Ops delivery integration."
       />
       <StorefrontPageContent />
     </>

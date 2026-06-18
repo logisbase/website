@@ -1,16 +1,17 @@
-import { loader } from 'fumadocs-core/source';
 import type { InferPageType, LoaderPlugin } from 'fumadocs-core/source';
+import { loader } from 'fumadocs-core/source';
+
 import {
-  docs,
-  fleetOpsDocs,
-  storefrontDocs,
-  palletDocs,
-  ledgerDocs,
-  cliDocs,
-  uiDocs,
-  extensionDevelopmentDocs,
   apiDocs,
+  cliDocs,
   contributingDocs,
+  docs,
+  extensionDevelopmentDocs,
+  fleetOpsDocs,
+  ledgerDocs,
+  palletDocs,
+  storefrontDocs,
+  uiDocs,
 } from '@/.source';
 
 // Plugin: when a page declares `sidebarTitle` in frontmatter, use it as the
@@ -24,7 +25,8 @@ const sidebarTitlePlugin: LoaderPlugin = {
       if (!filePath) return node;
       const page = this.storage.read(filePath);
       if (page?.format !== 'page') return node;
-      const sidebarTitle = (page.data as { sidebarTitle?: unknown }).sidebarTitle;
+      const sidebarTitle = (page.data as { sidebarTitle?: unknown })
+        .sidebarTitle;
       if (typeof sidebarTitle === 'string' && sidebarTitle.length > 0) {
         return { ...node, name: sidebarTitle };
       }
@@ -68,21 +70,21 @@ export const ledgerSource = loader({
   plugins: [sidebarTitlePlugin],
 });
 
-// CLI — Fleetbase command-line tool
+// CLI — LogisBase command-line tool
 export const cliSource = loader({
   baseUrl: '/docs/cli',
   source: { files: cliDocs.toFumadocsSource().files() },
   plugins: [sidebarTitlePlugin],
 });
 
-// Fleetbase UI — ember-ui component library and mobile apps
+// LogisBase UI — ember-ui component library and mobile apps
 export const uiSource = loader({
   baseUrl: '/docs/ui',
   source: { files: uiDocs.toFumadocsSource().files() },
   plugins: [sidebarTitlePlugin],
 });
 
-// Extension Development — building and extending Fleetbase
+// Extension Development — building and extending LogisBase
 export const extensionDevelopmentSource = loader({
   baseUrl: '/docs/extension-development',
   source: { files: extensionDevelopmentDocs.toFumadocsSource().files() },

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import DeveloperExtensionsPageContent from './extensions-page-content';
 
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     'fleet management module',
     'LogisBase CLI',
     'extension registry',
-    'source-available logistics',
+    'source-accessible logistics',
   ],
   openGraph: {
     title: 'Build Extensions | LogisBase Developer Platform',

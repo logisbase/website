@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     'API key management',
     'audit logs fleet management',
     'data encryption logistics',
-    'source-available security logistics',
+    'source-accessible security logistics',
   ],
   openGraph: {
     title: 'Security & Compliance | LogisBase',

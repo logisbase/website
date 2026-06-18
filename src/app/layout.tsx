@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   description:
     'LogisBase is source-accessible fleet management and TMS software. Dispatch, track, and optimize your fleet in real time. Self-hosted or cloud — free to start, no per-seat pricing.',
   keywords: [
-    'source-available fleet management software',
+    'source-accessible fleet management software',
     'TMS software',
-    'source-available logistics platform',
+    'source-accessible logistics platform',
     'self hosted fleet management',
     'Onfleet alternative',
     'fleet management API',
