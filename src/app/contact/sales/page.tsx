@@ -221,7 +221,7 @@ export default function ContactSalesPage() {
 
               {/* Discord */}
               <Link
-                href="https://discord.com/invite/HnTqQ6zAVn"
+                href="https://discord.gg/7xPbDryKDH"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block"

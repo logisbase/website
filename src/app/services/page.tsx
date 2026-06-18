@@ -66,7 +66,7 @@ const SUPPORT_TIERS = [
     ],
     notIncluded: ['Email support', 'SLA guarantee', 'Priority bug fixes'],
     cta: 'Join Discord',
-    ctaHref: 'https://discord.com/invite/HnTqQ6zAVn',
+    ctaHref: 'https://discord.gg/7xPbDryKDH',
     highlight: false,
   },
   {
@@ -395,7 +395,7 @@ export default function ServicesPage() {
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="https://discord.com/invite/HnTqQ6zAVn">
+              <Link href="https://discord.gg/7xPbDryKDH">
                 Join Discord Community
               </Link>
             </Button>

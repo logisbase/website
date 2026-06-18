@@ -280,7 +280,7 @@ export default function OpenSourcePage() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <Link href="https://discord.com/invite/HnTqQ6zAVn">
+                  <Link href="https://discord.gg/7xPbDryKDH">
                     Join the community
                   </Link>
                 </Button>

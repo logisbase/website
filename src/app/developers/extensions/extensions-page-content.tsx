@@ -560,7 +560,7 @@ export default function DeveloperExtensionsPageContent() {
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                   <Link
-                    href="https://discord.com/invite/HnTqQ6zAVn"
+                    href="https://discord.gg/7xPbDryKDH"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

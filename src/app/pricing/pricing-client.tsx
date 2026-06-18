@@ -236,7 +236,7 @@ const SUPPORT_TIERS = [
       { label: 'Private Discord Channel', included: false },
     ],
     cta: 'Join Discord',
-    ctaHref: 'https://discord.com/invite/HnTqQ6zAVn',
+    ctaHref: 'https://discord.gg/7xPbDryKDH',
     highlight: false,
   },
   {

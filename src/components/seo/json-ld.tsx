@@ -14,7 +14,7 @@ export function OrganizationSchema() {
       'https://github.com/logisbase/logisbase',
       'https://twitter.com/logisbase',
       'https://www.linkedin.com/company/logisbase',
-      'https://discord.com/invite/HnTqQ6zAVn',
+      'https://discord.gg/7xPbDryKDH',
     ],
     contactPoint: [
       {

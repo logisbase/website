@@ -42,7 +42,7 @@ const channels = [
     description:
       'The most active LogisBase community space. Get deployment support, discuss features, share extensions, and connect with operators and developers in real time.',
     cta: 'Join Discord',
-    href: 'https://discord.com/invite/HnTqQ6zAVn',
+    href: 'https://discord.gg/7xPbDryKDH',
     badge: '5,000+ members',
   },
   {
@@ -122,7 +122,7 @@ export default function CommunityPage() {
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
               <Link
-                href="https://discord.com/invite/HnTqQ6zAVn"
+                href="https://discord.gg/7xPbDryKDH"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -251,7 +251,7 @@ export default function CommunityPage() {
               </p>
               <Button size="lg" asChild>
                 <Link
-                  href="https://discord.com/invite/HnTqQ6zAVn"
+                  href="https://discord.gg/7xPbDryKDH"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

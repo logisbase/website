@@ -775,7 +775,7 @@ export default function LogisticsAIPage() {
               <Star className="h-4 w-4" /> Request source access
             </Link>
             <Link
-              href="https://discord.com/invite/HnTqQ6zAVn"
+              href="https://discord.gg/7xPbDryKDH"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-foreground flex items-center gap-1.5 transition-colors"
