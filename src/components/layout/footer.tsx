@@ -20,7 +20,7 @@ const SOCIAL_LINKS = [
   },
   {
     name: 'WhatsApp',
-    href: 'https://wa.me/6588345437?text=Hi%20LogisBase%20team!%20I%27d%20like%20to%20learn%20more%20about%20your%20logistics%20platform.',
+    href: 'https://wa.me/2348039314584?text=Hi%20LogisBase%20team!%20I%27d%20like%20to%20learn%20more%20about%20your%20logistics%20platform.',
     icon: <FaWhatsapp className="size-4" />,
   },
   {
