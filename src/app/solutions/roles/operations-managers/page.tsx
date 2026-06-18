@@ -202,8 +202,8 @@ export default function OperationsManagersPage() {
       ]}
       ctaHeading="Run your operation with confidence, not guesswork"
       ctaBody="Live visibility, automated alerting, and the reporting your leadership needs — all from one operations platform. Start your free trial today."
-      ctaPrimary="Start Free Trial"
-      ctaPrimaryHref="https://console.logisbase.com/onboard"
+      ctaPrimary="Get Started"
+      ctaPrimaryHref="https://tally.so/r/68vqoo"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

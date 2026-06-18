@@ -211,8 +211,8 @@ export default function LastMileDeliveryPage() {
       ]}
       ctaHeading="Make your last mile your competitive advantage"
       ctaBody="Faster dispatch, smarter routes, higher first-attempt rates. Start your free trial and see what LogisBase does for your last-mile operation in the first 30 days."
-      ctaPrimary="Start Free Trial"
-      ctaPrimaryHref="https://console.logisbase.com/onboard"
+      ctaPrimary="Get Started"
+      ctaPrimaryHref="https://tally.so/r/68vqoo"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

@@ -35,14 +35,14 @@ export default function Hero() {
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
           <Button size="lg" asChild>
             <Link
-              href="https://console.logisbase.com/onboard"
+              href="https://tally.so/r/68vqoo"
               target="_blank"
               rel="noopener noreferrer"
               data-cta-id="start_free_trial"
               data-cta-location="hero"
               data-cta-variant="primary"
             >
-              Start Free Trial
+              Get Started
             </Link>
           </Button>
           <Button size="lg" variant="outline" asChild>
@@ -59,7 +59,7 @@ export default function Hero() {
 
         {/* Trust signal */}
         <p className="text-muted-foreground text-sm">
-          Start with a 7-Day Trial · Deploy Anywhere
+          Start with LogisBase · Deploy Anywhere
         </p>
 
         {/* Hero screenshot */}

@@ -202,8 +202,8 @@ export default function CustomerSuccessPage() {
       ]}
       ctaHeading="Turn delivery queries into resolved tickets in under a minute"
       ctaBody="Give your customer success team the visibility they need to answer every delivery question instantly — and the notification tools to stop the questions before they start."
-      ctaPrimary="Start Free Trial"
-      ctaPrimaryHref="https://console.logisbase.com/onboard"
+      ctaPrimary="Get Started"
+      ctaPrimaryHref="https://tally.so/r/68vqoo"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

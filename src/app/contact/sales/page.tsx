@@ -279,7 +279,7 @@ export default function ContactSalesPage() {
               </p>
               <Button variant="outline" asChild>
                 <Link
-                  href="https://console.logisbase.com"
+                  href="https://tally.so/r/68VqOO"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cta-id="start_free_trial"

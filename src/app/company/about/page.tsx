@@ -20,11 +20,11 @@ export const metadata: Metadata = {
   title:
     'About LogisBase | Source-Accessible Logistics Platform — Lagos, Nigeria',
   description:
-    'LogisBase is an source-available logistics and fleet management platform founded in 2022 in Lagos, Nigeria by Chike Ngwu and Tek Orakle. Learn our story, mission, and the team behind the platform.',
+    'LogisBase is a source-accessible logistics and fleet management platform founded in 2022 in Lagos, Nigeria by Chike Ngwu and Tek Orakle. Learn our story, mission, and the team behind the platform.',
   keywords: [
     'about logisbase',
     'logisbase team',
-    'source-available logistics company',
+    'source-accessible logistics company',
     'logisbase singapore',
     'logistics startup singapore',
     'shiv thakker',
@@ -34,12 +34,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Us | LogisBase',
     description:
-      'The source-available logistics platform on a mission to democratize logistics technology.',
+      'The source-accessible logistics platform on a mission to democratize logistics technology.',
   },
   twitter: {
     card: 'summary_large_image',
     title: `About Us | LogisBase`,
-    description: `The source-available logistics platform on a mission to democratize logistics technology.`,
+    description: `The source-accessible logistics platform on a mission to democratize logistics technology.`,
   },
 };
 
@@ -510,7 +510,7 @@ export default function AboutPage() {
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
-                  <Link href="https://console.logisbase.com">
+                  <Link href="https://tally.so/r/68VqOO">
                     Start free trial <ArrowRight className="ml-2 size-4" />
                   </Link>
                 </Button>

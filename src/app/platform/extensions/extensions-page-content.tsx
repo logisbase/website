@@ -325,7 +325,7 @@ export default function ExtensionsMarketplacePageContent() {
 
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="https://console.logisbase.com"
+                href="https://tally.so/r/68VqOO"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -505,7 +505,7 @@ export default function ExtensionsMarketplacePageContent() {
 
           <div className="mt-10 text-center">
             <Link
-              href="https://console.logisbase.com"
+              href="https://tally.so/r/68VqOO"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -949,7 +949,7 @@ export default function ExtensionsMarketplacePageContent() {
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Link
-                  href="https://console.logisbase.com"
+                  href="https://tally.so/r/68VqOO"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

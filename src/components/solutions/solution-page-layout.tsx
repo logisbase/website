@@ -115,8 +115,8 @@ export default function SolutionPageLayout({
   ctaSecondaryHref,
 }: SolutionPageProps) {
   const primaryCta = heroCta ?? {
-    primary: 'Start Free Trial',
-    primaryHref: 'https://console.logisbase.com/onboard',
+    primary: 'Get Started',
+    primaryHref: 'https://tally.so/r/68vqoo',
     secondary: 'Book a Demo',
     secondaryHref: 'https://cal.com/logisbase/demo',
   };

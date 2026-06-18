@@ -118,8 +118,8 @@ export default function ComparePage() {
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
-              <Link href="https://console.logisbase.com">
-                Start Free Trial <ArrowRight className="ml-2 h-4 w-4" />
+              <Link href="https://tally.so/r/68VqOO">
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>

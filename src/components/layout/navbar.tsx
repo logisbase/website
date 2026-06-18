@@ -495,8 +495,8 @@ const ACTION_BUTTONS: Array<{
   icon?: React.ElementType;
 }> = [
   {
-    label: 'Start Free Trial',
-    href: 'https://console.logisbase.com/onboard',
+    label: 'Get Started',
+    href: 'https://tally.so/r/68vqoo',
     variant: 'default',
     ctaId: 'start_free_trial',
   },

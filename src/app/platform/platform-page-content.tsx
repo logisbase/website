@@ -239,7 +239,7 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
                 <a
-                  href="https://console.logisbase.com/onboard"
+                  href="https://tally.so/r/68vqoo"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -545,11 +545,11 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
                   <a
-                    href="https://console.logisbase.com/onboard"
+                    href="https://tally.so/r/68vqoo"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Start Free Trial <ArrowRight className="ml-2 size-4" />
+                    Get Started <ArrowRight className="ml-2 size-4" />
                   </a>
                 </Button>
                 <Button size="lg" variant="outline" asChild>

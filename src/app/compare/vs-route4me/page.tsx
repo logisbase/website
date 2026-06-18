@@ -155,7 +155,7 @@ export default function VsRoute4MePage() {
           </p>
           <div className="flex flex-col justify-center gap-4 pt-2 sm:flex-row">
             <Button size="lg" asChild>
-              <Link href="https://console.logisbase.com/onboard">
+              <Link href="https://tally.so/r/68vqoo">
                 Try LogisBase Free <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -263,8 +263,8 @@ export default function VsRoute4MePage() {
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
-              <Link href="https://console.logisbase.com/onboard">
-                Start Free Trial <ArrowRight className="ml-2 h-4 w-4" />
+              <Link href="https://tally.so/r/68vqoo">
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>

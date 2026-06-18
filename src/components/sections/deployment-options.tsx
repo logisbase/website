@@ -24,7 +24,7 @@ const deploymentOptions = [
     price: 'From $25/mo',
     cta: {
       text: 'Try LogisBase Cloud',
-      href: 'https://console.logisbase.com/onboard',
+      href: 'https://tally.so/r/68vqoo',
       variant: 'default' as const,
     },
     features: {

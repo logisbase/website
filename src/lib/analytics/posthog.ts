@@ -5,7 +5,7 @@
  * (packages/internals/addon/services/posthog.js) so both apps reason about
  * tracking the same way. Identity is shared across `*.logisbase.com` via
  * cross_subdomain_cookie so a marketing visitor's distinct_id rides through
- * to the console after they click "Start Free Trial".
+ * to the console after they click "Get Started".
  *
  * Initialization is lazy and consent-aware — see PostHogProvider.
  */

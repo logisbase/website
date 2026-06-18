@@ -210,8 +210,8 @@ export default function AnalyticsPage() {
       ]}
       ctaHeading="Make every operational decision a data-backed one"
       ctaBody="The insights you need to cut costs, meet SLAs, and grow your operation with confidence. Start your free trial and have your first performance dashboard live in minutes."
-      ctaPrimary="Start Free Trial"
-      ctaPrimaryHref="https://console.logisbase.com/onboard"
+      ctaPrimary="Get Started"
+      ctaPrimaryHref="https://tally.so/r/68vqoo"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

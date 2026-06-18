@@ -655,7 +655,7 @@ export default function ApiIntegrationsPageContent() {
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Link
-                  href="https://console.logisbase.com"
+                  href="https://tally.so/r/68VqOO"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

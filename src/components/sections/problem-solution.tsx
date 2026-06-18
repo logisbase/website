@@ -75,14 +75,14 @@ export default function ProblemSolution() {
             </ul>
             <Button asChild>
               <Link
-                href="https://console.logisbase.com/onboard"
+                href="https://tally.so/r/68vqoo"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cta-id="start_free_trial"
                 data-cta-location="problem_solution"
                 data-cta-variant="primary"
               >
-                Start Free Trial
+                Get Started
               </Link>
             </Button>
           </div>

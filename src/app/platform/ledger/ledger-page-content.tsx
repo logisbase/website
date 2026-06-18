@@ -400,7 +400,7 @@ const faqs = [
     a: 'Ledger generates all core financial statements including Balance Sheets, Income Statements (P&L), and Cash Flow Statements. It also produces operational reports such as Accounts Receivable (A/R) Aging, Trial Balances, and Wallet Summaries — giving you both the financial and operational picture in one place.',
   },
   {
-    q: 'Is Ledger source-available?',
+    q: 'Is Ledger source-accessible?',
     a: 'Yes. Ledger is a LogisBase extension available on GitHub. You can self-host it, inspect the full codebase, contribute to its development, and customize it to your exact requirements.',
   },
 ];
@@ -467,7 +467,7 @@ export default function LedgerPageContent() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
                 <Link href="/pricing">
-                  Start Free Trial <ArrowRight className="ml-2 size-4" />
+                  Get Started <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
@@ -1274,7 +1274,7 @@ export default function LedgerPageContent() {
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
                   <Link href="/pricing">
-                    Start Free Trial <ArrowRight className="ml-2 size-4" />
+                    Get Started <ArrowRight className="ml-2 size-4" />
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>

@@ -65,7 +65,7 @@ const licences = [
       'OEM or white-label deployments with closed modifications',
     ],
     cta: 'Get started free',
-    ctaHref: 'https://console.logisbase.com',
+    ctaHref: 'https://tally.so/r/68VqOO',
   },
   {
     icon: Building2,

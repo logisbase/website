@@ -199,8 +199,8 @@ export default function DevelopersPage() {
       ]}
       ctaHeading="Build your logistics infrastructure on a platform you control"
       ctaBody="Source-accessible, API-first, and built to be extended. Start your free trial or clone the repo — your logistics platform, your rules."
-      ctaPrimary="Start Free Trial"
-      ctaPrimaryHref="https://console.logisbase.com/onboard"
+      ctaPrimary="Get Started"
+      ctaPrimaryHref="https://tally.so/r/68vqoo"
       ctaSecondary="Request source access"
       ctaSecondaryHref="https://github.com/logisbase/logisbase"
     />

@@ -203,8 +203,8 @@ export default function ContainerOperationsPage() {
       ]}
       ctaHeading="Close the visibility gap in your container operations"
       ctaBody="From port to door, every container tracked. Every document managed. Every stakeholder informed. Start your free trial and see what full container visibility looks like."
-      ctaPrimary="Start Free Trial"
-      ctaPrimaryHref="https://console.logisbase.com/onboard"
+      ctaPrimary="Get Started"
+      ctaPrimaryHref="https://tally.so/r/68vqoo"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

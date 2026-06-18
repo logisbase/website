@@ -221,7 +221,7 @@ export default function WebhooksPageContent() {
               <Link href="/docs/platform/developer-console/webhooks">
                 <Button size="lg">Read the Docs</Button>
               </Link>
-              <Link href="https://console.logisbase.com/onboard">
+              <Link href="https://tally.so/r/68vqoo">
                 <Button size="lg" variant="outline">
                   Set Up a Webhook
                 </Button>
@@ -627,7 +627,7 @@ export default function WebhooksPageContent() {
             LogisBase Developer Console.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="https://console.logisbase.com/onboard">
+            <Link href="https://tally.so/r/68vqoo">
               <Button size="lg">Get Started Free</Button>
             </Link>
             <Link href="/docs/platform/developer-console/webhooks">

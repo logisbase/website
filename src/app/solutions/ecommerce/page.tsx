@@ -1,23 +1,24 @@
-import type { Metadata } from 'next';
 import {
-  ShoppingCart,
-  Package,
-  Zap,
   BarChart3,
-  RefreshCw,
   Bell,
-  MapPin,
-  Code,
   Clock,
+  Code,
+  MapPin,
+  Package,
+  RefreshCw,
+  ShoppingCart,
   Store,
+  Zap,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
 import SolutionPageLayout from '@/components/solutions/solution-page-layout';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://logisbase.com/solutions/ecommerce' },
   title: 'E-commerce & Retail Delivery Management Software | LogisBase',
   description:
-    'Power same-day and next-day delivery for your e-commerce or retail operation. Source-available delivery management with headless API, real-time tracking, and returns logistics.',
+    'Power same-day and next-day delivery for your e-commerce or retail operation. Source-accessible delivery management with headless API, real-time tracking, and returns logistics.',
   keywords: [
     'ecommerce delivery software',
     'retail logistics platform',
@@ -202,8 +203,8 @@ export default function EcommercePage() {
       ]}
       ctaHeading="Take ownership of your delivery experience"
       ctaBody="Stop letting carriers define your brand's most important touchpoint. Build your own delivery operation on LogisBase and keep the margin, the data, and the customer relationship."
-      ctaPrimary="Start Free Trial"
-      ctaPrimaryHref="https://console.logisbase.com/onboard"
+      ctaPrimary="Get Started"
+      ctaPrimaryHref="https://tally.so/r/68vqoo"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

@@ -32,14 +32,14 @@ export default function FinalCTA() {
             <div className="flex flex-col justify-center gap-4 sm:flex-row sm:flex-wrap">
               <Button size="lg" className="gap-2" asChild>
                 <Link
-                  href="https://console.logisbase.com/onboard"
+                  href="https://tally.so/r/68vqoo"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cta-id="start_free_trial"
                   data-cta-location="final_cta"
                   data-cta-variant="primary"
                 >
-                  Start Free Trial <ArrowRight className="h-4 w-4" />
+                  Get Started <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="gap-2" asChild>

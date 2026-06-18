@@ -455,14 +455,14 @@ export default function PricingClient() {
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild>
               <Link
-                href="https://console.logisbase.com/onboard"
+                href="https://tally.so/r/68vqoo"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cta-id="start_free_trial"
                 data-cta-location="pricing_page"
                 data-cta-variant="primary"
               >
-                Start 7-Day Free Trial <ArrowRight className="ml-2 h-4 w-4" />
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
@@ -541,7 +541,7 @@ export default function PricingClient() {
                 <CardFooter>
                   <Button className="w-full" variant="outline" asChild>
                     <Link
-                      href="https://console.logisbase.com/onboard"
+                      href="https://tally.so/r/68vqoo"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => onTierCtaClick(tier)}
@@ -549,7 +549,7 @@ export default function PricingClient() {
                       data-cta-location="pricing_card"
                       data-cta-variant="primary"
                     >
-                      Start Free Trial
+                      Get Started
                     </Link>
                   </Button>
                 </CardFooter>
@@ -632,7 +632,7 @@ export default function PricingClient() {
                       </td>
                       <td className="px-4 py-3 text-right">
                         <Link
-                          href="https://console.logisbase.com/onboard"
+                          href="https://tally.so/r/68vqoo"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-primary text-xs whitespace-nowrap underline-offset-4 hover:underline"
@@ -1034,14 +1034,14 @@ export default function PricingClient() {
               <div className="flex flex-wrap justify-center gap-4">
                 <Button size="lg" asChild>
                   <Link
-                    href="https://console.logisbase.com/onboard"
+                    href="https://tally.so/r/68vqoo"
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cta-id="start_free_trial"
                     data-cta-location="pricing_page"
                     data-cta-variant="primary"
                   >
-                    Start Free Trial <ArrowRight className="ml-2 h-4 w-4" />
+                    Get Started <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>

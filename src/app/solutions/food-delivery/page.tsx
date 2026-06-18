@@ -1,16 +1,17 @@
-import type { Metadata } from 'next';
 import {
-  Utensils,
-  MapPin,
-  Zap,
-  Star,
-  Smartphone,
   BarChart3,
-  Clock,
   Bell,
-  Users,
+  Clock,
+  MapPin,
   ShoppingCart,
+  Smartphone,
+  Star,
+  Users,
+  Utensils,
+  Zap,
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
 import SolutionPageLayout from '@/components/solutions/solution-page-layout';
 
 export const metadata: Metadata = {
@@ -195,8 +196,8 @@ export default function FoodDeliveryPage() {
       ]}
       ctaHeading="Ready to dominate your delivery market?"
       ctaBody="Join food and grocery delivery operators running faster, more profitable operations on LogisBase. Your first 7 days are on us."
-      ctaPrimary="Start Free Trial"
-      ctaPrimaryHref="https://console.logisbase.com/onboard"
+      ctaPrimary="Get Started"
+      ctaPrimaryHref="https://tally.so/r/68vqoo"
       ctaSecondary="Book a Demo"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

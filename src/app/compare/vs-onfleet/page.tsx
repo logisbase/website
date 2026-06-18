@@ -151,12 +151,12 @@ export default function VsOnfleetPage() {
           <p className="text-muted-foreground mx-auto max-w-3xl text-xl leading-relaxed">
             Onfleet is a solid delivery management tool — but it charges per
             task, locks you into their cloud, and gives you no access to the
-            source code. LogisBase is the source-available alternative that
+            source code. LogisBase is the source-accessible alternative that
             scales without punishing you for growth.
           </p>
           <div className="flex flex-col justify-center gap-4 pt-2 sm:flex-row">
             <Button size="lg" asChild>
-              <Link href="https://console.logisbase.com/onboard">
+              <Link href="https://tally.so/r/68vqoo">
                 Try LogisBase Free <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -333,8 +333,8 @@ export default function VsOnfleetPage() {
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
-              <Link href="https://console.logisbase.com/onboard">
-                Start Free Trial <ArrowRight className="ml-2 h-4 w-4" />
+              <Link href="https://tally.so/r/68vqoo">
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>

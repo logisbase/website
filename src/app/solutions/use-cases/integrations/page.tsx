@@ -86,7 +86,7 @@ export default function IntegrationsPage() {
         ],
       }}
       featuresHeading="Built for developers. Designed for real operational workflows."
-      featuresSubheading="Source-available, API-first, and documented to the level that developers actually need."
+      featuresSubheading="Source-accessible, API-first, and documented to the level that developers actually need."
       features={[
         {
           title: 'Full REST API',
@@ -208,8 +208,8 @@ export default function IntegrationsPage() {
       ]}
       ctaHeading="Build the logistics workflow your operation actually needs"
       ctaBody="Connect LogisBase to everything you already run. Start your free trial and make your first API call in under 10 minutes — complete documentation included."
-      ctaPrimary="Start Free Trial"
-      ctaPrimaryHref="https://console.logisbase.com/onboard"
+      ctaPrimary="Get Started"
+      ctaPrimaryHref="https://tally.so/r/68vqoo"
       ctaSecondary="View API Docs"
       ctaSecondaryHref="https://logisbase.com/docs"
     />

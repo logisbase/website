@@ -357,10 +357,10 @@ export default function SolutionsPage() {
             </p>
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link
-                href="https://console.logisbase.com/onboard"
+                href="https://tally.so/r/68vqoo"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center justify-center gap-2 rounded-md px-6 py-2.5 text-sm font-medium transition-colors"
               >
-                Start Free Trial <ArrowRight className="size-4" />
+                Get Started <ArrowRight className="size-4" />
               </Link>
               <Link
                 href="https://cal.com/logisbase/demo"

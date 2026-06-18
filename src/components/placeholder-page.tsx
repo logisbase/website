@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+
 import { Button } from '@/components/ui/button';
 
 interface PlaceholderPageProps {
@@ -29,8 +30,8 @@ export default function PlaceholderPage({
         </p>
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
           <Button size="lg" asChild>
-            <Link href="https://console.logisbase.com">
-              Start Free Trial
+            <Link href="https://tally.so/r/68VqOO">
+              Get Started
               <ArrowRight className="ml-2 size-4" />
             </Link>
           </Button>

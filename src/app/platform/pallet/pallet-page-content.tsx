@@ -271,7 +271,7 @@ export default function PalletPageContent() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
                 <Link href="/pricing">
-                  Start Free Trial <ArrowRight className="ml-2 size-4" />
+                  Get Started <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
@@ -692,7 +692,7 @@ export default function PalletPageContent() {
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
                   <Link href="/pricing">
-                    Start Free Trial <ArrowRight className="ml-2 size-4" />
+                    Get Started <ArrowRight className="ml-2 size-4" />
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
