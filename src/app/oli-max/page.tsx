@@ -7,15 +7,12 @@ import {
   CreditCard,
   ExternalLink,
   Factory,
-  Flame,
   Globe2,
   MapPin,
-  Package,
   Shield,
   Sparkles,
   Store,
   Truck,
-  Wheat,
 } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -74,13 +71,6 @@ function PhoneFrame({
     </div>
   );
 }
-
-const productLines = [
-  { icon: Wheat, label: 'Flour & rice' },
-  { icon: Flame, label: 'Cooking oil' },
-  { icon: Package, label: 'Bulk meat' },
-  { icon: Store, label: 'Household staples' },
-];
 
 const stats = [
   { value: '2,000+', label: 'Orders / month' },
@@ -222,20 +212,6 @@ export default function OliMaxPage() {
                 bulk staples at wholesale-grade pricing — through a single
                 mobile app, with delivery to their door.
               </p>
-
-              <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
-                {productLines.map((p) => (
-                  <div
-                    key={p.label}
-                    className="flex min-w-0 items-center gap-3 rounded-xl border border-[var(--oli-border)] bg-[var(--oli-card)] p-4 break-words"
-                  >
-                    <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--oli-orange)]/15">
-                      <p.icon className="size-4 text-[var(--oli-orange)]" />
-                    </div>
-                    <span className="text-sm font-medium">{p.label}</span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2">

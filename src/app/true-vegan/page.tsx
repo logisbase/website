@@ -6,14 +6,12 @@ import {
   ChefHat,
   CreditCard,
   ExternalLink,
-  Leaf,
   MapPin,
   Navigation,
   Repeat,
   ShoppingBag,
   Store,
   Truck,
-  UtensilsCrossed,
 } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -75,13 +73,6 @@ function PhoneFrame({
     </div>
   );
 }
-
-const dishes = [
-  { icon: UtensilsCrossed, label: 'Falafel & plant burgers' },
-  { icon: Leaf, label: 'Quinoa pasta dishes' },
-  { icon: ChefHat, label: 'Chef-driven menu' },
-  { icon: Store, label: 'Pickup, delivery & in-store' },
-];
 
 const stats = [
   { value: 'Daily', label: 'Active orders' },
@@ -219,22 +210,6 @@ export default function TrueVeganPage() {
                 Storefront app makes it fast for someone to reorder their usual
                 on the way home from work.
               </p>
-
-              <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
-                {dishes.map((d) => (
-                  <div
-                    key={d.label}
-                    className="flex w-full min-w-0 items-center gap-3 rounded-xl border border-[var(--tv-border-light)] bg-[var(--tv-card)] p-4"
-                  >
-                    <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--tv-blue)]/10">
-                      <d.icon className="size-4 shrink-0 text-[var(--tv-blue)]" />
-                    </div>
-                    <span className="truncate text-sm font-medium text-[var(--tv-navy)]">
-                      {d.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Right: products + cart */}

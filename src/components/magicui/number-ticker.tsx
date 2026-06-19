@@ -39,6 +39,15 @@ export function NumberTicker({
     }
   }, [motionValue, isInView, delay, value, direction, startValue]);
 
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.textContent = Intl.NumberFormat('en-US', {
+        minimumFractionDigits: decimalPlaces,
+        maximumFractionDigits: decimalPlaces,
+      }).format(Number(value.toFixed(decimalPlaces)));
+    }
+  }, [value, decimalPlaces]);
+
   useEffect(
     () =>
       springValue.on('change', (latest) => {

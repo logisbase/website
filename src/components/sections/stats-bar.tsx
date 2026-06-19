@@ -13,7 +13,6 @@ const stats = [
 
 export default function StatsBar() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
     <section ref={ref} className="bg-muted/30 border-y">
