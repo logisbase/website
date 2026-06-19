@@ -393,25 +393,11 @@ export const NAV_LINKS: NavLink[] = [
     href: '/resources',
     subitems: [
       {
-        label: 'Blog',
-        href: '/blog',
-        description:
-          'Industry insights, best practices, and product updates from our team.',
-        icon: FileText,
-      },
-      {
         label: 'Community (Discord)',
         href: '/community',
         description:
           'Join our Discord server and connect with other LogisBase users.',
         icon: MessageSquare,
-      },
-      {
-        label: 'Changelog',
-        href: '/changelog',
-        description:
-          'Stay updated with the latest features, fixes, and improvements.',
-        icon: FileText,
       },
       {
         label: 'Compare Alternatives',
@@ -439,13 +425,6 @@ export const NAV_LINKS: NavLink[] = [
         description:
           'Learn about our mission to democratize logistics through source-accessible license.',
         icon: Building2,
-      },
-      {
-        label: 'Platform Independence',
-        href: '/company/open-source',
-        description:
-          'Our commitment to building transparent, community-driven software.',
-        icon: Github,
       },
       {
         label: 'Partners',

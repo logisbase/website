@@ -111,19 +111,12 @@ const FOOTER_LINKS = [
       { label: 'Developer Console', href: '/platform/developer-console' },
       { label: 'Webhooks & Events', href: '/developers/webhooks' },
       { label: 'Build an Extension', href: '/developers/extensions' },
-      {
-        label: 'GitHub Repository',
-        href: 'https://github.com/logisbase/logisbase',
-        external: true,
-      },
     ],
   },
   {
     title: 'Resources',
     links: [
       { label: 'Documentation', href: '/docs' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Changelog', href: '/changelog' },
       { label: 'Community (Discord)', href: '/community' },
       { subheading: 'Services' },
       { label: 'All Services', href: '/services' },
@@ -139,7 +132,6 @@ const FOOTER_LINKS = [
     title: 'Company',
     links: [
       { label: 'About Us', href: '/company/about' },
-      { label: 'Platform Independence', href: '/company/open-source' },
       { label: 'Partners', href: '/partners' },
       { label: 'Investors', href: '/company/investors' },
       { label: 'Licensing Options', href: '/licensing' },

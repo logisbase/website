@@ -86,9 +86,7 @@ function getGhostConfig() {
   ].filter(Boolean);
 
   if (missing.length > 0) {
-    throw new Error(
-      `Ghost blog is not configured. Missing required environment variable(s): ${missing.join(', ')}.`,
-    );
+    return null;
   }
 
   return {
@@ -98,7 +96,11 @@ function getGhostConfig() {
 }
 
 function buildGhostUrl(pathname: string, params: Record<string, string>) {
-  const { apiUrl, contentApiKey } = getGhostConfig();
+  const config = getGhostConfig();
+  if (!config) {
+    throw new Error('Ghost blog is not configured.');
+  }
+  const { apiUrl, contentApiKey } = config;
   const searchParams = new URLSearchParams({
     key: contentApiKey,
     ...params,
@@ -176,7 +178,10 @@ function normalizePost(post: GhostPost): BlogPost {
   };
 }
 
-function buildFilter({ featured, tag }: Pick<GhostBrowseOptions, 'featured' | 'tag'>) {
+function buildFilter({
+  featured,
+  tag,
+}: Pick<GhostBrowseOptions, 'featured' | 'tag'>) {
   const filters: string[] = [];
 
   if (featured) {
@@ -209,12 +214,15 @@ export async function getAllBlogPosts() {
   let nextPage: number | null = 1;
 
   while (nextPage) {
-    const response: GhostPostsResponse = await fetchGhost<GhostPostsResponse>('posts/', {
-      include: 'authors,tags',
-      formats: 'html,plaintext',
-      limit: '100',
-      page: String(nextPage),
-    });
+    const response: GhostPostsResponse = await fetchGhost<GhostPostsResponse>(
+      'posts/',
+      {
+        include: 'authors,tags',
+        formats: 'html,plaintext',
+        limit: '100',
+        page: String(nextPage),
+      },
+    );
 
     posts.push(...response.posts.map(normalizePost));
     nextPage = response.meta?.pagination?.next ?? null;

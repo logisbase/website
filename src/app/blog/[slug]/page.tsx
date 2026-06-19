@@ -23,7 +23,12 @@ function formatPublishedDate(value: string) {
 export const revalidate = 300;
 
 export async function generateStaticParams() {
-  const slugs = await getAllBlogSlugs();
+  let slugs: string[] = [];
+  try {
+    slugs = await getAllBlogSlugs();
+  } catch (e) {
+    console.warn('Failed to fetch blog slugs, skipping blog generation.');
+  }
 
   return slugs.map((slug) => ({ slug }));
 }

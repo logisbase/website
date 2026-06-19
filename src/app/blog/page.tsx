@@ -39,8 +39,15 @@ function formatPublishedDate(value: string) {
   }).format(new Date(value));
 }
 
+import { BlogPost } from '@/lib/ghost';
+
 export default async function BlogPage() {
-  const posts = await getBlogPosts({ limit: 7 });
+  let posts: BlogPost[] = [];
+  try {
+    posts = await getBlogPosts({ limit: 7 });
+  } catch (e) {
+    console.warn('Failed to fetch blog posts, skipping blog generation.');
+  }
   const featuredPost = posts.find((post) => post.isFeatured) || posts[0];
   const latestPosts = posts.filter((post) => post.id !== featuredPost?.id);
 
