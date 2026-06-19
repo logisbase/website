@@ -425,14 +425,7 @@ export default function PalletPageContent() {
           </div>
 
           {/* Step flow */}
-          <div
-            className="bg-border overflow-hidden rounded-xl border"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '1px',
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 gap-px overflow-hidden rounded-xl border sm:grid-cols-2 lg:grid-cols-4">
             {integrationSteps.map((step, i) => {
               const Icon = step.icon;
               return (

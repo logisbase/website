@@ -75,7 +75,7 @@ export default function ProblemSolution() {
             </ul>
             <Button asChild>
               <Link
-                href="https://tally.so/r/68vqoo"
+                href="https://tally.so/r/68VqOO"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cta-id="start_free_trial"

@@ -29,10 +29,10 @@ export default function FinalCTA() {
               designed for long-term ownership. Start your 7-day trial today.
             </p>
 
-            <div className="flex flex-col justify-center gap-4 sm:flex-row sm:flex-wrap">
-              <Button size="lg" className="gap-2" asChild>
+            <div className="flex flex-col items-center justify-center gap-4 px-4 sm:flex-row sm:flex-wrap">
+              <Button size="lg" className="w-full max-w-sm gap-2" asChild>
                 <Link
-                  href="https://tally.so/r/68vqoo"
+                  href="https://tally.so/r/68VqOO"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cta-id="start_free_trial"
@@ -42,7 +42,12 @@ export default function FinalCTA() {
                   Get Started <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="gap-2" asChild>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full max-w-sm gap-2"
+                asChild
+              >
                 <Link
                   href="/pricing"
                   data-cta-id="view_pricing"
@@ -52,7 +57,12 @@ export default function FinalCTA() {
                   View Pricing
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="gap-2" asChild>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full max-w-sm gap-2"
+                asChild
+              >
                 <Link
                   href="https://cal.com/logisbase/demo"
                   target="_blank"

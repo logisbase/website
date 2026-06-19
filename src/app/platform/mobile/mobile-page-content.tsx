@@ -192,7 +192,7 @@ function PhoneFrame({ src, alt }: { src: string; alt: string }) {
 
 export default function MobileAppsPageContent() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       {/* Hero */}
       <section className="section-padding relative">
         <div className="relative container">
@@ -403,14 +403,7 @@ export default function MobileAppsPageContent() {
               />
             </div>
           </div>
-          <div
-            className="bg-border overflow-hidden rounded-xl"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: 1,
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 gap-px overflow-hidden rounded-xl sm:grid-cols-2 lg:grid-cols-4">
             {navigatorFeatures.map((feat, i) => {
               const Icon = feat.icon;
               return (
@@ -453,14 +446,7 @@ export default function MobileAppsPageContent() {
               </p>
             </div>
           </div>
-          <div
-            className="bg-border overflow-hidden rounded-xl"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: 1,
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 gap-px overflow-hidden rounded-xl sm:grid-cols-2 lg:grid-cols-4">
             {storefrontFeatures.map((feat, i) => {
               const Icon = feat.icon;
               return (
@@ -643,14 +629,7 @@ export default function MobileAppsPageContent() {
               scratch.
             </p>
           </div>
-          <div
-            className="bg-border overflow-hidden rounded-xl"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: 1,
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 gap-px overflow-hidden rounded-xl sm:grid-cols-2 lg:grid-cols-4">
             {techStack.map((tech, i) => {
               const Icon = tech.icon;
               return (

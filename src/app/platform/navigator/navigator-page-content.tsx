@@ -45,10 +45,8 @@ function PhoneFrame({
 }) {
   return (
     <div
-      className={`border-border bg-background relative mx-auto flex shrink-0 flex-col overflow-hidden rounded-[1.75rem] border-2 shadow-2xl ${className}`}
-      style={{ width: 260, height: 520 }}
+      className={`border-border bg-background relative mx-auto flex shrink-0 flex-col overflow-hidden rounded-[1.75rem] border-2 shadow-2xl ${className} h-[400px] w-[200px] md:h-[520px] md:w-[260px]`}
     >
-      {/* notch */}
       <div className="bg-border/60 absolute top-3 left-1/2 z-10 h-5 w-20 -translate-x-1/2 rounded-full" />
       <div className="relative flex-1 overflow-hidden">
         <Image
@@ -66,108 +64,75 @@ function PhoneFrame({
 export default function NavigatorPageContent() {
   return (
     <div className="flex flex-col">
-      {/* ── Hero ────────────────────────────────────────────────────── */}
-      <section className="section-padding relative overflow-hidden">
-        <div className="relative container">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            {/* Left — copy */}
-            <div className="flex flex-col gap-8">
-              <div className="flex w-fit items-center rounded-full border p-1 text-xs">
-                <span className="bg-muted rounded-full px-3 py-1">
-                  Navigator
-                </span>
-                <span className="px-3">
-                  Driver App for Real-World Logistics Operations
-                </span>
-              </div>
-
-              <h1 className="text-4xxl leading-none tracking-tight text-balance">
-                The Driver App Built for{' '}
-                <span className="text-gradient">Real-World Logistics</span>
-              </h1>
-
-              <p className="text-foreground/90 dark:text-foreground/95 max-w-xl leading-snug md:text-lg">
-                Navigator is LogisBase’s mobile application for drivers and
-                field agents, designed to execute logistics at scale in dynamic,
-                real-world conditions. Jobs are automatically dispatched from
-                Fleet-Ops, routes are optimized in real time, and proof of
-                delivery is captured instantly at the point of completion — even
-                in low or no connectivity environments.
-              </p>
-
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  href="https://play.google.com/store/apps/details?id=io.logisbase.navigator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button size="lg">
-                    <FaGooglePlay className="mr-2 h-4 w-4" />
-                    Google Play
-                  </Button>
-                </Link>
-                <Link
-                  href="https://apps.apple.com/us/app/logisbase-navigator/id1554208255"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button size="lg" variant="outline">
-                    <FaApple className="mr-2 h-4 w-4" />
-                    App Store
-                  </Button>
-                </Link>
-                <Link
-                  href="https://github.com/logisbase/navigator-app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button size="lg" variant="ghost">
-                    <FaGithub className="mr-2 h-4 w-4" />
-                    Request source access
-                  </Button>
-                </Link>
-              </div>
-
-              {/* Stat strip */}
-              <div className="flex flex-wrap gap-8 pt-2">
-                {[
-                  {
-                    value: 'Source Access Available',
-                    label: 'Transparent, inspectable platform architecture',
-                  },
-                  { value: 'iOS + Android', label: 'Both platforms' },
-                  { value: 'Offline-first', label: 'Works without signal' },
-                ].map((s) => (
-                  <div key={s.label}>
-                    <p className="text-gradient text-xl font-bold">{s.value}</p>
-                    <p className="text-muted-foreground text-xs">{s.label}</p>
-                  </div>
-                ))}
-              </div>
+      <section className="bg-primary text-primary-foreground relative w-full overflow-hidden">
+        <div className="container grid grid-cols-4 items-center gap-x-4 gap-y-12 py-20 sm:grid-cols-12 sm:gap-x-6 lg:gap-x-16 lg:gap-y-16 lg:py-28 xl:py-32">
+          <div className="col-span-full row-start-1 sm:col-span-8 sm:col-start-3 lg:col-span-6 lg:col-start-1">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-white"></span>
+              </span>
+              <span className="text-[10px] tracking-[0.7px] uppercase">
+                Navigator · Driver App for Real-World Logistics
+              </span>
             </div>
-
-            {/* Right — phone gallery */}
-            <div className="flex items-end justify-center gap-2">
-              <PhoneFrame
-                src="/images/screenshots/navigator-app/navigator-app-order-activity-update.webp"
-                alt="Navigator app — order activity update"
-                className="mb-8 scale-90 opacity-70"
-              />
-              <PhoneFrame
-                src="/images/screenshots/navigator-app/navigator-app-order-screen.webp"
-                alt="Navigator app — order detail"
-              />
-              <PhoneFrame
-                src="/images/screenshots/navigator-app/navigator-app-order-change-destination.webp"
-                alt="Navigator app — change destination"
-                className="mb-8 scale-90 opacity-70"
-              />
+            <h1 className="mt-6 text-center text-[40px] leading-[44px] font-[680] tracking-[-0.6px] text-balance text-white lg:text-left lg:text-[60px] lg:leading-[64px] lg:tracking-[-1px] xl:text-[68px] xl:leading-[70px] xl:tracking-[-1.2px]">
+              The Driver App Built for Real-World Logistics
+            </h1>
+            <p className="mt-5 text-center text-[18px] leading-[26px] font-[460] tracking-[0.15px] text-white/85 lg:mt-7 lg:text-left lg:text-[21px] lg:leading-[30px] lg:tracking-[0.12px]">
+              Navigator is LogisBase’s mobile application for drivers and field
+              agents, designed to execute logistics at scale in dynamic,
+              real-world conditions. Jobs are automatically dispatched from
+              Fleet-Ops, routes are optimized in real time, and proof of
+              delivery is captured instantly at the point of completion — even
+              in low or no connectivity environments.
+            </p>
+            <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start lg:mt-10">
+              <Button
+                asChild
+                size="lg"
+                className="text-primary h-[52px] bg-white px-6 text-base font-[600] hover:bg-white/90"
+              >
+                <Link href="https://play.google.com/store/apps/details?id=io.logisbase.navigator">
+                  <FaGooglePlay className="mr-2 size-4" />
+                  Google Play
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="h-[52px] border-white/40 bg-white/5 px-6 text-base font-[600] text-white backdrop-blur-sm hover:bg-white/15 hover:text-white"
+              >
+                <Link href="https://apps.apple.com/us/app/logisbase-navigator/id1554208255">
+                  <FaApple className="mr-2 size-4" />
+                  App Store
+                </Link>
+              </Button>
             </div>
+            <p className="mt-5 text-center text-[13px] font-[460] tracking-[0.25px] text-white/70 lg:text-left">
+              iOS & Android · Offline-first · Source-accessible
+            </p>
+          </div>
+          <div className="col-span-full flex items-end justify-center gap-2 sm:col-span-12 lg:col-span-6 lg:col-start-7">
+            <PhoneFrame
+              src="/images/screenshots/navigator-app/navigator-app-order-activity-update.webp"
+              alt="Navigator app — order activity update"
+              className="mb-8 scale-90 opacity-70"
+            />
+            <PhoneFrame
+              src="/images/screenshots/navigator-app/navigator-app-order-screen.webp"
+              alt="Navigator app — order detail"
+            />
+            <PhoneFrame
+              src="/images/screenshots/navigator-app/navigator-app-order-change-destination.webp"
+              alt="Navigator app — change destination"
+              className="mb-8 scale-90 opacity-70"
+            />
           </div>
         </div>
       </section>
 
-      {/* ── Three pillars ────────────────────────────────────────────── */}
       <section className="bg-muted/20 py-20">
         <div className="container">
           <div className="grid gap-8 md:grid-cols-3">
@@ -202,7 +167,6 @@ export default function NavigatorPageContent() {
         </div>
       </section>
 
-      {/* ── Feature: Live Dispatch ───────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
           <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -250,7 +214,6 @@ export default function NavigatorPageContent() {
         </div>
       </section>
 
-      {/* ── Feature: Navigation ─────────────────────────────────────── */}
       <section className="section-padding bg-muted/20">
         <div className="container">
           <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -314,7 +277,6 @@ export default function NavigatorPageContent() {
         </div>
       </section>
 
-      {/* ── Feature: Proof of Delivery ──────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
           <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -377,7 +339,6 @@ export default function NavigatorPageContent() {
         </div>
       </section>
 
-      {/* ── Feature: Chat ───────────────────────────────────────────── */}
       <section className="section-padding bg-muted/20">
         <div className="container">
           <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -424,7 +385,6 @@ export default function NavigatorPageContent() {
         </div>
       </section>
 
-      {/* ── Full capability grid ─────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
           <div className="mb-12 text-center">
@@ -509,7 +469,6 @@ export default function NavigatorPageContent() {
         </div>
       </section>
 
-      {/* ── White-label ──────────────────────────────────────────────── */}
       <section className="section-padding bg-muted/20">
         <div className="container">
           <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -592,7 +551,6 @@ export default function NavigatorPageContent() {
         </div>
       </section>
 
-      {/* ── Fleet-Ops integration ────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
           <div className="mb-12 text-center">
@@ -606,7 +564,6 @@ export default function NavigatorPageContent() {
             </p>
           </div>
 
-          {/* Flow */}
           <div className="mx-auto mb-12 grid max-w-4xl grid-cols-2 gap-4 md:grid-cols-4">
             {[
               {
@@ -665,7 +622,6 @@ export default function NavigatorPageContent() {
         </div>
       </section>
 
-      {/* ── Download ─────────────────────────────────────────────────── */}
       <section className="section-padding bg-muted/20">
         <div className="container">
           <div className="mb-12 text-center">
@@ -747,7 +703,6 @@ export default function NavigatorPageContent() {
         </div>
       </section>
 
-      {/* ── FAQ ──────────────────────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
           <div className="mx-auto max-w-3xl">
@@ -803,7 +758,6 @@ export default function NavigatorPageContent() {
         </div>
       </section>
 
-      {/* ── Final CTA ────────────────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
           <div className="bg-card relative overflow-hidden rounded-2xl border px-8 py-16 text-center">

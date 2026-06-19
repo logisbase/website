@@ -196,7 +196,7 @@ export default function FleetManagersPage() {
       ctaHeading="A fleet that's always available, always compliant, always tracked"
       ctaBody="Stop managing your fleet from spreadsheets and paper forms. Start your free trial and get every vehicle, driver, and compliance deadline visible from one dashboard."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

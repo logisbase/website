@@ -168,14 +168,14 @@ const Footer = () => {
         <div className="mx-auto flex max-w-sm justify-center gap-4.5">
           <Button className="flex-1" asChild>
             <Link
-              href="https://tally.so/r/68vqoo"
+              href="https://tally.so/r/68VqOO"
               target="_blank"
               rel="noopener noreferrer"
               data-cta-id="start_free_trial"
               data-cta-location="footer"
               data-cta-variant="primary"
             >
-              Try LogisBase Cloud
+              LogisBase Cloud
             </Link>
           </Button>
           <Button

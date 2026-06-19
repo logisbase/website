@@ -197,7 +197,7 @@ export default function FoodDeliveryPage() {
       ctaHeading="Ready to dominate your delivery market?"
       ctaBody="Join food and grocery delivery operators running faster, more profitable operations on LogisBase. Your first 7 days are on us."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Book a Demo"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

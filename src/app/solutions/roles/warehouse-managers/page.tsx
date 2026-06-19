@@ -201,7 +201,7 @@ export default function WarehouseManagersPage() {
       ctaHeading="Close the gap between your warehouse and your delivery operation"
       ctaBody="From pick list to proof of delivery — one connected platform with no manual handoffs. Start your free trial and see how Pallet WMS + FleetOps transforms your fulfilment cycle."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

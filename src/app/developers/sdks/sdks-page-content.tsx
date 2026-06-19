@@ -317,7 +317,7 @@ export default function SdksPageContent() {
           </div>
 
           <div className="mx-auto mb-6 grid max-w-5xl gap-6 md:grid-cols-2">
-            <div className="space-y-3">
+            <div className="min-w-0 space-y-3">
               <div className="flex items-center gap-2 text-sm font-medium">
                 <FaJs className="h-4 w-4 text-yellow-500" />
                 JavaScript
@@ -328,7 +328,7 @@ export default function SdksPageContent() {
                 label="orders.js"
               />
             </div>
-            <div className="space-y-3">
+            <div className="min-w-0 space-y-3">
               <div className="flex items-center gap-2 text-sm font-medium">
                 <FaPhp className="h-4 w-4 text-indigo-400" />
                 PHP
@@ -338,7 +338,7 @@ export default function SdksPageContent() {
           </div>
 
           <div className="mx-auto max-w-5xl space-y-3">
-            <div className="flex items-center gap-2 text-sm font-medium">
+            <div className="flex min-w-0 items-center gap-2 text-sm font-medium">
               <ShoppingCart className="text-primary h-4 w-4" />
               Storefront SDK
             </div>
@@ -362,10 +362,8 @@ export default function SdksPageContent() {
             </p>
           </div>
           <div
-            className="bg-border mx-auto max-w-3xl overflow-hidden rounded-xl"
+            className="bg-border mx-auto grid max-w-3xl grid-cols-2 overflow-hidden rounded-xl md:grid-cols-4"
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
               gap: 1,
             }}
           >
@@ -407,7 +405,7 @@ export default function SdksPageContent() {
                 ))}
               </div>
             </div>
-            <div className="space-y-3">
+            <div className="min-w-0 space-y-3">
               {REPOS.map((repo) => (
                 <Link
                   key={repo.name}
@@ -416,13 +414,13 @@ export default function SdksPageContent() {
                   rel="noopener noreferrer"
                   className="bg-card hover:border-primary group flex items-center justify-between rounded-lg border p-4 transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <FaGithub className="text-muted-foreground group-hover:text-foreground h-4 w-4 transition-colors" />
-                    <span className="font-mono text-sm font-medium">
+                  <div className="flex min-w-0 items-center gap-3">
+                    <FaGithub className="text-muted-foreground group-hover:text-foreground h-4 w-4 flex-shrink-0 transition-colors" />
+                    <span className="truncate font-mono text-sm font-medium">
                       {repo.name}
                     </span>
                   </div>
-                  <ExternalLink className="text-muted-foreground group-hover:text-primary h-3.5 w-3.5 transition-colors" />
+                  <ExternalLink className="text-muted-foreground group-hover:text-primary h-3.5 w-3.5 flex-shrink-0 transition-colors" />
                 </Link>
               ))}
             </div>

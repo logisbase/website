@@ -204,7 +204,7 @@ export default function RouteOptimizationPage() {
       ctaHeading="Cut fuel costs. Deliver more. Start today."
       ctaBody="Every day you plan routes manually is a day you're leaving fuel savings and delivery capacity on the table. Start your free trial and run your first optimized route in under 10 minutes."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

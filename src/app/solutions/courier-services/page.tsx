@@ -200,7 +200,7 @@ export default function CourierServicesPage() {
       ctaHeading="Ready to deliver more for less?"
       ctaBody="Join courier and parcel operators who are moving more volume, with fewer failed attempts, on LogisBase. Start your free trial today."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Book a Demo"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

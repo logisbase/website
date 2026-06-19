@@ -475,7 +475,7 @@ const ACTION_BUTTONS: Array<{
 }> = [
   {
     label: 'Get Started',
-    href: 'https://tally.so/r/68vqoo',
+    href: 'https://tally.so/r/68VqOO',
     variant: 'default',
     ctaId: 'start_free_trial',
   },

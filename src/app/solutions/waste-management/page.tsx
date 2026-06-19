@@ -201,7 +201,7 @@ export default function WasteManagementPage() {
       ctaHeading="Optimize your waste operation from the ground up"
       ctaBody="Less fuel, more collections, and compliance reports that don't take all week. See what LogisBase can do for your waste and recycling operation."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

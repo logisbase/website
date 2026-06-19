@@ -237,14 +237,7 @@ export default function SecurityCompliancePageContent() {
               operations and your customers.
             </p>
           </div>
-          <div
-            className="bg-border overflow-hidden rounded-xl"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 1,
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 gap-px overflow-hidden rounded-xl md:grid-cols-3">
             {securityFeatures.map((feat, i) => {
               const Icon = feat.icon;
               return (
@@ -420,14 +413,7 @@ export default function SecurityCompliancePageContent() {
               compliance obligations across major frameworks.
             </p>
           </div>
-          <div
-            className="bg-border overflow-hidden rounded-xl"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 1,
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 gap-px overflow-hidden rounded-xl md:grid-cols-3">
             {complianceItems.map((item, i) => (
               <div key={i} className="bg-card p-6">
                 <div className="mb-3 flex items-center justify-between">

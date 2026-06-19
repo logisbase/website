@@ -23,8 +23,8 @@ const deploymentOptions = [
       'Fully managed platform with automatic updates and enterprise-grade reliability',
     price: 'From $25/mo',
     cta: {
-      text: 'Try LogisBase Cloud',
-      href: 'https://tally.so/r/68vqoo',
+      text: 'LogisBase Cloud',
+      href: 'https://tally.so/r/68VqOO',
       variant: 'default' as const,
     },
     features: {

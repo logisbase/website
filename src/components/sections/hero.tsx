@@ -35,7 +35,7 @@ export default function Hero() {
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
           <Button size="lg" asChild>
             <Link
-              href="https://tally.so/r/68vqoo"
+              href="https://tally.so/r/68VqOO"
               target="_blank"
               rel="noopener noreferrer"
               data-cta-id="start_free_trial"

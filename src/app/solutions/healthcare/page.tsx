@@ -201,7 +201,7 @@ export default function HealthcarePage() {
       ctaHeading="Logistics your compliance team will actually approve"
       ctaBody="Deploy a healthcare logistics platform that keeps your data in your hands, your deliveries on time, and your audit trail airtight."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

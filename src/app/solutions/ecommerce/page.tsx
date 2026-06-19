@@ -204,7 +204,7 @@ export default function EcommercePage() {
       ctaHeading="Take ownership of your delivery experience"
       ctaBody="Stop letting carriers define your brand's most important touchpoint. Build your own delivery operation on LogisBase and keep the margin, the data, and the customer relationship."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

@@ -196,7 +196,7 @@ export default function ExecutivesPage() {
       ctaHeading="Lower cost. More control. Real business outcomes."
       ctaBody="The logistics platform that delivers ROI instead of just invoices. Start your free trial or talk to our team about an enterprise deployment that fits your requirements."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

@@ -455,7 +455,7 @@ export default function PricingClient() {
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild>
               <Link
-                href="https://tally.so/r/68vqoo"
+                href="https://tally.so/r/68VqOO"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cta-id="start_free_trial"
@@ -541,7 +541,7 @@ export default function PricingClient() {
                 <CardFooter>
                   <Button className="w-full" variant="outline" asChild>
                     <Link
-                      href="https://tally.so/r/68vqoo"
+                      href="https://tally.so/r/68VqOO"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => onTierCtaClick(tier)}
@@ -632,7 +632,7 @@ export default function PricingClient() {
                       </td>
                       <td className="px-4 py-3 text-right">
                         <Link
-                          href="https://tally.so/r/68vqoo"
+                          href="https://tally.so/r/68VqOO"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-primary text-xs whitespace-nowrap underline-offset-4 hover:underline"
@@ -1034,7 +1034,7 @@ export default function PricingClient() {
               <div className="flex flex-wrap justify-center gap-4">
                 <Button size="lg" asChild>
                   <Link
-                    href="https://tally.so/r/68vqoo"
+                    href="https://tally.so/r/68VqOO"
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cta-id="start_free_trial"

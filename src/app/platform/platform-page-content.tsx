@@ -239,11 +239,11 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
                 <a
-                  href="https://tally.so/r/68vqoo"
+                  href="https://tally.so/r/68VqOO"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Try LogisBase Cloud <ArrowRight className="ml-2 size-4" />
+                  LogisBase Cloud <ArrowRight className="ml-2 size-4" />
                 </a>
               </Button>
               <Button size="lg" variant="outline" asChild>
@@ -545,7 +545,7 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
                   <a
-                    href="https://tally.so/r/68vqoo"
+                    href="https://tally.so/r/68VqOO"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

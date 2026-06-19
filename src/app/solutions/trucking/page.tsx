@@ -198,7 +198,7 @@ export default function TruckingPage() {
       ctaHeading="Ready to run a leaner, smarter fleet?"
       ctaBody="Hundreds of trucking and haulage operators have replaced their legacy TMS with LogisBase. Start your free trial and see the difference in week one."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

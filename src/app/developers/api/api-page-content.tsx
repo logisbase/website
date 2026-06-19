@@ -150,10 +150,10 @@ export default function ApiIntegrationsPageContent() {
               <span className="bg-muted rounded-full px-3 py-1">
                 Developers
               </span>
-              <span className="px-3">API &amp; Integrations</span>
+              <span className="px-3">API & Integrations</span>
             </div>
 
-            <h1 className="text-4xxl leading-none tracking-tight text-balance">
+            <h1 className="text-4xl leading-none tracking-tight text-balance md:text-5xl">
               Build Anything on Top of{' '}
               <span className="text-gradient">LogisBase</span>
             </h1>
@@ -191,7 +191,7 @@ export default function ApiIntegrationsPageContent() {
                 alt="LogisBase Developer Console — API key management and integration tools"
                 fill
                 className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 80vw"
+                sizes="(max-width: 768px) 90vw, 80vw"
                 priority
               />
             </div>
@@ -202,13 +202,25 @@ export default function ApiIntegrationsPageContent() {
       {/* ── Stat strip ──────────────────────────────────────────────── */}
       <section className="bg-muted/10 border-y">
         <div
-          className="bg-border container overflow-hidden rounded-xl"
+          className="stat-grid bg-border container overflow-hidden rounded-xl"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 1,
+            gridTemplateColumns: 'repeat(1, 1fr)',
+            gap: '1px',
           }}
         >
+          <style jsx>{`
+            @media (min-width: 640px) {
+              .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            @media (min-width: 1024px) {
+              .stat-grid {
+                grid-template-columns: repeat(4, 1fr);
+              }
+            }
+          `}</style>
           {[
             { value: 'REST', label: 'Full REST API' },
             { value: 'WS', label: 'SocketCluster channels' },
@@ -226,8 +238,8 @@ export default function ApiIntegrationsPageContent() {
       {/* ── REST API ─────────────────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div className="flex flex-col gap-6">
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+            <div className="flex min-w-0 flex-col gap-6">
               <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs">
                 <Plug className="text-primary mr-2 h-3 w-3" />
                 REST API
@@ -291,14 +303,7 @@ export default function ApiIntegrationsPageContent() {
             </p>
           </div>
 
-          <div
-            className="bg-border overflow-hidden rounded-xl border"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: 1,
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 gap-px overflow-hidden rounded-xl border md:grid-cols-2 lg:grid-cols-4">
             {apiResources.map(({ icon: Icon, name, desc, endpoints }) => (
               <div key={name} className="bg-background flex flex-col gap-3 p-6">
                 <div className="bg-primary/10 flex h-9 w-9 items-center justify-center rounded-lg">
@@ -320,17 +325,17 @@ export default function ApiIntegrationsPageContent() {
       {/* ── SocketCluster ────────────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div className="relative order-2 aspect-[4/3] overflow-hidden rounded-xl border shadow-lg lg:order-1">
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+            <div className="relative order-2 aspect-[4/3] w-full min-w-0 overflow-hidden rounded-xl border shadow-lg lg:order-1">
               <Image
                 src="/images/screenshots/developers/developers-websockets-listen-custom-channel.webp"
                 alt="LogisBase Developer Console — listening on a custom SocketCluster channel"
                 fill
                 className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 90vw, 50vw"
               />
             </div>
-            <div className="order-1 flex flex-col gap-6 lg:order-2">
+            <div className="order-1 flex min-w-0 flex-col gap-6 lg:order-2">
               <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs">
                 <Wifi className="text-primary mr-2 h-3 w-3" />
                 SocketCluster Channels
@@ -338,12 +343,12 @@ export default function ApiIntegrationsPageContent() {
               <h2 className="text-4xl leading-tight font-bold tracking-tight">
                 Real-time data without polling
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed break-words">
                 LogisBase's WebSocket layer is powered by SocketCluster.
                 Subscribe to channels and receive live updates the instant
                 something changes — driver location, order status, fleet events,
                 and more. Connect using the official{' '}
-                <code className="text-primary font-mono text-xs">
+                <code className="text-primary font-mono text-xs break-all">
                   socketcluster-client
                 </code>{' '}
                 npm package.
@@ -369,7 +374,7 @@ export default function ApiIntegrationsPageContent() {
                 ].map(({ label, desc }) => (
                   <li key={label} className="flex items-start gap-3 text-sm">
                     <div className="bg-primary mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                    <span>
+                    <span className="min-w-0 break-words">
                       <span className="font-semibold">{label}</span>
                       <span className="text-muted-foreground"> — {desc}</span>
                     </span>
@@ -389,13 +394,16 @@ export default function ApiIntegrationsPageContent() {
       {/* ── Webhooks ─────────────────────────────────────────────────── */}
       <section className="section-padding bg-muted/20">
         <div className="container">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div className="flex flex-col gap-6">
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+            <div className="flex min-w-0 flex-col gap-6">
               <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs">
                 <Webhook className="text-primary mr-2 h-3 w-3" />
                 Webhooks
               </div>
-              <h2 className="text-4xl leading-tight font-bold tracking-tight">
+              <h2 className="text-3xl leading-tight font-bold tracking-tight md:text-4xl">
+                A complete REST API for every logistics operation
+              </h2>
+              <h2 className="text-3xl leading-tight font-bold tracking-tight md:text-4xl">
                 Event-driven integration with webhooks
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -441,13 +449,13 @@ export default function ApiIntegrationsPageContent() {
                 ))}
               </ul>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border shadow-lg">
+            <div className="relative aspect-[4/3] w-full min-w-0 overflow-hidden rounded-xl border shadow-lg">
               <Image
                 src="/images/screenshots/developers/developers-webhook-details-attempts.webp"
                 alt="LogisBase Developer Console — webhook delivery attempts with payload and response inspector"
                 fill
                 className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 90vw, 50vw"
               />
             </div>
           </div>
@@ -458,7 +466,10 @@ export default function ApiIntegrationsPageContent() {
       <section className="section-padding">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold tracking-tight">
+            <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
+              Core API resources
+            </h2>
+            <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
               Native integrations
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl">
@@ -501,22 +512,25 @@ export default function ApiIntegrationsPageContent() {
       {/* ── Storefront API ───────────────────────────────────────────── */}
       <section className="section-padding bg-muted/20">
         <div className="container">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div className="relative order-2 aspect-[4/3] overflow-hidden rounded-xl border shadow-lg lg:order-1">
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+            <div className="relative order-2 aspect-[4/3] w-full min-w-0 overflow-hidden rounded-xl border shadow-lg lg:order-1">
               <Image
                 src="/images/screenshots/storefront/storefront-products-overview.webp"
                 alt="LogisBase Storefront — product catalogue and store management surface for the Storefront API"
                 fill
                 className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 90vw, 50vw"
               />
             </div>
-            <div className="order-1 flex flex-col gap-6 lg:order-2">
+            <div className="order-1 flex min-w-0 flex-col gap-6 lg:order-2">
               <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs">
                 <ShoppingBag className="text-primary mr-2 h-3 w-3" />
                 Storefront API
               </div>
-              <h2 className="text-4xl leading-tight font-bold tracking-tight">
+              <h2 className="text-3xl leading-tight font-bold tracking-tight md:text-4xl">
+                Real-time data without polling
+              </h2>
+              <h2 className="text-3xl leading-tight font-bold tracking-tight md:text-4xl">
                 A dedicated API for commerce and delivery
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -557,7 +571,7 @@ export default function ApiIntegrationsPageContent() {
       <section className="section-padding">
         <div className="container">
           <div className="mx-auto max-w-3xl">
-            <h2 className="mb-10 text-center text-4xl font-bold tracking-tight">
+            <h2 className="mb-10 text-center text-3xl font-bold tracking-tight md:text-4xl">
               Frequently asked questions
             </h2>
             <Accordion type="single" collapsible className="space-y-3">
@@ -646,7 +660,7 @@ export default function ApiIntegrationsPageContent() {
           <div className="bg-card relative overflow-hidden rounded-2xl border px-8 py-16 text-center">
             <div className="from-primary/5 to-primary/10 absolute inset-0 bg-gradient-to-br via-transparent" />
             <div className="relative flex flex-col items-center gap-6">
-              <h2 className="text-4xl font-bold tracking-tight text-balance">
+              <h2 className="text-3xl font-bold tracking-tight text-balance md:text-4xl">
                 Start building with the LogisBase API
               </h2>
               <p className="text-muted-foreground max-w-xl">
@@ -677,8 +691,7 @@ export default function ApiIntegrationsPageContent() {
                 </Link>
               </div>
               <p className="text-muted-foreground text-xs">
-                Free API access on all plans · REST, SocketCluster &amp;
-                Webhooks
+                Free API access on all plans · REST, SocketCluster & Webhooks
               </p>
             </div>
           </div>

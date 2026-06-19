@@ -492,14 +492,7 @@ export default function LedgerPageContent() {
           </div>
 
           {/* Outcome stats */}
-          <div
-            className="bg-border overflow-hidden rounded-xl border"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '1px',
-            }}
-          >
+          <div className="bg-border grid grid-cols-2 gap-px overflow-hidden rounded-xl border md:grid-cols-4">
             {outcomes.map((stat) => (
               <div
                 key={stat.label}

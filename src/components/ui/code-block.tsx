@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import {
+  vscDarkPlus,
+  vs,
+} from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Check, Copy } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -33,10 +36,14 @@ export function CodeBlock({
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsDark(document.documentElement.classList.contains('dark'));
+    const check = () =>
+      setIsDark(document.documentElement.classList.contains('dark'));
     check();
     const observer = new MutationObserver(check);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
     return () => observer.disconnect();
   }, []);
 
@@ -52,15 +59,22 @@ export function CodeBlock({
 
   return (
     <div
-      className={`overflow-hidden rounded-xl border ${className ?? ''}`}
+      className={`max-w-full min-w-0 rounded-xl border ${className ?? ''}`}
       style={{ backgroundColor: bg, borderColor: border }}
     >
       <div
         className="flex shrink-0 items-center justify-between border-b px-4 py-3"
         style={{ backgroundColor: headerBg, borderColor: border }}
       >
-        <span className="font-mono text-sm text-muted-foreground">{label ?? language}</span>
-        <Button variant="ghost" size="sm" onClick={handleCopy} className="h-8 px-2">
+        <span className="text-muted-foreground font-mono text-sm">
+          {label ?? language}
+        </span>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={handleCopy}
+          className="h-8 px-2"
+        >
           {copied ? (
             <>
               <Check className="mr-1.5 h-3.5 w-3.5" />
@@ -74,7 +88,7 @@ export function CodeBlock({
           )}
         </Button>
       </div>
-      <div className="overflow-auto">
+      <div className="max-w-full overflow-x-auto">
         <SyntaxHighlighter
           language={language}
           style={isDark ? vscDarkPlus : vs}
@@ -84,6 +98,9 @@ export function CodeBlock({
             background: 'transparent',
             fontSize: '0.875rem',
             lineHeight: '1.7',
+            wordBreak: 'normal',
+            whiteSpace: 'pre',
+            minWidth: '100%',
           }}
           showLineNumbers={showLineNumbers}
           lineNumberStyle={{

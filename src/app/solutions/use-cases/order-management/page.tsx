@@ -206,7 +206,7 @@ export default function OrderManagementPage() {
       ctaHeading="One platform for every order type you run"
       ctaBody="Stop managing orders across disconnected tools. Build the exact workflow your operation needs and process every order faster, more accurately, and with full visibility from intake to delivery."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Talk to Sales"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />

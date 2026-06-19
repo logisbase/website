@@ -209,7 +209,7 @@ export default function IntegrationsPage() {
       ctaHeading="Build the logistics workflow your operation actually needs"
       ctaBody="Connect LogisBase to everything you already run. Start your free trial and make your first API call in under 10 minutes — complete documentation included."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="View API Docs"
       ctaSecondaryHref="https://logisbase.com/docs"
     />

@@ -344,7 +344,7 @@ export default function LogisticsAIPage() {
 
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild>
-              <Link href="https://tally.so/r/68vqoo">
+              <Link href="https://tally.so/r/68VqOO">
                 Try LogisBase Free <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -750,7 +750,7 @@ export default function LogisticsAIPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild>
-              <Link href="https://tally.so/r/68vqoo">
+              <Link href="https://tally.so/r/68VqOO">
                 Start Free — Try LogisBase Now{' '}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>

@@ -205,7 +205,7 @@ export default function GovernmentPage() {
       ctaHeading="Logistics infrastructure you can trust with classified operations"
       ctaBody="If your operations require data sovereignty, source-accessible auditability, and the option to deploy anywhere — LogisBase was built for exactly that. Let's talk."
       ctaPrimary="Get Started"
-      ctaPrimaryHref="https://tally.so/r/68vqoo"
+      ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Contact Us"
       ctaSecondaryHref="https://cal.com/logisbase/demo"
     />
