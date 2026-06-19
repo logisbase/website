@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 
 const events = [
@@ -196,7 +197,7 @@ export default function WebhooksPageContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       {/* Hero */}
       <section className="section-padding relative">
         <div className="relative container">
@@ -380,9 +381,12 @@ export default function WebhooksPageContent() {
               naming convention.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {events.map((group) => (
-              <div key={group.group} className="bg-card rounded-lg border p-6">
+              <div
+                key={group.group}
+                className="bg-card min-w-0 rounded-lg border p-6"
+              >
                 <div
                   className={`mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${group.color}`}
                 >
@@ -393,11 +397,11 @@ export default function WebhooksPageContent() {
                 </div>
                 <div className="space-y-3">
                   {group.items.map((item) => (
-                    <div key={item.name} className="flex gap-3">
-                      <code className="bg-muted mt-0.5 h-fit flex-shrink-0 rounded px-2 py-1 font-mono text-xs">
+                    <div key={item.name} className="flex min-w-0 gap-3">
+                      <code className="bg-muted mt-0.5 h-fit flex-shrink-0 rounded px-2 py-1 font-mono text-xs break-all">
                         {item.name}
                       </code>
-                      <span className="text-muted-foreground text-sm">
+                      <span className="text-muted-foreground min-w-0 text-sm break-words">
                         {item.desc}
                       </span>
                     </div>
@@ -524,7 +528,7 @@ export default function WebhooksPageContent() {
                 </div>
                 <div className="text-foreground ml-4">{'}'}</div>
                 <div className="text-muted-foreground mt-2 ml-4">
-                  // Process payload safely
+                  {/* Process payload safely */}
                 </div>
                 <div className="text-foreground ml-4">
                   const {'{ event, data }'} = req.body;

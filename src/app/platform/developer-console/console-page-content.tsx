@@ -141,14 +141,7 @@ export default function DeveloperConsolePageContent() {
             </p>
           </div>
 
-          <div
-            className="bg-border overflow-hidden rounded-xl border"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 1,
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 gap-1 overflow-hidden rounded-xl border sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 icon: Key,
@@ -211,7 +204,7 @@ export default function DeveloperConsolePageContent() {
       {/* ── API Keys ─────────────────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="flex flex-col items-center gap-10 lg:grid lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col gap-6">
               <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs">
                 <Key className="text-primary mr-2 h-3 w-3" />
@@ -267,8 +260,8 @@ export default function DeveloperConsolePageContent() {
       {/* ── Webhooks ─────────────────────────────────────────────────── */}
       <section className="section-padding bg-muted/20">
         <div className="container">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div className="relative order-2 aspect-[4/3] overflow-hidden rounded-xl border shadow-lg lg:order-1">
+          <div className="flex flex-col items-center gap-10 lg:grid lg:grid-cols-2 lg:gap-16">
+            <div className="relative order-2 aspect-[4/3] w-full overflow-hidden rounded-xl border shadow-lg lg:order-1">
               <Image
                 src="/images/screenshots/developers/developers-webhooks-management.webp"
                 alt="LogisBase Developer Console — webhook subscriptions and target URLs"
@@ -335,11 +328,11 @@ export default function DeveloperConsolePageContent() {
       {/* ── Request Logs ─────────────────────────────────────────────── */}
       <section className="section-padding">
         <div className="container">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="flex flex-col items-center gap-10 lg:grid lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col gap-6">
               <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs">
                 <Activity className="text-primary mr-2 h-3 w-3" />
-                Request Logs &amp; Monitoring
+                Request Logs & Monitoring
               </div>
               <h2 className="text-4xl leading-tight font-bold tracking-tight">
                 Complete visibility into every API request
@@ -401,8 +394,8 @@ export default function DeveloperConsolePageContent() {
       {/* ── Socket Channels ──────────────────────────────────────────── */}
       <section className="section-padding bg-muted/20">
         <div className="container">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div className="relative order-2 aspect-[4/3] overflow-hidden rounded-xl border shadow-lg lg:order-1">
+          <div className="flex flex-col items-center gap-10 lg:grid lg:grid-cols-2 lg:gap-16">
+            <div className="relative order-2 aspect-[4/3] w-full overflow-hidden rounded-xl border shadow-lg lg:order-1">
               <Image
                 src="/images/screenshots/developers/developers-websockets.webp"
                 alt="LogisBase Developer Console — active WebSocket channels and connected clients"

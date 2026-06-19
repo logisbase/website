@@ -175,7 +175,7 @@ const faqs = [
 function PhoneFrame({ src, alt }: { src: string; alt: string }) {
   return (
     <div
-      className="border-foreground/20 bg-background relative mx-auto overflow-hidden rounded-[1.75rem] border-4 shadow-2xl"
+      className="border-foreground/20 bg-background relative mx-auto scale-90 overflow-hidden rounded-[1.75rem] border-4 shadow-2xl sm:scale-100"
       style={{ width: 220, height: 440 }}
     >
       <div className="bg-foreground/20 absolute top-0 left-1/2 z-10 h-6 w-24 -translate-x-1/2 rounded-b-2xl" />
@@ -567,7 +567,7 @@ export default function MobileAppsPageContent() {
       <section className="section-padding bg-muted/20">
         <div className="container">
           <div className="grid items-center gap-12 md:grid-cols-2">
-            <div>
+            <div className="min-w-0">
               <div className="mb-4 inline-flex items-center rounded-full border px-3 py-1 text-xs">
                 <span className="text-primary">●</span>
                 <span className="ml-2">Custom App Development</span>
@@ -575,7 +575,7 @@ export default function MobileAppsPageContent() {
               <h2 className="mb-6 text-3xl font-bold md:text-4xl">
                 Build Your Own App on the LogisBase API
               </h2>
-              <p className="text-muted-foreground mb-8 text-lg">
+              <p className="text-muted-foreground mb-8 text-lg break-words">
                 Navigator and Storefront are just the beginning. The LogisBase
                 API is fully documented, enabling you to build any mobile
                 experience you can imagine — custom driver apps, field service
@@ -591,18 +591,22 @@ export default function MobileAppsPageContent() {
                   'Comprehensive API documentation and Postman collection',
                   'Active developer community and source-accessible codebase',
                 ].map((f, i) => (
-                  <div key={i} className="flex items-center gap-3 text-sm">
-                    <CheckCircle2 className="text-primary h-4 w-4 flex-shrink-0" />
-                    {f}
+                  <div key={i} className="flex items-start gap-3 text-sm">
+                    <CheckCircle2 className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                    <span className="break-words">{f}</span>
                   </div>
                 ))}
               </div>
-              <div className="flex gap-4">
+              <div className="flex flex-col gap-4 sm:flex-row">
                 <Link href="/developers/api">
-                  <Button>View API Reference</Button>
+                  <Button className="w-full sm:w-auto">
+                    View API Reference
+                  </Button>
                 </Link>
                 <Link href="/platform/developer-console">
-                  <Button variant="outline">Developer Console</Button>
+                  <Button variant="outline" className="w-full sm:w-auto">
+                    Developer Console
+                  </Button>
                 </Link>
               </div>
             </div>

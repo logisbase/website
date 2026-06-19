@@ -216,16 +216,16 @@ export default function TrueVeganPage() {
                 on the way home from work.
               </p>
 
-              <div className="grid grid-cols-2 gap-3 pt-2">
+              <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
                 {dishes.map((d) => (
                   <div
                     key={d.label}
-                    className="flex items-center gap-3 rounded-xl border border-[var(--tv-border-light)] bg-[var(--tv-card)] p-4"
+                    className="flex min-w-0 items-center gap-3 rounded-xl border border-[var(--tv-border-light)] bg-[var(--tv-card)] p-4"
                   >
                     <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--tv-blue)]/10">
                       <d.icon className="size-4 text-[var(--tv-blue)]" />
                     </div>
-                    <span className="text-sm font-medium text-[var(--tv-navy)]">
+                    <span className="truncate text-sm font-medium text-[var(--tv-navy)]">
                       {d.label}
                     </span>
                   </div>

@@ -45,7 +45,7 @@ function PhoneFrame({
 }) {
   return (
     <div
-      className={`border-border bg-background relative mx-auto flex shrink-0 flex-col overflow-hidden rounded-[1.75rem] border-2 shadow-2xl ${className} h-[400px] w-[200px] md:h-[520px] md:w-[260px]`}
+      className={`border-border bg-background relative mx-auto flex shrink-0 flex-col overflow-hidden rounded-[1.75rem] border-2 shadow-2xl ${className} h-[280px] w-[140px] max-w-full md:h-[520px] md:w-[260px]`}
     >
       <div className="bg-border/60 absolute top-3 left-1/2 z-10 h-5 w-20 -translate-x-1/2 rounded-full" />
       <div className="relative flex-1 overflow-hidden">
@@ -53,8 +53,8 @@ function PhoneFrame({
           src={src}
           alt={alt}
           fill
-          className="object-cover object-top"
-          sizes="260px"
+          className="h-auto w-full object-contain object-top"
+          sizes="(max-width: 768px) 140px, 260px"
         />
       </div>
     </div>
@@ -64,7 +64,7 @@ function PhoneFrame({
 export default function NavigatorPageContent() {
   return (
     <div className="flex flex-col">
-      <section className="bg-primary text-primary-foreground relative w-full overflow-hidden">
+      <section className="bg-primary text-primary-foreground relative w-full overflow-x-hidden">
         <div className="container grid grid-cols-4 items-center gap-x-4 gap-y-12 py-20 sm:grid-cols-12 sm:gap-x-6 lg:gap-x-16 lg:gap-y-16 lg:py-28 xl:py-32">
           <div className="col-span-full row-start-1 sm:col-span-8 sm:col-start-3 lg:col-span-6 lg:col-start-1">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
@@ -114,7 +114,7 @@ export default function NavigatorPageContent() {
               iOS & Android · Offline-first · Source-accessible
             </p>
           </div>
-          <div className="col-span-full flex items-end justify-center gap-2 sm:col-span-12 lg:col-span-6 lg:col-start-7">
+          <div className="col-span-full flex w-full min-w-0 flex-col items-center justify-center gap-6 sm:flex-row lg:col-span-6 lg:col-start-7">
             <PhoneFrame
               src="/images/screenshots/navigator-app/navigator-app-order-activity-update.webp"
               alt="Navigator app — order activity update"
@@ -134,8 +134,8 @@ export default function NavigatorPageContent() {
       </section>
 
       <section className="bg-muted/20 py-20">
-        <div className="container">
-          <div className="grid gap-8 md:grid-cols-3">
+        <div className="container w-full min-w-0">
+          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
             {[
               {
                 icon: Navigation,
@@ -168,18 +168,18 @@ export default function NavigatorPageContent() {
       </section>
 
       <section className="section-padding">
-        <div className="container">
+        <div className="container w-full min-w-0">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <div className="flex flex-col gap-6">
               <div className="inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs">
                 <Radio className="text-primary mr-2 h-3 w-3" />
                 Live Job Dispatch
               </div>
-              <h2 className="text-4xl leading-tight font-bold tracking-tight">
+              <h2 className="text-4xl leading-tight font-bold tracking-tight break-words">
                 Orders from Fleet-Ops land in the app the moment they're
                 assigned
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed break-words">
                 Dispatchers assign jobs in the Fleet-Ops console and Navigator
                 alerts the driver immediately via push notification. No phone
                 calls, no WhatsApp chains — the full order brief is already on
@@ -199,11 +199,11 @@ export default function NavigatorPageContent() {
                 ))}
               </ul>
             </div>
-            <div className="flex justify-center gap-6">
+            <div className="flex w-full min-w-0 flex-col items-center justify-center gap-6 sm:flex-row">
               <PhoneFrame
                 src="/images/screenshots/navigator-app/navigator-app-order-activity-update.webp"
                 alt="Navigator — incoming job activity update"
-                className="mb-6 scale-95 opacity-80"
+                className="mb-6 scale-95 opacity-80 sm:mb-0"
               />
               <PhoneFrame
                 src="/images/screenshots/navigator-app/navigator-app-order-screen.webp"
@@ -215,9 +215,9 @@ export default function NavigatorPageContent() {
       </section>
 
       <section className="section-padding bg-muted/20">
-        <div className="container">
+        <div className="container w-full min-w-0">
           <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div className="order-2 flex justify-center gap-6 lg:order-1">
+            <div className="order-2 flex w-full min-w-0 flex-col items-center justify-center gap-6 sm:flex-row lg:order-1">
               <PhoneFrame
                 src="/images/screenshots/navigator-app/navigator-app-start-route-navigation.webp"
                 alt="Navigator — turn-by-turn route navigation"
@@ -225,7 +225,7 @@ export default function NavigatorPageContent() {
               <PhoneFrame
                 src="/images/screenshots/navigator-app/navigator-app-order-screen-route-details.webp"
                 alt="Navigator — route waypoint details"
-                className="mt-6 scale-95 opacity-80"
+                className="mt-6 scale-95 opacity-80 sm:mt-0"
               />
             </div>
             <div className="order-1 flex flex-col gap-6 lg:order-2">
@@ -233,16 +233,16 @@ export default function NavigatorPageContent() {
                 <Map className="text-primary mr-2 h-3 w-3" />
                 Turn-by-Turn Navigation
               </div>
-              <h2 className="text-4xl leading-tight font-bold tracking-tight">
+              <h2 className="text-4xl leading-tight font-bold tracking-tight break-words">
                 Gets drivers there — with or without a signal
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed break-words">
                 Navigator downloads map tiles for the route automatically so
                 drivers never get stuck when coverage drops in a warehouse
                 district, basement car park, or rural area. When connectivity
                 returns, position and status sync instantly.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {[
                   {
                     icon: WifiOff,
@@ -285,10 +285,10 @@ export default function NavigatorPageContent() {
                 <Camera className="text-primary mr-2 h-3 w-3" />
                 Proof of Delivery
               </div>
-              <h2 className="text-4xl leading-tight font-bold tracking-tight">
+              <h2 className="text-4xl leading-tight font-bold tracking-tight break-words">
                 Every delivery is verified, timestamped, and dispute-proof
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed break-words">
                 Configure exactly what proof each order type requires. Photo of
                 the parcel, recipient signature, QR scan of a label — or all
                 three. Evidence is attached to the order record in Fleet-Ops and
@@ -358,10 +358,10 @@ export default function NavigatorPageContent() {
                 <MessageSquare className="text-primary mr-2 h-3 w-3" />
                 In-App Communication
               </div>
-              <h2 className="text-4xl leading-tight font-bold tracking-tight">
+              <h2 className="text-4xl leading-tight font-bold tracking-tight break-words">
                 Dispatch and drivers stay in sync without leaving the app
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed break-words">
                 Navigator includes built-in real-time messaging so drivers can
                 flag issues, request clarification, or confirm delivery details
                 without switching to WhatsApp or SMS. Threads are attached to
@@ -397,14 +397,7 @@ export default function NavigatorPageContent() {
             </p>
           </div>
 
-          <div
-            className="bg-border overflow-hidden rounded-xl border"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 1,
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 gap-px overflow-hidden rounded-xl border sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 icon: Radio,
@@ -477,10 +470,10 @@ export default function NavigatorPageContent() {
                 <Globe className="text-primary mr-2 h-3 w-3" />
                 White-Label & Custom Builds
               </div>
-              <h2 className="text-4xl leading-tight font-bold tracking-tight">
+              <h2 className="text-4xl leading-tight font-bold tracking-tight break-words">
                 Ship it under your own brand — not ours
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed break-words">
                 Navigator is built for full white-label deployment, allowing
                 organizations to launch a fully branded driver application
                 connected to their LogisBase environment. Configure, customize,

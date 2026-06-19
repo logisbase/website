@@ -105,12 +105,12 @@ const INTEGRATIONS: { name: string; category: string; logo: string }[] = [
   {
     name: 'Twilio',
     category: 'Communication',
-    logo: 'https://cdn.simpleicons.org/twilio/F22F46',
+    logo: 'https://cdn.simpleicons.org/twilio',
   },
   {
     name: 'SendGrid',
     category: 'Communication',
-    logo: 'https://cdn.simpleicons.org/sendgrid/51A9E3',
+    logo: '/images/integrations/sendgrid.svg',
   },
   {
     name: 'Mailgun',
@@ -121,7 +121,7 @@ const INTEGRATIONS: { name: string; category: string; logo: string }[] = [
   {
     name: 'AWS',
     category: 'Cloud & Infrastructure',
-    logo: 'https://cdn.simpleicons.org/amazonaws/FF9900',
+    logo: 'https://cdn.simpleicons.org/amazonaws',
   },
   {
     name: 'Google Cloud',
@@ -131,7 +131,7 @@ const INTEGRATIONS: { name: string; category: string; logo: string }[] = [
   {
     name: 'Microsoft Azure',
     category: 'Cloud & Infrastructure',
-    logo: 'https://cdn.simpleicons.org/microsoftazure/0078D4',
+    logo: 'https://cdn.simpleicons.org/microsoftazure',
   },
   {
     name: 'DigitalOcean',
@@ -364,25 +364,27 @@ export default function ExtensionsMarketplacePageContent() {
 
       {/* ── Stat strip ──────────────────────────────────────────────── */}
       <section className="bg-muted/10 border-y">
-        <div
-          className="bg-border container overflow-hidden rounded-xl"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 1,
-          }}
-        >
-          {[
-            { value: '60+', label: 'Extensions available' },
-            { value: '8', label: 'Categories' },
-            { value: 'Free', label: 'Core extensions' },
-            { value: 'Open', label: 'Publisher platform' },
-          ].map(({ value, label }) => (
-            <div key={label} className="bg-background py-8 text-center">
-              <p className="text-gradient text-3xl font-bold">{value}</p>
-              <p className="text-muted-foreground mt-1 text-sm">{label}</p>
-            </div>
-          ))}
+        <div className="container">
+          <div className="bg-border grid grid-cols-2 overflow-hidden rounded-xl border md:grid-cols-4">
+            {[
+              { value: '60+', label: 'Extensions available' },
+              { value: '8', label: 'Categories' },
+              { value: 'Free', label: 'Core extensions' },
+              { value: 'Open', label: 'Publisher platform' },
+            ].map(({ value, label }) => (
+              <div
+                key={label}
+                className="bg-background border-r border-b p-6 text-center last:border-r-0 md:border-b-0 md:last:border-r-0"
+              >
+                <p className="text-gradient text-2xl font-bold md:text-3xl">
+                  {value}
+                </p>
+                <p className="text-muted-foreground mt-1 text-xs md:text-sm">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -529,18 +531,11 @@ export default function ExtensionsMarketplacePageContent() {
               area of logistics.
             </p>
           </div>
-          <div
-            className="bg-border overflow-hidden rounded-xl border"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: 1,
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 overflow-hidden rounded-xl border sm:grid-cols-2 md:grid-cols-4">
             {categories.map(({ icon: Icon, name, count }) => (
               <div
                 key={name}
-                className="bg-card hover:bg-muted/50 flex cursor-pointer flex-col items-center gap-3 p-8 text-center transition-colors"
+                className="bg-card hover:bg-muted/50 flex cursor-pointer flex-col items-center gap-3 border-r border-b p-8 text-center transition-colors"
               >
                 <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-xl">
                   <Icon className="text-primary h-5 w-5" />
@@ -576,7 +571,7 @@ export default function ExtensionsMarketplacePageContent() {
               <h3 className="text-muted-foreground mb-4 border-b pb-2 text-sm font-semibold tracking-wider uppercase">
                 {category}
               </h3>
-              <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
                 {INTEGRATIONS.filter((i) => i.category === category).map(
                   (integration) => (
                     <div
@@ -586,9 +581,13 @@ export default function ExtensionsMarketplacePageContent() {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={integration.logo}
-                        alt={`${integration.name} logo`}
-                        className="h-8 w-8 object-contain"
+                        alt={integration.name}
                         loading="lazy"
+                        className="h-8 w-8 object-contain"
+                        onError={(e) => {
+                          e.currentTarget.src =
+                            '/images/integrations/placeholder.png';
+                        }}
                       />
                       <span className="text-muted-foreground text-center text-xs leading-tight">
                         {integration.name}

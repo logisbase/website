@@ -403,14 +403,7 @@ export default function StorefrontPageContent() {
           </div>
 
           {/* Commission stat strip */}
-          <div
-            className="bg-border overflow-hidden rounded-xl border"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '1px',
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 gap-px overflow-hidden rounded-xl border sm:grid-cols-3">
             <div className="bg-card flex flex-col items-center justify-center gap-1 px-6 py-8 text-center">
               <span className="text-primary text-3xl font-bold tracking-tight md:text-4xl">
                 0%
@@ -727,7 +720,7 @@ export default function StorefrontPageContent() {
         <div className="container">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             {/* Left: copy */}
-            <div className="flex flex-col gap-6">
+            <div className="flex min-w-0 flex-col gap-6">
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-600 dark:text-amber-400">
                   <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
@@ -770,8 +763,8 @@ export default function StorefrontPageContent() {
                   );
                 })}
               </div>
-              <div className="flex gap-3">
-                <Button asChild>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button asChild className="w-full sm:w-auto">
                   <a
                     href="https://github.com/logisbase/storefront-app"
                     target="_blank"
@@ -780,14 +773,14 @@ export default function StorefrontPageContent() {
                     Request source access
                   </a>
                 </Button>
-                <Button variant="outline" asChild>
+                <Button variant="outline" asChild className="w-full sm:w-auto">
                   <Link href="/docs/storefront">Documentation</Link>
                 </Button>
               </div>
             </div>
 
             {/* Right: storefront product browsing screenshot */}
-            <div className="flex items-center justify-center">
+            <div className="w-full">
               <BrowserFrame label="Storefront — Products">
                 <div className="relative aspect-video w-full">
                   <Image
@@ -821,7 +814,7 @@ export default function StorefrontPageContent() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="bg-card w-full overflow-hidden rounded-xl border">
+            <table className="bg-card w-full min-w-[700px] overflow-hidden rounded-xl border">
               <thead>
                 <tr className="border-b">
                   <th className="text-muted-foreground p-4 text-left text-sm font-semibold">
@@ -906,14 +899,7 @@ export default function StorefrontPageContent() {
               powers hyperlocal commerce across every industry.
             </p>
           </div>
-          <div
-            className="bg-border overflow-hidden rounded-xl border"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '1px',
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 gap-px overflow-hidden rounded-xl border sm:grid-cols-2 lg:grid-cols-4">
             {useCases.map((uc) => {
               const Icon = uc.icon;
               return (

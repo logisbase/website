@@ -224,7 +224,7 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
               <span className="bg-primary h-1.5 w-1.5 rounded-full" />
               Platform Overview
             </div>
-            <h1 className="text-5xl leading-none tracking-tight text-balance md:text-6xl lg:text-7xl">
+            <h1 className="text-4xl leading-none tracking-tight text-balance md:text-6xl lg:text-7xl">
               One Platform for Every{' '}
               <span className="text-gradient">Logistics Operation</span>
             </h1>
@@ -268,23 +268,16 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
           </div>
 
           {/* Stats */}
-          <div
-            className="bg-border overflow-hidden rounded-xl border"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '1px',
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 overflow-hidden rounded-xl border sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="bg-card flex flex-col items-center justify-center gap-1 px-6 py-8 text-center"
+                className="bg-card flex min-h-[120px] flex-col items-center justify-center gap-2 px-4 py-6 text-center sm:px-6 sm:py-8"
               >
-                <span className="text-primary text-3xl font-bold tracking-tight md:text-4xl">
+                <span className="text-primary text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
                   {stat.value}
                 </span>
-                <span className="text-muted-foreground text-xs">
+                <span className="text-muted-foreground text-xs leading-relaxed text-balance">
                   {stat.label}
                 </span>
               </div>
@@ -303,7 +296,7 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
                 LogisBase — Fleet-Ops Live Operations
               </span>
             </div>
-            <div className="relative aspect-[16/7] w-full">
+            <div className="relative aspect-[16/9] w-full sm:aspect-[16/7]">
               <Image
                 src="/images/screenshots/fleet-ops/fleet-ops-live-orders-panel.webp"
                 alt="LogisBase platform showing the Fleet-Ops live operations dashboard with real-time fleet map, active orders, and driver positions"
@@ -325,7 +318,7 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
               <div className="text-muted-foreground inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs font-medium">
                 How It Works
               </div>
-              <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl">
+              <h2 className="text-3xl leading-none tracking-tight text-balance sm:text-4xl md:text-5xl">
                 Built to Work the Way Your Operation Does
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -368,7 +361,7 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
             <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
               The Full Platform
             </div>
-            <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
+            <h2 className="text-3xl leading-none tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl">
               Every Module You Need,{' '}
               <span className="text-gradient">Nothing You Don't</span>
             </h2>
@@ -434,7 +427,7 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
             <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
               Native Integration
             </div>
-            <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
+            <h2 className="text-3xl leading-none tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl">
               Modules That Talk to Each Other{' '}
               <span className="text-gradient">Out of the Box</span>
             </h2>
@@ -450,26 +443,15 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
           </div>
 
           {/* Flow steps */}
-          <div
-            className="bg-border overflow-hidden rounded-xl border"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '1px',
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 overflow-hidden rounded-xl border md:grid-cols-2 xl:grid-cols-4">
             {integrationFlow.map((step, i) => {
               const Icon = step.icon;
               return (
                 <div
                   key={step.module}
-                  className="bg-card relative flex flex-col gap-3 p-6"
+                  className="bg-card relative flex min-h-[260px] flex-col gap-4 p-5 sm:p-6"
                 >
-                  {i < integrationFlow.length - 1 && (
-                    <div className="absolute top-1/2 right-0 z-10 hidden translate-x-1/2 -translate-y-1/2 lg:flex">
-                      <ArrowRight className="text-muted-foreground/40 size-4" />
-                    </div>
-                  )}
+                  {false}
                   <div className="flex items-center gap-2">
                     <div
                       className={cn(
@@ -483,10 +465,10 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
                       {step.module}
                     </span>
                   </div>
-                  <h4 className="text-accent-foreground font-semibold">
+                  <h4 className="text-accent-foreground text-base leading-snug font-semibold">
                     {step.title}
                   </h4>
-                  <p className="text-muted-foreground text-xs leading-snug">
+                  <p className="text-muted-foreground text-sm leading-relaxed text-balance">
                     {step.description}
                   </p>
                 </div>
@@ -532,7 +514,7 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
               <div className="text-muted-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
                 Get Started
               </div>
-              <h2 className="text-4xxl leading-none tracking-tight text-balance md:text-5xl lg:text-6xl">
+              <h2 className="text-3xl leading-none tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl">
                 Your Logistics Stack,{' '}
                 <span className="text-gradient">Under Your Control</span>
               </h2>

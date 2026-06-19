@@ -61,7 +61,7 @@ function PhoneFrame({
   return (
     <div
       className={`relative mx-auto overflow-hidden rounded-[1.75rem] border-4 border-[#1a1f2e] bg-[#0a0e18] shadow-[0_30px_80px_-20px_rgba(229,71,31,0.4)] ${className}`}
-      style={{ width: 240, height: 480 }}
+      style={{ width: 240, height: 480, minWidth: 240 }}
     >
       <div className="absolute top-0 left-1/2 z-10 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-[#1a1f2e]" />
       <Image
@@ -226,11 +226,11 @@ export default function OliMaxPage() {
                 mobile app, with delivery to their door.
               </p>
 
-              <div className="grid grid-cols-2 gap-3 pt-2">
+              <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
                 {productLines.map((p) => (
                   <div
                     key={p.label}
-                    className="flex items-center gap-3 rounded-xl border border-[var(--oli-border)] bg-[var(--oli-card)] p-4"
+                    className="flex min-w-0 items-center gap-3 rounded-xl border border-[var(--oli-border)] bg-[var(--oli-card)] p-4"
                   >
                     <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--oli-orange)]/15">
                       <p.icon className="size-4 text-[var(--oli-orange)]" />
@@ -242,11 +242,11 @@ export default function OliMaxPage() {
             </div>
 
             {/* Right: vendor catalog phone */}
-            <div className="grid grid-cols-2 justify-items-center gap-6">
+            <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2">
               <PhoneFrame
                 src="/images/screenshots/storefront-app/oli-max/oli-max-vendor-catalog-screen.webp"
                 alt="Oli Max — vendor catalog with featured suppliers"
-                className="mt-12"
+                className="mt-0 sm:mt-12"
               />
               <PhoneFrame
                 src="/images/screenshots/storefront-app/oli-max/oli-max-vendor-catalog-screen2.webp"
@@ -324,7 +324,7 @@ export default function OliMaxPage() {
       <section className="relative overflow-hidden bg-[var(--oli-orange)] py-20 md:py-28">
         <div className="container">
           <div className="grid items-center gap-16 lg:grid-cols-[1fr_1.1fr]">
-            <div className="order-2 grid grid-cols-2 justify-items-center gap-6 lg:order-1">
+            <div className="order-2 grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:order-1">
               <PhoneFrame
                 src="/images/screenshots/storefront-app/oli-max/oli-max-food-truck-screen.webp"
                 alt="Oli Max — food truck live map"
@@ -332,7 +332,7 @@ export default function OliMaxPage() {
               <PhoneFrame
                 src="/images/screenshots/storefront-app/oli-max/oli-max-food-truck-screen-2.webp"
                 alt="Oli Max — food truck inventory in range"
-                className="mt-10"
+                className="mt-0 sm:mt-10"
               />
             </div>
 

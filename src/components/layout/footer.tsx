@@ -236,29 +236,13 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="container mt-16 flex flex-col-reverse justify-between gap-8 border-t pt-8 text-xs lg:flex-row">
-        <div className="flex items-center justify-between gap-2">
-          <p className="">
-            © {new Date().getFullYear()} LogisBase — Source-accessible
-            logistics for everyone.
-          </p>{' '}
-          <div className="flex items-center gap-7 lg:hidden">
-            {SOCIAL_LINKS.map((link, index) => (
-              <Link
-                key={index}
-                href={link.href}
-                className="transition-opacity hover:opacity-80"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={link.name}
-              >
-                {link.icon}
-              </Link>
-            ))}
-          </div>
-        </div>
+      <div className="container mt-16 flex flex-col items-center justify-between gap-8 border-t pt-8 text-xs lg:flex-row lg:items-start">
+        <p className="text-center lg:text-left">
+          © {new Date().getFullYear()} LogisBase — Source-accessible logistics
+          for everyone.
+        </p>
 
-        <div className="hidden items-center gap-7 lg:flex">
+        <div className="flex items-center gap-7">
           {SOCIAL_LINKS.map((link, index) => (
             <Link
               key={index}
