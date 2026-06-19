@@ -125,8 +125,6 @@ export default function OliMaxPage() {
     <div className="oli-max-page flex flex-col text-[var(--oli-fg)]">
       {/* ── Hero ────────────────────────────────────────────────────── */}
       <section className="oli-hero relative overflow-hidden bg-[var(--oli-orange)]">
-        {/* Subtle dark fade only at the bottom 25% to anchor the hero — top stays
-     full solid brand orange. */}
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/4 bg-gradient-to-t from-black/35 to-transparent"
           aria-hidden
@@ -140,7 +138,7 @@ export default function OliMaxPage() {
                 Customer Story · Mongolia · Moving Shop
               </div>
               <h1 className="text-5xl leading-[0.95] font-bold tracking-tight text-balance text-white md:text-6xl lg:text-7xl">
-                Oli Max delivers Mongolia&apos;s bulk supply chain — on{' '}
+                Oli Max delivers Mongolia's bulk supply chain — on{' '}
                 <span className="text-[var(--oli-gold)]">
                   LogisBase Storefront.
                 </span>
@@ -179,7 +177,6 @@ export default function OliMaxPage() {
               </div>
             </div>
 
-            {/* Phone cluster */}
             <div className="relative hidden h-[520px] lg:block">
               <div className="absolute top-0 right-0 rotate-[6deg]">
                 <PhoneFrame
@@ -230,7 +227,7 @@ export default function OliMaxPage() {
                 {productLines.map((p) => (
                   <div
                     key={p.label}
-                    className="flex min-w-0 items-center gap-3 rounded-xl border border-[var(--oli-border)] bg-[var(--oli-card)] p-4"
+                    className="flex min-w-0 items-center gap-3 rounded-xl border border-[var(--oli-border)] bg-[var(--oli-card)] p-4 break-words"
                   >
                     <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--oli-orange)]/15">
                       <p.icon className="size-4 text-[var(--oli-orange)]" />
@@ -241,7 +238,6 @@ export default function OliMaxPage() {
               </div>
             </div>
 
-            {/* Right: vendor catalog phone */}
             <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2">
               <PhoneFrame
                 src="/images/screenshots/storefront-app/oli-max/oli-max-vendor-catalog-screen.webp"
@@ -258,7 +254,7 @@ export default function OliMaxPage() {
       </section>
 
       {/* ── The product walkthrough ────────────────────────────────── */}
-      <section className="oli-band-dark py-20 md:py-28">
+      <section className="oli-band-dark overflow-hidden py-20 md:py-28">
         <div className="container">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--oli-gold)]/40 bg-[var(--oli-gold)]/10 px-3 py-1 text-xs font-medium text-[var(--oli-gold)]">
@@ -352,8 +348,8 @@ export default function OliMaxPage() {
                   moving vendor
                 </em>{' '}
                 — its inventory and prices follow the vehicle. Customers see
-                only what&apos;s within delivery range right now, not
-                what&apos;s 30 km away.
+                only what's within delivery range right now, not what's 30 km
+                away.
               </p>
               <ul className="space-y-3">
                 {[
@@ -378,10 +374,10 @@ export default function OliMaxPage() {
         <div className="container">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-              What&apos;s under the hood.
+              What's under the hood.
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-[var(--oli-fg-muted)]">
-              Oli Max didn&apos;t build a logistics platform from scratch. They
+              Oli Max didn't build a logistics platform from scratch. They
               forked LogisBase, branded it, integrated local payments, and
               shipped to the App Store.
             </p>
@@ -418,10 +414,10 @@ export default function OliMaxPage() {
             <div>
               <h3 className="mb-3 text-2xl font-semibold">QPay, baked in.</h3>
               <p className="leading-relaxed text-[var(--oli-fg-muted)]">
-                Mongolia&apos;s mobile-first payment rail is the default
-                checkout. Implemented once as a LogisBase Ledger payment-gateway
-                driver, it&apos;s reusable by any other Storefront deployment in
-                the country — source-accessible for the community.
+                Mongolia's mobile-first payment rail is the default checkout.
+                Implemented once as a LogisBase Ledger payment-gateway driver,
+                it's reusable by any other Storefront deployment in the country
+                — source-accessible for the community.
               </p>
             </div>
           </div>

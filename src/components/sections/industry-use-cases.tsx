@@ -115,14 +115,7 @@ export default function IndustryUseCases() {
           </div>
 
           {/* Right: Industry mosaic grid */}
-          <div
-            className="bg-border overflow-hidden rounded-xl border lg:col-span-3"
-            style={{
-              gap: '1px',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-            }}
-          >
+          <div className="bg-border grid grid-cols-1 overflow-hidden rounded-xl border sm:grid-cols-2 lg:col-span-3 [&>a]:border-r [&>a]:border-b [&>a:last-child]:border-b-0 sm:[&>a:nth-child(even)]:border-r-0 [&>a:nth-last-child(2)]:border-b-0 sm:[&>a:nth-last-child(2)]:border-b-0">
             {industries.map((industry) => {
               const Icon = industry.icon;
               return (

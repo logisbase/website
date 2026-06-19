@@ -57,17 +57,21 @@ function PhoneFrame({
 }) {
   return (
     <div
-      className={`relative mx-auto overflow-hidden rounded-[1.75rem] border-4 border-[var(--tv-navy)] bg-[var(--tv-navy)] shadow-[0_30px_80px_-20px_rgba(36,55,71,0.45)] ${className}`}
-      style={{ width: 240, height: 480 }}
+      className={`mx-auto w-full max-w-[240px] overflow-hidden ${className}`}
     >
-      <div className="absolute top-0 left-1/2 z-10 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-[var(--tv-navy-deep)]" />
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className="object-cover object-top"
-        sizes="240px"
-      />
+      <div
+        className="relative mx-auto overflow-hidden rounded-[1.75rem] border-4 border-[var(--tv-navy)] bg-[var(--tv-navy)] shadow-[0_30px_80px_-20px_rgba(36,55,71,0.45)]"
+        style={{ width: 240, height: 480 }}
+      >
+        <div className="absolute top-0 left-1/2 z-10 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-[var(--tv-navy-deep)]" />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover object-top"
+          sizes="240px"
+        />
+      </div>
     </div>
   );
 }
@@ -220,10 +224,10 @@ export default function TrueVeganPage() {
                 {dishes.map((d) => (
                   <div
                     key={d.label}
-                    className="flex min-w-0 items-center gap-3 rounded-xl border border-[var(--tv-border-light)] bg-[var(--tv-card)] p-4"
+                    className="flex w-full min-w-0 items-center gap-3 rounded-xl border border-[var(--tv-border-light)] bg-[var(--tv-card)] p-4"
                   >
                     <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--tv-blue)]/10">
-                      <d.icon className="size-4 text-[var(--tv-blue)]" />
+                      <d.icon className="size-4 shrink-0 text-[var(--tv-blue)]" />
                     </div>
                     <span className="truncate text-sm font-medium text-[var(--tv-navy)]">
                       {d.label}
@@ -234,11 +238,11 @@ export default function TrueVeganPage() {
             </div>
 
             {/* Right: products + cart */}
-            <div className="grid grid-cols-2 justify-items-center gap-6">
+            <div className="grid min-w-0 grid-cols-1 justify-items-center gap-6 sm:grid-cols-2">
               <PhoneFrame
                 src="/images/screenshots/storefront-app/true-vegan/true-vegan-products-screen.webp"
                 alt="True Vegan — chef's menu with appetizers, salads, mains"
-                className="mt-12"
+                className="sm:mt-12"
               />
               <PhoneFrame
                 src="/images/screenshots/storefront-app/true-vegan/true-vegan-cart-screen.webp"
@@ -267,8 +271,8 @@ export default function TrueVeganPage() {
             </p>
           </div>
 
-          <div className="grid justify-items-center gap-6 md:grid-cols-3 lg:gap-8">
-            <div className="flex flex-col items-center gap-4">
+          <div className="grid min-w-0 justify-items-center gap-6 md:grid-cols-3 lg:gap-8">
+            <div className="flex w-full flex-col items-center gap-4">
               <PhoneFrame
                 src="/images/screenshots/storefront-app/true-vegan/true-vegan-store-search.webp"
                 alt="True Vegan — search and discovery"
@@ -283,7 +287,7 @@ export default function TrueVeganPage() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex w-full flex-col items-center gap-4">
               <PhoneFrame
                 src="/images/screenshots/storefront-app/true-vegan/true-vegan-checkout-screen.webp"
                 alt="True Vegan — pickup or delivery toggle on checkout"
@@ -298,7 +302,7 @@ export default function TrueVeganPage() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex w-full flex-col items-center gap-4">
               <PhoneFrame
                 src="/images/screenshots/storefront-app/true-vegan/true-vegan-checkout-tip-payment-2.webp"
                 alt="True Vegan — Stripe payment with tip selection"
@@ -321,7 +325,7 @@ export default function TrueVeganPage() {
       <section className="bg-[var(--tv-navy)] py-20 md:py-28">
         <div className="container">
           <div className="grid items-center gap-16 lg:grid-cols-[1fr_1.1fr]">
-            <div className="order-2 grid grid-cols-2 justify-items-center gap-6 lg:order-1">
+            <div className="order-2 grid min-w-0 grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:order-1">
               <PhoneFrame
                 src="/images/screenshots/storefront-app/true-vegan/true-vegan-checkout-screen-2.webp"
                 alt="True Vegan — checkout map with delivery address"
@@ -329,7 +333,7 @@ export default function TrueVeganPage() {
               <PhoneFrame
                 src="/images/screenshots/storefront-app/true-vegan/true-vegan-account-screen.webp"
                 alt="True Vegan — customer account with saved addresses"
-                className="mt-10"
+                className="sm:mt-10"
               />
             </div>
 
@@ -383,7 +387,7 @@ export default function TrueVeganPage() {
             </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid min-w-0 gap-5 md:grid-cols-2">
             {stackParts.map((p) => (
               <div
                 key={p.title}
@@ -413,7 +417,7 @@ export default function TrueVeganPage() {
       {/* ── Stats ──────────────────────────────────────────────────── */}
       <section className="bg-[var(--tv-navy-deep)] py-16 md:py-20">
         <div className="container">
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+          <div className="grid min-w-0 grid-cols-2 gap-6 md:grid-cols-4">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-3xl font-semibold text-[var(--tv-blue-soft)] md:text-4xl">
