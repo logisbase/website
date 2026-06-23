@@ -350,7 +350,7 @@ export default function LogisticsAIPage() {
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link
-                href="https://github.com/logisbase/logisbase"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -649,7 +649,7 @@ export default function LogisticsAIPage() {
 
           <div className="mt-8 text-center">
             <Link
-              href="https://github.com/logisbase/logisbase"
+              href="https://tally.so/r/obgQQx"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary inline-flex items-center gap-2 text-sm underline-offset-4 hover:underline"
@@ -767,7 +767,7 @@ export default function LogisticsAIPage() {
           </div>
           <div className="text-muted-foreground mt-8 flex items-center justify-center gap-6 text-sm">
             <Link
-              href="https://github.com/logisbase/logisbase"
+              href="https://tally.so/r/obgQQx"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-foreground flex items-center gap-1.5 transition-colors"

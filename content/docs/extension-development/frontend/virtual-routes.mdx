@@ -117,7 +117,7 @@ this.route('orders', { path: '/' }, function () {
 });
 ```
 
-Other extensions then register a menu item on `'fleet-ops:component:order:details'` with `route: 'operations.orders.index.details.virtual'`, and Fleet-Ops's order-details template hosts the same `<LazyEngineComponent>` pattern. See [`ledger/addon/extension.js:92`](https://github.com/logisbase/ledger/blob/main/addon/extension.js#L92) for an example of registering an "Invoice" tab on the Fleet-Ops order details virtual route.
+Other extensions then register a menu item on `'fleet-ops:component:order:details'` with `route: 'operations.orders.index.details.virtual'`, and Fleet-Ops's order-details template hosts the same `<LazyEngineComponent>` pattern. See [`ledger/addon/extension.js:92`](https://tally.so/r/obgQQx) for an example of registering an "Invoice" tab on the Fleet-Ops order details virtual route.
 
 ## Why Virtual Routes Exist
 
@@ -127,9 +127,9 @@ Net effect: extensions add new pages to the console without forking the router, 
 
 ## Source
 
-| File                                                                                                                                                        | Description                                    |
-| :---------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------- |
-| [`console/app/routes/console/settings/virtual.js`](https://github.com/logisbase/logisbase/blob/main/console/app/routes/console/settings/virtual.js)         | Settings virtual route                         |
-| [`console/app/routes/console/admin/virtual.js`](https://github.com/logisbase/logisbase/blob/main/console/app/routes/console/admin/virtual.js)               | Admin virtual route                            |
-| [`console/app/templates/console/settings/virtual.hbs`](https://github.com/logisbase/logisbase/blob/main/console/app/templates/console/settings/virtual.hbs) | Renders `<LazyEngineComponent>`                |
-| [`addon/services/universe/menu-service.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/universe/menu-service.js)                      | `lookupMenuItem`, default routes per registrar |
+| File                                                                              | Description                                    |
+| :-------------------------------------------------------------------------------- | :--------------------------------------------- |
+| [`console/app/routes/console/settings/virtual.js`](https://tally.so/r/obgQQx)     | Settings virtual route                         |
+| [`console/app/routes/console/admin/virtual.js`](https://tally.so/r/obgQQx)        | Admin virtual route                            |
+| [`console/app/templates/console/settings/virtual.hbs`](https://tally.so/r/obgQQx) | Renders `<LazyEngineComponent>`                |
+| [`addon/services/universe/menu-service.js`](https://tally.so/r/obgQQx)            | `lookupMenuItem`, default routes per registrar |

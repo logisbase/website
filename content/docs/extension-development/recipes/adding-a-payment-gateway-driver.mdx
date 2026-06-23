@@ -5,7 +5,7 @@ description: Plug a new payment gateway (PayPal, Razorpay, etc.) into Ledger by 
 
 # Adding a Payment Gateway Driver
 
-The [Ledger](https://github.com/logisbase/ledger) extension uses a Laravel [`Manager`](https://laravel.com/api/11.x/Illuminate/Support/Manager.html)-based driver pattern for payment gateways. Stripe, QPay, and Cash drivers ship by default — third-party drivers register via `PaymentGatewayManager::extend()`.
+The [Ledger](https://tally.so/r/obgQQx) extension uses a Laravel [`Manager`](https://laravel.com/api/11.x/Illuminate/Support/Manager.html)-based driver pattern for payment gateways. Stripe, QPay, and Cash drivers ship by default — third-party drivers register via `PaymentGatewayManager::extend()`.
 
 ## What a Driver Implements
 
@@ -215,10 +215,10 @@ $response = $paypal->purchase(new PurchaseRequest(
 
 ## Reference
 
-- [`ledger/server/src/Contracts/GatewayDriverInterface.php`](https://github.com/logisbase/ledger/blob/main/server/src/Contracts/GatewayDriverInterface.php) — full contract
-- [`ledger/server/src/Gateways/AbstractGatewayDriver.php`](https://github.com/logisbase/ledger/blob/main/server/src/Gateways/AbstractGatewayDriver.php) — extend this
-- [`ledger/server/src/Gateways/StripeDriver.php`](https://github.com/logisbase/ledger/blob/main/server/src/Gateways/StripeDriver.php) — full reference driver with tokenization
-- [`ledger/server/src/PaymentGatewayManager.php`](https://github.com/logisbase/ledger/blob/main/server/src/PaymentGatewayManager.php) — registration via `extend()`
+- [`ledger/server/src/Contracts/GatewayDriverInterface.php`](https://tally.so/r/obgQQx) — full contract
+- [`ledger/server/src/Gateways/AbstractGatewayDriver.php`](https://tally.so/r/obgQQx) — extend this
+- [`ledger/server/src/Gateways/StripeDriver.php`](https://tally.so/r/obgQQx) — full reference driver with tokenization
+- [`ledger/server/src/PaymentGatewayManager.php`](https://tally.so/r/obgQQx) — registration via `extend()`
 - <LaravelApi path="Illuminate/Support/Manager.html">
     Laravel `Manager` API
   </LaravelApi>

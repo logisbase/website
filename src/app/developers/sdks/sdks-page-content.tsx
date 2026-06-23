@@ -45,15 +45,15 @@ const CAPABILITIES = [
 const REPOS = [
   {
     name: 'logisbase/logisbase-js',
-    href: 'https://github.com/logisbase/logisbase-js',
+    href: 'https://tally.so/r/obgQQx',
   },
   {
     name: 'logisbase/logisbase-php',
-    href: 'https://github.com/logisbase/logisbase-php',
+    href: 'https://tally.so/r/obgQQx',
   },
   {
     name: 'logisbase/storefront-js',
-    href: 'https://github.com/logisbase/storefront-js',
+    href: 'https://tally.so/r/obgQQx',
   },
 ];
 
@@ -135,7 +135,7 @@ export default function SdksPageContent() {
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild>
               <Link
-                href="https://github.com/logisbase"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -184,7 +184,7 @@ export default function SdksPageContent() {
               <CardFooter className="gap-2">
                 <Button size="sm" variant="outline" className="flex-1" asChild>
                   <Link
-                    href="https://github.com/logisbase/logisbase-js"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -232,7 +232,7 @@ export default function SdksPageContent() {
               <CardFooter className="gap-2">
                 <Button size="sm" variant="outline" className="flex-1" asChild>
                   <Link
-                    href="https://github.com/logisbase/logisbase-php"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -281,7 +281,7 @@ export default function SdksPageContent() {
               <CardFooter className="gap-2">
                 <Button size="sm" variant="outline" className="flex-1" asChild>
                   <Link
-                    href="https://github.com/logisbase/storefront-js"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

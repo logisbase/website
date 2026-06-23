@@ -266,7 +266,7 @@ export default function InstallationTermsPage() {
               LogisBase Console &amp; Core are source-accessible software
               governed by the{' '}
               <a
-                href="https://github.com/logisbase/logisbase"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-4"

@@ -8,7 +8,7 @@ description: Full env-var reference for the source-accessible LogisBase Navigato
 
 This guide is the full env-var reference for developers and operators who **fork, brand, and self-publish** the LogisBase Navigator driver app. If your drivers will use the public LogisBase Navigator app from the App Store / Google Play, see [Navigator App Setup](/docs/fleet-ops/getting-started/navigator-app-setup) instead — that page covers installing the public app and connecting it to your instance via the console-generated deep link.
 
-The Navigator source lives at [github.com/logisbase/navigator-app](https://github.com/logisbase/navigator-app). It's a React Native 0.77 app, Expo-free, with Tamagui for styling and Fastlane for release automation.
+The Navigator source lives at [github.com/logisbase/navigator-app](https://tally.so/r/obgQQx). It's a React Native 0.77 app, Expo-free, with Tamagui for styling and Fastlane for release automation.
 
 To get the app running locally for the first time, see [Quickstart](/docs/fleet-ops/navigator-app/quickstart). For colors, themes, and other visual branding, see [Theming & Branding](/docs/fleet-ops/navigator-app/theming).
 
@@ -82,7 +82,7 @@ Remove tabs your deployment doesn't need (e.g. drop `DriverChatTab` if you're no
 
 ### Android Signing
 
-The Android `release` signing config in [android/app/build.gradle](https://github.com/logisbase/navigator-app/blob/main/android/app/build.gradle) reads these from the environment when present:
+The Android `release` signing config in [android/app/build.gradle](https://tally.so/r/obgQQx) reads these from the environment when present:
 
 | Variable                                      | Purpose                                                                 |
 | :-------------------------------------------- | :---------------------------------------------------------------------- |
@@ -121,7 +121,7 @@ SOCKETCLUSTER_SECURE=true
 SOCKETCLUSTER_PATH=/socketcluster/
 ```
 
-The runtime config layer ([src/contexts/ConfigContext.tsx](https://github.com/logisbase/navigator-app/blob/main/src/contexts/ConfigContext.tsx)) lets users override these at runtime by scanning a deep-link QR code from the console — so the env values function as defaults, not hard-codes.
+The runtime config layer ([src/contexts/ConfigContext.tsx](https://tally.so/r/obgQQx)) lets users override these at runtime by scanning a deep-link QR code from the console — so the env values function as defaults, not hard-codes.
 
 ## Push Notifications
 
@@ -151,13 +151,13 @@ Navigator uses `react-native-notifications` for both FCM (Android) and APNS (iOS
 
 ## Background Geolocation
 
-Navigator uses [`react-native-background-geolocation`](https://github.com/transistorsoft/react-native-background-geolocation) (Transistor Soft) for continuous driver tracking — including when the app is backgrounded or the device is locked. This is **not** the free `react-native-geolocation-service` package.
+Navigator uses [`react-native-background-geolocation`](https://tally.so/r/obgQQx) (Transistor Soft) for continuous driver tracking — including when the app is backgrounded or the device is locked. This is **not** the free `react-native-geolocation-service` package.
 
 The wiring is already in place:
 
 - Android: `apply from: "${background_geolocation.projectDir}/app.gradle"` at the top of `android/app/build.gradle`.
 - iOS: `Info.plist` declares `NSLocationAlwaysAndWhenInUseUsageDescription`, `NSLocationAlwaysUsageDescription`, and the `location` background mode.
-- App code: [src/contexts/LocationContext.tsx](https://github.com/logisbase/navigator-app/blob/main/src/contexts/LocationContext.tsx) configures and starts the plugin.
+- App code: [src/contexts/LocationContext.tsx](https://tally.so/r/obgQQx) configures and starts the plugin.
 
 What you have to do per platform before a release build:
 

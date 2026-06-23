@@ -57,7 +57,7 @@ export default {
 };
 ```
 
-Real example: [`packages/storefront/addon/extension.js:55`](https://github.com/logisbase/logisbase/blob/main/packages/storefront/addon/extension.js#L55).
+Real example: [`packages/storefront/addon/extension.js:55`](https://tally.so/r/obgQQx).
 
 ## Registering a New Dashboard
 
@@ -68,7 +68,7 @@ widgetService.registerDashboard('ledger');
 widgetService.registerWidgets('ledger', widgets);
 ```
 
-Real example: [`packages/ledger/addon/extension.js:185`](https://github.com/logisbase/logisbase/blob/main/packages/ledger/addon/extension.js#L185) — Ledger registers its own dashboard, attaches its full widget set there, and additionally exposes a curated subset on the built-in `'dashboard'`.
+Real example: [`packages/ledger/addon/extension.js:185`](https://tally.so/r/obgQQx) — Ledger registers its own dashboard, attaches its full widget set there, and additionally exposes a curated subset on the built-in `'dashboard'`.
 
 ## Methods
 
@@ -193,9 +193,9 @@ The two façade shortcuts on `UniverseService` are still wired but emit deprecat
 
 ## Source
 
-| File                                                                                                                                       | Description                         |
-| :----------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------- |
-| [`addon/services/universe/widget-service.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/universe/widget-service.js) | `WidgetService`                     |
-| [`addon/contracts/widget.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/widget.js)                                 | `Widget` contract                   |
-| [`packages/storefront/addon/extension.js`](https://github.com/logisbase/logisbase/blob/main/packages/storefront/addon/extension.js)        | Single-widget on built-in dashboard |
-| [`packages/ledger/addon/extension.js`](https://github.com/logisbase/logisbase/blob/main/packages/ledger/addon/extension.js)                | Custom dashboard + widget set       |
+| File                                                                     | Description                         |
+| :----------------------------------------------------------------------- | :---------------------------------- |
+| [`addon/services/universe/widget-service.js`](https://tally.so/r/obgQQx) | `WidgetService`                     |
+| [`addon/contracts/widget.js`](https://tally.so/r/obgQQx)                 | `Widget` contract                   |
+| [`packages/storefront/addon/extension.js`](https://tally.so/r/obgQQx)    | Single-widget on built-in dashboard |
+| [`packages/ledger/addon/extension.js`](https://tally.so/r/obgQQx)        | Custom dashboard + widget set       |

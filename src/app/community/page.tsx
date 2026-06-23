@@ -51,7 +51,7 @@ const channels = [
     description:
       'Explore the codebase, report issues, submit pull requests, and track development progress. LogisBase development happens transparently in the open.',
     cta: 'Request source access',
-    href: 'https://github.com/logisbase/logisbase',
+    href: 'https://tally.so/r/obgQQx',
     badge: 'Source-accessible',
   },
   {
@@ -132,7 +132,7 @@ export default function CommunityPage() {
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link
-                href="https://github.com/logisbase/logisbase"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -222,7 +222,7 @@ export default function CommunityPage() {
           <div className="mt-8 text-center">
             <Button asChild>
               <Link
-                href="https://github.com/logisbase/logisbase/blob/main/CONTRIBUTING.md"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >

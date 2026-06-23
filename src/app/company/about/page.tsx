@@ -333,7 +333,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Founders */}
+      {/* Founders 
       <section className="border-t py-16 md:py-24">
         <div className="container">
           <div className="mb-12">
@@ -351,7 +351,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
-            {/* Shiv Thakker */}
+            {/* Shiv Thakker 
             <div className="bg-card rounded-xl border p-8">
               <div className="mb-5 flex items-start gap-5">
                 <div className="bg-muted border-primary/20 size-20 flex-shrink-0 overflow-hidden rounded-full border-2">
@@ -400,7 +400,7 @@ export default function AboutPage() {
                 from Africa for global markets.
               </p>
             </div>
-            {/* Ronald Richardson */}
+            {/* Ronald Richardson 
             <div className="bg-card rounded-xl border p-8">
               <div className="mb-5 flex items-start gap-5">
                 <div className="bg-muted border-primary/20 size-20 flex-shrink-0 overflow-hidden rounded-full border-2">
@@ -451,9 +451,10 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> 
+      
 
-      {/* Singapore HQ */}
+      {/* Singapore HQ 
       <section className="bg-muted/20 border-t py-12 md:py-16">
         <div className="container">
           <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 md:flex-row">
@@ -490,6 +491,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* CTA */}
       <section className="py-16 md:py-20">

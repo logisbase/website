@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Bell, ExternalLink, GitCommit, Loader2, Tag } from 'lucide-react';
 import Link from 'next/link';
-import { Bell, ExternalLink, Tag, GitCommit, Loader2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -295,7 +296,7 @@ export default function ChangelogPageContent() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button variant="outline" size="sm" className="h-10 gap-2" asChild>
               <Link
-                href="https://github.com/logisbase/logisbase/releases"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -311,7 +312,7 @@ export default function ChangelogPageContent() {
               asChild
             >
               <Link
-                href="https://github.com/logisbase/logisbase/releases.atom"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -336,7 +337,7 @@ export default function ChangelogPageContent() {
             <p className="text-muted-foreground text-lg">
               Unable to load releases. View them directly on{' '}
               <Link
-                href="https://github.com/logisbase/logisbase/releases"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-4"
@@ -448,7 +449,7 @@ export default function ChangelogPageContent() {
                 asChild
               >
                 <Link
-                  href="https://github.com/logisbase/logisbase/releases"
+                  href="https://tally.so/r/obgQQx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

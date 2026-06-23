@@ -171,7 +171,7 @@ const OpenSourceAdvantage = ({ stars = '1.9k+' }: { stars?: string }) => {
 
               <Button className="w-full" asChild>
                 <a
-                  href="https://github.com/logisbase/logisbase"
+                  href="https://tally.so/r/obgQQx"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cta-id="view_github"

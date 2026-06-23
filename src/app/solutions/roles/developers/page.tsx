@@ -202,7 +202,7 @@ export default function DevelopersPage() {
       ctaPrimary="Get Started"
       ctaPrimaryHref="https://tally.so/r/68VqOO"
       ctaSecondary="Request source access"
-      ctaSecondaryHref="https://github.com/logisbase/logisbase"
+      ctaSecondaryHref="https://tally.so/r/obgQQx"
     />
   );
 }

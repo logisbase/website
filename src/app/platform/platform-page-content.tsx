@@ -257,7 +257,7 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
               </Button>
               <Button size="lg" variant="ghost" asChild>
                 <a
-                  href="https://github.com/logisbase/logisbase"
+                  href="https://tally.so/r/obgQQx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -545,7 +545,7 @@ export default function PlatformPageContent({ stars }: { stars: string }) {
                 </Button>
                 <Button size="lg" variant="ghost" asChild>
                   <a
-                    href="https://github.com/logisbase/logisbase"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

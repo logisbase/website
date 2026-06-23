@@ -130,7 +130,7 @@ export default function OpenSourcePage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
               <Link
-                href="https://github.com/logisbase/logisbase"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -271,7 +271,7 @@ export default function OpenSourcePage() {
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" asChild>
                   <Link
-                    href="https://github.com/logisbase/logisbase"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

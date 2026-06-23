@@ -103,7 +103,7 @@ export default function DeveloperConsolePageContent() {
                 </Button>
               </Link>
               <Link
-                href="https://github.com/logisbase/dev-engine"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >

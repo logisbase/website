@@ -392,7 +392,7 @@ export default function StorefrontPageContent() {
               </Button>
               <Button size="lg" variant="ghost" asChild>
                 <a
-                  href="https://github.com/logisbase/storefront"
+                  href="https://tally.so/r/obgQQx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -766,7 +766,7 @@ export default function StorefrontPageContent() {
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button asChild className="w-full sm:w-auto">
                   <a
-                    href="https://github.com/logisbase/storefront-app"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -965,7 +965,7 @@ export default function StorefrontPageContent() {
                 </Button>
                 <Button variant="outline" asChild>
                   <a
-                    href="https://github.com/logisbase/storefront"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

@@ -50,7 +50,7 @@ export default class MyExtensionEngine extends Engine {
 loadInitializers(MyExtensionEngine, modulePrefix);
 ```
 
-The exported `services` array includes `store`, `session`, `current-user`, `fetch`, `notifications`, `intl`, `abilities`, `universe`, the four universe sub-services, and a number of console utilities. The full list lives at [`addon/exports/services.js`](https://github.com/logisbase/ember-core/blob/main/addon/exports/services.js) — start with the export, add your own only if you have something custom.
+The exported `services` array includes `store`, `session`, `current-user`, `fetch`, `notifications`, `intl`, `abilities`, `universe`, the four universe sub-services, and a number of console utilities. The full list lives at [`addon/exports/services.js`](https://tally.so/r/obgQQx) — start with the export, add your own only if you have something custom.
 
 `externalRoutes` is `['console', 'extensions']` — the host routes you can transition to with `transitionToExternal('console.…')`.
 
@@ -87,7 +87,7 @@ export default buildRoutes(function () {
 });
 ```
 
-Real example: [`packages/fleetops/addon/routes.js`](https://github.com/logisbase/logisbase/blob/main/packages/fleetops/addon/routes.js).
+Real example: [`packages/fleetops/addon/routes.js`](https://tally.so/r/obgQQx).
 
 ## Mount Point
 
@@ -176,12 +176,12 @@ export default class extends ApplicationAdapter {
 }
 ```
 
-See [`@logisbase/ember-core/adapters/application`](https://github.com/logisbase/ember-core/blob/main/addon/adapters/application.js) for the base class.
+See [`@logisbase/ember-core/adapters/application`](https://tally.so/r/obgQQx) for the base class.
 
 ## Source
 
-| File                                                                                                                      | Description                         |
-| :------------------------------------------------------------------------------------------------------------------------ | :---------------------------------- |
-| [`addon/exports/services.js`](https://github.com/logisbase/ember-core/blob/main/addon/exports/services.js)                | Canonical engine dependency exports |
-| [`packages/fleetops/addon/engine.js`](https://github.com/logisbase/logisbase/blob/main/packages/fleetops/addon/engine.js) | Reference engine class              |
-| [`packages/fleetops/addon/routes.js`](https://github.com/logisbase/logisbase/blob/main/packages/fleetops/addon/routes.js) | Reference route map                 |
+| File                                                             | Description                         |
+| :--------------------------------------------------------------- | :---------------------------------- |
+| [`addon/exports/services.js`](https://tally.so/r/obgQQx)         | Canonical engine dependency exports |
+| [`packages/fleetops/addon/engine.js`](https://tally.so/r/obgQQx) | Reference engine class              |
+| [`packages/fleetops/addon/routes.js`](https://tally.so/r/obgQQx) | Reference route map                 |

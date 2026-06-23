@@ -337,7 +337,7 @@ export default function ExtensionsMarketplacePageContent() {
                 </Button>
               </Link>
               <Link
-                href="https://github.com/logisbase/registry-bridge"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -36,11 +36,11 @@ Route::prefix(config('my-extension.api.routing.prefix', 'my-extension'))
     });
 ```
 
-Real example: [`pallet/server/src/routes.php`](https://github.com/logisbase/pallet/blob/main/server/src/routes.php).
+Real example: [`pallet/server/src/routes.php`](https://tally.so/r/obgQQx).
 
 ## Route Macros
 
-`logisbase/core-api` defines three route macros via [`Route` expansion](https://github.com/logisbase/core-api/blob/main/src/Expansions/Route.php):
+`logisbase/core-api` defines three route macros via [`Route` expansion](https://tally.so/r/obgQQx):
 
 ### `logisbaseRestRoutes($name, $controller = null, $options = [], $callback = null)`
 
@@ -91,7 +91,7 @@ Pick a group based on **who calls the route**:
 | `logisbase.api`       | API key (basic auth) | Public REST API consumed by external integrations         |
 | (none)                | Public               | Webhooks, magic-link callbacks, anonymous endpoints       |
 
-Both groups include throttling, request logging, and route binding. `logisbase.protected` additionally runs `SetupLogisBaseSession`, the `AuthorizationGuard`, and presence tracking — defined in [`CoreServiceProvider::$middleware`](https://github.com/logisbase/core-api/blob/main/src/Providers/CoreServiceProvider.php#L53).
+Both groups include throttling, request logging, and route binding. `logisbase.protected` additionally runs `SetupLogisBaseSession`, the `AuthorizationGuard`, and presence tracking — defined in [`CoreServiceProvider::$middleware`](https://tally.so/r/obgQQx).
 
 ## Controllers
 
@@ -148,7 +148,7 @@ class WidgetController extends LogisBaseController
 }
 ```
 
-Real example: [`ledger/server/src/Http/Controllers/Internal/v1/InvoiceController.php`](https://github.com/logisbase/ledger/blob/main/server/src/Http/Controllers/Internal/v1/InvoiceController.php).
+Real example: [`ledger/server/src/Http/Controllers/Internal/v1/InvoiceController.php`](https://tally.so/r/obgQQx).
 
 ## Form Requests
 
@@ -198,11 +198,11 @@ If you need a non-standard verb shape, drop down to plain `Route::get` / `Route:
 
 ## Source
 
-| File                                                                                                                                                                                  | Description                                                     |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------- |
-| [`src/Expansions/Route.php`](https://github.com/logisbase/core-api/blob/main/src/Expansions/Route.php)                                                                                | `logisbaseRoutes`, `logisbaseRestRoutes`, `logisbaseAuthRoutes` |
-| [`src/Routing/RESTRegistrar.php`](https://github.com/logisbase/core-api/blob/main/src/Routing/RESTRegistrar.php)                                                                      | REST route generator                                            |
-| [`src/Http/Controllers/LogisBaseController.php`](https://github.com/logisbase/core-api/blob/main/src/Http/Controllers/LogisBaseController.php)                                        | Abstract resource controller base                               |
-| [`src/Traits/HasApiControllerBehavior.php`](https://github.com/logisbase/core-api/blob/main/src/Traits/HasApiControllerBehavior.php)                                                  | Trait that wires up the action methods                          |
-| [`ledger/server/src/Http/Controllers/Internal/v1/InvoiceController.php`](https://github.com/logisbase/ledger/blob/main/server/src/Http/Controllers/Internal/v1/InvoiceController.php) | Reference resource controller                                   |
-| [`pallet/server/src/routes.php`](https://github.com/logisbase/pallet/blob/main/server/src/routes.php)                                                                                 | Reference routes file                                           |
+| File                                                                                                | Description                                                     |
+| :-------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------- |
+| [`src/Expansions/Route.php`](https://tally.so/r/obgQQx)                                             | `logisbaseRoutes`, `logisbaseRestRoutes`, `logisbaseAuthRoutes` |
+| [`src/Routing/RESTRegistrar.php`](https://tally.so/r/obgQQx)                                        | REST route generator                                            |
+| [`src/Http/Controllers/LogisBaseController.php`](https://tally.so/r/obgQQx)                         | Abstract resource controller base                               |
+| [`src/Traits/HasApiControllerBehavior.php`](https://tally.so/r/obgQQx)                              | Trait that wires up the action methods                          |
+| [`ledger/server/src/Http/Controllers/Internal/v1/InvoiceController.php`](https://tally.so/r/obgQQx) | Reference resource controller                                   |
+| [`pallet/server/src/routes.php`](https://tally.so/r/obgQQx)                                         | Reference routes file                                           |

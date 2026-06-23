@@ -252,7 +252,7 @@ export default function DevelopersPage() {
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                   <Link
-                    href="https://github.com/logisbase/logisbase"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -443,7 +443,7 @@ export default function DevelopersPage() {
                 <div className="flex flex-wrap gap-3">
                   <Button asChild>
                     <Link
-                      href="https://github.com/logisbase/logisbase"
+                      href="https://tally.so/r/obgQQx"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -520,7 +520,7 @@ export default function DevelopersPage() {
                   </Button>
                   <Button size="lg" variant="ghost" asChild>
                     <Link
-                      href="https://github.com/logisbase/logisbase"
+                      href="https://tally.so/r/obgQQx"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

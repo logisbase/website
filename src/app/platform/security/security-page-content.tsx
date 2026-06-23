@@ -179,7 +179,7 @@ export default function SecurityCompliancePageContent() {
                 </Button>
               </Link>
               <Link
-                href="https://github.com/logisbase"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >

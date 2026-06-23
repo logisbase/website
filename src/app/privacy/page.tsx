@@ -497,7 +497,6 @@ export default function PrivacyPolicyPage() {
                   support@logisbase.com
                 </a>
               </div>
-              <div>Phone: +65 9780 3731</div>
               <div>
                 Website:{' '}
                 <Link

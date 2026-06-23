@@ -214,7 +214,7 @@ export default function MobileAppsPageContent() {
             </p>
             <div className="mt-4 flex flex-wrap justify-center gap-4">
               <Link
-                href="https://github.com/logisbase/navigator-app"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -224,7 +224,7 @@ export default function MobileAppsPageContent() {
                 </Button>
               </Link>
               <Link
-                href="https://github.com/logisbase/storefront-app"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -294,7 +294,7 @@ export default function MobileAppsPageContent() {
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <Link
-                    href="https://github.com/logisbase/navigator-app"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -348,7 +348,7 @@ export default function MobileAppsPageContent() {
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <Link
-                    href="https://github.com/logisbase/storefront-app"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -699,7 +699,7 @@ export default function MobileAppsPageContent() {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
-                  href="https://github.com/logisbase/navigator-app"
+                  href="https://tally.so/r/obgQQx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -709,7 +709,7 @@ export default function MobileAppsPageContent() {
                   </Button>
                 </Link>
                 <Link
-                  href="https://github.com/logisbase/storefront-app"
+                  href="https://tally.so/r/obgQQx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

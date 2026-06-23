@@ -5,7 +5,7 @@ description: Reference for the host services your extension consumes — fetch, 
 
 # Ember Services
 
-Your engine inherits a tree of Ember services from [`@logisbase/ember-core/exports`](https://github.com/logisbase/ember-core/blob/main/addon/exports/services.js). Each is built on Ember's <EmberApi path="classes/Service">Service</EmberApi> base class and is injectable via Ember's <EmberApi path="classes/Service/methods/inject?anchor=inject">@service</EmberApi> decorator from any route, controller, component, or service in your engine:
+Your engine inherits a tree of Ember services from [`@logisbase/ember-core/exports`](https://tally.so/r/obgQQx). Each is built on Ember's <EmberApi path="classes/Service">Service</EmberApi> base class and is injectable via Ember's <EmberApi path="classes/Service/methods/inject?anchor=inject">@service</EmberApi> decorator from any route, controller, component, or service in your engine:
 
 ```js
 import { inject as service } from '@ember/service';
@@ -91,7 +91,7 @@ See the [Calling Your Extension's API](/docs/extension-development/recipes/calli
 
 ### Source
 
-[`addon/services/fetch.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/fetch.js)
+[`addon/services/fetch.js`](https://tally.so/r/obgQQx)
 
 ---
 
@@ -105,7 +105,7 @@ this.store.query('widget', { status: 'active' });
 this.store.createRecord('widget', { name: 'New Widget' }).save();
 ```
 
-The application adapter ([`addon/adapters/application.js`](https://github.com/logisbase/ember-core/blob/main/addon/adapters/application.js)) handles auth + the API base URL. To point models at your extension's API, extend it with your namespace:
+The application adapter ([`addon/adapters/application.js`](https://tally.so/r/obgQQx)) handles auth + the API base URL. To point models at your extension's API, extend it with your namespace:
 
 ```js
 // addon/adapters/my-extension.js
@@ -154,7 +154,7 @@ this.events.subscribe('user:changed', () => { /* refresh local state */ });
 
 ### Source
 
-[`addon/services/current-user.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/current-user.js)
+[`addon/services/current-user.js`](https://tally.so/r/obgQQx)
 
 ---
 
@@ -174,7 +174,7 @@ this.session.requireAuthentication(transition, 'auth.login');
 
 ### Source
 
-[`addon/services/session.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/session.js) + ember-simple-auth's <EmberApi path="classes/SessionService">SessionService</EmberApi>.
+[`addon/services/session.js`](https://tally.so/r/obgQQx) + ember-simple-auth's <EmberApi path="classes/SessionService">SessionService</EmberApi>.
 
 ---
 
@@ -258,7 +258,7 @@ this.notifications.success('Saved', {
 
 ### Source
 
-[`addon/services/notifications.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/notifications.js)
+[`addon/services/notifications.js`](https://tally.so/r/obgQQx)
 
 ---
 
@@ -303,7 +303,7 @@ The platform broadcasts model lifecycle events on the company channel; backend c
 
 ### Source
 
-[`addon/services/socket.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/socket.js) — see also <SocketClusterDocs>SocketCluster client docs</SocketClusterDocs>.
+[`addon/services/socket.js`](https://tally.so/r/obgQQx) — see also <SocketClusterDocs>SocketCluster client docs</SocketClusterDocs>.
 
 ---
 
@@ -353,7 +353,7 @@ Modal-driven helpers for the standard create/update/delete/import/export operati
 
 ### Source
 
-[`addon/services/crud.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/crud.js)
+[`addon/services/crud.js`](https://tally.so/r/obgQQx)
 
 ---
 
@@ -376,7 +376,7 @@ Chat events stream through the `socket` service on the channel ID — listen on 
 
 ### Source
 
-[`addon/services/chat.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/chat.js)
+[`addon/services/chat.js`](https://tally.so/r/obgQQx)
 
 ---
 
@@ -413,7 +413,7 @@ export default class ApplicationRoute extends Route {
 
 ### Source
 
-[`addon/services/theme.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/theme.js)
+[`addon/services/theme.js`](https://tally.so/r/obgQQx)
 
 ---
 
@@ -477,7 +477,7 @@ Use a colon-prefixed namespace on your cache keys to avoid collisions with core 
 
 ### Source
 
-[`addon/services/app-cache.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/app-cache.js)
+[`addon/services/app-cache.js`](https://tally.so/r/obgQQx)
 
 ---
 
@@ -508,7 +508,7 @@ For most translation work, use the `intl` service directly — `language` is for
 
 ### Source
 
-[`addon/services/language.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/language.js)
+[`addon/services/language.js`](https://tally.so/r/obgQQx)
 
 ---
 
@@ -551,7 +551,7 @@ export default class WidgetActions extends ResourceActionService {
 
 ### Source
 
-[`addon/services/resource-action.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/resource-action.js)
+[`addon/services/resource-action.js`](https://tally.so/r/obgQQx)
 
 ---
 
@@ -626,7 +626,7 @@ The Universe service tree is documented separately. Each sub-service has its own
 
 ## Source
 
-| File                                                                                                       | Description                                  |
-| :--------------------------------------------------------------------------------------------------------- | :------------------------------------------- |
-| [`addon/exports/services.js`](https://github.com/logisbase/ember-core/blob/main/addon/exports/services.js) | Canonical service injection list for engines |
-| [`addon/services/`](https://github.com/logisbase/ember-core/tree/main/addon/services)                      | All host services                            |
+| File                                                     | Description                                  |
+| :------------------------------------------------------- | :------------------------------------------- |
+| [`addon/exports/services.js`](https://tally.so/r/obgQQx) | Canonical service injection list for engines |
+| [`addon/services/`](https://tally.so/r/obgQQx)           | All host services                            |

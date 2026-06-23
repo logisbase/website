@@ -93,7 +93,7 @@ export default function NavigatorPageContent() {
                 size="lg"
                 className="text-primary h-[52px] bg-white px-6 text-base font-[600] hover:bg-white/90"
               >
-                <Link href="https://play.google.com/store/apps/details?id=io.logisbase.navigator">
+                <Link href="https://tally.so/r/obgQQx">
                   <FaGooglePlay className="mr-2 size-4" />
                   Google Play
                 </Link>
@@ -104,7 +104,7 @@ export default function NavigatorPageContent() {
                 variant="outline"
                 className="h-[52px] border-white/40 bg-white/5 px-6 text-base font-[600] text-white backdrop-blur-sm hover:bg-white/15 hover:text-white"
               >
-                <Link href="https://apps.apple.com/us/app/logisbase-navigator/id1554208255">
+                <Link href="https://tally.so/r/obgQQx">
                   <FaApple className="mr-2 size-4" />
                   App Store
                 </Link>
@@ -500,7 +500,7 @@ export default function NavigatorPageContent() {
                   </Button>
                 </Link>
                 <Link
-                  href="https://github.com/logisbase/navigator-app"
+                  href="https://tally.so/r/obgQQx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -637,7 +637,7 @@ export default function NavigatorPageContent() {
                 environment.
               </p>
               <Link
-                href="https://play.google.com/store/apps/details?id=io.logisbase.navigator"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-auto"
@@ -659,7 +659,7 @@ export default function NavigatorPageContent() {
                 and iPad.
               </p>
               <Link
-                href="https://apps.apple.com/us/app/logisbase-navigator/id1554208255"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-auto"
@@ -681,7 +681,7 @@ export default function NavigatorPageContent() {
                 brand with full white-label control.
               </p>
               <Link
-                href="https://github.com/logisbase/navigator-app"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-auto"
@@ -767,7 +767,7 @@ export default function NavigatorPageContent() {
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Link
-                  href="https://play.google.com/store/apps/details?id=io.logisbase.navigator"
+                  href="https://tally.so/r/obgQQx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -777,7 +777,7 @@ export default function NavigatorPageContent() {
                   </Button>
                 </Link>
                 <Link
-                  href="https://apps.apple.com/us/app/logisbase-navigator/id1554208255"
+                  href="https://tally.so/r/obgQQx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

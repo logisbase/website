@@ -103,7 +103,7 @@ class MyExtensionServiceProvider extends CoreServiceProvider
 }
 ```
 
-Real example: [`ledger/server/src/Providers/LedgerServiceProvider.php`](https://github.com/logisbase/ledger/blob/main/server/src/Providers/LedgerServiceProvider.php).
+Real example: [`ledger/server/src/Providers/LedgerServiceProvider.php`](https://tally.so/r/obgQQx).
 
 ## What `CoreServiceProvider` Does for You
 
@@ -121,7 +121,7 @@ Real example: [`ledger/server/src/Providers/LedgerServiceProvider.php`](https://
 | `registerExpansionsFrom(dir)` | Auto-loads every `Expansion` class in the directory and `expand()`s its target |
 | `scheduleCommands(callback)`  | Wires up scheduled commands on the Laravel scheduler                           |
 
-See [`LogisBase\Providers\CoreServiceProvider`](https://github.com/logisbase/core-api/blob/main/src/Providers/CoreServiceProvider.php) for the full set.
+See [`LogisBase\Providers\CoreServiceProvider`](https://tally.so/r/obgQQx) for the full set.
 
 ## Middleware Groups
 
@@ -171,13 +171,13 @@ Three patterns fan out from the service provider:
 
 - **[Observers](/docs/extension-development/backend/expansions-and-observers#observers)** — react to model lifecycle events (created, updated, deleted) on your own or core models
 - **[Expansions](/docs/extension-development/backend/expansions-and-observers#expansions)** — extend Laravel facades (`Route`, `Str`, `Arr`, etc.) with custom methods. The `Route::logisbaseRoutes()` macro is itself an expansion
-- **Event service provider** — for application events, register a sibling `EventServiceProvider` and `register()` it from your main provider. See [`fleetops/server/src/Providers/EventServiceProvider.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Providers/EventServiceProvider.php) for a reference implementation.
+- **Event service provider** — for application events, register a sibling `EventServiceProvider` and `register()` it from your main provider. See [`fleetops/server/src/Providers/EventServiceProvider.php`](https://tally.so/r/obgQQx) for a reference implementation.
 
 ## Source
 
-| File                                                                                                                                                    | Description                                                     |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------- |
-| [`src/Providers/CoreServiceProvider.php`](https://github.com/logisbase/core-api/blob/main/src/Providers/CoreServiceProvider.php)                        | Base service provider — extend this                             |
-| [`src/Expansions/Route.php`](https://github.com/logisbase/core-api/blob/main/src/Expansions/Route.php)                                                  | `logisbaseRoutes`, `logisbaseRestRoutes`, `logisbaseAuthRoutes` |
-| [`ledger/server/src/Providers/LedgerServiceProvider.php`](https://github.com/logisbase/ledger/blob/main/server/src/Providers/LedgerServiceProvider.php) | Reference extension provider                                    |
-| [`pallet/server/src/Providers/PalletServiceProvider.php`](https://github.com/logisbase/pallet/blob/main/server/src/Providers/PalletServiceProvider.php) | Another reference extension provider                            |
+| File                                                                                 | Description                                                     |
+| :----------------------------------------------------------------------------------- | :-------------------------------------------------------------- |
+| [`src/Providers/CoreServiceProvider.php`](https://tally.so/r/obgQQx)                 | Base service provider — extend this                             |
+| [`src/Expansions/Route.php`](https://tally.so/r/obgQQx)                              | `logisbaseRoutes`, `logisbaseRestRoutes`, `logisbaseAuthRoutes` |
+| [`ledger/server/src/Providers/LedgerServiceProvider.php`](https://tally.so/r/obgQQx) | Reference extension provider                                    |
+| [`pallet/server/src/Providers/PalletServiceProvider.php`](https://tally.so/r/obgQQx) | Another reference extension provider                            |

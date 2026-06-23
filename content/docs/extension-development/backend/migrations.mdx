@@ -25,7 +25,7 @@ Standard Laravel migration filenames: `YYYY_MM_DD_HHMMSS_<verb>_<table_name>_tab
 - `2026_01_18_142000_add_status_to_widgets_table.php`
 - `2026_01_22_080000_add_foreign_keys_to_widgets_table.php`
 
-Foreign keys go in a **separate** later migration so the parent tables already exist when the constraint is added — see how [`pallet/server/migrations/`](https://github.com/logisbase/pallet/tree/main/server/migrations) and [`storefront/server/migrations/`](https://github.com/logisbase/storefront/tree/main/server/migrations) split creation and FK migrations into pairs.
+Foreign keys go in a **separate** later migration so the parent tables already exist when the constraint is added — see how [`pallet/server/migrations/`](https://tally.so/r/obgQQx) and [`storefront/server/migrations/`](https://tally.so/r/obgQQx) split creation and FK migrations into pairs.
 
 ## Table-name Convention
 
@@ -158,7 +158,7 @@ class Widget extends Model
 }
 ```
 
-`$publicIdType` is the prefix of the generated `public_id` (e.g. `widget_a1b2c3d4`). Browse traits at [`packages/core-api/src/Traits`](https://github.com/logisbase/core-api/tree/main/src/Traits).
+`$publicIdType` is the prefix of the generated `public_id` (e.g. `widget_a1b2c3d4`). Browse traits at [`packages/core-api/src/Traits`](https://tally.so/r/obgQQx).
 
 ## Sandbox & Multi-tenant Considerations
 
@@ -176,11 +176,11 @@ Most extensions don't need this flag — by default migrations run against both 
 
 ## Source
 
-| File                                                                                                                                 | Description                               |
-| :----------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
-| [`core-api/migrations/`](https://github.com/logisbase/core-api/tree/main/migrations)                                                 | Core schema migrations — reference shapes |
-| [`pallet/server/migrations/`](https://github.com/logisbase/pallet/tree/main/server/migrations)                                       | Reference extension migrations            |
-| [`storefront/server/migrations/`](https://github.com/logisbase/storefront/tree/main/server/migrations)                               | Reference extension migrations            |
-| [`src/Console/Commands/MigrateSandbox.php`](https://github.com/logisbase/core-api/blob/main/src/Console/Commands/MigrateSandbox.php) | Sandbox-aware migration runner            |
-| [`src/Traits/HasUuid.php`](https://github.com/logisbase/core-api/blob/main/src/Traits/HasUuid.php)                                   | UUID auto-generation trait                |
-| [`src/Traits/HasPublicId.php`](https://github.com/logisbase/core-api/blob/main/src/Traits/HasPublicId.php)                           | `public_id` generation trait              |
+| File                                                                   | Description                               |
+| :--------------------------------------------------------------------- | :---------------------------------------- |
+| [`core-api/migrations/`](https://tally.so/r/obgQQx)                    | Core schema migrations — reference shapes |
+| [`pallet/server/migrations/`](https://tally.so/r/obgQQx)               | Reference extension migrations            |
+| [`storefront/server/migrations/`](https://tally.so/r/obgQQx)           | Reference extension migrations            |
+| [`src/Console/Commands/MigrateSandbox.php`](https://tally.so/r/obgQQx) | Sandbox-aware migration runner            |
+| [`src/Traits/HasUuid.php`](https://tally.so/r/obgQQx)                  | UUID auto-generation trait                |
+| [`src/Traits/HasPublicId.php`](https://tally.so/r/obgQQx)              | `public_id` generation trait              |

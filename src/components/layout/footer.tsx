@@ -17,11 +17,6 @@ import { Button } from '@/components/ui/button';
 
 const SOCIAL_LINKS = [
   {
-    name: 'GitHub',
-    href: 'https://github.com/logisbase/logisbase',
-    icon: <FaGithub className="size-4" />,
-  },
-  {
     name: 'X (Twitter)',
     href: 'https://twitter.com/logisbase',
     icon: <FaXTwitter className="size-4" />,

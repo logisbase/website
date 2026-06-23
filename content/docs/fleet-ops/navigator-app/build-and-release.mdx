@@ -113,7 +113,7 @@ In Xcode, open `ios/NavigatorApp.xcworkspace` and set:
 
 Navigator ships with Fastlane lanes that use [match](https://docs.fastlane.tools/actions/match/) with S3 storage for provisioning profiles, so multiple machines and CI can sign without manually shuffling certificates.
 
-Required environment variables (see [ios/fastlane/Fastfile](https://github.com/logisbase/navigator-app/blob/main/ios/fastlane/Fastfile)):
+Required environment variables (see [ios/fastlane/Fastfile](https://tally.so/r/obgQQx)):
 
 | Variable                 | Purpose                                                                  |
 | :----------------------- | :----------------------------------------------------------------------- |
@@ -189,7 +189,7 @@ keytool -genkeypair -v \
 
 Store the resulting `.keystore` file somewhere safe (1Password, a sealed secret, an S3 bucket with KMS). **If you lose it, you cannot publish updates** without going through Google's Play App Signing key reset, which is a multi-week process.
 
-Then export the signing envs the release build expects (already read in [android/app/build.gradle](https://github.com/logisbase/navigator-app/blob/main/android/app/build.gradle)):
+Then export the signing envs the release build expects (already read in [android/app/build.gradle](https://tally.so/r/obgQQx)):
 
 ```bash
 export ANDROID_NAVIGATOR_APP_UPLOAD_STORE_FILE=/secure/path/navigator-upload.keystore
@@ -200,7 +200,7 @@ export ANDROID_NAVIGATOR_APP_UPLOAD_KEY_PASSWORD=...
 
 ### Available Lanes
 
-The Fastlane lanes ([android/fastlane/Fastfile](https://github.com/logisbase/navigator-app/blob/main/android/fastlane/Fastfile)) all run `gradle clean bundleRelease` and upload an `.aab` to the named track:
+The Fastlane lanes ([android/fastlane/Fastfile](https://tally.so/r/obgQQx)) all run `gradle clean bundleRelease` and upload an `.aab` to the named track:
 
 ```bash
 cd android

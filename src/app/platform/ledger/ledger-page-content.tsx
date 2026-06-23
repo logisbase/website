@@ -481,7 +481,7 @@ export default function LedgerPageContent() {
               </Button>
               <Button size="lg" variant="ghost" asChild>
                 <a
-                  href="https://github.com/logisbase/ledger"
+                  href="https://tally.so/r/obgQQx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -1113,7 +1113,7 @@ export default function LedgerPageContent() {
                 </Button>
                 <Button variant="outline" asChild>
                   <a
-                    href="https://github.com/logisbase/ledger"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

@@ -285,7 +285,7 @@ export default function PalletPageContent() {
               </Button>
               <Button size="lg" variant="ghost" asChild>
                 <a
-                  href="https://github.com/logisbase/pallet"
+                  href="https://tally.so/r/obgQQx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -699,7 +699,7 @@ export default function PalletPageContent() {
                 </Button>
                 <Button size="lg" variant="ghost" asChild>
                   <a
-                    href="https://github.com/logisbase/pallet"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

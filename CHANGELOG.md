@@ -32,4 +32,4 @@ First versioned release. Establishes versioning, a release workflow, and bundles
 - Mobile users couldn't open the docs sidebar because section layouts disabled fumadocs's mobile nav (to avoid duplicating the site `Navbar`), which removed fumadocs's only built-in `SidebarTrigger`. The reworked stacked-drawer pattern restores access via the existing site hamburger. (#10)
 - Cramped top spacing on the fumadocs mobile sidebar — added 1rem of breathing room above the section picker. (#10)
 
-[0.1.0]: https://github.com/logisbase/logisbase.io/releases/tag/v0.1.0
+[0.1.0]: https://github.com/logisbase/logisbase/releases/tag/v0.1.0

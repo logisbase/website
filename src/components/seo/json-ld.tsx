@@ -11,7 +11,7 @@ export function OrganizationSchema() {
     url: 'https://logisbase.com',
     logo: 'https://logisbase.com/images/filled-icon.png',
     sameAs: [
-      'https://github.com/logisbase/logisbase',
+      'https://tally.so/r/obgQQx',
       'https://twitter.com/logisbase',
       'https://www.linkedin.com/company/logisbase',
       'https://discord.gg/7xPbDryKDH',

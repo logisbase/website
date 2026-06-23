@@ -937,7 +937,7 @@ console.log(\`ETA: \${order.eta}\`);`}
               className="h-[48px] border-[var(--fo-border)] bg-white px-5 text-base font-[600] text-[var(--fo-fg-strong)] hover:bg-[var(--fo-surface-2)]"
             >
               <a
-                href="https://github.com/logisbase/fleetops"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >

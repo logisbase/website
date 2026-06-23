@@ -92,25 +92,25 @@ const CORE_FRAMEWORKS = [
     name: 'logisbase/ember-core',
     type: 'Frontend' as const,
     desc: "Provides foundational services, adapters, and utilities for initializing and managing your extension's Ember Engine. Handles authentication, routing integration, and cross-extension communication.",
-    link: 'https://github.com/logisbase/ember-core',
+    link: 'https://tally.so/r/obgQQx',
   },
   {
     name: 'logisbase/ember-ui',
     type: 'Frontend' as const,
     desc: 'A suite of standardized UI components and styles that match the LogisBase console aesthetic. Tables, modals, forms, maps, and more — all pre-built and ready to use.',
-    link: 'https://github.com/logisbase/ember-ui',
+    link: 'https://tally.so/r/obgQQx',
   },
   {
     name: 'logisbase/core-api',
     type: 'Backend' as const,
     desc: 'The Laravel package that forms the backbone of every extension backend. Provides the composable REST API framework, shared models, authentication middleware, notifications, and the event system.',
-    link: 'https://github.com/logisbase/core-api',
+    link: 'https://tally.so/r/obgQQx',
   },
   {
     name: 'logisbase/logisbase-php',
     type: 'Backend' as const,
     desc: 'PHP SDK for interacting with the LogisBase API from server-side applications and extension backends.',
-    link: 'https://github.com/logisbase/logisbase-php',
+    link: 'https://tally.so/r/obgQQx',
   },
 ];
 
@@ -229,7 +229,7 @@ export default function DeveloperExtensionsPageContent() {
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link
-                href="https://github.com/logisbase/logisbase"
+                href="https://tally.so/r/obgQQx"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -492,7 +492,7 @@ export default function DeveloperExtensionsPageContent() {
               <div className="flex flex-wrap gap-3">
                 <Button variant="outline" size="sm" asChild>
                   <Link
-                    href="https://github.com/logisbase/registry"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -569,7 +569,7 @@ export default function DeveloperExtensionsPageContent() {
                 </Button>
                 <Button size="lg" variant="ghost" asChild>
                   <Link
-                    href="https://github.com/logisbase/logisbase"
+                    href="https://tally.so/r/obgQQx"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

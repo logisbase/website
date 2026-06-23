@@ -58,7 +58,7 @@ export default {
 
 Callback signature: `(engineInstance, universe, applicationInstance) => void | Promise<void>`.
 
-Real example: [`vroom/addon/extension.js:6`](https://github.com/logisbase/vroom/blob/main/addon/extension.js#L6) — VROOM waits for Fleet-Ops, loads its own engine, and plugs its routing implementation into the Fleet-Ops route-optimization service.
+Real example: [`vroom/addon/extension.js:6`](https://tally.so/r/obgQQx) — VROOM waits for Fleet-Ops, loads its own engine, and plugs its routing implementation into the Fleet-Ops route-optimization service.
 
 ### `setupExtension` vs. `onEngineLoaded` vs. `whenEngineLoaded`
 
@@ -190,9 +190,9 @@ This calls the engine instance's `destroy()` and removes it from the loaded map.
 
 ## Source
 
-| File                                                                                                                                             | Description                               |
-| :----------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
-| [`addon/services/universe/extension-manager.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/universe/extension-manager.js) | `ExtensionManagerService`                 |
-| [`addon/contracts/extension-boot-state.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/extension-boot-state.js)           | Shared boot-state singleton               |
-| [`vroom/addon/extension.js`](https://github.com/logisbase/vroom/blob/main/addon/extension.js)                                                    | `whenEngineLoaded` + `ensureEngineLoaded` |
-| [`valhalla/addon/extension.js`](https://github.com/logisbase/valhalla/blob/main/addon/extension.js)                                              | Same pattern — routing-engine integration |
+| File                                                                        | Description                               |
+| :-------------------------------------------------------------------------- | :---------------------------------------- |
+| [`addon/services/universe/extension-manager.js`](https://tally.so/r/obgQQx) | `ExtensionManagerService`                 |
+| [`addon/contracts/extension-boot-state.js`](https://tally.so/r/obgQQx)      | Shared boot-state singleton               |
+| [`vroom/addon/extension.js`](https://tally.so/r/obgQQx)                     | `whenEngineLoaded` + `ensureEngineLoaded` |
+| [`valhalla/addon/extension.js`](https://tally.so/r/obgQQx)                  | Same pattern — routing-engine integration |

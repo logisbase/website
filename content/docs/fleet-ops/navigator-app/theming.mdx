@@ -45,7 +45,7 @@ The bases are extended in this order — later layers win:
 
 The active theme is computed at runtime as `${userColorScheme}${capitalize(APP_THEME)}` — so `APP_THEME=indigo` plus the device in dark mode resolves to `darkIndigo`.
 
-The driver can flip light / dark from inside the app. The choice persists via the `useStorage` hook under the key `app_theme` (see [src/hooks/use-app-theme.ts](https://github.com/logisbase/navigator-app/blob/main/src/hooks/use-app-theme.ts)).
+The driver can flip light / dark from inside the app. The choice persists via the `useStorage` hook under the key `app_theme` (see [src/hooks/use-app-theme.ts](https://tally.so/r/obgQQx)).
 
 ## Quickly Recolor with `CUSTOM_COLORS`
 
@@ -62,7 +62,7 @@ CUSTOM_COLORS_LIGHT=background:#FFFFFF,surface:#F7F7F7
 CUSTOM_COLORS_DARK=background:#0A0A0A,surface:#171717
 ```
 
-Format: `tokenName:#hex` separated by commas. The parser lives at [src/utils/tamagui.js](https://github.com/logisbase/navigator-app/blob/main/src/utils/tamagui.js) (`parseConfigObjectString`) — audit the exact accepted format there if you need edge cases.
+Format: `tokenName:#hex` separated by commas. The parser lives at [src/utils/tamagui.js](https://tally.so/r/obgQQx) (`parseConfigObjectString`) — audit the exact accepted format there if you need edge cases.
 
 The merged result is wired into both `lightBase` and `darkBase`, so a custom token (e.g. `primary`) is available consistently across light and dark themes.
 

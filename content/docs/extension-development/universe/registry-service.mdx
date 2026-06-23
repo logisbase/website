@@ -76,7 +76,7 @@ Real engines expose these slots (extracted from the `extension.js` files of the 
 | `fleet-ops:template:operations:orders:new:entities-input` | Custom inputs in the new-order entities flow                                     |
 | `@logisbase/console`                                      | App-wide tour/launcher/guard components (rare — only system extensions use this) |
 
-For Fleet-Ops's full list of slots, see [`fleetops/addon/extension.js#createRegistries`](https://github.com/logisbase/fleetops/blob/main/addon/extension.js).
+For Fleet-Ops's full list of slots, see [`fleetops/addon/extension.js#createRegistries`](https://tally.so/r/obgQQx).
 
 ## `createRegistry(name)` / `createRegistries(names)`
 
@@ -161,13 +161,13 @@ Most extensions don't need these global registrars — engine-local components, 
 
 ## Real-World References
 
-| Extension  | Pattern                                                                                          | Source                                                                                                |
-| :--------- | :----------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------- |
-| Fleet-Ops  | Creates 40+ registries for its own slots                                                         | [fleetops/addon/extension.js](https://github.com/logisbase/fleetops/blob/main/addon/extension.js)     |
-| Storefront | Registers components into `fleet-ops:component:order:details`                                    | [storefront/addon/extension.js](https://github.com/logisbase/storefront/blob/main/addon/extension.js) |
-| VROOM      | Registers `fleet-ops:template:settings:routing` and `fleet-ops:component:admin:routing-settings` | [vroom/addon/extension.js](https://github.com/logisbase/vroom/blob/main/addon/extension.js)           |
-| Valhalla   | Registers settings components into Fleet-Ops routing slots                                       | [valhalla/addon/extension.js](https://github.com/logisbase/valhalla/blob/main/addon/extension.js)     |
-| Ledger     | Registers an order-details tab into Fleet-Ops                                                    | [ledger/addon/extension.js](https://github.com/logisbase/ledger/blob/main/addon/extension.js)         |
+| Extension  | Pattern                                                                                          | Source                                                     |
+| :--------- | :----------------------------------------------------------------------------------------------- | :--------------------------------------------------------- |
+| Fleet-Ops  | Creates 40+ registries for its own slots                                                         | [fleetops/addon/extension.js](https://tally.so/r/obgQQx)   |
+| Storefront | Registers components into `fleet-ops:component:order:details`                                    | [storefront/addon/extension.js](https://tally.so/r/obgQQx) |
+| VROOM      | Registers `fleet-ops:template:settings:routing` and `fleet-ops:component:admin:routing-settings` | [vroom/addon/extension.js](https://tally.so/r/obgQQx)      |
+| Valhalla   | Registers settings components into Fleet-Ops routing slots                                       | [valhalla/addon/extension.js](https://tally.so/r/obgQQx)   |
+| Ledger     | Registers an order-details tab into Fleet-Ops                                                    | [ledger/addon/extension.js](https://tally.so/r/obgQQx)     |
 
 ## See Also
 
@@ -177,8 +177,8 @@ Most extensions don't need these global registrars — engine-local components, 
 
 ## Source
 
-| File                                                                                                                                           | Description                    |
-| :--------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------- |
-| [`addon/services/universe/registry-service.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/universe/registry-service.js) | RegistryService implementation |
-| [`addon/contracts/extension-component.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/extension-component.js)           | `ExtensionComponent`           |
-| [`addon/contracts/registry.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/registry.js)                                 | `Registry`                     |
+| File                                                                       | Description                    |
+| :------------------------------------------------------------------------- | :----------------------------- |
+| [`addon/services/universe/registry-service.js`](https://tally.so/r/obgQQx) | RegistryService implementation |
+| [`addon/contracts/extension-component.js`](https://tally.so/r/obgQQx)      | `ExtensionComponent`           |
+| [`addon/contracts/registry.js`](https://tally.so/r/obgQQx)                 | `Registry`                     |

@@ -52,7 +52,7 @@ class WidgetObserver
 
 Standard Eloquent events: `retrieved`, `creating`, `created`, `updating`, `updated`, `saving`, `saved`, `deleting`, `deleted`, `restoring`, `restored`, `forceDeleted`. Each method receives the model instance.
 
-Real example: [`storefront/server/src/Observers/OrderObserver.php`](https://github.com/logisbase/storefront/blob/main/server/src/Observers/OrderObserver.php).
+Real example: [`storefront/server/src/Observers/OrderObserver.php`](https://tally.so/r/obgQQx).
 
 ### Registering Observers
 
@@ -74,7 +74,7 @@ public function boot()
 }
 ```
 
-The implementation in [`CoreServiceProvider::registerObservers()`](https://github.com/logisbase/core-api/blob/main/src/Providers/CoreServiceProvider.php#L321) skips entries whose model class doesn't exist, so it's safe to declare observers for optional dependencies.
+The implementation in [`CoreServiceProvider::registerObservers()`](https://tally.so/r/obgQQx) skips entries whose model class doesn't exist, so it's safe to declare observers for optional dependencies.
 
 ### Observing Core Models
 
@@ -148,7 +148,7 @@ class UserExpansion implements Expansion
 
 After this expansion loads, any `User` instance has `$user->widgets` as a real Eloquent relationship — usable in queries, eager loads, and `with()`.
 
-Real example: [`fleetops/server/src/Expansions/UserExpansion.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Expansions/UserExpansion.php) — adds `driver()`, `customer()`, `contact()`, and other relationships to the core `User` model.
+Real example: [`fleetops/server/src/Expansions/UserExpansion.php`](https://tally.so/r/obgQQx) — adds `driver()`, `customer()`, `contact()`, and other relationships to the core `User` model.
 
 ### Auto-loading Expansions
 
@@ -163,7 +163,7 @@ public function boot()
 }
 ```
 
-The provider scans the directory, resolves each class through your namespace's `Expansions\\`, `Macros\\`, or `Mixins\\` folders, and calls `Target::expand($expansion)` (falling back to `Target::mixin($expansion)` if the target is a model). Source: [`CoreServiceProvider::registerExpansionsFrom()`](https://github.com/logisbase/core-api/blob/main/src/Providers/CoreServiceProvider.php#L224).
+The provider scans the directory, resolves each class through your namespace's `Expansions\\`, `Macros\\`, or `Mixins\\` folders, and calls `Target::expand($expansion)` (falling back to `Target::mixin($expansion)` if the target is a model). Source: [`CoreServiceProvider::registerExpansionsFrom()`](https://tally.so/r/obgQQx).
 
 ## Observers vs. Hooks vs. Webhooks
 
@@ -183,14 +183,14 @@ Pick the layer that matches the side effect's owner.
 - Need to add a method to a Laravel facade or a core model? **Expansion.**
 - Need a third party (or your own backend job) to react asynchronously? **Webhook + Listener** — define a Laravel `EventServiceProvider` (sibling to your main provider) and register listeners there.
 
-For event service providers, mirror the [`fleetops/server/src/Providers/EventServiceProvider.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Providers/EventServiceProvider.php) pattern.
+For event service providers, mirror the [`fleetops/server/src/Providers/EventServiceProvider.php`](https://tally.so/r/obgQQx) pattern.
 
 ## Source
 
-| File                                                                                                                                            | Description                                                     |
-| :---------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------- |
-| [`src/Build/Expansion.php`](https://github.com/logisbase/core-api/blob/main/src/Build/Expansion.php)                                            | The `Expansion` interface                                       |
-| [`src/Providers/CoreServiceProvider.php`](https://github.com/logisbase/core-api/blob/main/src/Providers/CoreServiceProvider.php)                | `$observers`, `registerObservers()`, `registerExpansionsFrom()` |
-| [`src/Expansions/Route.php`](https://github.com/logisbase/core-api/blob/main/src/Expansions/Route.php)                                          | Reference expansion — adds `logisbaseRoutes()` to `Route`       |
-| [`storefront/server/src/Observers/OrderObserver.php`](https://github.com/logisbase/storefront/blob/main/server/src/Observers/OrderObserver.php) | Reference observer                                              |
-| [`fleetops/server/src/Expansions/UserExpansion.php`](https://github.com/logisbase/fleetops/blob/main/server/src/Expansions/UserExpansion.php)   | Reference model expansion                                       |
+| File                                                                             | Description                                                     |
+| :------------------------------------------------------------------------------- | :-------------------------------------------------------------- |
+| [`src/Build/Expansion.php`](https://tally.so/r/obgQQx)                           | The `Expansion` interface                                       |
+| [`src/Providers/CoreServiceProvider.php`](https://tally.so/r/obgQQx)             | `$observers`, `registerObservers()`, `registerExpansionsFrom()` |
+| [`src/Expansions/Route.php`](https://tally.so/r/obgQQx)                          | Reference expansion — adds `logisbaseRoutes()` to `Route`       |
+| [`storefront/server/src/Observers/OrderObserver.php`](https://tally.so/r/obgQQx) | Reference observer                                              |
+| [`fleetops/server/src/Expansions/UserExpansion.php`](https://tally.so/r/obgQQx)  | Reference model expansion                                       |

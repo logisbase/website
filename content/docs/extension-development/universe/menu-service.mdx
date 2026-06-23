@@ -202,7 +202,7 @@ menuService.registerMenuItem(
 );
 ```
 
-Real example: [`packages/ledger/addon/extension.js:92`](https://github.com/logisbase/ledger/blob/main/addon/extension.js#L92) — registers an "Invoice" tab on the Fleet-Ops order details panel.
+Real example: [`packages/ledger/addon/extension.js:92`](https://tally.so/r/obgQQx) — registers an "Invoice" tab on the Fleet-Ops order details panel.
 
 For component-injecting registries (where the host renders contributed UI rather than navigating to a route), use [`registry.registerRenderableComponent(...)`](/docs/extension-development/universe/registry-service) instead — it's the right tool for component contributions.
 
@@ -237,12 +237,12 @@ new MenuItem({
 
 ## Real-World References
 
-| Extension  | Pattern shown                                        | Source                                                                                                |
-| :--------- | :--------------------------------------------------- | :---------------------------------------------------------------------------------------------------- |
-| Fleet-Ops  | Header item with shortcuts + admin panel             | [fleetops/addon/extension.js](https://github.com/logisbase/fleetops/blob/main/addon/extension.js)     |
-| Storefront | Header item with shortcuts + component contributions | [storefront/addon/extension.js](https://github.com/logisbase/storefront/blob/main/addon/extension.js) |
-| Pallet     | Header item, component contributions                 | [pallet/addon/extension.js](https://github.com/logisbase/pallet/blob/main/addon/extension.js)         |
-| Ledger     | Header item, custom dashboard, Fleet-Ops order tab   | [ledger/addon/extension.js](https://github.com/logisbase/ledger/blob/main/addon/extension.js)         |
+| Extension  | Pattern shown                                        | Source                                                     |
+| :--------- | :--------------------------------------------------- | :--------------------------------------------------------- |
+| Fleet-Ops  | Header item with shortcuts + admin panel             | [fleetops/addon/extension.js](https://tally.so/r/obgQQx)   |
+| Storefront | Header item with shortcuts + component contributions | [storefront/addon/extension.js](https://tally.so/r/obgQQx) |
+| Pallet     | Header item, component contributions                 | [pallet/addon/extension.js](https://tally.so/r/obgQQx)     |
+| Ledger     | Header item, custom dashboard, Fleet-Ops order tab   | [ledger/addon/extension.js](https://tally.so/r/obgQQx)     |
 
 ## See Also
 
@@ -252,8 +252,8 @@ new MenuItem({
 
 ## Source
 
-| File                                                                                                                                   | Description                    |
-| :------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------- |
-| [`addon/services/universe/menu-service.js`](https://github.com/logisbase/ember-core/blob/main/addon/services/universe/menu-service.js) | The MenuService implementation |
-| [`addon/contracts/menu-item.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/menu-item.js)                       | `MenuItem`                     |
-| [`addon/contracts/menu-panel.js`](https://github.com/logisbase/ember-core/blob/main/addon/contracts/menu-panel.js)                     | `MenuPanel`                    |
+| File                                                                   | Description                    |
+| :--------------------------------------------------------------------- | :----------------------------- |
+| [`addon/services/universe/menu-service.js`](https://tally.so/r/obgQQx) | The MenuService implementation |
+| [`addon/contracts/menu-item.js`](https://tally.so/r/obgQQx)            | `MenuItem`                     |
+| [`addon/contracts/menu-panel.js`](https://tally.so/r/obgQQx)           | `MenuPanel`                    |
