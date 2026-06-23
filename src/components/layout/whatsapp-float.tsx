@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-const WHATSAPP_NUMBER = '2348039314584'; // LogisBase: +234 803 931 4584
+const WHATSAPP_NUMBER = '447900569062'; // LogisBase: +44 7900 569062
 const WHATSAPP_MESSAGE = encodeURIComponent(
   "Hi LogisBase team! I'd like to learn more about your logistics platform.",
 );
